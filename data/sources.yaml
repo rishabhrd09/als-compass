@@ -1,0 +1,78 @@
+# 32 Trusted ALS Sources for AI Knowledge Base
+sources:
+  tier1:
+    - name: "MND Association UK"
+      url: "https://www.mndassociation.org"
+      trust_score: 10
+      categories: ["medical_authority", "equipment_care", "community_wisdom"]
+      description: "Official UK MND organization with certified information"
+    
+    - name: "ClinicalTrials.gov"
+      url: "https://clinicaltrials.gov"
+      trust_score: 10
+      categories: ["research_trials"]
+      description: "US National Institutes of Health clinical trials database"
+    
+    - name: "ALS Care and Support India"
+      url: "https://www.alssupportindia.org"
+      trust_score: 10
+      categories: ["community_wisdom", "medical_authority"]
+      description: "Primary ALS support organization for India"
+    
+    - name: "Mass General Healey Center for ALS"
+      url: "https://www.massgeneral.org/als"
+      trust_score: 10
+      categories: ["medical_authority", "research_trials"]
+      description: "World-leading ALS research and treatment center"
+
+  tier2:
+    - name: "ALS Association (USA)"
+      url: "https://www.als.org"
+      trust_score: 9
+      categories: ["medical_authority", "community_wisdom", "research_trials"]
+      description: "Largest US ALS organization"
+    
+    - name: "Mayo Clinic ALS Center"
+      url: "https://www.mayoclinic.org/diseases-conditions/amyotrophic-lateral-sclerosis"
+      trust_score: 9
+      categories: ["medical_authority"]
+      description: "Leading medical institution ALS information"
+    
+    - name: "Johns Hopkins ALS Clinic"
+      url: "https://www.hopkinsmedicine.org/neurology_neurosurgery/centers_clinics/als"
+      trust_score: 9
+      categories: ["medical_authority"]
+    
+    - name: "Cleveland Clinic ALS Center"
+      url: "https://my.clevelandclinic.org/departments/neurological/depts/als"
+      trust_score: 9
+      categories: ["medical_authority"]
+    
+    - name: "National Institute of Neurological Disorders and Stroke (NINDS)"
+      url: "https://www.ninds.nih.gov/Disorders/All-Disorders/Amyotrophic-Lateral-Sclerosis-ALS-Information-Page"
+      trust_score: 9
+      categories: ["medical_authority", "research_trials"]
+
+  tier3:
+    - name: "Family Caregiver Alliance"
+      url: "https://www.caregiver.org"
+      trust_score: 8
+      categories: ["community_wisdom", "equipment_care"]
+    
+    - name: "I AM ALS"
+      url: "https://www.iamals.org"
+      trust_score: 8
+      categories: ["community_wisdom", "advocacy"]
+    
+    - name: "ALS News Today"
+      url: "https://alsnewstoday.com"
+      trust_score: 7
+      categories: ["research_trials", "general_info"]
+
+# WhatsApp Group Analysis placeholder
+community_sources:
+  - name: "ALS Caregiver Community Insights"
+    description: "Aggregated insights from caregiver community discussions"
+    trust_score: 8.5
+    categories: ["community_wisdom"]
+    implementation_note: "To add: WhatsApp chat analysis, common themes extraction"

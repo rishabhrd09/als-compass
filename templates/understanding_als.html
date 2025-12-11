@@ -1,0 +1,1071 @@
+{% extends "base.html" %}
+
+{% block title %}Understanding ALS - ALS Caregiver's Compass{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Neural Simulation Section Styles */
+    .neural-simulation-section {
+        background: radial-gradient(circle at center, #111 0%, #000 100%);
+        padding: var(--space-8);
+        margin-bottom: var(--space-8);
+        border-radius: 16px;
+        color: white;
+        border: 1px solid var(--color-border);
+    }
+
+    .neural-simulation-title {
+        text-align: center;
+        font-size: var(--font-size-2xl);
+        color: white;
+        margin-bottom: var(--space-8);
+        margin-top: var(--space-2);
+    }
+
+    .simulation-container {
+        position: relative;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: var(--space-4);
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .simulation-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-6);
+        margin-bottom: var(--space-6);
+    }
+
+    @media (max-width: 768px) {
+        .simulation-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .simulation-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .simulation-title {
+        text-align: center;
+        margin-bottom: var(--space-4);
+        font-size: var(--font-size-lg);
+    }
+
+    .simulation-title.healthy {
+        color: #00ffff;
+    }
+
+    .simulation-title.als {
+        color: #ff9966;
+    }
+
+    .simulation-explanation {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: var(--font-size-sm);
+        text-align: center;
+        padding: var(--space-3);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .shared-animation-control {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-4);
+    }
+
+    .toggle-control {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(161, 140, 209, 0.3);
+        border: none;
+    }
+
+    .toggle-control:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(161, 140, 209, 0.5);
+    }
+
+    .toggle-control:active {
+        transform: scale(0.95);
+    }
+
+    .toggle-control .icon {
+        position: absolute;
+        color: white;
+        font-size: 28px;
+        transition: opacity 0.3s ease;
+    }
+
+    .toggle-control .play-icon {
+        opacity: 1;
+    }
+
+    .toggle-control .pause-icon {
+        opacity: 0;
+    }
+
+    .toggle-control.playing .play-icon {
+        opacity: 0;
+    }
+
+    .toggle-control.playing .pause-icon {
+        opacity: 1;
+    }
+
+    /* SVG text styles */
+    .neural-simulation-section text {
+        font-family: 'Arial', sans-serif;
+        font-size: 12px;
+        fill: cyan;
+        pointer-events: none;
+    }
+
+    .label-als {
+        fill: #ff9966;
+    }
+
+    .fade-in {
+        opacity: 0;
+        transition: opacity 0.6s ease-in;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+    }
+
+    /* Glow animations */
+    @keyframes membrane-glow {
+
+        0%,
+        100% {
+            filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.4));
+        }
+
+        50% {
+            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.8));
+        }
+    }
+
+    @keyframes membrane-glow-als {
+
+        0%,
+        100% {
+            filter: drop-shadow(0 0 2px rgba(255, 153, 102, 0.4));
+        }
+
+        50% {
+            filter: drop-shadow(0 0 6px rgba(255, 153, 102, 0.8));
+        }
+    }
+
+    @keyframes signal-pulse {
+
+        0%,
+        100% {
+            r: 5;
+            filter: drop-shadow(0 0 4px rgba(255, 255, 0, 0.6));
+        }
+
+        50% {
+            r: 8;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 0, 1));
+        }
+    }
+
+    @keyframes signal-pulse-als {
+
+        0%,
+        100% {
+            r: 5;
+            filter: drop-shadow(0 0 4px rgba(255, 153, 102, 0.6));
+        }
+
+        50% {
+            r: 8;
+            filter: drop-shadow(0 0 10px rgba(255, 153, 102, 1));
+        }
+    }
+
+    .glow-healthy {
+        animation: membrane-glow 2s infinite ease-in-out;
+    }
+
+    .glow-als {
+        animation: membrane-glow-als 2s infinite ease-in-out;
+    }
+
+    .pulse-signal {
+        animation: signal-pulse 1.5s infinite ease-in-out;
+    }
+
+    .pulse-signal-als {
+        animation: signal-pulse-als 1.5s infinite ease-in-out;
+    }
+
+    /* Info Card Styles */
+    .info-card {
+        background: var(--color-surface);
+        border-radius: 16px;
+        padding: var(--space-8);
+        margin-bottom: var(--space-8);
+        border: 1px solid var(--color-border);
+    }
+
+    .icon-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: var(--space-4);
+    }
+
+    .section-icon {
+        width: 64px;
+        height: 64px;
+        background: var(--color-primary-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        font-size: 32px;
+        border: 2px solid var(--color-border);
+    }
+
+    .symptom-grid {
+        display: grid;
+        gap: var(--space-4);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        margin-bottom: var(--space-6);
+    }
+
+    .symptom-card {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-4);
+        border-radius: 12px;
+        border-left: 4px solid var(--color-primary);
+        background: var(--color-primary-light);
+    }
+
+    .symptom-card.secondary {
+        border-left-color: var(--color-secondary);
+        background: var(--color-secondary-light);
+    }
+
+    .symptom-card.accent {
+        border-left-color: var(--color-accent);
+        background: var(--color-accent-light);
+    }
+
+    .symptom-icon {
+        font-size: 24px;
+        color: var(--color-primary);
+        min-width: 40px;
+        text-align: center;
+    }
+
+    .symptom-card.secondary .symptom-icon {
+        color: var(--color-secondary-dark);
+    }
+
+    .symptom-card.accent .symptom-icon {
+        color: var(--color-accent);
+    }
+
+    .key-message {
+        margin-top: var(--space-6);
+        text-align: center;
+        padding: var(--space-4);
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+    }
+
+    .timeline-container {
+        position: relative;
+        padding: var(--space-4);
+    }
+
+    .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--color-secondary), var(--color-accent));
+        transform: translateX(-50%);
+    }
+
+    .timeline-stage {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        margin-bottom: var(--space-8);
+    }
+
+    .timeline-marker {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .stage-card {
+        padding: var(--space-4);
+        border-radius: 12px;
+    }
+
+    .stage-card.left {
+        text-align: right;
+        border-right: 3px solid var(--color-secondary);
+        background: var(--color-secondary-light);
+    }
+
+    .stage-card.right {
+        border-left: 3px solid var(--color-accent);
+        background: var(--color-accent-light);
+    }
+
+    .stage-card.center {
+        border-right: 3px solid var(--color-primary);
+        background: var(--color-primary-light);
+    }
+
+    .faq-section {
+        background: var(--color-surface);
+        border-radius: 16px;
+        padding: var(--space-8);
+        margin-bottom: var(--space-8);
+        border: 1px solid var(--color-border);
+    }
+
+    .faq-item {
+        margin-bottom: var(--space-6);
+        border-bottom: 1px solid var(--color-border-light);
+        padding-bottom: var(--space-4);
+    }
+
+    .faq-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .faq-question {
+        font-weight: 700;
+        font-size: var(--font-size-lg);
+        color: var(--color-primary);
+        margin-bottom: var(--space-2);
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+    }
+
+    .faq-answer {
+        color: var(--color-text-secondary);
+        padding-left: 32px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section style="padding: var(--space-24) 0; background: var(--color-background);">
+    <div class="container">
+        <!-- Understanding ALS Section -->
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 class="section-title">Understanding ALS</h1>
+
+            <!-- What is ALS Definition -->
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+                <h2
+                    style="color: var(--color-primary); margin-bottom: var(--space-4); font-size: var(--font-size-2xl);">
+                    What is ALS?</h2>
+                <p
+                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
+                    <strong>Amyotrophic Lateral Sclerosis (ALS)</strong> is the most common type of Motor Neuron Disease
+                    (MND). In simple terms, it's a progressive neurological disease that damages the nerve cells
+                    responsible for controlling the muscles you choose to move, like those in your arms, legs, and face.
+                </p>
+
+                <div
+                    style="background: var(--color-primary-light); padding: var(--space-4); border-radius: 12px; margin-bottom: var(--space-4);">
+                    <p style="color: var(--color-text-primary); font-weight: 600; margin-bottom: var(--space-2);">
+                        <i class="fas fa-lightbulb"></i> Think of it this way:
+                    </p>
+                    <p style="color: var(--color-text-secondary);">
+                        Your brain is the power station, and your muscles are the lights in your house. The motor
+                        neurons are the electrical wires that connect them. In ALS, these "wires" break down, so the
+                        signals from the brain can't reach the muscles properly. Without these signals, muscles
+                        gradually weaken, shrink (a process called atrophy), and stop working.
+                    </p>
+                </div>
+            </div>
+
+            <!-- How ALS Affects the Body -->
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                </div>
+                <h3 style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl);">
+                    How ALS Affects the Body: The Brain-Muscle Connection</h3>
+                <p
+                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
+                    Our bodies have a communication network run by specialized nerve cells called motor neurons. ALS
+                    affects both types:
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
+                    <div
+                        style="background: var(--color-primary-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-primary);">
+                        <h4 style="color: var(--color-primary); margin-bottom: var(--space-2);">Upper Motor Neurons</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                            Located in the brain, they send signals down the spinal cord.
+                        </p>
+                    </div>
+                    <div
+                        style="background: var(--color-secondary-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-secondary);">
+                        <h4 style="color: var(--color-secondary-dark); margin-bottom: var(--space-2);">Lower Motor
+                            Neurons</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                            Located in the spinal cord, they relay signals to the muscles.
+                        </p>
+                    </div>
+                </div>
+
+                <p
+                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
+                    In a person with ALS, both of these neuron types slowly degenerate and die. As they do, the vital
+                    communication link between the brain and muscles is lost. This is why a person's physical abilities
+                    decline, even while their mind and senses usually remain unaffected.
+                </p>
+
+                <div
+                    style="background: var(--color-accent-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-accent);">
+                    <p style="color: var(--color-text-primary); font-weight: 600; margin-bottom: var(--space-2);">
+                        <i class="fas fa-heart"></i> Most Important to Understand
+                    </p>
+                    <p style="color: var(--color-text-secondary);">
+                        For most people, the mind remains sharp. ALS primarily affects the body's motor system, not a
+                        person's ability to think, feel, or love.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Neural Simulation Section -->
+            <div class="neural-simulation-section">
+                <h2 class="neural-simulation-title">Visualizing the Brain-Muscle Connection</h2>
+                <div class="simulation-grid">
+
+                    <!-- Healthy System -->
+                    <div class="simulation-section">
+                        <h3 class="simulation-title healthy">Healthy System</h3>
+                        <div class="simulation-container">
+                            <svg width="400" height="250" viewBox="0 0 400 250">
+                                <!-- Dendrites -->
+                                <path class="glow-healthy" d="M40 120 C20 80, 10 60, 5 40" stroke="#00ffff"
+                                    stroke-width="2" fill="none" />
+                                <path class="glow-healthy" d="M40 120 C25 100, 5 90, 10 70" stroke="#00ffff"
+                                    stroke-width="2" fill="none" />
+                                <path class="glow-healthy" d="M40 120 C15 130, 0 150, 5 160" stroke="#00ffff"
+                                    stroke-width="2" fill="none" />
+                                <path class="glow-healthy" d="M40 120 C25 150, 5 180, 0 200" stroke="#00ffff"
+                                    stroke-width="2" fill="none" />
+
+                                <!-- Soma -->
+                                <circle class="glow-healthy" cx="60" cy="120" r="20" fill="#005577" stroke="#00ffff"
+                                    stroke-width="2" />
+                                <text x="60" y="95" text-anchor="middle" class="fade-in"
+                                    id="label-dendrites-h">Dendrites</text>
+                                <text x="60" y="125" text-anchor="middle" class="fade-in" id="label-soma-h">Cell
+                                    Body</text>
+                                <text x="60" y="150" text-anchor="middle" class="fade-in" id="label-neuron-h">Motor
+                                    Neuron</text>
+
+                                <!-- Axon with myelin segments -->
+                                <line class="glow-healthy" x1="80" y1="120" x2="320" y2="120" stroke="#00ffff"
+                                    stroke-width="2" />
+                                <g stroke="#00ffff" stroke-width="6" class="glow-healthy">
+                                    <line x1="100" y1="120" x2="120" y2="120" />
+                                    <line x1="140" y1="120" x2="160" y2="120" />
+                                    <line x1="180" y1="120" x2="200" y2="120" />
+                                    <line x1="220" y1="120" x2="240" y2="120" />
+                                    <line x1="260" y1="120" x2="280" y2="120" />
+                                </g>
+                                <text x="200" y="110" text-anchor="middle" class="fade-in" id="label-axon-h">Axon</text>
+                                <text x="160" y="140" text-anchor="middle" class="fade-in" id="label-myelin-h">Myelin
+                                    Sheath</text>
+
+                                <!-- Axon terminals -->
+                                <path class="glow-healthy" d="M320 120 C340 100, 360 140, 380 120" stroke="#00ffff"
+                                    stroke-width="2" fill="none" />
+                                <circle class="glow-healthy" cx="380" cy="120" r="10" fill="#ffaa00" stroke="#fff"
+                                    stroke-width="1" />
+                                <text x="380" y="105" text-anchor="middle" class="fade-in"
+                                    id="label-muscle-h">Muscle</text>
+
+                                <!-- Signal -->
+                                <circle class="pulse-signal" r="5" fill="#ff0" id="signal-healthy" style="opacity: 0;">
+                                    <animateMotion dur="3s" repeatCount="1" fill="freeze" begin="indefinite"
+                                        path="M80,120 L320,120 C340,100 360,140 380,120" />
+                                </circle>
+                            </svg>
+                        </div>
+                        <p class="simulation-explanation">
+                            Healthy Communication: Signals travel smoothly from the brain through motor neurons to
+                            muscles, resulting in strong, controlled movements.
+                        </p>
+                    </div>
+
+                    <!-- ALS System -->
+                    <div class="simulation-section">
+                        <h3 class="simulation-title als">ALS-Affected System</h3>
+                        <div class="simulation-container">
+                            <svg width="400" height="250" viewBox="0 0 400 250">
+                                <!-- Damaged Dendrites -->
+                                <path class="glow-als" d="M40 120 C20 80, 10 60, 5 40" stroke="#ff9966" stroke-width="2"
+                                    fill="none" stroke-dasharray="4,2" />
+                                <path class="glow-als" d="M40 120 C25 100, 5 90, 10 70" stroke="#ff9966"
+                                    stroke-width="2" fill="none" stroke-dasharray="4,2" />
+
+                                <!-- Soma -->
+                                <circle class="glow-als" cx="60" cy="120" r="20" fill="#662222" stroke="#ff9966"
+                                    stroke-width="2" />
+                                <text x="60" y="95" text-anchor="middle" class="fade-in label-als"
+                                    id="label-dendrites-a">Dendrites</text>
+                                <text x="60" y="125" text-anchor="middle" class="fade-in label-als"
+                                    id="label-soma-a">Cell Body</text>
+                                <text x="60" y="150" text-anchor="middle" class="fade-in label-als"
+                                    id="label-neuron-a">Motor Neuron</text>
+
+                                <!-- Damaged Axon -->
+                                <line class="glow-als" x1="80" y1="120" x2="320" y2="120" stroke="#ff9966"
+                                    stroke-width="2" stroke-dasharray="4,2" />
+                                <g stroke="#ff9966" stroke-width="6" opacity="0.5" class="glow-als">
+                                    <line x1="100" y1="120" x2="120" y2="120" />
+                                    <line x1="140" y1="120" x2="160" y2="120" />
+                                    <line x1="180" y1="120" x2="200" y2="120" />
+                                </g>
+                                <text x="200" y="110" text-anchor="middle" class="fade-in label-als"
+                                    id="label-axon-a">Axon</text>
+                                <text x="160" y="140" text-anchor="middle" class="fade-in label-als"
+                                    id="label-myelin-a">Myelin Sheath</text>
+
+                                <!-- Axon terminals -->
+                                <path class="glow-als" d="M320 120 C340 100, 360 140, 380 120" stroke="#ff9966"
+                                    stroke-width="2" fill="none" />
+                                <circle class="glow-als" cx="380" cy="120" r="10" fill="#884444" stroke="#fff"
+                                    stroke-width="1" opacity="0.6" />
+                                <text x="380" y="105" text-anchor="middle" class="fade-in label-als"
+                                    id="label-muscle-a">Weak Muscle</text>
+
+                                <!-- Signal -->
+                                <circle class="pulse-signal-als" r="5" fill="#ff9966" id="signal-als"
+                                    style="opacity: 0;">
+                                    <animateMotion dur="5s" repeatCount="1" fill="freeze" begin="indefinite"
+                                        path="M80,120 L260,120" />
+                                </circle>
+                            </svg>
+                        </div>
+                        <p class="simulation-explanation">
+                            ALS Impact: Motor neurons degenerate, blocking signals from reaching muscles. Without neural
+                            input, muscles weaken and atrophy.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="shared-animation-control">
+                    <button class="toggle-control" id="animation-control" tabindex="0">
+                        <i class="fas fa-play icon play-icon"></i>
+                        <i class="fas fa-pause icon pause-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Comprehensive Symptoms Section -->
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                </div>
+                <h3 style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl);">
+                    Common Signs and Symptoms</h3>
+
+                <p
+                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
+                    Because ALS damages the brain's connection to muscles, the symptoms are related to muscle weakness
+                    and control. It's important to remember that ALS is different for everyone; the symptoms and the
+                    order they appear in can vary greatly.
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
+                    <div
+                        style="background: var(--color-primary-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-primary);">
+                        <h4 style="color: var(--color-primary); margin-bottom: var(--space-2);">Limb-Onset ALS</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                            First notice symptoms in arms or legs. More common type.
+                        </p>
+                    </div>
+                    <div
+                        style="background: var(--color-accent-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-accent);">
+                        <h4 style="color: var(--color-accent); margin-bottom: var(--space-2);">Bulbar-Onset ALS</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                            First experience issues with speech or swallowing.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="symptom-grid">
+                    <!-- Muscle Weakness -->
+                    <div class="symptom-card">
+                        <div class="symptom-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Muscle Weakness</strong>
+                            <p
+                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                                Difficulty with tasks like buttoning shirts, writing, or climbing stairs</p>
+                        </div>
+                    </div>
+
+                    <!-- Muscle Twitching -->
+                    <div class="symptom-card secondary">
+                        <div class="symptom-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Muscle Twitching & Cramps</strong>
+                            <p
+                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                                Small involuntary muscle twitches (fasciculations) and cramps</p>
+                        </div>
+                    </div>
+
+                    <!-- Speech & Swallowing -->
+                    <div class="symptom-card accent">
+                        <div class="symptom-icon">
+                            <i class="fas fa-comment-medical"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Speech & Swallowing Problems</strong>
+                            <p
+                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                                Slurred speech (dysarthria) and difficulty swallowing (dysphagia)</p>
+                        </div>
+                    </div>
+
+                    <!-- Stiffness -->
+                    <div class="symptom-card">
+                        <div class="symptom-icon">
+                            <i class="fas fa-grip-lines"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Stiffness & Poor Coordination</strong>
+                            <p
+                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                                Muscle tightness (spasticity) leading to awkward movements</p>
+                        </div>
+                    </div>
+
+                    <!-- Breathing Problems -->
+                    <div class="symptom-card accent">
+                        <div class="symptom-icon">
+                            <i class="fas fa-lungs"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Breathing Difficulties</strong>
+                            <p
+                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                                Shortness of breath as respiratory muscles weaken</p>
+                        </div>
+                    </div>
+
+                    <!-- Progressive Difficulty -->
+                    <div class="symptom-card secondary">
+                        <div class="symptom-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Progressive Movement Challenges</strong>
+                            <p
+                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                                Increasing difficulty with walking and daily activities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progressive Understanding Timeline -->
+            <div class="info-card">
+                <div class="icon-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                </div>
+                <h3
+                    style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl); text-align: center;">
+                    Understanding Disease Progression</h3>
+
+                <p
+                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-6); text-align: center;">
+                    ALS is a progressive disease, meaning it gets worse over time. The journey typically moves through
+                    these phases:
+                </p>
+
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+
+                    <!-- Initial Stage -->
+                    <div class="timeline-stage">
+                        <div style="flex: 1; text-align: right; padding-right: var(--space-4);">
+                            <div class="stage-card left">
+                                <h4 style="color: var(--color-secondary-dark); margin-bottom: var(--space-2);">Initial
+                                    Stage</h4>
+                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                    • Subtle signs: weak grip, foot drag, speech changes<br>
+                                    • Muscle twitching and cramping<br>
+                                    • Often mistaken for other conditions<br>
+                                    • Diagnosis typically occurs at this stage
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-marker" style="background: var(--color-secondary);"></div>
+                        <div style="flex: 1; padding-left: var(--space-4);"></div>
+                    </div>
+
+                    <!-- Middle Stage -->
+                    <div class="timeline-stage">
+                        <div style="flex: 1; text-align: right; padding-right: var(--space-4);"></div>
+                        <div class="timeline-marker" style="background: var(--color-accent);"></div>
+                        <div style="flex: 1; padding-left: var(--space-4);">
+                            <div class="stage-card right">
+                                <h4 style="color: var(--color-text-primary); margin-bottom: var(--space-2);">Middle
+                                    Stage</h4>
+                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                    • Weakness and atrophy spread to more muscles<br>
+                                    • Daily activities become challenging<br>
+                                    • Speech and swallowing difficulties increase<br>
+                                    • Mobility aids often needed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Stage -->
+                    <div class="timeline-stage">
+                        <div style="flex: 1; text-align: right; padding-right: var(--space-4);">
+                            <div class="stage-card center">
+                                <h4 style="color: var(--color-primary-dark); margin-bottom: var(--space-2);">Advanced
+                                    Stage</h4>
+                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                    • Loss of most voluntary movement<br>
+                                    • Breathing support often needed<br>
+                                    • 24/7 care required<br>
+                                    • Mind remains sharp despite physical limitations
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-marker" style="background: var(--color-primary);"></div>
+                        <div style="flex: 1; padding-left: var(--space-4);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <div class="icon-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+                <h3
+                    style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl); text-align: center;">
+                    Frequently Asked Questions</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question"></i> What causes ALS?
+                    </div>
+                    <div class="faq-answer">
+                        The exact cause of ALS is unknown in about 90% of cases (sporadic ALS). In the remaining 10% of
+                        cases, there is a known family history of the disease (familial ALS), linked to specific genetic
+                        mutations.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question"></i> Is there a cure for ALS?
+                    </div>
+                    <div class="faq-answer">
+                        Currently, there is no cure for ALS. However, there are treatments, therapies, and medical
+                        devices that can help manage symptoms, slow the progression of the disease, and significantly
+                        improve a person's quality of life. Research is ongoing worldwide to find a cause and a cure.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question"></i> Does ALS affect cognitive function?
+                    </div>
+                    <div class="faq-answer">
+                        For most people, the mind remains sharp. ALS primarily affects the body's motor system, not a
+                        person's ability to think, feel, or love. Cognitive function is usually preserved until later
+                        stages.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question"></i> How quickly does ALS progress?
+                    </div>
+                    <div class="faq-answer">
+                        ALS progression varies significantly between individuals. Some people experience rapid
+                        progression over months, while others live with the disease for many years. The average survival
+                        time is 3-5 years after diagnosis, but many people live longer.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Points -->
+            <div class="info-card"
+                style="background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);">
+                <div class="icon-wrapper">
+                    <div class="section-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                </div>
+                <h3
+                    style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl); text-align: center;">
+                    Essential Considerations</h3>
+                <div style="display: grid; gap: var(--space-4);">
+                    <div class="key-point">
+                        <div class="key-point-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Cognitive Preservation</strong>
+                            <p
+                                style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-top: 2px;">
+                                ALS primarily affects motor function. Cognition, personality, and emotional capacity
+                                remain intact.</p>
+                        </div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Individual Disease Course</strong>
+                            <p
+                                style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-top: 2px;">
+                                Progression patterns vary significantly between individuals in both pace and symptom
+                                presentation.</p>
+                        </div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Supportive Care Impact</strong>
+                            <p
+                                style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-top: 2px;">
+                                Comprehensive care, adaptive technologies, and emotional support significantly enhance
+                                quality of life.</p>
+                        </div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">
+                            <i class="fas fa-medkit"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--color-text-primary);">Treatment and Management</strong>
+                            <p
+                                style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-top: 2px;">
+                                While there is currently no cure, treatments can help manage symptoms and extend
+                                survival. Early intervention is crucial.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-message">
+                    <p
+                        style="color: var(--color-primary); font-weight: 700; font-size: var(--font-size-lg); margin-bottom: var(--space-2);">
+                        Core Message
+                    </p>
+                    <p style="color: var(--color-text-primary); font-size: var(--font-size-base);">
+                        ALS alters physical capabilities but does not diminish personhood. Individuals with ALS deserve
+                        dignity, comprehensive care, and meaningful quality of life.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Global animation state
+    let isPlaying = false;
+    let animationTimeouts = [];
+
+    // Animation control functions
+    function resetAnimations() {
+        // Reset all signals to invisible
+        document.getElementById('signal-healthy').style.opacity = '0';
+        document.getElementById('signal-als').style.opacity = '0';
+
+        // Reset all labels to invisible
+        const healthyLabels = ['label-dendrites-h', 'label-soma-h', 'label-neuron-h', 'label-axon-h', 'label-myelin-h', 'label-muscle-h'];
+        const alsLabels = ['label-dendrites-a', 'label-soma-a', 'label-neuron-a', 'label-axon-a', 'label-myelin-a', 'label-muscle-a'];
+
+        [...healthyLabels, ...alsLabels].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.classList.remove('visible');
+            }
+        });
+
+        // Stop any running animations
+        const healthySignal = document.querySelector('#signal-healthy animateMotion');
+        const alsSignal = document.querySelector('#signal-als animateMotion');
+
+        if (healthySignal) healthySignal.endElement();
+        if (alsSignal) alsSignal.endElement();
+    }
+
+    function clearAllTimeouts() {
+        animationTimeouts.forEach(timeout => clearTimeout(timeout));
+        animationTimeouts = [];
+    }
+
+    function playAnimations() {
+        // Reset everything to start from scratch
+        resetAnimations();
+        clearAllTimeouts();
+
+        // Show signals immediately
+        document.getElementById('signal-healthy').style.opacity = '1';
+        document.getElementById('signal-als').style.opacity = '1';
+
+        // Start signal animations
+        const healthySignal = document.querySelector('#signal-healthy animateMotion');
+        const alsSignal = document.querySelector('#signal-als animateMotion');
+
+        if (healthySignal) healthySignal.beginElement();
+        if (alsSignal) alsSignal.beginElement();
+
+        // Show labels progressively for healthy system
+        const healthyLabelTimings = [
+            { id: 'label-dendrites-h', delay: 200 },
+            { id: 'label-soma-h', delay: 600 },
+            { id: 'label-neuron-h', delay: 800 },
+            { id: 'label-axon-h', delay: 1200 },
+            { id: 'label-myelin-h', delay: 1800 },
+            { id: 'label-muscle-h', delay: 2600 }
+        ];
+
+        // Show labels progressively for ALS system (slower progression)
+        const alsLabelTimings = [
+            { id: 'label-dendrites-a', delay: 200 },
+            { id: 'label-soma-a', delay: 600 },
+            { id: 'label-neuron-a', delay: 800 },
+            { id: 'label-axon-a', delay: 1500 },
+            { id: 'label-myelin-a', delay: 2500 },
+            { id: 'label-muscle-a', delay: 4000 }
+        ];
+
+        [...healthyLabelTimings, ...alsLabelTimings].forEach(({ id, delay }) => {
+            const timeout = setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.classList.add('visible');
+                }
+            }, delay);
+            animationTimeouts.push(timeout);
+        });
+
+        // Auto-reset after longest animation completes
+        const resetTimeout = setTimeout(() => {
+            isPlaying = false;
+            updateButton();
+        }, 5500);
+        animationTimeouts.push(resetTimeout);
+    }
+
+    function updateButton() {
+        const btn = document.getElementById('animation-control');
+        if (isPlaying) {
+            btn.classList.add('playing');
+        } else {
+            btn.classList.remove('playing');
+        }
+    }
+
+    function toggleAnimation() {
+        if (isPlaying) {
+            // Currently playing, so stop and reset
+            isPlaying = false;
+            resetAnimations();
+            clearAllTimeouts();
+        } else {
+            // Currently stopped, so play from scratch
+            isPlaying = true;
+            playAnimations();
+        }
+        updateButton();
+    }
+
+    // Initialize animation control
+    document.addEventListener('DOMContentLoaded', () => {
+        const animationControl = document.getElementById('animation-control');
+        if (animationControl) {
+            animationControl.addEventListener('click', toggleAnimation);
+
+            // Make it keyboard accessible
+            animationControl.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleAnimation();
+                }
+            });
+
+            // Set initial state
+            resetAnimations();
+            updateButton();
+        }
+    });
+</script>
+{% endblock %}

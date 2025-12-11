@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}ALS Caregiver's Compass - AI-Powered Support Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Your Guide Through the <span class="highlight">ALS Journey</span></h1>
+            <p class="hero-subtitle">
+                AI-powered support, evidence-based guidance, and compassionate resources for ALS caregivers worldwide.
+            </p>
+
+            <div class="hero-actions">
+                <a href="/ai-assistant" class="btn btn-primary btn-lg">
+                    <i class="fas fa-robot"></i> Ask AI Assistant
+                </a>
+                <a href="/understanding-als" class="btn btn-outline btn-lg">
+                    <i class="fas fa-book-medical"></i> Learn About ALS
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">32+</div>
+                    <div class="stat-label">Trusted Sources</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">AI Support</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Source-Grounded</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-visual-inner">
+                <div class="content-card">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="source-icon">
+                            <i class="fas fa-shield-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-1">Trusted Medical Information</h4>
+                            <p class="text-sm">All responses are verified against 32+ medical sources</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary">MND Association UK</span>
+                        <span class="badge bg-primary">Mayo Clinic</span>
+                        <span class="badge bg-primary">ALS Association</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Comprehensive Caregiver Resources</h2>
+        <p class="section-subtitle">Everything you need to provide exceptional care, organized in one place</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Caregiving Assistant</h3>
+                <p>24/7 access to evidence-based guidance powered by 32+ trusted medical sources with proper citations.
+                </p>
+                <a href="/ai-assistant" class="feature-link">Try Now</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Understanding ALS</h3>
+                <p>Comprehensive guide to ALS progression, symptoms, and what to expect at each stage of the journey.
+                </p>
+                <a href="/understanding-als" class="feature-link">Learn More</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Daily Care Schedule</h3>
+                <p>Customizable care plans, medication tracking, and daily management tools for organized care.</p>
+                <a href="/daily-schedule" class="feature-link">View Templates</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-home-medical"></i>
+                </div>
+                <h3>Home ICU Guide</h3>
+                <p>Equipment setup, safety protocols, and best practices for managing complex care at home.</p>
+                <a href="/home-icu-guide" class="feature-link">Get Guide</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Communication Tools</h3>
+                <p>Assistive communication strategies, technology recommendations, and practical implementation guides.
+                </p>
+                <a href="/communication" class="feature-link">Explore Tools</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-first-aid"></i>
+                </div>
+                <h3>Emergency Protocols</h3>
+                <p>Step-by-step guidance for respiratory emergencies and critical situations at home.</p>
+                <a href="/emergency-protocol" class="feature-link">View Protocol →</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Trusted Sources -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Powered by Trusted Medical Sources</h2>
+        <p class="section-subtitle">Our AI only references verified medical institutions and reputable ALS organizations
+        </p>
+
+        <div class="sources-grid">
+            <div class="source-card">
+                <div class="source-header">
+                    <div class="source-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h4>MND Association UK</h4>
+                </div>
+                <p class="text-sm">Leading UK charity for everyone affected by motor neuron disease.</p>
+                <span class="source-score">Trust Score: 10/10</span>
+            </div>
+
+            <div class="source-card">
+                <div class="source-header">
+                    <div class="source-icon">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <h4>Mayo Clinic ALS Center</h4>
+                </div>
+                <p class="text-sm">World-renowned medical center for ALS research and treatment.</p>
+                <span class="source-score">Trust Score: 9/10</span>
+            </div>
+
+            <div class="source-card">
+                <div class="source-header">
+                    <div class="source-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Johns Hopkins Medicine</h4>
+                </div>
+                <p class="text-sm">Leading academic medical center with comprehensive ALS care programs.</p>
+                <span class="source-score">Trust Score: 9/10</span>
+            </div>
+
+            <div class="source-card">
+                <div class="source-header">
+                    <div class="source-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>ALS Association USA</h4>
+                </div>
+                <p class="text-sm">Largest nonprofit organization fighting ALS on every front in the US.</p>
+                <span class="source-score">Trust Score: 9/10</span>
+            </div>
+
+            <div class="source-card">
+                <div class="source-header">
+                    <div class="source-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h4>ClinicalTrials.gov</h4>
+                </div>
+                <p class="text-sm">Registry and results database of publicly and privately supported clinical studies.
+                </p>
+                <span class="source-score">Trust Score: 10/10</span>
+            </div>
+
+            <div class="source-card">
+                <div class="source-header">
+                    <div class="source-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h4>ALS Care & Support India</h4>
+                </div>
+                <p class="text-sm">Comprehensive support network for ALS patients and caregivers in India.</p>
+                <span class="source-score">Trust Score: 10/10</span>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="/ai-assistant#sources" class="btn btn-outline">
+                View All 32+ Sources
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready for Personalized Support?</h2>
+            <p>Our AI assistant is available 24/7 to answer your questions about ALS care, equipment, emotional support,
+                and more.</p>
+
+            <div class="cta-actions">
+                <a href="/ai-assistant" class="btn btn-primary btn-lg">
+                    <i class="fas fa-comment-medical"></i> Start Free Chat
+                </a>
+                <a href="/understanding-als" class="btn btn-outline btn-lg">
+                    <i class="fas fa-graduation-cap"></i> Learn ALS Basics
+                </a>
+            </div>
+
+            <p class="cta-note">
+                <i class="fas fa-shield-check"></i> All responses are 100% grounded in trusted medical sources with
+                citations
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

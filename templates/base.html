@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ALS Caregiver's Compass{% endblock %}</title>
+
+    <!-- Meta Tags -->
+    <meta name="description"
+        content="AI-powered support platform for ALS caregivers worldwide. Evidence-based guidance and compassionate resources.">
+    <meta name="keywords"
+        content="ALS, MND, caregiver, support, AI assistant, amyotrophic lateral sclerosis, motor neuron disease">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ALS Caregiver's Compass">
+    <meta property="og:description" content="AI-powered support platform for ALS caregivers worldwide.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!--  Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5b5a8f',
+                        secondary: '#6b9a9f',
+                        accent: '#88a18b',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="/" class="logo">
+                    <i class="fas fa-compass"></i>
+                    <span>ALS Caregiver's Compass</span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="/understanding-als"
+                    class="nav-link {% if request.path == '/understanding-als' %}active{% endif %}">
+                    <i class="fas fa-brain"></i> Understanding ALS
+                </a>
+                <a href="/ai-assistant" class="nav-link {% if request.path == '/ai-assistant' %}active{% endif %}">
+                    <i class="fas fa-robot"></i> AI Assistant
+                </a>
+                <a href="/experiences" class="nav-link {% if request.path == '/experiences' %}active{% endif %}">
+                    <i class="fas fa-users"></i> Experiences
+                </a>
+                <a href="/home-icu-guide" class="nav-link {% if request.path == '/home-icu-guide' %}active{% endif %}">
+                    <i class="fas fa-home-medical"></i> Home ICU Guide
+                </a>
+                <a href="/daily-schedule" class="nav-link {% if request.path == '/daily-schedule' %}active{% endif %}">
+                    <i class="fas fa-calendar-alt"></i> Daily Schedule
+                </a>
+                <a href="/communication" class="nav-link {% if request.path == '/communication' %}active{% endif %}">
+                    <i class="fas fa-comments"></i> Communication
+                </a>
+                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </a>
+                <a href="/emergency-protocol"
+                    class="nav-link {% if request.path == '/emergency-protocol' %}active{% endif %}">
+                    <i class="fas fa-first-aid"></i> Emergency Protocol
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="/" class="mobile-link">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/understanding-als" class="mobile-link">
+                <i class="fas fa-brain"></i> Understanding ALS
+            </a>
+            <a href="/ai-assistant" class="mobile-link">
+                <i class="fas fa-robot"></i> AI Assistant
+            </a>
+            <a href="/experiences" class="mobile-link">
+                <i class="fas fa-users"></i> Experiences
+            </a>
+            <a href="/home-icu-guide" class="mobile-link">
+                <i class="fas fa-home-medical"></i> Home ICU Guide
+            </a>
+            <a href="/daily-schedule" class="mobile-link">
+                <i class="fas fa-calendar-alt"></i> Daily Schedule
+            </a>
+            <a href="/communication" class="mobile-link">
+                <i class="fas fa-comments"></i> Communication
+            </a>
+            <a href="/faq" class="mobile-link">
+                <i class="fas fa-question-circle"></i> FAQ
+            </a>
+            <a href="/emergency-protocol" class="mobile-link">
+                <i class="fas fa-first-aid"></i> Emergency Protocol
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-compass"></i> ALS Caregiver's Compass</h3>
+                    <p>AI-powered support platform providing evidence-based guidance for ALS caregivers worldwide.</p>
+                    <p class="version">Version 1.0.0 | Powered by 32+ Trusted Sources</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="/understanding-als">Understanding ALS</a>
+                    <a href="/ai-assistant">AI Assistant</a>
+                    <a href="/faq">FAQ</a>
+                    <a href="/experiences">Caregiver Experiences</a>
+                    <a href="/daily-schedule">Daily Schedule</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Emergency Contact</h4>
+                    <p class="emergency-info">
+                        <i class="fas fa-phone-alt"></i> Emergency: 911 (USA) / 112 (EU/India)
+                    </p>
+                    <p class="disclaimer">
+                        Important: This AI assistant provides informational support only. Always consult healthcare
+                        professionals for medical advice.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALS Caregiver's Compass. Made with compassion for caregivers worldwide.</p>
+                <p class="text-sm">This platform is for informational purposes only and is not a substitute for
+                    professional medical advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/js/main.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

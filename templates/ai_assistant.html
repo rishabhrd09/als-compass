@@ -1,0 +1,745 @@
+{% extends "base.html" %}
+
+{% block title %}AI Assistant - ALS Caregiver's Compass{% endblock %}
+
+{% block extra_css %}
+<style>
+    .ai-page-wrapper {
+        background: var(--color-background);
+        min-height: calc(100vh - 72px);
+        padding: var(--space-8) 0;
+    }
+
+    .ai-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 var(--space-6);
+    }
+
+    @media (min-width: 1024px) {
+        .ai-layout {
+            grid-template-columns: 280px 1fr 320px;
+        }
+    }
+
+    /* ==================== LEFT SIDEBAR - SUGGESTED QUESTIONS ==================== */
+    .suggestions-sidebar {
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
+        padding: var(--space-6);
+        height: fit-content;
+        position: sticky;
+        top: 88px;
+    }
+
+    .suggestions-sidebar h3 {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-primary);
+        margin-bottom: var(--space-4);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .suggestions-sidebar h3 i {
+        color: var(--color-primary);
+    }
+
+    .suggested-questions-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .suggested-question {
+        background: var(--color-primary-light);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-3);
+        font-size: var(--font-size-sm);
+        color: var(--color-text-primary);
+        cursor: pointer;
+        transition: all var(--transition-base);
+        text-align: left;
+        line-height: 1.4;
+    }
+
+    .suggested-question:hover {
+        background: var(--color-primary);
+        color: white;
+        border-color: var(--color-primary);
+        transform: translateX(4px);
+    }
+
+    /* ==================== CENTER - CHAT INTERFACE ==================== */
+    .chat-main {
+        display: flex;
+        flex-direction: column;
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
+        height: 700px;
+        max-height: calc(100vh - 180px);
+    }
+
+    .chat-header {
+        background: var(--color-primary);
+        color: white;
+        padding: var(--space-5);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .chat-header h2 {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-semibold);
+        margin: 0 0 var(--space-1) 0;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .chat-header p {
+        font-size: var(--font-size-sm);
+        margin: 0;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .chat-messages {
+        flex: 1;
+        padding: var(--space-6);
+        overflow-y: auto;
+        background: #fafafa;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .message {
+        display: flex;
+        gap: var(--space-3);
+        max-width: 85%;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .message.user {
+        margin-left: auto;
+        flex-direction: row-reverse;
+    }
+
+    .message-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: var(--font-size-base);
+    }
+
+    .message.user .message-avatar {
+        background: var(--color-secondary);
+        color: white;
+    }
+
+    .message.ai .message-avatar {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    .message-content {
+        padding: var(--space-4);
+        border-radius: var(--radius-lg);
+        font-size: var(--font-size-base);
+        line-height: var(--line-height-relaxed);
+    }
+
+    .message.user .message-content {
+        background: var(--color-secondary);
+        color: white;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 var(--radius-lg);
+    }
+
+    .message.ai .message-content {
+        background: white;
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
+        border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 0;
+    }
+
+    /* AI Response Formatting */
+    .message.ai .message-content h3 {
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-primary);
+        margin: var(--space-3) 0 var(--space-2) 0;
+        padding-top: var(--space-2);
+        border-top: 1px solid var(--color-border);
+    }
+
+    .message.ai .message-content h3:first-child {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .message.ai .message-content ol,
+    .message.ai .message-content ul {
+        margin: var(--space-2) 0;
+        padding-left: var(--space-6);
+        color: var(--color-text-secondary);
+    }
+
+    .message.ai .message-content li {
+        margin: var(--space-1) 0;
+        line-height: 1.6;
+    }
+
+    .message.ai .message-content p {
+        margin: var(--space-2) 0;
+        line-height: 1.7;
+    }
+
+    .message.ai .message-content strong {
+        color: var(--color-text-primary);
+        font-weight: var(--font-weight-semibold);
+    }
+
+    .message.ai .message-content em {
+        font-style: italic;
+        color: var(--color-accent);
+    }
+
+    .message-timestamp {
+        font-size: var(--font-size-xs);
+        color: var(--color-text-tertiary);
+        margin-top: var(--space-1);
+    }
+
+    .chat-input-area {
+        padding: var(--space-5);
+        border-top: 1px solid var(--color-border);
+        background: white;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+
+    .input-container {
+        display: flex;
+        gap: var(--space-3);
+        align-items: flex-end;
+    }
+
+    .chat-input {
+        flex: 1;
+        padding: var(--space-3) var(--space-4);
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        font-size: var(--font-size-base);
+        font-family: inherit;
+        resize: none;
+        min-height: 52px;
+        max-height: 120px;
+        transition: all var(--transition-base);
+    }
+
+    .chat-input:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(91, 90, 143, 0.1);
+    }
+
+    .send-btn {
+        padding: var(--space-3) var(--space-6);
+        background: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: var(--radius-lg);
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-medium);
+        cursor: pointer;
+        transition: all var(--transition-base);
+        white-space: nowrap;
+        height: 52px;
+    }
+
+    .send-btn:hover:not(:disabled) {
+        background: var(--color-primary-dark);
+        transform: translateY(-1px);
+    }
+
+    .send-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* ==================== RIGHT SIDEBAR - RESEARCH & SOURCES ==================== */
+    .research-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .research-section,
+    .sources-section {
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
+        padding: var(--space-6);
+    }
+
+    .research-section h3,
+    .sources-section h3 {
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-primary);
+        margin-bottom: var(--space-4);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .research-section h3 i {
+        color: var(--color-accent);
+    }
+
+    .sources-section h3 i {
+        color: var(--color-secondary);
+    }
+
+    .research-items {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .research-item {
+        padding: var(--space-3);
+        background: var(--color-accent-light);
+        border-left: 3px solid var(--color-accent);
+        border-radius: var(--radius-md);
+        transition: all var(--transition-base);
+    }
+
+    .research-item:hover {
+        background: white;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .research-item h4 {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-primary);
+        margin-bottom: var(--space-1);
+        line-height: 1.3;
+    }
+
+    .research-item p {
+        font-size: var(--font-size-xs);
+        color: var(--color-text-tertiary);
+        margin: 0;
+    }
+
+    .sources-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .source-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-3);
+        background: var(--color-secondary-light);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--color-border-light);
+        transition: all var(--transition-base);
+    }
+
+    .source-item:hover {
+        border-color: var(--color-secondary);
+        background: white;
+    }
+
+    .source-icon-small {
+        width: 32px;
+        height: 32px;
+        background: var(--color-secondary);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.875rem;
+        flex-shrink: 0;
+    }
+
+    .source-name {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-text-primary);
+        margin: 0;
+    }
+
+    /* Empty state */
+    .empty-chat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+        padding: var(--space-8);
+    }
+
+    .empty-chat i {
+        font-size: 4rem;
+        color: var(--color-primary);
+        margin-bottom: var(--space-4);
+        opacity: 0.3;
+    }
+
+    .empty-chat h3 {
+        font-size: var(--font-size-xl);
+        color: var(--color-text-primary);
+        margin-bottom: var(--space-2);
+    }
+
+    .empty-chat p {
+        font-size: var(--font-size-base);
+        color: var(--color-text-secondary);
+        max-width: 400px;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 1023px) {
+
+        .suggestions-sidebar,
+        .research-sidebar {
+            display: none;
+        }
+
+        .chat-main {
+            height: calc(100vh - 180px);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ai-page-wrapper">
+    <div class="ai-layout">
+        <!-- LEFT SIDEBAR: Suggested Questions -->
+        <aside class="suggestions-sidebar">
+            <h3><i class="fas fa-lightbulb"></i> Quick Questions</h3>
+            <div class="suggested-questions-list">
+                <button class="suggested-question" onclick="askQuestion(this.textContent)">
+                    What are the early signs of ALS progression?
+                </button>
+                <button class="suggested-question" onclick="askQuestion(this.textContent)">
+                    How can I help with communication difficulties?
+                </button>
+                <button class="suggested-question" onclick="askQuestion(this.textContent)">
+                    What equipment do I need for home care?
+                </button>
+                <button class="suggested-question" onclick="askQuestion(this.textContent)">
+                    How do I manage respiratory symptoms?
+                </button>
+                <button class="suggested-question" onclick="askQuestion(this.textContent)">
+                    What dietary changes are recommended?
+                </button>
+                <button class="suggested-question" onclick="askQuestion(this.textContent)">
+                    How can I prevent caregiver burnout?
+                </button>
+            </div>
+        </aside>
+
+        <!-- CENTER: Chat Interface -->
+        <main class="chat-main">
+            <div class="chat-header">
+                <h2><i class="fas fa-robot"></i> AI Caregiver Assistant</h2>
+                <p>Evidence-based guidance from 32+ trusted medical sources</p>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="empty-chat">
+                    <i class="fas fa-comments"></i>
+                    <h3>How can I help you today?</h3>
+                    <p>Ask me anything about ALS care, symptoms, equipment, or caregiving strategies.</p>
+                </div>
+            </div>
+
+            <!-- Model Selector -->
+            <div style="padding: var(--space-4); border-bottom: 1px solid var(--color-border); background: #f8f9fb;">
+                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                    <label for="modelSelect"
+                        style="font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-text-secondary); white-space: nowrap;">
+                        <i class="fas fa-robot"></i> AI Model:
+                    </label>
+                    <select id="modelSelect"
+                        style="flex: 1; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: var(--font-size-sm); background: white;">
+                        <option value="openai" selected>OpenAI GPT-4o-mini (Default - Recommended)</option>
+                        <option value="gemini">Google Gemini 2.0 Flash (Free)</option>
+                        <option value="claude">Claude Sonnet 4.5 (Need Credits)</option>
+                        <option value="grok">Grok 2 (xAI)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="input-container">
+                    <textarea id="userInput" class="chat-input" placeholder="Type your question here..."
+                        rows="1"></textarea>
+                    <button id="sendBtn" class="send-btn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR: Research & Sources -->
+        <aside class="research-sidebar">
+            <!-- Latest Research Section -->
+            <div class="research-section">
+                <h3><i class="fas fa-flask"></i> Latest Research</h3>
+                <div class="research-items">
+                    <div class="research-item">
+                        <h4>New treatment approaches targeting SOD1 mutations</h4>
+                        <p>Updated Dec 2024</p>
+                    </div>
+                    <div class="research-item">
+                        <h4>Advances in speech-generating device technology</h4>
+                        <p>Updated Nov 2024</p>
+                    </div>
+                    <div class="research-item">
+                        <h4>Nutritional interventions and disease progression</h4>
+                        <p>Updated Nov 2024</p>
+                    </div>
+                    <div class="research-item">
+                        <h4>Non-invasive ventilation best practices</h4>
+                        <p>Updated Oct 2024</p>
+                    </div>
+                    <div class="research-item">
+                        <h4>Caregiver support programs effectiveness</h4>
+                        <p>Updated Oct 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trusted Sources Section -->
+            <div class="sources-section">
+                <h3><i class="fas fa-shield-check"></i> Trusted Sources</h3>
+                <div class="sources-list">
+                    <div class="source-item">
+                        <div class="source-icon-small">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <p class="source-name">Mayo Clinic</p>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-icon-small">
+                            <i class="fas fa-hand-holding-medical"></i>
+                        </div>
+                        <p class="source-name">ALS Association</p>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-icon-small">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <p class="source-name">MND Association UK</p>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-icon-small">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <p class="source-name">NIH/NINDS</p>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-icon-small">
+                            <i class="fas fa-book-medical"></i>
+                        </div>
+                        <p class="source-name">ALS Therapy Dev. Inst</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let isProcessing = false;
+
+    // Auto-resize textarea
+    const textarea = document.getElementById('userInput');
+    textarea.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    });
+
+    // Send on Enter (Shift+Enter for new line)
+    textarea.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    function askQuestion(question) {
+        document.getElementById('userInput').value = question;
+        sendMessage();
+    }
+
+    async function sendMessage() {
+        if (isProcessing) return;
+
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        isProcessing = true;
+        input.value = '';
+        input.style.height = 'auto';
+
+        // Remove empty state if present
+        const emptyState = document.querySelector('.empty-chat');
+        if (emptyState) {
+            emptyState.remove();
+        }
+
+        // Add user message
+        addMessage('user', message);
+
+        // Disable send button
+        const sendBtn = document.getElementById('sendBtn');
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Thinking...';
+
+        try {
+            // Get selected model
+            const modelSelect = document.getElementById('modelSelect');
+            const selectedModel = modelSelect ? modelSelect.value : 'openai';
+
+            const response = await fetch('/api/ai-assistant', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    model: selectedModel
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+
+            // Add AI response
+            addMessage('ai', data.response || 'I apologize, but I encountered an error processing your request.');
+
+        } catch (error) {
+            console.error('Error:', error);
+            addMessage('ai', 'I apologize, but I\'m having trouble connecting right now. Please try again in a moment.');
+        } finally {
+            isProcessing = false;
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
+        }
+    }
+
+    function addMessage(type, text) {
+        const messagesContainer = document.getElementById('chatMessages');
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}`;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.innerHTML = type === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+
+        const contentWrapper = document.createElement('div');
+        const content = document.createElement('div');
+        content.className = 'message-content';
+
+        // Enhanced formatting for AI messages
+        if (type === 'ai') {
+            content.innerHTML = formatAIResponse(text);
+        } else {
+            content.textContent = text;
+        }
+
+        const timestamp = document.createElement('div');
+        timestamp.className = 'message-timestamp';
+        timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        contentWrapper.appendChild(content);
+        contentWrapper.appendChild(timestamp);
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(contentWrapper);
+
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function formatAIResponse(text) {
+        // Parse markdown-style formatting in AI responses
+        let formatted = text;
+
+        // Convert ### headings to h3
+        formatted = formatted.replace(/### (.+?)\n/g, '<h3>$1</h3>');
+
+        // Convert **bold** to strong
+        formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+        // Convert *italic* to em
+        formatted = formatted.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+        // Convert numbered lists
+        formatted = formatted.replace(/(\d+\.\s.+?)(?=\n(?!\d+\.))/g, function (match) {
+            const items = match.split(/\n/).filter(item => item.trim());
+            const listItems = items.map(item => {
+                const cleanItem = item.replace(/^\d+\.\s/, '');
+                return `<li>${cleanItem}</li>`;
+            }).join('');
+            return `<ol>${listItems}</ol>`;
+        });
+
+        // Convert line breaks to paragraphs
+        const paragraphs = formatted.split('\n\n').filter(p => p.trim());
+        formatted = paragraphs.map(p => {
+            // Don't wrap if already has HTML tags
+            if (p.match(/^<[oh]/) || p.match(/<\/[oh]/)) {
+                return p;
+            }
+            return `<p>${p.replace(/\n/g, '<br>')}</p>`;
+        }).join('');
+
+        return formatted;
+    }
+</script>
+{% endblock %}
