@@ -5,3 +5,7 @@ __pycache__/
 chroma_db/
 *.log
 .DS_Store
+whatsapp_anonymized.txt
+PROJECT_HANDOVER.md
+ZEROTOHERO.md
+README.md
