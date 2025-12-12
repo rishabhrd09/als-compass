@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Tofersen (Qalsody®)",
+        "company": "Biogen",
+        "description": "FDA Approved 2023 | Phase 3 ATLAS Ongoing | Targets SOD1 mutation for slowing disease progression",
+        "link": "https://www.biogen.com/science-and-innovation/qalsody.html",
+        "link_name": "Biogen",
+        "date_added": "2024-12-12",
+        "status": "active"
+    },
+    {
+        "id": 3,
+        "name": "NurOwn (Debamestrocel)",
+        "company": "BrainStorm Cell Therapeutics",
+        "description": "Phase 3b Starting May 2025 | FDA Cleared | Autologous stem cell therapy for mild-to-moderate ALS",
+        "link": "https://www.brainstorm-cell.com/",
+        "link_name": "BrainStorm Cell Therapeutics",
+        "date_added": "2024-12-12",
+        "status": "active"
+    },
+    {
+        "id": 4,
+        "name": "Radicava ORS (Edaravone)",
+        "company": "Mitsubishi Tanabe Pharma",
+        "description": "FDA Approved | Phase 3 Extension Study | Oral formulation for slowing functional decline",
+        "link": "https://www.radicava.com/",
+        "link_name": "Mitsubishi Tanabe Pharma",
+        "date_added": "2024-12-12",
+        "status": "active"
+    },
+    {
+        "id": 5,
+        "name": "Riluzole",
+        "company": "Multiple Manufacturers",
+        "description": "FDA Approved 1995 | Standard Treatment | First approved medication for extending survival in ALS",
+        "link": "https://www.als.org/navigating-als/living-with-als/fda-approved-drugs",
+        "link_name": "ALS Association",
+        "date_added": "2024-12-12",
+        "status": "active"
+    }
+]

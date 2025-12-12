@@ -68,7 +68,12 @@ class UnifiedAISystem:
                 raise ValueError("OPENAI_API_KEY not found in .env")
             
             self.client = OpenAI(api_key=api_key)
-            self.model_name = os.getenv('OPENAI_MODEL', 'gpt-4o-mini')
+            # Support both gpt-4o-mini (fast) and gpt-4o (advanced)
+            # Default to gpt-4o-mini from env or parameter
+            if self.model_provider == 'openai-advanced':
+                self.model_name = 'gpt-4o'  # Advanced version
+            else:
+                self.model_name = os.getenv('OPENAI_MODEL', 'gpt-4o-mini')  # Default fast version
             logger.info(f"   OpenAI initialized: {self.model_name}")
         except ImportError:
             raise ImportError("Install openai: pip install openai")

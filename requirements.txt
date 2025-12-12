@@ -1,11 +1,24 @@
-Flask==3.0.0
+# ALS Caregiver Compass - Requirements
+# Python 3.10+ recommended (tested on 3.11)
+
+# Core Framework
+Flask>=3.0.0,<4.0.0
+gunicorn>=21.2.0,<23.0.0
+
+# AI Providers
 openai>=1.55.0
 anthropic>=0.40.0
-google-generativeai==0.3.2
-numpy<2.0
-chromadb==0.4.18
-sentence-transformers>=2.6.0
-python-dotenv==1.0.0
-PyYAML==6.0.1
-requests==2.31.0
-gunicorn==21.2.0
+google-generativeai>=0.8.0
+
+# Vector Database & Embeddings
+chromadb>=0.4.18,<0.6.0
+sentence-transformers>=2.6.0,<3.0.0
+
+# Data Processing
+numpy>=1.26.0,<2.0.0
+PyYAML>=6.0.1
+tqdm>=4.66.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0

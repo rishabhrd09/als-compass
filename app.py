@@ -6,6 +6,7 @@ import os
 from flask import Flask, render_template, request, jsonify, session
 from dotenv import load_dotenv
 import logging
+import json
 
 # Load environment variables
 load_dotenv()
@@ -74,18 +75,29 @@ def emergency_protocol():
 
 @app.route('/api/ai-assistant', methods=['POST'])
 def ai_assistant_chat():
-    """Handle AI assistant chat with model selection"""
+    """Handle AI assistant chat with model selection and agentic mode"""
     try:
         data = request.json
         user_message = data.get('message', '').strip()
         selected_model = data.get('model', os.getenv('DEFAULT_MODEL_PROVIDER', 'openai'))
+        use_agentic = data.get('agentic', True)  # Default to agentic mode
         
         if not user_message:
             return jsonify({'error': 'Empty message'}), 400
         
-        # Initialize AI system with selected model
-        from ai_system_unified import UnifiedAISystem
-        ai_system = UnifiedAISystem(model_provider=selected_model)
+        # Choose AI system based on mode
+        if use_agentic:
+            try:
+                from ai_system_agentic import AgenticAISystem
+                ai_system = AgenticAISystem(model_provider=selected_model)
+                logger.info(f"Using Agentic AI System with {selected_model}")
+            except Exception as e:
+                logger.warning(f"Agentic system failed, falling back: {e}")
+                from ai_system_unified import UnifiedAISystem
+                ai_system = UnifiedAISystem(model_provider=selected_model)
+        else:
+            from ai_system_unified import UnifiedAISystem
+            ai_system = UnifiedAISystem(model_provider=selected_model)
         
         # Process with AI system
         response = ai_system.process_query(user_message)
@@ -131,6 +143,21 @@ def clear_history():
     """Clear chat history"""
     session.pop('chat_history', None)
     return jsonify({'success': True})
+
+@app.route('/api/research-updates')
+def get_research_updates():
+    """Get active research updates for homepage"""
+    try:
+        with open('data/research_updates.json', 'r') as f:
+            research_data = json.load(f)
+        # Return only active research
+        active_research = [r for r in research_data if r.get('status') == 'active']
+        return jsonify(active_research)
+    except FileNotFoundError:
+        return jsonify([])
+    except Exception as e:
+        logger.error(f"Error loading research updates: {e}")
+        return jsonify([])
 
 # ==================== ERROR HANDLERS ====================
 

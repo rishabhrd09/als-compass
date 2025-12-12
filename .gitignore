@@ -3,9 +3,11 @@ __pycache__/
 *.pyc
 .env
 chroma_db/
+chroma_db_enhanced/
 *.log
 .DS_Store
 whatsapp_anonymized.txt
-PROJECT_HANDOVER.md
-ZEROTOHERO.md
-README.md
+
+# Documentation - keep only README.md
+*.md
+!README.md

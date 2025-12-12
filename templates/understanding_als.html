@@ -6,12 +6,13 @@
 <style>
     /* Neural Simulation Section Styles */
     .neural-simulation-section {
-        background: radial-gradient(circle at center, #111 0%, #000 100%);
+        background: radial-gradient(circle at center, #2e2a4e 0%, #1a182d 100%);
         padding: var(--space-8);
         margin-bottom: var(--space-8);
         border-radius: 16px;
         color: white;
-        border: 1px solid var(--color-border);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--shadow-xl);
     }
 
     .neural-simulation-title {
@@ -20,6 +21,8 @@
         color: white;
         margin-bottom: var(--space-8);
         margin-top: var(--space-2);
+        font-weight: 700;
+        font-family: 'Manrope', sans-serif;
     }
 
     .simulation-container {
@@ -56,14 +59,16 @@
         text-align: center;
         margin-bottom: var(--space-4);
         font-size: var(--font-size-lg);
+        font-weight: 600;
+        font-family: 'Manrope', sans-serif;
     }
 
     .simulation-title.healthy {
-        color: #00ffff;
+        color: var(--color-secondary);
     }
 
     .simulation-title.als {
-        color: #ff9966;
+        color: var(--color-accent);
     }
 
     .simulation-explanation {
@@ -73,6 +78,7 @@
         padding: var(--space-3);
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
     }
 
     .shared-animation-control {
@@ -130,14 +136,15 @@
 
     /* SVG text styles */
     .neural-simulation-section text {
-        font-family: 'Arial', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 12px;
-        fill: cyan;
+        fill: var(--color-secondary);
         pointer-events: none;
+        font-weight: 500;
     }
 
     .label-als {
-        fill: #ff9966;
+        fill: var(--color-accent);
     }
 
     .fade-in {
@@ -154,11 +161,11 @@
 
         0%,
         100% {
-            filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.4));
+            filter: drop-shadow(0 0 2px rgba(246, 211, 101, 0.4));
         }
 
         50% {
-            filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.8));
+            filter: drop-shadow(0 0 6px rgba(246, 211, 101, 0.8));
         }
     }
 
@@ -166,11 +173,11 @@
 
         0%,
         100% {
-            filter: drop-shadow(0 0 2px rgba(255, 153, 102, 0.4));
+            filter: drop-shadow(0 0 2px rgba(253, 160, 133, 0.4));
         }
 
         50% {
-            filter: drop-shadow(0 0 6px rgba(255, 153, 102, 0.8));
+            filter: drop-shadow(0 0 6px rgba(253, 160, 133, 0.8));
         }
     }
 
@@ -179,12 +186,12 @@
         0%,
         100% {
             r: 5;
-            filter: drop-shadow(0 0 4px rgba(255, 255, 0, 0.6));
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
         }
 
         50% {
             r: 8;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 0, 1));
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
         }
     }
 
@@ -193,12 +200,12 @@
         0%,
         100% {
             r: 5;
-            filter: drop-shadow(0 0 4px rgba(255, 153, 102, 0.6));
+            filter: drop-shadow(0 0 4px rgba(253, 160, 133, 0.6));
         }
 
         50% {
             r: 8;
-            filter: drop-shadow(0 0 10px rgba(255, 153, 102, 1));
+            filter: drop-shadow(0 0 10px rgba(253, 160, 133, 1));
         }
     }
 
@@ -225,25 +232,32 @@
         padding: var(--space-8);
         margin-bottom: var(--space-8);
         border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-md);
+        transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+        box-shadow: var(--shadow-lg);
+        border-color: var(--color-primary);
+        transform: translateY(-2px);
     }
 
     .icon-wrapper {
         display: flex;
         justify-content: center;
-        margin-bottom: var(--space-4);
+        margin-bottom: var(--space-6);
     }
 
     .section-icon {
         width: 64px;
         height: 64px;
         background: var(--color-primary-light);
-        border-radius: 50%;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--color-primary);
         font-size: 32px;
-        border: 2px solid var(--color-border);
     }
 
     .symptom-grid {
@@ -256,11 +270,17 @@
     .symptom-card {
         display: flex;
         align-items: center;
-        gap: var(--space-3);
+        gap: var(--space-4);
         padding: var(--space-4);
         border-radius: 12px;
         border-left: 4px solid var(--color-primary);
-        background: var(--color-primary-light);
+        background: var(--color-background);
+        transition: all 0.2s ease;
+    }
+
+    .symptom-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
     }
 
     .symptom-card.secondary {
@@ -292,13 +312,17 @@
         margin-top: var(--space-6);
         text-align: center;
         padding: var(--space-4);
-        background: rgba(255, 255, 255, 0.5);
+        background: var(--color-primary-light);
         border-radius: 12px;
+        color: var(--color-text-primary);
+        font-weight: 500;
+        border: 1px solid var(--color-primary);
     }
 
     .timeline-container {
         position: relative;
         padding: var(--space-4);
+        margin-top: var(--space-8);
     }
 
     .timeline-line {
@@ -315,7 +339,7 @@
         position: relative;
         display: flex;
         align-items: center;
-        gap: var(--space-4);
+        gap: var(--space-8);
         margin-bottom: var(--space-8);
     }
 
@@ -326,29 +350,41 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        border: 3px solid white;
+        border: 4px solid white;
         box-shadow: var(--shadow-sm);
+        z-index: 2;
     }
 
     .stage-card {
-        padding: var(--space-4);
+        padding: var(--space-6);
         border-radius: 12px;
+        background: var(--color-surface);
+        box-shadow: var(--shadow-md);
+        transition: all 0.3s ease;
+        border: 1px solid var(--color-border);
+    }
+
+    .stage-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .stage-card h4 {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
     }
 
     .stage-card.left {
         text-align: right;
-        border-right: 3px solid var(--color-secondary);
-        background: var(--color-secondary-light);
+        border-right: 4px solid var(--color-secondary);
     }
 
     .stage-card.right {
-        border-left: 3px solid var(--color-accent);
-        background: var(--color-accent-light);
+        border-left: 4px solid var(--color-accent);
     }
 
     .stage-card.center {
-        border-right: 3px solid var(--color-primary);
-        background: var(--color-primary-light);
+        border-right: 4px solid var(--color-primary);
     }
 
     .faq-section {
@@ -357,11 +393,12 @@
         padding: var(--space-8);
         margin-bottom: var(--space-8);
         border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-md);
     }
 
     .faq-item {
         margin-bottom: var(--space-6);
-        border-bottom: 1px solid var(--color-border-light);
+        border-bottom: 1px solid var(--color-border);
         padding-bottom: var(--space-4);
     }
 
@@ -374,7 +411,7 @@
     .faq-question {
         font-weight: 700;
         font-size: var(--font-size-lg);
-        color: var(--color-primary);
+        color: var(--color-text-primary);
         margin-bottom: var(--space-2);
         display: flex;
         align-items: center;
@@ -384,16 +421,17 @@
     .faq-answer {
         color: var(--color-text-secondary);
         padding-left: 32px;
+        line-height: 1.6;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<section style="padding: var(--space-24) 0; background: var(--color-background);">
+<section class="section-padding bg-body">
     <div class="container">
         <!-- Understanding ALS Section -->
         <div style="max-width: 900px; margin: 0 auto;">
-            <h1 class="section-title">Understanding ALS</h1>
+            <h1 class="section-title"></h1>
 
             <!-- What is ALS Definition -->
             <div class="info-card">
@@ -402,26 +440,24 @@
                         <i class="fas fa-brain"></i>
                     </div>
                 </div>
-                <h2
-                    style="color: var(--color-primary); margin-bottom: var(--space-4); font-size: var(--font-size-2xl);">
-                    What is ALS?</h2>
+                <h2 style="text-align: center; margin-bottom: var(--space-4);">What is ALS?</h2>
                 <p
-                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
+                    style="font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-6); text-align: center;">
                     <strong>Amyotrophic Lateral Sclerosis (ALS)</strong> is the most common type of Motor Neuron Disease
-                    (MND). In simple terms, it's a progressive neurological disease that damages the nerve cells
-                    responsible for controlling the muscles you choose to move, like those in your arms, legs, and face.
+                    (MND). It is a progressive disease where the "wires" (motor neurons) connecting your brain to your
+                    muscles break down.
                 </p>
 
                 <div
-                    style="background: var(--color-primary-light); padding: var(--space-4); border-radius: 12px; margin-bottom: var(--space-4);">
-                    <p style="color: var(--color-text-primary); font-weight: 600; margin-bottom: var(--space-2);">
-                        <i class="fas fa-lightbulb"></i> Think of it this way:
+                    style="background: var(--color-primary-light); padding: var(--space-6); border-radius: 12px; margin-bottom: var(--space-4);">
+                    <p
+                        style="color: var(--color-text-heading); font-weight: 700; margin-bottom: var(--space-2); display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-lightbulb" style="color: var(--color-primary);"></i> Think of it this way:
                     </p>
-                    <p style="color: var(--color-text-secondary);">
-                        Your brain is the power station, and your muscles are the lights in your house. The motor
-                        neurons are the electrical wires that connect them. In ALS, these "wires" break down, so the
-                        signals from the brain can't reach the muscles properly. Without these signals, muscles
-                        gradually weaken, shrink (a process called atrophy), and stop working.
+                    <p style="color: var(--color-text-primary);">
+                        Your brain is the power station, and your muscles are the lights. The motor neurons are the
+                        wires.
+                        In ALS, the wires fray, so the lights (muscles) flicker and eventually go out.
                     </p>
                 </div>
             </div>
@@ -433,48 +469,28 @@
                         <i class="fas fa-project-diagram"></i>
                     </div>
                 </div>
-                <h3 style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl);">
-                    How ALS Affects the Body: The Brain-Muscle Connection</h3>
-                <p
-                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
-                    Our bodies have a communication network run by specialized nerve cells called motor neurons. ALS
-                    affects both types:
-                </p>
+                <h3 style="text-align: center; margin-bottom: var(--space-6);">How ALS Affects the Body</h3>
 
                 <div
                     style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
                     <div
-                        style="background: var(--color-primary-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-primary);">
+                        style="background: var(--color-bg-body); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-primary);">
                         <h4 style="color: var(--color-primary); margin-bottom: var(--space-2);">Upper Motor Neurons</h4>
-                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                            Located in the brain, they send signals down the spinal cord.
-                        </p>
+                        <p class="text-sm">Located in the brain, they send signals down the spinal cord.</p>
                     </div>
                     <div
                         style="background: var(--color-secondary-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-secondary);">
                         <h4 style="color: var(--color-secondary-dark); margin-bottom: var(--space-2);">Lower Motor
                             Neurons</h4>
-                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                            Located in the spinal cord, they relay signals to the muscles.
-                        </p>
+                        <p class="text-sm">Located in the spinal cord, they relay signals to the muscles.</p>
                     </div>
                 </div>
 
-                <p
-                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
-                    In a person with ALS, both of these neuron types slowly degenerate and die. As they do, the vital
-                    communication link between the brain and muscles is lost. This is why a person's physical abilities
-                    decline, even while their mind and senses usually remain unaffected.
-                </p>
-
-                <div
-                    style="background: var(--color-accent-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-accent);">
-                    <p style="color: var(--color-text-primary); font-weight: 600; margin-bottom: var(--space-2);">
-                        <i class="fas fa-heart"></i> Most Important to Understand
-                    </p>
-                    <p style="color: var(--color-text-secondary);">
-                        For most people, the mind remains sharp. ALS primarily affects the body's motor system, not a
-                        person's ability to think, feel, or love.
+                <div class="key-message">
+                    <p style="margin-bottom: 0;">
+                        <i class="fas fa-heart" style="color: var(--color-accent);"></i>
+                        <strong>Important:</strong> For most people, the mind remains sharp. ALS affects the body, not
+                        the person.
                     </p>
                 </div>
             </div>
@@ -616,31 +632,32 @@
                         <i class="fas fa-file-medical"></i>
                     </div>
                 </div>
-                <h3 style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl);">
+                <!-- Using class-controlled spacing -->
+                <h3
+                    style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl); text-align: center;">
                     Common Signs and Symptoms</h3>
 
                 <p
-                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4);">
+                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-4); text-align: center;">
                     Because ALS damages the brain's connection to muscles, the symptoms are related to muscle weakness
                     and control. It's important to remember that ALS is different for everyone; the symptoms and the
                     order they appear in can vary greatly.
                 </p>
 
-                <div
-                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
-                    <div
-                        style="background: var(--color-primary-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-primary);">
-                        <h4 style="color: var(--color-primary); margin-bottom: var(--space-2);">Limb-Onset ALS</h4>
-                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                            First notice symptoms in arms or legs. More common type.
-                        </p>
+                <div class="symptom-grid">
+                    <div class="symptom-card">
+                        <div class="symptom-icon"><i class="fas fa-walking"></i></div>
+                        <div>
+                            <strong>Limb-Onset</strong>
+                            <p class="text-sm">Starts in arms or legs</p>
+                        </div>
                     </div>
-                    <div
-                        style="background: var(--color-accent-light); padding: var(--space-4); border-radius: 12px; border-left: 4px solid var(--color-accent);">
-                        <h4 style="color: var(--color-accent); margin-bottom: var(--space-2);">Bulbar-Onset ALS</h4>
-                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
-                            First experience issues with speech or swallowing.
-                        </p>
+                    <div class="symptom-card secondary">
+                        <div class="symptom-icon"><i class="fas fa-comment-medical"></i></div>
+                        <div>
+                            <strong>Bulbar-Onset</strong>
+                            <p class="text-sm">Starts with speech/swallowing</p>
+                        </div>
                     </div>
                 </div>
 
@@ -652,8 +669,7 @@
                         </div>
                         <div>
                             <strong style="color: var(--color-text-primary);">Muscle Weakness</strong>
-                            <p
-                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                            <p class="text-sm" style="color: var(--color-text-secondary); margin-top: 2px;">
                                 Difficulty with tasks like buttoning shirts, writing, or climbing stairs</p>
                         </div>
                     </div>
@@ -665,8 +681,7 @@
                         </div>
                         <div>
                             <strong style="color: var(--color-text-primary);">Muscle Twitching & Cramps</strong>
-                            <p
-                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                            <p class="text-sm" style="color: var(--color-text-secondary); margin-top: 2px;">
                                 Small involuntary muscle twitches (fasciculations) and cramps</p>
                         </div>
                     </div>
@@ -678,8 +693,7 @@
                         </div>
                         <div>
                             <strong style="color: var(--color-text-primary);">Speech & Swallowing Problems</strong>
-                            <p
-                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                            <p class="text-sm" style="color: var(--color-text-secondary); margin-top: 2px;">
                                 Slurred speech (dysarthria) and difficulty swallowing (dysphagia)</p>
                         </div>
                     </div>
@@ -691,8 +705,7 @@
                         </div>
                         <div>
                             <strong style="color: var(--color-text-primary);">Stiffness & Poor Coordination</strong>
-                            <p
-                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                            <p class="text-sm" style="color: var(--color-text-secondary); margin-top: 2px;">
                                 Muscle tightness (spasticity) leading to awkward movements</p>
                         </div>
                     </div>
@@ -704,8 +717,7 @@
                         </div>
                         <div>
                             <strong style="color: var(--color-text-primary);">Breathing Difficulties</strong>
-                            <p
-                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                            <p class="text-sm" style="color: var(--color-text-secondary); margin-top: 2px;">
                                 Shortness of breath as respiratory muscles weaken</p>
                         </div>
                     </div>
@@ -717,8 +729,7 @@
                         </div>
                         <div>
                             <strong style="color: var(--color-text-primary);">Progressive Movement Challenges</strong>
-                            <p
-                                style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: 2px;">
+                            <p class="text-sm" style="color: var(--color-text-secondary); margin-top: 2px;">
                                 Increasing difficulty with walking and daily activities</p>
                         </div>
                     </div>
@@ -732,14 +743,10 @@
                         <i class="fas fa-hourglass-half"></i>
                     </div>
                 </div>
-                <h3
-                    style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl); text-align: center;">
-                    Understanding Disease Progression</h3>
+                <h3 style="text-align: center; margin-bottom: var(--space-6);">Understanding Disease Progression</h3>
 
-                <p
-                    style="color: var(--color-text-secondary); font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--space-6); text-align: center;">
-                    ALS is a progressive disease, meaning it gets worse over time. The journey typically moves through
-                    these phases:
+                <p style="text-align: center; margin-bottom: var(--space-6);">
+                    ALS is a progressive journey. While every path is unique, these are the general stages:
                 </p>
 
                 <div class="timeline-container">
@@ -749,33 +756,31 @@
                     <div class="timeline-stage">
                         <div style="flex: 1; text-align: right; padding-right: var(--space-4);">
                             <div class="stage-card left">
-                                <h4 style="color: var(--color-secondary-dark); margin-bottom: var(--space-2);">Initial
+                                <h4 style="color: var(--color-secondary); margin-bottom: var(--space-2);">Initial
                                     Stage</h4>
-                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
-                                    • Subtle signs: weak grip, foot drag, speech changes<br>
-                                    • Muscle twitching and cramping<br>
-                                    • Often mistaken for other conditions<br>
-                                    • Diagnosis typically occurs at this stage
+                                <p class="text-sm">
+                                    • Subtle weakness<br>
+                                    • Diagnosis period
                                 </p>
                             </div>
                         </div>
-                        <div class="timeline-marker" style="background: var(--color-secondary);"></div>
+                        <div class="timeline-marker" style="border-color: var(--color-secondary); background: white;">
+                        </div>
                         <div style="flex: 1; padding-left: var(--space-4);"></div>
                     </div>
 
                     <!-- Middle Stage -->
                     <div class="timeline-stage">
                         <div style="flex: 1; text-align: right; padding-right: var(--space-4);"></div>
-                        <div class="timeline-marker" style="background: var(--color-accent);"></div>
+                        <div class="timeline-marker" style="border-color: var(--color-primary); background: white;">
+                        </div>
                         <div style="flex: 1; padding-left: var(--space-4);">
-                            <div class="stage-card right">
-                                <h4 style="color: var(--color-text-primary); margin-bottom: var(--space-2);">Middle
-                                    Stage</h4>
-                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
-                                    • Weakness and atrophy spread to more muscles<br>
-                                    • Daily activities become challenging<br>
-                                    • Speech and swallowing difficulties increase<br>
-                                    • Mobility aids often needed
+                            <div class="stage-card center">
+                                <h4 style="color: var(--color-primary); margin-bottom: var(--space-2);">Middle Stage
+                                </h4>
+                                <p class="text-sm">
+                                    • Mobility aids needed<br>
+                                    • Daily tasks harder
                                 </p>
                             </div>
                         </div>
@@ -784,18 +789,17 @@
                     <!-- Advanced Stage -->
                     <div class="timeline-stage">
                         <div style="flex: 1; text-align: right; padding-right: var(--space-4);">
-                            <div class="stage-card center">
-                                <h4 style="color: var(--color-primary-dark); margin-bottom: var(--space-2);">Advanced
+                            <div class="stage-card right">
+                                <h4 style="color: var(--color-accent); margin-bottom: var(--space-2);">Advanced
                                     Stage</h4>
-                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
-                                    • Loss of most voluntary movement<br>
-                                    • Breathing support often needed<br>
+                                <p class="text-sm">
                                     • 24/7 care required<br>
-                                    • Mind remains sharp despite physical limitations
+                                    • Complex needs
                                 </p>
                             </div>
                         </div>
-                        <div class="timeline-marker" style="background: var(--color-primary);"></div>
+                        <div class="timeline-marker" style="border-color: var(--color-accent); background: white;">
+                        </div>
                         <div style="flex: 1; padding-left: var(--space-4);"></div>
                     </div>
                 </div>
@@ -869,8 +873,9 @@
                     style="color: var(--color-primary); margin-bottom: var(--space-6); font-size: var(--font-size-xl); text-align: center;">
                     Essential Considerations</h3>
                 <div style="display: grid; gap: var(--space-4);">
-                    <div class="key-point">
-                        <div class="key-point-icon">
+                    <div class="key-point" style="display: flex; gap: var(--space-4); align-items: start;">
+                        <div class="key-point-icon"
+                            style="color: var(--color-primary); font-size: 20px; margin-top: 4px;">
                             <i class="fas fa-brain"></i>
                         </div>
                         <div>
@@ -881,8 +886,9 @@
                                 remain intact.</p>
                         </div>
                     </div>
-                    <div class="key-point">
-                        <div class="key-point-icon">
+                    <div class="key-point" style="display: flex; gap: var(--space-4); align-items: start;">
+                        <div class="key-point-icon"
+                            style="color: var(--color-primary); font-size: 20px; margin-top: 4px;">
                             <i class="fas fa-user-clock"></i>
                         </div>
                         <div>
@@ -893,8 +899,9 @@
                                 presentation.</p>
                         </div>
                     </div>
-                    <div class="key-point">
-                        <div class="key-point-icon">
+                    <div class="key-point" style="display: flex; gap: var(--space-4); align-items: start;">
+                        <div class="key-point-icon"
+                            style="color: var(--color-primary); font-size: 20px; margin-top: 4px;">
                             <i class="fas fa-hands-helping"></i>
                         </div>
                         <div>
@@ -905,8 +912,9 @@
                                 quality of life.</p>
                         </div>
                     </div>
-                    <div class="key-point">
-                        <div class="key-point-icon">
+                    <div class="key-point" style="display: flex; gap: var(--space-4); align-items: start;">
+                        <div class="key-point-icon"
+                            style="color: var(--color-primary); font-size: 20px; margin-top: 4px;">
                             <i class="fas fa-medkit"></i>
                         </div>
                         <div>

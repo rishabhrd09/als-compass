@@ -18,27 +18,12 @@
     <meta property="og:type" content="website">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!--  Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#5b5a8f',
-                        secondary: '#6b9a9f',
-                        accent: '#88a18b',
-                    }
-                }
-            }
-        }
-    </script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
@@ -50,87 +35,73 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <a href="/" class="logo">
-                    <i class="fas fa-compass"></i>
-                    <span>ALS Caregiver's Compass</span>
+            <div class="navbar-container">
+                <a href="/" class="navbar-brand" aria-label="ALS Compass Homepage">
+                    <svg class="navbar-logo" width="48" height="48" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 32 32" stroke-width="1.8">
+                        <defs>
+                            <linearGradient id="gradDash" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#a18cd1" />
+                                <stop offset="100%" stop-color="#fbc2eb" />
+                            </linearGradient>
+                            <linearGradient id="gradInner" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#f6d365" />
+                                <stop offset="100%" stop-color="#fda085" />
+                            </linearGradient>
+                        </defs>
+                        <circle stroke="url(#gradDash)" cx="16" cy="16" r="12" stroke-dasharray="3 3" />
+                        <path stroke="url(#gradDash)"
+                            d="M16 3v3m8.485 0.515l-2.122 2.122M29 16h-3m-0.515 8.485l-2.122-2.122M16 26v3m-5.657-4.243l-2.122 2.122M6 16H3m4.243-5.657l-2.122-2.122" />
+                        <circle stroke="url(#gradInner)" cx="16" cy="16" r="5" />
+                    </svg>
+                    <span class="navbar-title">ALS Compass</span>
                 </a>
-            </div>
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
+                <div class="navbar-nav">
+                    <a href="/" class="nav-link {% if request.path == '/' %}nav-link-active{% endif %}">Home</a>
+                    <a href="/understanding-als"
+                        class="nav-link {% if request.path == '/understanding-als' %}nav-link-active{% endif %}">Understanding
+                        ALS</a>
+                    <a href="/ai-assistant"
+                        class="nav-link {% if request.path == '/ai-assistant' %}nav-link-active{% endif %}">AI
+                        Assistant</a>
+                    <a href="/home-icu-guide"
+                        class="nav-link {% if request.path == '/home-icu-guide' %}nav-link-active{% endif %}">Home ICU
+                        Guide</a>
+                    <a href="/faq" class="nav-link {% if request.path == '/faq' %}nav-link-active{% endif %}">FAQ</a>
+                </div>
 
-            <div class="nav-links" id="navLinks">
-                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="/understanding-als"
-                    class="nav-link {% if request.path == '/understanding-als' %}active{% endif %}">
-                    <i class="fas fa-brain"></i> Understanding ALS
-                </a>
-                <a href="/ai-assistant" class="nav-link {% if request.path == '/ai-assistant' %}active{% endif %}">
-                    <i class="fas fa-robot"></i> AI Assistant
-                </a>
-                <a href="/experiences" class="nav-link {% if request.path == '/experiences' %}active{% endif %}">
-                    <i class="fas fa-users"></i> Experiences
-                </a>
-                <a href="/home-icu-guide" class="nav-link {% if request.path == '/home-icu-guide' %}active{% endif %}">
-                    <i class="fas fa-home-medical"></i> Home ICU Guide
-                </a>
-                <a href="/daily-schedule" class="nav-link {% if request.path == '/daily-schedule' %}active{% endif %}">
-                    <i class="fas fa-calendar-alt"></i> Daily Schedule
-                </a>
-                <a href="/communication" class="nav-link {% if request.path == '/communication' %}active{% endif %}">
-                    <i class="fas fa-comments"></i> Communication
-                </a>
-                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">
-                    <i class="fas fa-question-circle"></i> FAQ
-                </a>
-                <a href="/emergency-protocol"
-                    class="nav-link {% if request.path == '/emergency-protocol' %}active{% endif %}">
-                    <i class="fas fa-first-aid"></i> Emergency Protocol
-                </a>
+                <button id="mobile-menu-button" class="mobile-menu-button" aria-controls="mobile-menu"
+                    aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="/" class="mobile-nav-link {% if request.path == '/' %}mobile-nav-link-active{% endif %}">Home</a>
+            <a href="/understanding-als"
+                class="mobile-nav-link {% if request.path == '/understanding-als' %}mobile-nav-link-active{% endif %}">Understanding
+                ALS</a>
+            <a href="/experiences"
+                class="mobile-nav-link {% if request.path == '/experiences' %}mobile-nav-link-active{% endif %}">Experiences</a>
+            <a href="/ai-assistant"
+                class="mobile-nav-link {% if request.path == '/ai-assistant' %}mobile-nav-link-active{% endif %}">AI
+                Assistant</a>
+            <a href="/home-icu-guide"
+                class="mobile-nav-link {% if request.path == '/home-icu-guide' %}mobile-nav-link-active{% endif %}">Home
+                ICU Guide</a>
+            <a href="/faq"
+                class="mobile-nav-link {% if request.path == '/faq' %}mobile-nav-link-active{% endif %}">FAQ</a>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-content">
-            <a href="/" class="mobile-link">
-                <i class="fas fa-home"></i> Home
-            </a>
-            <a href="/understanding-als" class="mobile-link">
-                <i class="fas fa-brain"></i> Understanding ALS
-            </a>
-            <a href="/ai-assistant" class="mobile-link">
-                <i class="fas fa-robot"></i> AI Assistant
-            </a>
-            <a href="/experiences" class="mobile-link">
-                <i class="fas fa-users"></i> Experiences
-            </a>
-            <a href="/home-icu-guide" class="mobile-link">
-                <i class="fas fa-home-medical"></i> Home ICU Guide
-            </a>
-            <a href="/daily-schedule" class="mobile-link">
-                <i class="fas fa-calendar-alt"></i> Daily Schedule
-            </a>
-            <a href="/communication" class="mobile-link">
-                <i class="fas fa-comments"></i> Communication
-            </a>
-            <a href="/faq" class="mobile-link">
-                <i class="fas fa-question-circle"></i> FAQ
-            </a>
-            <a href="/emergency-protocol" class="mobile-link">
-                <i class="fas fa-first-aid"></i> Emergency Protocol
-            </a>
-
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="main-content">
+    <main>
         {% block content %}{% endblock %}
     </main>
 
@@ -140,8 +111,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3><i class="fas fa-compass"></i> ALS Caregiver's Compass</h3>
-                    <p>AI-powered support platform providing evidence-based guidance for ALS caregivers worldwide.</p>
-                    <p class="version">Version 1.0.0 | Powered by 32+ Trusted Sources</p>
+                    <p class="version">Version 1.0.0 </p>
                 </div>
 
                 <div class="footer-section">
@@ -149,32 +119,68 @@
                     <a href="/understanding-als">Understanding ALS</a>
                     <a href="/ai-assistant">AI Assistant</a>
                     <a href="/faq">FAQ</a>
-                    <a href="/experiences">Caregiver Experiences</a>
-                    <a href="/daily-schedule">Daily Schedule</a>
                 </div>
 
-                <div class="footer-section">
+                <!-- <div class="footer-section">
                     <h4>Emergency Contact</h4>
                     <p class="emergency-info">
-                        <i class="fas fa-phone-alt"></i> Emergency: 911 (USA) / 112 (EU/India)
+                        <i class="fas fa-phone-alt"></i>
                     </p>
-                    <p class="disclaimer">
-                        Important: This AI assistant provides informational support only. Always consult healthcare
-                        professionals for medical advice.
-                    </p>
-                </div>
+
+                </div> -->
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 ALS Caregiver's Compass. Made with compassion for caregivers worldwide.</p>
+                <p>&copy; 2024 ALS Caregiver's Compass </p>
                 <p class="text-sm">This platform is for informational purposes only and is not a substitute for
                     professional medical advice.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="/static/js/main.js"></script>
+    <script>
+        // Mobile menu functionality
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('show');
+
+                // Animate menu icon
+                const icon = menuButton.querySelector('svg');
+                if (mobileMenu.classList.contains('show')) {
+                    icon.style.transform = 'rotate(90deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!menuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.remove('show');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                    const icon = menuButton.querySelector('svg');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+
+        // Enhanced navbar scroll effect - Updated for new design
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 

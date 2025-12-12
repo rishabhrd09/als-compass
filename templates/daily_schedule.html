@@ -3,28 +3,53 @@
 {% block title %}Daily Schedule - ALS Caregiver's Compass{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="page-hero">
-        <h1 class="page-title">Daily Care Schedule</h1>
-        <p class="page-subtitle">Tools to organize and manage daily care routines</p>
-    </div>
-
-    <div class="coming-soon">
-        <div class="coming-soon-icon">
-            <i class="fas fa-calendar-alt"></i>
-        </div>
-        <h2>Coming Soon</h2>
-        <p>Customizable tools to help you manage the complex daily routine of ALS care.</p>
-        <p>This section will feature:</p>
-        <ul class="feature-list">
-            <li>Interactive daily planners</li>
-            <li>Medication reminders</li>
-            <li>Care team coordination</li>
-            <li>Printable templates</li>
-        </ul>
-        <a href="/ai-assistant" class="btn btn-primary">
-            <i class="fas fa-robot"></i> Ask AI Assistant in the meantime
-        </a>
+<div class="coming-soon-container">
+    <div class="coming-soon-content">
+        <i class="fas fa-calendar-check coming-soon-icon"></i>
+        <h1 class="coming-soon-title">Daily Schedule</h1>
+        <p class="coming-soon-text">This feature is currently under development. Check back soon for comprehensive daily
+            care scheduling tools.</p>
+        <a href="/" class="btn-primary">Return to Home</a>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .coming-soon-container {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-16) 0;
+    }
+
+    .coming-soon-content {
+        text-align: center;
+        max-width: 600px;
+        padding: var(--space-12);
+    }
+
+    .coming-soon-icon {
+        font-size: 6rem;
+        color: var(--color-primary);
+        margin-bottom: var(--space-8);
+        opacity: 0.8;
+    }
+
+    .coming-soon-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-family: var(--font-family-heading);
+        font-weight: 700;
+        color: var(--color-text-heading);
+        margin-bottom: var(--space-4);
+    }
+
+    .coming-soon-text {
+        font-size: var(--font-size-lg);
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--space-8);
+    }
+</style>
 {% endblock %}
