@@ -7,7 +7,7 @@ import os
 import logging
 from typing import Dict, List, Any
 from datetime import datetime
-from vector_store import VectorStore
+from vector_store_enhanced import EnhancedVectorStore
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +23,7 @@ class UnifiedAISystem:
                           If None, uses DEFAULT_MODEL_PROVIDER from .env
         """
         self.model_provider = model_provider or os.getenv('DEFAULT_MODEL_PROVIDER', 'claude')
-        self.vector_store = VectorStore()
+        self.vector_store = EnhancedVectorStore()
         
         # Initialize the selected provider
         self._init_provider()

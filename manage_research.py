@@ -152,7 +152,7 @@ class EnhancedResearchManagerGUI:
         
         # Workflow explanation
         explanation = tk.Label(frame, text="""
-🔬 LLM-Powered Research Update Workflow
+LLM-Powered Research Update Workflow
 
 This tool uses GPT-4 to gather, format, and update ALS research information.
 
