@@ -1,19 +1,42 @@
 {% extends "base.html" %}
 
-{% block title %}Server Error - ALS Caregiver's Compass{% endblock %}
+{% block title %}Server Error | ALS Caregiver's Compass{% endblock %}
 
 {% block content %}
 <div class="container">
-    <div class="coming-soon">
-        <div class="coming-soon-icon" style="color: #ef4444;">
+    <div class="text-center" style="padding: var(--spacing-3xl) 0;">
+        <div class="coming-soon-icon" style="background: #fee2e2; color: var(--color-error);">
             <i class="fas fa-server"></i>
         </div>
-        <h2>500 - Server Error</h2>
-        <p>Something went wrong on our end. Please try again later.</p>
-        <div style="margin-top: 20px;">
+        <h2 class="mt-4">500 - Server Error</h2>
+        <p class="lead">Something went wrong on our end. Our team has been notified and is working to resolve the issue.
+        </p>
+
+        <div class="alert alert-warning mt-4 mx-auto" style="max-width: 500px;">
+            <div class="alert-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="alert-content">
+                This error has been logged and our technical team is investigating. Please try again in a few minutes.
+            </div>
+        </div>
+
+        <div class="mt-5">
             <a href="/" class="btn btn-primary">
-                <i class="fas fa-home"></i> Go Home
+                <i class="fas fa-home"></i> Return to Homepage
             </a>
+            <button onclick="window.location.reload()" class="btn btn-outline ml-3">
+                <i class="fas fa-redo"></i> Try Again
+            </button>
+        </div>
+
+        <div class="mt-5">
+            <p class="text-sm text-neutral-600">If the problem persists, you can:</p>
+            <div class="d-flex flex-wrap gap-2 justify-content-center mt-2">
+                <a href="/understanding-als" class="btn btn-sm btn-outline">Browse ALS Information</a>
+                <a href="/faq" class="btn btn-sm btn-outline">Check FAQ</a>
+                <a href="mailto:support@alscaregiverscompass.org" class="btn btn-sm btn-outline">Contact Support</a>
+            </div>
         </div>
     </div>
 </div>

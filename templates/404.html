@@ -1,19 +1,42 @@
 {% extends "base.html" %}
 
-{% block title %}Page Not Found - ALS Caregiver's Compass{% endblock %}
+{% block title %}Page Not Found | ALS Caregiver's Compass{% endblock %}
 
 {% block content %}
 <div class="container">
-    <div class="coming-soon">
-        <div class="coming-soon-icon" style="color: #ef4444;">
+    <div class="text-center" style="padding: var(--spacing-3xl) 0;">
+        <div class="coming-soon-icon" style="background: #fee2e2; color: var(--color-error);">
             <i class="fas fa-exclamation-circle"></i>
         </div>
-        <h2>404 - Page Not Found</h2>
-        <p>The page you are looking for does not exist or has been moved.</p>
-        <div style="margin-top: 20px;">
+        <h2 class="mt-4">404 - Page Not Found</h2>
+        <p class="lead">The page you are looking for does not exist or has been moved.</p>
+
+        <div class="alert alert-info mt-4 mx-auto" style="max-width: 500px;">
+            <div class="alert-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="alert-content">
+                You may have followed an outdated link or typed the address incorrectly.
+            </div>
+        </div>
+
+        <div class="mt-5">
             <a href="/" class="btn btn-primary">
-                <i class="fas fa-home"></i> Go Home
+                <i class="fas fa-home"></i> Return to Homepage
             </a>
+            <a href="/ai-assistant" class="btn btn-outline ml-3">
+                <i class="fas fa-robot"></i> Ask AI Assistant
+            </a>
+        </div>
+
+        <div class="mt-5">
+            <p class="text-sm text-neutral-600">Common pages you might be looking for:</p>
+            <div class="d-flex flex-wrap gap-2 justify-content-center mt-2">
+                <a href="/understanding-als" class="btn btn-sm btn-outline">Understanding ALS</a>
+                <a href="/ai-assistant" class="btn btn-sm btn-outline">AI Assistant</a>
+                <a href="/daily-schedule" class="btn btn-sm btn-outline">Daily Schedule</a>
+                <a href="/communication" class="btn btn-sm btn-outline">Communication Tools</a>
+            </div>
         </div>
     </div>
 </div>

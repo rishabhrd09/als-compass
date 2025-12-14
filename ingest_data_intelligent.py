@@ -391,6 +391,71 @@ class IntelligentDataIngestion:
             },
             doc_id=f"{tier}_{name.replace(' ', '_').lower()[:30]}"
         )
+    
+    def ingest_faq_json(self, filepath: str) -> int:
+        """Ingest FAQ JSON file into knowledge base"""
+        logger.info(f"📋 Loading FAQ from {filepath}...")
+        
+        import json
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        count = 0
+        source_name = data.get('source', 'FAQ')
+        category = data.get('category', 'general')
+        india_specific = data.get('india_specific', False)
+        trust_score = data.get('trust_score', 8)
+        
+        # Process Q&A pairs
+        qa_pairs = data.get('qa_pairs', [])
+        
+        for qa in qa_pairs:
+            question = qa.get('question', '')
+            answer = qa.get('answer', '')
+            
+            if not question or not answer:
+                continue
+            
+            # Combine Q&A for better context
+            text = f"Question: {question}\n\nAnswer: {answer}"
+            
+            # Extract costs if available
+            costs = qa.get('costs', [])
+            avg_cost = sum(costs) / len(costs) if costs else 0
+            
+            # Get metadata
+            qa_metadata = qa.get('metadata', {})
+            urgency = qa_metadata.get('urgency', 'medium')
+            qa_type = qa_metadata.get('type', 'general')
+            
+            # Determine if emergency
+            is_emergency = urgency == 'high' or 'emergency' in question.lower()
+            
+            # Add to vector store
+            self.store.add_document(
+                collection_name='community_qa_pairs',
+                text=text,
+                metadata={
+                    'source': source_name,
+                    'chunk_type': 'qa_pair',
+                    'category': category,
+                    'question': question,
+                    'emergency': is_emergency,
+                    'india_specific': india_specific,
+                    'costs_mentioned': str(costs),
+                    'avg_cost': avg_cost,
+                    'trust_score': trust_score,
+                    'qa_type': qa_type,
+                    'urgency': urgency,
+                    'ingestion_date': datetime.now().isoformat()
+                },
+                doc_id=f"faq_{hashlib.md5(question.encode()).hexdigest()[:12]}"
+            )
+            count += 1
+        
+        logger.info(f"✅ Loaded {count} FAQ entries from {filepath}")
+        return count
+
 
 
 def main():
@@ -452,12 +517,18 @@ def main():
     if sources_path.exists():
         ingestion.ingest_medical_sources_hierarchical(str(sources_path))
     
+    # Ingest BiPAP FAQ
+    bipap_faq_path = Path("data/bipap_faq.json")
+    if bipap_faq_path.exists():
+        ingestion.ingest_faq_json(str(bipap_faq_path))
+    
     # Ingest WhatsApp with intelligence
     if whatsapp_path:
         stats = ingestion.ingest_whatsapp_intelligently(
             str(whatsapp_path), 
             limit=5000  # Process up to 5000 messages
         )
+
     
     # Final stats
     print("\n" + "=" * 80)

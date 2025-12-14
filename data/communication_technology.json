@@ -1,0 +1,550 @@
+{
+    "last_updated": "2025-12-14",
+    "categories": {
+        "eye_tracking": {
+            "title": "Eye Tracking Devices",
+            "icon": "fa-eye",
+            "description": "Eye gaze technology for ALS communication when hand/voice function is lost",
+            "devices": [
+                {
+                    "id": 1,
+                    "name": "Tobii Eye Tracker 4C",
+                    "category": "Budget Eye Tracker",
+                    "price_usd": 150,
+                    "price_inr": "₹15,000-20,000 (used)",
+                    "community_rating": 5,
+                    "status": "DISCONTINUED - Buy Used Only",
+                    "stage": "Early-Mid",
+                    "india_access": "eBay, used marketplaces",
+                    "works_with_windows_eye_control": true,
+                    "community_verdict": "BEST option for Windows Eye Control - rated excellent by experienced PALS",
+                    "key_notes": [
+                        "Native Windows Eye Control support",
+                        "Best Windows compatibility",
+                        "Only available second-hand now",
+                        "Install Tobii Core Software for full functionality"
+                    ],
+                    "warning": "Discontinued by Tobii. Check eBay, Facebook Marketplace for used units.",
+                    "recommended": true
+                },
+                {
+                    "id": 2,
+                    "name": "Tobii Eye Tracker 5",
+                    "category": "Budget Eye Tracker",
+                    "price_usd": 229,
+                    "price_inr": "₹25,000-40,000",
+                    "community_rating": 4,
+                    "status": "Available",
+                    "stage": "Early-Mid",
+                    "india_access": "Amazon India, USA import",
+                    "works_with_windows_eye_control": false,
+                    "community_verdict": "Good but needs driver workaround. Does NOT support Windows Eye Control natively!",
+                    "key_notes": [
+                        "Gaming device - NOT designed for accessibility",
+                        "Requires beta driver installation",
+                        "Works with OptiKey via mouse emulation",
+                        "OpenTrack supported for head tracking"
+                    ],
+                    "setup_links": {
+                        "beta_driver": "https://drive.google.com/u/1/uc?id=1hHW8f5ka0MdJjBU_A0_8JfUJ-XW71AtE&export=download",
+                        "tobii_experience": "https://gaming.tobii.com/getstarted/",
+                        "youtube_guide": "https://www.youtube.com/watch?v=sqioybTNhBg"
+                    },
+                    "warning": "Does NOT work with Windows Eye Control by design. Use OptiKey instead.",
+                    "recommended": true
+                },
+                {
+                    "id": 3,
+                    "name": "Tobii Dynavox PCEye 5",
+                    "category": "Medical Grade",
+                    "price_usd": 2500,
+                    "price_inr": "₹2.5+ Lakh",
+                    "community_rating": 3,
+                    "status": "Available",
+                    "stage": "All Stages",
+                    "india_access": "Import via authorized dealers",
+                    "works_with_windows_eye_control": true,
+                    "community_verdict": "Overkill for most users. Complicated software. Only if budget allows.",
+                    "key_notes": [
+                        "Purpose-built for accessibility",
+                        "Outdoor tracking capability",
+                        "Professional TD Control software",
+                        "Full warranty and support"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "Tobii Dynavox I-16",
+                    "category": "Medical Grade (All-in-One)",
+                    "price_usd": 15000,
+                    "price_inr": "₹15+ Lakh",
+                    "community_rating": 4,
+                    "status": "Available",
+                    "stage": "Mid-Late",
+                    "india_access": "Import via authorized dealers",
+                    "works_with_windows_eye_control": true,
+                    "community_verdict": "Industry leader but extremely expensive. Consider renting or used.",
+                    "key_notes": [
+                        "15.6-inch touchscreen with eye tracker built-in",
+                        "Partner Window for face-to-face conversations",
+                        "Wake On Gaze for 24/7 autonomy",
+                        "Outdoor tracking works in sunlight",
+                        "6.5-8 hour battery life"
+                    ],
+                    "warning": "Reddit user called it 'outrageously overpriced' - consider used or rental options."
+                },
+                {
+                    "id": 5,
+                    "name": "Eyegaze Edge",
+                    "category": "Medical Grade (Specialized)",
+                    "price_usd": 15000,
+                    "price_inr": "₹15+ Lakh",
+                    "community_rating": 4,
+                    "status": "Available",
+                    "stage": "Late (Ptosis)",
+                    "india_access": "Import only (LC Technologies)",
+                    "community_verdict": "Best for droopy eyelids and dry eyes - common ALS complications",
+                    "key_notes": [
+                        "Works with only 10% pupil visible",
+                        "Handles ptosis (droopy eyelids)",
+                        "Designed for older patients",
+                        "Low fatigue tracking"
+                    ]
+                }
+            ]
+        },
+        "head_tracking": {
+            "title": "Head Tracking Devices",
+            "icon": "fa-head-side-virus",
+            "description": "For patients with bulbar-sparing ALS who retain head movement",
+            "devices": [
+                {
+                    "id": 1,
+                    "name": "GlassOuse V1.4",
+                    "category": "Wearable Head Mouse",
+                    "price_usd": 400,
+                    "price_inr": "₹35,000-45,000",
+                    "community_rating": 4,
+                    "status": "Available",
+                    "stage": "Early-Mid",
+                    "india_access": "Amazon, GlassOuse.com",
+                    "key_notes": [
+                        "Worn like glasses - 9-axis gyroscope",
+                        "150+ hour battery life",
+                        "Bite switch, puff switch, or dwell clicking",
+                        "Connects via Bluetooth to any device"
+                    ],
+                    "community_verdict": "Highly praised for responsiveness. Note: Bite switch silicone may crack over time.",
+                    "recommended": true
+                },
+                {
+                    "id": 2,
+                    "name": "GlassOuse PRO",
+                    "category": "Advanced Wearable",
+                    "price_usd": 700,
+                    "price_inr": "₹60,000-70,000",
+                    "community_rating": 4,
+                    "status": "Available",
+                    "stage": "Limited Movement",
+                    "india_access": "Import from GlassOuse.com",
+                    "key_notes": [
+                        "3-in-1: Head mouse + Switch hub + Joystick",
+                        "Connect to 3 devices simultaneously",
+                        "8 customizable switches",
+                        "Minimal head movement required"
+                    ],
+                    "community_verdict": "'Connects you to the world' - transforms life for mobility-impaired users"
+                },
+                {
+                    "id": 3,
+                    "name": "HeadMouse Nano",
+                    "category": "Optical Head Tracker",
+                    "price_usd": 1200,
+                    "price_inr": "₹1+ Lakh",
+                    "community_rating": 4,
+                    "status": "Available",
+                    "stage": "Early-Mid",
+                    "india_access": "Import from Origin Instruments (USA)",
+                    "key_notes": [
+                        "Tracks reflective dot placed on forehead",
+                        "High precision without wearing anything on head",
+                        "Works with any computer"
+                    ]
+                }
+            ]
+        },
+        "emg_muscle_switches": {
+            "title": "EMG & Muscle Switches",
+            "icon": "fa-bolt",
+            "description": "For locked-in patients with residual muscle twitches",
+            "devices": [
+                {
+                    "id": 1,
+                    "name": "NeuroNode Trilogy",
+                    "category": "EMG + Eye Gaze Combo",
+                    "price_usd": 16500,
+                    "price_inr": "₹15+ Lakh",
+                    "community_rating": 4,
+                    "status": "Available",
+                    "stage": "Locked-In",
+                    "india_access": "Import from Control Bionics",
+                    "key_notes": [
+                        "Detects nerve firing even without visible movement",
+                        "Place sensor on any muscle with residual activity",
+                        "Eliminates dwell time - 47% faster typing",
+                        "Combines EMG switching with eye gaze targeting"
+                    ],
+                    "community_verdict": "Premium but essential for true locked-in syndrome. Only option for some patients."
+                }
+            ]
+        },
+        "bci": {
+            "title": "Brain-Computer Interfaces (BCIs)",
+            "icon": "fa-brain",
+            "description": "For late-stage when eye tracking becomes difficult. Currently in clinical trials only.",
+            "warning": "BCIs are NOT commercially available. Only accessible via clinical trials in USA, Australia, and soon UK/Germany/UAE.",
+            "devices": [
+                {
+                    "id": 1,
+                    "name": "Synchron Stentrode",
+                    "company": "Synchron",
+                    "status": "FDA Approved (Nov 2025)",
+                    "invasiveness": "Minimally Invasive (via blood vessels)",
+                    "als_relevance": "HIGH - Designed specifically for ALS",
+                    "key_notes": [
+                        "No open brain surgery required",
+                        "Implanted via jugular vein",
+                        "Apple integration announced (May 2025)",
+                        "90% cursor accuracy, 14+ chars/min typing",
+                        "ALS patient controlled iPad with thought (Aug 2025)"
+                    ],
+                    "trial_info": "COMMAND study active in USA",
+                    "india_access": "No trials in India. 2-5 years from commercial availability."
+                },
+                {
+                    "id": 2,
+                    "name": "Neuralink Telepathy",
+                    "company": "Neuralink (Elon Musk)",
+                    "status": "Clinical Trials",
+                    "invasiveness": "Surgical (1000+ electrodes)",
+                    "als_relevance": "HIGH - Primary focus on ALS/quadriplegia",
+                    "key_notes": [
+                        "Surgical robot placement",
+                        "5+ patients implanted by mid-2025",
+                        "Expanding to Canada, UK, Germany, UAE",
+                        "Target: 20-30 patients by end of 2025"
+                    ],
+                    "trial_info": "Apply at neuralink.com/patient-registry",
+                    "contacts": [
+                        "monika@neuralink.com",
+                        "sehej@neuralink.com"
+                    ],
+                    "india_access": "No trials in India currently."
+                },
+                {
+                    "id": 3,
+                    "name": "BrainGate",
+                    "company": "BrainGate Consortium",
+                    "status": "Research",
+                    "invasiveness": "Surgical (Utah Array)",
+                    "als_relevance": "HIGH - Pioneer system with long-term ALS data",
+                    "key_notes": [
+                        "UC Davis: 97% speech decoding for ALS patient (June 2025)",
+                        "Academic research consortium",
+                        "20+ years of experience"
+                    ],
+                    "india_access": "Academic only. No commercial access."
+                }
+            ]
+        },
+        "free_software": {
+            "title": "Free & Open Source Software",
+            "icon": "fa-download",
+            "description": "These FREE tools can dramatically reduce costs for ALS communication",
+            "software": [
+                {
+                    "id": 1,
+                    "name": "Windows Eye Control",
+                    "platform": "Windows 10/11",
+                    "price": "FREE (Built-in)",
+                    "community_rating": 5,
+                    "community_verdict": "MOST RECOMMENDED by experienced PALS. Best option for beginners.",
+                    "works_with": [
+                        "Tobii 4C",
+                        "Tobii PCEye 5",
+                        "Tobii Dynavox devices"
+                    ],
+                    "does_not_work_with": [
+                        "Tobii Eye Tracker 5"
+                    ],
+                    "features": [
+                        "Built into Windows - no installation needed",
+                        "On-screen keyboard with dwell clicking",
+                        "Mouse control",
+                        "Text-to-speech"
+                    ],
+                    "how_to_enable": "Settings > Accessibility > Eye Control > Turn on",
+                    "recommended": true
+                },
+                {
+                    "id": 2,
+                    "name": "OptiKey",
+                    "platform": "Windows",
+                    "price": "FREE (Open Source)",
+                    "community_rating": 4,
+                    "community_verdict": "Good alternative when Windows Eye Control isn't available. Complex interface.",
+                    "works_with": [
+                        "Tobii 4C (native)",
+                        "Tobii 5 (via mouse emulation)",
+                        "Webcam"
+                    ],
+                    "features": [
+                        "Full keyboard and mouse control",
+                        "Text-to-speech in multiple languages",
+                        "Word prediction",
+                        "Works with webcam (no hardware needed)"
+                    ],
+                    "download": "https://github.com/OptiKey/OptiKey",
+                    "docs": "https://github.com/OptiKey/OptiKey/wiki"
+                },
+                {
+                    "id": 3,
+                    "name": "Camera Mouse",
+                    "platform": "Windows",
+                    "price": "FREE",
+                    "community_rating": 3,
+                    "community_verdict": "Good for office work. Requires head movement.",
+                    "works_with": [
+                        "Any webcam"
+                    ],
+                    "features": [
+                        "Tracks any body part via webcam",
+                        "No special hardware needed",
+                        "Boston College research project"
+                    ],
+                    "download": "https://cameramouse.org"
+                },
+                {
+                    "id": 4,
+                    "name": "eViacam",
+                    "platform": "Windows/Linux",
+                    "price": "FREE",
+                    "community_rating": 3,
+                    "works_with": [
+                        "Any webcam"
+                    ],
+                    "features": [
+                        "Webcam-based head tracking",
+                        "Mouse cursor control",
+                        "Works on Linux too"
+                    ],
+                    "download": "https://eviacam.crea-si.com"
+                },
+                {
+                    "id": 5,
+                    "name": "GazePointer",
+                    "platform": "Windows",
+                    "price": "FREE",
+                    "community_rating": 3,
+                    "works_with": [
+                        "Any webcam",
+                        "Webcam + Dasher for typing"
+                    ],
+                    "features": [
+                        "Webcam-based gaze tracking (no hardware)",
+                        "Zero-cost testing before buying eye tracker"
+                    ],
+                    "download": "https://gazepointer.com"
+                }
+            ]
+        },
+        "mobile_apps": {
+            "title": "Mobile Apps",
+            "icon": "fa-mobile-alt",
+            "description": "Smartphone and tablet apps for communication",
+            "apps": [
+                {
+                    "id": 1,
+                    "name": "Look to Speak",
+                    "platform": "Android",
+                    "price": "FREE",
+                    "community_rating": 4,
+                    "community_verdict": "Used daily by PALS. Needs Bluetooth speaker for calling attention.",
+                    "features": [
+                        "Look left/right/up to select phrases",
+                        "Works with phone camera",
+                        "Quick phrases for immediate needs"
+                    ],
+                    "tip": "Pair with Bluetooth speaker so patient can call for attention",
+                    "download": "Google Play Store"
+                },
+                {
+                    "id": 2,
+                    "name": "iOS Eye Tracking",
+                    "platform": "iPhone/iPad",
+                    "price": "FREE (Built-in)",
+                    "community_rating": 3,
+                    "community_verdict": "Found inaccurate on iPhone. Works better on iPad Pro.",
+                    "features": [
+                        "Built into iOS accessibility",
+                        "Works with front camera"
+                    ],
+                    "how_to_enable": "Settings > Accessibility > Eye Tracking"
+                },
+                {
+                    "id": 3,
+                    "name": "Avaz AAC",
+                    "platform": "Android/iOS",
+                    "price": "₹5,000-15,000",
+                    "origin": "Made in India (Chennai)",
+                    "community_rating": 4,
+                    "community_verdict": "Critical for non-English speakers. Supports Indian languages.",
+                    "features": [
+                        "Picture-based AAC",
+                        "Hindi, Tamil, Kannada, Marathi, Malayalam, Telugu support",
+                        "Bridges gap for non-English patients"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "Google Project Relate",
+                    "platform": "Android",
+                    "price": "FREE",
+                    "community_rating": 5,
+                    "community_verdict": "Game changer for mid-stage patients with slurred speech.",
+                    "features": [
+                        "AI learns YOUR slurred speech patterns",
+                        "Listen: Real-time transcription",
+                        "Repeat: Re-speaks in clear synthetic voice",
+                        "Assistant: Controls Google Home devices"
+                    ],
+                    "setup": "Record ~500 phrases to train personal AI model"
+                }
+            ]
+        },
+        "low_tech": {
+            "title": "Low-Tech Solutions",
+            "icon": "fa-hand-point-up",
+            "description": "Simple, reliable, and highly valued by the community",
+            "tools": [
+                {
+                    "id": 1,
+                    "name": "Alphabet Board",
+                    "price": "₹200-500",
+                    "community_rating": 5,
+                    "community_verdict": "MOST EFFECTIVE - One user has used it for 6 years. Always have as backup.",
+                    "description": "Transparent board with letters. Caregiver reads letter when patient looks at it.",
+                    "why_essential": "Works when all tech fails. No batteries. No software issues.",
+                    "recommended": true
+                },
+                {
+                    "id": 2,
+                    "name": "LCD Writing Tablet",
+                    "price": "₹300-1,000",
+                    "community_rating": 4,
+                    "community_verdict": "Good when hands still work. Easy to use.",
+                    "description": "Electronic writing pad that can be erased with a button",
+                    "stage": "Early stage while hands still functional"
+                },
+                {
+                    "id": 3,
+                    "name": "Bell/Buzzer Systems",
+                    "price": "₹200-1,000",
+                    "community_rating": 4,
+                    "community_verdict": "Motion sensor recommended for later stages when hands don't work.",
+                    "types": [
+                        "Push button bell (early stage)",
+                        "Motion sensor bell (later stage)",
+                        "Wireless doorbell systems"
+                    ]
+                }
+            ]
+        },
+        "voice_banking": {
+            "title": "Voice Banking",
+            "icon": "fa-microphone",
+            "description": "CRITICAL - Create a synthetic voice clone BEFORE speech declines",
+            "is_critical": true,
+            "community_warning": "Multiple PALS members regret NOT doing this early. DO IT NOW.",
+            "what_is_it": "Record your natural voice so a computer can speak in YOUR voice later",
+            "requirements": [
+                "~30 minutes of clean audio recording",
+                "Quiet room with good microphone",
+                "Do it BEFORE speech becomes slurred"
+            ],
+            "services": [
+                {
+                    "name": "Tobii Dynavox Message Banking",
+                    "description": "Record personal phrases and messages",
+                    "cost": "Included with Tobii devices"
+                },
+                {
+                    "name": "ModelTalker",
+                    "description": "Create personalized synthetic voice",
+                    "cost": "FREE (research project)",
+                    "url": "https://www.modeltalker.org/"
+                },
+                {
+                    "name": "ElevenLabs Voice Cloning",
+                    "description": "AI voice cloning service",
+                    "cost": "$5-22/month",
+                    "note": "Indian accents available"
+                }
+            ]
+        }
+    },
+    "budget_setup_india": {
+        "title": "Budget Setup for India",
+        "total_cost": "Under ₹50,000",
+        "comparison": "vs ₹10+ Lakh for medical-grade systems",
+        "components": [
+            {
+                "item": "Tobii Eye Tracker 5",
+                "cost": "₹25,000-40,000",
+                "source": "Amazon India or USA import"
+            },
+            {
+                "item": "OptiKey Software",
+                "cost": "FREE",
+                "source": "github.com/OptiKey/OptiKey"
+            },
+            {
+                "item": "Windows Laptop (i3+, 8GB RAM)",
+                "cost": "₹30,000-50,000",
+                "requirements": "Windows 10/11 64-bit"
+            },
+            {
+                "item": "Alphabet Board (backup)",
+                "cost": "₹200-500",
+                "note": "ESSENTIAL backup"
+            }
+        ],
+        "community_tip": "Contact USA-based PALS community for help importing Tobii 5 at better prices (~₹25k)"
+    },
+    "key_recommendations": [
+        {
+            "priority": 1,
+            "title": "Voice Bank IMMEDIATELY",
+            "description": "Don't wait. Record your voice while it's still clear.",
+            "action": "Use ModelTalker (FREE) or ElevenLabs"
+        },
+        {
+            "priority": 2,
+            "title": "Start with Tobii 5 + Windows Eye Control/OptiKey",
+            "description": "Budget-friendly combination that works.",
+            "cost": "~₹25,000-40,000"
+        },
+        {
+            "priority": 3,
+            "title": "Always have Alphabet Board as backup",
+            "description": "Most effective tool according to 6-year PALS user. Works when tech fails.",
+            "cost": "₹200-500"
+        },
+        {
+            "priority": 4,
+            "title": "Use Look to Speak + Bluetooth Speaker",
+            "description": "For calling attention when family is in another room.",
+            "cost": "FREE app + ₹1,000-2,000 speaker"
+        }
+    ]
+}

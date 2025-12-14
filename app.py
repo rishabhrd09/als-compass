@@ -146,7 +146,7 @@ def clear_history():
 
 @app.route('/api/research-updates')
 def get_research_updates():
-    """Get active research updates for homepage"""
+    """Get active research updates for homepage (legacy)"""
     try:
         with open('data/research_updates.json', 'r') as f:
             research_data = json.load(f)
@@ -158,6 +158,46 @@ def get_research_updates():
     except Exception as e:
         logger.error(f"Error loading research updates: {e}")
         return jsonify([])
+
+@app.route('/api/research-categorized')
+def get_research_categorized():
+    """Get categorized research data for research page"""
+    try:
+        with open('data/research_categorized.json', 'r', encoding='utf-8') as f:
+            return jsonify(json.load(f))
+    except FileNotFoundError:
+        return jsonify({
+            "last_updated": "2025-12-14",
+            "categories": {}
+        })
+    except Exception as e:
+        logger.error(f"Error loading categorized research: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/research-updates')
+def research_updates_page():
+    """Research updates page"""
+    return render_template('research_updates.html')
+
+@app.route('/communication-technology')
+def communication_technology_page():
+    """Communication Technology page - Eye trackers, head tracking, AAC devices"""
+    return render_template('communication_technology.html')
+
+@app.route('/api/communication-tech')
+def get_communication_tech():
+    """Get communication technology data for the page"""
+    try:
+        with open('data/communication_technology.json', 'r', encoding='utf-8') as f:
+            return jsonify(json.load(f))
+    except FileNotFoundError:
+        return jsonify({
+            "last_updated": "2025-12-14",
+            "categories": {}
+        })
+    except Exception as e:
+        logger.error(f"Error loading communication tech data: {e}")
+        return jsonify({"error": str(e)}), 500
 
 # ==================== ERROR HANDLERS ====================
 

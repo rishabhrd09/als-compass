@@ -1,0 +1,652 @@
+{
+    "last_updated": "2025-12-14",
+    "data_sources": [
+        "FDA Drug Approvals Database - December 2025",
+        "ClinicalTrials.gov - December 2025",
+        "ALS Association Research Updates",
+        "PubMed Central - Latest ALS Reviews",
+        "NIMHANS India - ALS Treatment Protocols",
+        "Target ALS Global Natural History Study",
+        "myTomorrows India Hub"
+    ],
+    "stage_definitions": {
+        "early": "Newly diagnosed, within 2 years of symptom onset, FVC >80%, independent in daily activities",
+        "mid": "2-5 years from diagnosis, FVC 50-80%, some assistance needed, may use walking aids",
+        "advanced": "5+ years, FVC <50%, significant disability, may need NIV/BiPAP support",
+        "ventilator_dependent": "24/7 invasive or non-invasive ventilation, fully dependent for care"
+    },
+    "benefit_type_legend": {
+        "slows_progression": "Reduces rate of functional decline - does NOT reverse damage",
+        "may_slow": "Shows promise but not definitively proven to slow progression",
+        "neuroprotection": "Protects remaining neurons from death - does NOT restore dead ones",
+        "symptom_management": "Treats symptoms only - no effect on disease course",
+        "functional_restoration": "May help restore some lost functions (rare, experimental)",
+        "neuron_regeneration": "Aims to replace dead motor neurons (highly experimental)"
+    },
+    "categories": {
+        "approved_treatments": [
+            {
+                "id": 1,
+                "drug_name": "Riluzole",
+                "brand_names": {
+                    "global": [
+                        "Rilutek (tablets)",
+                        "Tiglutik (oral suspension)",
+                        "Exservan/Emylif (dissolving films)"
+                    ],
+                    "india": [
+                        "Rilutor 50mg (Sun Pharma)",
+                        "Generic versions (Lupin, Cipla)"
+                    ]
+                },
+                "approval": {
+                    "fda_year": "1995 (December 12)",
+                    "india_status": "Widely available (Generic)"
+                },
+                "mechanism": "Glutamate antagonist - reduces excitotoxic damage to motor neurons by blocking excess glutamate release",
+                "benefit_classification": {
+                    "primary_effect": "SLOWS PROGRESSION",
+                    "does_it_reverse_damage": "NO - Cannot restore dead neurons or reverse muscle atrophy",
+                    "does_it_restore_function": "NO - Does not improve existing symptoms",
+                    "what_it_actually_does": "Modestly extends survival by reducing rate of motor neuron death. Does NOT bring back lost functions."
+                },
+                "quantified_benefit": {
+                    "survival_extension": "2-3 months in clinical trials; 6-21 months in real-world studies",
+                    "functional_improvement": "NONE - Only slows decline, does not improve",
+                    "evidence_quality": "Strong (multiple Phase 3 trials, 25+ years of use)"
+                },
+                "stage_specific_benefit": {
+                    "newly_diagnosed": {
+                        "benefit_level": "HIGHEST",
+                        "expected_outcome": "Best chance to extend survival if started early",
+                        "recommendation": "STRONGLY RECOMMENDED - Start immediately upon diagnosis"
+                    },
+                    "mid_stage": {
+                        "benefit_level": "MODERATE",
+                        "expected_outcome": "Still provides some survival benefit",
+                        "recommendation": "RECOMMENDED - Continue if already on it, start if not"
+                    },
+                    "advanced_ventilator": {
+                        "benefit_level": "MINIMAL",
+                        "expected_outcome": "Limited additional benefit at this stage",
+                        "recommendation": "OPTIONAL - May continue for marginal benefit, discuss with neurologist"
+                    }
+                },
+                "realistic_expectations": "This is NOT a cure. It will NOT make you stronger or restore lost abilities. It MAY help you live somewhat longer by slowing the rate of decline. Most patients and families do not notice any visible difference while taking it.",
+                "india_info": {
+                    "available": true,
+                    "cost_range_inr": "5,000-7,000 per month",
+                    "accessibility": "Widely available. Most affordable approved ALS treatment in India."
+                },
+                "sources": [
+                    "https://pubmed.ncbi.nlm.nih.gov/9686699/",
+                    "https://www.accessdata.fda.gov/"
+                ]
+            },
+            {
+                "id": 2,
+                "drug_name": "Edaravone",
+                "brand_names": {
+                    "global": [
+                        "Radicava (IV)",
+                        "Radicava ORS (Oral - May 2022)"
+                    ],
+                    "india": [
+                        "Nuravon (Abbott)",
+                        "Aravon (Sun Pharma)",
+                        "Edvo (Torrent)",
+                        "Fraseda (UCB)"
+                    ]
+                },
+                "approval": {
+                    "fda_year_iv": "2017 (May 5)",
+                    "fda_year_oral": "2022 (May 12)",
+                    "india_status": "Available - Generic injectables"
+                },
+                "mechanism": "Free radical scavenger - reduces oxidative stress that damages motor neurons",
+                "benefit_classification": {
+                    "primary_effect": "SLOWS PROGRESSION (in specific patients)",
+                    "does_it_reverse_damage": "NO - Cannot restore dead neurons",
+                    "does_it_restore_function": "NO - Does not improve existing weakness",
+                    "what_it_actually_does": "Reduces rate of functional decline by ~33% in EARLY-STAGE patients only. No proven benefit in advanced disease."
+                },
+                "quantified_benefit": {
+                    "functional_decline_reduction": "33% slower ALSFRS-R decline vs placebo",
+                    "who_benefits": "ONLY early-stage: <2 years from onset, FVC >80%, living independently",
+                    "who_does_NOT_benefit": "Advanced patients, ventilator-dependent, >2 years disease duration",
+                    "evidence_quality": "Moderate (Japanese trial showed benefit in specific subgroup only)"
+                },
+                "stage_specific_benefit": {
+                    "newly_diagnosed": {
+                        "benefit_level": "HIGHEST (if criteria met)",
+                        "expected_outcome": "May slow decline by ~33% if started within 2 years of symptoms",
+                        "recommendation": "CONSIDER if: <2 years onset, FVC >80%, independent living"
+                    },
+                    "mid_stage": {
+                        "benefit_level": "LOW/UNCERTAIN",
+                        "expected_outcome": "Limited evidence of benefit beyond early stage",
+                        "recommendation": "NOT RECOMMENDED - Cost may not justify uncertain benefit"
+                    },
+                    "advanced_ventilator": {
+                        "benefit_level": "NOT RECOMMENDED",
+                        "expected_outcome": "No proven benefit, high cost, logistical burden",
+                        "recommendation": "NOT RECOMMENDED - Focus resources on comfort care"
+                    }
+                },
+                "realistic_expectations": "This drug only works in EARLY disease. If you are already using a wheelchair or ventilator, this drug is unlikely to help. It requires daily IV infusions for 14 days each month - significant time and cost burden.",
+                "india_info": {
+                    "available": true,
+                    "cost_range_inr": "600-1,600 per vial",
+                    "accessibility": "Available but requires hospital visits for IV infusion",
+                    "administration_challenge": "Daily IV for 14 days/month - major logistical burden"
+                },
+                "sources": [
+                    "https://pubmed.ncbi.nlm.nih.gov/28431142/"
+                ]
+            },
+            {
+                "id": 3,
+                "drug_name": "Tofersen (Qalsody)",
+                "brand_names": {
+                    "global": [
+                        "Qalsody (Biogen)"
+                    ],
+                    "india": []
+                },
+                "approval": {
+                    "fda_year": "2023 (April 25, Accelerated)",
+                    "india_status": "Named Patient Import only"
+                },
+                "mechanism": "Antisense oligonucleotide - destroys the RNA that produces toxic SOD1 protein",
+                "benefit_classification": {
+                    "primary_effect": "DISEASE MODIFICATION (for SOD1 mutation ONLY)",
+                    "does_it_reverse_damage": "PARTIALLY - May stabilize and prevent further damage, some patients show stabilization",
+                    "does_it_restore_function": "POSSIBLY - Long-term data shows some patients maintain or regain function",
+                    "what_it_actually_does": "Directly targets the CAUSE of disease in SOD1 patients. Significantly reduces toxic protein levels. May halt or slow progression more effectively than other drugs."
+                },
+                "quantified_benefit": {
+                    "sod1_protein_reduction": "35% reduction in CSF",
+                    "neurofilament_reduction": "55% reduction (biomarker of nerve damage)",
+                    "functional_outcome": "Some patients show stabilization or slight improvement",
+                    "who_benefits": "ONLY patients with confirmed SOD1 genetic mutation (~2% of all ALS)",
+                    "evidence_quality": "Strong for SOD1 patients (Phase 3 VALOR trial)"
+                },
+                "stage_specific_benefit": {
+                    "newly_diagnosed_sod1": {
+                        "benefit_level": "HIGHEST",
+                        "expected_outcome": "Best chance to halt disease if started before significant damage",
+                        "recommendation": "STRONGLY RECOMMENDED if SOD1 positive - start immediately"
+                    },
+                    "mid_stage_sod1": {
+                        "benefit_level": "MODERATE-HIGH",
+                        "expected_outcome": "May stabilize disease, prevent further decline",
+                        "recommendation": "RECOMMENDED - Still beneficial even with some progression"
+                    },
+                    "advanced_sod1": {
+                        "benefit_level": "UNCERTAIN",
+                        "expected_outcome": "May prevent further decline but cannot reverse existing damage",
+                        "recommendation": "DISCUSS with specialist - case-by-case basis"
+                    },
+                    "non_sod1_patients": {
+                        "benefit_level": "NONE",
+                        "expected_outcome": "This drug does NOT work for non-SOD1 ALS",
+                        "recommendation": "NOT APPLICABLE - Requires SOD1 mutation"
+                    }
+                },
+                "realistic_expectations": "This is a TARGETED therapy - it ONLY works if you have SOD1 mutation (about 2% of ALS patients). Get genetic testing first. If positive, this is currently the most promising option. If negative, this drug will not help you.",
+                "genetic_testing_required": true,
+                "india_info": {
+                    "available": false,
+                    "future_access": "Named Patient Import via Form 12B. Genetic testing available at NIMHANS, DNA Labs India (Rs 20,000), MedGenome."
+                },
+                "sources": [
+                    "https://www.nejm.org/doi/full/10.1056/NEJMoa2204705"
+                ]
+            },
+            {
+                "id": 4,
+                "drug_name": "Rozebalamin (MT-1186)",
+                "brand_names": {
+                    "global": [
+                        "Rozebalamin (Eisai, Japan only)"
+                    ],
+                    "india": []
+                },
+                "approval": {
+                    "japan_approval": "2024 (September 24)",
+                    "india_status": "Not available - Japan only"
+                },
+                "mechanism": "Ultra-high dose Vitamin B12 (methylcobalamin) - exact neuroprotective mechanism under study",
+                "benefit_classification": {
+                    "primary_effect": "SLOWS PROGRESSION (early stage only)",
+                    "does_it_reverse_damage": "NO",
+                    "does_it_restore_function": "NO",
+                    "what_it_actually_does": "Slowed functional decline by 43% in EARLY-STAGE patients (<12 months from onset) in Japanese trial."
+                },
+                "quantified_benefit": {
+                    "functional_decline_reduction": "43% slower ALSFRS-R decline",
+                    "who_benefits": "ONLY very early stage: <12 months from symptom onset",
+                    "evidence_quality": "Moderate (Japanese Phase 3 JETALS trial)"
+                },
+                "stage_specific_benefit": {
+                    "newly_diagnosed_under_12_months": {
+                        "benefit_level": "MODERATE-HIGH",
+                        "expected_outcome": "May slow decline by ~43%",
+                        "recommendation": "Worth considering IF available - currently Japan only"
+                    },
+                    "beyond_12_months": {
+                        "benefit_level": "NOT STUDIED",
+                        "expected_outcome": "No evidence of benefit beyond very early stage",
+                        "recommendation": "NOT APPLICABLE - Trial only included <12 month patients"
+                    }
+                },
+                "realistic_expectations": "This is a Japanese-only drug as of December 2025. It only showed benefit in patients within their FIRST YEAR of symptoms. Not available in India or most other countries.",
+                "india_info": {
+                    "available": false,
+                    "status": "Japan only. No international expansion announced."
+                },
+                "sources": [
+                    "https://www.eisai.com/news/2024/news202452.html"
+                ]
+            },
+            {
+                "id": 5,
+                "drug_name": "Nuedexta",
+                "brand_names": {
+                    "global": [
+                        "Nuedexta (Avanir/Otsuka)"
+                    ],
+                    "india": []
+                },
+                "approval": {
+                    "fda_year": "2010",
+                    "india_status": "Import or compounding available"
+                },
+                "mechanism": "Dextromethorphan + Quinidine - treats involuntary emotional expression (PBA)",
+                "benefit_classification": {
+                    "primary_effect": "SYMPTOM MANAGEMENT ONLY",
+                    "does_it_reverse_damage": "NO",
+                    "does_it_restore_function": "NO",
+                    "does_it_slow_progression": "NO",
+                    "what_it_actually_does": "Controls involuntary laughing/crying episodes (Pseudobulbar Affect). Does NOT affect disease progression at all."
+                },
+                "stage_specific_benefit": {
+                    "any_stage_with_pba": {
+                        "benefit_level": "HIGH for symptom control",
+                        "expected_outcome": "Reduces embarrassing emotional outbursts",
+                        "recommendation": "RECOMMENDED if experiencing PBA symptoms"
+                    }
+                },
+                "realistic_expectations": "This drug ONLY treats a specific symptom (uncontrollable laughing or crying). It has ZERO effect on ALS progression, muscle strength, or survival. It improves quality of life for those with PBA.",
+                "india_info": {
+                    "available": true,
+                    "status": "Can be imported or compounded from individual components"
+                },
+                "sources": [
+                    "https://www.accessdata.fda.gov/"
+                ]
+            }
+        ],
+        "withdrawn_treatments": [
+            {
+                "id": 99,
+                "drug_name": "Relyvrio (AMX0035)",
+                "status": "WITHDRAWN - DO NOT USE",
+                "withdrawal_date": "FDA withdrawal August 29, 2025",
+                "reason": "PHOENIX Phase 3 trial completely FAILED (p=0.667). No benefit over placebo.",
+                "warning": "Do NOT pay for or attempt to obtain this drug. It does not work."
+            }
+        ],
+        "clinical_trials": [
+            {
+                "id": 1,
+                "trial_name": "Masitinib (AB Science)",
+                "phase": "Phase 3 Confirmatory (AB23005)",
+                "mechanism": "Tyrosine kinase inhibitor - reduces neuroinflammation",
+                "benefit_classification": {
+                    "primary_effect": "SLOWS PROGRESSION",
+                    "does_it_reverse_damage": "NO",
+                    "does_it_restore_function": "NO",
+                    "what_it_promises": "27% reduction in disease progression, 12-month survival benefit in 'normal progressors'"
+                },
+                "stage_specific_applicability": {
+                    "best_for": "Early-to-mid stage, 'normal progressors' (not rapidly declining)",
+                    "not_for": "Rapidly progressive patients, advanced disease"
+                },
+                "timeline": "Results expected 2027-2028",
+                "india_potential": "HIGH - Oral pill, likely to have generics if approved",
+                "sources": [
+                    "https://www.globenewswire.com/"
+                ]
+            },
+            {
+                "id": 2,
+                "trial_name": "Pridopidine (PREVAiLS)",
+                "phase": "Phase 3 (cleared December 11, 2025)",
+                "mechanism": "Sigma-1 receptor agonist - targets speech and bulbar function",
+                "benefit_classification": {
+                    "primary_effect": "SLOWS SPECIFIC DECLINE (speech/bulbar)",
+                    "does_it_reverse_damage": "NO",
+                    "does_it_restore_function": "NO - but may preserve speech longer",
+                    "what_it_promises": "32% slower overall progression, 93% reduction in speech deterioration in early rapidly-progressive patients"
+                },
+                "stage_specific_applicability": {
+                    "best_for": "Early stage with rapid progression, especially bulbar-onset",
+                    "not_for": "Advanced disease, those already on ventilator"
+                },
+                "timeline": "Recruiting early 2026, Phase 3 ongoing",
+                "india_potential": "HIGH - Oral pill",
+                "sources": [
+                    "https://www.neurologylive.com/"
+                ]
+            },
+            {
+                "id": 3,
+                "trial_name": "CNM-Au8 (RESTORE-ALS)",
+                "phase": "Phase 3 planned, NDA Q1 2026",
+                "mechanism": "Gold nanocrystals - restores cellular energy production",
+                "benefit_classification": {
+                    "primary_effect": "SURVIVAL EXTENSION + NEUROPROTECTION",
+                    "does_it_reverse_damage": "UNCLEAR - may protect against further damage",
+                    "does_it_restore_function": "UNCLEAR",
+                    "what_it_promises": "73% reduction in mortality risk, 6.5-month survival benefit"
+                },
+                "stage_specific_applicability": {
+                    "best_for": "Early-to-mid stage",
+                    "not_for": "Very advanced disease"
+                },
+                "timeline": "NDA submission Q1 2026",
+                "india_potential": "MEDIUM - Novel nanomedicine, likely expensive initially",
+                "sources": [
+                    "https://www.neurologylive.com/"
+                ]
+            },
+            {
+                "id": 4,
+                "trial_name": "NurOwn/Debamestrocel (ENDURANCE)",
+                "phase": "Phase 3b (FDA cleared May 2025)",
+                "mechanism": "Stem cell therapy - delivers neurotrophic factors to support surviving neurons",
+                "benefit_classification": {
+                    "primary_effect": "NEUROPROTECTION + POSSIBLE STABILIZATION",
+                    "does_it_reverse_damage": "NO - cannot replace dead neurons",
+                    "does_it_restore_function": "POSSIBLY - some patients showed improvement in previous trials",
+                    "what_it_promises": "Aims to stabilize or slow decline by nourishing remaining neurons"
+                },
+                "stage_specific_applicability": {
+                    "best_for": "Early-to-mild disease only",
+                    "not_for": "Advanced disease - previous Phase 3 failed due to including too many advanced patients"
+                },
+                "critical_warning": "AVOID unregulated stem cell clinics in India claiming similar treatments. They are NOT the same as NurOwn.",
+                "timeline": "Recruiting 2025-2026",
+                "india_potential": "LOW - Requires travel to US trial sites",
+                "sources": [
+                    "https://www.brainstorm-cell.com/"
+                ]
+            },
+            {
+                "id": 5,
+                "trial_name": "ION363/Ulefnersen (FUSION)",
+                "phase": "Phase 1-3 (enrollment completed August 2025)",
+                "mechanism": "ASO targeting FUS mutation - stops production of toxic FUS protein",
+                "benefit_classification": {
+                    "primary_effect": "DISEASE MODIFICATION (FUS mutation only)",
+                    "does_it_reverse_damage": "POSSIBLY - exceptional improvement seen in some patients",
+                    "does_it_restore_function": "POSSIBLY - 2 of 12 patients showed remarkable improvement",
+                    "what_it_promises": "Halt or reverse progression in FUS-ALS (aggressive juvenile form)"
+                },
+                "stage_specific_applicability": {
+                    "best_for": "FUS mutation carriers at any stage",
+                    "requirement": "MUST have confirmed FUS mutation"
+                },
+                "genetic_testing_required": true,
+                "timeline": "Results expected 2026-2027",
+                "india_potential": "LOW initially - requires intrathecal injection, genetic confirmation",
+                "sources": [
+                    "https://clinicaltrials.gov/study/NCT04768972"
+                ]
+            },
+            {
+                "id": 6,
+                "trial_name": "QRL-201 (STMN2 Restoration)",
+                "phase": "Phase 1 Clinical (ANQUR, NCT05633459)",
+                "mechanism": "ASO that restores Stathmin-2 protein - addresses TDP-43 pathology in 97% of ALS",
+                "benefit_classification": {
+                    "primary_effect": "TARGETS ROOT CAUSE IN MOST ALS PATIENTS",
+                    "does_it_reverse_damage": "UNCLEAR - may support axon repair",
+                    "does_it_restore_function": "UNCLEAR - early research",
+                    "what_it_promises": "Addresses the fundamental problem in 97% of ALS cases (TDP-43 pathology)"
+                },
+                "stage_specific_applicability": {
+                    "potential_for": "ALL ALS patients (not just genetic subtypes)",
+                    "current_status": "Too early to know stage-specific benefits"
+                },
+                "timeline": "Phase 1 ongoing, Phase 2 anticipated 2025-2026",
+                "india_relevance": "EXTREMELY HIGH - Would apply to majority of ALS patients, not just genetic subtypes",
+                "sources": [
+                    "https://www.quralistherapeutics.com/"
+                ]
+            },
+            {
+                "id": 7,
+                "trial_name": "XS-228 (iPSC Motor Neurons)",
+                "phase": "Phase 1/2 (FDA IND January 2025)",
+                "mechanism": "Lab-grown motor neurons from stem cells to REPLACE dead neurons",
+                "benefit_classification": {
+                    "primary_effect": "NEURON REPLACEMENT (highly experimental)",
+                    "does_it_reverse_damage": "AIMS TO - by replacing dead motor neurons",
+                    "does_it_restore_function": "AIMS TO - if new neurons connect properly",
+                    "what_it_promises": "Only therapy attempting to REGENERATE lost motor neurons"
+                },
+                "stage_specific_applicability": {
+                    "potential_for": "Unknown - very early research",
+                    "realistic_timeline": "5-10+ years from widespread availability even if successful"
+                },
+                "timeline": "Trials starting 2025",
+                "india_potential": "MEDIUM - Allogeneic 'off-the-shelf' product, high future import potential unlike autologous therapies",
+                "sources": [
+                    "https://www.businesswire.com/"
+                ]
+            },
+            {
+                "id": 8,
+                "trial_name": "PrimeC (NeuroSense)",
+                "phase": "Phase 3 Preparation (Health Canada approval sought 2025/2026)",
+                "mechanism": "Ciprofloxacin (RNA processing/Iron chelation) + Celecoxib (COX-2 inhibition) - combination synergy",
+                "scientific_validity": "Moderate (Phase 2b PARADIGM showed 29-40% slowing)",
+                "benefit_classification": {
+                    "primary_effect": "SLOWS PROGRESSION via inflammation reduction",
+                    "does_it_reverse_damage": "NO",
+                    "does_it_restore_function": "NO",
+                    "what_it_promises": "29-40% reduction in progression in Phase 2b"
+                },
+                "stage_specific_applicability": {
+                    "best_for": "Early-to-mid stage",
+                    "not_for": "Very advanced disease"
+                },
+                "critical_warning": "DO NOT attempt DIY with generic Ciprofloxacin + Celecoxib. PrimeC uses proprietary extended-release formulation. Generic versions risk antibiotic resistance and GI toxicity WITHOUT neuroprotective benefit.",
+                "timeline": "Health Canada submission 2025, Potential approval mid-2026",
+                "india_potential": "MEDIUM - Wait for regulatory approval. Do NOT self-compound.",
+                "sources": [
+                    "https://www.alsnewstoday.com/",
+                    "https://www.neurosense-tx.com/"
+                ]
+            },
+            {
+                "id": 9,
+                "trial_name": "COYA 302 (Treg Enhancement)",
+                "phase": "Phase 2 (ALSTARS trial active)",
+                "mechanism": "Low-dose IL-2 + CTLA-4 Ig - enhances Regulatory T Cells (Tregs) which are dysfunctional in ALS",
+                "scientific_validity": "Moderate (Novel dual-mechanism immunomodulation)",
+                "benefit_classification": {
+                    "primary_effect": "IMMUNOMODULATION - addresses neuroinflammation",
+                    "does_it_reverse_damage": "NO",
+                    "does_it_restore_function": "NO",
+                    "what_it_promises": "Boosts Treg function to control unchecked inflammation"
+                },
+                "stage_specific_applicability": {
+                    "best_for": "Patients with inflammatory markers, early-to-mid stage",
+                    "not_for": "Very advanced disease"
+                },
+                "timeline": "Phase 2 ongoing 2025-2026",
+                "india_potential": "LOW - Early stage trial, no current access",
+                "sources": [
+                    "https://clinicaltrials.gov/"
+                ]
+            },
+            {
+                "id": 10,
+                "trial_name": "NUZ-001/Monepantel (HEALEY Platform)",
+                "phase": "HEALEY Platform Trial (Late 2025)",
+                "mechanism": "mTOR inhibitor - induces autophagy to clear toxic protein aggregates (TDP-43)",
+                "scientific_validity": "Moderate (Phase 1 showed safety and biomarker engagement)",
+                "benefit_classification": {
+                    "primary_effect": "CLEARS TOXIC PROTEINS via autophagy",
+                    "does_it_reverse_damage": "POSSIBLY - may clear existing aggregates",
+                    "does_it_restore_function": "UNCLEAR",
+                    "what_it_promises": "Activates cell 'garbage disposal' to clear TDP-43 aggregates"
+                },
+                "stage_specific_applicability": {
+                    "potential_for": "All ALS patients with TDP-43 pathology (97%)",
+                    "current_status": "Early research"
+                },
+                "timeline": "Entering HEALEY Platform Q4 2025",
+                "india_potential": "HIGH - Originally veterinary drug, may be accessible if repurposed",
+                "sources": [
+                    "https://www.biospace.com/"
+                ]
+            }
+        ],
+        "preclinical_research": [
+            {
+                "id": 1,
+                "research_area": "SARM1 Inhibitors (ASHA-624)",
+                "company": "Astrocyte Pharmaceuticals / Genentech",
+                "target": "Axon protection - prevents nerve self-destruction",
+                "concept": "SARM1 is a protein that triggers axon self-destruction when neurons are stressed. Blocking SARM1 may keep the connections between motor neurons and muscles intact much longer.",
+                "benefit_classification": {
+                    "primary_effect": "NEUROPROTECTION",
+                    "what_it_promises": "Prevents axons from self-destructing even when neuron body is stressed. May preserve muscle connections longer."
+                },
+                "stage_applicability": "Would benefit all stages by preserving remaining connections",
+                "timeline": "Phase 1 expected early 2025",
+                "india_relevance": "HIGH - Small molecule oral drug, ideal for generic manufacturing",
+                "who_benefits": "All ALS patients, but especially early-to-mid stage where more connections remain to protect",
+                "sources": [
+                    "https://targetals.org/",
+                    "https://pubmed.ncbi.nlm.nih.gov/36257284/"
+                ]
+            },
+            {
+                "id": 2,
+                "research_area": "CRISPR Gene Editing",
+                "company": "Multiple (Intellia, Editas, CRISPR Therapeutics)",
+                "target": "Correction of genetic mutations (C9orf72, SOD1)",
+                "concept": "Uses CRISPR-Cas9 molecular scissors to cut out or correct the faulty gene sequence causing ALS. Could potentially be a one-time permanent fix for genetic forms.",
+                "benefit_classification": {
+                    "primary_effect": "CURE POTENTIAL for genetic ALS",
+                    "what_it_promises": "Permanent correction of disease-causing gene - potential one-time cure"
+                },
+                "stage_applicability": "Would need to be applied early before extensive neuron death",
+                "timeline": "5-10 years to clinical trials",
+                "patient_population": "Only 5-10% of ALS (genetic forms)",
+                "who_benefits": "Patients with confirmed genetic mutations (SOD1, C9orf72, FUS). Genetic testing required to identify candidates.",
+                "sources": [
+                    "https://crisprtx.com/gene-editing/crispr-cas9",
+                    "https://targetals.org/novel-modalities-consortia-grants/"
+                ]
+            },
+            {
+                "id": 3,
+                "research_area": "Target ALS Global GWAS (India Included)",
+                "full_title": "First Large-Scale Genome-Wide Association Study of ALS in South Asian Populations",
+                "concept": "A massive genetic study to identify risk factors, protective genes, and disease modifiers specific to South Asian populations. Indian ALS patients often show younger age of onset and slower disease progression, suggesting unique genetic factors.",
+                "what_it_is": "Large-scale genetic research including 2,000 Indian ALS patients via NIMHANS and AIIMS",
+                "research_collaboration": {
+                    "lead_organization": "Target ALS Foundation (USA)",
+                    "india_sites": [
+                        {
+                            "institution": "NIMHANS (National Institute of Mental Health and Neurosciences), Bengaluru",
+                            "lead_researcher": "Dr. Atchayaram Nalini - Professor of Neurology, Neuromuscular Specialist",
+                            "contact": "neurology@nimhans.ac.in",
+                            "previous_work": "700+ Indian ALS patients already underwent whole exome sequencing"
+                        },
+                        {
+                            "institution": "AIIMS (All India Institute of Medical Sciences), New Delhi",
+                            "lead_researcher": "Dr. Vishnu Venugopalan"
+                        }
+                    ],
+                    "international_partner": {
+                        "institution": "University College London (UCL), UK",
+                        "lead_researcher": "Dr. Henry Houlden"
+                    }
+                },
+                "study_details": {
+                    "enrollment": "2,000 ALS patients + 2,000 matched controls",
+                    "duration": "5 years",
+                    "methods": [
+                        "Comprehensive genetic sequencing",
+                        "Extensive clinical phenotyping",
+                        "Longitudinal biofluid collection"
+                    ],
+                    "unique_observations": "Indian ALS patients often have younger onset and slower progression - may have unique founder variants or protective genes"
+                },
+                "benefit_classification": {
+                    "primary_effect": "RESEARCH & DISCOVERY",
+                    "what_it_promises": "May discover India-specific genetic factors, protective genes, or new therapeutic targets applicable to Indian population"
+                },
+                "stage_applicability": "For future - discoveries may lead to new treatments for all stages",
+                "timeline": "Study ongoing 2024-2029",
+                "india_relevance": "VERY HIGH - First large-scale ALS GWAS in South Asia",
+                "participation": {
+                    "eligibility": "Indian ALS patients diagnosed at NIMHANS or AIIMS",
+                    "cost": "FREE genetic testing for eligible patients",
+                    "how_to_participate": "Contact NIMHANS Neurology Department or AIIMS Neurology"
+                },
+                "who_benefits": [
+                    "All current patients: Free genetic testing",
+                    "Future patients: New treatments targeting India-specific genes",
+                    "Families: Genetic counseling and risk assessment",
+                    "Global ALS community: Diverse genetic data improves understanding"
+                ],
+                "previous_indian_genetic_findings": {
+                    "most_common_mutations": "SOD1 (most frequent), TARDBP, OPTN, NEK1",
+                    "rare_variants": "SETX, ALS2, DISC1, CNTN4, MATR3 identified in Indian cohort"
+                },
+                "sources": [
+                    "https://targetals.org/global-natural-history-study/",
+                    "https://www.nimhans.ac.in/neurology/",
+                    "https://mglnimhans.org/",
+                    "https://pubmed.ncbi.nlm.nih.gov/33964419/"
+                ]
+            }
+        ]
+    },
+    "key_research_hubs_india": [
+        {
+            "institution": "NIMHANS Bangalore",
+            "lead_researcher": "Dr. Nalini Atchayaram",
+            "services": [
+                "Genetic testing",
+                "Clinical trials",
+                "700+ Indian patients sequenced"
+            ]
+        },
+        {
+            "institution": "DNA Labs India",
+            "services": [
+                "36-gene ALS panel - Rs 20,000",
+                "SOD1, C9orf72, FUS testing"
+            ]
+        },
+        {
+            "service": "myTomorrows India Hub",
+            "description": "Free trial navigation, launched Delhi December 2024"
+        }
+    ],
+    "important_notes": {
+        "relyvrio_warning": "Relyvrio (AMX0035) WITHDRAWN August 2025 - Do NOT purchase or pursue this drug.",
+        "realistic_expectations": "Currently, NO approved drug can restore lost neurons, reverse muscle atrophy, or cure ALS. All approved drugs only SLOW decline to varying degrees. Except for Nuedexta (symptom only), none improve existing symptoms.",
+        "genetic_testing_critical": "With new targeted therapies (Tofersen-SOD1, Ulefnersen-FUS), genetic testing is now CRUCIAL. Available in India at Rs 20,000 (DNA Labs India).",
+        "stem_cell_warning": "AVOID unregulated stem cell clinics in India. They are NOT the same as clinical trial protocols and may be dangerous."
+    }
+}

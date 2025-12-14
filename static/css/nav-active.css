@@ -1,0 +1,23 @@
+/* Active Navigation Link Highlight */
+.nav-link-active {
+    color: var(--color-primary) !important;
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 1px;
+}
+
+.mobile-nav-link-active {
+    color: var(--color-primary) !important;
+    font-weight: 600;
+    background: var(--color-primary-light);
+}

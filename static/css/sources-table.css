@@ -1,0 +1,135 @@
+/* ============================================
+   MEDICAL SOURCES TABLE - PROFESSIONAL LAYOUT
+   ============================================ */
+
+.sources-section {
+    background: var(--color-surface);
+    padding: var(--space-16) 0;
+}
+
+.sources-table-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(186, 230, 253, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.sources-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.sources-table thead {
+    background: linear-gradient(to bottom, rgba(240, 249, 255, 0.8), rgba(224, 242, 254, 0.5));
+    border-bottom: 1px solid rgba(186, 230, 253, 0.4);
+}
+
+.sources-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.sources-table th:first-child {
+    width: 22%;
+}
+
+.sources-table th:nth-child(2) {
+    width: 53%;
+}
+
+.sources-table th:last-child {
+    width: 25%;
+}
+
+.sources-table tbody tr {
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    transition: background-color 0.2s ease;
+}
+
+.sources-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.sources-table tbody tr:hover {
+    background: rgba(240, 249, 255, 0.5);
+}
+
+.sources-table td {
+    padding: 1.125rem 1.5rem;
+    vertical-align: middle;
+    font-size: 0.9375rem;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.sources-table td strong {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.sources-table td a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: color 0.2s ease;
+}
+
+.sources-table td a:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.sources-table td a i {
+    font-size: 0.625rem;
+    opacity: 0.7;
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 768px) {
+
+    .sources-table,
+    .sources-table thead,
+    .sources-table tbody,
+    .sources-table tr,
+    .sources-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .sources-table thead {
+        display: none;
+    }
+
+    .sources-table tbody tr {
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid rgba(186, 230, 253, 0.3);
+        border-radius: 8px;
+    }
+
+    .sources-table td {
+        padding: 0.5rem 0;
+        border: none;
+    }
+
+    .sources-table td:first-child {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .sources-table td:last-child {
+        margin-top: 0.5rem;
+    }
+}

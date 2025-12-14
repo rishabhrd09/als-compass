@@ -1,0 +1,1647 @@
+{% extends "base.html" %}
+
+{% block title %}ALS Communication Technology - Eye Trackers, Head Tracking & AAC Devices{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Professional Tobii-inspired Design - Sober Colors */
+    :root {
+        --ct-primary: #1e293b;
+        --ct-secondary: #64748b;
+        --ct-accent: #0077b6;
+        --ct-bg: #ffffff;
+        --ct-bg-alt: #f8fafc;
+        --ct-border: #e2e8f0;
+        --ct-text: #334155;
+        --ct-muted: #94a3b8;
+    }
+
+    /* Hero Section - Similar to Research Updates */
+    .ct-hero {
+        text-align: center;
+        padding: 3.5rem 1.5rem;
+        background:
+            linear-gradient(135deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 64, 95, 0.72) 100%),
+            url('/static/images/comm_tech_header_bg.png') center/cover no-repeat;
+        color: white;
+        margin-bottom: 0;
+        border-bottom: 1px solid var(--ct-border);
+    }
+
+    .ct-hero h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        color: #ffffff !important;
+    }
+
+    .ct-hero p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.95) !important;
+        max-width: 750px;
+        margin: 0 auto;
+        line-height: 1.6;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Category Navigation - Tobii-style Cards */
+    .ct-nav {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.85rem;
+        max-width: 1000px;
+        margin: 0 auto 2rem;
+        padding: 1.5rem 1rem;
+        position: relative;
+        z-index: 10;
+        background: linear-gradient(180deg, rgba(30, 64, 95, 0.55) 0%, transparent 100%);
+    }
+
+    .ct-nav-card {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 10px;
+        padding: 0.9rem 0.6rem;
+        text-align: center;
+        text-decoration: none;
+        color: var(--ct-primary);
+        transition: all 0.2s ease;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .ct-nav-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-color: var(--ct-accent);
+    }
+
+    .ct-nav-card span {
+        font-weight: 600;
+        font-size: 0.82rem;
+        color: var(--ct-text);
+        letter-spacing: -0.01em;
+    }
+
+    /* Alert Box - Claude-style subtle (centered container) */
+    .ct-alert {
+        background: transparent;
+        max-width: 900px;
+        margin: 0 auto 1.5rem;
+        padding: 0;
+    }
+
+    .ct-alert-inner {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid var(--ct-accent);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .ct-alert h3 {
+        color: #1e293b;
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.01em;
+    }
+
+    .ct-alert p {
+        color: #475569;
+        font-size: 0.9rem;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .ct-alert a {
+        color: #0077b6;
+        font-weight: 500;
+    }
+
+    .ct-alert a:hover {
+        text-decoration: underline;
+    }
+
+    /* Section Styles - Tobii-inspired */
+    .ct-section {
+        max-width: 1100px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+    }
+
+    .ct-section-header {
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 2px solid var(--ct-border);
+        position: relative;
+    }
+
+    .ct-section-header::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background: var(--ct-accent);
+    }
+
+    .ct-section-header h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--ct-primary);
+        margin: 0;
+        letter-spacing: -0.01em;
+    }
+
+    .ct-section-desc {
+        color: var(--ct-secondary);
+        margin: 0 0 1.5rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Device Cards - Professional Tobii-style */
+    .ct-device-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.25rem;
+    }
+
+    .ct-device-card {
+        background: white;
+        border-radius: 12px;
+        border: 1px solid var(--ct-border);
+        overflow: hidden;
+        transition: all 0.25s ease;
+    }
+
+    .ct-device-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+
+    .ct-device-card.recommended {
+        border-color: var(--ct-accent);
+        box-shadow: 0 0 0 1px var(--ct-accent);
+    }
+
+    .ct-device-card.recommended .ct-device-header {
+        background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%);
+    }
+
+    .ct-device-card.recommended .ct-device-header * {
+        color: white !important;
+    }
+
+    .ct-device-header {
+        padding: 1.1rem 1.25rem;
+        background: var(--ct-bg-alt);
+        border-bottom: 1px solid var(--ct-border);
+    }
+
+    .ct-device-name {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin-bottom: 0.2rem;
+    }
+
+    .ct-device-category {
+        font-size: 0.8rem;
+        color: var(--ct-secondary);
+    }
+
+    .ct-device-body {
+        padding: 1.25rem;
+    }
+
+    .ct-device-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--ct-border);
+    }
+
+    .ct-price-usd {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+    }
+
+    .ct-price-inr {
+        font-size: 0.85rem;
+        color: var(--ct-secondary);
+    }
+
+    /* Simple rating dots */
+    .ct-rating {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 0.75rem;
+    }
+
+    .ct-rating-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #cbd5e1;
+    }
+
+    .ct-rating-dot.filled {
+        background: #3b82f6;
+    }
+
+    .ct-device-verdict {
+        background: var(--ct-bg-alt);
+        padding: 0.75rem;
+        font-size: 0.85rem;
+        color: var(--ct-text);
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        line-height: 1.5;
+    }
+
+    .ct-device-notes {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .ct-device-notes li {
+        font-size: 0.85rem;
+        color: var(--ct-secondary);
+        padding: 0.3rem 0;
+        padding-left: 1rem;
+        position: relative;
+    }
+
+    .ct-device-notes li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: var(--ct-muted);
+    }
+
+    /* Stage Badge */
+    .ct-stage-badge {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        background: #f1f5f9;
+        color: var(--ct-text);
+    }
+
+    /* India Badge */
+    .ct-india-badge {
+        display: block;
+        padding: 0.5rem 0;
+        font-size: 0.8rem;
+        color: var(--ct-secondary);
+        margin-top: 0.75rem;
+        border-top: 1px solid var(--ct-border);
+        padding-top: 0.75rem;
+    }
+
+    /* Setup Guide Button */
+    .ct-setup-btn {
+        display: inline-block;
+        margin-top: 0.75rem;
+        padding: 0.5rem 1rem;
+        background: var(--ct-primary);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+        text-decoration: none;
+    }
+
+    .ct-setup-btn:hover {
+        background: #0f172a;
+    }
+
+    /* Software Cards */
+    .ct-software-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
+    }
+
+    .ct-software-card {
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 10px;
+        padding: 1.25rem;
+    }
+
+    .ct-software-card.recommended {
+        border-color: #3b82f6;
+    }
+
+    .ct-software-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin-bottom: 0.25rem;
+    }
+
+    .ct-software-platform {
+        font-size: 0.8rem;
+        color: var(--ct-secondary);
+        margin-bottom: 0.75rem;
+    }
+
+    .ct-free-badge {
+        display: inline-block;
+        background: #16a34a;
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+        margin-left: 0.5rem;
+        text-transform: uppercase;
+    }
+
+    /* Budget Setup - Subtle Design */
+    .ct-budget-section {
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 2rem auto;
+        max-width: 900px;
+    }
+
+    .ct-budget-header {
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .ct-budget-header h2 {
+        color: var(--ct-primary);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .ct-budget-header p {
+        color: var(--ct-secondary);
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .ct-budget-comparison {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.25rem;
+        padding: 1rem;
+        background: var(--ct-bg-alt);
+        border-radius: 8px;
+    }
+
+    .ct-budget-price {
+        text-align: center;
+    }
+
+    .ct-budget-price .amount {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #16a34a;
+    }
+
+    .ct-budget-price .label {
+        font-size: 0.8rem;
+        color: var(--ct-secondary);
+    }
+
+    .ct-budget-price.expensive .amount {
+        color: var(--ct-muted);
+        text-decoration: line-through;
+    }
+
+    .ct-budget-items {
+        background: var(--ct-bg-alt);
+        border-radius: 8px;
+        padding: 1rem;
+    }
+
+    .ct-budget-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--ct-border);
+        font-size: 0.9rem;
+    }
+
+    .ct-budget-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Recommendations */
+    .ct-recommendations {
+        max-width: 900px;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+    }
+
+    .ct-recommendation-card {
+        display: flex;
+        gap: 1rem;
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 0.75rem;
+        align-items: flex-start;
+    }
+
+    .ct-recommendation-number {
+        background: var(--ct-primary);
+        color: white;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+
+    .ct-recommendation-content h4 {
+        margin: 0 0 0.25rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+    }
+
+    .ct-recommendation-content p {
+        margin: 0;
+        color: var(--ct-secondary);
+        font-size: 0.85rem;
+    }
+
+    /* BCI Note */
+    .ct-bci-note {
+        background: var(--ct-bg-alt);
+        border: 1px solid var(--ct-border);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .ct-bci-note h4 {
+        color: var(--ct-primary);
+        margin: 0 0 0.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    .ct-bci-note p {
+        color: var(--ct-secondary);
+        margin: 0;
+        font-size: 0.85rem;
+    }
+
+    /* Modal Styles */
+    .ct-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .ct-modal-overlay.active {
+        display: flex;
+    }
+
+    .ct-modal {
+        background: white;
+        border-radius: 12px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .ct-modal-header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--ct-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        background: white;
+    }
+
+    .ct-modal-header h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 0;
+    }
+
+    .ct-modal-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--ct-secondary);
+        padding: 0;
+        line-height: 1;
+    }
+
+    .ct-modal-body {
+        padding: 1.5rem;
+    }
+
+    .ct-setup-step {
+        margin-bottom: 1.5rem;
+    }
+
+    .ct-setup-step-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .ct-setup-step-num {
+        background: var(--ct-primary);
+        color: white;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+
+    .ct-setup-step-title {
+        font-weight: 600;
+        color: var(--ct-primary);
+        font-size: 0.95rem;
+    }
+
+    .ct-setup-step-content {
+        margin-left: 2.25rem;
+        font-size: 0.9rem;
+        color: var(--ct-text);
+        line-height: 1.6;
+    }
+
+    .ct-setup-step-content ul {
+        margin: 0.5rem 0;
+        padding-left: 1.25rem;
+    }
+
+    .ct-setup-step-content li {
+        margin-bottom: 0.35rem;
+    }
+
+    .ct-setup-step-content a {
+        color: #2563eb;
+        word-break: break-all;
+    }
+
+    .ct-setup-step-content code {
+        background: var(--ct-bg-alt);
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+    }
+
+    .ct-requirements-box {
+        background: var(--ct-bg-alt);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ct-requirements-box h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .ct-requirements-box ul {
+        margin: 0;
+        padding-left: 1.25rem;
+        font-size: 0.85rem;
+        color: var(--ct-text);
+    }
+
+    .ct-download-box {
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .ct-download-box h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #0369a1;
+        margin: 0 0 0.5rem;
+    }
+
+    .ct-download-box a {
+        display: block;
+        color: #0284c7;
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+        word-break: break-all;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .ct-hero h1 {
+            font-size: 1.5rem;
+        }
+
+        .ct-nav {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .ct-nav-card {
+            padding: 0.75rem 0.5rem;
+        }
+
+        .ct-nav-card span {
+            font-size: 0.75rem;
+        }
+
+        .ct-device-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .ct-modal {
+            max-height: 90vh;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="ct-hero">
+    <div class="container">
+        <h1>ALS Communication Technology</h1>
+        <p>Comprehensive guide to eye trackers, head tracking, BCIs, and assistive software.
+            Based on real feedback from PALS and caregivers.</p>
+    </div>
+</section>
+
+<!-- Category Navigation -->
+<nav class="ct-nav">
+    <a href="#eye-tracking" class="ct-nav-card"><span>Eye Tracking</span></a>
+    <a href="#head-tracking" class="ct-nav-card"><span>Head Tracking</span></a>
+    <a href="#free-software" class="ct-nav-card"><span>Free Software</span></a>
+    <a href="#mobile-apps" class="ct-nav-card"><span>Mobile Apps</span></a>
+    <a href="#low-tech" class="ct-nav-card"><span>Low-Tech</span></a>
+    <a href="#bci" class="ct-nav-card"><span>BCIs</span></a>
+</nav>
+
+<!-- Voice Banking Alert -->
+<div class="ct-alert">
+    <div class="ct-alert-inner">
+        <h3>Voice Bank Now</h3>
+        <p>Create a synthetic clone of your voice before speech declines. Requires ~30 minutes of recording.
+            <strong>Free:</strong> <a href="https://www.modeltalker.org/" target="_blank">ModelTalker</a> |
+            <strong>Paid:</strong> ElevenLabs (Indian accents available)
+        </p>
+    </div>
+</div>
+
+<!-- Key Recommendations -->
+<section class="ct-recommendations">
+    <div class="ct-section-header">
+        <h2>Community Recommendations</h2>
+    </div>
+
+    <div class="ct-recommendation-card">
+        <div class="ct-recommendation-number">1</div>
+        <div class="ct-recommendation-content">
+            <h4>Start with Tobii Eye Tracker 5 + OptiKey</h4>
+            <p>Budget-friendly. Cost: ~₹25,000-40,000 for tracker + FREE software. Note: Does NOT work with Windows Eye
+                Control.</p>
+        </div>
+    </div>
+
+    <div class="ct-recommendation-card">
+        <div class="ct-recommendation-number">2</div>
+        <div class="ct-recommendation-content">
+            <h4>Always have Alphabet Board as backup</h4>
+            <p>"Most effective" - used for 6 years. Works when all tech fails. Cost: ₹200-500.</p>
+        </div>
+    </div>
+
+    <div class="ct-recommendation-card">
+        <div class="ct-recommendation-number">3</div>
+        <div class="ct-recommendation-content">
+            <h4>Look to Speak + Bluetooth Speaker</h4>
+            <p>Free Android app for calling attention when caregiver is in another room.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Budget Setup -->
+<section class="ct-budget-section">
+    <div class="ct-budget-header">
+        <h2>Budget Setup for India</h2>
+        <p>Complete communication setup</p>
+    </div>
+
+    <div class="ct-budget-comparison">
+        <div class="ct-budget-price">
+            <div class="amount">₹50,000</div>
+            <div class="label">Recommended Setup</div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--ct-muted);">vs</div>
+        <div class="ct-budget-price expensive">
+            <div class="amount">₹10+ Lakh</div>
+            <div class="label">Medical-Grade</div>
+        </div>
+    </div>
+
+    <div class="ct-budget-items">
+        <div class="ct-budget-item">
+            <span>Tobii Eye Tracker 5</span>
+            <span>₹25,000-40,000</span>
+        </div>
+        <div class="ct-budget-item">
+            <span>OptiKey Software</span>
+            <span style="color: #16a34a; font-weight: 600;">FREE</span>
+        </div>
+        <div class="ct-budget-item">
+            <span>Windows Laptop (i3+, 8GB RAM)</span>
+            <span>₹30,000-50,000</span>
+        </div>
+        <div class="ct-budget-item">
+            <span>Alphabet Board (backup)</span>
+            <span>₹200-500</span>
+        </div>
+    </div>
+</section>
+
+<!-- Eye Tracking Section -->
+<section id="eye-tracking" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Eye Tracking Devices</h2>
+    </div>
+    <p class="ct-section-desc">Eye gaze technology for ALS communication when hand/voice function is lost.</p>
+
+    <div class="ct-device-grid" id="eyeTrackingDevices"></div>
+</section>
+
+<!-- Head Tracking Section -->
+<section id="head-tracking" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Head Tracking Devices</h2>
+    </div>
+    <p class="ct-section-desc">For PALS who retain head movement.</p>
+
+    <div class="ct-device-grid" id="headTrackingDevices"></div>
+</section>
+
+<!-- Free Software Section -->
+<section id="free-software" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Free & Open Source Software</h2>
+    </div>
+    <p class="ct-section-desc">Free tools to reduce costs for ALS communication.</p>
+
+    <div class="ct-software-grid" id="freeSoftware"></div>
+</section>
+
+<!-- Mobile Apps Section -->
+<section id="mobile-apps" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Mobile Apps</h2>
+    </div>
+    <p class="ct-section-desc">Smartphone and tablet apps for communication.</p>
+
+    <div class="ct-software-grid" id="mobileApps"></div>
+</section>
+
+<!-- Low-Tech Solutions -->
+<section id="low-tech" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Low-Tech Solutions</h2>
+    </div>
+    <p class="ct-section-desc">Simple, reliable, and highly valued. Never underestimate these.</p>
+
+    <div class="ct-device-grid" id="lowTechSolutions"></div>
+
+    <!-- Spatial Alphabet System -->
+    <div
+        style="margin-top: 2rem; background: white; border: 1px solid var(--ct-border); border-radius: 10px; overflow: hidden;">
+        <div style="padding: 1.25rem; background: var(--ct-bg-alt); border-bottom: 1px solid var(--ct-border);">
+            <h3 style="margin: 0; font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">Spatial Alphabet
+                System</h3>
+            <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--ct-secondary);">No-tech communication using
+                room gaze zones - for bedridden PALS</p>
+        </div>
+        <div style="padding: 1.5rem;">
+            <!-- Two images side by side -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                <div style="text-align: center;">
+                    <img src="/static/images/spatial_room_diagram.png" alt="Spatial Room Zones"
+                        style="width: 100%; max-width: 280px; border-radius: 8px; border: 1px solid var(--ct-border);">
+                    <p style="font-size: 0.75rem; color: var(--ct-secondary); margin: 0.5rem 0 0;">Room Gaze Zones</p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="/static/images/alphabet_whiteboard.png" alt="Physical Alphabet Board"
+                        style="width: 100%; max-width: 280px; border-radius: 8px; border: 1px solid var(--ct-border);">
+                    <p style="font-size: 0.75rem; color: var(--ct-secondary); margin: 0.5rem 0 0;">Physical Alphabet
+                        Board</p>
+                </div>
+            </div>
+
+            <h4 style="margin: 0 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">How It Works
+            </h4>
+            <p style="font-size: 0.9rem; color: var(--ct-text); line-height: 1.6; margin-bottom: 1rem;">
+                From the PALS' bed, the room is divided into gaze zones. Where the PALS looks indicates which
+                letter group they want to select.
+            </p>
+
+            <div style="background: var(--ct-bg-alt); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                <table style="width: 100%; font-size: 0.85rem; border-collapse: collapse;">
+                    <tr style="border-bottom: 1px solid var(--ct-border);">
+                        <td style="padding: 0.5rem 0; font-weight: 600; color: var(--ct-primary);">Top Left Corner</td>
+                        <td style="padding: 0.5rem 0; color: var(--ct-text);">Group 1: A B C D E F</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--ct-border);">
+                        <td style="padding: 0.5rem 0; font-weight: 600; color: var(--ct-primary);">Left Wall</td>
+                        <td style="padding: 0.5rem 0; color: var(--ct-text);">Group 2: G H I J</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--ct-border);">
+                        <td style="padding: 0.5rem 0; font-weight: 600; color: var(--ct-primary);">Front Wall</td>
+                        <td style="padding: 0.5rem 0; color: var(--ct-text);">Group 3: K L M N O P</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--ct-border);">
+                        <td style="padding: 0.5rem 0; font-weight: 600; color: var(--ct-primary);">Top Right Corner</td>
+                        <td style="padding: 0.5rem 0; color: var(--ct-text);">Group 4: Q R S T</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--ct-border);">
+                        <td style="padding: 0.5rem 0; font-weight: 600; color: var(--ct-primary);">Right Wall</td>
+                        <td style="padding: 0.5rem 0; color: var(--ct-text);">Group 5: U V W X Y Z</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem 0; font-weight: 600; color: var(--ct-primary);">Ceiling / Fan</td>
+                        <td style="padding: 0.5rem 0; color: var(--ct-text);">Numbers: 1 2 3 4 5 6 7 8 9</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h4 style="margin: 1rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">Usage Tips
+            </h4>
+            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem; color: var(--ct-text); line-height: 1.7;">
+                <li><strong>Word Length First:</strong> PALS looks at ceiling/fan → caregiver asks "How many
+                    letters?" (1-9) → then start spelling</li>
+                <li><strong>Common Words First:</strong> Always try common daily words before using spatial alphabet
+                </li>
+                <li><strong>Practice:</strong> Once adapted, eliminates need for physical alphabet board</li>
+                <li><strong>Backup:</strong> Works when all technology fails - no batteries, no software</li>
+            </ul>
+
+            <div
+                style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;">
+                <p style="margin: 0; font-size: 0.85rem; color: #0369a1;">
+                    <strong>WhatsApp-friendly explanation:</strong> "Imagine dividing the room into 6 zones. When
+                    PALS looks at top-left corner = letters A-F. Left wall = G-J. Front wall = K-P. Top-right = Q-T.
+                    Right wall = U-Z. Looking at ceiling fan = numbers. Before spelling, PALS looks at fan to
+                    indicate word length, then we start guessing!"
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BCI Section -->
+<section id="bci" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Brain-Computer Interfaces (BCIs)</h2>
+    </div>
+
+    <div class="ct-bci-note">
+        <h4>Note: BCIs are not commercially available</h4>
+        <p>Currently only accessible via clinical trials in USA, Australia. No trials in India.
+            Commercial availability is 2-5+ years away.</p>
+    </div>
+
+    <div class="ct-device-grid" id="bciDevices"></div>
+</section>
+
+<!-- Setup Guide Modals -->
+<div class="ct-modal-overlay" id="modal-tobii4c">
+    <div class="ct-modal" style="max-width: 650px;">
+        <div class="ct-modal-header">
+            <h3>Tobii Eye Tracker 4C Setup Guide</h3>
+            <button class="ct-modal-close" onclick="closeModal('tobii4c')">&times;</button>
+        </div>
+        <div class="ct-modal-body">
+            <div class="ct-requirements-box">
+                <h4>System Requirements</h4>
+                <ul>
+                    <li>Windows 10 (64-bit) — Note: Core Software not compatible with Windows 11</li>
+                    <li>Processor: Intel i3 or higher</li>
+                    <li>RAM: 8 GB or more</li>
+                    <li>USB 3.0 port</li>
+                </ul>
+            </div>
+
+            <div class="ct-setup-step">
+                <div class="ct-setup-step-header">
+                    <div class="ct-setup-step-num">1</div>
+                    <div class="ct-setup-step-title">Mount & Connect Hardware</div>
+                </div>
+                <div class="ct-setup-step-content">
+                    <ul>
+                        <li>Stick magnetic strip to bottom center of monitor</li>
+                        <li>Attach Tobii 4C to the magnetic strip</li>
+                        <li>Plug into USB 3.0 port</li>
+                        <li>Red lights indicate powered on</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ct-setup-step">
+                <div class="ct-setup-step-header">
+                    <div class="ct-setup-step-num">2</div>
+                    <div class="ct-setup-step-title">Download Software</div>
+                </div>
+                <div class="ct-setup-step-content">
+                    <ul>
+                        <li>Go to: <a href="https://gaming.tobii.com/getstarted/"
+                                target="_blank">gaming.tobii.com/getstarted</a></li>
+                        <li>Select "Tobii Eye Tracker 4C"</li>
+                        <li>Select "Tobii Eye Tracking Core Software"</li>
+                        <li>Download <strong>Tobii Eye Tracking Core Software v2.16.8</strong></li>
+                    </ul>
+                    <img src="/static/images/tobii4c_download.png" alt="Tobii download page"
+                        style="width: 100%; max-width: 550px; border-radius: 6px; margin-top: 0.75rem; border: 1px solid var(--ct-border); cursor: pointer;"
+                        onclick="window.open(this.src, '_blank')">
+                </div>
+            </div>
+
+            <div class="ct-setup-step">
+                <div class="ct-setup-step-header">
+                    <div class="ct-setup-step-num">3</div>
+                    <div class="ct-setup-step-title">Install & Restart</div>
+                </div>
+                <div class="ct-setup-step-content">
+                    <ul>
+                        <li>Run the downloaded installer</li>
+                        <li>Complete installation</li>
+                        <li>Restart your computer</li>
+                    </ul>
+                    <img src="/static/images/tobii4c_install_success.png" alt="Installation successful"
+                        style="width: 100%; max-width: 400px; border-radius: 6px; margin-top: 0.75rem; border: 1px solid var(--ct-border); cursor: pointer;"
+                        onclick="window.open(this.src, '_blank')">
+                </div>
+            </div>
+
+            <div class="ct-setup-step">
+                <div class="ct-setup-step-header">
+                    <div class="ct-setup-step-num">4</div>
+                    <div class="ct-setup-step-title">Display Setup & Calibration</div>
+                </div>
+                <div class="ct-setup-step-content">
+                    <ul>
+                        <li>Open Tobii Eye Tracking from Start Menu or system tray</li>
+                        <li>Go to Display Setup → align tracker edges on screen</li>
+                        <li>Run Calibration → follow the dots with your eyes</li>
+                        <li>Save your profile</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ct-setup-step">
+                <div class="ct-setup-step-header">
+                    <div class="ct-setup-step-num">5</div>
+                    <div class="ct-setup-step-title">Enable Windows Eye Control</div>
+                </div>
+                <div class="ct-setup-step-content">
+                    <ul>
+                        <li>Go to: Settings → Ease of Access → Eye Control</li>
+                        <li>Toggle "Use eye control" to ON</li>
+                        <li>Eye Control toolbar will appear on screen</li>
+                    </ul>
+                    <img src="/static/images/tobii4c_eyecontrol.png" alt="Windows Eye Control settings"
+                        style="width: 100%; max-width: 550px; border-radius: 6px; margin-top: 0.75rem; border: 1px solid var(--ct-border); cursor: pointer;"
+                        onclick="window.open(this.src, '_blank')">
+                </div>
+            </div>
+
+            <div class="ct-setup-step">
+                <div class="ct-setup-step-header">
+                    <div class="ct-setup-step-num">6</div>
+                    <div class="ct-setup-step-title">Verify Installation</div>
+                </div>
+                <div class="ct-setup-step-content">
+                    <ul>
+                        <li>Check Apps & Features → search "Tobii" → should show v2.16.8</li>
+                        <li>Press <code>Win + R</code>, type <code>services.msc</code></li>
+                        <li>Find "Tobii Service" → should show "Running"</li>
+                    </ul>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem;">
+                        <img src="/static/images/tobii4c_apps.png" alt="Tobii in Apps"
+                            style="width: 100%; max-width: 450px; border-radius: 6px; border: 1px solid var(--ct-border); cursor: pointer;"
+                            onclick="window.open(this.src, '_blank')">
+                        <img src="/static/images/tobii4c_services.png" alt="Tobii Service running"
+                            style="width: 100%; max-width: 450px; border-radius: 6px; border: 1px solid var(--ct-border); cursor: pointer;"
+                            onclick="window.open(this.src, '_blank')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="ct-download-box">
+                <h4>Download Links</h4>
+                <a href="https://gaming.tobii.com/getstarted/" target="_blank">Official Tobii Download Page</a>
+                <a href="https://help.tobii.com/" target="_blank">Tobii Help Center</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ct-modal-overlay" id="modal-tobii5">
+    <div class="ct-modal" style="max-width: 650px;">
+        <div class="ct-modal-header">
+            <h3>Tobii Eye Tracker 5 Setup Guide</h3>
+            <button class="ct-modal-close" onclick="closeModal('tobii5')">&times;</button>
+        </div>
+        <div class="ct-modal-body">
+            <!-- Important Notice -->
+            <div class="ct-alert" style="margin-bottom: 1.5rem;">
+                <p style="margin: 0; font-size: 0.85rem;">
+                    <strong>Note:</strong> Tobii Eye Tracker 5 is designed for gaming. For accessibility use,
+                    we recommend <strong>Path A (OptiKey)</strong>. Path B uses a discontinued beta driver.
+                </p>
+            </div>
+
+            <!-- Requirements -->
+            <div class="ct-requirements-box">
+                <h4>System Requirements</h4>
+                <ul>
+                    <li>Windows 10 or 11 (64-bit, version 1709+)</li>
+                    <li>Processor: Intel i3 or higher</li>
+                    <li>RAM: 8 GB or more</li>
+                    <li>USB 3.0 port (USB-A)</li>
+                </ul>
+            </div>
+
+            <!-- PATH A: OptiKey -->
+            <div
+                style="border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem; margin: 1.5rem 0; background: var(--ct-bg-alt);">
+                <h4 style="margin: 0 0 1rem; color: var(--ct-primary);">Path A: OptiKey Setup (Recommended)</h4>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">1</div>
+                        <div class="ct-setup-step-title">Mount & Connect Hardware</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Use Flex Mount at bottom center of monitor</li>
+                            <li>Plug into USB 3.0 port</li>
+                            <li>Keep plugged in for all steps</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">2</div>
+                        <div class="ct-setup-step-title">Install Tobii Experience</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Go to: <a href="https://gaming.tobii.com/getstarted/"
+                                    target="_blank">gaming.tobii.com/getstarted</a></li>
+                            <li>Download "Tobii Experience for Eye Tracker 5"</li>
+                            <li>Run installer as Administrator</li>
+                            <li>Wait 5-10 min for app to install from Microsoft Store</li>
+                            <li>Or install from: <a href="https://apps.microsoft.com/detail/9NWRCZ6K7PBW"
+                                    target="_blank">Microsoft Store</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">3</div>
+                        <div class="ct-setup-step-title">Configure & Calibrate</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Launch Tobii Experience</li>
+                            <li>Create profile → Display Setup → Calibration</li>
+                            <li>Enable auto-start in Windows Settings</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">4</div>
+                        <div class="ct-setup-step-title">Verify Services</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Press <code>Win + R</code>, type <code>services.msc</code></li>
+                            <li>Tobii Eye Tracker Generic Service → Running</li>
+                            <li>Tobii Runtime Service → Running</li>
+                            <li>Tobii Service → Running</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">5</div>
+                        <div class="ct-setup-step-title">Install OptiKey Pro</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Download: <a
+                                    href="https://github.com/OptiKey/OptiKey/releases/download/v3.2.5/OptiKeySetup-3.2.5-Pro.exe"
+                                    target="_blank">OptiKey Pro Classic v3.2.5</a></li>
+                            <li>Run installer as Administrator</li>
+                            <li>Open OptiKey → Menu → Settings</li>
+                            <li>Pointing & Selecting → Source → "Tobii EyeX"</li>
+                            <li>Menu → Management → Calibration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PATH B: Windows Eye Control -->
+            <div style="border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem; margin: 1.5rem 0;">
+                <h4 style="margin: 0 0 0.5rem; color: var(--ct-primary);">Path B: Windows Eye Control (Experimental)
+                </h4>
+                <p style="margin: 0 0 1rem; font-size: 0.8rem; color: var(--ct-secondary);">
+                    Uses discontinued beta driver (Feb 2024). No official support. May have issues.
+                </p>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">1</div>
+                        <div class="ct-setup-step-title">Check Requirements</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Windows 10 version 1709+ (Fall Creators Update)</li>
+                            <li>Check: <code>Win + R</code> → type <code>winver</code></li>
+                            <li>Install all Windows Updates first</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">2</div>
+                        <div class="ct-setup-step-title">Clean Uninstall ALL Tobii Software</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Uninstall from Apps & Features:
+                                <ul style="margin-top: 0.25rem;">
+                                    <li>Tobii Experience</li>
+                                    <li>Tobii Experience Software for Windows</li>
+                                    <li>All Tobii Device Drivers</li>
+                                </ul>
+                            </li>
+                            <li>Use <a href="https://www.revouninstaller.com/" target="_blank">Revo Uninstaller</a>
+                                (Advanced scan mode)</li>
+                            <li>Check Device Manager → Software components (remove any Tobii)</li>
+                            <li>Restart computer</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">3</div>
+                        <div class="ct-setup-step-title">Install Beta Driver</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Download: <a
+                                    href="https://drive.google.com/u/1/uc?id=1hHW8f5ka0MdJjBU_A0_8JfUJ-XW71AtE&export=download"
+                                    target="_blank">Beta Driver (Community link)</a></li>
+                            <li>Run installer as Administrator</li>
+                            <li>Installs "Tobii Core Software" (older version)</li>
+                            <li>Restart computer</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--ct-secondary);">Note: NOT an
+                            official Tobii link - use at own risk.</p>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">4</div>
+                        <div class="ct-setup-step-title">Verify Installation</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Apps & Features → "Tobii Eye Tracking Core Software"</li>
+                            <li>Device Manager → Human Interface Devices:
+                                <ul style="margin-top: 0.25rem;">
+                                    <li>Tobii Device</li>
+                                    <li>Tobii Eye Tracker HID (v1.1.532.0+)</li>
+                                </ul>
+                            </li>
+                            <li>If missing, reinstall beta driver</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">5</div>
+                        <div class="ct-setup-step-title">Configure Tobii Core Software</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Launch <strong>Tobii Core Software</strong> (NOT Tobii Experience)</li>
+                            <li>Create user profile</li>
+                            <li>Complete Display Setup</li>
+                            <li>Run Calibration</li>
+                            <li>Test eye tracking works in Tobii Core</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">6</div>
+                        <div class="ct-setup-step-title">Enable Windows Eye Control</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Settings → Ease of Access → Eye Control → ON</li>
+                            <li><strong>RESTART computer</strong> (critical!)</li>
+                            <li>After restart, Eye Control should recognize tracker</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">7</div>
+                        <div class="ct-setup-step-title">Calibrate Eye Control</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <ul>
+                            <li>Launch Eye Control from Settings</li>
+                            <li>Complete Eye Control calibration (separate from Tobii)</li>
+                            <li>Test basic functionality</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin: 0.75rem 0 0; font-size: 0.8rem; color: var(--ct-secondary);">
+                    <strong>Known Issues:</strong> May crash on startup, compatibility issues with newer Windows builds,
+                    poor accuracy, gaming features won't work. If problems occur → Use Path A (OptiKey) instead.
+                </p>
+            </div>
+
+            <!-- Comparison -->
+            <div style="margin: 1.5rem 0;">
+                <h4 style="margin: 0 0 0.75rem; font-size: 0.95rem; color: var(--ct-primary);">Comparison</h4>
+                <table style="width: 100%; font-size: 0.8rem; border-collapse: collapse;">
+                    <tr style="background: var(--ct-bg-alt);">
+                        <th style="padding: 0.5rem; text-align: left; border: 1px solid var(--ct-border);">Feature</th>
+                        <th style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">Path A</th>
+                        <th style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">Path B</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem; border: 1px solid var(--ct-border);">Official Support</td>
+                        <td style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">Yes</td>
+                        <td style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">No</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem; border: 1px solid var(--ct-border);">Stability</td>
+                        <td style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">Stable</td>
+                        <td style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">Variable
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem; border: 1px solid var(--ct-border);">Setup</td>
+                        <td style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">Easy</td>
+                        <td style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">Complex
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem; border: 1px solid var(--ct-border);">Recommendation</td>
+                        <td
+                            style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border); font-weight: 600;">
+                            Use This</td>
+                        <td style="padding: 0.5rem; text-align: center; border: 1px solid var(--ct-border);">If needed
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Download Links -->
+            <div class="ct-download-box">
+                <h4>Download Links</h4>
+                <a href="https://gaming.tobii.com/getstarted/" target="_blank">Tobii Experience (Official)</a>
+                <a href="https://apps.microsoft.com/detail/9NWRCZ6K7PBW" target="_blank">Tobii Experience (Microsoft
+                    Store)</a>
+                <a href="https://github.com/OptiKey/OptiKey/releases/download/v3.2.5/OptiKeySetup-3.2.5-Pro.exe"
+                    target="_blank">OptiKey Pro Classic v3.2.5</a>
+                <a href="http://optikey.org/help/versions" target="_blank">OptiKey All Versions</a>
+                <a href="https://drive.google.com/u/1/uc?id=1hHW8f5ka0MdJjBU_A0_8JfUJ-XW71AtE&export=download"
+                    target="_blank">Beta Driver (Community)</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let techData = null;
+
+    async function loadTechData() {
+        try {
+            const response = await fetch('/api/communication-tech');
+            techData = await response.json();
+
+            renderEyeTracking();
+            renderHeadTracking();
+            renderFreeSoftware();
+            renderMobileApps();
+            renderLowTech();
+            renderBCI();
+        } catch (error) {
+            console.error('Error loading tech data:', error);
+        }
+    }
+
+    function renderRatingDots(rating) {
+        let dots = '';
+        for (let i = 1; i <= 5; i++) {
+            dots += `<div class="ct-rating-dot ${i <= rating ? 'filled' : ''}"></div>`;
+        }
+        return dots;
+    }
+
+    function renderStageBadge(stage) {
+        return `<span class="ct-stage-badge">${stage}</span>`;
+    }
+
+    function openModal(device) {
+        document.getElementById('modal-' + device).classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(device) {
+        document.getElementById('modal-' + device).classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close modal on overlay click
+    document.querySelectorAll('.ct-modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    function renderEyeTracking() {
+        const container = document.getElementById('eyeTrackingDevices');
+        const devices = techData.categories.eye_tracking.devices;
+
+        container.innerHTML = devices.map(device => `
+            <div class="ct-device-card ${device.recommended ? 'recommended' : ''}">
+                <div class="ct-device-header">
+                    <div class="ct-device-name">${device.name}</div>
+                    <div class="ct-device-category">${device.category}</div>
+                </div>
+                <div class="ct-device-body">
+                    <div class="ct-device-price">
+                        <div>
+                            <div class="ct-price-usd">$${device.price_usd.toLocaleString()}</div>
+                            <div class="ct-price-inr">${device.price_inr}</div>
+                        </div>
+                        ${renderStageBadge(device.stage)}
+                    </div>
+                    
+                    <div class="ct-rating">
+                        ${renderRatingDots(device.community_rating)}
+                    </div>
+                    
+                    <div class="ct-device-verdict">
+                        ${device.community_verdict}
+                    </div>
+                    
+                    <ul class="ct-device-notes">
+                        ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
+                    </ul>
+                    
+                    ${device.name.includes('4C') ? '<button class="ct-setup-btn" onclick="openModal(\'tobii4c\')">Setup Guide</button>' : ''}
+                    ${device.name.includes('Tracker 5') ? '<button class="ct-setup-btn" onclick="openModal(\'tobii5\')">Setup Guide</button>' : ''}
+                    
+                    <div class="ct-india-badge">
+                        India: ${device.india_access}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderHeadTracking() {
+        const container = document.getElementById('headTrackingDevices');
+        const devices = techData.categories.head_tracking.devices;
+
+        container.innerHTML = devices.map(device => `
+            <div class="ct-device-card ${device.recommended ? 'recommended' : ''}">
+                <div class="ct-device-header">
+                    <div class="ct-device-name">${device.name}</div>
+                    <div class="ct-device-category">${device.category}</div>
+                </div>
+                <div class="ct-device-body">
+                    <div class="ct-device-price">
+                        <div>
+                            <div class="ct-price-usd">$${device.price_usd.toLocaleString()}</div>
+                            <div class="ct-price-inr">${device.price_inr}</div>
+                        </div>
+                        ${renderStageBadge(device.stage)}
+                    </div>
+                    
+                    <div class="ct-rating">
+                        ${renderRatingDots(device.community_rating)}
+                    </div>
+                    
+                    <div class="ct-device-verdict">
+                        ${device.community_verdict}
+                    </div>
+                    
+                    <ul class="ct-device-notes">
+                        ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
+                    </ul>
+                    
+                    <div class="ct-india-badge">
+                        India: ${device.india_access}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderFreeSoftware() {
+        const container = document.getElementById('freeSoftware');
+        const software = techData.categories.free_software.software;
+
+        container.innerHTML = software.map(sw => `
+            <div class="ct-software-card ${sw.recommended ? 'recommended' : ''}">
+                <div class="ct-software-name">
+                    ${sw.name}
+                    <span class="ct-free-badge">Free</span>
+                </div>
+                <div class="ct-software-platform">${sw.platform}</div>
+                
+                <div class="ct-rating">
+                    ${renderRatingDots(sw.community_rating)}
+                </div>
+                
+                <div class="ct-device-verdict">
+                    ${sw.community_verdict}
+                </div>
+                
+                <ul class="ct-device-notes">
+                    ${sw.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
+                </ul>
+                
+                ${sw.download ? `<a href="${sw.download}" target="_blank" class="ct-setup-btn" style="margin-top: 0.75rem;">Download</a>` : ''}
+            </div>
+        `).join('');
+    }
+
+    function renderMobileApps() {
+        const container = document.getElementById('mobileApps');
+        const apps = techData.categories.mobile_apps.apps;
+
+        container.innerHTML = apps.map(app => `
+            <div class="ct-software-card">
+                <div class="ct-software-name">
+                    ${app.name}
+                    ${app.price === 'FREE' || app.price.includes('FREE') ? '<span class="ct-free-badge">Free</span>' : ''}
+                </div>
+                <div class="ct-software-platform">${app.platform}</div>
+                
+                <div class="ct-rating">
+                    ${renderRatingDots(app.community_rating)}
+                </div>
+                
+                <div class="ct-device-verdict">
+                    ${app.community_verdict}
+                </div>
+                
+                <ul class="ct-device-notes">
+                    ${app.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
+                </ul>
+            </div>
+        `).join('');
+    }
+
+    function renderLowTech() {
+        const container = document.getElementById('lowTechSolutions');
+        const tools = techData.categories.low_tech.tools;
+
+        container.innerHTML = tools.map(tool => `
+            <div class="ct-device-card ${tool.recommended ? 'recommended' : ''}">
+                <div class="ct-device-header">
+                    <div class="ct-device-name">${tool.name}</div>
+                </div>
+                <div class="ct-device-body">
+                    <div class="ct-device-price">
+                        <div class="ct-price-inr" style="font-size: 1.1rem; font-weight: 600;">${tool.price}</div>
+                    </div>
+                    
+                    <div class="ct-rating">
+                        ${renderRatingDots(tool.community_rating)}
+                    </div>
+                    
+                    <div class="ct-device-verdict">
+                        ${tool.community_verdict}
+                    </div>
+                    
+                    <p style="font-size: 0.85rem; color: var(--ct-secondary); margin: 0;">
+                        ${tool.description || ''}
+                    </p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderBCI() {
+        const container = document.getElementById('bciDevices');
+        const devices = techData.categories.bci.devices;
+
+        container.innerHTML = devices.map(device => `
+            <div class="ct-device-card">
+                <div class="ct-device-header">
+                    <div class="ct-device-name">${device.name}</div>
+                    <div class="ct-device-category">${device.company}</div>
+                </div>
+                <div class="ct-device-body">
+                    <div style="margin-bottom: 1rem;">
+                        <span class="ct-stage-badge">${device.status}</span>
+                    </div>
+                    
+                    <div class="ct-device-verdict">
+                        ${device.invasiveness}
+                    </div>
+                    
+                    <ul class="ct-device-notes">
+                        ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
+                    </ul>
+                    
+                    <div class="ct-india-badge" style="color: #991b1b;">
+                        ${device.india_access}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', loadTechData);
+</script>
+{% endblock %}

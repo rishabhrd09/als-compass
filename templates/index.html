@@ -8,17 +8,29 @@
     <div class="container">
         <div class="hero-content">
             <h1 class="hero-title">Your Guide Through the <span class="highlight">ALS Journey</span></h1>
-            <p class="hero-tagline">Every Journey Matters</p>
+            <!-- <p class="hero-tagline">Every Journey Matters</p> -->
             <!-- <p class="hero-subtitle">
                 AI-powered support, evidence-based guidance, and compassionate resources for ALS caregivers worldwide.
             </p> -->
 
-            <div class="hero-actions">
-                <a href="/ai-assistant" class="btn btn-primary btn-lg">
-                    <i class="fas fa-robot"></i> Ask AI Assistant
+
+
+            <div class="nav-card" style="background: #f1f5f9; border: 1px solid #e2e8f0;">
+                <a href="/understanding-als" class="nav-item" style="color: #334155;">
+                    <i class="fas fa-book-open" style="color: #334155;"></i>
+                    <span>Understand ALS</span>
                 </a>
-                <a href="/understanding-als" class="btn btn-outline btn-lg">
-                    <i class="fas fa-book-medical"></i> Learn About ALS
+                <a href="#tools" class="nav-item" style="color: #334155;">
+                    <i class="fas fa-compass" style="color: #334155;"></i>
+                    <span>Explore</span>
+                </a>
+                <a href="#medical-sources" class="nav-item" style="color: #334155;">
+                    <i class="fas fa-link" style="color: #334155;"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="/ai-assistant" class="nav-item nav-item-primary" style="color: #334155;">
+                    <i class="fas fa-comments" style="color: #334155;"></i>
+                    <span>Ask AI Assistant</span>
                 </a>
             </div>
         </div>
@@ -29,7 +41,7 @@
                 <div class="research-card-icon">
                     <i class="fas fa-flask"></i>
                 </div>
-                <h3 class="research-card-title">Latest ALS Research Updates</h3>
+                <h3 class="research-card-title">ALS Research Updates</h3>
             </div>
 
             <div class="research-treatments" id="researchList">
@@ -37,6 +49,25 @@
                 <div class="treatment-item" style="text-align: center; color: #666;">
                     Loading research updates...
                 </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                <a href="/research-updates" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: #475569;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 0.9rem;
+                    padding: 0.5rem 0;
+                    transition: all 0.3s ease;
+                    border-bottom: 1.5px solid transparent;
+                " onmouseover="this.style.color='#3b82f6'; this.style.borderBottomColor='#3b82f6';"
+                    onmouseout="this.style.color='#475569'; this.style.borderBottomColor='transparent';">
+                    <span>Explore All Research Updates</span>
+                    <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -46,25 +77,76 @@
     // Load research updates dynamically
     async function loadResearchUpdates() {
         try {
-            const response = await fetch('/api/research-updates');
-            const research = await response.json();
+            const response = await fetch('/api/research-categorized');
+            const data = await response.json();
             const container = document.getElementById('researchList');
 
-            if (research.length === 0) {
+            if (!data || !data.categories) {
                 container.innerHTML = '<div class="treatment-item" style="text-align: center; color: #666;">No research updates available</div>';
                 return;
             }
 
-            container.innerHTML = research.map(item => `
-                <div class="treatment-item">
-                    <div class="treatment-name">${item.name}</div>
-                    <div class="treatment-company">${item.company}</div>
-                    <div class="treatment-details">
+            // Show exactly 3 MOST RELIABLE highlights:
+            // 1. ONE approved treatment (actionable NOW)
+            // 2. ONE trial near approval (coming SOON)
+            // 3. ONE breakthrough (future HOPE)
+            const highlights = [];
+
+            // 1. APPROVED: Tofersen (newest gene therapy - actionable for SOD1 PALS)
+            if (data.categories.approved_treatments && data.categories.approved_treatments.length > 2) {
+                const tofersen = data.categories.approved_treatments[2];
+                highlights.push({
+                    category: 'Available Now',
+                    name: tofersen.drug_name,
+                    company: 'FDA 2023 • Gene Therapy',
+                    description: 'First disease-modifying therapy for SOD1-ALS (~2% of cases)',
+                    badge: 'success'
+                });
+            }
+
+            // 2. TRIAL: CNM-Au8 (closest to approval - NDA Q1 2026)
+            if (data.categories.clinical_trials && data.categories.clinical_trials.length > 2) {
+                const trial = data.categories.clinical_trials[2]; // CNM-Au8
+                highlights.push({
+                    category: 'NDA 2026',
+                    name: trial.trial_name,
+                    company: 'Phase 3 Planned',
+                    description: '73% mortality risk reduction, 6.5-month survival benefit in trials',
+                    badge: 'warning'
+                });
+            }
+
+            // 3. BREAKTHROUGH: SARM1 Inhibitors (Phase 1 2025 - universal applicability)
+            if (data.categories.preclinical_research && data.categories.preclinical_research.length > 0) {
+                const research = data.categories.preclinical_research[0];
+                highlights.push({
+                    category: 'Phase 1 2025',
+                    name: research.research_area,
+                    company: 'Breakthrough Research',
+                    description: 'Prevents nerve self-destruction - may benefit ALL PALS',
+                    badge: 'info'
+                });
+            }
+
+            container.innerHTML = highlights.map(item => `
+                <div class="treatment-item" style="padding: 0.75rem; margin-bottom: 0.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                        <div class="treatment-name" style="font-size: 0.95rem;">${item.name}</div>
+                        <span style="
+                            padding: 0.15rem 0.5rem;
+                            border-radius: 9999px;
+                            font-size: 0.65rem;
+                            font-weight: 600;
+                            white-space: nowrap;
+                            ${item.badge === 'success' ? 'background: #e0f2fe; color: #0369a1;' : ''}
+                            ${item.badge === 'warning' ? 'background: #f1f5f9; color: #475569;' : ''}
+                            ${item.badge === 'info' ? 'background: #f0f9ff; color: #0077b6;' : ''}
+                        ">${item.category}</span>
+                    </div>
+                    <div class="treatment-company" style="font-size: 0.75rem; margin-bottom: 0.15rem;">${item.company}</div>
+                    <div class="treatment-details" style="font-size: 0.8rem; line-height: 1.3;">
                         ${item.description}
                     </div>
-                    <a href="${item.link}" target="_blank" class="treatment-link">
-                        <i class="fas fa-external-link-alt"></i> ${item.link_name}
-                    </a>
                 </div>
             `).join('');
         } catch (error) {
@@ -80,20 +162,16 @@
 
 
 <!-- Cards Section -->
-<section class="cards-section">
+<section class="cards-section" id="tools">
     <div class="container">
         <div class="cards-grid">
             <a href="/home-icu-guide" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-bed-pulse"></i>
-                </div>
                 <h3 class="card-title">Home ICU Setup Guide</h3>
                 <p class="card-description">
                     Comprehensive step-by-step instructions for creating a safe, comfortable, and functional home care
                     environment with medical-grade standards.
                 </p>
                 <span class="card-link">
-                    Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -102,16 +180,12 @@
             </a>
 
             <a href="/daily-schedule" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
                 <h3 class="card-title">Daily Care Schedule</h3>
                 <p class="card-description">
                     Structured daily routines covering physical care, nutrition management, medication schedules, and
                     emotional support strategies.
                 </p>
                 <span class="card-link">
-                    Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -119,18 +193,13 @@
                 </span>
             </a>
 
-            <a href="/communication" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-comments"></i>
-                </div>
-                <h3 class="card-title">Communication Tools</h3>
+            <a href="/communication-technology" class="card">
+                <h3 class="card-title">Communication Technology</h3>
                 <p class="card-description">
-                    Essential techniques, technologies, and adaptive aids to maintain meaningful connections and
-                    effective
-                    communication throughout the journey.
+                    Eye trackers, head trackers, apps, and assistive devices to help PALS communicate.
+                    Includes setup guides for Tobii Eye Trackers and community recommendations.
                 </p>
                 <span class="card-link">
-                    Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -139,33 +208,12 @@
             </a>
 
             <a href="/experiences" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-users-cog"></i>
-                </div>
                 <h3 class="card-title">Shared Experiences</h3>
                 <p class="card-description">
                     Real stories of resilience, challenges overcome, and wisdom gained from families navigating ALS
                     together — you are not alone.
                 </p>
                 <span class="card-link">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                </span>
-            </a>
-
-            <a href="/emergency-protocol" class="card">
-                <div class="card-icon">
-                    <i class="fas fa-first-aid"></i>
-                </div>
-                <h3 class="card-title">Emergency Protocols</h3>
-                <p class="card-description">
-                    Immediate action guides for respiratory distress and other critical situations. Be prepared.
-                </p>
-                <span class="card-link">
-                    Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -180,103 +228,70 @@
 
 
 <!-- Trusted Sources -->
-<section class="section" style="background: var(--color-surface);">
+<section class="section sources-section" id="medical-sources">
     <div class="container">
-        <h2 class="section-title">Medical Sources</h2>
-
-
-        <div class="sources-grid">
-
-            <div class="source-card">
-                <div class="source-header">
-                    <div class="source-icon">
-                        <i class="fas fa-globe-asia"></i>
-                    </div>
-                    <h4>ALS Care & Support India</h4>
-                </div>
-                <p class="text-sm">Comprehensive support network for ALS patients and caregivers in India.</p>
-
-                <a href="https://alslifemanagement.weebly.com/" target="_blank" class="source-link">
-                    <i class="fas fa-external-link-alt"></i> ALS India
-                </a>
-            </div>
-
-            <div class="source-card">
-                <div class="source-header">
-                    <div class="source-icon">
-                        <i class="fas fa-hospital"></i>
-                    </div>
-                    <h4>MND Association UK</h4>
-                </div>
-                <p class="text-sm">Leading UK charity for everyone affected by motor neuron disease.</p>
-
-                <a href="https://www.mndassociation.org/" target="_blank" class="source-link">
-                    <i class="fas fa-external-link-alt"></i> MND UK
-                </a>
-            </div>
-
-            <div class="source-card">
-                <div class="source-header">
-                    <div class="source-icon">
-                        <i class="fas fa-clinic-medical"></i>
-                    </div>
-                    <h4>Mayo Clinic ALS Center</h4>
-                </div>
-                <p class="text-sm">World-renowned medical center for ALS research and treatment.</p>
-
-                <a href="https://www.mayoclinic.org/departments-centers/als-mnd/sections/overview/ovc-20247139"
-                    target="_blank" class="source-link">
-                    <i class="fas fa-external-link-alt"></i> Mayo Clinic
-                </a>
-            </div>
-
-            <div class="source-card">
-                <div class="source-header">
-                    <div class="source-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h4>Johns Hopkins Medicine</h4>
-                </div>
-                <p class="text-sm">Leading academic medical center with comprehensive ALS care programs.</p>
-
-                <a href="https://www.hopkinsmedicine.org/neurology-neurosurgery/centers_clinics/als" target="_blank"
-                    class="source-link">
-                    <i class="fas fa-external-link-alt"></i> Johns Hopkins
-                </a>
-            </div>
-
-            <div class="source-card">
-                <div class="source-header">
-                    <div class="source-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h4>ALS Association USA</h4>
-                </div>
-                <p class="text-sm">Largest nonprofit organization fighting ALS on every front in the US.</p>
-
-                <a href="https://www.als.org/" target="_blank" class="source-link">
-                    <i class="fas fa-external-link-alt"></i> ALS Assoc.
-                </a>
-            </div>
-
-            <div class="source-card">
-                <div class="source-header">
-                    <div class="source-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <h4>ClinicalTrials.gov</h4>
-                </div>
-                <p class="text-sm">Registry and results database of publicly and privately supported clinical studies.
-                </p>
-
-                <a href="https://clinicaltrials.gov/" target="_blank" class="source-link">
-                    <i class="fas fa-external-link-alt"></i> ClinicalTrials.gov
-                </a>
-            </div>
-
+        <h2 class="section-title" style="margin-bottom: var(--space-6);">Trusted Resources</h2>
+        <p class="section-subtitle" style="margin-bottom: var(--space-8); color: #64748b;">Reliable external resources
+            for PALS, caregivers, and families navigating ALS.</p>
+        <div class="sources-table-wrapper">
+            <table class="sources-table">
+                <thead>
+                    <tr>
+                        <th>Organization</th>
+                        <th>Description</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ALS Care & Support India</strong></td>
+                        <td>Comprehensive support network for PALS and caregivers in India.</td>
+                        <td><a href="https://alslifemanagement.weebly.com/" target="_blank"
+                                rel="noopener">alslifemanagement.weebly.com <i class="fas fa-external-link-alt"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>ALS/MND Associations</strong></td>
+                        <td>International alliance of ALS/MND associations.</td>
+                        <td><a href="https://www.als-mnd.org/" target="_blank" rel="noopener">als-mnd.org <i
+                                    class="fas fa-external-link-alt"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>MND Association UK</strong></td>
+                        <td>Leading UK charity for motor neuron disease care and research.</td>
+                        <td><a href="https://www.mndassociation.org/" target="_blank" rel="noopener">mndassociation.org
+                                <i class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mayo Clinic ALS Center</strong></td>
+                        <td>World-renowned medical center for ALS research and treatment.</td>
+                        <td><a href="https://www.mayoclinic.org/departments-centers/als-mnd/sections/overview/ovc-20247139"
+                                target="_blank" rel="noopener">mayoclinic.org <i
+                                    class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Johns Hopkins Medicine</strong></td>
+                        <td>Leading academic medical center with comprehensive ALS programs.</td>
+                        <td><a href="https://www.hopkinsmedicine.org/neurology-neurosurgery/centers_clinics/als"
+                                target="_blank" rel="noopener">hopkinsmedicine.org <i
+                                    class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ALS Association USA</strong></td>
+                        <td>Largest nonprofit fighting ALS on every front in the United States.</td>
+                        <td><a href="https://www.als.org/" target="_blank" rel="noopener">als.org <i
+                                    class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ClinicalTrials.gov</strong></td>
+                        <td>Registry and results database of publicly and privately supported clinical studies.</td>
+                        <td><a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">clinicaltrials.gov <i
+                                    class="fas fa-external-link-alt"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-
     </div>
 </section>
 

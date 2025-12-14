@@ -1,0 +1,993 @@
+{% extends "base.html" %}
+
+{% block title %}ALS Research Updates - Latest Treatments & Clinical Trials{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --research-primary: #0f172a;
+        --research-secondary: #475569;
+        --research-accent: #0077b6;
+        --research-bg: #ffffff;
+        --research-bg-alt: #f8fafc;
+        --research-border: #e2e8f0;
+        --research-success: #0077b6;
+        --research-warning: #64748b;
+        --research-danger: #475569;
+    }
+
+    .research-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    /* Header Section */
+    .research-header {
+        text-align: center;
+        padding: 3.5rem 1rem;
+        background:
+            linear-gradient(135deg, rgba(15, 23, 42, 0.72) 0%, rgba(30, 64, 95, 0.65) 100%),
+            url('/static/images/research_header_bg.png') center/cover no-repeat;
+        border-bottom: 1px solid var(--research-border);
+        margin-bottom: 3rem;
+        position: relative;
+    }
+
+    .research-header h1 {
+        color: #ffffff !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .research-header p {
+        color: rgba(255, 255, 255, 0.92) !important;
+    }
+
+    .research-badge {
+        background: rgba(255, 255, 255, 0.95) !important;
+    }
+
+    .research-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 9999px;
+        margin-bottom: 1rem;
+    }
+
+    .research-badge i {
+        color: var(--research-accent);
+        font-size: 0.875rem;
+    }
+
+    .research-badge span {
+        color: #1e40af;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .research-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--research-primary);
+        margin: 0 0 1rem 0;
+        letter-spacing: -0.025em;
+    }
+
+    .research-header p {
+        font-size: 1.125rem;
+        color: var(--research-secondary);
+        max-width: 800px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+    }
+
+    .last-updated {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--research-secondary);
+        padding: 0.5rem 1rem;
+        background: var(--research-bg);
+        border: 1px solid var(--research-border);
+        border-radius: 8px;
+    }
+
+    /* Category Tabs */
+    .category-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        border-bottom: 2px solid var(--research-border);
+    }
+
+    .category-tab {
+        padding: 1rem 1.5rem;
+        background: transparent;
+        border: none;
+        border-bottom: 3px solid transparent;
+        color: var(--research-secondary);
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .category-tab:hover {
+        background: var(--research-bg-alt);
+        color: var(--research-primary);
+    }
+
+    .category-tab.active {
+        color: var(--research-accent);
+        border-bottom-color: var(--research-accent);
+    }
+
+    /* Category Sections */
+    .category-section {
+        display: none;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .category-section.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .category-intro {
+        background: var(--research-bg-alt);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--research-accent);
+        margin-bottom: 2rem;
+    }
+
+    .category-intro h2 {
+        font-size: 1.5rem;
+        color: var(--research-primary);
+        margin: 0 0 0.5rem 0;
+    }
+
+    .category-intro p {
+        color: var(--research-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Research Cards */
+    .research-items {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .research-item {
+        background: var(--research-bg);
+        border: 1px solid var(--research-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.2s;
+    }
+
+    .research-item:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .research-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .research-item-title {
+        flex: 1;
+    }
+
+    .research-item-title h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--research-primary);
+        margin: 0 0 0.25rem 0;
+    }
+
+    .research-item-subtitle {
+        color: var(--research-secondary);
+        font-size: 0.925rem;
+    }
+
+    /* Badges */
+    .stage-badges {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .stage-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .stage-badge.early {
+        background: #e0f2fe;
+        color: #0369a1;
+    }
+
+    .stage-badge.mid {
+        background: #f1f5f9;
+        color: #475569;
+    }
+
+    .stage-badge.late {
+        background: #e2e8f0;
+        color: #334155;
+    }
+
+    .stage-badge.genetic {
+        background: #f0f9ff;
+        color: #0077b6;
+    }
+
+    .stage-badge.all {
+        background: #f8fafc;
+        color: #1e293b;
+    }
+
+    /* Info Grid */
+    .research-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .info-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--research-secondary);
+        letter-spacing: 0.05em;
+    }
+
+    .info-value {
+        color: var(--research-primary);
+        font-size: 0.925rem;
+        line-height: 1.5;
+    }
+
+    /* India Info Box */
+    .india-info {
+        background: linear-gradient(135deg, #f1f5f9 0%, #f8fafc 100%);
+        border: 1px solid #cbd5e1;
+        border-left: 3px solid #0077b6;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .india-info-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .india-info-header svg {
+        width: 20px;
+        height: 20px;
+        color: #0077b6;
+    }
+
+    .india-info-header span {
+        font-weight: 700;
+        color: #334155;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+    }
+
+    .india-info-content {
+        color: #475569;
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    .india-info-content ul {
+        margin: 0.5rem 0 0 1.25rem;
+        padding: 0;
+    }
+
+    .india-info-content li {
+        margin-bottom: 0.25rem;
+    }
+
+    /* Action Links */
+    .research-actions {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .research-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--research-bg);
+        border: 1px solid var(--research-border);
+        border-radius: 6px;
+        color: var(--research-accent);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+    .research-link:hover {
+        background: var(--research-accent);
+        color: white;
+        border-color: var(--research-accent);
+    }
+
+    .research-link i {
+        font-size: 0.75rem;
+    }
+
+    /* Warning/Note Boxes */
+    .warning-box,
+    .note-box {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    .warning-box {
+        background: #fef2f2;
+        border-left: 4px solid var(--research-danger);
+        color: #7f1d1d;
+    }
+
+    .note-box {
+        background: #eff6ff;
+        border-left: 4px solid var(--research-accent);
+        color: #1e3a8a;
+    }
+
+    .warning-box strong,
+    .note-box strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    /* Research Hubs Section */
+    .research-hubs {
+        background: var(--research-bg-alt);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 3rem;
+    }
+
+    .research-hubs h2 {
+        font-size: 1.5rem;
+        color: var(--research-primary);
+        margin: 0 0 1.5rem 0;
+    }
+
+    .hub-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+
+    .hub-card {
+        background: white;
+        padding: 1.25rem;
+        border-radius: 8px;
+        border: 1px solid var(--research-border);
+    }
+
+    .hub-card h3 {
+        font-size: 1.125rem;
+        color: var(--research-primary);
+        margin: 0 0 0.5rem 0;
+    }
+
+    .hub-card p {
+        color: var(--research-secondary);
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .research-header h1 {
+            font-size: 1.875rem;
+        }
+
+        .category-tabs {
+            flex-direction: column;
+            border-bottom: none;
+        }
+
+        .category-tab {
+            border-bottom: 1px solid var(--research-border);
+            border-left: 3px solid transparent;
+        }
+
+        .category-tab.active {
+            border-left-color: var(--research-accent);
+            border-bottom-color: var(--research-border);
+        }
+
+        .research-info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="research-header">
+    <h1>ALS Research Updates</h1>
+    <p>Comprehensive information on approved treatments, ongoing clinical trials, and emerging
+        research for Amyotrophic Lateral Sclerosis (ALS/MND) with specific guidance for Indian pals</p>
+    <div class="last-updated">
+        <i class="fas fa-calendar-check"></i>
+        <span id="lastUpdated">Last Updated: December 14, 2024</span>
+    </div>
+</div>
+
+<div class="research-container">
+    <!-- Category Navigation -->
+    <div class="category-tabs">
+        <button class="category-tab active" onclick="showCategory('approved')">
+            <i class="fas fa-check-circle"></i> Approved Treatments (5)
+        </button>
+        <button class="category-tab" onclick="showCategory('trials')">
+            <i class="fas fa-vial"></i> Clinical Trials (10)
+        </button>
+        <button class="category-tab" onclick="showCategory('preclinical')">
+            <i class="fas fa-microscope"></i> Pre-Clinical Research (3)
+        </button>
+    </div>
+
+    <!-- Category: Approved Treatments -->
+    <div id="category-approved" class="category-section active">
+        <div class="category-intro">
+            <h2>Currently Approved & Available Treatments</h2>
+            <p>These medications are currently approved by regulatory authorities (FDA, EMA, PMDA) and available to ALS
+                PALS. Information includes India-specific availability, cost, and accessibility.</p>
+        </div>
+        <div class="research-items" id="approvedTreatmentsList"></div>
+    </div>
+
+    <!-- Category: Clinical Trials -->
+    <div id="category-trials" class="category-section">
+        <div class="category-intro">
+            <h2>Ongoing Clinical Trials (Phase 2-3)</h2>
+            <p>Active clinical trials that may become available in coming years. Includes trial locations, timeline,
+                expected benefits, and information on PALS access/participation from India.</p>
+        </div>
+        <div class="research-items" id="clinicalTrialsList"></div>
+    </div>
+
+    <!-- Category: Pre-Clinical Research -->
+    <div id="category-preclinical" class="category-section">
+        <div class="category-intro">
+            <h2>Pre-Clinical & Early Development Research</h2>
+            <p>Cutting-edge research approaches in laboratory and early development stages. These may take 5-10+ years
+                to reach PALS but represent the future of ALS treatment.</p>
+        </div>
+        <div class="research-items" id="preclinicalResearchList"></div>
+    </div>
+
+    <!-- Research Hubs Section -->
+    <div class="research-hubs">
+        <h2><i class="fas fa-hospital"></i> Key Research Hubs for PALS in India</h2>
+        <div class="hub-grid" id="researchHubsList"></div>
+    </div>
+
+    <!-- Important Notes -->
+    <div class="research-hubs" style="margin-top: 2rem;">
+        <h2><i class="fas fa-exclamation-triangle"></i> Important Information</h2>
+        <div id="importantNotesList"></div>
+    </div>
+</div>
+
+<script>
+    let researchData = null;
+
+    // Load research data
+    async function loadResearchData() {
+        try {
+            const response = await fetch('/api/research-categorized');
+            researchData = await response.json();
+
+            // Update last updated date
+            document.getElementById('lastUpdated').textContent =
+                `Last Updated: ${new Date(researchData.last_updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+
+            // Render all sections
+            renderApprovedTreatments();
+            renderClinicalTrials();
+            renderPreclinicalResearch();
+            renderResearchHubs();
+            renderImportantNotes();
+        } catch (error) {
+            console.error('Error loading research data:', error);
+        }
+    }
+
+    // Show category
+    function showCategory(category) {
+        // Update tabs
+        document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+        event.target.closest('.category-tab').classList.add('active');
+
+        // Update sections
+        document.querySelectorAll('.category-section').forEach(section => section.classList.remove('active'));
+        document.getElementById(`category-${category}`).classList.add('active');
+    }
+
+    // Render Approved Treatments
+    function renderApprovedTreatments() {
+        const container = document.getElementById('approvedTreatmentsList');
+        const treatments = researchData.categories.approved_treatments;
+
+        container.innerHTML = treatments.map(treatment => `
+            <div class="research-item">
+                <div class="research-item-header">
+                    <div class="research-item-title">
+                        <h3>${treatment.drug_name}</h3>
+                        <div class="research-item-subtitle">
+                            ${Array.isArray(treatment.brand_names.global) ? treatment.brand_names.global.join(', ') : treatment.brand_names.global}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BENEFIT CLASSIFICATION - NEW -->
+                ${treatment.benefit_classification ? `
+                    <div class="note-box" style="margin: 1rem 0; border-left-color: #10b981;">
+                        <strong style="color: #047857;"><i class="fas fa-heartbeat"></i> What This Drug Does</strong>
+                        <p><strong>Primary Effect:</strong> ${treatment.benefit_classification.primary_effect}</p>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0;">
+                            <li><strong>Reverses Damage?</strong> ${treatment.benefit_classification.does_it_reverse_damage}</li>
+                            <li><strong>Restores Function?</strong> ${treatment.benefit_classification.does_it_restore_function}</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem; font-style: italic;">${treatment.benefit_classification.what_it_actually_does}</p>
+                    </div>
+                ` : ''}
+
+                <!-- QUANTIFIED BENEFIT -->
+                ${treatment.quantified_benefit ? `
+                    <div class="research-info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Proven Benefit</div>
+                            <div class="info-value">
+                                ${treatment.quantified_benefit.survival_extension ? `Survival: ${treatment.quantified_benefit.survival_extension}` : ''}
+                                ${treatment.quantified_benefit.functional_decline_reduction ? `Slows decline by: ${treatment.quantified_benefit.functional_decline_reduction}` : ''}
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Who Benefits</div>
+                            <div class="info-value">${treatment.quantified_benefit.who_benefits || 'All PALS'}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Evidence Quality</div>
+                            <div class="info-value">${treatment.quantified_benefit.evidence_quality || 'See sources'}</div>
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- STAGE-SPECIFIC BENEFIT - NEW -->
+                ${treatment.stage_specific_benefit ? `
+                    <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                        <strong style="color: #0369a1;"><i class="fas fa-user-md"></i> Stage-Specific Recommendations</strong>
+                        <div style="display: grid; gap: 0.75rem; margin-top: 0.75rem;">
+                            ${treatment.stage_specific_benefit.newly_diagnosed ? `
+                                <div style="padding: 0.5rem; background: white; border-radius: 4px; border-left: 3px solid #0077b6;">
+                                    <strong style="color: #0369a1;">Newly Diagnosed (< 2 years):</strong> 
+                                    <span style="background: ${treatment.stage_specific_benefit.newly_diagnosed.benefit_level === 'HIGHEST' ? '#e0f2fe' : '#f1f5f9'}; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${treatment.stage_specific_benefit.newly_diagnosed.benefit_level}</span>
+                                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem;">${treatment.stage_specific_benefit.newly_diagnosed.recommendation}</p>
+                                </div>
+                            ` : ''}
+                            ${treatment.stage_specific_benefit.mid_stage ? `
+                                <div style="padding: 0.5rem; background: white; border-radius: 4px; border-left: 3px solid #64748b;">
+                                    <strong style="color: #475569;">Mid Stage (2-5 years):</strong>
+                                    <span style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${treatment.stage_specific_benefit.mid_stage.benefit_level}</span>
+                                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem;">${treatment.stage_specific_benefit.mid_stage.recommendation}</p>
+                                </div>
+                            ` : ''}
+                            ${treatment.stage_specific_benefit.advanced_ventilator ? `
+                                <div style="padding: 0.5rem; background: white; border-radius: 4px; border-left: 3px solid #334155;">
+                                    <strong style="color: #1e293b;">Advanced/Ventilator:</strong>
+                                    <span style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">${treatment.stage_specific_benefit.advanced_ventilator.benefit_level}</span>
+                                    <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem;">${treatment.stage_specific_benefit.advanced_ventilator.recommendation}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- REALISTIC EXPECTATIONS - NEW -->
+                ${treatment.realistic_expectations ? `
+                    <div class="warning-box" style="background: #f1f5f9; border-left-color: #0077b6; color: #334155;">
+                        <strong><i class="fas fa-info-circle"></i> Realistic Expectations</strong>
+                        <p>${treatment.realistic_expectations}</p>
+                    </div>
+                ` : ''}
+
+                <!-- INDIA INFO -->
+                ${treatment.india_info.available ? `
+                    <div class="india-info">
+                        <div class="india-info-header">
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                            <span>India Availability</span>
+                        </div>
+                        <div class="india-info-content">
+                            <strong>${treatment.india_info.accessibility || 'Available in India'}</strong>
+                            ${treatment.india_info.cost_range_inr ? `<p>Cost: Rs ${treatment.india_info.cost_range_inr}</p>` : ''}
+                        </div>
+                    </div>
+                ` : `
+                    <div class="warning-box">
+                        <strong>Not Available in India</strong>
+                        ${treatment.india_info.future_access || treatment.india_info.status || 'Currently not available for PALS in India.'}
+                    </div>
+                `}
+
+                <div class="research-actions">
+                    ${treatment.sources.map(source => `
+                        <a href="${source}" target="_blank" class="research-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Source
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Render Clinical Trials
+    function renderClinicalTrials() {
+        const container = document.getElementById('clinicalTrialsList');
+        const trials = researchData.categories.clinical_trials;
+
+        container.innerHTML = trials.map(trial => `
+            <div class="research-item">
+                <div class="research-item-header">
+                    <div class="research-item-title">
+                        <h3>${trial.trial_name}</h3>
+                        <div class="research-item-subtitle">
+                            ${trial.phase || 'Phase unknown'}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BENEFIT CLASSIFICATION -->
+                ${trial.benefit_classification ? `
+                    <div class="note-box" style="margin: 1rem 0; border-left-color: #8b5cf6;">
+                        <strong style="color: #6d28d9;"><i class="fas fa-flask"></i> What This Trial Aims To Do</strong>
+                        <p><strong>Primary Effect:</strong> ${trial.benefit_classification.primary_effect}</p>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0;">
+                            <li><strong>Reverses Damage?</strong> ${trial.benefit_classification.does_it_reverse_damage}</li>
+                            <li><strong>Restores Function?</strong> ${trial.benefit_classification.does_it_restore_function}</li>
+                        </ul>
+                        <p style="margin-top: 0.5rem;"><strong>What it promises:</strong> ${trial.benefit_classification.what_it_promises}</p>
+                    </div>
+                ` : ''}
+
+                <!-- STAGE APPLICABILITY -->
+                ${trial.stage_specific_applicability ? `
+                    <div style="background: #faf5ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                        <strong style="color: #6d28d9;"><i class="fas fa-user-check"></i> Who Should Consider This Trial</strong>
+                        <p style="margin: 0.5rem 0;"><strong style="color: #166534;">Best for:</strong> ${trial.stage_specific_applicability.best_for}</p>
+                        ${trial.stage_specific_applicability.not_for ? `<p style="margin: 0; color: #991b1b;"><strong>Not for:</strong> ${trial.stage_specific_applicability.not_for}</p>` : ''}
+                        ${trial.stage_specific_applicability.requirement ? `<p style="margin: 0.5rem 0;"><strong>Requirement:</strong> ${trial.stage_specific_applicability.requirement}</p>` : ''}
+                    </div>
+                ` : ''}
+                
+                <div class="research-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Mechanism</div>
+                        <div class="info-value">${trial.mechanism}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Timeline</div>
+                        <div class="info-value">${trial.timeline}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">India Potential</div>
+                        <div class="info-value">${trial.india_potential || 'Unknown'}</div>
+                    </div>
+                </div>
+
+                ${trial.critical_warning ? `
+                    <div class="warning-box">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Critical Warning</strong>
+                        <p>${trial.critical_warning}</p>
+                    </div>
+                ` : ''}
+
+                <div class="research-actions">
+                    ${trial.clinicaltrials_id ? `
+                        <a href="https://clinicaltrials.gov/study/${trial.clinicaltrials_id}" target="_blank" class="research-link">
+                            <i class="fas fa-flask"></i>
+                            ClinicalTrials.gov
+                        </a>
+                    ` : ''}
+                    ${trial.sources ? trial.sources.map(source => `
+                        <a href="${source}" target="_blank" class="research-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            Learn More
+                        </a>
+                    `).join('') : ''}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Render Pre-Clinical Research
+    function renderPreclinicalResearch() {
+        const container = document.getElementById('preclinicalResearchList');
+        const research = researchData.categories.preclinical_research;
+
+        container.innerHTML = research.map(item => `
+            <div class="research-item">
+                <div class="research-item-header">
+                    <div class="research-item-title">
+                        <h3>${item.research_area}</h3>
+                        <div class="research-item-subtitle">
+                            ${item.company ? `<strong style="color: #0077b6;">${item.company}</strong><br>` : ''}
+                            ${item.target || item.what_it_is || ''}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CONCEPT - What is this research -->
+                ${item.concept ? `
+                    <div class="note-box" style="margin: 1rem 0; border-left-color: #0077b6; background: #f0f9ff;">
+                        <strong style="color: #0369a1;"><i class="fas fa-lightbulb"></i> The Concept</strong>
+                        <p>${item.concept}</p>
+                    </div>
+                ` : ''}
+                
+                <!-- BENEFIT CLASSIFICATION -->
+                ${item.benefit_classification ? `
+                    <div class="note-box" style="margin: 1rem 0; border-left-color: #64748b; background: #f8fafc;">
+                        <strong style="color: #334155;"><i class="fas fa-microscope"></i> Research Goal</strong>
+                        <p><strong>Primary Effect:</strong> ${item.benefit_classification.primary_effect}</p>
+                        <p>${item.benefit_classification.what_it_promises}</p>
+                    </div>
+                ` : ''}
+                
+                <div class="research-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Timeline</div>
+                        <div class="info-value">${item.timeline || 'In development'}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Stage Applicability</div>
+                        <div class="info-value">${item.stage_applicability || item.pals_population || 'To be determined'}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">India Relevance</div>
+                        <div class="info-value">${item.india_relevance || 'Monitoring for future access'}</div>
+                    </div>
+                </div>
+
+                <!-- WHO BENEFITS -->
+                ${item.who_benefits ? `
+                    <div class="india-info" style="margin-top: 1rem;">
+                        <div class="india-info-header">
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>
+                            <span>Who Benefits</span>
+                        </div>
+                        <div class="india-info-content">
+                            ${Array.isArray(item.who_benefits)
+                    ? '<ul>' + item.who_benefits.map(b => '<li>' + b + '</li>').join('') + '</ul>'
+                    : item.who_benefits
+                }
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- PARTICIPATION (for Target ALS GWAS) -->
+                ${typeof item.participation === 'object' ? `
+                    <div class="india-info" style="margin-top: 1rem;">
+                        <div class="india-info-header">
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                            <span>How to Participate</span>
+                        </div>
+                        <div class="india-info-content">
+                            <p><strong>Eligibility:</strong> ${item.participation.eligibility}</p>
+                            <p><strong>Cost:</strong> ${item.participation.cost}</p>
+                            <p><strong>Contact:</strong> ${item.participation.how_to_participate}</p>
+                        </div>
+                    </div>
+                ` : (item.participation ? `
+                    <div class="india-info">
+                        <div class="india-info-header">
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                            <span>Participation</span>
+                        </div>
+                        <div class="india-info-content">${item.participation}</div>
+                    </div>
+                ` : '')}
+
+                <!-- SOURCES -->
+                ${item.sources && item.sources.length > 0 ? `
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                        <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
+                        <span style="font-size: 0.8rem;">
+                            ${item.sources.map((src, i) =>
+                    `<a href="${src}" target="_blank" style="color: #0077b6; margin-left: 0.5rem;">[${i + 1}]</a>`
+                ).join('')}
+                        </span>
+                    </div>
+                ` : ''}
+
+                <!-- KNOW MORE BUTTON (for Target ALS GWAS) -->
+                ${item.research_collaboration ? `
+                    <button onclick="showGWASModal()" style="
+                        margin-top: 1rem; 
+                        padding: 0.75rem 1.5rem; 
+                        background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%); 
+                        color: white; 
+                        border: none; 
+                        border-radius: 8px; 
+                        cursor: pointer; 
+                        font-weight: 600;
+                        font-size: 0.9rem;
+                        transition: all 0.2s;
+                    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,119,182,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                        <i class="fas fa-info-circle"></i> Know More About This Study
+                    </button>
+                ` : ''}
+            </div>
+        `).join('');
+    }
+
+    // Target ALS GWAS Modal
+    function showGWASModal() {
+        const gwasData = researchData.categories.preclinical_research.find(r => r.research_collaboration);
+        if (!gwasData) return;
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;';
+        modal.innerHTML = `
+            <div style="background:white;border-radius:16px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto;padding:2rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+                    <h2 style="font-size:1.5rem;color:#0f172a;margin:0;">${gwasData.full_title || gwasData.research_area}</h2>
+                    <button onclick="this.closest('.modal-overlay').remove()" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:#64748b;">&times;</button>
+                </div>
+                
+                <p style="color:#475569;line-height:1.6;margin-bottom:1.5rem;">${gwasData.concept}</p>
+                
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-handshake"></i> Research Collaboration</h3>
+                <div style="background:#f8fafc;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Lead Organization:</strong> ${gwasData.research_collaboration.lead_organization}</p>
+                    <hr style="border:none;border-top:1px solid #e2e8f0;margin:1rem 0;">
+                    <p><strong>India Sites:</strong></p>
+                    ${gwasData.research_collaboration.india_sites.map(site => `
+                        <div style="margin-left:1rem;margin-bottom:0.75rem;">
+                            <strong style="color:#0369a1;">${site.institution}</strong><br>
+                            <span style="color:#475569;">Lead: ${site.lead_researcher}</span>
+                            ${site.previous_work ? `<br><em style="color:#64748b;font-size:0.9rem;">${site.previous_work}</em>` : ''}
+                        </div>
+                    `).join('')}
+                    <hr style="border:none;border-top:1px solid #e2e8f0;margin:1rem 0;">
+                    <p><strong>International Partner:</strong> ${gwasData.research_collaboration.international_partner.institution} (${gwasData.research_collaboration.international_partner.lead_researcher})</p>
+                </div>
+                
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-flask"></i> Study Details</h3>
+                <div style="background:#f0f9ff;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Enrollment:</strong> ${gwasData.study_details.enrollment}</p>
+                    <p><strong>Duration:</strong> ${gwasData.study_details.duration}</p>
+                    <p><strong>Methods:</strong> ${gwasData.study_details.methods.join(', ')}</p>
+                    <p style="margin-top:0.75rem;padding:0.75rem;background:#e0f2fe;border-radius:8px;color:#0369a1;">
+                        <strong>Key Observation:</strong> ${gwasData.study_details.unique_observations}
+                    </p>
+                </div>
+                
+                ${gwasData.previous_indian_genetic_findings ? `
+                    <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-dna"></i> Previous Indian Genetic Findings</h3>
+                    <div style="background:#f1f5f9;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                        <p><strong>Most Common Mutations:</strong> ${gwasData.previous_indian_genetic_findings.most_common_mutations}</p>
+                        <p><strong>Rare Variants Found:</strong> ${gwasData.previous_indian_genetic_findings.rare_variants}</p>
+                    </div>
+                ` : ''}
+                
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-clipboard-check"></i> How to Participate</h3>
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Eligibility:</strong> ${gwasData.participation.eligibility}</p>
+                    <p><strong>Cost:</strong> <span style="color:#15803d;font-weight:600;">${gwasData.participation.cost}</span></p>
+                    <p><strong>Contact:</strong> ${gwasData.participation.how_to_participate}</p>
+                </div>
+                
+                <div style="text-align:center;margin-top:1.5rem;">
+                    <button onclick="this.closest('.modal-overlay').remove()" style="padding:0.75rem 2rem;background:#0077b6;color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Close</button>
+                </div>
+            </div>
+        `;
+        modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        document.body.appendChild(modal);
+    }
+
+    // Render Research Hubs
+    function renderResearchHubs() {
+        const container = document.getElementById('researchHubsList');
+        const hubs = researchData.key_research_hubs_india;
+
+        container.innerHTML = hubs.map(hub => `
+            <div class="hub-card">
+                <h3><i class="fas fa-hospital"></i> ${hub.institution || hub.service}</h3>
+                ${hub.lead_researcher ? `<p><strong>Lead Researcher:</strong> ${hub.lead_researcher}</p>` : ''}
+                ${hub.participation ? `<p><strong>Participation:</strong> ${hub.participation}</p>` : ''}
+                ${hub.description ? `<p>${hub.description}</p>` : ''}
+                ${hub.services ? `
+                    <p><strong>Services:</strong></p>
+                    <ul>
+                        ${hub.services.map(service => `<li>${service}</li>`).join('')}
+                    </ul>
+                ` : ''}
+            </div>
+        `).join('');
+    }
+
+    // Render Important Notes
+    function renderImportantNotes() {
+        const container = document.getElementById('importantNotesList');
+        const notes = researchData.important_notes;
+
+        const notesHTML = Object.entries(notes).map(([key, value]) => {
+            const title = key.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            const isWarning = key.includes('warning') || key.includes('caution');
+
+            return `
+                <div class="${isWarning ? 'warning-box' : 'note-box'}" style="margin-bottom: 1rem;">
+                    <strong><i class="fas fa-${isWarning ? 'exclamation-triangle' : 'info-circle'}"></i> ${title}</strong>
+                    <p>${value}</p>
+                </div>
+            `;
+        }).join('');
+
+        container.innerHTML = notesHTML;
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadResearchData);
+</script>
+{% endblock %}

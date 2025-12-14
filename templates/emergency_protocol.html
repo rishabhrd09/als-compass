@@ -1,55 +1,697 @@
 {% extends "base.html" %}
 
-{% block title %}Emergency Protocol - ALS Caregiver's Compass{% endblock %}
+{% block title %}Respiratory Emergency Protocol - ALS Caregiver's Compass{% endblock %}
 
-{% block content %}
-<div class="coming-soon-container">
-    <div class="coming-soon-content">
-        <i class="fas fa-shield-alt coming-soon-icon"></i>
-        <h1 class="coming-soon-title">Emergency Protocol</h1>
-        <p class="coming-soon-text">Detailed emergency protocols and response guidelines are coming soon. For immediate
-            emergencies, call 911 (USA) / 112 (EU/India).</p>
-        <a href="/" class="btn-primary">Return to Home</a>
-    </div>
-</div>
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
 {% endblock %}
 
 {% block extra_css %}
 <style>
-    .coming-soon-container {
-        min-height: calc(100vh - 200px);
+    /* Claude-inspired minimalist theme - cream and black only */
+    body {
+        background-color: #fafaf8;
+        color: #1a1a1a;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        line-height: 1.6;
+    }
+
+    .protocol-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 24px;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3 {
+        font-family: 'Crimson Pro', 'Georgia', serif;
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 0.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+
+    /* Section boxes */
+    .section-box {
+        border: 1px solid #d4d4d4;
+        padding: 24px;
+        margin-bottom: 24px;
+        border-radius: 8px;
+        background: #ffffff;
+    }
+
+    /* Warning and tip boxes - no color, just borders */
+    .warning-box {
+        border: 2px solid #1a1a1a;
+        background: #fafafa;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .tip-box {
+        border: 1px solid #666;
+        background: #fafafa;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 16px 0;
+    }
+
+    /* Step numbers */
+    .step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        background: #1a1a1a;
+        color: white;
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+
+    /* Parameter tags */
+    .param-box {
+        display: inline-block;
+        background: #f3f4f6;
+        border: 1px solid #d1d5db;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        margin: 2px;
+    }
+
+    /* Highlight */
+    .highlight {
+        background: #f5f5f0;
+        padding: 2px 6px;
+        border-radius: 3px;
+        border-bottom: 2px solid #1a1a1a;
+    }
+
+    /* Grid layout */
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+        .grid-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    /* Flowchart container */
+    .chart-container {
+        background: #fafafa;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        overflow-x: auto;
+        margin: 20px 0;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .maximize-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        border: 1px solid #d4d4d4;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        z-index: 10;
+    }
+
+    .maximize-btn:hover {
+        background: #f5f5f5;
+    }
+
+    /* Modal */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(250, 250, 248, 0.98);
+        z-index: 9999;
+        overflow: auto;
+        padding: 40px;
+    }
+
+    .modal-overlay.active {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: var(--space-16) 0;
     }
 
-    .coming-soon-content {
-        text-align: center;
-        max-width: 600px;
-        padding: var(--space-12);
+    .close-modal {
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        font-size: 2.5rem;
+        cursor: pointer;
+        color: #1a1a1a;
+        background: none;
+        border: none;
+        z-index: 10000;
+        line-height: 1;
     }
 
-    .coming-soon-icon {
-        font-size: 6rem;
-        color: var(--color-primary);
-        margin-bottom: var(--space-8);
-        opacity: 0.8;
+    .close-modal:hover {
+        opacity: 0.7;
     }
 
-    .coming-soon-title {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-family: var(--font-family-heading);
-        font-weight: 700;
-        color: var(--color-text-heading);
-        margin-bottom: var(--space-4);
+    /* Lists */
+    ul,
+    ol {
+        margin: 12px 0;
+        padding-left: 24px;
     }
 
-    .coming-soon-text {
-        font-size: var(--font-size-lg);
-        color: var(--color-text-secondary);
-        line-height: 1.6;
-        margin-bottom: var(--space-8);
+    li {
+        margin: 8px 0;
+        color: #1a1a1a;
+    }
+
+    /* Tables for contacts */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .contact-item {
+        padding: 12px;
+        border: 1px solid #d4d4d4;
+        border-radius: 6px;
+        background: white;
+    }
+
+    .contact-label {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 8px;
+    }
+
+    .contact-value {
+        border-bottom: 1px solid #1a1a1a;
+        padding: 8px 0;
     }
 </style>
+{% endblock %}
+
+{% block content %}
+<div class="protocol-container">
+
+    <!-- Header -->
+    <div class="mb-8">
+        <h1>Respiratory Emergency Protocol</h1>
+        <p class="subtitle">Practical Guide for Home Ventilator Care</p>
+    </div>
+
+    <!-- Core Principle -->
+    <div class="section-box">
+        <h2 style="margin-top: 0;">Core Principle: Involve PALS in Every Decision</h2>
+        <p class="mb-4">With time and experience, PALS understands their body better than anyone. They will learn to
+            recognize patterns and guide you on what works for them.</p>
+
+        <div class="grid-2">
+            <div>
+                <p class="font-semibold mb-2">Over time, PALS can tell you:</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>"I think I need Ambu now"</li>
+                    <li>"This feels like deep suction is needed"</li>
+                    <li>"Cough is stuck near balloon area"</li>
+                    <li>"Pressure feels insufficient"</li>
+                    <li>"Check ventilator - something feels off"</li>
+                    <li>"I need neb, secretions feel thick"</li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-semibold mb-2">Always ask PALS:</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>How are you feeling right now?</li>
+                    <li>Is ventilator pressure feeling OK?</li>
+                    <li>Any cough stuck? Where - chest or balloon area?</li>
+                    <li>Feeling dry cough or wet secretions?</li>
+                    <li>Balloon feeling too tight or too loose?</li>
+                    <li>Any other discomfort?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tip-box mt-4">
+            <p><strong>Key Insight:</strong> The more you involve PALS in daily decisions, the more they understand what
+                helps them. Eventually, PALS becomes your best guide in emergencies.</p>
+        </div>
+    </div>
+
+    <!-- What We Monitor -->
+    <div class="section-box">
+        <h2>What We Monitor</h2>
+        <p class="mb-3">When PALS shows discomfort, check these parameters:</p>
+
+        <div style="margin-bottom: 16px;">
+            <span class="param-box">SpO2</span>
+            <span class="param-box">Pulse / HR</span>
+            <span class="param-box">Blood Pressure</span>
+            <span class="param-box">Tidal Volume (TV)</span>
+            <span class="param-box">Respiratory Rate (RR)</span>
+            <span class="param-box">Ventilator Graph</span>
+            <span class="param-box">Leak Values</span>
+        </div>
+
+        <p style="font-size: 0.95rem;">Changes in these parameters indicate something is wrong. But <span
+                class="highlight">always combine parameter reading with PALS feedback</span> - they often sense
+            discomfort before numbers change significantly.</p>
+    </div>
+
+    <!-- Two Person Protocol -->
+    <div class="section-box">
+        <h2>Two-Person Approach</h2>
+        <div class="grid-2">
+            <div style="border-right: 1px solid #e0e0e0; padding-right: 20px;">
+                <p class="font-semibold mb-2">Person 1: Immediate Care</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>Start Ambu if needed</li>
+                    <li>Talk to PALS, get feedback</li>
+                    <li>Perform suction/neb</li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-semibold mb-2">Person 2: Support</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>Check equipment & connections</li>
+                    <li>Prepare supplies</li>
+                    <li>Monitor parameters</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Flowchart -->
+    <h2>Decision Flowchart</h2>
+    <p style="color: #666; margin-bottom: 16px;">Follow the path based on what you observe and what PALS tells you</p>
+
+    <div class="chart-container" onclick="toggleModal()">
+        <button class="maximize-btn" onclick="toggleModal(); event.stopPropagation();">⛶ Maximize</button>
+        <div class="mermaid">
+flowchart TD
+classDef default fill:#f9fafb,stroke:#4b5563,stroke-width:1px,color:#1f2937;
+classDef decision fill:#fafafa,stroke:#1a1a1a,stroke-width:2px,color:#1f2937;
+classDef action fill:#ffffff,stroke:#666,stroke-width:1px,color:#1f2937;
+classDef warning fill:#f5f5f5,stroke:#1a1a1a,stroke-width:2px,color:#1f2937;
+classDef success fill:#fafafa,stroke:#666,stroke-width:1px,color:#1f2937;
+classDef pals fill:#f9f9f9,stroke:#333,stroke-width:1px,color:#1f2937;
+Start([PALS showing discomfort<br />or parameters changing])
+Start --> CheckPALS[<b>FIRST: Ask PALS</b><br />What are you feeling?<br />Where is the problem?]:::pals
+CheckPALS --> Monitor[<b>Check Parameters</b><br />SpO2, Pulse, BP, TV, RR, Graph]:::action
+Monitor --> Branch{What do you observe?}:::decision
+Branch -->|SpO2 dropping<br />or Low TV| PathA[<b>SITUATION A</b><br />Breathing Issue]
+Branch -->|High Pulse/BP<br />SpO2 normal| PathB[<b>SITUATION B</b><br />Discomfort / Pulse-BP Issue]
+Branch -->|PALS says pressure<br />feels insufficient| PathC[<b>SITUATION C</b><br />Pressure / Ventilator
+Issue]
+PathA --> AmbuRelief[<b>Give Ambu</b><br />Provides immediate relief<br />Buys time to find cause]:::action
+AmbuRelief --> AskA[<b>Ask PALS:</b><br />• Cough stuck? Where?<br />• Wet or dry feeling?<br />• Feeling
+better with Ambu?]:::pals
+AskA --> CauseA{What does PALS say?}:::decision
+CauseA -->|Wet secretions<br />Gurgling feeling| SecPath[<b>SECRETION PATH</b>]:::action
+CauseA -->|Dry cough<br />Not coming out| NebPath[<b>NEBULIZATION PATH</b>]:::action
+CauseA -->|Stuck near balloon<br />area| BalloonPath[<b>BALLOON PATH</b>]:::warning
+CauseA -->|Catheter blocked<br />Nothing passing| PlugPath[<b>MUCUS PLUG</b>]:::warning
+SecPath --> NSChoice{PALS comfortable<br />with NS?}:::decision
+NSChoice -->|Yes| WithNS[NS 1-2ml + Ambu 5-6 + Suction]:::action
+NSChoice -->|No| NoNS[Ambu only + Suction]:::action
+WithNS --> SubG1[Subglottic Port Suction]:::action
+NoNS --> SubG1
+SubG1 --> StableCheck
+NebPath --> StartNeb[Start Levolin Neb]:::action
+StartNeb --> NebComfort{PALS comfortable<br />during neb?}:::decision
+NebComfort -->|Yes| FinishNeb[Complete neb]:::action
+NebComfort -->|No, struggling| AmbuNeb[<b>Ambu + Neb together</b><br />Continue Ambu while neb
+runs]:::action
+FinishNeb --> PostNeb[Ambu + Suction after neb]:::action
+AmbuNeb --> PostNeb
+PostNeb --> SubG2[Subglottic Port Suction]:::action
+SubG2 --> StableCheck
+BalloonPath --> BalloonWarn[<b>⚠️ CRITICAL</b>]:::warning
+BalloonWarn --> SubGFirst[<b>FIRST: Subglottic Suction</b><br />Clear above-cuff secretions]:::warning
+SubGFirst --> ConfidentQ{Confident to do<br />balloon deflate?}:::decision
+ConfidentQ -->|Yes, trained| DeflateSeq[Deflate slowly → Quick suction → Reinflate]:::action
+ConfidentQ -->|No| CallHelp1[Do subglottic only<br />Call trained person]:::action
+DeflateSeq --> StableCheck
+CallHelp1 --> StableCheck
+PlugPath --> PlugAction[2ml NS + 8-10 firm Ambu squeezes]:::action
+PlugAction --> CatheterNow{Catheter<br />passing now?}:::decision
+CatheterNow -->|Yes| ClearPlug[Suction thoroughly]:::action
+ClearPlug --> StableCheck
+CatheterNow -->|No, still blocked| TTConsider[<b>Consider TT tube change</b><br />• Use backup tube<br />•
+Call trained person if needed]:::warning
+StableCheck{<b>Check with PALS</b><br />Feeling better?<br />SpO2 > 94%?}:::decision
+StableCheck -->|No| RepeatCycle[Repeat: Ambu + Suction<br />Try different path if needed]:::action
+RepeatCycle --> AskA
+StableCheck -->|Yes| Stable1[<b>Stabilized</b><br />Continue monitoring<br />Stay alert for 30
+min]:::success
+PathB --> BPCheck{Is PALS a<br />BP patient?}:::decision
+BPCheck -->|Yes, known hypertension| BPMeds[Check if BP medicine<br />was given on time]:::action
+BPCheck -->|No, not a BP patient| NotBP[<b>High BP/Pulse = Breathing Discomfort</b><br />Body is
+struggling]:::action
+NotBP --> TempCheck{Check temperature<br />Any fever?}:::decision
+TempCheck -->|Yes, fever| Infection[Likely infection brewing<br />Get CBC, consult doctor]:::action
+TempCheck -->|No fever| Discomfort[<b>Discomfort / Stuck Secretions</b>]:::action
+Discomfort --> AskB[<b>Ask PALS:</b><br />• Pressure feeling OK?<br />• Any cough stuck?<br />• Chest
+feeling heavy?]:::pals
+AskB --> QuickAmbu[<b>Give Ambu for 1 minute</b><br />Provides quick relief<br />Helps stabilize while you
+assess]:::action
+QuickAmbu --> Clearance[<b>Clearance Cycle:</b><br />Ambu 5-6 → Suction → Neb → Ambu → Suction]:::action
+Clearance --> PulseNow{Pulse/BP<br />settling?}:::decision
+PulseNow -->|Yes| Stable2[<b>Comfortable</b><br />Secretions were the cause]:::success
+PulseNow -->|Still high| GetCBC[Get CBC to rule out infection<br />Consult doctor if no
+improvement]:::action
+PathC --> VentCheck[<b>Check Ventilator:</b><br />• Settings unchanged?<br />• Circuit connected?<br />•
+Leak values normal?]:::action
+VentCheck --> LeakQ{High leak<br />showing?}:::decision
+LeakQ -->|Yes| FixLeak[Check: Cuff inflation,<br />circuit connections,<br />exhalation valve]:::action
+LeakQ -->|No, all OK| TempAmbu[<b>Give Ambu temporarily</b><br />If PALS feels better with Ambu,<br />issue
+is with ventilator delivery]:::action
+FixLeak --> Recheck[Recheck parameters]:::action
+TempAmbu --> VentIssue{Better with<br />Ambu?}:::decision
+VentIssue -->|Yes| CallTech[Ventilator needs check<br />Continue Ambu support<br />Call technician]:::action
+VentIssue -->|No difference| OtherCause[Issue is not pressure<br />Go back and reassess]:::action
+OtherCause --> CheckPALS
+        </div>
+    </div>
+
+    <!-- Understanding Each Situation -->
+    <h2>Understanding Each Situation</h2>
+
+    <!-- Situation A -->
+    <div class="section-box">
+        <h3>Situation A: SpO2 Dropping / Low Tidal Volume</h3>
+        <p class="mb-3">This indicates airway or secretion issue. PALS may feel breathless or struggling.</p>
+
+        <div class="grid-2">
+            <div>
+                <p class="font-semibold mb-2">Sequence:</p>
+                <div style="font-size: 0.95rem;">
+                    <p style="margin: 8px 0;"><span class="step-num">1</span>Give Ambu immediately - provides relief</p>
+                    <p style="margin: 8px 0;"><span class="step-num">2</span>Ask PALS - what are you feeling?</p>
+                    <p style="margin: 8px 0;"><span class="step-num">3</span>Based on feedback, choose path</p>
+                    <p style="margin: 8px 0;"><span class="step-num">4</span>NS + Ambu + Suction (skip NS if
+                        uncomfortable)</p>
+                    <p style="margin: 8px 0;"><span class="step-num">5</span>Subglottic port suction</p>
+                    <p style="margin: 8px 0;"><span class="step-num">6</span>Repeat until PALS says they feel better</p>
+                </div>
+            </div>
+            <div>
+                <p class="font-semibold mb-2">Path Selection:</p>
+                <ul style="font-size: 0.95rem;">
+                    <li><strong>Wet/gurgling →</strong> NS + Ambu + Suction</li>
+                    <li><strong>Dry cough →</strong> Nebulization first, then suction</li>
+                    <li><strong>Stuck at balloon →</strong> Subglottic suction first (see warning)</li>
+                    <li><strong>Catheter blocked →</strong> Aggressive Ambu, consider TT change</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Situation B -->
+    <div class="section-box">
+        <h3>Situation B: High Pulse / High BP with Normal SpO2</h3>
+
+        <div class="tip-box mb-4">
+            <p><strong>Important:</strong> If PALS is <u>not</u> a BP patient (no history of hypertension), then high
+                BP/pulse usually means <span class="highlight">breathing discomfort</span>. The body is working hard or
+                PALS is uncomfortable.</p>
+        </div>
+
+        <p class="mb-3"><strong>Common causes:</strong></p>
+        <ul style="font-size: 0.95rem;">
+            <li><strong>Fever/Infection</strong> → Check temperature, get CBC</li>
+            <li><strong>Stuck secretions</strong> → Clearance cycle will help</li>
+            <li><strong>Discomfort</strong> → PALS needs repositioning or pressure adjustment</li>
+        </ul>
+
+        <p class="mt-4 mb-2"><strong>What to do:</strong></p>
+        <ol style="font-size: 0.95rem;">
+            <li>Check temperature</li>
+            <li>Ask PALS about discomfort</li>
+            <li>Give Ambu for 1 minute (quick relief)</li>
+            <li>Do clearance cycle: Ambu → Suction → Neb → Ambu → Suction</li>
+            <li>If pulse/BP settles → secretions were the cause</li>
+            <li>If still high → get CBC, consult doctor</li>
+        </ol>
+    </div>
+
+    <!-- Situation C -->
+    <div class="section-box">
+        <h3>Situation C: PALS Says "Pressure Feels Insufficient"</h3>
+
+        <p class="mb-3">When PALS reports ventilator pressure feeling low or inadequate:</p>
+
+        <div class="grid-2">
+            <div>
+                <p class="font-semibold mb-2">Check Ventilator:</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>Settings unchanged?</li>
+                    <li>Circuit properly connected?</li>
+                    <li>Leak values normal?</li>
+                    <li>Exhalation valve working?</li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-semibold mb-2">Quick Test:</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>Give Ambu temporarily</li>
+                    <li>If PALS feels better with Ambu → ventilator issue</li>
+                    <li>Continue Ambu support</li>
+                    <li>Call technician</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Critical Warnings -->
+    <h2>Critical Warnings</h2>
+
+    <div class="warning-box">
+        <h3 style="margin-top: 0;">⚠️ Balloon Cuff Area Secretions</h3>
+        <p class="mb-3"><strong>This is the most delicate procedure.</strong> Only attempt if you have been trained.</p>
+
+        <p class="mb-2"><strong>Steps:</strong></p>
+        <ol style="font-size: 0.95rem;">
+            <li><strong>FIRST:</strong> Do subglottic port suction (clear above-cuff secretions)</li>
+            <li>If confident and trained:
+                <ul style="margin-top: 8px;">
+                    <li>Deflate cuff slowly</li>
+                    <li>Quick suction</li>
+                    <li>Reinflate immediately</li>
+                </ul>
+            </li>
+            <li>If not confident: Do subglottic suction only, call trained person</li>
+        </ol>
+
+        <div class="tip-box mt-3">
+            <p><strong>Why risky:</strong> Deflating the balloon can allow secretions to enter the lungs. That's why
+                subglottic suction comes first, and the procedure must be quick.</p>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <h3 style="margin-top: 0;">⚠️ Mucus Plug (Catheter Completely Blocked)</h3>
+        <p class="mb-3">If suction catheter won't pass at all:</p>
+
+        <ol style="font-size: 0.95rem;">
+            <li>Give 2ml NS</li>
+            <li>8-10 firm Ambu squeezes</li>
+            <li>Try catheter again</li>
+            <li>If still blocked → <strong>Consider TT tube change</strong>
+                <ul style="margin-top: 8px;">
+                    <li>Use backup tube</li>
+                    <li>Call trained person if needed</li>
+                    <li>Don't delay - airway is compromised</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Quick Reference -->
+    <h2>Quick Reference</h2>
+
+    <div class="section-box">
+        <h3>Equipment Checklist</h3>
+        <div class="grid-2">
+            <div>
+                <p class="font-semibold mb-2">Always Ready:</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>Ambu bag</li>
+                    <li>Suction machine</li>
+                    <li>Suction catheters</li>
+                    <li>Normal saline (NS)</li>
+                    <li>Syringes (5ml, 10ml)</li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-semibold mb-2">Backup:</p>
+                <ul style="font-size: 0.95rem;">
+                    <li>Spare TT tube (same size)</li>
+                    <li>Nebulizer + medicines</li>
+                    <li>Oxygen concentrator</li>
+                    <li>Backup ventilator (if available)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h3>Emergency Contacts</h3>
+        <p class="mb-3" style="font-size: 0.95rem;">Keep these numbers readily accessible:</p>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-label">Pulmonologist</div>
+                <div class="contact-value">_________________</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Ventilator Technician</div>
+                <div class="contact-value">_________________</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Ambulance</div>
+                <div class="contact-value">_________________</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-label">Nearest Hospital</div>
+                <div class="contact-value">_________________</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Note -->
+    <div class="tip-box" style="margin-top: 3rem;">
+        <p style="text-align: center; font-size: 1.05rem;"><strong>Remember:</strong> PALS knows their body best. Trust
+            their feedback, stay calm, and follow the protocol step by step.</p>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div id="flowchartModal" class="modal-overlay">
+    <button class="close-modal" onclick="toggleModal()">&times;</button>
+    <div id="modalContent"
+        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialize Mermaid when DOM is ready
+    document.addEventListener('DOMContentLoaded', function () {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            themeVariables: {
+                primaryColor: '#f9fafb',
+                primaryTextColor: '#1f2937',
+                primaryBorderColor: '#4b5563',
+                lineColor: '#6b7280',
+                secondaryColor: '#fafafa',
+                tertiaryColor: '#ffffff',
+                fontSize: '14px'
+            }
+        });
+
+        // Explicitly run Mermaid after a short delay
+        setTimeout(function () {
+            mermaid.run({
+                querySelector: '.mermaid'
+            });
+        }, 100);
+    });
+
+    function toggleModal() {
+        const modal = document.getElementById('flowchartModal');
+        const modalContent = document.getElementById('modalContent');
+        const isActive = modal.classList.contains('active');
+
+        if (!isActive) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const originalSvg = document.querySelector('.chart-container .mermaid svg');
+            if (originalSvg) {
+                modalContent.innerHTML = '';
+                const clone = originalSvg.cloneNode(true);
+                clone.style.maxWidth = '95vw';
+                clone.style.maxHeight = '90vh';
+                clone.style.width = 'auto';
+                clone.style.height = 'auto';
+                modalContent.appendChild(clone);
+            }
+        } else {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            modalContent.innerHTML = '';
+        }
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === "Escape") {
+            const modal = document.getElementById('flowchartModal');
+            if (modal.classList.contains('active')) {
+                toggleModal();
+            }
+        }
+    });
+</script>
 {% endblock %}
