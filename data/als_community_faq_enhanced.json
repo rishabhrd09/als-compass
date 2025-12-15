@@ -1,0 +1,713 @@
+{
+    "metadata": {
+        "title": "ALS Care & Support India - Comprehensive FAQ",
+        "version": "3.0",
+        "last_updated": "December 2025",
+        "sources": [
+            "ALS Care & Support India WhatsApp Community (2021-2025)",
+            "Home ICU - 650+ Families Collective Wisdom",
+            "ALSCAS Website (alslifemanagement.weebly.com)",
+            "Mayo Clinic ALS Guidelines",
+            "Community-shared medical guidelines"
+        ],
+        "disclaimer": "This FAQ is compiled from experiences shared by caregivers and patients in the ALS Care & Support India community representing 10+ years of collective wisdom from 650+ families. It is intended for educational purposes only and does NOT constitute medical advice. Every ALS patient's condition is unique. Always consult your neurologist, pulmonologist, or treating physician before making any medical decisions."
+    },
+    "evidence_levels": {
+        "clinically_proven": {
+            "icon": "🔬",
+            "label": "Clinically Proven",
+            "description": "Supported by medical guidelines and research"
+        },
+        "community_observed": {
+            "icon": "📊",
+            "label": "Community Observed",
+            "description": "Consistently reported by multiple families in the group"
+        },
+        "individual_experience": {
+            "icon": "💡",
+            "label": "Individual Experience",
+            "description": "Reported by one or few members; results may vary"
+        },
+        "caution_advised": {
+            "icon": "⚠️",
+            "label": "Caution Advised",
+            "description": "Approach with care; consult doctor before trying"
+        }
+    },
+    "categories": [
+        {
+            "id": "getting_started",
+            "name": "Getting Started with ALS Care",
+            "icon": "fa-play-circle",
+            "description": "First steps after diagnosis, building care teams, and understanding the basics",
+            "questions": [
+                {
+                    "id": "start_1",
+                    "question": "My loved one was just diagnosed with ALS. We are completely lost. Where do we even start?",
+                    "answer": "**Take a deep breath.** Many families in our community were in the same place. Here's what helped them get organized:\n\n**Week 1 Priorities:**\n\n1. **Join a support community** - Introduce yourself, mention your city, current symptoms, and stage. The community will guide based on your specific situation.\n\n2. **Get baseline assessments done:**\n   • FVC (lung function test) - critical for respiratory planning\n   • Swallowing assessment\n   • Overall strength evaluation\n\n3. **Start researching equipment NOW** - Even if you don't need it today. When you need a BiPAP at 2 AM urgently, you don't want to be searching for vendors.\n\n4. **Involve your PALS in all decisions** - Many patients feel they've lost control. Keeping them involved helps emotionally.\n\n5. **Don't Google too much initially** - It will scare you with worst-case scenarios. Real families have PALS living 5, 8, even 10+ years with good care.",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "recommendation": "Focus on quality of life, not statistics. Every patient is different.",
+                    "tags": [
+                        "diagnosis",
+                        "first-steps",
+                        "getting-started"
+                    ]
+                },
+                {
+                    "id": "start_2",
+                    "question": "What do PALS and CALS mean?",
+                    "answer": "These are terms commonly used in the ALS community worldwide:\n\n**PALS** = Person/Patient with ALS (the patient themselves)\n**CALS** = Caregiver of person with ALS (family members, hired help)\n\nWe use these terms because they're shorter to type and also remind us that the patient is a PERSON first, not just a 'patient' or 'case'.",
+                    "evidence": [
+                        "clinically_proven"
+                    ],
+                    "tags": [
+                        "terminology",
+                        "basics"
+                    ]
+                },
+                {
+                    "id": "start_3",
+                    "question": "How do I know what stage my PALS is at?",
+                    "answer": "Here's how we typically think about stages based on practical care needs:\n\n**Early Stage:**\n• Can walk (maybe with support)\n• Can eat normally or with minor difficulty\n• Can breathe on own, SpO₂ stays above 95%\n• Needs help with some activities but mostly independent\n\n**Middle Stage:**\n• Wheelchair dependent or very limited walking\n• Eating takes longer (30-45+ minutes), some choking\n• May need BiPAP at night, SpO₂ drops sometimes\n• Speech becoming unclear\n\n**Advanced Stage:**\n• Bed-bound or fully wheelchair dependent\n• On feeding tube (PEG/Ryles)\n• BiPAP most of the day or on tracheostomy\n• Needs 24/7 care for everything\n\n**Important:** Staging is less important than watching for specific warning signs that tell you when to act.",
+                    "evidence": [
+                        "clinically_proven",
+                        "community_observed"
+                    ],
+                    "tags": [
+                        "staging",
+                        "progression"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "respiratory",
+            "name": "Breathing Support & BiPAP",
+            "icon": "fa-lungs",
+            "description": "Critical respiratory support, BiPAP usage, ventilator settings, and when to act",
+            "questions": [
+                {
+                    "id": "resp_1",
+                    "question": "When does a PALS need BiPAP support and what are the signs?",
+                    "answer": "**Key Understanding:** In ALS, the problem is NOT oxygen getting in, but CO₂ (carbon dioxide) getting OUT. When breathing muscles weaken, CO₂ builds up in the blood. Plain oxygen can mask this problem - SpO₂ may look normal while CO₂ reaches dangerous levels.\n\n**BiPAP works differently:** It pushes air in (helps oxygen) AND helps push CO₂ out by supporting the breathing muscles.\n\n**DEFINITE SIGNS (act immediately):**\n• Cannot lie flat - needs 2-3 pillows or sleeps in recliner (orthopnea)\n• Waking up with headaches (CO₂ building up at night)\n• SpO₂ dropping below 94% at any time\n• Feeling breathless at rest or while talking\n\n**EARLY WARNING SIGNS (start planning):**\n• More tired than usual, sleeping more during day\n• Morning grogginess that doesn't go away\n• Difficulty completing long sentences without pausing\n• Yawning frequently (body trying to get more oxygen)\n• Weak cough - can't clear throat properly\n\n**Oxygen Only vs BiPAP:**\n| Aspect | Oxygen Only | BiPAP |\n|--------|-------------|-------|\n| Increases O₂ | Yes | Yes |\n| Removes CO₂ | NO | YES |\n| Supports breathing muscles | NO | YES |\n| Safe for ALS alone | RISKY | RECOMMENDED |",
+                    "evidence": [
+                        "clinically_proven",
+                        "community_observed"
+                    ],
+                    "warning": "Several families delayed BiPAP and ended up with emergency tracheostomies. Those who started early are often still on BiPAP years later with good quality of life.",
+                    "recommendation": "If you see these signs, consult your pulmonologist about starting BiPAP early. Don't wait!",
+                    "tags": [
+                        "bipap",
+                        "respiratory",
+                        "co2",
+                        "warning-signs"
+                    ]
+                },
+                {
+                    "id": "resp_2",
+                    "question": "Doctor said SpO2 is 96% so no BiPAP needed. But he can't sleep flat and gets breathless. Should we wait?",
+                    "answer": "**NO, don't wait!** This is a common mistake.\n\n**Why these signs matter:**\n• Can't sleep flat (orthopnea) = earliest sign of diaphragm weakness\n• Breathlessness with activity = respiratory muscles struggling\n\n**The Hidden Problem:** Daytime SpO₂ may be fine, but it drops significantly at night when diaphragm works harder. Many PALS have normal daytime readings but drop to 85-88% during sleep.\n\n**What to do:**\n1. Get overnight pulse oximetry or sleep study\n2. If SpO₂ drops below 93-94% at night, push for BiPAP\n3. Buy a good pulse oximeter (₹1,500-3,000) for home monitoring",
+                    "evidence": [
+                        "community_observed",
+                        "clinically_proven"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "SpO₂ drops below 90% at night",
+                                "then": "Immediate BiPAP evaluation needed - don't delay"
+                            },
+                            {
+                                "if": "Only slight fatigue with normal SpO₂",
+                                "then": "Discuss with pulmonologist - may not be urgent yet but start preparing"
+                            }
+                        ]
+                    },
+                    "warning": "SpO₂ of 96% during day means nothing - it drops at night. Many PALS have normal daytime SpO₂ but drop to 85-88% at night.",
+                    "tags": [
+                        "bipap",
+                        "spo2",
+                        "warning-signs"
+                    ]
+                },
+                {
+                    "id": "resp_3",
+                    "question": "Which BiPAP machine should I buy? What are the options and costs in India?",
+                    "answer": "**For ALS patients, machines with volume-assured modes (AVAPS/iVAPS) are recommended** because they adapt as the disease progresses.\n\n**Recommended Machines:**\n\n| Machine | Approx. Cost | Notes |\n|---------|--------------|-------|\n| ResMed Stellar 150 | ₹3.0 lakhs | iVAPS mode, works with tracheostomy, built-in battery. Most popular in community. |\n| Philips Trilogy 100 | ₹4.5 lakhs | Versatile, portable, AVAPS-AE mode. Excellent for invasive/non-invasive. |\n| Philips DreamStation AVAPS | ₹1.0 lakh | Good budget option with AVAPS mode. May need Whisper Swivel for tracheostomy. |\n| ResMed Lumis 150 | ₹1.5-1.8 lakhs | Same iVAPS mode as Stellar, slightly fewer features. Good budget option. |",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "Planning for long-term home care with possible tracheostomy",
+                                "then": "Consider Stellar 150 or Trilogy 100 from the start"
+                            },
+                            {
+                                "if": "Budget is a concern",
+                                "then": "Start with DreamStation AVAPS, plan upgrade later"
+                            }
+                        ]
+                    },
+                    "recommendation": "Buy from authorized dealers only. Get proper training. MOST IMPORTANTLY - buy a second backup machine (can be used/refurbished for ₹60-80k). When your main machine fails at 3 AM, you'll thank yourself.",
+                    "tags": [
+                        "bipap",
+                        "equipment",
+                        "purchase",
+                        "india"
+                    ]
+                },
+                {
+                    "id": "resp_4",
+                    "question": "What's the difference between S/T mode, AVAPS, and iVAPS?",
+                    "answer": "**S/T MODE (Spontaneous/Timed):**\n• You set a fixed pressure (e.g., IPAP 14, EPAP 6)\n• Machine gives same pressure for every breath\n• Problem: As ALS progresses and muscles weaken, fixed pressure may not be enough\n• You have to keep manually increasing settings\n\n**AVAPS MODE (Philips machines):**\n• You set a TARGET volume (e.g., 400ml per breath)\n• Machine automatically adjusts pressure to achieve this target\n• Much better for ALS because it adapts to changing needs\n\n**iVAPS MODE (ResMed machines):**\n• Same concept as AVAPS\n• Has extra smart features like learning patient's breathing pattern\n\n**Best Analogy:** S/T is like setting AC to blow at fixed speed. AVAPS/iVAPS is like setting AC to maintain room at 24°C - it adjusts automatically to achieve the goal.",
+                    "evidence": [
+                        "community_observed",
+                        "clinically_proven"
+                    ],
+                    "recommendation": "AVAPS or iVAPS is much better for ALS because the machine adapts as disease progresses.",
+                    "tags": [
+                        "bipap",
+                        "modes",
+                        "settings"
+                    ]
+                },
+                {
+                    "id": "resp_5",
+                    "question": "What BiPAP settings should we start with?",
+                    "answer": "**Recommended starting settings for iVAPS/AVAPS mode** (always confirm with your pulmonologist):\n\n• **Mode:** iVAPS or AVAPS\n• **Height:** Enter patient's height (machine calculates target volume from this)\n• **Tidal Volume:** Approximately 7 × weight in kg (e.g., 60 kg patient = ~420ml)\n• **EPAP:** 5-6 cm H₂O\n• **PS Min/IPAP Min:** 4 cm H₂O\n• **PS Max/IPAP Max:** 12-14 cm H₂O (can increase later if needed)\n• **Target Rate/BPM:** 15 breaths/minute\n• **Rise Time:** 200-300ms (increase to 300ms if pressure rise feels too fast)",
+                    "evidence": [
+                        "community_observed",
+                        "clinically_proven"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "Leak is high (>60 for NIV)",
+                                "then": "Check mask fit, circuit connections, or cuff inflation"
+                            },
+                            {
+                                "if": "PALS feels insufficient pressure",
+                                "then": "Gradually increase IPAP Max by 1-2 cm H₂O"
+                            }
+                        ]
+                    },
+                    "recommendation": "For first few days, use during daytime while watching TV to get used to it. Don't start at night - it's harder to adapt when you're trying to sleep.",
+                    "tags": [
+                        "bipap",
+                        "settings",
+                        "parameters"
+                    ]
+                },
+                {
+                    "id": "resp_6",
+                    "question": "Should we use oxygen concentrator with BiPAP?",
+                    "answer": "**Critical Warning:** Plain oxygen ALONE should NEVER be used for ALS patients!\n\n**Why It's Dangerous:** In ALS, the problem is weak breathing muscles, not lack of oxygen. Plain oxygen:\n• Masks the real problem\n• Causes CO₂ retention (can be fatal)\n• Reduces body's natural drive to breathe\n\n**When O₂ CAN Be Used:**\n• ONLY with BiPAP, never alone\n• During infections when SpO₂ remains low despite BiPAP\n• As advised by pulmonologist\n\n**How to Connect:** Use oxygen enrichment port on ventilator/BiPAP - NOT directly to patient. Flow rate: Typically 1-2 LPM.",
+                    "evidence": [
+                        "clinically_proven",
+                        "caution_advised"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "SpO₂ low with BiPAP alone",
+                                "then": "First check secretions, settings, circuit. Only add O₂ if still needed."
+                            },
+                            {
+                                "if": "Doctor advises oxygen",
+                                "then": "Always use WITH BiPAP, never alone for ALS patients"
+                            }
+                        ]
+                    },
+                    "tags": [
+                        "oxygen",
+                        "bipap",
+                        "safety"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "tracheostomy",
+            "name": "Tracheostomy Care",
+            "icon": "fa-procedures",
+            "description": "When to consider tracheostomy, daily care, suctioning, and managing complications",
+            "questions": [
+                {
+                    "id": "trach_1",
+                    "question": "Doctor is recommending tracheostomy. How do we decide if it's time?",
+                    "answer": "**Signs that it may be time:**\n• BiPAP 20+ hours daily and still having SpO₂ drops\n• Frequent desaturation even with BiPAP optimized\n• Secretions that can't be managed with oral/nasal suction\n• Repeated chest infections/aspiration\n• CO₂ levels staying high (check ABG)\n\n**Important considerations:**\n\n1. **PLANNED vs EMERGENCY:** Planned tracheostomy with time to prepare is SO much better than emergency tracheostomy during a crisis.\n\n2. **QUALITY OF LIFE:** Many PALS on trach have BETTER quality of life - no mask on face, can eat more easily (sometimes), more stable breathing.\n\n3. **PATIENT'S CHOICE:** Most importantly - what does your PALS want? This should be THEIR decision.\n\n4. **CARE REQUIREMENTS:** Trach requires regular suctioning, tube changes, 24/7 trained caregiver. Ensure this can be arranged before proceeding.",
+                    "evidence": [
+                        "clinically_proven",
+                        "community_observed"
+                    ],
+                    "perspectives": [
+                        "We were terrified of tracheostomy. But after 2 emergency admissions in one month, we did planned trach. It's been 2 years now. My husband is stable. I wish we'd done it sooner.",
+                        "My mother chose not to have tracheostomy. We respected her decision. She passed peacefully at home. There's no wrong answer."
+                    ],
+                    "warning": "Whatever you decide, do NOT let it become an emergency decision. If leaning towards trach, plan it. If declining trach, ensure palliative care is in place.",
+                    "tags": [
+                        "tracheostomy",
+                        "decision",
+                        "timing"
+                    ]
+                },
+                {
+                    "id": "trach_2",
+                    "question": "How do I suction properly without hurting my PALS?",
+                    "answer": "**GATHER EVERYTHING BEFORE STARTING:**\n• Suction machine (pressure set to 100-120 mmHg)\n• Suction catheters (Fr 12 is common for size 7-7.5 tube)\n• Normal saline 2ml vials\n• Ambu bag connected and ready\n• Gloves, tissues/gauze\n\n**THE PROCEDURE:**\n1. Wash hands well, wear gloves\n2. Pour 1ml Normal Saline into the trach tube (directly into the hole). This loosens secretions. Patient may cough - that's normal!\n3. Connect Ambu bag and give 4-5 gentle squeezes. This pushes the saline around and brings up secretions.\n4. Turn on suction machine. Disconnect from ventilator/BiPAP.\n5. Insert suction catheter into trach tube - DON'T apply suction while going in.\n6. NOW apply suction (thumb on hole) and slowly withdraw while rotating. Takes about 8-10 seconds.\n7. Immediately reconnect to BiPAP/ventilator.\n8. Let patient rest 30-60 seconds. Repeat if needed.\n\n**WATCH OUT FOR:**\n• SpO₂ dropping below 85% - stop and connect to Ambu immediately\n• Catheter not going in - don't force, try smaller size\n• Lots of blood - stop, call doctor",
+                    "evidence": [
+                        "community_observed",
+                        "clinically_proven"
+                    ],
+                    "recommendation": "First 10 times will be scary. By 50th time, you'll do it without thinking. The whole procedure takes 90 seconds once you're comfortable!",
+                    "tags": [
+                        "tracheostomy",
+                        "suction",
+                        "procedure"
+                    ]
+                },
+                {
+                    "id": "trach_3",
+                    "question": "How many times a day should I suction?",
+                    "answer": "**ROUTINE SUCTIONING (even if no obvious need):**\n• Morning after waking up\n• Before each major feed\n• Before sleep at night\n• Minimum 4-5 times per day\n\n**SUCTION IMMEDIATELY WHEN YOU SEE/HEAR:**\n• Gurgling or rattling sound when breathing\n• SpO₂ dropping for no clear reason\n• Patient looking uncomfortable, restless\n• Visible secretions at trach opening\n\n**During infections:** May need 8-12 times daily",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "Frequent blood-tinged secretions or patient very irritated",
+                                "then": "Over-suctioning - reduce frequency, use gentler technique"
+                            },
+                            {
+                                "if": "Constant gurgling, frequent SpO₂ drops, secretions bubbling out",
+                                "then": "Under-suctioning - increase frequency"
+                            }
+                        ]
+                    },
+                    "recommendation": "Better to suction more frequently with less aggressive technique than to wait until there's a huge mucus plug.",
+                    "tags": [
+                        "tracheostomy",
+                        "suction",
+                        "frequency"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "nutrition",
+            "name": "Feeding & Nutrition",
+            "icon": "fa-utensils",
+            "description": "PEG tube placement, feeding protocols, managing blockages, and nutritional guidance",
+            "questions": [
+                {
+                    "id": "nut_1",
+                    "question": "My PALS is taking 1.5 hours to finish one meal and coughing throughout. Should we consider a feeding tube?",
+                    "answer": "**This is a situation many families face.** Here's what has worked for others:\n\n**UNDERSTAND THEIR FEAR:**\n• They see it as 'giving up'\n• Fear of surgery (for PEG)\n• Loss of pleasure of eating\n\n**HOW TO APPROACH THE CONVERSATION:**\n\n1. **Reframe the purpose:** It's not about STOPPING oral eating. It's about getting nutrition without exhaustion. They can STILL taste food if they want - small amounts for pleasure.\n\n2. **Address specific fears:** PEG surgery is minor - 15-20 minute procedure. Tube is hidden under clothes.\n\n3. **Involve them in decisions:** Let them choose when, which hospital, etc.\n\n**RISK OF WAITING:**\n• 1.5 hours for a meal = extreme exhaustion\n• Coughing = aspiration risk = pneumonia\n• Each pneumonia episode weakens further\n• Emergency tube insertion is harder than planned",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "warning": "If meals taking 1+ hours with frequent choking, the risk of aspiration pneumonia is significant. Don't delay too long.",
+                    "tags": [
+                        "peg",
+                        "feeding-tube",
+                        "decision"
+                    ]
+                },
+                {
+                    "id": "nut_2",
+                    "question": "What's better - PEG tube or Ryles (NG) tube?",
+                    "answer": "**PEG is MUCH better for long-term use.** Here's why:\n\n| Aspect | Ryles (NG) Tube | PEG Tube |\n|--------|-----------------|----------|\n| Location | Through nose into stomach | Through abdomen into stomach |\n| Visibility | Visible on face | Hidden under clothes |\n| Comfort | Can irritate nose/throat | Much more comfortable |\n| Duration | Change every 2-3 months | Lasts 6-12 months |\n| BiPAP compatibility | Creates leak with mask | No interference |\n| Cost | ₹500-2,000 | ₹15,000-40,000 |",
+                    "evidence": [
+                        "clinically_proven",
+                        "community_observed"
+                    ],
+                    "recommendation": "If tube feeding needed for more than a few weeks, go straight to PEG. Don't waste time with Ryles.",
+                    "tags": [
+                        "peg",
+                        "ryles",
+                        "comparison"
+                    ]
+                },
+                {
+                    "id": "nut_3",
+                    "question": "PEG tube got blocked completely. What do I do?",
+                    "answer": "**Don't panic!** Try these in order:\n\n1. **WARM WATER FLUSH:** Fill 50ml syringe with warm (not hot) water. Push gently.\n\n2. **THE COLA TRICK:** Yes, seriously! Clamp the tube, fill with Coca-Cola or similar carbonated drink, leave for 30-60 minutes, then try flushing with water. The acid and fizz break down the blockage.\n\n3. **ENZYME SOLUTION:** Ask pharmacist for pancreatic enzyme powder. Mix with water, inject into tube, wait 30 min, flush.\n\n4. **MECHANICAL CLEANING:** Get PEG tube cleaning brush from Amazon (₹99). Gently insert and rotate.\n\n**HOW TO PREVENT BLOCKAGES:**\n• Flush 30-50ml water BEFORE every feed\n• Flush 70-100ml water AFTER every feed (most important!)\n• Don't give very thick feeds - thin them down\n• Crush medications very finely, use liquid medications when possible",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "tags": [
+                        "peg",
+                        "blockage",
+                        "emergency"
+                    ]
+                },
+                {
+                    "id": "nut_4",
+                    "question": "How much and how often should we feed through PEG?",
+                    "answer": "**General Guidelines:**\n• Feed per meal: 150-250ml\n• Total daily: 1500-2000ml across 6-8 feeds\n• Feed duration: Slow over 15-20 minutes (not bolus)\n\n**Sample Schedule:** 7am, 10am, 1pm, 4pm, 7pm, 10pm\n\n**Critical Steps:**\n• Flush with 30ml water BEFORE feeding\n• Flush with 50-70ml water AFTER feeding\n• Keep bed elevated 30-45° during and 30-40 minutes after\n\n**Feed Consistency:** Smooth, no lumps. Use high-speed blender.\n\n**Protein Needs:** 1-1.5g per kg body weight daily. Add whey protein isolate if needed.",
+                    "evidence": [
+                        "community_observed",
+                        "clinically_proven"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "Vomiting or reflux occurs",
+                                "then": "Reduce quantity per feed, increase frequency, check for acid reflux"
+                            },
+                            {
+                                "if": "Constipation present",
+                                "then": "Add more fiber, ensure adequate water, consider laxatives"
+                            }
+                        ]
+                    },
+                    "tags": [
+                        "peg",
+                        "feeding",
+                        "schedule"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "equipment",
+            "name": "Essential Equipment Guide",
+            "icon": "fa-hospital",
+            "description": "Essential equipment, power backup, and home ICU setup guidance with India-specific costs",
+            "questions": [
+                {
+                    "id": "equip_1",
+                    "question": "What basic monitoring and respiratory equipment do I need?",
+                    "answer": "**MONITORING (Essential):**\n\n• **Pulse Oximeter** - ₹1,500-3,000\n  Measures SpO₂ and pulse. Normal SpO₂: 95-99%. Below 90% needs intervention.\n\n• **Ambu Bag** - ₹2,000 (MUST HAVE 2-3)\n  Manual resuscitation for emergencies. Use when BiPAP fails or during power outages.\n\n**RESPIRATORY:**\n\n• **Suction Machine** - ₹6,000-8,000 (Yuwell recommended)\n  Essential for tracheostomy, useful even before. Set pressure to 100-120 mmHg.\n\n• **Nebulizer Machine** - ₹1,500-3,000\n  Delivers medication to lungs. Common: Duolin, Budecort, NS, Mucinac.\n\n• **Cough Assist Machine** - ~₹2 lakhs\n  Helps clear phlegm. Models: T70 (basic) vs E70 (advanced).",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "warning": "Have BACKUP equipment for BiPAP, suction, and nebulizer. Equipment failure during emergency can be life-threatening.",
+                    "tags": [
+                        "equipment",
+                        "monitoring",
+                        "purchase"
+                    ]
+                },
+                {
+                    "id": "equip_2",
+                    "question": "What power backup do I need for BiPAP and other equipment?",
+                    "answer": "**Power backup is CRITICAL. Without it, a power cut can be life-threatening.**\n\n**HOME BACKUP:**\n• Standard home inverter (e.g., Luminous) with adequate battery\n• Calculate: BiPAP uses 50-100W, suction ~100W, nebulizer ~50W\n• Ensure inverter can handle total load + buffer\n\n**Equipment Backup Costs:**\n| Equipment | Cost | Purpose |\n|-----------|------|----------|\n| Home Inverter (2KVA min) | ₹15,000-30,000 | 4-6 hours backup |\n| Generator (2-3 KVA) | ₹25,000-50,000 | Extended outages |\n| Portable Battery Pack | ₹15,000-25,000 | Short outages/travel |\n| Ambu Bag | ₹2,000 | Manual backup - no power needed |\n| Oxygen Cylinder | ₹5,000-8,000 | Concentrator needs power |",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "recommendation": "Apply for essential/medical connection from electricity board. Medical connections get priority restoration.",
+                    "tags": [
+                        "power",
+                        "backup",
+                        "emergency"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "emergency",
+            "name": "Emergency Protocols",
+            "icon": "fa-exclamation-triangle",
+            "description": "What to do in emergency situations - SpO2 drops, power failure, equipment failure",
+            "questions": [
+                {
+                    "id": "emerg_1",
+                    "question": "SpO2 is dropping! What do I do?",
+                    "answer": "**IMMEDIATE Steps:**\n\n1. **Give Ambu bag immediately** - provides instant relief\n\n2. **Ask PALS** (if able) where they feel blockage - chest, throat, or balloon area\n\n3. **Check ventilator** for disconnections or kinks\n\n4. **If wet secretions:** NS 1-2ml + Ambu 5-6 pumps + Suction\n\n5. **If dry cough:** Start nebulization with Levolin, continue Ambu support\n\n6. **Tracheostomy patients:** Always do subglottic port suction\n\n7. **Repeat cycle:** Ambu → Suction → Check SpO₂ until >94%",
+                    "evidence": [
+                        "community_observed",
+                        "clinically_proven"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "SpO₂ below 88%",
+                                "then": "Continue aggressive Ambu + Suction, consider calling emergency"
+                            },
+                            {
+                                "if": "Secretions very thick",
+                                "then": "Nebulize with Inhalex or Mucinac to thin them"
+                            },
+                            {
+                                "if": "Catheter not passing (possible mucus plug)",
+                                "then": "2ml NS + 8-10 firm Ambu squeezes, may need tube change"
+                            }
+                        ]
+                    },
+                    "warning": "SpO₂ below 85% for more than 2-3 minutes despite intervention - call for medical help immediately!",
+                    "tags": [
+                        "emergency",
+                        "spo2",
+                        "protocol"
+                    ]
+                },
+                {
+                    "id": "emerg_2",
+                    "question": "Power cut at night! BiPAP stopped. What's the emergency plan?",
+                    "answer": "**Immediate Actions:**\n\n1. **Start manual Ambu bagging** if PALS on 24/7 ventilation\n2. Check inverter - is it working? Battery may have died\n3. Keep PALS sitting up (not lying flat)\n4. Monitor SpO₂\n\n**Proper Setup You MUST Have:**\n• Home Inverter (2KVA minimum) - 4-6 hours backup\n• Generator contact for extended outages\n• Portable Battery Pack for travel\n• Ambu Bag - no power needed\n• Oxygen Cylinder - concentrator needs power, cylinder doesn't",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "warning": "Everyone in household should know how to use Ambu bag!",
+                    "tags": [
+                        "emergency",
+                        "power",
+                        "backup"
+                    ]
+                },
+                {
+                    "id": "emerg_3",
+                    "question": "What is the Ambu bag and how do we use it?",
+                    "answer": "**What It Is:** Manual resuscitator - your most important emergency tool. Provides breaths when ventilator is insufficient.\n\n**How to Use:**\n1. Connect to ventilator circuit (ventilator keeps running)\n2. Squeeze slowly and steadily - mimics natural breath\n3. Release to allow exhalation\n4. Rhythm: 12-15 squeezes per minute\n\n**When to Use Ambu:**\n• SpO₂ dropping\n• Before and after suction\n• PALS feeling breathless\n• High pulse/BP from respiratory discomfort\n• Ventilator seems insufficient\n• During nebulization if struggling\n\n**Must Have:** At least 2 Ambu bags as backup. Cost: ~₹2,000",
+                    "evidence": [
+                        "community_observed",
+                        "clinically_proven"
+                    ],
+                    "recommendation": "When parameters are unstable and you're unsure what's wrong, give Ambu for 1 minute. It often provides quick relief and gives you time to assess.",
+                    "tags": [
+                        "equipment",
+                        "ambu",
+                        "emergency"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "daily_care",
+            "name": "Daily Care & Comfort",
+            "icon": "fa-hand-holding-medical",
+            "description": "Bedsores, secretions, constipation, and routine comfort care",
+            "questions": [
+                {
+                    "id": "care_1",
+                    "question": "How do we manage constipation?",
+                    "answer": "**Constipation is very common in ALS** due to reduced mobility and medications. Here's a proven protocol:\n\n**1. DIETARY CHANGES (First Step):**\n• High fiber foods: Papaya, pears, apple, spinach, bottle gourd\n• Add flax seed powder to feeds\n• Adequate fluid intake\n\n**2. STOOL SOFTENERS:**\n• PEG (Movicol/Polyethylene Glycol): 17gm in water daily\n• Pruvict 2mg tablet with PEG\n\n**3. IF STILL CONSTIPATED (Day 3):**\n• Piclin syrup 10ml OR Cremalax 5-10mg tablet\n• Glycerine suppository if needed\n\n**4. LAST RESORT:**\n• Glycerine enema (safe)\n• Sodium phosphate enema only if absolutely necessary (can cause electrolyte imbalance)",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "tags": [
+                        "constipation",
+                        "daily-care",
+                        "management"
+                    ]
+                },
+                {
+                    "id": "care_2",
+                    "question": "How do we prevent and treat bed sores?",
+                    "answer": "**PREVENTION (Most Important):**\n• Position changes every 2-3 hours\n• Use air mattress (Romsons Cell Mat or similar)\n• Keep skin clean and dry\n• Use pillows for proper positioning\n• Apply coconut oil on pressure points\n• Use Abzorb powder for mild sores\n\n**High-Risk Areas:** Tailbone, heels, back of head, shoulders, elbows\n\n**FOR EXISTING SORES:**\n• Stage 1 (Red skin): More position changes, air exposure, coconut oil\n• Stage 2-3 (Open wound): Clean with NS and betadine, Cuticell gauze\n• Consult doctor if sores are deep or infected",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "warning": "Deep wounds, signs of infection (pus, redness, swelling), bone visible - seek immediate medical help",
+                    "tags": [
+                        "bedsores",
+                        "prevention",
+                        "daily-care"
+                    ]
+                },
+                {
+                    "id": "care_3",
+                    "question": "What can help with excess saliva (sialorrhea)?",
+                    "answer": "**Options for managing excess saliva:**\n\n• **Glycopyrrolate (1-2mg):** Start with small dose (1mg). Watch for side effect - can dry out chest and thicken phlegm.\n\n• **Atropine drops:** Under tongue, helps reduce saliva\n\n• **Botox injections:** Into salivary glands, longer lasting effect\n\n• **Suction:** Keep suction ready for managing excess saliva",
+                    "evidence": [
+                        "clinically_proven",
+                        "community_observed"
+                    ],
+                    "warning": "Drying medications can thicken mucus in the lungs, making it harder to clear. Balance is key - managing excess saliva is better than completely drying it out.",
+                    "tags": [
+                        "saliva",
+                        "sialorrhea",
+                        "medications"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "medications",
+            "name": "Medications & Supplements",
+            "icon": "fa-pills",
+            "description": "Common medications, supplements, and vaccinations for ALS patients",
+            "questions": [
+                {
+                    "id": "med_1",
+                    "question": "What is Riluzole and should my PALS take it?",
+                    "answer": "**Riluzole (Rilutor/Reluzole)** is the only FDA-approved drug that has been shown to modestly slow ALS progression.\n\n**How it works:** Reduces glutamate toxicity (a neurotransmitter that can damage nerve cells)\n\n**Dosage:** Usually 50mg twice daily\n\n**Side effects:** Some experience dizziness initially (usually improves in 1-2 weeks), nausea, fatigue\n\n**Community experience:** Many take it continuously for years. Those who experienced dizziness often found it resolved. Some stopped due to side effects.",
+                    "evidence": [
+                        "clinically_proven"
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "Experiencing side effects like dizziness",
+                                "then": "Try reducing to once daily temporarily, then gradually increase"
+                            }
+                        ]
+                    },
+                    "recommendation": "Consult your neurologist before making any changes to Riluzole dosage.",
+                    "tags": [
+                        "riluzole",
+                        "medication",
+                        "treatment"
+                    ]
+                },
+                {
+                    "id": "med_2",
+                    "question": "What other medications might help?",
+                    "answer": "**Common medications used** (always consult your doctor):\n\n**FOR MUSCLE CRAMPS/SPASTICITY:**\n• Baclofen, Tizanidine\n• Gabapentin (also helps with pain)\n\n**FOR PSEUDOBULBAR AFFECT (uncontrolled laughing/crying):**\n• Nuedexta\n\n**FOR SECRETION MANAGEMENT:**\n• Mucinac 600 (thins mucus)\n• Glycopyrrolate (reduces saliva - use cautiously)\n\n**FOR GASTRIC ISSUES:**\n• Acogut (for acid reflux - works well per community)\n• Sompraz IT / Nexpro IT (with itopride for better results)\n\n**FOR INFECTIONS:**\n• Antibiotics targeting Pseudomonas (common in trach patients): Levofloxacin, Ofloxacin, Ciprofloxacin\n• Always do sputum culture to identify specific bacteria",
+                    "evidence": [
+                        "clinically_proven",
+                        "community_observed"
+                    ],
+                    "warning": "All prescription medications should only be taken as advised by treating physician.",
+                    "tags": [
+                        "medications",
+                        "prescriptions",
+                        "symptom-management"
+                    ]
+                },
+                {
+                    "id": "med_3",
+                    "question": "What vaccinations should PALS get?",
+                    "answer": "**Recommended Vaccinations:**\n\n1. **Influvac Tetra:** Annual flu vaccine - important as flu can be serious for ventilator-dependent patients\n\n2. **Prevnar 13:** Pneumococcal vaccine (13-strain)\n\n3. **Pneumococcal 23:** Another pneumococcal vaccine\n\n**Purpose:** Prevents serious respiratory infections that can be life-threatening for ALS patients.\n\n**Timing:** Discuss with doctor. Usually given when patient is stable, not during active infection.",
+                    "evidence": [
+                        "clinically_proven"
+                    ],
+                    "tags": [
+                        "vaccinations",
+                        "prevention",
+                        "immunization"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "caregiver",
+            "name": "Caregiver Support & Well-being",
+            "icon": "fa-users",
+            "description": "Preventing burnout, managing stress, training staff, and getting support",
+            "questions": [
+                {
+                    "id": "cg_1",
+                    "question": "I'm exhausted from caregiving. How do others cope?",
+                    "answer": "**Caregiver burnout is real and serious.** Here's what has helped others:\n\n**1. BUILD A CARE TEAM:**\n• Hire trained nursing staff if possible\n• Rotate family members for different shifts\n• Train backup caregivers for all critical tasks\n\n**2. TAKE BREAKS:**\n• Even 30 minutes of personal time daily helps\n• Arrange respite care for longer breaks\n\n**3. CONNECT WITH COMMUNITY:**\n• Join support groups (WhatsApp, Facebook)\n• Share experiences with others who understand\n\n**4. SEEK HELP WHEN NEEDED:**\n• Don't hesitate to see a counselor or psychologist\n• Antidepressants may help if feeling overwhelmed",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "perspectives": [
+                        "Accept help when offered",
+                        "You cannot pour from an empty cup",
+                        "Taking care of yourself IS taking care of your PALS"
+                    ],
+                    "warning": "Persistent depression, anxiety, or inability to cope - seek professional help immediately",
+                    "tags": [
+                        "caregiver",
+                        "burnout",
+                        "mental-health"
+                    ]
+                },
+                {
+                    "id": "cg_2",
+                    "question": "How do we keep our PALS mentally engaged and positive?",
+                    "answer": "**Keeping quality of life high:**\n\n• **Involve them in decisions:** About their care, daily routine, family matters\n\n• **Enable communication:** Eye-tracking devices, communication boards, Alexa/voice-controlled devices\n\n• **Maintain connections:** Video calls with family and friends, visits when possible\n\n• **Entertainment:** Audiobooks, movies, music they enjoy\n\n• **Outings:** Even short trips outside (with proper preparation) can boost morale tremendously",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "perspectives": [
+                        "After 6 years with ALS, we took our PALS outside for the first time in months. The smile on her face made all the preparation worth it."
+                    ],
+                    "tags": [
+                        "quality-of-life",
+                        "mental-health",
+                        "engagement"
+                    ]
+                },
+                {
+                    "id": "cg_3",
+                    "question": "What is the two-person approach for emergencies?",
+                    "answer": "**Person 1 (Primary):**\n• Start Ambu immediately\n• Talk to PALS and get feedback\n• Perform suction and nebulization\n• Stay calm and focused on PALS\n\n**Person 2 (Support):**\n• Check all equipment connections\n• Prepare supplies (catheters, NS)\n• Monitor pulse oximeter\n• Call for help if needed\n\n**Why This Matters:** One person focuses on PALS while another ensures everything is ready. Reduces panic and mistakes.\n\n**Even If Alone:** Start Ambu first (most important), then assess and act.\n\n**Practice:** Train both caregivers on both roles BEFORE an emergency happens.",
+                    "evidence": [
+                        "community_observed"
+                    ],
+                    "tags": [
+                        "emergency",
+                        "caregiver",
+                        "protocol"
+                    ]
+                }
+            ]
+        }
+    ],
+    "quick_reference": {
+        "emergency_protocols": [
+            {
+                "situation": "SpO₂ Dropping (<90%)",
+                "action": "1. Ambu immediately → 2. Ask PALS about blockage → 3. NS + Ambu + Suction cycle → 4. Subglottic suction → 5. Repeat until >94%"
+            },
+            {
+                "situation": "High Pulse, Normal SpO₂",
+                "action": "1. Check temperature → 2. Give Ambu 1-2 min → 3. Clearance cycle → 4. If persistent, check CBC for infection"
+            },
+            {
+                "situation": "Mucus Plug (catheter blocked)",
+                "action": "1. 2ml NS into trach → 2. 8-10 FIRM Ambu squeezes → 3. Try suction → 4. If still blocked, may need tube change"
+            },
+            {
+                "situation": "Ventilator Failure",
+                "action": "1. Ambu bag immediately → 2. Check power/connections → 3. Switch to backup → 4. Continue Ambu until restored"
+            },
+            {
+                "situation": "Power Failure",
+                "action": "1. Inverter should auto-switch → 2. If no inverter, Ambu bag → 3. Check battery status → 4. Contact power company"
+            }
+        ],
+        "key_numbers": {
+            "spo2_normal": ">95% awake, >94% sleeping",
+            "spo2_alert": "<93% - start intervention",
+            "spo2_emergency": "<88% - immediate action",
+            "bipap_hours_trach_consider": "16-20 hours/day",
+            "fvc_bipap_start": "<80%",
+            "fvc_peg_alert": "<50%"
+        }
+    },
+    "key_principles": [
+        "Involve PALS in all decisions - they understand their body best",
+        "Prevention beats cure - regular nebulization, hydration, position changes prevent emergencies",
+        "Ambu is your best friend - when in doubt, give Ambu",
+        "Have backups for EVERYTHING critical - BiPAP, suction, power",
+        "Document and learn - every PALS is different",
+        "Take care of yourself - caregiver health matters",
+        "You are not alone - community is here to support you 24/7",
+        "Plan ahead - don't wait for emergencies to arrange equipment",
+        "Start interventions early - BiPAP, PEG work better before crisis",
+        "Focus on quality of life - many PALS live 5, 8, even 10+ years with good care"
+    ],
+    "resources": {
+        "websites": [
+            {
+                "name": "ALSCAS Website",
+                "url": "https://alslifemanagement.weebly.com",
+                "description": "Comprehensive guides, videos, equipment info"
+            },
+            {
+                "name": "Target ALS",
+                "url": "https://www.targetals.org",
+                "description": "Global ALS research organization"
+            },
+            {
+                "name": "Mayo Clinic ALS",
+                "url": "https://www.mayoclinic.org/diseases-conditions/amyotrophic-lateral-sclerosis",
+                "description": "Top-tier medical information"
+            }
+        ],
+        "social_media": {
+            "linkedin": "https://www.linkedin.com/company/als-care-and-support-foundation",
+            "instagram": "https://www.instagram.com/alscasindia",
+            "twitter": "https://twitter.com/alscasindia"
+        }
+    }
+}

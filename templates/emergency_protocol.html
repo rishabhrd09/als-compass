@@ -3,7 +3,6 @@
 {% block title %}Respiratory Emergency Protocol - ALS Caregiver's Compass{% endblock %}
 
 {% block extra_head %}
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -72,7 +71,7 @@
         background: #ffffff;
     }
 
-    /* Warning and tip boxes - no color, just borders */
+    /* Warning and tip boxes */
     .warning-box {
         border: 2px solid #1a1a1a;
         background: #fafafa;
@@ -138,72 +137,6 @@
         }
     }
 
-    /* Flowchart container */
-    .chart-container {
-        background: #fafafa;
-        padding: 20px;
-        border-radius: 8px;
-        border: 1px solid #e0e0e0;
-        overflow-x: auto;
-        margin: 20px 0;
-        position: relative;
-        cursor: pointer;
-    }
-
-    .maximize-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: white;
-        border: 1px solid #d4d4d4;
-        padding: 6px 12px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.85rem;
-        z-index: 10;
-    }
-
-    .maximize-btn:hover {
-        background: #f5f5f5;
-    }
-
-    /* Modal */
-    .modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(250, 250, 248, 0.98);
-        z-index: 9999;
-        overflow: auto;
-        padding: 40px;
-    }
-
-    .modal-overlay.active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .close-modal {
-        position: fixed;
-        top: 20px;
-        right: 30px;
-        font-size: 2.5rem;
-        cursor: pointer;
-        color: #1a1a1a;
-        background: none;
-        border: none;
-        z-index: 10000;
-        line-height: 1;
-    }
-
-    .close-modal:hover {
-        opacity: 0.7;
-    }
-
     /* Lists */
     ul,
     ol {
@@ -216,7 +149,7 @@
         color: #1a1a1a;
     }
 
-    /* Tables for contacts */
+    /* Contact grid */
     .contact-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -240,6 +173,193 @@
     .contact-value {
         border-bottom: 1px solid #1a1a1a;
         padding: 8px 0;
+    }
+
+    /* ============ CSS FLOWCHART STYLES ============ */
+    .flowchart {
+        background: #fafafa;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 30px 20px;
+        margin: 20px 0;
+        overflow-x: auto;
+    }
+
+    .flow-row {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 10px 0;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .flow-node {
+        background: white;
+        border: 1px solid #666;
+        border-radius: 8px;
+        padding: 12px 16px;
+        text-align: center;
+        font-size: 0.9rem;
+        max-width: 280px;
+        min-width: 180px;
+        position: relative;
+    }
+
+    .flow-node.start {
+        background: #f0f0f0;
+        border-radius: 25px;
+        border: 2px solid #1a1a1a;
+    }
+
+    .flow-node.decision {
+        background: #fafafa;
+        border: 2px solid #1a1a1a;
+        transform: rotate(0deg);
+        border-radius: 4px;
+    }
+
+    .flow-node.decision::before {
+        content: "?";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #1a1a1a;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .flow-node.action {
+        background: white;
+        border: 1px solid #666;
+    }
+
+    .flow-node.warning {
+        background: #f5f5f5;
+        border: 2px solid #1a1a1a;
+    }
+
+    .flow-node.success {
+        background: #f0f7f0;
+        border: 1px solid #4a7c4a;
+    }
+
+    .flow-node.pals {
+        background: #f9f9f9;
+        border: 2px dashed #333;
+    }
+
+    .flow-node strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #1a1a1a;
+    }
+
+    .flow-arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #666;
+        font-size: 1.5rem;
+        margin: 5px 0;
+    }
+
+    .flow-arrow.down::after {
+        content: "↓";
+    }
+
+    .flow-arrow.split {
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+    }
+
+    .flow-arrow.split::before {
+        content: "↙";
+    }
+
+    .flow-arrow.split::after {
+        content: "↘";
+    }
+
+    .flow-label {
+        font-size: 0.75rem;
+        color: #666;
+        background: #fafaf8;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin: 0 5px;
+    }
+
+    .flow-branches {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .flow-branch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        min-width: 200px;
+        max-width: 280px;
+    }
+
+    .flow-branch-label {
+        background: #e0e0e0;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .flow-section {
+        border: 1px dashed #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        background: white;
+    }
+
+    .flow-section-title {
+        background: #1a1a1a;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    /* Three column branch layout */
+    .flow-three-branches {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    @media (max-width: 900px) {
+        .flow-three-branches {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .branch-connector {
+        text-align: center;
+        color: #666;
+        font-size: 1.2rem;
+        margin: 8px 0;
     }
 </style>
 {% endblock %}
@@ -333,100 +453,270 @@
         </div>
     </div>
 
-    <!-- Main Flowchart -->
+    <!-- Main Decision Flowchart - Pure CSS Version -->
     <h2>Decision Flowchart</h2>
     <p style="color: #666; margin-bottom: 16px;">Follow the path based on what you observe and what PALS tells you</p>
 
-    <div class="chart-container" onclick="toggleModal()">
-        <button class="maximize-btn" onclick="toggleModal(); event.stopPropagation();">⛶ Maximize</button>
-        <div class="mermaid">
-flowchart TD
-classDef default fill:#f9fafb,stroke:#4b5563,stroke-width:1px,color:#1f2937;
-classDef decision fill:#fafafa,stroke:#1a1a1a,stroke-width:2px,color:#1f2937;
-classDef action fill:#ffffff,stroke:#666,stroke-width:1px,color:#1f2937;
-classDef warning fill:#f5f5f5,stroke:#1a1a1a,stroke-width:2px,color:#1f2937;
-classDef success fill:#fafafa,stroke:#666,stroke-width:1px,color:#1f2937;
-classDef pals fill:#f9f9f9,stroke:#333,stroke-width:1px,color:#1f2937;
-Start([PALS showing discomfort<br />or parameters changing])
-Start --> CheckPALS[<b>FIRST: Ask PALS</b><br />What are you feeling?<br />Where is the problem?]:::pals
-CheckPALS --> Monitor[<b>Check Parameters</b><br />SpO2, Pulse, BP, TV, RR, Graph]:::action
-Monitor --> Branch{What do you observe?}:::decision
-Branch -->|SpO2 dropping<br />or Low TV| PathA[<b>SITUATION A</b><br />Breathing Issue]
-Branch -->|High Pulse/BP<br />SpO2 normal| PathB[<b>SITUATION B</b><br />Discomfort / Pulse-BP Issue]
-Branch -->|PALS says pressure<br />feels insufficient| PathC[<b>SITUATION C</b><br />Pressure / Ventilator
-Issue]
-PathA --> AmbuRelief[<b>Give Ambu</b><br />Provides immediate relief<br />Buys time to find cause]:::action
-AmbuRelief --> AskA[<b>Ask PALS:</b><br />• Cough stuck? Where?<br />• Wet or dry feeling?<br />• Feeling
-better with Ambu?]:::pals
-AskA --> CauseA{What does PALS say?}:::decision
-CauseA -->|Wet secretions<br />Gurgling feeling| SecPath[<b>SECRETION PATH</b>]:::action
-CauseA -->|Dry cough<br />Not coming out| NebPath[<b>NEBULIZATION PATH</b>]:::action
-CauseA -->|Stuck near balloon<br />area| BalloonPath[<b>BALLOON PATH</b>]:::warning
-CauseA -->|Catheter blocked<br />Nothing passing| PlugPath[<b>MUCUS PLUG</b>]:::warning
-SecPath --> NSChoice{PALS comfortable<br />with NS?}:::decision
-NSChoice -->|Yes| WithNS[NS 1-2ml + Ambu 5-6 + Suction]:::action
-NSChoice -->|No| NoNS[Ambu only + Suction]:::action
-WithNS --> SubG1[Subglottic Port Suction]:::action
-NoNS --> SubG1
-SubG1 --> StableCheck
-NebPath --> StartNeb[Start Levolin Neb]:::action
-StartNeb --> NebComfort{PALS comfortable<br />during neb?}:::decision
-NebComfort -->|Yes| FinishNeb[Complete neb]:::action
-NebComfort -->|No, struggling| AmbuNeb[<b>Ambu + Neb together</b><br />Continue Ambu while neb
-runs]:::action
-FinishNeb --> PostNeb[Ambu + Suction after neb]:::action
-AmbuNeb --> PostNeb
-PostNeb --> SubG2[Subglottic Port Suction]:::action
-SubG2 --> StableCheck
-BalloonPath --> BalloonWarn[<b>⚠️ CRITICAL</b>]:::warning
-BalloonWarn --> SubGFirst[<b>FIRST: Subglottic Suction</b><br />Clear above-cuff secretions]:::warning
-SubGFirst --> ConfidentQ{Confident to do<br />balloon deflate?}:::decision
-ConfidentQ -->|Yes, trained| DeflateSeq[Deflate slowly → Quick suction → Reinflate]:::action
-ConfidentQ -->|No| CallHelp1[Do subglottic only<br />Call trained person]:::action
-DeflateSeq --> StableCheck
-CallHelp1 --> StableCheck
-PlugPath --> PlugAction[2ml NS + 8-10 firm Ambu squeezes]:::action
-PlugAction --> CatheterNow{Catheter<br />passing now?}:::decision
-CatheterNow -->|Yes| ClearPlug[Suction thoroughly]:::action
-ClearPlug --> StableCheck
-CatheterNow -->|No, still blocked| TTConsider[<b>Consider TT tube change</b><br />• Use backup tube<br />•
-Call trained person if needed]:::warning
-StableCheck{<b>Check with PALS</b><br />Feeling better?<br />SpO2 > 94%?}:::decision
-StableCheck -->|No| RepeatCycle[Repeat: Ambu + Suction<br />Try different path if needed]:::action
-RepeatCycle --> AskA
-StableCheck -->|Yes| Stable1[<b>Stabilized</b><br />Continue monitoring<br />Stay alert for 30
-min]:::success
-PathB --> BPCheck{Is PALS a<br />BP patient?}:::decision
-BPCheck -->|Yes, known hypertension| BPMeds[Check if BP medicine<br />was given on time]:::action
-BPCheck -->|No, not a BP patient| NotBP[<b>High BP/Pulse = Breathing Discomfort</b><br />Body is
-struggling]:::action
-NotBP --> TempCheck{Check temperature<br />Any fever?}:::decision
-TempCheck -->|Yes, fever| Infection[Likely infection brewing<br />Get CBC, consult doctor]:::action
-TempCheck -->|No fever| Discomfort[<b>Discomfort / Stuck Secretions</b>]:::action
-Discomfort --> AskB[<b>Ask PALS:</b><br />• Pressure feeling OK?<br />• Any cough stuck?<br />• Chest
-feeling heavy?]:::pals
-AskB --> QuickAmbu[<b>Give Ambu for 1 minute</b><br />Provides quick relief<br />Helps stabilize while you
-assess]:::action
-QuickAmbu --> Clearance[<b>Clearance Cycle:</b><br />Ambu 5-6 → Suction → Neb → Ambu → Suction]:::action
-Clearance --> PulseNow{Pulse/BP<br />settling?}:::decision
-PulseNow -->|Yes| Stable2[<b>Comfortable</b><br />Secretions were the cause]:::success
-PulseNow -->|Still high| GetCBC[Get CBC to rule out infection<br />Consult doctor if no
-improvement]:::action
-PathC --> VentCheck[<b>Check Ventilator:</b><br />• Settings unchanged?<br />• Circuit connected?<br />•
-Leak values normal?]:::action
-VentCheck --> LeakQ{High leak<br />showing?}:::decision
-LeakQ -->|Yes| FixLeak[Check: Cuff inflation,<br />circuit connections,<br />exhalation valve]:::action
-LeakQ -->|No, all OK| TempAmbu[<b>Give Ambu temporarily</b><br />If PALS feels better with Ambu,<br />issue
-is with ventilator delivery]:::action
-FixLeak --> Recheck[Recheck parameters]:::action
-TempAmbu --> VentIssue{Better with<br />Ambu?}:::decision
-VentIssue -->|Yes| CallTech[Ventilator needs check<br />Continue Ambu support<br />Call technician]:::action
-VentIssue -->|No difference| OtherCause[Issue is not pressure<br />Go back and reassess]:::action
-OtherCause --> CheckPALS
+    <div class="flowchart">
+        <!-- Start -->
+        <div class="flow-row">
+            <div class="flow-node start">
+                <strong>PALS showing discomfort</strong>
+                or parameters changing
+            </div>
+        </div>
+
+        <div class="flow-arrow down"></div>
+
+        <!-- Ask PALS -->
+        <div class="flow-row">
+            <div class="flow-node pals">
+                <strong>FIRST: Ask PALS</strong>
+                What are you feeling?<br>Where is the problem?
+            </div>
+        </div>
+
+        <div class="flow-arrow down"></div>
+
+        <!-- Check Parameters -->
+        <div class="flow-row">
+            <div class="flow-node action">
+                <strong>Check Parameters</strong>
+                SpO2, Pulse, BP, TV, RR, Graph
+            </div>
+        </div>
+
+        <div class="flow-arrow down"></div>
+
+        <!-- Main Decision -->
+        <div class="flow-row">
+            <div class="flow-node decision">
+                <strong>What do you observe?</strong>
+            </div>
+        </div>
+
+        <!-- Three Branches -->
+        <div class="flow-three-branches">
+            <!-- Situation A -->
+            <div class="flow-branch">
+                <div class="flow-branch-label">SpO2 dropping or Low TV</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node warning" style="width: 100%;">
+                    <strong>SITUATION A</strong>
+                    Breathing Issue
+                </div>
+            </div>
+
+            <!-- Situation B -->
+            <div class="flow-branch">
+                <div class="flow-branch-label">High Pulse/BP, SpO2 normal</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action" style="width: 100%;">
+                    <strong>SITUATION B</strong>
+                    Discomfort / Pulse-BP Issue
+                </div>
+            </div>
+
+            <!-- Situation C -->
+            <div class="flow-branch">
+                <div class="flow-branch-label">PALS says pressure insufficient</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action" style="width: 100%;">
+                    <strong>SITUATION C</strong>
+                    Ventilator Issue
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Understanding Each Situation -->
+    <!-- Situation A Detail -->
+    <div class="flow-section">
+        <div class="flow-section-title">SITUATION A: SpO2 Dropping / Low Tidal Volume</div>
+
+        <div class="flow-row">
+            <div class="flow-node action">
+                <strong>Give Ambu</strong>
+                Provides immediate relief<br>Buys time to find cause
+            </div>
+        </div>
+
+        <div class="flow-arrow down"></div>
+
+        <div class="flow-row">
+            <div class="flow-node pals">
+                <strong>Ask PALS:</strong>
+                • Cough stuck? Where?<br>
+                • Wet or dry feeling?<br>
+                • Feeling better with Ambu?
+            </div>
+        </div>
+
+        <div class="flow-arrow down"></div>
+
+        <div class="flow-row">
+            <div class="flow-node decision">
+                <strong>What does PALS say?</strong>
+            </div>
+        </div>
+
+        <!-- Four paths from PALS feedback -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px;">
+            <div style="text-align: center;">
+                <div class="flow-branch-label">Wet secretions / Gurgling</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action" style="max-width: none; font-size: 0.85rem;">
+                    <strong>SECRETION PATH</strong>
+                    NS 1-2ml + Ambu 5-6<br>→ Suction → Subglottic
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="flow-branch-label">Dry cough / Not coming out</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action" style="max-width: none; font-size: 0.85rem;">
+                    <strong>NEBULIZATION PATH</strong>
+                    Start Levolin Neb<br>→ Ambu + Suction after
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="flow-branch-label">Stuck near balloon area</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node warning" style="max-width: none; font-size: 0.85rem;">
+                    <strong>⚠️ BALLOON PATH</strong>
+                    Subglottic FIRST<br>Cuff deflate if trained
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="flow-branch-label">Catheter blocked</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node warning" style="max-width: none; font-size: 0.85rem;">
+                    <strong>⚠️ MUCUS PLUG</strong>
+                    2ml NS + 8-10 Ambu<br>Consider TT change
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow down" style="margin-top: 20px;"></div>
+
+        <div class="flow-row">
+            <div class="flow-node decision">
+                <strong>Check with PALS</strong>
+                Feeling better? SpO2 > 94%?
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 50px; margin-top: 15px;">
+            <div style="text-align: center;">
+                <div class="flow-branch-label">No</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action">
+                    Repeat: Ambu + Suction<br>Try different path
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="flow-branch-label">Yes</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node success">
+                    <strong>Stabilized</strong>
+                    Continue monitoring<br>Stay alert for 30 min
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Situation B Detail -->
+    <div class="flow-section">
+        <div class="flow-section-title">SITUATION B: High Pulse/BP with Normal SpO2</div>
+
+        <div class="flow-row">
+            <div class="flow-node decision">
+                <strong>Is PALS a BP patient?</strong>
+                (Known hypertension)
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 50px; margin-top: 15px;">
+            <div style="text-align: center;">
+                <div class="flow-branch-label">Yes, BP patient</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action">
+                    Check if BP medicine<br>was given on time
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="flow-branch-label">No, not a BP patient</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action">
+                    <strong>High BP/Pulse = Breathing Discomfort</strong>
+                    Body is struggling
+                </div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node decision">
+                    Check temperature<br>Any fever?
+                </div>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <div style="text-align: center; flex: 1;">
+                        <div class="flow-branch-label">Yes, fever</div>
+                        <div class="branch-connector">↓</div>
+                        <div class="flow-node action" style="font-size: 0.85rem;">
+                            Likely infection<br>Get CBC, consult doctor
+                        </div>
+                    </div>
+                    <div style="text-align: center; flex: 1;">
+                        <div class="flow-branch-label">No fever</div>
+                        <div class="branch-connector">↓</div>
+                        <div class="flow-node action" style="font-size: 0.85rem;">
+                            <strong>Clearance Cycle:</strong><br>
+                            Ambu → Suction → Neb<br>→ Ambu → Suction
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Situation C Detail -->
+    <div class="flow-section">
+        <div class="flow-section-title">SITUATION C: Pressure Feels Insufficient</div>
+
+        <div class="flow-row">
+            <div class="flow-node action">
+                <strong>Check Ventilator:</strong>
+                Settings unchanged? Circuit connected?<br>Leak values normal?
+            </div>
+        </div>
+
+        <div class="flow-arrow down"></div>
+
+        <div class="flow-row">
+            <div class="flow-node decision">
+                <strong>High leak showing?</strong>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 50px; margin-top: 15px;">
+            <div style="text-align: center;">
+                <div class="flow-branch-label">Yes, high leak</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action">
+                    Check: Cuff inflation,<br>circuit connections,<br>exhalation valve
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div class="flow-branch-label">No, all OK</div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action">
+                    <strong>Give Ambu temporarily</strong>
+                    If better with Ambu →<br>ventilator issue
+                </div>
+                <div class="branch-connector">↓</div>
+                <div class="flow-node action">
+                    Continue Ambu support<br>Call technician
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Understanding Each Situation - Text Version -->
     <h2>Understanding Each Situation</h2>
 
     <!-- Situation A -->
@@ -618,80 +908,4 @@ OtherCause --> CheckPALS
     </div>
 
 </div>
-
-<!-- Modal -->
-<div id="flowchartModal" class="modal-overlay">
-    <button class="close-modal" onclick="toggleModal()">&times;</button>
-    <div id="modalContent"
-        style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></div>
-</div>
-
-{% endblock %}
-
-{% block extra_js %}
-<script>
-    // Initialize Mermaid when DOM is ready
-    document.addEventListener('DOMContentLoaded', function () {
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'base',
-            flowchart: {
-                useMaxWidth: true,
-                htmlLabels: true,
-                curve: 'basis'
-            },
-            themeVariables: {
-                primaryColor: '#f9fafb',
-                primaryTextColor: '#1f2937',
-                primaryBorderColor: '#4b5563',
-                lineColor: '#6b7280',
-                secondaryColor: '#fafafa',
-                tertiaryColor: '#ffffff',
-                fontSize: '14px'
-            }
-        });
-
-        // Explicitly run Mermaid after a short delay
-        setTimeout(function () {
-            mermaid.run({
-                querySelector: '.mermaid'
-            });
-        }, 100);
-    });
-
-    function toggleModal() {
-        const modal = document.getElementById('flowchartModal');
-        const modalContent = document.getElementById('modalContent');
-        const isActive = modal.classList.contains('active');
-
-        if (!isActive) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            const originalSvg = document.querySelector('.chart-container .mermaid svg');
-            if (originalSvg) {
-                modalContent.innerHTML = '';
-                const clone = originalSvg.cloneNode(true);
-                clone.style.maxWidth = '95vw';
-                clone.style.maxHeight = '90vh';
-                clone.style.width = 'auto';
-                clone.style.height = 'auto';
-                modalContent.appendChild(clone);
-            }
-        } else {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-            modalContent.innerHTML = '';
-        }
-    }
-
-    document.addEventListener('keydown', function (event) {
-        if (event.key === "Escape") {
-            const modal = document.getElementById('flowchartModal');
-            if (modal.classList.contains('active')) {
-                toggleModal();
-            }
-        }
-    });
-</script>
 {% endblock %}

@@ -199,6 +199,36 @@ def get_communication_tech():
         logger.error(f"Error loading communication tech data: {e}")
         return jsonify({"error": str(e)}), 500
 
+@app.route('/api/research-initiatives')
+def get_research_initiatives():
+    """Get research initiatives data for the research updates page"""
+    try:
+        with open('data/research_initiatives_india.json', 'r', encoding='utf-8') as f:
+            return jsonify(json.load(f))
+    except FileNotFoundError:
+        return jsonify({
+            "last_updated": "2025-12-15",
+            "categories": {}
+        })
+    except Exception as e:
+        logger.error(f"Error loading research initiatives data: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/community-faq')
+def get_community_faq():
+    """Get community FAQ data compiled from ALSCAS discussions"""
+    try:
+        with open('data/als_community_faq_enhanced.json', 'r', encoding='utf-8') as f:
+            return jsonify(json.load(f))
+    except FileNotFoundError:
+        return jsonify({
+            "metadata": {"title": "FAQ not found"},
+            "categories": []
+        })
+    except Exception as e:
+        logger.error(f"Error loading community FAQ data: {e}")
+        return jsonify({"error": str(e)}), 500
+
 # ==================== ERROR HANDLERS ====================
 
 @app.errorhandler(404)

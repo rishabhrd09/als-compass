@@ -257,7 +257,10 @@ als-caregiver-compass/
 ├── .gitignore                  # Git ignore rules
 ├── data/                       # Data files
 │   ├── sources.yaml            # Medical sources
+│   ├── als_community_faq.json  # Original FAQ data
+│   ├── als_community_faq_enhanced.json  # NEW: Comprehensive situation-specific FAQ
 │   ├── research_categorized.json
+│   ├── research_initiatives_india.json
 │   ├── bipap_faq.json
 │   └── communication_technology.json
 ├── templates/                  # HTML templates
@@ -356,6 +359,8 @@ python -c "import secrets; print(secrets.token_hex(32))"
 ## Getting Help
 
 - Check the main [README.md](README.md) for feature documentation
+- Read [SIMPLE_EXPLANATION.md](SIMPLE_EXPLANATION.md) for layman-friendly code walkthrough
+- Read [AI_OVERVIEW.md](AI_OVERVIEW.md) for system architecture details
 - Review error messages carefully - they often indicate the solution
 - Ensure all dependencies are installed: `pip install -r requirements.txt`
 - Verify API keys are valid and have sufficient credits

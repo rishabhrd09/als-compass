@@ -7,6 +7,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext
 import json
 import os
+import threading
 from datetime import datetime
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -16,21 +17,26 @@ import webbrowser
 load_dotenv()
 
 # Research Prompt Template
-RESEARCH_PROMPT_TEMPLATE = """You are an expert medical researcher specializing in ALS/MND research. Conduct a comprehensive analysis of the latest ALS research as of December 2025.
+RESEARCH_PROMPT_TEMPLATE = """You are an expert medical researcher specializing in ALS/MND research. Conduct a COMPREHENSIVE analysis of ALL ALS research developments as of December 2025.
+
+CRITICAL INSTRUCTIONS:
+1. Include ALL existing approved treatments AND any NEW treatments approved since 2024
+2. Include ALL active clinical trials AND any NEW trials announced in 2025
+3. Include ALL pre-clinical research AND any NEW promising developments
+4. ALWAYS look for the LATEST updates - new drug approvals, new trial results, new company announcements
 
 CRITICAL NOTE: Relyvrio (AMX0035) was WITHDRAWN from US/Canada markets in 2024 following PHOENIX Phase 3 failure. FDA withdrawal August 29, 2025. Do NOT include this drug as an active treatment.
 
-COMPREHENSIVE RESEARCH REQUIREMENTS:
-
 **CATEGORY 1A - Currently Approved & Available Treatments (December 2025):**
-Active treatments:
+Include these PLUS any new approvals:
 - Riluzole (FDA 1995) - Widely available in India (₹5,000-7,000/month)
 - Edaravone (FDA 2017 IV, 2022 oral) - India generics available (₹600-1,600/vial)
 - Tofersen/Qalsody (FDA 2023) - SOD1-ALS only, Import via Form 12B
 - Rozebalamin (Japan 2024) - Japan only as of Dec 2025
 - Nuedexta (FDA 2010) - For PBA symptoms
+- ADD any NEW FDA/EMA/PMDA approvals announced in 2024-2025
 
-For EACH approved treatment, provide:
+For EACH treatment provide:
 - Drug name, brand names (global and India-specific)
 - Approval status with exact dates
 - Mechanism of action (detailed)
@@ -38,10 +44,10 @@ For EACH approved treatment, provide:
 - Clinical benefit (quantified)
 - India availability with CURRENT costs in INR
 - Eligibility criteria
-- Source citations
+- Source citations with URLs
 
 **CATEGORY 1B - Active Clinical Trials (Phase 2-3) as of December 2025:**
-Key trials to include:
+Include these PLUS any NEW trials announced in 2025:
 - Masitinib (Phase 3 Confirmatory AB23005, July 2025)
 - Pridopidine PREVAiLS (Phase 3 cleared Dec 11, 2025)
 - CNM-Au8 (NDA Q1 2026, RESTORE-ALS Phase 3 planned)
@@ -54,28 +60,31 @@ Key trials to include:
 - AMT-162 EPISOD1
 - NUZ-001/Monepantel (HEALEY pending)
 - EXPERTS-ALS UK Platform
+- ADD any NEW Phase 2/3 trials started in 2025
 
-For EACH active trial, provide accurate December 2025 status.
+For EACH trial provide: trial name, NCT number, phase, sponsor, target, status, expected completion, India enrollment if any.
 
 **CATEGORY 1C - Pre-Clinical & Early Development (December 2025):**
-Key programs:
+Key programs PLUS new discoveries:
 - QRL-201 STMN2 restoration - NOW IN PHASE 1 (ANQUR, NCT05633459)
 - ASHA-624 SARM1 inhibitor - Phase 1 expected early 2025
 - TDP-43 targeting programs
 - CRISPR for C9orf72 and SOD1
-- Target ALS GWAS (includes India/NIMHANS)
+- Target ALS GWAS (includes India/NIMHANS collaboration)
+- ADD any NEW breakthrough pre-clinical research from 2025
 
-**INDIA-SPECIFIC REQUIREMENTS:**
+**INDIA-SPECIFIC REQUIREMENTS (Verified legitimate sources ONLY):**
 - NIMHANS Bangalore: Dr. Nalini Atchayaram, 250 patients/year, 700+ WES completed
 - DNA Labs India: 36-gene ALS panel ₹20,000 (~$240)
 - MedGenome: CAP-accredited, clinical exome
 - myTomorrows India Hub: Launched December 4, 2024 in Delhi
-- Patient orgs: Asha Ek Hope Foundation, MND Trust, ALS Care and Support Group
+- ALS Care and Support Group (ALSCAS): Legitimate India support community
 
-Return results as structured JSON with complete December 2025 verification."""
+Return results as structured JSON:
+
 {
   "last_updated": "YYYY-MM-DD",
-  "data_sources": ["source1", "source2", ...],
+  "data_sources": ["source1 with URL", "source2 with URL"],
   "categories": {
     "approved_treatments": [
       {
@@ -86,20 +95,34 @@ Return results as structured JSON with complete December 2025 verification."""
         "mechanism": "...",
         "als_stage": [],
         "als_stage_note": "...",
-        "india_info": {...},
+        "india_info": {"available": true, "cost_inr": "...", "how_to_access": "..."},
         "clinical_benefit": "...",
         "eligibility": "...",
+        "sources": ["url1", "url2"]
+      }
+    ],
+    "clinical_trials": [
+      {
+        "id": 1,
+        "trial_name": "...",
+        "nct_number": "NCT...",
+        "phase": "Phase 2/3",
+        "sponsor": "...",
+        "target": "...",
+        "status": "...",
+        "expected_completion": "...",
+        "india_sites": [],
         "sources": []
       }
     ],
-    "clinical_trials": [...],
-    "preclinical_research": [...]
+    "preclinical_research": []
   },
-  "key_research_hubs_india": [...],
-  "important_notes": {...}
+  "key_research_hubs_india": [],
+  "new_developments_2025": [],
+  "important_notes": {}
 }
 
-ENSURE 100% MEDICAL ACCURACY. All claims must be verifiable."""
+ENSURE 100% MEDICAL ACCURACY. Include source URLs for verification."""
 
 class EnhancedResearchManagerGUI:
     def __init__(self, root):
@@ -188,12 +211,9 @@ Steps:
                                font=('Helvetica', 12, 'bold'), bg='#f5f5f5')
         result_label.pack(anchor='w', pady=(20, 5))
         
-        self.llm_results_text = scrolledtext.ScrolledText(frame, width=90, height=15, wrap=tk.WORD)
-        self.llm_results_text.pack(fill='both', expand=True, pady=5)
-        
-        # Action buttons (initially disabled)
+        # Action buttons BEFORE scrolled text (so they're always visible)
         self.btn_frame_actions = ttk.Frame(frame)
-        self.btn_frame_actions.pack(pady=10)
+        self.btn_frame_actions.pack(pady=10, fill='x')
         
         self.btn_modify = ttk.Button(self.btn_frame_actions, text="✏️ Modify Results", 
                                      command=self.modify_results, state='disabled')
@@ -206,6 +226,10 @@ Steps:
         self.btn_publish = ttk.Button(self.btn_frame_actions, text="🚀 Publish to Website", 
                                       command=self.publish_to_website, state='disabled')
         self.btn_publish.pack(side='left', padx=5)
+        
+        # Results scrolled text (after buttons so buttons are always visible at top)
+        self.llm_results_text = scrolledtext.ScrolledText(frame, width=90, height=15, wrap=tk.WORD)
+        self.llm_results_text.pack(fill='both', expand=True, pady=5)
     
     def create_current_tab(self):
         frame = ttk.Frame(self.tab_current)
@@ -284,88 +308,127 @@ For comprehensive research updates, please use the LLM Workflow tab.
             self.step3_format_with_llm_only()
     
     def step3_execute_search_and_format(self):
-        """Step 3: Execute web search + LLM formatting"""
+        """Step 3: Execute LLM research in background thread"""
         self.llm_results_text.delete('1.0', tk.END)
-        self.llm_results_text.insert('1.0', "🔍 Searching medical databases...\n")
-        self.root.update()
+        self.llm_results_text.insert('1.0', "🔍 Contacting OpenAI GPT-4o...\n")
+        self.llm_results_text.insert(tk.END, "⏳ This may take 30-60 seconds for comprehensive research...\n\n")
+        self.llm_results_text.insert(tk.END, "📡 Sending request to OpenAI API...\n")
+        self.llm_results_text.insert(tk.END, "(GUI will remain responsive - please wait)\n\n")
         
+        # Run API call in background thread
+        thread = threading.Thread(target=self._execute_api_call, daemon=True)
+        thread.start()
+        
+        # Start checking for completion
+        self.root.after(500, self._check_api_result)
+    
+    def _execute_api_call(self):
+        """Execute API call in background thread"""
         try:
-            # Call GPT-4 with web browsing capability
             response = self.client.chat.completions.create(
-                model="gpt-4-turbo-preview",  # Or "gpt-4" with browsing
+                model="gpt-4o",
                 messages=[
-                    {"role": "system", "content": "You are an expert ALS researcher with access to current medical databases. Provide accurate, sourced medical information only."},
+                    {"role": "system", "content": "You are an expert ALS researcher. Respond with valid JSON only. Include ALL information requested - approved treatments, clinical trials, and pre-clinical research."},
                     {"role": "user", "content": self.current_prompt}
                 ],
-                temperature=0.3,  # Lower temperature for accuracy
-                max_tokens=4000
+                temperature=0.2,
+                max_tokens=4096,
+                response_format={"type": "json_object"}
             )
             
             raw_response = response.choices[0].message.content
-            
-            # Parse JSON
             self.current_research_results = self.parse_llm_response(raw_response)
-            
-            # Display formatted results
-            self.display_research_results()
-            
-            # Enable action buttons
-            self.btn_modify['state'] = 'normal'
-            self.btn_sources['state'] = 'normal'
-            self.btn_publish['state'] = 'normal'
+            self._api_success = True
+            self._api_error = None
             
         except Exception as e:
-            self.llm_results_text.insert(tk.END, f"\n\n❌ Error: {str(e)}")
-            messagebox.showerror("Error", f"Failed to complete research: {str(e)}")
+            self._api_success = False
+            self._api_error = str(e)
+    
+    def _check_api_result(self):
+        """Check if API call is complete (called from main thread)"""
+        if hasattr(self, '_api_success'):
+            if self._api_success:
+                self.llm_results_text.insert(tk.END, "✅ Response received and parsed!\n\n")
+                self.display_research_results()
+                self.btn_modify['state'] = 'normal'
+                self.btn_sources['state'] = 'normal'
+                self.btn_publish['state'] = 'normal'
+            else:
+                self.llm_results_text.insert(tk.END, f"\n\n❌ Error: {self._api_error}")
+                messagebox.showerror("Error", f"Failed to complete research: {self._api_error}")
+            
+            # Clean up
+            delattr(self, '_api_success')
+            if hasattr(self, '_api_error'):
+                delattr(self, '_api_error')
+        else:
+            # Still waiting, add a dot to show progress
+            self.llm_results_text.insert(tk.END, ".")
+            self.root.after(1000, self._check_api_result)  # Check again in 1 second
     
     def step3_format_with_llm_only(self):
-        """Alternative: Use LLM's existing knowledge (no web search)"""
-        self.llm_results_text.delete('1.0', tk.END)
-        self.llm_results_text.insert('1.0', "🤖 Using AI's knowledge base (December 2025 cutoff)...\n")
-        self.root.update()
-        
-        try:
-            response = self.client.chat.completions.create(
-                model="gpt-4-turbo-preview",
-                messages=[
-                    {"role": "system", "content": "You are an expert ALS researcher. Provide accurate medical information from your training data (up to December 2025 cutoff)."},
-                    {"role": "user", "content": self.current_prompt}
-                ],
-                temperature=0.3,
-                maxfirst_tokens=4000
-            )
-            
-            raw_response = response.choices[0].message.content
-            self.current_research_results = self.parse_llm_response(raw_response)
-            self.display_research_results()
-            
-            # Enable buttons
-            self.btn_modify['state'] = 'normal'
-            self.btn_sources['state'] = 'normal'
-            self.btn_publish['state'] = 'normal'
-            
-        except Exception as e:
-            self.llm_results_text.insert(tk.END, f"\n\n❌ Error: {str(e)}")
+        """Alternative: Use LLM existing knowledge (same as external - both use GPT-4o)"""
+        # Both options now use the same threaded approach
+        self.step3_execute_search_and_format()
     
     def parse_llm_response(self, raw_response):
-        """Parse LLM response into JSON"""
+        """Parse LLM response into JSON with robust extraction"""
         try:
-            # Try direct JSON parse
-            if raw_response.strip().startswith('{'):
-                return json.loads(raw_response)
+            # Clean up the response
+            response = raw_response.strip()
             
-            # Extract JSON from markdown blocks
-            if '```json' in raw_response:
-                json_str = raw_response.split('```json')[1].split('```')[0].strip()
-            elif '```' in raw_response:
-                json_str = raw_response.split('```')[1].split('```')[0].strip()
-            else:
-                # Try to find JSON object in text
-                start = raw_response.find('{')
-                end = raw_response.rfind('}') + 1
-                json_str = raw_response[start:end]
+            # Try direct JSON parse first
+            if response.startswith('{'):
+                return json.loads(response)
             
-            return json.loads(json_str)
+            json_str = None
+            
+            # Extract JSON from markdown code blocks
+            if '```json' in response:
+                # Split by ```json and take what comes after
+                parts = response.split('```json')
+                if len(parts) > 1:
+                    json_part = parts[1]
+                    # Find the closing ```
+                    if '```' in json_part:
+                        json_str = json_part.split('```')[0].strip()
+                    else:
+                        json_str = json_part.strip()
+            elif '```' in response:
+                # Generic code block
+                parts = response.split('```')
+                if len(parts) >= 2:
+                    # The JSON should be in parts[1]
+                    potential_json = parts[1].strip()
+                    # Remove language identifier if present (e.g., "json\n")
+                    if potential_json.startswith('json'):
+                        potential_json = potential_json[4:].strip()
+                    json_str = potential_json
+            
+            # If still no JSON found, try to extract from anywhere in text
+            if not json_str:
+                start = response.find('{')
+                end = response.rfind('}')
+                if start != -1 and end != -1 and end > start:
+                    json_str = response[start:end + 1]
+            
+            if not json_str:
+                raise ValueError("No JSON object found in response")
+            
+            # Try to parse the extracted JSON
+            try:
+                return json.loads(json_str)
+            except json.JSONDecodeError as je:
+                # Try cleaning common JSON issues
+                cleaned = json_str
+                # Remove trailing commas before ] or }
+                import re
+                cleaned = re.sub(r',\s*([}\]])', r'\1', cleaned)
+                # Replace single quotes with double quotes
+                cleaned = cleaned.replace("'", '"')
+                return json.loads(cleaned)
+                
         except Exception as e:
             raise ValueError(f"Failed to parse LLM response as JSON: {str(e)}\n\nRaw response:\n{raw_response[:500]}")
     
@@ -379,11 +442,11 @@ For comprehensive research updates, please use the LLM Workflow tab.
         
         data = self.current_research_results
         
-        text = f"✅ Research Compilation Complete!\n\n"
-        text += f"📅 Last Updated: {data.get('last_updated', 'Not specified')}\n\n"
+        text = f"Research Compilation Complete!\n\n"
+        text += f"Last Updated: {data.get('last_updated', 'Not specified')}\n\n"
         
         # Summary counts
-        text += "📊 SUMMARY:\n"
+        text += "SUMMARY:\n"
         text += f"  • Approved Treatments: {len(data.get('categories', {}).get('approved_treatments', []))}\n"
         text += f"  • Clinical Trials: {len(data.get('categories', {}).get('clinical_trials', []))}\n"
         text += f"  • Pre-Clinical Research: {len(data.get('categories', {}).get('preclinical_research', []))}\n\n"
@@ -493,14 +556,14 @@ For comprehensive research updates, please use the LLM Workflow tab.
         summary = f"""
 You are about to publish the following research update to the website:
 
-📅 Date: {self.current_research_results.get('last_updated')}
+Date: {self.current_research_results.get('last_updated')}
 
-📊 Content:
-  • {len(self.current_research_results.get('categories', {}).get('approved_treatments', []))} Approved Treatments
-  • {len(self.current_research_results.get('categories', {}).get('clinical_trials', []))} Clinical Trials  
-  • {len(self.current_research_results.get('categories', {}).get('preclinical_research', []))} Pre-Clinical Research Areas
+Content:
+  - {len(self.current_research_results.get('categories', {}).get('approved_treatments', []))} Approved Treatments
+  - {len(self.current_research_results.get('categories', {}).get('clinical_trials', []))} Clinical Trials  
+  - {len(self.current_research_results.get('categories', {}).get('preclinical_research', []))} Pre-Clinical Research Areas
 
-📚 Sources: {len(self.current_research_results.get('data_sources', []))} data sources cited
+Sources: {len(self.current_research_results.get('data_sources', []))} data sources cited
 
 This will UPDATE the live website content.
 

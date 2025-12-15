@@ -8,7 +8,10 @@ chroma_db_enhanced/
 .DS_Store
 whatsapp_anonymized.txt
 
-# Documentation - keep only README.md and SETUP_GUIDE.md
+# Documentation - keep only essential docs
 *.md
 !README.md
 !SETUP_GUIDE.md
+!AI_OVERVIEW.md
+!ZERO_TO_HERO.md
+!SIMPLE_EXPLANATION.md

@@ -34,6 +34,89 @@
         font-weight: 400;
     }
 
+    .faq-disclaimer {
+        background: #fffbeb;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        color: #92400e;
+        line-height: 1.6;
+    }
+
+    .faq-search {
+        margin-bottom: 2rem;
+    }
+
+    .faq-search input {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #fff;
+        color: #1a1a1a;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+
+    .faq-search input:focus {
+        border-color: #666;
+    }
+
+    .faq-search input::placeholder {
+        color: #999;
+    }
+
+    /* Category pills */
+    .faq-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .category-pill {
+        padding: 0.5rem 1rem;
+        border: 1px solid #e5e5e5;
+        background: #fff;
+        color: #666;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .category-pill:hover {
+        border-color: #333;
+        color: #333;
+    }
+
+    .category-pill.active {
+        background: #1a1a1a;
+        color: #fff;
+        border-color: #1a1a1a;
+    }
+
+    /* FAQ sections */
+    .faq-section {
+        margin-bottom: 3rem;
+    }
+
+    .faq-section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0 0 1.5rem 0;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #1a1a1a;
+        display: inline-block;
+    }
+
     .faq-item {
         margin-bottom: 2.5rem;
         padding-bottom: 2.5rem;
@@ -42,6 +125,8 @@
 
     .faq-item:last-child {
         border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
 
     .faq-question {
@@ -50,6 +135,26 @@
         color: #1a1a1a;
         margin: 0 0 1rem 0;
         line-height: 1.5;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .faq-question:hover {
+        color: #333;
+    }
+
+    .faq-toggle {
+        color: #666;
+        font-size: 0.875rem;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-toggle {
+        transform: rotate(180deg);
     }
 
     .faq-answer {
@@ -57,6 +162,11 @@
         color: #333;
         line-height: 1.7;
         margin: 0;
+        display: none;
+    }
+
+    .faq-item.open .faq-answer {
+        display: block;
     }
 
     .faq-answer p {
@@ -111,73 +221,468 @@
         font-style: italic;
         margin-top: 1rem;
     }
+
+    /* Conditional guidance - subtle styling */
+    .conditional-guidance {
+        background: #f8f9fa;
+        border-left: 3px solid #666;
+        padding: 1rem 1.25rem;
+        margin: 1.25rem 0;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .conditional-guidance h4 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0 0 0.75rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .conditional-item {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .conditional-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .if-label {
+        font-weight: 600;
+        color: #1a1a1a;
+    }
+
+    .then-label {
+        color: #666;
+    }
+
+    /* Warning box - subtle */
+    .warning-box {
+        background: #fef2f2;
+        border-left: 3px solid #dc2626;
+        padding: 1rem 1.25rem;
+        margin: 1.25rem 0;
+        border-radius: 0 4px 4px 0;
+        font-size: 0.95rem;
+        color: #7f1d1d;
+    }
+
+    /* Recommendation - subtle */
+    .recommendation-box {
+        background: #f0fdf4;
+        border-left: 3px solid #16a34a;
+        padding: 1rem 1.25rem;
+        margin: 1.25rem 0;
+        border-radius: 0 4px 4px 0;
+        font-size: 0.95rem;
+        color: #14532d;
+    }
+
+    /* Community perspectives */
+    .perspectives-box {
+        background: #faf9f6;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 1rem 1.25rem;
+        margin: 1.25rem 0;
+    }
+
+    .perspectives-box h4 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #666;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .perspective-quote {
+        font-style: italic;
+        color: #555;
+        margin-bottom: 0.75rem;
+        padding-left: 1rem;
+        border-left: 2px solid #ddd;
+        font-size: 0.95rem;
+    }
+
+    .perspective-quote:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Evidence tags - minimal */
+    .evidence-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .evidence-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.625rem;
+        border-radius: 3px;
+        font-weight: 500;
+    }
+
+    .evidence-tag.clinical {
+        background: #e5e5e5;
+        color: #333;
+    }
+
+    .evidence-tag.community {
+        background: #e5e5e5;
+        color: #333;
+    }
+
+    .evidence-tag.caution {
+        background: #fef2f2;
+        color: #7f1d1d;
+    }
+
+    /* Quick reference */
+    .quick-reference {
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .quick-reference h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #dc2626;
+        margin: 0 0 1.25rem 0;
+    }
+
+    .emergency-item {
+        background: #fef2f2;
+        border-radius: 4px;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .emergency-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .emergency-item h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #991b1b;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .emergency-item p {
+        font-size: 0.9rem;
+        color: #7f1d1d;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Key principles */
+    .key-principles {
+        background: #faf9f6;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .key-principles h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0 0 1rem 0;
+    }
+
+    .key-principles ul {
+        margin: 0;
+        padding-left: 1.25rem;
+    }
+
+    .key-principles li {
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-size: 0.95rem;
+    }
+
+    .key-principles li:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 640px) {
+        .faq-container {
+            padding: 2rem 1rem;
+        }
+
+        .faq-title {
+            font-size: 1.5rem;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+        }
+
+        .category-pill {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.75rem;
+        }
+    }
 </style>
 
 <div class="faq-container">
     <div class="faq-header">
         <h1 class="faq-title">Frequently Asked Questions</h1>
-        <p class="faq-subtitle">Common questions about ALS caregiving and respiratory support</p>
+        <p class="faq-subtitle">Common questions about ALS caregiving from the community</p>
     </div>
 
-    <!-- BiPAP FAQ -->
-    <div class="faq-item">
-        <h2 class="faq-question">When does a PALS need BiPAP support & what are the signs?</h2>
-        <div class="faq-answer">
-            <p><strong>Key Point:</strong> PALS have weakened diaphragm muscles → they can't exhale properly → CO₂ gets
-                trapped inside the body.</p>
-
-            <p><strong>Why plain oxygen alone is risky:</strong> Oxygen may show good O₂ levels on monitor, but
-                internally CO₂ keeps building up silently. This is dangerous. BiPAP helps push out the CO₂ while also
-                helping breathe in.</p>
-
-            <p><strong>Signs that BiPAP is needed:</strong></p>
-            <ul class="faq-list">
-                <li>Morning headaches (CO₂ buildup sign)</li>
-                <li>Feeling tired even after sleeping</li>
-                <li>Breathlessness while lying down</li>
-                <li>Gasping or disturbed sleep</li>
-                <li>Daytime drowsiness/confusion</li>
-                <li>SpO₂ dropping below 90%</li>
-            </ul>
-
-            <p><strong>Comparison: Oxygen Only vs BiPAP</strong></p>
-            <table class="faq-table">
-                <thead>
-                    <tr>
-                        <th>Aspect</th>
-                        <th>Oxygen Only</th>
-                        <th>BiPAP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>O₂ levels</td>
-                        <td>Improves</td>
-                        <td>Improves</td>
-                    </tr>
-                    <tr>
-                        <td>CO₂ removal</td>
-                        <td>No help</td>
-                        <td>Helps exhale</td>
-                    </tr>
-                    <tr>
-                        <td>Safe for PALS</td>
-                        <td>Risky alone</td>
-                        <td>Recommended</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p><strong>Approximate Costs (India):</strong></p>
-            <ul class="faq-list">
-                <li>BiPAP rental: ₹1,500-3,000/month</li>
-                <li>O₂ concentrator rental: ₹1,000-2,500/month</li>
-            </ul>
-
-            <p class="faq-note">Recommendation: If you see these signs, consult your doctor about starting BiPAP early.
-                Don't wait!</p>
-        </div>
+    <div class="faq-disclaimer">
+        <strong>Medical Disclaimer:</strong> This FAQ is compiled from experiences shared by caregivers and patients in
+        the ALS Care & Support India community. It is for educational purposes only and does NOT constitute medical
+        advice. Always consult your treating physician before making any medical decisions.
     </div>
 
+    <div class="faq-search">
+        <input type="text" id="faqSearch" placeholder="Search FAQs...">
+    </div>
+
+    <div class="faq-categories" id="categoryNav">
+        <!-- Categories loaded dynamically -->
+    </div>
+
+    <div id="faqContent">
+        <!-- Dynamic FAQ content loaded here -->
+    </div>
+
+
+    <div id="quickReference">
+        <!-- Quick reference loaded dynamically -->
+    </div>
+
+    <div id="keyPrinciples">
+        <!-- Key principles loaded dynamically -->
+    </div>
 </div>
+
+<script>
+    let faqData = null;
+    let currentCategory = 'all';
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        await loadFAQData();
+        initSearch();
+    });
+
+    async function loadFAQData() {
+        try {
+            const response = await fetch('/api/community-faq');
+            faqData = await response.json();
+            renderCategories();
+            renderFAQ('all');
+            renderQuickReference();
+            renderKeyPrinciples();
+        } catch (error) {
+            console.error('Error loading FAQ:', error);
+        }
+    }
+
+    function renderCategories() {
+        const nav = document.getElementById('categoryNav');
+        let html = `<button class="category-pill active" onclick="filterCategory('all', this)">All Topics</button>`;
+
+        faqData.categories.forEach(cat => {
+            html += `<button class="category-pill" onclick="filterCategory('${cat.id}', this)">${cat.name}</button>`;
+        });
+
+        nav.innerHTML = html;
+    }
+
+    function filterCategory(categoryId, btn) {
+        currentCategory = categoryId;
+
+        document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+
+        renderFAQ(categoryId);
+    }
+
+    function renderFAQ(categoryId) {
+        const content = document.getElementById('faqContent');
+        let html = '';
+
+        const categoriesToShow = categoryId === 'all'
+            ? faqData.categories
+            : faqData.categories.filter(c => c.id === categoryId);
+
+        categoriesToShow.forEach(category => {
+            const questions = category.questions;
+
+            if (questions.length === 0) return;
+
+            html += `<div class="faq-section" data-category="${category.id}">
+            <h3 class="faq-section-title">${category.name}</h3>`;
+
+            questions.forEach(q => {
+                html += renderQuestion(q);
+            });
+
+            html += `</div>`;
+        });
+
+        content.innerHTML = html;
+    }
+
+    function renderQuestion(q) {
+        let answerHtml = formatAnswer(q.answer);
+
+        // Conditional guidance
+        if (q.conditional) {
+            answerHtml += renderConditional(q.conditional);
+        }
+
+        // Warning
+        if (q.warning) {
+            answerHtml += `<div class="warning-box"><strong>⚠️ Warning:</strong> ${q.warning}</div>`;
+        }
+
+        // Recommendation
+        if (q.recommendation) {
+            answerHtml += `<div class="recommendation-box"><strong>💡 Pro Tip:</strong> ${q.recommendation}</div>`;
+        }
+
+        // Perspectives
+        if (q.perspectives && q.perspectives.length > 0) {
+            answerHtml += `<div class="perspectives-box">
+            <h4>Community Perspectives</h4>
+            ${q.perspectives.map(p => `<div class="perspective-quote">"${p}"</div>`).join('')}
+        </div>`;
+        }
+
+        // Evidence
+        if (q.evidence && q.evidence.length > 0) {
+            answerHtml += `<div class="evidence-tags">
+            ${q.evidence.map(e => renderEvidenceTag(e)).join('')}
+        </div>`;
+        }
+
+        return `
+    <div class="faq-item" data-tags="${q.tags ? q.tags.join(' ') : ''}">
+        <h2 class="faq-question" onclick="toggleFaq(this)">
+            <span>${q.question}</span>
+            <span class="faq-toggle">▼</span>
+        </h2>
+        <div class="faq-answer">${answerHtml}</div>
+    </div>`;
+    }
+
+    function formatAnswer(answer) {
+        // Convert markdown-like formatting to HTML
+        let html = answer
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/• (.*?)(?=\n|$)/g, '<li>$1</li>');
+
+        // Wrap bullet lists
+        html = html.replace(/(<li>.*?<\/li>)+/g, '<ul class="faq-list">$&</ul>');
+
+        return `<p>${html}</p>`.replace(/<p><\/p>/g, '').replace(/<p><ul/g, '<ul').replace(/<\/ul><\/p>/g, '</ul>');
+    }
+
+    function renderConditional(conditional) {
+        let html = '<div class="conditional-guidance"><h4>Conditional Guidance</h4>';
+
+        if (conditional.if_then && Array.isArray(conditional.if_then)) {
+            conditional.if_then.forEach(item => {
+                html += `<div class="conditional-item">
+                <span class="if-label">IF</span> ${item.if} 
+                <span class="then-label">→ THEN</span> ${item.then}
+            </div>`;
+            });
+        } else if (conditional.if && conditional.then) {
+            html += `<div class="conditional-item">
+            <span class="if-label">IF</span> ${conditional.if} 
+            <span class="then-label">→ THEN</span> ${conditional.then}
+        </div>`;
+        }
+
+        html += '</div>';
+        return html;
+    }
+
+    function renderEvidenceTag(type) {
+        const tags = {
+            'clinically_proven': { class: 'clinical', label: '🔬 Clinically Proven' },
+            'community_observed': { class: 'community', label: '📊 Community Observed' },
+            'individual_experience': { class: 'community', label: '💡 Individual Experience' },
+            'caution_advised': { class: 'caution', label: '⚠️ Caution Advised' }
+        };
+
+        const tag = tags[type] || { class: 'community', label: type };
+        return `<span class="evidence-tag ${tag.class}">${tag.label}</span>`;
+    }
+
+    function toggleFaq(element) {
+        const item = element.closest('.faq-item');
+        item.classList.toggle('open');
+    }
+
+    function renderQuickReference() {
+        if (!faqData.quick_reference) return;
+
+        const container = document.getElementById('quickReference');
+        let html = `<div class="quick-reference">
+        <h3>⚡ Emergency Quick Reference</h3>`;
+
+        faqData.quick_reference.emergency_protocols.forEach(p => {
+            html += `<div class="emergency-item">
+            <h4>${p.situation}</h4>
+            <p>${p.action}</p>
+        </div>`;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    function renderKeyPrinciples() {
+        if (!faqData.key_principles) return;
+
+        const container = document.getElementById('keyPrinciples');
+        let html = `<div class="key-principles">
+        <h3>Key Principles from the Community</h3>
+        <ul>${faqData.key_principles.map(p => `<li>${p}</li>`).join('')}</ul>
+    </div>`;
+
+        container.innerHTML = html;
+    }
+
+    function initSearch() {
+        const searchInput = document.getElementById('faqSearch');
+        searchInput.addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                const tags = item.dataset.tags?.toLowerCase() || '';
+
+                if (question.includes(query) || answer.includes(query) || tags.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide sections based on visible items
+            document.querySelectorAll('.faq-section').forEach(section => {
+                const visibleItems = section.querySelectorAll('.faq-item:not([style*="display: none"])').length;
+                section.style.display = visibleItems > 0 || section.id === 'featuredFaq' ? 'block' : 'none';
+            });
+        });
+    }
+</script>
 {% endblock %}

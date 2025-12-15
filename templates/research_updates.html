@@ -480,6 +480,9 @@
         <button class="category-tab" onclick="showCategory('preclinical')">
             <i class="fas fa-microscope"></i> Pre-Clinical Research (3)
         </button>
+        <button class="category-tab" onclick="showCategory('initiatives')">
+            <i class="fas fa-handshake"></i> Research Initiatives (India)
+        </button>
     </div>
 
     <!-- Category: Approved Treatments -->
@@ -512,6 +515,17 @@
         <div class="research-items" id="preclinicalResearchList"></div>
     </div>
 
+    <!-- Category: Research Initiatives (India) -->
+    <div id="category-initiatives" class="category-section">
+        <div class="category-intro">
+            <h2>Research Initiatives & Collaborations in India</h2>
+            <p>Comprehensive overview of ALS research collaborations, genetic testing programs, clinical initiatives,
+                and community-driven efforts from ALSCAS WhatsApp group discussions (2021-2025). India is moving from
+                ZERO ALS research infrastructure to being part of the global research community.</p>
+        </div>
+        <div class="research-items" id="researchInitiativesList"></div>
+    </div>
+
     <!-- Research Hubs Section -->
     <div class="research-hubs">
         <h2><i class="fas fa-hospital"></i> Key Research Hubs for PALS in India</h2>
@@ -534,6 +548,11 @@
             const response = await fetch('/api/research-categorized');
             researchData = await response.json();
 
+            // Load initiatives data
+            const initiativesResponse = await fetch('/api/research-initiatives');
+            const initiativesData = await initiativesResponse.json();
+            researchData.initiatives = initiativesData;
+
             // Update last updated date
             document.getElementById('lastUpdated').textContent =
                 `Last Updated: ${new Date(researchData.last_updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
@@ -542,6 +561,7 @@
             renderApprovedTreatments();
             renderClinicalTrials();
             renderPreclinicalResearch();
+            renderResearchInitiatives();
             renderResearchHubs();
             renderImportantNotes();
         } catch (error) {
@@ -942,6 +962,444 @@
                 </div>
             </div>
         `;
+        modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        document.body.appendChild(modal);
+    }
+
+    // Render Research Initiatives
+    function renderResearchInitiatives() {
+        const container = document.getElementById('researchInitiativesList');
+        if (!researchData.initiatives || !researchData.initiatives.categories) {
+            container.innerHTML = '<div class="research-item"><p>Loading research initiatives...</p></div>';
+            return;
+        }
+
+        const initiatives = researchData.initiatives;
+        let html = '';
+
+        // Genetic Testing Programs
+        if (initiatives.categories.genetic_testing_programs) {
+            html += `<div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+                    <i class="fas fa-dna"></i> Genetic Testing Programs
+                </h3>`;
+
+            initiatives.categories.genetic_testing_programs.forEach(program => {
+                html += `<div class="research-item">
+                    <div class="research-item-header">
+                        <div class="research-item-title">
+                            <h3>${program.program_name}</h3>
+                            <div class="research-item-subtitle">${program.lead_organization || program.program_type}</div>
+                        </div>
+                        <span class="stage-badge ${program.status.toLowerCase().includes('active') ? 'early' : 'mid'}">${program.status}</span>
+                    </div>
+                    ${program.lead_researcher ? `<p><strong>Lead:</strong> ${program.lead_researcher}</p>` : ''}
+                    ${program.genes_tested && Array.isArray(program.genes_tested) ? `
+                        <div class="info-box">
+                            <h4><i class="fas fa-vial"></i> Genes Tested</h4>
+                            <ul>${program.genes_tested.slice(0, 5).map(g => `<li>${g}</li>`).join('')}</ul>
+                        </div>
+                    ` : ''}
+                    ${program.how_to_participate ? `
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-clipboard-check"></i> How to Participate</h4>
+                            <p><strong>Cost:</strong> ${program.how_to_participate.cost}</p>
+                            <p><strong>Website:</strong> <a href="${program.how_to_participate.website}" target="_blank">${program.how_to_participate.website}</a></p>
+                        </div>
+                    ` : ''}
+                    ${program.providers && Array.isArray(program.providers) ? program.providers.map(p => `
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">${p.name}</div>
+                                <div class="info-value">
+                                    ${p.cost_inr ? `Cost: ₹${p.cost_inr}<br>` : ''}
+                                    ${p.contact ? `Contact: ${p.contact}` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('') : ''}
+                    ${program.sources && Array.isArray(program.sources) ? `
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
+                            <div style="font-size: 0.8rem; margin-top: 0.5rem;">
+                                ${program.sources.map((src, i) => {
+                    if (src.startsWith('http')) {
+                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('gomed') ? 'GOMED Program' : 'Reference'}</a>`;
+                    } else {
+                        return `<span style="color: #475569; margin-right: 1rem;">[${i + 1}] ${src}</span>`;
+                    }
+                }).join('<br>')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>`;
+            });
+            html += '</div>';
+        }
+
+        // International Collaborations
+        if (initiatives.categories.international_collaborations) {
+            html += `<div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+                    <i class="fas fa-globe"></i> International Collaborations
+                </h3>`;
+
+            initiatives.categories.international_collaborations.forEach(collab => {
+                html += `<div class="research-item">
+                    <div class="research-item-header">
+                        <div class="research-item-title">
+                            <h3>${collab.collaboration_name}</h3>
+                            <div class="research-item-subtitle">${collab.organization || ''}</div>
+                        </div>
+                        <span class="stage-badge early">${collab.status}</span>
+                    </div>
+                    ${collab.india_partners && Array.isArray(collab.india_partners) ? `
+                        <div class="info-box">
+                            <h4><i class="fas fa-hospital"></i> India Partners</h4>
+                            <ul>${collab.india_partners.map(p => `<li><strong>${p.institution}:</strong> ${p.role}</li>`).join('')}</ul>
+                        </div>
+                    ` : ''}
+                    ${collab.goals && Array.isArray(collab.goals) ? `
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-bullseye"></i> Goals</h4>
+                            <ul>${collab.goals.slice(0, 3).map(g => `<li>${g}</li>`).join('')}</ul>
+                        </div>
+                    ` : ''}
+                    ${collab.has_detailed_info ? `
+                        <button onclick="showCollaborationModal(${collab.id})" style="
+                            margin-top: 1rem; 
+                            padding: 0.75rem 1.5rem; 
+                            background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%); 
+                            color: white; 
+                            border: none; 
+                            border-radius: 8px; 
+                            cursor: pointer; 
+                            font-weight: 600;
+                            font-size: 0.9rem;
+                            transition: all 0.2s;
+                        " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,119,182,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                            <i class="fas fa-info-circle"></i> Know More About This Collaboration
+                        </button>
+                    ` : ''}
+                    ${collab.sources && Array.isArray(collab.sources) ? `
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
+                            <div style="font-size: 0.8rem; margin-top: 0.5rem;">
+                                ${collab.sources.map((src, i) => {
+                    if (src.startsWith('http')) {
+                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('targetals') ? 'Target ALS' : src.includes('youtube') ? 'YouTube Video' : src.includes('projectmine') ? 'ProjectMinE' : src.includes('als-mnd') ? 'International Alliance' : src.includes('ihbas') ? 'IHBAS' : 'Reference'}</a>`;
+                    } else {
+                        return `<span style="color: #475569; margin-right: 1rem;">[${i + 1}] ${src}</span>`;
+                    }
+                }).join('<br>')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>`;
+            });
+            html += '</div>';
+        }
+
+        // Hospital Initiatives
+        if (initiatives.categories.hospital_initiatives) {
+            html += `<div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+                    <i class="fas fa-hospital-alt"></i> Hospital Initiatives
+                </h3>`;
+
+            initiatives.categories.hospital_initiatives.forEach(hospital => {
+                html += `<div class="research-item">
+                    <div class="research-item-header">
+                        <div class="research-item-title">
+                            <h3>${hospital.institution}</h3>
+                            <div class="research-item-subtitle">${hospital.key_contact || ''}</div>
+                        </div>
+                        <span class="stage-badge early">${hospital.status}</span>
+                    </div>
+                    ${hospital.major_event ? `
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-calendar-star"></i> ${hospital.major_event.name}</h4>
+                            <p><strong>Date:</strong> ${hospital.major_event.date}</p>
+                            <p><strong>Venue:</strong> ${hospital.major_event.venue}</p>
+                        </div>
+                    ` : ''}
+                    ${hospital.initiatives && Array.isArray(hospital.initiatives) ? `
+                        <div class="info-grid">
+                            ${hospital.initiatives.slice(0, 2).map(init => `
+                                <div class="info-item">
+                                    <div class="info-label">${init.name}</div>
+                                    <div class="info-value">${init.status}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                    ${hospital.sources && Array.isArray(hospital.sources) ? `
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
+                            <div style="font-size: 0.8rem; margin-top: 0.5rem;">
+                                ${hospital.sources.map((src, i) => {
+                    if (src.startsWith('http')) {
+                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('nimhans') ? 'NIMHANS' : src.includes('aiims') ? 'AIIMS' : 'Reference'}</a>`;
+                    } else {
+                        return `<span style="color: #475569; margin-right: 1rem;">[${i + 1}] ${src}</span>`;
+                    }
+                }).join('<br>')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>`;
+            });
+            html += '</div>';
+        }
+
+        // Timeline
+        if (initiatives.timeline) {
+            html += `<div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+                    <i class="fas fa-history"></i> Major Milestones Timeline
+                </h3>
+                <div class="research-item">`;
+
+            Object.entries(initiatives.timeline).slice(-5).forEach(([key, value]) => {
+                const period = key.replace(/_/g, ' ').toUpperCase();
+                html += `
+                    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--research-border);">
+                        <h4 style="color: var(--research-primary); margin: 0 0 0.5rem 0;">${value.title}</h4>
+                        <p style="color: var(--research-secondary); font-size: 0.85rem; margin: 0 0 0.5rem 0;">${period}</p>
+                        <ul style="margin: 0; padding-left: 1.5rem; color: var(--research-secondary); font-size: 0.9rem;">
+                            ${value.events.slice(0, 3).map(e => `<li>${e}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+            html += '</div></div>';
+        }
+
+        // Success Stories
+        if (initiatives.success_stories) {
+            html += `<div style="margin-bottom: 2rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+                    <i class="fas fa-trophy"></i> Community Achievements
+                </h3>
+                <div class="info-grid">`;
+
+            initiatives.success_stories.forEach(story => {
+                html += `
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-star"></i> ${story.achievement}</h4>
+                        <p>${story.description}</p>
+                    </div>
+                `;
+            });
+            html += '</div></div>';
+        }
+
+        container.innerHTML = html;
+    }
+
+    // Show Collaboration Modal with Detailed Information
+    function showCollaborationModal(collabId) {
+        if (!researchData.initiatives || !researchData.initiatives.categories.international_collaborations) return;
+
+        const collab = researchData.initiatives.categories.international_collaborations.find(c => c.id === collabId);
+        if (!collab || !collab.detailed_info) return;
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;';
+
+        let modalContent = `
+            <div style="background:white;border-radius:16px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;padding:2rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+                    <h2 style="font-size:1.5rem;color:#0f172a;margin:0;">${collab.collaboration_name}</h2>
+                    <button onclick="this.closest('.modal-overlay').remove()" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:#64748b;">&times;</button>
+                </div>
+                
+                <div style="background:#f0f9ff;border-left:4px solid #0077b6;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p style="color:#0369a1;font-weight:600;margin:0;">${collab.detailed_info.about_target_als || collab.detailed_info.about_alliance || collab.detailed_info.significance || 'Detailed information about this collaboration'}</p>
+                </div>`;
+
+        // Target ALS specific content
+        if (collabId === 1 && collab.detailed_info.meeting_details) {
+            modalContent += `
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-handshake"></i> Meeting Details</h3>
+                <div style="background:#f8fafc;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Date:</strong> ${collab.detailed_info.meeting_details.date}</p>
+                    <p><strong>Format:</strong> ${collab.detailed_info.meeting_details.format}</p>
+                    <p><strong>Participants:</strong> ${collab.detailed_info.meeting_details.participants}</p>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-flask"></i> Global Natural History Study</h3>
+                <div style="background:#f0fdf4;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Purpose:</strong> ${collab.detailed_info.global_natural_history_study.purpose}</p>
+                    <p><strong>India's Role:</strong> ${collab.detailed_info.global_natural_history_study.india_role}</p>
+                    <p><strong>Sample Collection:</strong> ${collab.detailed_info.global_natural_history_study.sample_collection}</p>
+                    <h4 style="margin-top:1rem;color:#15803d;">Expected Outcomes:</h4>
+                    <ul>${collab.detailed_info.global_natural_history_study.expected_outcomes.map(o => `<li>${o}</li>`).join('')}</ul>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-calendar"></i> Annual Conference</h3>
+                <div style="background:#fef3c7;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Date:</strong> ${collab.detailed_info.annual_conference.date}</p>
+                    <p><strong>Format:</strong> ${collab.detailed_info.annual_conference.format}</p>
+                    <p><strong>Focus:</strong> ${collab.detailed_info.annual_conference.focus}</p>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-star"></i> Significance for India</h3>
+                <div style="background:#f1f5f9;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <ul>${collab.detailed_info.significance_for_india.map(s => `<li>${s}</li>`).join('')}</ul>
+                </div>`;
+        }
+
+        // IFNR/IAN Event specific content
+        if (collabId === 3 && collab.event_details) {
+            modalContent += `
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-calendar-alt"></i> Event Details</h3>
+                <div style="background:#f8fafc;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Event Name:</strong> ${collab.event_details.name}</p>
+                    <p><strong>Organizers:</strong> ${collab.event_details.organizers.join(', ')}</p>
+                    <p><strong>Format:</strong> ${collab.event_details.format}</p>
+                    <p><strong>Key Organizer:</strong> ${collab.event_details.key_organizer}</p>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-users"></i> Speakers</h3>
+                <div style="background:#f0fdf4;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <ul>${collab.speakers.map(s => `<li>${s}</li>`).join('')}</ul>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-book-open"></i> Topics Covered</h3>
+                <div style="background:#fef3c7;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <ul>${collab.topics_covered.map(t => `<li>${t}</li>`).join('')}</ul>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-video"></i> Watch Event Recording</h3>
+                <div style="background:#f1f5f9;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p style="margin-bottom:1rem;">${collab.detailed_info.impact}</p>
+                    <a href="${collab.detailed_info.video_recording}" target="_blank" style="display:inline-block;padding:0.75rem 1.5rem;background:#dc2626;color:white;border-radius:8px;text-decoration:none;font-weight:600;">
+                        <i class="fab fa-youtube"></i> Watch on YouTube
+                    </a>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-lightbulb"></i> Key Takeaways</h3>
+                <div style="background:#f0f9ff;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <ul>${collab.detailed_info.key_takeaways.map(k => `<li>${k}</li>`).join('')}</ul>
+                </div>`;
+        }
+
+        // International Alliance specific content
+        if (collabId === 4 && collab.membership_details) {
+            modalContent += `
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-award"></i> Membership Achievement</h3>
+                <div style="background:#f0fdf4;border-left:4px solid #22c55e;border-radius:8px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Achievement Date:</strong> ${collab.membership_details.achievement_date}</p>
+                    <p><strong>Membership Type:</strong> ${collab.membership_details.membership_type}</p>
+                    <p><strong>Organization:</strong> ${collab.membership_details.organization_name}</p>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-star"></i> Significance for India</h3>
+                <div style="background:#fef3c7;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <ul>${collab.detailed_info.significance_for_india.map(s => `<li>${s}</li>`).join('')}</ul>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-gift"></i> Benefits</h3>
+                <div style="background:#f0f9ff;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <ul>${collab.detailed_info.benefits.map(b => `<li>${b}</li>`).join('')}</ul>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-globe"></i> Congress Participation</h3>
+                <div style="background:#f1f5f9;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Event:</strong> ${collab.detailed_info.congress_participation.event}</p>
+                    <p><strong>Year:</strong> ${collab.detailed_info.congress_participation.year}</p>
+                    <p><strong>Significance:</strong> ${collab.detailed_info.congress_participation.significance}</p>
+                    <p style="margin-top:0.75rem;padding:0.75rem;background:#e0f2fe;border-radius:8px;color:#0369a1;">
+                        <strong>Acknowledgment:</strong> ${collab.detailed_info.congress_participation.acknowledgment}
+                    </p>
+                </div>`;
+        }
+
+        // IHBAS specific content
+        if (collabId === 5 && collab.proposed_initiatives) {
+            modalContent += `
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-clipboard-list"></i> Proposed Initiatives</h3>
+                ${collab.proposed_initiatives.map(init => `
+                    <div style="background:#f8fafc;border-radius:12px;padding:1.25rem;margin-bottom:1rem;">
+                        <h4 style="color:#0369a1;margin:0 0 0.5rem 0;">${init.name}</h4>
+                        <p><strong>Status:</strong> <span style="color:#dc2626;">${init.status}</span></p>
+                        <p>${init.description}</p>
+                    </div>
+                `).join('')}
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;margin-top:1.5rem;"><i class="fas fa-hospital-alt"></i> Proposed ALS Clinic</h3>
+                <div style="background:#f0fdf4;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Purpose:</strong> ${collab.detailed_info.proposed_als_clinic.purpose}</p>
+                    <h4 style="margin-top:1rem;color:#15803d;">Services:</h4>
+                    <ul>${collab.detailed_info.proposed_als_clinic.services.map(s => `<li>${s}</li>`).join('')}</ul>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-chart-line"></i> Patient Needs Study</h3>
+                <div style="background:#fef3c7;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Objective:</strong> ${collab.detailed_info.patient_needs_study.objective}</p>
+                    <h4 style="margin-top:1rem;">Expected Outcomes:</h4>
+                    <ul>${collab.detailed_info.patient_needs_study.expected_outcomes.map(o => `<li>${o}</li>`).join('')}</ul>
+                </div>
+
+                <div style="background:#f0f9ff;border-left:4px solid #0077b6;border-radius:8px;padding:1.25rem;">
+                    <p style="color:#0369a1;font-weight:600;margin:0;"><i class="fas fa-exclamation-circle"></i> ${collab.detailed_info.significance}</p>
+                </div>`;
+        }
+
+        // AKV9 specific content
+        if (collabId === 6 && collab.about_akv9) {
+            modalContent += `
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-pills"></i> About AKV9</h3>
+                <div style="background:#f8fafc;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Original Name:</strong> ${collab.about_akv9.original_name}</p>
+                    <p><strong>Current Name:</strong> ${collab.about_akv9.current_name}</p>
+                    <p><strong>Type:</strong> ${collab.about_akv9.type}</p>
+                    <p><strong>Target:</strong> ${collab.about_akv9.target}</p>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-flask"></i> Research Background</h3>
+                <div style="background:#f0fdf4;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Preclinical Results:</strong> ${collab.research_background.preclinical_results}</p>
+                    <p style="margin-top:0.75rem;padding:0.75rem;background:#d1fae5;border-radius:8px;color:#15803d;">
+                        <strong>Unique Aspect:</strong> ${collab.research_background.unique_aspect}
+                    </p>
+                    <p><strong>Development Stage:</strong> ${collab.research_background.development_stage}</p>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-handshake"></i> India Collaboration</h3>
+                <div style="background:#fef3c7;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Meeting Date:</strong> ${collab.detailed_info.india_collaboration.meeting_date}</p>
+                    <p><strong>Location:</strong> ${collab.detailed_info.india_collaboration.location}</p>
+                    <p><strong>Participants:</strong> ${collab.detailed_info.india_collaboration.participants}</p>
+                    <h4 style="margin-top:1rem;">Discussion Topics:</h4>
+                    <ul>${collab.detailed_info.india_collaboration.discussion_topics.map(t => `<li>${t}</li>`).join('')}</ul>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-chart-line"></i> Current Status</h3>
+                <div style="background:#f0f9ff;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <p><strong>Phase:</strong> ${collab.detailed_info.current_status.phase}</p>
+                    <p><strong>Next Steps:</strong> ${collab.detailed_info.current_status.next_steps}</p>
+                    <p style="margin-top:0.75rem;padding:0.75rem;background:#e0f2fe;border-radius:8px;color:#0369a1;">
+                        <strong>India Opportunity:</strong> ${collab.detailed_info.current_status.india_opportunity}
+                    </p>
+                </div>
+
+                <h3 style="color:#0077b6;font-size:1.1rem;margin-bottom:1rem;"><i class="fas fa-star"></i> Significance for India</h3>
+                <div style="background:#f1f5f9;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+                    <ul>${collab.detailed_info.significance_for_india.map(s => `<li>${s}</li>`).join('')}</ul>
+                </div>`;
+        }
+
+        modalContent += `
+                <div style="text-align:center;margin-top:1.5rem;">
+                    <button onclick="this.closest('.modal-overlay').remove()" style="padding:0.75rem 2rem;background:#0077b6;color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;">Close</button>
+                </div>
+            </div>
+        `;
+
+        modal.innerHTML = modalContent;
         modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
         document.body.appendChild(modal);
     }
