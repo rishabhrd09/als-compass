@@ -619,6 +619,215 @@
                     "https://pubmed.ncbi.nlm.nih.gov/33964419/"
                 ]
             }
+        ],
+        "communication_technology": [
+            {
+                "id": 1,
+                "solution_name": "Tobii Dynavox PCEye 5 / I-Series",
+                "category": "Gold Standard (Screen-Mounted)",
+                "form_factor": "Screen-mounted bar (PCEye 5) or All-in-one device (I-Series)",
+                "status": "FDA-listed, Medical Device, Proven for ALS",
+                "what_it_is": "Industry-leading eye-tracking communication system specifically designed for ALS patients over 15+ years of development",
+                "how_it_works": "Infrared eye tracker mounts on computer screen, tracks eye gaze to control mouse cursor and on-screen keyboard. I-Series includes built-in computer, speakers, and communication software.",
+                "key_advantages": [
+                    "15+ years ALS-specific optimization - handles droopy eyelids (ptosis), dry eyes, progressive lenses",
+                    "Minimal calibration required - fastest re-tracking if user looks away",
+                    "Medical-grade reliability - designed for 24/7 use",
+                    "Outdoor capability - works in bright sunlight (critical for wheelchair users)",
+                    "24/7 support hotline - emergency assistance available",
+                    "Insurance coverage - typically covered by health insurance/charities in many countries"
+                ],
+                "limitations": [
+                    "High cost - PCEye 5: $1,249-1,800 (~₹1.35 lakhs), I-Series: $10,000-15,000 (~₹11-16 lakhs)",
+                    "Screen-mounted - requires screen in front of user",
+                    "Tracking box limitation - head must stay within specific range",
+                    "Not portable - designed for fixed setup"
+                ],
+                "india_availability": {
+                    "available": true,
+                    "how_to_get": "Contact Tobii Dynavox directly via tobiidynavox.com or medical equipment distributors",
+                    "cost_inr": "PCEye 5: ~₹1,35,000 | I-Series: ~₹11-16 lakhs",
+                    "funding_options": [
+                        "ALS Society of India (alssocietyindia.org)",
+                        "Team Gleason Foundation (international)",
+                        "Crowdfunding",
+                        "Personal import for medical use"
+                    ]
+                },
+                "who_should_use": "ALL advanced-stage ALS patients needing reliable computer control and communication. This is the proven standard.",
+                "comparison_to_tobii": "This IS the gold standard that all alternatives are compared against",
+                "evidence_quality": "HIGHEST - 90%+ of advanced ALS patients worldwide use Tobii Dynavox products",
+                "sources": [
+                    "https://www.tobiidynavox.com/",
+                    "https://every90minutes.org/als-technology-guide/"
+                ]
+            },
+            {
+                "id": 2,
+                "solution_name": "Pupil Labs Neon",
+                "category": "Wearable Eye Tracker (Research-Grade)",
+                "form_factor": "Wearable glasses (35-50g)",
+                "status": "Research device, NOT medical device, Unproven for ALS",
+                "what_it_is": "Research-grade wearable eye tracker that CAN control Windows mouse through AprilTag surface tracking, but requires significant technical setup",
+                "how_it_works": "Glasses with eye cameras track gaze direction. Scene camera sees AprilTag markers placed on monitor corners. Python software maps gaze to screen coordinates and moves mouse cursor. Requires OptiKey software for full keyboard control.",
+                "key_advantages": [
+                    "ZERO calibration required - uses AI/deep learning to track eyes",
+                    "No head positioning box - works even if head moves",
+                    "Portable - can use with any computer if AprilTags present",
+                    "Research-grade accuracy - 200 Hz sampling, 1.3° accuracy",
+                    "Open-source ecosystem - fully customizable"
+                ],
+                "critical_limitations": [
+                    "NOT plug-and-play - requires Python programming, command line, GitHub knowledge",
+                    "5x more expensive - €6,250 (~₹5.6 lakhs) vs Tobii PCEye 5 at ₹1.35 lakhs",
+                    "Battery life only 4 hours - requires mid-day battery changes",
+                    "Weight on head - 35-50g worn all day may cause fatigue",
+                    "NO ALS-specific support - no 24/7 hotline, community forums only",
+                    "Unproven for ptosis - no data on droopy eyelid performance",
+                    "ZERO reviews from ALS patients - no proven track record in ALS community"
+                ],
+                "setup_complexity": "HIGH - Requires tech-savvy person or programmer to set up Python environment, install real-time-screen-gaze package, configure AprilTag markers, integrate with OptiKey",
+                "india_availability": {
+                    "available": true,
+                    "how_to_get": "Order directly from pupil-labs.com, international shipping",
+                    "cost_inr": "~₹6.7-7.3 lakhs (including customs 20-30%)",
+                    "delivery_time": "2-4 weeks international shipping + customs",
+                    "setup_support": "Hire CS student or programmer for ₹5,000-15,000 initial setup"
+                },
+                "who_should_use": "ONLY if: (1) Tech-savvy family member available, (2) Early-stage ALS can help with setup, (3) Need multiple computer setups, (4) Budget available ~₹7 lakhs. NOT suitable as primary device without backup.",
+                "comparison_to_tobii": {
+                    "rating": "6/10 as substitute",
+                    "pros_vs_tobii": "Calibration-free (huge advantage), portable, no tracking box",
+                    "cons_vs_tobii": "5x cost, unproven for ALS, no medical support, battery life, setup complexity, no droopy eyelid testing"
+                },
+                "realistic_expectations": "Technically capable but practically challenging for 24/7 reliability. Use as supplement/backup to Tobii, not as primary communication device.",
+                "evidence_quality": "LOW for ALS - Zero published reviews from ALS patients. HIGH for research applications.",
+                "sources": [
+                    "https://pupil-labs.com/products/neon/",
+                    "https://github.com/pupil-labs/real-time-screen-gaze",
+                    "https://github.com/pupil-labs/gaze-controlled-cursor-demo"
+                ]
+            },
+            {
+                "id": 3,
+                "solution_name": "EyeControl",
+                "category": "Wearable Audio Communication (ALS-Specific)",
+                "form_factor": "Glasses frame with IR camera + pocket computer + bone conduction speaker",
+                "status": "FDA-listed, CE-marked, Medical Device, Purpose-built for ALS",
+                "what_it_is": "Israeli startup's wearable eye-tracking system specifically designed for ALS and locked-in syndrome. CRITICAL: Does NOT control Windows mouse - standalone audio communication only.",
+                "how_it_works": "Eye gestures (look up/down/left/right, blink patterns) navigate audio menus. Pre-recorded messages play via bone conduction speaker. External speaker lets caregiver hear selections. Works completely without screen.",
+                "key_advantages": [
+                    "20-minute training time - fastest learning curve of any system",
+                    "Works without screen - use in bathroom, bed, car, anywhere",
+                    "24/7 wearable - can sleep with device on, communicate immediately upon waking",
+                    "8-hour battery life - full day use",
+                    "Affordable - ~$300-500 (~₹45,000) vs $10,000+ for Tobii I-Series",
+                    "FDA/CE certified - medical device certification",
+                    "Clinical validation - tested in ICU settings, published in medical journals"
+                ],
+                "critical_limitations": [
+                    "NOT for computer control - cannot type emails, browse web, control Windows",
+                    "Pre-defined messages only - cannot create new phrases without helper",
+                    "Limited vocabulary - menu-based system, not infinite like keyboard",
+                    "Cannot replace Tobii - complements it, does not substitute"
+                ],
+                "india_availability": {
+                    "available": "Unknown - primarily Israel/UK/EU",
+                    "how_to_get": "Contact info@eyecontrol.co.il for India delivery quote",
+                    "cost_inr": "~₹45,000-55,000 (including customs)",
+                    "import_considerations": "Personal medical import allowed, budget extra ₹10,000-20,000 for customs"
+                },
+                "who_should_use": "As COMPANION to Tobii, not replacement. Perfect for: 24/7 emergency communication, bed-bound patients, bathroom use, night-time alerts. Use BOTH if budget allows.",
+                "comparison_to_tobii": {
+                    "rating": "3/10 as substitute, 9/10 as companion",
+                    "what_it_does_better": "24/7 wearable emergency communication, works lying down, no screen needed, affordable",
+                    "what_tobii_does_better": "Full computer control, typing, email, web browsing, complex communication"
+                },
+                "realistic_expectations": "Solves critical gap: 2 AM emergency when Tobii is across room. Cannot replace computer control. Budget recommendation: Use BOTH if possible, choose Tobii if only one.",
+                "evidence_quality": "MODERATE-HIGH - Clinical trials in ICU settings, published studies, but smaller user base than Tobii",
+                "sources": [
+                    "https://eyecontrol.co.il/",
+                    "https://pubmed.ncbi.nlm.nih.gov/ (search: EyeControl ALS)"
+                ]
+            },
+            {
+                "id": 4,
+                "solution_name": "OptiKey + Tobii Eye Tracker 5",
+                "category": "Budget Solution (Gaming Hardware + Free Software)",
+                "form_factor": "Screen-mounted gaming eye tracker + free open-source software",
+                "status": "Gaming device (NOT medical) + Open-source software",
+                "what_it_is": "Free, open-source on-screen keyboard (OptiKey) paired with budget gaming eye tracker (Tobii Tracker 5) to achieve 85% of Tobii Dynavox functionality at 16% of cost",
+                "how_it_works": "Tobii Eye Tracker 5 (gaming device) mounts on screen and tracks eyes. OptiKey software provides on-screen keyboard, mouse control, text-to-speech. User stares at keys to type.",
+                "key_advantages": [
+                    "FREE software - OptiKey is completely free forever, no license fees",
+                    "85% of functionality at 16% of cost - $299 vs $1,800",
+                    "Same sensor technology - Tobii Tracker 5 uses IS5 sensor (same as PCEye 5)",
+                    "Active community - 4,300+ GitHub stars, actively maintained",
+                    "Works with multiple trackers - not locked to one device"
+                ],
+                "critical_limitations": [
+                    "Gaming hardware NOT medical-grade - no IP rating, not tested for outdoor use",
+                    "Community support only - no 24/7 hotline, forum troubleshooting only",
+                    "Calibration required - must follow dot targets (difficult for advanced patients)",
+                    "No ALS-specific optimizations - not tested for ptosis, dry eyes, etc.",
+                    "India availability uncertain - gaming tracker primarily sold in gaming markets"
+                ],
+                "setup_complexity": "MODERATE - Download OptiKey (free), install Tobii Tracker 5 drivers, calibrate, configure dwell time. No programming required but some computer literacy needed.",
+                "india_availability": {
+                    "available": "Uncertain",
+                    "how_to_get": "Order Tobii Eye Tracker 5 from gaming.tobii.com (check India shipping) or gaming import services. Download OptiKey from optikey.org (free)",
+                    "cost_inr": "~₹26,000-30,000 total (tracker + shipping + customs)",
+                    "optikey_cost": "FREE"
+                },
+                "who_should_use": "Budget-constrained users, early-stage ALS (can perform calibration), tech-comfortable users, those wanting to try eye tracking before major investment. Keep Tobii PCEye 5 as upgrade path.",
+                "comparison_to_tobii": {
+                    "rating": "7/10 as substitute",
+                    "cost_savings": "₹1,34,000 savings vs Tobii PCEye 5 + TD Control",
+                    "what_you_sacrifice": "Medical certification, guaranteed outdoor use, 24/7 support, ALS-specific optimizations",
+                    "what_you_gain": "Massive cost savings, open-source flexibility, community development"
+                },
+                "realistic_expectations": "Excellent budget option for early-stage patients. May not be sufficient for advanced disease or outdoor wheelchair use. Consider as stepping stone to medical-grade system.",
+                "evidence_quality": "MODERATE - Proven in ALS community forums, positive reviews, but not medical-grade validation",
+                "sources": [
+                    "https://optikey.org/",
+                    "https://github.com/OptiKey/OptiKey",
+                    "https://gaming.tobii.com/product/eye-tracker-5/"
+                ]
+            }
+        ],
+        "experimental_communication_tech": [
+            {
+                "id": 1,
+                "technology": "Pupil Labs Neon + Custom Python Scripts",
+                "status": "EXPERIMENTAL - For tech-savvy users only",
+                "what_it_is": "Using Pupil Labs Neon with custom Python scripts for advanced mouse control and multi-screen setups",
+                "who_can_try": "Users with programming background or CS student helper, early-stage ALS patients who can assist with setup",
+                "cost": "~₹7 lakhs (Neon hardware) + ₹5,000-15,000 (setup assistance)",
+                "risk_level": "MEDIUM - Unproven for ALS, requires backup system",
+                "recommendation": "Only as supplement to proven system, not as primary device"
+            },
+            {
+                "id": 2,
+                "technology": "Webcam + Head Tracking (Enable Viacam / Camera Mouse)",
+                "status": "EXPERIMENTAL - Free but requires head movement",
+                "what_it_is": "Free software that tracks head movement via webcam to control mouse. NOT eye tracking.",
+                "who_can_try": "Early-stage patients with some head control remaining",
+                "cost": "FREE (uses existing webcam)",
+                "critical_limitation": "Requires head movement - NOT suitable for advanced ALS with zero head control",
+                "risk_level": "LOW - Free to try, but limited applicability",
+                "recommendation": "Try early in disease progression, have eye-tracking backup ready"
+            },
+            {
+                "id": 3,
+                "technology": "DIY AprilTag + Smartphone Eye Tracking",
+                "status": "EXPERIMENTAL - Research projects only",
+                "what_it_is": "Academic research projects using smartphone cameras and AprilTag markers for low-cost eye tracking",
+                "who_can_try": "University researchers, CS students, hobbyists",
+                "cost": "~₹5,000-15,000 (smartphone + markers + 3D printed mounts)",
+                "critical_limitation": "Unreliable, unproven, no support, requires extensive troubleshooting",
+                "risk_level": "HIGH - May waste time and money",
+                "recommendation": "NOT RECOMMENDED for patients needing reliable communication. Research interest only."
+            }
         ]
     },
     "key_research_hubs_india": [

@@ -49,7 +49,7 @@
     /* Category Navigation - Tobii-style Cards */
     .ct-nav {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(7, 1fr);
         gap: 0.85rem;
         max-width: 1000px;
         margin: 0 auto 2rem;
@@ -726,6 +726,9 @@
 
 <!-- Category Navigation -->
 <nav class="ct-nav">
+    <a href="/verified-communication-solutions" class="ct-nav-card"
+        style="background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%); color: white;"><span
+            style="color: white; font-weight: 600;">✓ Verified Solutions</span></a>
     <a href="#eye-tracking" class="ct-nav-card"><span>Eye Tracking</span></a>
     <a href="#head-tracking" class="ct-nav-card"><span>Head Tracking</span></a>
     <a href="#free-software" class="ct-nav-card"><span>Free Software</span></a>
@@ -738,10 +741,31 @@
 <div class="ct-alert">
     <div class="ct-alert-inner">
         <h3>Voice Bank Now</h3>
-        <p>Create a synthetic clone of your voice before speech declines. Requires ~30 minutes of recording.
-            <strong>Free:</strong> <a href="https://www.modeltalker.org/" target="_blank">ModelTalker</a> |
-            <strong>Paid:</strong> ElevenLabs (Indian accents available)
-        </p>
+        <p style="margin-bottom: 1rem;">Create a synthetic clone of your voice before speech declines. Requires ~30
+            minutes of recording.</p>
+
+        <div
+            style="background: var(--ct-bg-alt); border: 2px solid var(--ct-accent); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+            <h4 style="margin: 0 0 0.5rem; color: var(--ct-primary); font-size: 0.95rem;">
+                <strong>FREE for ALS/MND Patients:</strong> ElevenLabs Impact Program
+            </h4>
+            <p style="margin: 0 0 0.75rem; font-size: 0.9rem; color: var(--ct-text); line-height: 1.6;">
+                ElevenLabs offers <strong>completely free voice cloning</strong> for people with ALS/MND through their
+                Impact Program.
+                Includes Indian accents and multilingual support.
+            </p>
+            <a href="https://elevenlabs.io/blog/impact-program-announcement" target="_blank"
+                style="display: inline-block; background: var(--ct-accent); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem;">
+                Apply for Free Access →
+            </a>
+        </div>
+
+        <div style="font-size: 0.9rem; color: var(--ct-text);">
+            <strong>Alternative Free Option:</strong>
+            <a href="https://www.modeltalker.org/" target="_blank"
+                style="color: #0077b6; font-weight: 500;">ModelTalker</a>
+            (Open-source, US English only)
+        </div>
     </div>
 </div>
 
@@ -751,16 +775,16 @@
         <h2>Community Recommendations</h2>
     </div>
 
-    <div class="ct-recommendation-card">
+    <div class="ct-recommendation-card" style="border-left: 4px solid var(--ct-accent);">
         <div class="ct-recommendation-number">1</div>
         <div class="ct-recommendation-content">
             <h4>Start with Tobii Eye Tracker 5 + OptiKey</h4>
-            <p>Budget-friendly. Cost: ~₹25,000-40,000 for tracker + FREE software. Note: Does NOT work with Windows Eye
-                Control.</p>
+            <p>Budget-friendly. Cost: ~₹25,000-40,000 for tracker + FREE software. <strong>Note:</strong> Does NOT work
+                with Windows Eye Control.</p>
         </div>
     </div>
 
-    <div class="ct-recommendation-card">
+    <div class="ct-recommendation-card" style="border-left: 4px solid var(--ct-accent);">
         <div class="ct-recommendation-number">2</div>
         <div class="ct-recommendation-content">
             <h4>Always have Alphabet Board as backup</h4>
@@ -768,7 +792,7 @@
         </div>
     </div>
 
-    <div class="ct-recommendation-card">
+    <div class="ct-recommendation-card" style="border-left: 4px solid var(--ct-accent);">
         <div class="ct-recommendation-number">3</div>
         <div class="ct-recommendation-content">
             <h4>Look to Speak + Bluetooth Speaker</h4>
@@ -947,6 +971,346 @@
                 </p>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Research Updates Section -->
+<section id="research-updates" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Research Updates: Wearable Eye-Tracking Glasses</h2>
+    </div>
+    <p class="ct-section-desc">Latest research on wearable eye-tracking glasses for zero head movement scenarios. These
+        differ from screen-mounted devices and are primarily research/development stage.</p>
+
+    <!-- Important Distinction -->
+    <div class="ct-alert">
+        <div class="ct-alert-inner">
+            <h3>Wearable Glasses vs. Screen-Mounted Devices</h3>
+            <p><strong>Screen-mounted devices</strong> (like Tobii 4C, 5, PCEye above) are proven, affordable, and
+                recommended for most ALS patients. <strong>Wearable glasses</strong> below are emerging solutions
+                requiring technical expertise and higher cost. No commercial wearable glasses product exists
+                specifically designed for ALS mouse control—this represents a significant market gap.</p>
+        </div>
+    </div>
+
+    <!-- Pupil Labs Neon - Primary Wearable Solution -->
+    <div
+        style="margin-top: 2rem; background: white; border: 2px solid var(--ct-accent); border-radius: 12px; overflow: hidden;">
+        <div
+            style="padding: 1.25rem; background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%); border-bottom: 1px solid var(--ct-border);">
+            <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: white;">Pupil Labs Neon</h3>
+            <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: rgba(255,255,255,0.95);">Only viable consumer-ready
+                wearable glasses solution for ALS mouse control</p>
+        </div>
+        <div style="padding: 1.5rem;">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="background: var(--ct-bg-alt); padding: 1rem; border-radius: 8px;">
+                    <div style="font-size: 0.75rem; color: var(--ct-secondary); margin-bottom: 0.25rem;">Price</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">€6,250 (~$6,800 USD)
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--ct-secondary); margin-top: 0.25rem;">~₹5.7 Lakh</div>
+                </div>
+                <div style="background: var(--ct-bg-alt); padding: 1rem; border-radius: 8px;">
+                    <div style="font-size: 0.75rem; color: var(--ct-secondary); margin-bottom: 0.25rem;">Sampling Rate
+                    </div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">200 Hz</div>
+                </div>
+                <div style="background: var(--ct-bg-alt); padding: 1rem; border-radius: 8px;">
+                    <div style="font-size: 0.75rem; color: var(--ct-secondary); margin-bottom: 0.25rem;">Accuracy</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">1.3° with offset</div>
+                </div>
+                <div style="background: #dcfce7; padding: 1rem; border-radius: 8px;">
+                    <div style="font-size: 0.75rem; color: #166534; margin-bottom: 0.25rem;">Calibration</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: #15803d;">NONE REQUIRED ✓</div>
+                    <div style="font-size: 0.75rem; color: #166534; margin-top: 0.25rem;">Critical for ALS</div>
+                </div>
+            </div>
+
+            <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">How It
+                Works</h4>
+            <ul
+                style="margin: 0 0 1rem; padding-left: 1.25rem; font-size: 0.9rem; color: var(--ct-text); line-height: 1.7;">
+                <li><strong>AprilTag Markers:</strong> Place 4+ printed markers around monitor edges</li>
+                <li><strong>Homography Mapping:</strong> Scene camera detects markers and maps gaze to screen
+                    coordinates</li>
+                <li><strong>Real-time Tracking:</strong> 200 Hz gaze data transformed to pixel coordinates</li>
+                <li><strong>Slippage-Invariant:</strong> Deep learning maintains accuracy even if glasses shift position
+                </li>
+            </ul>
+
+            <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">Why
+                Calibration-Free Matters</h4>
+            <p style="font-size: 0.9rem; color: var(--ct-text); line-height: 1.6; margin: 0 0 1rem;">Traditional eye
+                trackers require users to follow targets during calibration—impossible for advanced ALS patients. Neon's
+                deep-learning model eliminates per-session calibration, making it uniquely suited for ALS use.</p>
+
+            <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">Setup
+                Requirements</h4>
+            <ul
+                style="margin: 0 0 1rem; padding-left: 1.25rem; font-size: 0.9rem; color: var(--ct-text); line-height: 1.7;">
+                <li>Windows laptop/desktop with Python 3.8+</li>
+                <li>Printed AprilTag markers (tag36h11 family)</li>
+                <li>Moderate technical expertise (Python, command-line)</li>
+                <li>Works with OptiKey for full Windows control</li>
+            </ul>
+
+            <div
+                style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                <h4 style="margin: 0 0 0.5rem; font-size: 0.9rem; font-weight: 600; color: #0369a1;">Official Resources
+                </h4>
+                <div style="display: grid; gap: 0.5rem; font-size: 0.85rem;">
+                    <div><strong>Website:</strong> <a href="https://pupil-labs.com" target="_blank"
+                            style="color: #0284c7;">pupil-labs.com</a></div>
+                    <div><strong>GitHub SDK:</strong> <a href="https://github.com/pupil-labs/real-time-screen-gaze"
+                            target="_blank" style="color: #0284c7;">github.com/pupil-labs/real-time-screen-gaze</a>
+                    </div>
+                    <div><strong>Cursor Demo:</strong> <a
+                            href="https://github.com/pupil-labs/gaze-controlled-cursor-demo" target="_blank"
+                            style="color: #0284c7;">github.com/pupil-labs/gaze-controlled-cursor-demo</a></div>
+                    <div><strong>Documentation:</strong> <a
+                            href="https://docs.pupil-labs.com/alpha-lab/gaze-contingency-assistive/" target="_blank"
+                            style="color: #0284c7;">docs.pupil-labs.com/alpha-lab/gaze-contingency-assistive/</a></div>
+                    <div><strong>Contact:</strong> info@pupil-labs.com</div>
+                    <div><strong>India Availability:</strong> Through international resellers at <a
+                            href="https://pupil-labs.com/resellers" target="_blank"
+                            style="color: #0284c7;">pupil-labs.com/resellers</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open-Source Projects -->
+    <div style="margin-top: 2rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin-bottom: 1rem;">Open-Source
+            Projects</h3>
+
+        <div class="ct-software-grid">
+            <!-- Gaze-Controlled Cursor Demo -->
+            <div class="ct-software-card recommended">
+                <div class="ct-software-name">
+                    Pupil Labs Gaze-Controlled Cursor Demo
+                    <span class="ct-free-badge">Free</span>
+                </div>
+                <div class="ct-software-platform">Windows • Python • MIT License</div>
+
+                <div class="ct-rating">
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                </div>
+
+                <div class="ct-device-verdict">
+                    Official demo for controlling PC mouse cursor with Neon glasses. Actively maintained (2024).
+                </div>
+
+                <ul class="ct-device-notes">
+                    <li>AprilTag detection for screen surface</li>
+                    <li>Dwell-time filtering for clicks</li>
+                    <li>Full Windows mouse cursor control</li>
+                </ul>
+
+                <a href="https://github.com/pupil-labs/gaze-controlled-cursor-demo" target="_blank" class="ct-setup-btn"
+                    style="margin-top: 0.75rem;">View on GitHub</a>
+            </div>
+
+            <!-- gazeMapper -->
+            <div class="ct-software-card">
+                <div class="ct-software-name">
+                    gazeMapper
+                    <span class="ct-free-badge">Free</span>
+                </div>
+                <div class="ct-software-platform">Python • Multi-device support</div>
+
+                <div class="ct-rating">
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot"></div>
+                </div>
+
+                <div class="ct-device-verdict">
+                    Automated world-based analysis supporting multiple wearable trackers.
+                </div>
+
+                <ul class="ct-device-notes">
+                    <li>Supports Pupil Labs, Tobii Pro, AdHawk, SeeTrue</li>
+                    <li>Homography transformation included</li>
+                    <li>Camera calibration tools</li>
+                </ul>
+
+                <a href="https://github.com/dcnieho/gazeMapper" target="_blank" class="ct-setup-btn"
+                    style="margin-top: 0.75rem;">View on GitHub</a>
+            </div>
+
+            <!-- EyeWriter -->
+            <div class="ct-software-card">
+                <div class="ct-software-name">
+                    EyeWriter (Legacy)
+                    <span class="ct-free-badge">Free</span>
+                </div>
+                <div class="ct-software-platform">DIY • OpenFrameworks • C++</div>
+
+                <div class="ct-rating">
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot filled"></div>
+                    <div class="ct-rating-dot"></div>
+                    <div class="ct-rating-dot"></div>
+                </div>
+
+                <div class="ct-device-verdict">
+                    Low-cost (~$200) DIY system originally built for ALS patient TEMPTONE in 2003.
+                </div>
+
+                <ul class="ct-device-notes">
+                    <li>Head-mounted glasses with IR LEDs</li>
+                    <li>Modified PS3 Eye camera</li>
+                    <li>Primarily for drawing, not general mouse control</li>
+                </ul>
+
+                <a href="https://github.com/eyewriter/eyewriter" target="_blank" class="ct-setup-btn"
+                    style="margin-top: 0.75rem;">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alternative Wearable Options -->
+    <div style="margin-top: 2rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin-bottom: 1rem;">Alternative
+            Wearable Options (With Limitations)</h3>
+
+        <div class="ct-device-grid">
+            <!-- AdHawk MindLink -->
+            <div class="ct-device-card">
+                <div class="ct-device-header">
+                    <div class="ct-device-name">AdHawk MindLink</div>
+                    <div class="ct-device-category">Camera-free MEMS Technology</div>
+                </div>
+                <div class="ct-device-body">
+                    <div class="ct-device-price">
+                        <div>
+                            <div class="ct-price-usd">~$10,000</div>
+                        </div>
+                        <span class="ct-stage-badge" style="background: #fef3c7; color: #92400e;">⚠️ Calibration
+                            Required</span>
+                    </div>
+
+                    <div class="ct-device-verdict" style="background: #fef3c7; border-left: 3px solid #f59e0b;">
+                        <strong>Not suitable for ALS:</strong> Requires calibration routines (following targets with
+                        eyes). Company status uncertain (Google acquisition talks).
+                    </div>
+
+                    <ul class="ct-device-notes">
+                        <li>Highest sampling rate: 500 Hz</li>
+                        <li>Sub-1° accuracy</li>
+                        <li>ArUco marker screen tracking support</li>
+                    </ul>
+
+                    <div class="ct-india-badge">
+                        India: Direct contact required • adhawkmicrosystems.com
+                    </div>
+                </div>
+            </div>
+
+            <!-- EyeControl Israel -->
+            <div class="ct-device-card">
+                <div class="ct-device-header">
+                    <div class="ct-device-name">EyeControl (Israel)</div>
+                    <div class="ct-device-category">Screen-Free Communication</div>
+                </div>
+                <div class="ct-device-body">
+                    <div class="ct-device-price">
+                        <div>
+                            <div class="ct-price-usd">Few hundred dollars</div>
+                            <div class="ct-price-inr">(Target price)</div>
+                        </div>
+                        <span class="ct-stage-badge">Emerging</span>
+                    </div>
+
+                    <div class="ct-device-verdict">
+                        Innovative screen-free approach using bone conduction audio. Does NOT provide Windows mouse
+                        control.
+                    </div>
+
+                    <ul class="ct-device-notes">
+                        <li>Glasses-mounted IR camera + smartphone app</li>
+                        <li>Bone conduction audio for communication</li>
+                        <li>No screen required</li>
+                    </ul>
+
+                    <div class="ct-india-badge">
+                        Website: <a href="https://eyecontrol.co.il" target="_blank"
+                            style="color: #0077b6;">eyecontrol.co.il</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Academic Research -->
+    <div style="margin-top: 2rem; background: var(--ct-bg-alt); border-radius: 12px; padding: 1.5rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin: 0 0 1rem;">Academic Research
+            & Future Technologies</h3>
+
+        <div style="display: grid; gap: 1rem;">
+            <!-- Google SpeakFaster -->
+            <div style="background: white; border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem;">
+                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">
+                    Google/Nature Communications SpeakFaster (December 2024)</h4>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--ct-text); line-height: 1.6;">
+                    LLM-powered text entry achieving <strong>29-60% typing speed improvement</strong> over baseline
+                    predictive keyboards. Works with existing Tobii hardware as software enhancement. Collaboration
+                    between Google Research and Team Gleason Foundation.
+                </p>
+            </div>
+
+            <!-- IEEE Study -->
+            <div style="background: white; border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem;">
+                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">IEEE
+                    Wearable Gaze-Based Communication Study (2024)</h4>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--ct-text); line-height: 1.6;">
+                    See-through head-mounted display with integrated gaze estimation enabling communication
+                    <strong>without temporal, spatial, or physical restrictions</strong>—representing the type of system
+                    that could eventually replace screen-based trackers.
+                </p>
+            </div>
+
+            <!-- Northwestern -->
+            <div style="background: white; border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem;">
+                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">
+                    Northwestern University/Shirley Ryan AbilityLab</h4>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--ct-text); line-height: 1.6;">
+                    Ongoing research on eye gaze characterization for assistive device control, including addressing the
+                    "Midas touch problem" (differentiating gaze for perception vs. interface operation). Study included
+                    ALS participants.
+                </p>
+            </div>
+        </div>
+
+        <h4 style="margin: 1.5rem 0 0.75rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">Emerging
+            Technologies (12-36 Month Horizon)</h4>
+        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: var(--ct-text); line-height: 1.7;">
+            <li><strong>GazeTrak acoustic sensing:</strong> Power-efficient alternative using sound instead of cameras
+            </li>
+            <li><strong>BlinkWise radio-wave tracking:</strong> University of Pennsylvania project for ultra-low-power
+                eye tracking</li>
+            <li><strong>ElectraSight hybrid EOG:</strong> Non-invasive smart glasses with onboard processing</li>
+            <li><strong>EMG-based blink control glasses:</strong> Published in Biomedical Signal Processing 2023, tested
+                with ALS patients</li>
+        </ul>
+    </div>
+
+    <!-- Critical Note -->
+    <div class="ct-bci-note" style="margin-top: 1.5rem;">
+        <h4>Important: Screen-Mounted Devices Remain the Proven Standard</h4>
+        <p>For most ALS patients, <strong>screen-mounted devices like Tobii 4C/5 + OptiKey</strong> (covered above)
+            remain significantly easier to deploy, more affordable (₹25,000-40,000 vs. ₹5.7 Lakh+), and proven in the
+            ALS community. Wearable glasses solutions require technical expertise and are primarily for specific use
+            cases where mobility is essential.</p>
     </div>
 </section>
 
@@ -1395,19 +1759,28 @@
 
 <script>
     let techData = null;
+    let researchData = null;
 
     async function loadTechData() {
         try {
+            // Load static communication tech data
             const response = await fetch('/api/communication-tech');
             techData = await response.json();
 
+            // Load research-verified communication technology data
+            const researchResponse = await fetch('/api/research-categorized');
+            researchData = await researchResponse.json();
+
+            // Render static sections
             renderEyeTracking();
             renderHeadTracking();
             renderFreeSoftware();
             renderMobileApps();
             renderLowTech();
             renderBCI();
+
         } catch (error) {
+
             console.error('Error loading tech data:', error);
         }
     }
@@ -1637,6 +2010,163 @@
                     <div class="ct-india-badge" style="color: #991b1b;">
                         ${device.india_access}
                     </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Render Verified Communication Technology from Research
+    function renderVerifiedCommunicationTech() {
+        const container = document.getElementById('verifiedCommunicationTech');
+        if (!researchData || !researchData.categories || !researchData.categories.communication_technology) {
+            container.innerHTML = '<p style="color: #64748b;">Loading verified solutions...</p>';
+            return;
+        }
+
+        const solutions = researchData.categories.communication_technology;
+
+        container.innerHTML = solutions.map(solution => `
+            <div class="research-item" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; background: white;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="color: #0f172a; font-size: 1.25rem; margin: 0 0 0.5rem 0;">${solution.solution_name}</h3>
+                        <div style="color: #64748b; font-size: 0.9rem;">${solution.category} | ${solution.form_factor}</div>
+                    </div>
+                    <span style="background: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#dcfce7' : '#f1f5f9'}; color: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#166534' : '#475569'}; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500;">${solution.status}</span>
+                </div>
+
+                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <strong style="color: #0369a1;"><i class="fas fa-info-circle"></i> What This Is</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.what_it_is}</p>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: #1e293b; font-size: 0.9rem;">How It Works:</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #475569; font-size: 0.9rem;">${solution.how_it_works}</p>
+                </div>
+
+                ${solution.key_advantages ? `
+                    <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <strong style="color: #166534;"><i class="fas fa-check-circle"></i> Key Advantages</strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0; color: #15803d;">
+                            ${solution.key_advantages.map(adv => `<li style="margin-bottom: 0.25rem;">${adv}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                ${solution.critical_limitations || solution.limitations ? `
+                    <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <strong style="color: #991b1b;"><i class="fas fa-exclamation-triangle"></i> ${solution.critical_limitations ? 'Critical Limitations' : 'Limitations'}</strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0; color: #7f1d1d;">
+                            ${(solution.critical_limitations || solution.limitations).map(lim => `<li style="margin-bottom: 0.25rem;">${lim}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                    <strong style="color: #0f172a;"><i class="fas fa-map-marker-alt"></i> India Availability</strong>
+                    <div style="margin-top: 0.75rem;">
+                        <p style="margin: 0.25rem 0;"><strong>Status:</strong> ${solution.india_availability.available === true ? 'Available' : solution.india_availability.available}</p>
+                        ${solution.india_availability.how_to_get ? `<p style="margin: 0.25rem 0;"><strong>How to Get:</strong> ${solution.india_availability.how_to_get}</p>` : ''}
+                        ${solution.india_availability.cost_inr ? `<p style="margin: 0.25rem 0; color: #0077b6; font-weight: 600;"><strong>Cost:</strong> ${solution.india_availability.cost_inr}</p>` : ''}
+                        ${solution.india_availability.delivery_time ? `<p style="margin: 0.25rem 0;"><strong>Delivery:</strong> ${solution.india_availability.delivery_time}</p>` : ''}
+                        ${solution.india_availability.funding_options ? `
+                            <p style="margin: 0.5rem 0 0.25rem 0;"><strong>Funding Options:</strong></p>
+                            <ul style="margin: 0 0 0 1.25rem; padding: 0;">
+                                ${solution.india_availability.funding_options.map(opt => `<li>${opt}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                    </div>
+                </div>
+
+                ${solution.who_should_use ? `
+                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <strong style="color: #1e40af;"><i class="fas fa-user-check"></i> Who Should Use This</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #1e3a8a;">${solution.who_should_use}</p>
+                    </div>
+                ` : ''}
+
+                ${solution.comparison_to_tobii && typeof solution.comparison_to_tobii === 'object' ? `
+                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii Dynavox</strong>
+                        ${solution.comparison_to_tobii.rating ? `<p style="margin: 0.5rem 0;"><strong>Rating:</strong> ${solution.comparison_to_tobii.rating}</p>` : ''}
+                        ${solution.comparison_to_tobii.cost_savings ? `<p style="margin: 0.5rem 0; color: #16a34a; font-weight: 600;"><strong>Cost Savings:</strong> ${solution.comparison_to_tobii.cost_savings}</p>` : ''}
+                        ${solution.comparison_to_tobii.pros_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Advantages:</strong> ${solution.comparison_to_tobii.pros_vs_tobii}</p>` : ''}
+                        ${solution.comparison_to_tobii.cons_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Disadvantages:</strong> ${solution.comparison_to_tobii.cons_vs_tobii}</p>` : ''}
+                    </div>
+                ` : solution.comparison_to_tobii ? `
+                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii</strong>
+                        <p style="margin: 0.5rem 0 0 0;">${solution.comparison_to_tobii}</p>
+                    </div>
+                ` : ''}
+
+                ${solution.realistic_expectations ? `
+                    <div style="background: #f1f5f9; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong style="color: #0f172a;"><i class="fas fa-info-circle"></i> Realistic Expectations</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.realistic_expectations}</p>
+                    </div>
+                ` : ''}
+
+                ${solution.sources && solution.sources.length > 0 ? `
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                        ${solution.sources.map(source => `
+                            <a href="${source}" target="_blank" style="display: inline-block; margin-right: 1rem; margin-bottom: 0.5rem; color: #0077b6; text-decoration: none; font-size: 0.9rem;">
+                                <i class="fas fa-external-link-alt"></i> Learn More
+                            </a>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `).join('');
+    }
+
+    // Render Experimental Communication Technology
+    function renderExperimentalCommunicationTech() {
+        const container = document.getElementById('experimentalCommunicationTech');
+        if (!researchData || !researchData.categories || !researchData.categories.experimental_communication_tech) {
+            container.innerHTML = '';
+            return;
+        }
+
+        const experimental = researchData.categories.experimental_communication_tech;
+
+        container.innerHTML = experimental.map(tech => `
+            <div class="research-item" style="border: 1px solid #fbbf24; border-left: 4px solid #f59e0b; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; background: #fffbeb;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="color: #78350f; font-size: 1.1rem; margin: 0 0 0.5rem 0;">${tech.technology}</h3>
+                        <div style="color: #92400e; font-size: 0.85rem; font-weight: 500;">${tech.status}</div>
+                    </div>
+                    <span style="background: #fef3c7; color: #92400e; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">${tech.risk_level}</span>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: #78350f; font-size: 0.9rem;">What This Is:</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #78350f; font-size: 0.9rem;">${tech.what_it_is}</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <strong style="color: #78350f; font-size: 0.85rem;">Who Can Try:</strong>
+                        <p style="margin: 0.25rem 0 0 0; color: #92400e; font-size: 0.85rem;">${tech.who_can_try}</p>
+                    </div>
+                    <div>
+                        <strong style="color: #78350f; font-size: 0.85rem;">Cost:</strong>
+                        <p style="margin: 0.25rem 0 0 0; color: #92400e; font-size: 0.85rem; font-weight: 600;">${tech.cost}</p>
+                    </div>
+                </div>
+
+                ${tech.critical_limitation ? `
+                    <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <strong style="color: #991b1b;"><i class="fas fa-exclamation-triangle"></i> Critical Limitation</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #7f1d1d;">${tech.critical_limitation}</p>
+                    </div>
+                ` : ''}
+
+                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
+                    <strong style="color: #0369a1;"><i class="fas fa-lightbulb"></i> Recommendation</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #0c4a6e;">${tech.recommendation}</p>
                 </div>
             </div>
         `).join('');
