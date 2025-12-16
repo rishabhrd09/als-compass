@@ -11,7 +11,3 @@ whatsapp_anonymized.txt
 # Documentation - keep only essential docs
 *.md
 !README.md
-!SETUP_GUIDE.md
-!AI_OVERVIEW.md
-!ZERO_TO_HERO.md
-!SIMPLE_EXPLANATION.md
