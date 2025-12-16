@@ -184,6 +184,11 @@ def communication_technology_page():
     """Communication Technology page - Eye trackers, head tracking, AAC devices"""
     return render_template('communication_technology.html')
 
+@app.route('/verified-communication-solutions')
+def verified_communication_solutions_page():
+    """Verified Communication Solutions page - Research-verified eye tracking and AAC solutions"""
+    return render_template('verified_communication_solutions.html')
+
 @app.route('/api/communication-tech')
 def get_communication_tech():
     """Get communication technology data for the page"""

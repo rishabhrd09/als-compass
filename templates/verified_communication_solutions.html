@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+
+{% block title %}Verified Communication Solutions - ALS Caregiver's Compass{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Use research updates styling for consistency */
+    .hero-section {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 64, 175, 0.9) 100%),
+            url('/static/images/research_hero_bg.jpg') center/cover;
+        color: white;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-section p {
+        font-size: 1.05rem;
+        opacity: 0.95;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .research-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
+    }
+
+    .category-intro {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-left: 4px solid #0077b6;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .category-intro h2 {
+        color: #0f172a;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .category-intro p {
+        color: #475569;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .research-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .research-item {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+    }
+
+    .research-item:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+
+    .warning-section {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .warning-section strong {
+        color: #92400e;
+    }
+
+    .warning-section span {
+        color: #78350f;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 1.75rem;
+        }
+
+        .research-container {
+            padding: 0 1rem 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1><i class="fas fa-check-circle"></i> Verified Communication Solutions</h1>
+        <p>Research-verified eye-tracking and communication devices for advanced ALS. Based on 40+ hours of research
+            with detailed comparisons, India-specific costs, and realistic expectations.</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="research-container">
+    <!-- Verified Solutions Section -->
+    <div class="category-intro">
+        <h2>Verified Communication Technology</h2>
+        <p>Comprehensive analysis of proven communication solutions including Tobii Dynavox (Gold Standard), budget
+            alternatives, wearable options, and experimental technologies. All information verified from ALS community
+            feedback and technical research.</p>
+    </div>
+
+    <div class="research-items" id="verifiedCommunicationTech"></div>
+
+    <!-- Experimental Solutions Section -->
+    <div style="margin-top: 4rem;">
+        <div class="category-intro"
+            style="border-left-color: #f59e0b; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);">
+            <h2 style="color: #78350f;"><i class="fas fa-flask"></i> Experimental & Try-Out Solutions</h2>
+            <p style="color: #92400e;">Research-grade and experimental technologies for tech-savvy users. These require
+                technical expertise and should only be used with a proven backup system.</p>
+        </div>
+
+        <div class="warning-section">
+            <strong><i class="fas fa-exclamation-triangle"></i> WARNING:</strong>
+            <span> These are experimental technologies NOT proven for reliable ALS communication. Only try with backup
+                system in place. Not recommended as primary communication device.</span>
+        </div>
+
+        <div class="research-items" id="experimentalCommunicationTech"></div>
+    </div>
+</div>
+
+<script>
+    let researchData = null;
+
+    async function loadVerifiedSolutions() {
+        try {
+            const response = await fetch('/api/research-categorized');
+            researchData = await response.json();
+
+            renderVerifiedCommunicationTech();
+            renderExperimentalCommunicationTech();
+        } catch (error) {
+            console.error('Error loading verified solutions:', error);
+        }
+    }
+
+    // Render Verified Communication Technology
+    function renderVerifiedCommunicationTech() {
+        const container = document.getElementById('verifiedCommunicationTech');
+        if (!researchData || !researchData.categories || !researchData.categories.communication_technology) {
+            container.innerHTML = '<p style="color: #64748b; text-align: center;">Loading verified solutions...</p>';
+            return;
+        }
+
+        const solutions = researchData.categories.communication_technology;
+
+        container.innerHTML = solutions.map(solution => `
+            <div class="research-item">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="color: #0f172a; font-size: 1.25rem; margin: 0 0 0.5rem 0;">${solution.solution_name}</h3>
+                        <div style="color: #64748b; font-size: 0.9rem;">${solution.category} | ${solution.form_factor}</div>
+                    </div>
+                    <span style="background: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#dcfce7' : '#f1f5f9'}; color: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#166534' : '#475569'}; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500;">${solution.status}</span>
+                </div>
+
+                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <strong style="color: #0369a1;"><i class="fas fa-info-circle"></i> What This Is</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.what_it_is}</p>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: #1e293b; font-size: 0.9rem;">How It Works:</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #475569; font-size: 0.9rem;">${solution.how_it_works}</p>
+                </div>
+
+                ${solution.key_advantages ? `
+                    <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <strong style="color: #166534;"><i class="fas fa-check-circle"></i> Key Advantages</strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0; color: #15803d;">
+                            ${solution.key_advantages.map(adv => `<li style="margin-bottom: 0.25rem;">${adv}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                ${solution.critical_limitations || solution.limitations ? `
+                    <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <strong style="color: #991b1b;"><i class="fas fa-exclamation-triangle"></i> ${solution.critical_limitations ? 'Critical Limitations' : 'Limitations'}</strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0; color: #7f1d1d;">
+                            ${(solution.critical_limitations || solution.limitations).map(lim => `<li style="margin-bottom: 0.25rem;">${lim}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                    <strong style="color: #0f172a;"><i class="fas fa-map-marker-alt"></i> India Availability</strong>
+                    <div style="margin-top: 0.75rem;">
+                        <p style="margin: 0.25rem 0;"><strong>Status:</strong> ${solution.india_availability.available === true ? 'Available' : solution.india_availability.available}</p>
+                        ${solution.india_availability.how_to_get ? `<p style="margin: 0.25rem 0;"><strong>How to Get:</strong> ${solution.india_availability.how_to_get}</p>` : ''}
+                        ${solution.india_availability.cost_inr ? `<p style="margin: 0.25rem 0; color: #0077b6; font-weight: 600;"><strong>Cost:</strong> ${solution.india_availability.cost_inr}</p>` : ''}
+                        ${solution.india_availability.delivery_time ? `<p style="margin: 0.25rem 0;"><strong>Delivery:</strong> ${solution.india_availability.delivery_time}</p>` : ''}
+                        ${solution.india_availability.funding_options ? `
+                            <p style="margin: 0.5rem 0 0.25rem 0;"><strong>Funding Options:</strong></p>
+                            <ul style="margin: 0 0 0 1.25rem; padding: 0;">
+                                ${solution.india_availability.funding_options.map(opt => `<li>${opt}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                    </div>
+                </div>
+
+                ${solution.who_should_use ? `
+                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <strong style="color: #1e40af;"><i class="fas fa-user-check"></i> Who Should Use This</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #1e3a8a;">${solution.who_should_use}</p>
+                    </div>
+                ` : ''}
+
+                ${solution.comparison_to_tobii && typeof solution.comparison_to_tobii === 'object' ? `
+                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii Dynavox</strong>
+                        ${solution.comparison_to_tobii.rating ? `<p style="margin: 0.5rem 0;"><strong>Rating:</strong> ${solution.comparison_to_tobii.rating}</p>` : ''}
+                        ${solution.comparison_to_tobii.cost_savings ? `<p style="margin: 0.5rem 0; color: #16a34a; font-weight: 600;"><strong>Cost Savings:</strong> ${solution.comparison_to_tobii.cost_savings}</p>` : ''}
+                        ${solution.comparison_to_tobii.pros_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Advantages:</strong> ${solution.comparison_to_tobii.pros_vs_tobii}</p>` : ''}
+                        ${solution.comparison_to_tobii.cons_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Disadvantages:</strong> ${solution.comparison_to_tobii.cons_vs_tobii}</p>` : ''}
+                    </div>
+                ` : solution.comparison_to_tobii ? `
+                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii</strong>
+                        <p style="margin: 0.5rem 0 0 0;">${solution.comparison_to_tobii}</p>
+                    </div>
+                ` : ''}
+
+                ${solution.realistic_expectations ? `
+                    <div style="background: #f1f5f9; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong style="color: #0f172a;"><i class="fas fa-info-circle"></i> Realistic Expectations</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.realistic_expectations}</p>
+                    </div>
+                ` : ''}
+
+                ${solution.sources && solution.sources.length > 0 ? `
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                        ${solution.sources.map(source => `
+                            <a href="${source}" target="_blank" style="display: inline-block; margin-right: 1rem; margin-bottom: 0.5rem; color: #0077b6; text-decoration: none; font-size: 0.9rem;">
+                                <i class="fas fa-external-link-alt"></i> Learn More
+                            </a>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `).join('');
+    }
+
+    // Render Experimental Communication Technology
+    function renderExperimentalCommunicationTech() {
+        const container = document.getElementById('experimentalCommunicationTech');
+        if (!researchData || !researchData.categories || !researchData.categories.experimental_communication_tech) {
+            container.innerHTML = '';
+            return;
+        }
+
+        const experimental = researchData.categories.experimental_communication_tech;
+
+        container.innerHTML = experimental.map(tech => `
+            <div class="research-item" style="border-left: 4px solid #f59e0b; background: #fffbeb;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="color: #78350f; font-size: 1.1rem; margin: 0 0 0.5rem 0;">${tech.technology}</h3>
+                        <div style="color: #92400e; font-size: 0.85rem; font-weight: 500;">${tech.status}</div>
+                    </div>
+                    <span style="background: #fef3c7; color: #92400e; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">${tech.risk_level}</span>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <strong style="color: #78350f; font-size: 0.9rem;">What This Is:</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #78350f; font-size: 0.9rem;">${tech.what_it_is}</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                    <div>
+                        <strong style="color: #78350f; font-size: 0.85rem;">Who Can Try:</strong>
+                        <p style="margin: 0.25rem 0 0 0; color: #92400e; font-size: 0.85rem;">${tech.who_can_try}</p>
+                    </div>
+                    <div>
+                        <strong style="color: #78350f; font-size: 0.85rem;">Cost:</strong>
+                        <p style="margin: 0.25rem 0 0 0; color: #92400e; font-size: 0.85rem; font-weight: 600;">${tech.cost}</p>
+                    </div>
+                </div>
+
+                ${tech.critical_limitation ? `
+                    <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <strong style="color: #991b1b;"><i class="fas fa-exclamation-triangle"></i> Critical Limitation</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #7f1d1d;">${tech.critical_limitation}</p>
+                    </div>
+                ` : ''}
+
+                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
+                    <strong style="color: #0369a1;"><i class="fas fa-lightbulb"></i> Recommendation</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #0c4a6e;">${tech.recommendation}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', loadVerifiedSolutions);
+</script>
+{% endblock %}
