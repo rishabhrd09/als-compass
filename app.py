@@ -144,6 +144,34 @@ def clear_history():
     session.pop('chat_history', None)
     return jsonify({'success': True})
 
+@app.route('/api/image/<path:image_path>')
+def serve_image(image_path):
+    """Serve images from ai_assistant_images folder (security validated)"""
+    try:
+        from pathlib import Path
+        
+        # Security: Ensure path is within ai_assistant_images directory
+        images_base = Path('ai_assistant_images').absolute()
+        requested_path = (images_base / image_path).absolute()
+        
+        # Validate that requested path is within images directory
+        if not str(requested_path).startswith(str(images_base)):
+            logger.warning(f"Security: Path traversal attempt blocked: {image_path}")
+            return jsonify({'error': 'Invalid path'}), 403
+        
+        # Check if file exists
+        if not requested_path.is_file():
+            return jsonify({'error': 'Image not found'}), 404
+        
+        # Serve the image
+        from flask import send_file
+        return send_file(requested_path, mimetype=f'image/{requested_path.suffix[1:]}')
+        
+    except Exception as e:
+        logger.error(f"Error serving image {image_path}: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+
 @app.route('/api/research-updates')
 def get_research_updates():
     """Get active research updates for homepage (legacy)"""

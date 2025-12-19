@@ -1,0 +1,87 @@
+{
+  "electricity_backup_ups/ups_tech_specs_backup_kva_voltage.png": {
+    "category": "electricity_backup_ups",
+    "filename": "ups_tech_specs_backup_kva_voltage.png",
+    "keywords": [
+      "blackout",
+      "tech",
+      "emergency",
+      "inverter",
+      "kva",
+      "ups",
+      "electric",
+      "electricity",
+      "capacity",
+      "power supply",
+      "battery",
+      "load",
+      "specs",
+      "generator",
+      "power",
+      "uninterruptible",
+      "backup",
+      "supply",
+      "input",
+      "electricity_backup_ups",
+      "cut",
+      "charge",
+      "output",
+      "reserve",
+      "voltage",
+      "rating",
+      "failure",
+      "outage"
+    ],
+    "description": "Ups Tech Specs Backup Kva Voltage - Electricity Backup Ups",
+    "priority": 5,
+    "full_path": "ai_assistant_images\\electricity_backup_ups\\ups_tech_specs_backup_kva_voltage.png"
+  },
+  "maintenance_filters_circuit/back_inlet_filter_ventilator.png": {
+    "category": "maintenance_filters_circuit",
+    "filename": "back_inlet_filter_ventilator.png",
+    "keywords": [
+      "maintenance",
+      "back",
+      "circuit",
+      "ventilator",
+      "maintenance_filters_circuit",
+      "inlet",
+      "filter",
+      "filters"
+    ],
+    "description": "Back Inlet Filter Ventilator - Maintenance Filters Circuit",
+    "priority": 5,
+    "full_path": "ai_assistant_images\\maintenance_filters_circuit\\back_inlet_filter_ventilator.png"
+  },
+  "maintenance_filters_circuit/hme_filter.png": {
+    "category": "maintenance_filters_circuit",
+    "filename": "hme_filter.png",
+    "keywords": [
+      "maintenance",
+      "circuit",
+      "maintenance_filters_circuit",
+      "hme",
+      "filter",
+      "filters"
+    ],
+    "description": "Hme Filter - Maintenance Filters Circuit",
+    "priority": 5,
+    "full_path": "ai_assistant_images\\maintenance_filters_circuit\\hme_filter.png"
+  },
+  "respiratory_support/ambu_bag_manual_breath.png": {
+    "category": "respiratory_support",
+    "filename": "ambu_bag_manual_breath.png",
+    "keywords": [
+      "bag",
+      "breath",
+      "respiratory_support",
+      "support",
+      "ambu",
+      "manual",
+      "respiratory"
+    ],
+    "description": "Ambu Bag Manual Breath - Respiratory Support",
+    "priority": 5,
+    "full_path": "ai_assistant_images\\respiratory_support\\ambu_bag_manual_breath.png"
+  }
+}

@@ -8,6 +8,7 @@ import logging
 from typing import Dict, List, Any
 from datetime import datetime
 from vector_store_enhanced import EnhancedVectorStore
+from image_manager import get_image_manager
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +26,14 @@ class UnifiedAISystem:
         self.model_provider = model_provider or os.getenv('DEFAULT_MODEL_PROVIDER', 'claude')
         self.vector_store = EnhancedVectorStore()
         
+        # Initialize image manager
+        try:
+            self.image_manager = get_image_manager()
+            logger.info(f"   Image Manager initialized")
+        except Exception as e:
+            logger.warning(f"Image manager initialization failed: {e}")
+            self.image_manager = None
+        
         # Initialize the selected provider
         self._init_provider()
         
@@ -36,10 +45,12 @@ class UnifiedAISystem:
         """Initialize the selected AI provider"""
         if self.model_provider == 'claude':
             self._init_claude()
-        elif self.model_provider == 'openai':
+        elif self.model_provider == 'openai' or self.model_provider == 'openai-advanced':
             self._init_openai()
         elif self.model_provider == 'gemini':
             self._init_gemini()
+        elif self.model_provider == 'gemini-thinking':
+            self._init_gemini(thinking_mode=True)
         elif self.model_provider == 'grok':
             self._init_grok()
         else:
@@ -54,7 +65,8 @@ class UnifiedAISystem:
                 raise ValueError("ANTHROPIC_API_KEY not found in .env")
             
             self.client = anthropic.Anthropic(api_key=api_key)
-            self.model_name = os.getenv('CLAUDE_MODEL', 'claude-sonnet-4-20250514')
+            # Use latest Claude 3.5 Sonnet (October 2024 upgrade)
+            self.model_name = os.getenv('CLAUDE_MODEL', 'claude-3-5-sonnet-20241022')
             logger.info(f"   Claude initialized: {self.model_name}")
         except ImportError:
             raise ImportError("Install anthropic: pip install anthropic")
@@ -78,7 +90,7 @@ class UnifiedAISystem:
         except ImportError:
             raise ImportError("Install openai: pip install openai")
     
-    def _init_gemini(self):
+    def _init_gemini(self, thinking_mode: bool = False):
         """Initialize Google Gemini"""
         try:
             import google.generativeai as genai
@@ -87,10 +99,15 @@ class UnifiedAISystem:
                 raise ValueError("GEMINI_API_KEY not found in .env")
             
             genai.configure(api_key=api_key)
-            # Use working Gemini model (not thinking model yet)
-            self.model_name = os.getenv('GEMINI_MODEL', 'gemini-2.0-flash-exp')
+            # Choose model based on thinking mode
+            if thinking_mode:
+                self.model_name = 'gemini-2.0-flash-thinking-exp-01-21'
+                self.thinking_mode = True
+            else:
+                self.model_name = os.getenv('GEMINI_MODEL', 'gemini-2.0-flash-exp')
+                self.thinking_mode = False
             self.client = genai.GenerativeModel(self.model_name)
-            logger.info(f"   Gemini initialized: {self.model_name}")
+            logger.info(f"   Gemini initialized: {self.model_name} (thinking={thinking_mode})")
         except ImportError:
             raise ImportError("Install google-generativeai: pip install google-generativeai")
     
@@ -128,13 +145,23 @@ class UnifiedAISystem:
             # 4. Synthesize response
             response = self._synthesize_response(query, documents, category)
             
-            # 5. Add metadata
+            # 5. Suggest relevant images
+            images = []
+            if self.image_manager:
+                try:
+                    context = self._prepare_context(documents)
+                    images = self.image_manager.suggest_images(query, context, max_images=3)
+                except Exception as e:
+                    logger.error(f"Error suggesting images: {e}")
+            
+            # 6. Add metadata
             response.update({
                 'timestamp': datetime.now().isoformat(),
                 'category': category,
                 'sources_used': len(documents),
                 'emergency': False,
-                'model_used': f"{self.model_provider}/{self.model_name}"
+                'model_used': f"{self.model_provider}/{self.model_name}",
+                'images': images
             })
             
             return response
@@ -153,9 +180,11 @@ class UnifiedAISystem:
             # Call appropriate provider
             if self.model_provider == 'claude':
                 response_text = self._call_claude(system_prompt, user_prompt)
-            elif self.model_provider == 'openai':
+            elif self.model_provider == 'openai' or self.model_provider == 'openai-advanced':
                 response_text = self._call_openai(system_prompt, user_prompt)
             elif self.model_provider == 'gemini':
+                response_text = self._call_gemini(system_prompt, user_prompt)
+            elif self.model_provider == 'gemini-thinking':
                 response_text = self._call_gemini(system_prompt, user_prompt)
             elif self.model_provider == 'grok':
                 response_text = self._call_grok(system_prompt, user_prompt)
@@ -300,12 +329,14 @@ Provide your response:"""
 1. NEVER generate personal information (names, phones, emails)
 2. Emergency queries: prioritize emergency guidance
 3. INDIA PRIORITY: Prioritize "ALS Care and Support India" sources
+4. VISUAL AIDS: Relevant medical images may accompany your response to enhance understanding
 
 **RESPONSE FORMAT:**
 - Use ### for section headings
 - Use numbered lists (1., 2., 3.)
 - Avoid excessive bullets
 - Include India-specific section when relevant
+- Images will be automatically selected and displayed based on topic relevance
 
 **ATTRIBUTION:**
 - ALS Care India: "According to ALS Care and Support India..."

@@ -1,11 +1,17 @@
 """
 Intelligent Data Ingestion with Semantic Chunking
 Advanced ingestion with Q&A extraction, symptom detection, and hierarchical organization
+
+Usage:
+  python ingest_data_intelligent.py           # Interactive mode
+  python ingest_data_intelligent.py --clear   # Auto-clear and rebuild
 """
 import os
 import yaml
 import re
 import logging
+import argparse
+import shutil
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from tqdm import tqdm
@@ -459,11 +465,36 @@ class IntelligentDataIngestion:
 
 
 def main():
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(
+        description='Intelligent ALS Knowledge Base Ingestion'
+    )
+    parser.add_argument(
+        '--clear', 
+        action='store_true',
+        help='Clear database directory and rebuild without prompts'
+    )
+    args = parser.parse_args()
+    
     print("\n" + "=" * 80)
     print("  🧠 INTELLIGENT ALS KNOWLEDGE BASE INGESTION")
     print("     Advanced RAG with Semantic Chunking")
     print("=" * 80)
     print()
+    
+    # Handle --clear flag: delete database directory first
+    if args.clear:
+        from pathlib import Path
+        db_path = Path("./chroma_db_enhanced")
+        if db_path.exists():
+            print("🗑️  --clear flag detected")
+            print(f"   Deleting database at {db_path}...")
+            shutil.rmtree(db_path)
+            print("   ✅ Database deleted")
+            print()
+        else:
+            print("ℹ️  --clear flag detected but no database found")
+            print()
     
     ingestion = IntelligentDataIngestion()
     

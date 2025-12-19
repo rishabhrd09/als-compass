@@ -7,6 +7,7 @@ chroma_db_enhanced/
 *.log
 .DS_Store
 whatsapp_anonymized.txt
+IMAGE_SYSTEM_QUICKSTART.txt
 
 # Documentation - keep only essential docs
 *.md

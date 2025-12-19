@@ -8,6 +8,7 @@ import logging
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 from dataclasses import dataclass
+from image_manager import get_image_manager
 
 logger = logging.getLogger(__name__)
 
@@ -134,6 +135,14 @@ class AgenticAISystem:
         self.vector_store = EnhancedVectorStore()
         self.query_analyzer = QueryAnalyzer()
         
+        # Initialize image manager
+        try:
+            self.image_manager = get_image_manager()
+            logger.info(f"   Image Manager initialized")
+        except Exception as e:
+            logger.warning(f"Image manager initialization failed: {e}")
+            self.image_manager = None
+        
         # Initialize provider
         self._init_provider()
         
@@ -144,11 +153,11 @@ class AgenticAISystem:
     def _init_provider(self):
         """Initialize AI provider"""
         # Handle OpenAI variants
-        if self.model_provider in ['openai', 'openai-gpt4o', 'openai-o1-mini', 'openai-o1']:
+        if self.model_provider in ['openai', 'openai-advanced', 'openai-gpt4o', 'openai-o1-mini', 'openai-o1']:
             self._init_openai()
         elif self.model_provider == 'claude':
             self._init_claude()
-        elif self.model_provider == 'gemini':
+        elif self.model_provider in ['gemini', 'gemini-thinking']:
             self._init_gemini()
         elif self.model_provider == 'grok':
             self._init_grok()
@@ -163,7 +172,7 @@ class AgenticAISystem:
             if not api_key:
                 raise ValueError("ANTHROPIC_API_KEY not found")
             self.client = anthropic.Anthropic(api_key=api_key)
-            self.model_name = os.getenv('CLAUDE_MODEL', 'claude-sonnet-4-20250514')
+            self.model_name = os.getenv('CLAUDE_MODEL', 'claude-3-5-sonnet-20241022')
         except ImportError:
             raise ImportError("Install: pip install anthropic")
     
@@ -197,7 +206,13 @@ class AgenticAISystem:
             if not api_key:
                 raise ValueError("GEMINI_API_KEY not found")
             genai.configure(api_key=api_key)
-            self.model_name = os.getenv('GEMINI_MODEL', 'gemini-2.0-flash-exp')
+            
+            # Handle thinking mode variant
+            if self.model_provider == 'gemini-thinking':
+                self.model_name = 'gemini-2.0-flash-thinking-exp-01-21'
+            else:
+                self.model_name = os.getenv('GEMINI_MODEL', 'gemini-2.0-flash-exp')
+            
             self.client = genai.GenerativeModel(self.model_name)
         except ImportError:
             raise ImportError("Install: pip install google-generativeai")
@@ -234,6 +249,24 @@ class AgenticAISystem:
             # Step 4: Synthesize response with agent reasoning
             response = self._synthesize_with_reasoning(query, documents, plan)
             
+            # Step 4.5: Suggest relevant images
+            images = []
+            if self.image_manager:
+                try:
+                    context = self._prepare_context_intelligent(documents, plan)
+                    images = self.image_manager.suggest_images(query, context[:500], max_images=3)
+                    if images:
+                        logger.info(f"✅ Selected {len(images)} images for query: {query[:50]}...")
+                        for img in images:
+                            logger.info(f"   📷 {img['description']}")
+                    else:
+                        logger.info(f"ℹ️  No matching images found for query: {query[:50]}...")
+                except Exception as e:
+                    logger.error(f"❌ Error suggesting images: {e}")
+            else:
+                logger.warning("⚠️  Image manager not initialized")
+
+            
             # Step 5: Add comprehensive metadata
             response.update({
                 'timestamp': datetime.now().isoformat(),
@@ -243,7 +276,8 @@ class AgenticAISystem:
                 'emergency': False,
                 'model_used': f"{self.model_provider}/{self.model_name}",
                 'india_prioritized': plan.india_priority,
-                'search_strategy': plan.search_strategy
+                'search_strategy': plan.search_strategy,
+                'images': images
             })
             
             return response
@@ -328,9 +362,9 @@ class AgenticAISystem:
         try:
             if self.model_provider == 'claude':
                 response_text = self._call_claude(system_prompt, user_prompt)
-            elif self.model_provider in ['openai', 'openai-gpt4o', 'openai-o1-mini', 'openai-o1']:
+            elif self.model_provider in ['openai', 'openai-advanced', 'opensai-gpt4o', 'openai-o1-mini', 'openai-o1']:
                 response_text = self._call_openai(system_prompt, user_prompt)
-            elif self.model_provider == 'gemini':
+            elif self.model_provider in ['gemini', 'gemini-thinking']:
                 response_text = self._call_gemini(system_prompt, user_prompt)
             elif self.model_provider == 'grok':
                 response_text = self._call_grok(system_prompt, user_prompt)
@@ -713,6 +747,19 @@ Be direct, clear, and prioritize safety."""
             else:
                 response_text = self._call_grok(system, emergency_prompt)
             
+            # Select relevant images for emergency queries too
+            images = []
+            if self.image_manager:
+                try:
+                    context = self._prepare_context_intelligent(documents[:5], plan)
+                    images = self.image_manager.suggest_images(query, context, max_images=3)
+                    if images:
+                        logger.info(f"✅ Selected {len(images)} images for emergency query")
+                    else:
+                        logger.info("ℹ️  No matching images found for emergency query")
+                except Exception as e:
+                    logger.error(f"Error suggesting images for emergency: {e}")
+            
             return {
                 'response': response_text,
                 'citations': self._extract_citations(response_text, documents),
@@ -724,7 +771,8 @@ Be direct, clear, and prioritize safety."""
                 'emergency': True,
                 'timestamp': datetime.now().isoformat(),
                 'query_type': 'emergency',
-                'model_used': f"{self.model_provider}/{self.model_name}"
+                'model_used': f"{self.model_provider}/{self.model_name}",
+                'images': images
             }
             
         except Exception as e:
