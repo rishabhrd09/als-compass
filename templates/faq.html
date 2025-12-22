@@ -633,19 +633,9 @@
     function renderQuickReference() {
         if (!faqData.quick_reference) return;
 
-        const container = document.getElementById('quickReference');
-        let html = `<div class="quick-reference">
-        <h3>⚡ Emergency Quick Reference</h3>`;
 
-        faqData.quick_reference.emergency_protocols.forEach(p => {
-            html += `<div class="emergency-item">
-            <h4>${p.situation}</h4>
-            <p>${p.action}</p>
-        </div>`;
-        });
 
-        html += '</div>';
-        container.innerHTML = html;
+
     }
 
     function renderKeyPrinciples() {
@@ -653,7 +643,7 @@
 
         const container = document.getElementById('keyPrinciples');
         let html = `<div class="key-principles">
-        <h3>Key Principles from the Community</h3>
+        <h3><strong> Key Principles from the Community </strong></h3>
         <ul>${faqData.key_principles.map(p => `<li>${p}</li>`).join('')}</ul>
     </div>`;
 

@@ -1,5 +1,5 @@
 {
-    "last_updated": "2025-12-15",
+    "last_updated": "2025-12-22",
     "data_sources": [
         "ALSCAS WhatsApp Group Discussions (2021-2025)",
         "Target ALS Global Natural History Study",
@@ -32,7 +32,7 @@
                     "TBK1"
                 ],
                 "participants": {
-                    "first_batch_2022": "62+ PALS",
+                    "first_batch_2022": "59+ PALS",
                     "november_2025_batch": "39 PALS",
                     "status": "Testing still ongoing"
                 },
@@ -128,7 +128,7 @@
                     "global_natural_history_study": {
                         "purpose": "Collect comprehensive data and biological samples from ALS patients worldwide to understand disease patterns and progression",
                         "india_role": "Contributing South Asian population data which may reveal unique genetic and environmental factors",
-                        "sample_collection": "Blood samples, saliva, disease progression tracking",
+                        "sample_collection": "Blood, urine, cerebrospinal fluid, and clinical data collection",
                         "expected_outcomes": [
                             "Discovery of India-specific genetic factors",
                             "Understanding younger age of onset in Indian population",
@@ -142,7 +142,7 @@
                         "focus": "Latest advancements in ALS research, drug development updates, clinical trial opportunities"
                     },
                     "significance_for_india": [
-                        "First time India included in global ALS research network",
+                        "First major Target ALS collaboration in India (NIMHANS already contributed 700+ patient samples)",
                         "AIIMS and NIMHANS designated as clinical trial sites",
                         "Indian patients may access experimental treatments",
                         "Data from Indian population contributes to global understanding"
@@ -208,7 +208,7 @@
                 },
                 "speakers": [
                     "Dr. Nirmal Surya (Eminent neurologist)",
-                    "Satvinder Kaur (Medical specialist)",
+                    "Satvinder Kaur (ALSCAS Co-Founder)",
                     "CALS (Caregiver sharing experiences)"
                 ],
                 "topics_covered": [
@@ -321,53 +321,40 @@
             },
             {
                 "id": 6,
-                "collaboration_name": "AKV9 (NU-9) Experimental Therapy Research",
-                "status": "Research Stage - India Collaboration",
-                "organization": "DRDO (Defence Research & Development Organisation)",
-                "research_scientist": "Dr. Mukesh Gautam",
+                "collaboration_name": "AKV9 (NU-9) Experimental Therapy - Global Research Update",
+                "status": "Research Stage - US Development (No India Collaboration)",
+                "organization": "AKAVA Therapeutics (USA) & Northwestern University",
                 "has_detailed_info": true,
+                "important_clarification": "⚠️ NOTE: AKV9 is being developed in the USA. There is currently NO India-based collaboration for AKV9. This section provides information for awareness only.",
                 "about_akv9": {
-                    "original_name": "NU-9",
+                    "original_name": "NU-9 (Northwestern University compound)",
                     "current_name": "AKV9",
+                    "developer": "AKAVA Therapeutics (USA), based on Northwestern University research",
+                    "lead_researchers": [
+                        "Dr. Richard Silverman (Northwestern University)",
+                        "Dr. P. Hande Ozdinler (Northwestern University)",
+                        "Dr. Mukesh Gautam (Northwestern University - NOT DRDO)"
+                    ],
                     "type": "Experimental neuroprotective therapy",
-                    "target": "Upper motor neuron protection"
+                    "target": "Upper motor neuron protection",
+                    "unique_aspect": "Aims to protect and potentially reverse upper motor neuron degeneration"
                 },
                 "research_background": {
-                    "preclinical_results": "Showed reversal of symptoms in genetic ALS mouse models (hSOD1G93A)",
-                    "unique_aspect": "Different from other drugs - aims to reverse progression, not just slow it",
-                    "development_stage": "Moving from preclinical to clinical trials"
+                    "preclinical_results": "Showed promising results in genetic ALS mouse models (hSOD1G93A)",
+                    "fda_status": "FDA IND (Investigational New Drug) status granted: August 2023",
+                    "current_phase": "Phase 1 trials in healthy volunteers (USA-based)",
+                    "development_stage": "Early clinical development"
                 },
-                "detailed_info": {
-                    "india_collaboration": {
-                        "meeting_date": "March 2023",
-                        "participants": "ALSCAS team and Dr. Mukesh Gautam (DRDO Research Scientist)",
-                        "location": "Delhi",
-                        "discussion_topics": [
-                            "AKV9 research progress and timeline",
-                            "Potential for India-based clinical trials",
-                            "DRDO's role in ALS research",
-                            "Collaboration with NEALS (Northeast ALS Consortium)"
-                        ]
-                    },
-                    "current_status": {
-                        "phase": "Animal safety studies to determine dosage",
-                        "next_steps": "Clinical trials (timeline to be determined)",
-                        "india_opportunity": "Potential for India to participate in or host clinical trials"
-                    },
-                    "significance_for_india": [
-                        "First discussion of cutting-edge ALS therapy development with Indian government research organization",
-                        "Potential for India to become clinical trial center for innovative treatments",
-                        "DRDO interest indicates government awareness of ALS research needs"
-                    ],
-                    "what_to_expect": [
-                        "Continued monitoring of AKV9 development",
-                        "Potential clinical trial opportunities in India",
-                        "Collaboration between DRDO and international ALS research community"
-                    ]
+                "india_status": {
+                    "current_collaboration": "NONE - No India collaboration exists for AKV9",
+                    "india_availability": "NOT available in India",
+                    "clinical_trials_in_india": "NONE planned as of 2025"
                 },
+                "why_included": "ALSCAS members discuss AKV9 as a potential future therapy. This information helps families understand the global ALS research landscape.",
                 "sources": [
-                    "ALSCAS WhatsApp Group - March 2023 meeting notes",
-                    "DRDO collaboration discussions 2022-2023"
+                    "Northwestern University press releases",
+                    "AKAVA Therapeutics official website",
+                    "Scientific Reports publication (peer-reviewed)"
                 ]
             }
         ],
@@ -406,7 +393,7 @@
                     "speakers": [
                         "Prof. M. Srinivas (Director, AIIMS)",
                         "Dr. Vishnu VY and senior neurologists from AIIMS",
-                        "20+ doctors attended"
+                        "HOD and senior doctors of Neurology attended"
                     ],
                     "outcomes": [
                         "First major institutional collaboration for ALS in India",
@@ -490,9 +477,9 @@
                 "duration": "45-minute meeting with high-rank DRDO officer",
                 "discussion_topics": [
                     "Government approach for ALS research and drug discovery",
-                    "NU-9 (later called AKV9) research adaptation for India",
                     "Guidance on approaching government for ALS research funding",
-                    "Potential defense research applications for ALS"
+                    "Potential defense research applications for ALS",
+                    "General inquiry about government support for rare disease research"
                 ],
                 "follow_up": [
                     "Discussion about using genetic data for future DRDO projects",
@@ -509,7 +496,7 @@
                 "treatment_name": "Tofersen (Qalsody) Access Initiative",
                 "status": "Advocacy Stage",
                 "target_mutation": "SOD1-positive patients (~2% of ALS cases)",
-                "current_cost": "$15,000 per dose (~$180,000/year)",
+                "current_cost": "US$14,230 per dose (~$170,000/year)",
                 "india_access": {
                     "current_status": "Not available",
                     "recommendation": "ALSCAS advocating for Indian government/AIIMS/CSIR-IGIB to contact Biogen",
@@ -605,70 +592,226 @@
         },
         "september_2022": {
             "title": "CSIR-IGIB Partnership Launch",
+            "subtitle": "Free Genetic Testing Breakthrough",
             "events": [
-                "Sohil Parekh shares success with mother's genetic testing",
-                "Dr. Faruq offers free testing to ALSCAS group",
-                "62 PALS register for first batch",
-                "Google Form created for enrollment"
-            ]
+                "Sohil Parekh shares success story of mother's genetic testing with Dr. Faruq",
+                "Dr. Faruq (CSIR-IGIB) offers FREE genetic testing to entire ALSCAS community",
+                "62 PALS immediately register for first batch within days",
+                "Google Form created for streamlined enrollment",
+                "Home blood collection process established (6ml sample required)",
+                "Community celebration: First time Indian ALS families get access to comprehensive genetic testing"
+            ],
+            "community_response": {
+                "excitement_level": "Very high - members calling it 'game-changer'",
+                "registration_speed": "62 families registered within first week",
+                "significance": "Previously genetic testing cost ₹17,000-20,000, now FREE through GOMED program",
+                "emotional_impact": "Hope for gene-specific treatments like Tofersen (SOD1)"
+            },
+            "practical_details": {
+                "process": "Fill Google Form → Wait for home visit → 6ml blood sample → Results in ~3 months",
+                "genes_tested": "C9orf72, SOD1, FUS, TDP43, OPTN, VCP, TBK1",
+                "cost_to_families": "₹0 (FREE)",
+                "previous_barrier": "₹17k-20k commercial testing was prohibitive for most families"
+            }
         },
         "october_2022": {
             "title": "International Collaboration",
+            "subtitle": "ProjectMinE Trans-Ancestral Genetics Meeting",
             "events": [
-                "ProjectMinE-TAG Meeting with King's College London, CSIR-IGIB, Indian neurologists, ALSCAS",
-                "Discussion of national ALS database",
-                "Plans for international symposium presentations"
-            ]
+                "Virtual meeting: ProjectMinE-TAG with King's College London",
+                "Participants: Dr. Ahmad (King's College), Dr. Faruq (CSIR-IGIB), Dr. Gauri Devi, Indian neurologists, ALSCAS team",
+                "Discussion: Building India's first national ALS genetic database",
+                "Plans announced: Present Indian data at international medical symposiums",
+                "Goal defined: Attract pharmaceutical companies to India for clinical trials",
+                "Action items: Medical data collection standardization, treatment access pathways"
+            ],
+            "community_significance": {
+                "milestone": "First time Indian ALS community represented in global genetic research consortium",
+                "patient_hope": "Indian genetic data could reveal unique patterns, enable future trials",
+                "discussion_topics": [
+                    "How to access AMX0035 (Relyvrio) in India",
+                    "Clinical trial opportunities for Indian patients",
+                    "National database for pharma company engagement"
+                ]
+            },
+            "whatsapp_reactions": {
+                "sentiment": "Cautious optimism - families grateful for global recognition",
+                "key_question": "When will Indian patients actually access new treatments?",
+                "transparency": "ALSCAS shared full meeting notes with community"
+            }
         },
         "november_2022": {
             "title": "Conference Presentation",
+            "subtitle": "India's First Large-Scale ALS Genetic Study Revealed",
             "events": [
-                "Dr. Faruq presents ALS genetic research at Neurology Conference",
-                "Acknowledges ALSCAS collaboration",
-                "Highlights India's first large-scale ALS genetic study"
-            ]
+                "Dr. Faruq presents ALS genetic research findings at National Neurology Conference",
+                "Publicly acknowledges ALSCAS collaboration and community contribution",
+                "Highlights: India's first large-scale ALS genetic study with 62+ participants",
+                "Data showing genetic patterns in Indian ALS population",
+                "Academic recognition of patient advocacy group's role in research"
+            ],
+            "community_impact": {
+                "validation": "ALSCAS work publicly acknowledged by premier research institution",
+                "visibility": "ALS community efforts showcased to hundreds of neurologists",
+                "credibility_boost": "Enhanced legitimacy for future hospital/government collaborations",
+                "member_pride": "Families felt their participation was making scientific difference"
+            },
+            "research_significance": {
+                "first_of_its_kind": "No prior large-scale genetic study on Indian ALS population",
+                "data_contribution": "Indian genetic variants now documented in scientific literature",
+                "future_implications": "Foundation for understanding ALS in South Asian populations"
+            }
         },
         "december_2024": {
             "title": "Target ALS Connection",
+            "subtitle": "India Joins Global Research Network",
             "events": [
-                "Met Dr. Manish Raisinghani at International Alliance for ALS/MND (Montreal)",
-                "Online follow-up meeting",
-                "Discussion of Global Natural History Project",
-                "Invitation to May 2025 conference"
-            ]
+                "ALSCAS team meets Dr. Manish Raisinghani (CEO, Target ALS) at International Alliance Congress in Montreal",
+                "Follow-up online meeting organized within weeks",
+                "Discussion: India's participation in Global Natural History Study",
+                "AIIMS Delhi and NIMHANS Bangalore designated as clinical trial sites",
+                "Invitation extended: ALSCAS members to attend May 2025 Target ALS Annual Conference (virtual)",
+                "Data collection plans: South Asian population insights for global research"
+            ],
+            "breakthrough_significance": {
+                "historic_first": "First time India included in major global ALS research consortium",
+                "clinical_trial_potential": "AIIMS & NIMHANS now on map for international drug trials",
+                "patient_access": "Indian patients may access experimental treatments through trials",
+                "data_value": "Younger onset, slower progression patterns in Indian cases of global interest"
+            },
+            "community_discussions": {
+                "key_questions": [
+                    "Will Indian patients qualify for upcoming clinical trials?",
+                    "What does 'Natural History Study' mean for my PALS?",
+                    "Timeline for actual treatments to reach India?"
+                ],
+                "hope_indicators": [
+                    "India-specific genetic factors might reveal protective genes",
+                    "Understanding why some Indian cases progress slower",
+                    "Positioning for future breakthrough therapies"
+                ]
+            }
         },
         "january_2025": {
             "title": "AIIMS Partnership Begins",
+            "subtitle": "First Major Institutional Collaboration",
             "events": [
-                "In-person meeting with Dr. Vishnu VY",
-                "Discussion of ALS clinic establishment",
-                "Plans for public awareness programs"
-            ]
+                "In-person meeting: ALSCAS team with Dr. Vishnu VY (Associate Professor, AIIMS Delhi)",
+                "Dr. Vishnu supportive of dedicated ALS clinic establishment at AIIMS",
+                "Discussion: Multi-disciplinary approach covering neurology, pulmonology, nutrition, palliative care",
+                "Approval granted: Public ALS awareness programs at AIIMS",
+                "ALS Ready Reckoner submitted to AIIMS for expert review and validation",
+                "Planning begins: Large-scale awareness event at AIIMS auditorium"
+            ],
+            "institutional_breakthrough": {
+                "significance": "AIIMS is India's premier medical institution - partnership = massive credibility",
+                "patient_impact": "Families in Delhi NCR region gain access to specialized ALS care",
+                "systemic_change": "AIIMS protocols could become template for other hospitals",
+                "advocacy_win": "Patient advocacy group successfully engaging top-tier government hospital"
+            },
+            "community_reactions": {
+                "excitement": "High - AIIMS name carries enormous weight in India",
+                "practical_questions": [
+                    "When will ALS clinic actually open?",
+                    "Will AIIMS train doctors from other cities?",
+                    "Can existing patients transfer care to AIIMS?"
+                ],
+                "gratitude_expressed": "Towards Dr. Vishnu for taking ALS seriously and being supportive"
+            }
         },
         "june_2025": {
             "title": "Historic AIIMS Event",
+            "subtitle": "ALS/MND Awareness Day - 500-Person Capacity",
             "events": [
-                "ALS/MND Awareness Day at AIIMS - 500-person capacity",
-                "AIIMS Director Prof. M. Srinivas attends",
-                "20+ doctors participate",
-                "Live-streamed event with media coverage"
-            ]
+                "Venue: J.L. Auditorium, AIIMS Delhi (500-seat capacity) - fully booked",
+                "Chief Guest: Prof. M. Srinivas (Director, AIIMS) - unprecedented director-level support",
+                "20+ senior doctors and neurologists from AIIMS departments attended",
+                "Speakers: Dr. Vishnu VY, senior AIIMS neurologists, ALSCAS representatives",
+                "Topics: ALS diagnosis, management, multi-disciplinary care, caregiver support",
+                "Live-streamed for nationwide access",
+                "Media coverage: Several news outlets covered the event",
+                "Commitment announced: AIIMS ongoing support for ALS clinic and research"
+            ],
+            "unprecedented_achievement": {
+                "first_in_india": "Largest institutional ALS awareness event ever organized in India",
+                "director_attendance": "AIIMS Director's presence = highest-level institutional backing",
+                "doctor_participation": "20+ doctors learning about ALS = ripple effect across departments",
+                "symbolic_importance": "ALS is no longer invisible disease in India's top hospital"
+            },
+            "community_sentiment": {
+                "overwhelmingly_positive": "Families felt seen, heard, validated by medical establishment",
+                "tears_of_joy": "Members emotional seeing ALS taken seriously at national level",
+                "whatsapp_celebration": "Days of congratulatory messages to ALSCAS team",
+                "practical_hope": "Families believing better care and diagnosis now possible"
+            },
+            "long_term_implications": {
+                "training_hub": "AIIMS could train neurologists from other Indian hospitals",
+                "research_pipeline": "Patient needs assessment study and rare disease funding package discussions",
+                "government_attention": "Ministry of Health now aware of ALS burden in India"
+            }
         },
         "october_2025": {
             "title": "Research Publication",
+            "subtitle": "First Major Genetic Study on Indian ALS Population",
             "events": [
-                "CSIR-IGIB study published",
-                "Acknowledges ALSCAS participation",
-                "First major genetic research paper on Indian ALS population"
-            ]
+                "CSIR-IGIB publishes research study in peer-reviewed journal",
+                "Paper explicitly acknowledges ALSCAS participation and contribution",
+                "Data from 62+ Indian ALS patients now in scientific literature",
+                "Genetic patterns specific to Indian/South Asian population documented",
+                "Presentation of findings at medical symposiums to attract pharmaceutical interest",
+                "First time Indian ALS genetic data available for global research community"
+            ],
+            "scientific_milestone": {
+                "legitimacy": "Patient advocacy group's efforts result in peer-reviewed publication",
+                "data_legacy": "Indian ALS genetic data now permanently part of global knowledge",
+                "pharma_attention": "Published data attracts biotech/pharmaceutical company interest",
+                "research_continuation": "Opens door for follow-up studies and expanded research"
+            },
+            "patient_impact": {
+                "immediate": "Families who tested positive for SOD1/FUS now eligible for gene-specific treatments",
+                "future": "Indian genetic database enables faster enrollment in future trials",
+                "pride": "Patients proud their participation contributed to science",
+                "hope": "Published data may attract clinical trials to India"
+            },
+            "community_acknowledgment": {
+                "gratitude_to_dr_faruq": "Members thanking Dr. Faruq for keeping promise to publish with ALSCAS acknowledgment",
+                "validation": "Proof that patient participation in research creates real scientific value",
+                "momentum": "Success energizes community for future research collaborations"
+            }
         },
         "november_2025": {
             "title": "Genetic Testing Expansion",
+            "subtitle": "Second Batch - Streamlined Process",
             "events": [
-                "New batch of 39 PALS enrolled",
-                "Streamlined home collection process",
-                "ALSCAS covers collection costs"
-            ]
+                "39 new PALS enrolled for genetic testing (second batch)",
+                "Streamlined home collection process based on first batch learnings",
+                "ALSCAS now covering home collection logistics costs (₹500-1000 per sample)",
+                "Faster enrollment: Google Form refined, approval within days",
+                "Results expected: February 2026 (3-month processing time)",
+                "Families from multiple cities: Delhi, Mumbai, Bangalore, Chennai, Pune, Kolkata"
+            ],
+            "process_improvements": {
+                "from_first_batch": [
+                    "Home collection scheduling now smoother",
+                    "Clear communication about 6ml blood sample requirement",
+                    "Family genetic counseling information provided upfront",
+                    "Expectation setting: Results timeline, what test covers, implications"
+                ],
+                "alscas_support_increased": "Covering collection costs removes financial barrier for families",
+                "doctor_involvement": "Some neurologists now proactively recommending CSIR-IGIB testing to patients"
+            },
+            "community_maturity": {
+                "informed_participation": "Families now understand gene-specific treatments (Tofersen for SOD1, future FUS treatments)",
+                "realistic_expectations": "Understanding that positive result = eligibility, not guaranteed access",
+                "peer_support": "First batch families guiding second batch through process",
+                "database_building": "Growing Indian ALS genetic database = stronger pharma negotiation position"
+            },
+            "clinical_trial_announcement": {
+                "february_2025_update": "Dr. Faruq informed community of potential clinical trial in India",
+                "target_mutations": "SOD1, FUS, and other ALS-associated genes",
+                "significance": "Would be India's FIRST ALS clinical trial if materialized",
+                "contact_points": "Nitin Kapoor, Satvinder Kaur coordinating interested patient enrollment"
+            }
         }
     },
     "key_contacts": {

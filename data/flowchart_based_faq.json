@@ -1,0 +1,302 @@
+{
+    "source": "ALS Care & Support India - Flowchart Based Decision Guide",
+    "category": "flowchart_guidance",
+    "description": "Decision-tree structured Q&As with IF-THEN logic based on ALSCAS Ready Reckoner and community wisdom",
+    "trust_score": 10,
+    "india_specific": true,
+    "ready_reckoner_stages": [
+        {
+            "stage": 1,
+            "name": "Just Diagnosed",
+            "key_actions": [
+                "Consult 3-4 neurologists to confirm diagnosis",
+                "Rule out mimic diseases with additional tests (CPK, MUSK antibody, ANA profile)",
+                "Join ALS support group immediately",
+                "Focus on nutrition - high protein, Vitamin D, Vitamin B12",
+                "Maintain positive environment with family gatherings"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "Diagnosis is uncertain or just from one doctor",
+                    "then": "Get second and third opinions from different neurologists before accepting diagnosis"
+                },
+                {
+                    "if": "Family history of ALS (familial form)",
+                    "then": "Get genetic testing done to understand specific gene mutation impact"
+                }
+            ]
+        },
+        {
+            "stage": 2,
+            "name": "Mobility Issues",
+            "key_actions": [
+                "Prevent falls at ALL costs - this is priority #1",
+                "Use walker, wheelchair, and railings early",
+                "Consider airbed early to prevent bedsores",
+                "Get Hoyer lift for safe transfers"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "PALS is still walking but unsteady",
+                    "then": "Get walker and remove all tripping hazards from home immediately"
+                },
+                {
+                    "if": "Falls have started happening",
+                    "then": "Transition to wheelchair - do not wait for more falls"
+                },
+                {
+                    "if": "Becoming bedridden",
+                    "then": "Get air mattress BEFORE bedsores develop, not after"
+                }
+            ]
+        },
+        {
+            "stage": 3,
+            "name": "Breathing Concern",
+            "critical_message": "THIS IS YOUR TIME TO ACT - Get BiPAP BEFORE SpO₂ drops",
+            "key_actions": [
+                "Regularly monitor SpO₂ with pulse oximeter",
+                "Get BiPAP AND oxygen concentrator at home before emergency",
+                "NEVER manage breathing with plain oxygen alone - this hides the real problem",
+                "Learn to operate BiPAP, suction machine, cough assist"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "SpO₂ is 96%+ BUT PALS has morning headaches OR sleeps better sitting up",
+                    "then": "CO₂ retention likely - START BiPAP immediately, do not wait for SpO₂ to drop"
+                },
+                {
+                    "if": "SpO₂ drops below 94% while sleeping",
+                    "then": "URGENT: Arrange BiPAP within 24-48 hours"
+                },
+                {
+                    "if": "Hospital recommends plain oxygen only",
+                    "then": "CONFRONT: Request BiPAP - plain oxygen masks CO₂ buildup and creates false reassurance"
+                },
+                {
+                    "if": "Difficulty clearing secretions/phlegm",
+                    "then": "Get cough assist machine - this can delay tracheostomy by months"
+                }
+            ],
+            "hindsight_wisdom": "We didn't have BiPAP at home and rushed to hospital in peak winter - emergency tracheostomy done. If we had started BiPAP when signs appeared, we could have avoided this."
+        },
+        {
+            "stage": 4,
+            "name": "Nutrition Issues",
+            "warning_signs": [
+                "Taking 30+ minutes to finish a meal",
+                "Need to blend/churn food",
+                "Eating reduced portions",
+                "Choking episodes",
+                "Significant weight loss"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "Meals taking 30-45 minutes consistently",
+                    "then": "Start discussing feeding tube with doctor - don't wait for emergency"
+                },
+                {
+                    "if": "Choking happens more than twice a week",
+                    "then": "URGENT: Feeding tube consultation needed NOW - aspiration pneumonia risk is high"
+                },
+                {
+                    "if": "PALS is still relatively strong",
+                    "then": "Choose PEG tube (one-time procedure, ₹15,000-30,000) over temporary Ryles"
+                },
+                {
+                    "if": "PALS is too weak for PEG procedure",
+                    "then": "Start with Ryles tube (₹200-500) temporarily"
+                }
+            ],
+            "hindsight_wisdom": "She was walking until admitted to ICU. Now bedridden. If PEG was done earlier, it may not have happened. We kept delaying because she could still eat slowly."
+        },
+        {
+            "stage": 5,
+            "name": "Speech and Swallowing Issues",
+            "key_actions": [
+                "Consult therapists familiar with MND/ALS",
+                "Practice speech and swallowing exercises daily",
+                "Voice banking NOW while speech is still clear",
+                "Get communication tools ready (eye tracker, alphabet board)"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "Speech is still 70%+ clear",
+                    "then": "Voice banking is URGENT - record voice samples immediately for later synthesis"
+                },
+                {
+                    "if": "Coughing while swallowing food",
+                    "then": "Food going into trachea - HIGH RISK, monitor closely and consider feeding tube"
+                },
+                {
+                    "if": "Speech is becoming difficult but PALS can still move eyes",
+                    "then": "Get eye tracker (Tobii) - this will be the only communication lifeline later"
+                }
+            ]
+        },
+        {
+            "stage": 6,
+            "name": "Assistive Breathing Stage",
+            "key_principle": "Early BiPAP supports the diaphragm muscles - like 'gym rest' - reducing fatigue",
+            "key_actions": [
+                "Gradually increase BiPAP usage (start during sleep, then extend)",
+                "Ensure BiPAP has ST mode with AVAPS/IVAPS features",
+                "Learn to set BiPAP parameters yourself",
+                "Plan tracheostomy if BiPAP becomes 24x7 and infections occur often"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "BiPAP needed only during sleep",
+                    "then": "Continue current approach, monitor for increased dependency"
+                },
+                {
+                    "if": "BiPAP needed during day also",
+                    "then": "Transition stage - start planning for possible tracheostomy"
+                },
+                {
+                    "if": "BiPAP 24x7 AND frequent lung infections",
+                    "then": "Plan tracheostomy NOW - emergency tracheostomy is riskier and more traumatic"
+                },
+                {
+                    "if": "Hospitalized and staff using CPAP mode",
+                    "then": "CONFRONT: Request BiPAP ST mode only - CPAP is not appropriate for ALS"
+                }
+            ],
+            "community_insight": "Early BiPAP users delayed tracheostomy by 6 months to 2+ years. Late BiPAP users often had emergency tracheostomy."
+        },
+        {
+            "stage": 7,
+            "name": "Home ICU Setup",
+            "key_principle": "Home is often safer than hospital - less infection risk, personalized care",
+            "essential_equipment": [
+                "Ventilator/BiPAP with backup device",
+                "Oxygen concentrator with cylinder backup",
+                "Suction machine with portable backup",
+                "Cough assist machine",
+                "Multipara monitor (SpO₂, HR, BP)",
+                "Hospital bed with 5-function adjustment",
+                "Alpha air mattress",
+                "Ambu bag for emergencies",
+                "UPS + Inverter + Generator for power"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "Have only one ventilator",
+                    "then": "Get backup device immediately - equipment failure can be life-threatening"
+                },
+                {
+                    "if": "No power backup system",
+                    "then": "CRITICAL: Install UPS + Inverter + Generator - ventilator patient cannot wait even 2 minutes without power"
+                },
+                {
+                    "if": "Relying on untrained caregivers",
+                    "then": "Train them on ALL procedures - your few hours spent training can save PALS's life"
+                }
+            ]
+        },
+        {
+            "stage": 8,
+            "name": "Advanced Care Daily Procedures",
+            "daily_frequency": {
+                "oral_suction": "80-120 times per day (1-2 min each)",
+                "trach_suction": "2-12 times per day (5-7 min each)",
+                "trach_dressing": "1 time per day (15 min)",
+                "peg_dressing": "every alternate day (15 min)",
+                "exercise": "2 times per day (15 min each)",
+                "humidifier_refill": "10 times per day (2 min)",
+                "diaper_change": "7 times per day (10 min)",
+                "sponge_bath": "alternate days (45 min)"
+            }
+        },
+        {
+            "stage": 9,
+            "name": "Caregiver Breaks",
+            "key_principle": "You cannot pour from an empty cup - if you break down, who will care for PALS?",
+            "key_actions": [
+                "Take small breaks FREQUENTLY",
+                "Have backup caregiver for a few hours daily",
+                "Join support groups for emotional support",
+                "Hire professional help if possible - even part-time"
+            ],
+            "decision_matrix": [
+                {
+                    "if": "Feeling constantly exhausted even after sleep",
+                    "then": "Burnout warning - get help immediately, consider hiring night attendant"
+                },
+                {
+                    "if": "Making mistakes due to fatigue",
+                    "then": "URGENT: Hire help NOW - medication mistakes can be dangerous"
+                }
+            ],
+            "community_wisdom": "I felt guilty taking a break until another caregiver told me: if you break down, who will care for your PALS? Self-care is not selfish."
+        }
+    ],
+    "qa_pairs": [
+        {
+            "question": "My PALS has SpO₂ at 97% but gets morning headaches and can't sleep flat. Do they need BiPAP?",
+            "answer": "**YES - This is a classic CO₂ retention situation.**\n\n### 🔀 Decision Matrix:\n\n**IF** SpO₂ is normal (96%+) **BUT** morning headaches present **→ THEN** This indicates CO₂ is building up overnight. Start BiPAP immediately.\n\n**IF** PALS cannot lie flat and needs to sleep sitting up **→ THEN** Diaphragm muscles are weakening. BiPAP support is needed NOW.\n\n**IF** waiting for doctor to say 'now is the time' **→ THEN** This rarely happens. YOU must recognize the signs and act.\n\n### ⚠️ Critical Understanding:\nIn ALS, the problem is NOT oxygen getting in - it's CO₂ getting OUT. Weak diaphragm muscles prevent proper exhalation. SpO₂ can be 97% while CO₂ reaches dangerous levels. Pulse oximeters CANNOT detect CO₂ retention.\n\n### 💡 The Hard Lesson (Hindsight):\n'We waited because SpO₂ was fine. Then emergency tracheostomy. If we had started BiPAP when morning headaches began, we could have avoided this.'\n\n### 🇮🇳 Action Steps:\n1. Arrange BiPAP within 48 hours\n2. BiPAP rental: ₹2,000-3,000/month | Purchase: ₹40,000-80,000\n3. Ensure it has ST mode with AVAPS feature\n4. Start using during sleep first",
+            "metadata": {
+                "type": "decision_tree",
+                "stage": 3,
+                "urgency": "high"
+            }
+        },
+        {
+            "question": "When should we consider feeding tube - PEG or Ryles?",
+            "answer": "**Consider feeding tube EARLY, not as a last resort.**\n\n### 🔀 Decision Matrix:\n\n**IF** meals take 30-45 minutes consistently **→ THEN** Start discussion with doctor\n\n**IF** choking happens 2+ times per week **→ THEN** URGENT consultation needed - aspiration pneumonia risk\n\n**IF** PALS is relatively strong for procedure **→ THEN** Choose PEG (₹15,000-30,000, one-time, lasts longer)\n\n**IF** PALS is too weak for PEG **→ THEN** Start with Ryles tube (₹200-500, needs replacement every few weeks)\n\n**IF** waiting because 'PALS can still eat slowly' **→ THEN** This is the 'positivity trap' - emergency PEG is riskier than planned PEG\n\n### Important Clarification:\nPEG does NOT mean stop eating. Many PALS continue to eat favorite foods by mouth for pleasure. Tube provides nutrition without stress.\n\n### 💡 Hindsight Wisdom:\n'She was walking until admitted to ICU. Now bedridden. If PEG was done earlier, it may not have happened. The emergency changed everything.'",
+            "metadata": {
+                "type": "decision_tree",
+                "stage": 4,
+                "urgency": "high"
+            }
+        },
+        {
+            "question": "What equipment should I buy at each stage of ALS?",
+            "answer": "**Staged Equipment Guide from Community Experience:**\n\n### 🔀 Decision Matrix by Stage:\n\n**IF** Just Diagnosed (Stage 1) **→ THEN** Get:\n- Pulse oximeter (₹1,000-2,000)\n- Blood pressure monitor\n- Focus on nutrition supplements\n\n**IF** Mobility Issues (Stage 2) **→ THEN** Get:\n- Walker (₹2,000-5,000)\n- Wheelchair (₹10,000-50,000)\n- Air mattress (₹5,000-15,000) - BEFORE bedsores develop\n\n**IF** Breathing Concern (Stage 3) **→ THEN** Get (BEFORE emergency):\n- BiPAP machine (₹40,000-80,000 or rent ₹2,500/month)\n- Oxygen concentrator as backup (₹25,000-50,000)\n- Suction machine (₹5,000-15,000)\n- Nebulizer (₹1,500-3,000)\n\n**IF** Advanced/Home ICU (Stage 7) **→ THEN** Get:\n- Ventilator like Trilogy/Astral (₹3-5 lakhs)\n- Cough assist machine (₹1.5-3 lakhs)\n- Hospital bed with 5-function (₹30,000-60,000)\n- Eye tracker Tobii (₹1.5-2 lakhs)\n- Power backup: UPS (₹15,000-30,000) + Inverter (₹25,000-50,000) + Generator (₹30,000-80,000)\n- Ambu bag (₹2,500) - MANDATORY for emergencies\n\n### ⚡ Power Backup is NON-NEGOTIABLE:\n'We almost lost our father during power cut. Now we have UPS + inverter + generator.' A ventilator patient cannot wait even 2 minutes without power.",
+            "metadata": {
+                "type": "staged_guidance",
+                "urgency": "medium"
+            }
+        },
+        {
+            "question": "Why does the hospital keep giving plain oxygen instead of BiPAP?",
+            "answer": "**This is a common and DANGEROUS situation in hospitals.**\n\n### 🔀 Decision Matrix:\n\n**IF** hospital gives only oxygen AND SpO₂ looks normal **→ THEN** DANGER: CO₂ may be building up silently\n\n**IF** staff are unfamiliar with ALS/MND **→ THEN** You must educate and advocate - politely but firmly\n\n**IF** they put PALS on CPAP mode **→ THEN** Request BiPAP ST mode - CPAP is NOT appropriate for ALS\n\n### Why Plain Oxygen is Risky in ALS:\n| Aspect | Oxygen Only | BiPAP |\n|--------|-------------|-------|\n| Increases O₂ | ✅ Yes | ✅ Yes |\n| Removes CO₂ | ❌ NO | ✅ YES |\n| Supports breathing muscles | ❌ NO | ✅ YES |\n| Safe for ALS alone | ⚠️ RISKY | ✅ RECOMMENDED |\n\n### The Problem:\nOxygen makes SpO₂ look good (95%+) while CO₂ continues building dangerously. Family thinks everything is fine. Then sudden crisis.\n\n### Community Wisdom:\n'The neurologists, pulmonologists, ICU doctors sometimes don't have knowledge about this disease. They want to follow general protocols. The only way is we need to educate ourselves and confront (politely).'",
+            "metadata": {
+                "type": "advocacy",
+                "stage": 3,
+                "urgency": "critical"
+            }
+        },
+        {
+            "question": "How do I know if I should plan for tracheostomy?",
+            "answer": "**Plan tracheostomy proactively, not in emergency.**\n\n### 🔀 Decision Matrix:\n\n**IF** on BiPAP only during sleep **→ THEN** Continue monitoring, no immediate action needed\n\n**IF** BiPAP needed during day also **→ THEN** Transition phase - start thinking about tracheostomy\n\n**IF** BiPAP 24x7 dependency **→ THEN** Plan tracheostomy within 1-3 months\n\n**IF** BiPAP 24x7 + frequent lung infections **→ THEN** Tracheostomy planning URGENT - infections indicate secretion management issues\n\n**IF** waiting for emergency to decide **→ THEN** Emergency tracheostomy is riskier including:\n- Less time to prepare mentally and logistically\n- PALS may be weaker, making procedure riskier\n- Family is traumatized\n- Recovery is harder\n\n### Why Early BiPAP Delays Tracheostomy:\nBiPAP gives diaphragm muscles 'rest periods.' Less fatigue = slower deterioration = delayed need for invasive support. Community observed delays of 6 months to 2+ years.\n\n### Hindsight Perspective:\n'We wish someone had told us this earlier. The 6 months to 2 years of extra time with BiPAP before tracheostomy was precious. Every day matters.'",
+            "metadata": {
+                "type": "decision_tree",
+                "stage": 6,
+                "urgency": "high"
+            }
+        }
+    ],
+    "core_principles": [
+        {
+            "principle": "The Reverse Principle",
+            "explanation": "In ALS, using support DOES NOT make muscles lazy. It's the REVERSE. The less fatigue we give to the body, the better we deal with ALS. Early support PRESERVES strength."
+        },
+        {
+            "principle": "BiPAP = Gym Rest for Diaphragm",
+            "explanation": "BiPAP is not about oxygen - it's about giving rest to the tired diaphragm muscles. Like taking breaks at the gym prevents muscle burnout."
+        },
+        {
+            "principle": "Positivity vs Practicality",
+            "explanation": "It's good to stay positive. But sometimes positivity becomes delusion and we avoid being practical. ALS progression punishes delay, not preparedness."
+        },
+        {
+            "principle": "No Doctor Will Say 'Now'",
+            "explanation": "There is NO doctor who will tell you 'now is the right time.' YOU must recognize the signs and act. Doctors often look at SpO₂ only and miss CO₂ retention."
+        },
+        {
+            "principle": "Support Early, Not in Crisis",
+            "explanation": "Emergency interventions are traumatic and riskier than planned ones. Anticipate, don't react."
+        }
+    ]
+}

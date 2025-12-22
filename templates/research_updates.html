@@ -977,15 +977,31 @@
         const initiatives = researchData.initiatives;
         let html = '';
 
+        // ============================================
+        // PART 1: GROUP INITIATIVES & COLLABORATIONS
+        // ============================================
+        html += `
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; border: 1px solid #bae6fd;">
+                <h2 style="color: #0369a1; font-size: 1.75rem; margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-handshake" style="color: #0077b6;"></i>
+                    Part 1: Group Initiatives & Collaborations
+                </h2>
+                <p style="color: #475569; margin: 0; font-size: 1rem;">
+                    Active research programs, international collaborations, and institutional partnerships with exact timelines, organization links, and WhatsApp discussion context.
+                </p>
+            </div>
+        `;
+
         // Genetic Testing Programs
         if (initiatives.categories.genetic_testing_programs) {
-            html += `<div style="margin-bottom: 2rem;">
-                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+            html += `<div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.75rem;">
                     <i class="fas fa-dna"></i> Genetic Testing Programs
+                    <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; margin-left: auto;">${initiatives.categories.genetic_testing_programs.length} Programs</span>
                 </h3>`;
 
             initiatives.categories.genetic_testing_programs.forEach(program => {
-                html += `<div class="research-item">
+                html += `<div class="research-item" style="border-left: 4px solid #0077b6;">
                     <div class="research-item-header">
                         <div class="research-item-title">
                             <h3>${program.program_name}</h3>
@@ -993,42 +1009,62 @@
                         </div>
                         <span class="stage-badge ${program.status.toLowerCase().includes('active') ? 'early' : 'mid'}">${program.status}</span>
                     </div>
-                    ${program.lead_researcher ? `<p><strong>Lead:</strong> ${program.lead_researcher}</p>` : ''}
+                    ${program.lead_researcher ? `<p><strong>Lead Researcher:</strong> ${program.lead_researcher}</p>` : ''}
+                    
                     ${program.genes_tested && Array.isArray(program.genes_tested) ? `
-                        <div class="info-box">
-                            <h4><i class="fas fa-vial"></i> Genes Tested</h4>
-                            <ul>${program.genes_tested.slice(0, 5).map(g => `<li>${g}</li>`).join('')}</ul>
-                        </div>
-                    ` : ''}
-                    ${program.how_to_participate ? `
-                        <div class="highlight-box">
-                            <h4><i class="fas fa-clipboard-check"></i> How to Participate</h4>
-                            <p><strong>Cost:</strong> ${program.how_to_participate.cost}</p>
-                            <p><strong>Website:</strong> <a href="${program.how_to_participate.website}" target="_blank">${program.how_to_participate.website}</a></p>
-                        </div>
-                    ` : ''}
-                    ${program.providers && Array.isArray(program.providers) ? program.providers.map(p => `
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <div class="info-label">${p.name}</div>
-                                <div class="info-value">
-                                    ${p.cost_inr ? `Cost: ₹${p.cost_inr}<br>` : ''}
-                                    ${p.contact ? `Contact: ${p.contact}` : ''}
-                                </div>
+                        <div style="background: #f0f9ff; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #0369a1; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-vial"></i> Genes Tested</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                ${program.genes_tested.map(g => `<span style="background: white; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.85rem; border: 1px solid #bae6fd;">${g}</span>`).join('')}
                             </div>
                         </div>
-                    `).join('') : ''}
+                    ` : ''}
+                    
+                    ${program.participants ? `
+                        <div style="background: #f1f5f9; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #334155; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-users"></i> Participant Numbers (WhatsApp Verified)</h4>
+                            <ul style="margin: 0; padding-left: 1.25rem; color: #475569;">
+                                ${program.participants.first_batch_2022 ? `<li><strong>First Batch (Sept 2022):</strong> ${program.participants.first_batch_2022}</li>` : ''}
+                                ${program.participants.november_2025_batch ? `<li><strong>Second Batch (Nov 2025):</strong> ${program.participants.november_2025_batch}</li>` : ''}
+                                ${program.participants.status ? `<li><em>${program.participants.status}</em></li>` : ''}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    
+                    ${program.how_to_participate ? `
+                        <div style="background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #15803d; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-clipboard-check"></i> How to Participate</h4>
+                            <p style="margin: 0 0 0.5rem 0;"><strong>Cost:</strong> <span style="color: #15803d; font-weight: 700;">${program.how_to_participate.cost}</span></p>
+                            ${program.how_to_participate.website ? `<p style="margin: 0;"><strong>Website:</strong> <a href="${program.how_to_participate.website}" target="_blank" style="color: #0077b6;">${program.how_to_participate.website}</a></p>` : ''}
+                        </div>
+                    ` : ''}
+                    
+                    ${program.providers && Array.isArray(program.providers) ? `
+                        <div style="margin: 1rem 0;">
+                            <h4 style="color: #334155; font-size: 0.9rem; margin-bottom: 0.75rem;"><i class="fas fa-building"></i> Commercial Providers</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                                ${program.providers.map(p => `
+                                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0;">
+                                        <strong>${p.name}</strong>
+                                        ${p.cost_inr ? `<p style="margin: 0.25rem 0; font-size: 0.875rem;">Cost: ₹${p.cost_inr}</p>` : ''}
+                                        ${p.contact ? `<p style="margin: 0; font-size: 0.875rem; color: #64748b;">Contact: ${p.contact}</p>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
                     ${program.sources && Array.isArray(program.sources) ? `
                         <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
-                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
+                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources & Discussion Context:</strong>
                             <div style="font-size: 0.8rem; margin-top: 0.5rem;">
                                 ${program.sources.map((src, i) => {
                     if (src.startsWith('http')) {
-                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('gomed') ? 'GOMED Program' : 'Reference'}</a>`;
+                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('gomed') ? 'GOMED Program Official' : 'Reference'}</a>`;
                     } else {
-                        return `<span style="color: #475569; margin-right: 1rem;">[${i + 1}] ${src}</span>`;
+                        return `<span style="color: #475569; display: block; margin: 0.25rem 0;"><i class="fab fa-whatsapp" style="color: #25D366;"></i> ${src}</span>`;
                     }
-                }).join('<br>')}
+                }).join('')}
                             </div>
                         </div>
                     ` : ''}
@@ -1039,13 +1075,14 @@
 
         // International Collaborations
         if (initiatives.categories.international_collaborations) {
-            html += `<div style="margin-bottom: 2rem;">
-                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+            html += `<div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.75rem;">
                     <i class="fas fa-globe"></i> International Collaborations
+                    <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; margin-left: auto;">${initiatives.categories.international_collaborations.length} Collaborations</span>
                 </h3>`;
 
             initiatives.categories.international_collaborations.forEach(collab => {
-                html += `<div class="research-item">
+                html += `<div class="research-item" style="border-left: 4px solid #0077b6;">
                     <div class="research-item-header">
                         <div class="research-item-title">
                             <h3>${collab.collaboration_name}</h3>
@@ -1053,18 +1090,36 @@
                         </div>
                         <span class="stage-badge early">${collab.status}</span>
                     </div>
+                    
+                    ${collab.meeting_date ? `<p style="color: #64748b; font-size: 0.9rem;"><i class="fas fa-calendar"></i> <strong>Meeting Date:</strong> ${collab.meeting_date}</p>` : ''}
+                    
                     ${collab.india_partners && Array.isArray(collab.india_partners) ? `
-                        <div class="info-box">
-                            <h4><i class="fas fa-hospital"></i> India Partners</h4>
-                            <ul>${collab.india_partners.map(p => `<li><strong>${p.institution}:</strong> ${p.role}</li>`).join('')}</ul>
+                        <div style="background: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #c2410c; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-hospital"></i> India Partners</h4>
+                            <ul style="margin: 0; padding-left: 1.25rem; color: #475569;">
+                                ${collab.india_partners.map(p => `<li><strong>${p.institution}:</strong> ${p.role}</li>`).join('')}
+                            </ul>
                         </div>
                     ` : ''}
+                    
+                    ${collab.participants && Array.isArray(collab.participants) ? `
+                        <div style="background: #f1f5f9; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #334155; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-user-tie"></i> Meeting Participants</h4>
+                            <ul style="margin: 0; padding-left: 1.25rem; color: #475569; font-size: 0.9rem;">
+                                ${collab.participants.map(p => `<li>${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    
                     ${collab.goals && Array.isArray(collab.goals) ? `
-                        <div class="highlight-box">
-                            <h4><i class="fas fa-bullseye"></i> Goals</h4>
-                            <ul>${collab.goals.slice(0, 3).map(g => `<li>${g}</li>`).join('')}</ul>
+                        <div style="background: #f0fdf4; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #15803d; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-bullseye"></i> Goals</h4>
+                            <ul style="margin: 0; padding-left: 1.25rem; color: #475569; font-size: 0.9rem;">
+                                ${collab.goals.map(g => `<li>${g}</li>`).join('')}
+                            </ul>
                         </div>
                     ` : ''}
+                    
                     ${collab.has_detailed_info ? `
                         <button onclick="showCollaborationModal(${collab.id})" style="
                             margin-top: 1rem; 
@@ -1081,17 +1136,18 @@
                             <i class="fas fa-info-circle"></i> Know More About This Collaboration
                         </button>
                     ` : ''}
+                    
                     ${collab.sources && Array.isArray(collab.sources) ? `
                         <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
-                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
+                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Organization Links & Sources:</strong>
                             <div style="font-size: 0.8rem; margin-top: 0.5rem;">
                                 ${collab.sources.map((src, i) => {
                     if (src.startsWith('http')) {
-                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('targetals') ? 'Target ALS' : src.includes('youtube') ? 'YouTube Video' : src.includes('projectmine') ? 'ProjectMinE' : src.includes('als-mnd') ? 'International Alliance' : src.includes('ihbas') ? 'IHBAS' : 'Reference'}</a>`;
+                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('targetals') ? 'Target ALS Official' : src.includes('youtube') ? 'YouTube Video' : src.includes('projectmine') ? 'ProjectMinE' : src.includes('als-mnd') ? 'International Alliance' : src.includes('ihbas') ? 'IHBAS Delhi' : 'Reference'}</a>`;
                     } else {
-                        return `<span style="color: #475569; margin-right: 1rem;">[${i + 1}] ${src}</span>`;
+                        return `<span style="color: #475569; display: block; margin: 0.25rem 0;"><i class="fab fa-whatsapp" style="color: #25D366;"></i> ${src}</span>`;
                     }
-                }).join('<br>')}
+                }).join('')}
                             </div>
                         </div>
                     ` : ''}
@@ -1102,13 +1158,14 @@
 
         // Hospital Initiatives
         if (initiatives.categories.hospital_initiatives) {
-            html += `<div style="margin-bottom: 2rem;">
-                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
+            html += `<div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.75rem;">
                     <i class="fas fa-hospital-alt"></i> Hospital Initiatives
+                    <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; margin-left: auto;">${initiatives.categories.hospital_initiatives.length} Hospitals</span>
                 </h3>`;
 
             initiatives.categories.hospital_initiatives.forEach(hospital => {
-                html += `<div class="research-item">
+                html += `<div class="research-item" style="border-left: 4px solid #0077b6;">
                     <div class="research-item-header">
                         <div class="research-item-title">
                             <h3>${hospital.institution}</h3>
@@ -1116,34 +1173,49 @@
                         </div>
                         <span class="stage-badge early">${hospital.status}</span>
                     </div>
+                    
                     ${hospital.major_event ? `
-                        <div class="highlight-box">
-                            <h4><i class="fas fa-calendar-star"></i> ${hospital.major_event.name}</h4>
-                            <p><strong>Date:</strong> ${hospital.major_event.date}</p>
-                            <p><strong>Venue:</strong> ${hospital.major_event.venue}</p>
-                        </div>
-                    ` : ''}
-                    ${hospital.initiatives && Array.isArray(hospital.initiatives) ? `
-                        <div class="info-grid">
-                            ${hospital.initiatives.slice(0, 2).map(init => `
-                                <div class="info-item">
-                                    <div class="info-label">${init.name}</div>
-                                    <div class="info-value">${init.status}</div>
+                        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #b45309; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-star"></i> ${hospital.major_event.name}</h4>
+                            <p style="margin: 0.25rem 0;"><strong>Date:</strong> ${hospital.major_event.date}</p>
+                            <p style="margin: 0.25rem 0;"><strong>Venue:</strong> ${hospital.major_event.venue}</p>
+                            ${hospital.major_event.capacity ? `<p style="margin: 0.25rem 0;"><strong>Capacity:</strong> ${hospital.major_event.capacity}</p>` : ''}
+                            ${hospital.major_event.outcomes && Array.isArray(hospital.major_event.outcomes) ? `
+                                <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #fcd34d;">
+                                    <strong style="font-size: 0.85rem;">Key Outcomes:</strong>
+                                    <ul style="margin: 0.25rem 0 0 1.25rem; padding: 0; font-size: 0.85rem;">
+                                        ${hospital.major_event.outcomes.map(o => `<li>${o}</li>`).join('')}
+                                    </ul>
                                 </div>
-                            `).join('')}
+                            ` : ''}
                         </div>
                     ` : ''}
+                    
+                    ${hospital.initiatives && Array.isArray(hospital.initiatives) ? `
+                        <div style="margin: 1rem 0;">
+                            <h4 style="color: #334155; font-size: 0.9rem; margin-bottom: 0.75rem;"><i class="fas fa-tasks"></i> Active Initiatives</h4>
+                            <div style="display: grid; gap: 0.75rem;">
+                                ${hospital.initiatives.map(init => `
+                                    <div style="background: #f8fafc; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-weight: 600; color: #334155;">${init.name}</span>
+                                        <span style="background: ${init.status.toLowerCase().includes('approved') || init.status.toLowerCase().includes('active') ? '#dcfce7' : init.status.toLowerCase().includes('discussion') ? '#fef3c7' : '#f1f5f9'}; color: ${init.status.toLowerCase().includes('approved') || init.status.toLowerCase().includes('active') ? '#15803d' : init.status.toLowerCase().includes('discussion') ? '#b45309' : '#475569'}; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">${init.status}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
                     ${hospital.sources && Array.isArray(hospital.sources) ? `
                         <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
                             <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
                             <div style="font-size: 0.8rem; margin-top: 0.5rem;">
                                 ${hospital.sources.map((src, i) => {
                     if (src.startsWith('http')) {
-                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('nimhans') ? 'NIMHANS' : src.includes('aiims') ? 'AIIMS' : 'Reference'}</a>`;
+                        return `<a href="${src}" target="_blank" style="color: #0077b6; margin-right: 1rem; text-decoration: underline;">[${i + 1}] ${src.includes('nimhans') ? 'NIMHANS Official' : src.includes('aiims') ? 'AIIMS Official' : 'Reference'}</a>`;
                     } else {
-                        return `<span style="color: #475569; margin-right: 1rem;">[${i + 1}] ${src}</span>`;
+                        return `<span style="color: #475569; display: block; margin: 0.25rem 0;"><i class="fab fa-whatsapp" style="color: #25D366;"></i> ${src}</span>`;
                     }
-                }).join('<br>')}
+                }).join('')}
                             </div>
                         </div>
                     ` : ''}
@@ -1152,42 +1224,179 @@
             html += '</div>';
         }
 
-        // Timeline
-        if (initiatives.timeline) {
-            html += `<div style="margin-bottom: 2rem;">
-                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
-                    <i class="fas fa-history"></i> Major Milestones Timeline
-                </h3>
-                <div class="research-item">`;
+        // Government Collaborations
+        if (initiatives.categories.government_collaborations) {
+            html += `<div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.75rem;">
+                    <i class="fas fa-landmark"></i> Government Collaborations
+                </h3>`;
 
-            Object.entries(initiatives.timeline).slice(-5).forEach(([key, value]) => {
+            initiatives.categories.government_collaborations.forEach(govt => {
+                html += `<div class="research-item" style="border-left: 4px solid #7c3aed;">
+                    <div class="research-item-header">
+                        <div class="research-item-title">
+                            <h3>${govt.organization}</h3>
+                        </div>
+                        <span class="stage-badge mid">${govt.status}</span>
+                    </div>
+                    ${govt.meeting_date ? `<p style="color: #64748b; font-size: 0.9rem;"><i class="fas fa-calendar"></i> <strong>Meeting:</strong> ${govt.meeting_date}${govt.duration ? ` (${govt.duration})` : ''}</p>` : ''}
+                    ${govt.discussion_topics && Array.isArray(govt.discussion_topics) ? `
+                        <div style="background: #f5f3ff; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #6d28d9; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-comments"></i> Discussion Topics</h4>
+                            <ul style="margin: 0; padding-left: 1.25rem; color: #475569; font-size: 0.9rem;">
+                                ${govt.discussion_topics.map(t => `<li>${t}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    ${govt.sources && Array.isArray(govt.sources) ? `
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp Discussion Context:</strong>
+                            <div style="font-size: 0.8rem; margin-top: 0.5rem; color: #475569;">${govt.sources.join(', ')}</div>
+                        </div>
+                    ` : ''}
+                </div>`;
+            });
+            html += '</div>';
+        }
+
+        // Treatment Access Initiatives
+        if (initiatives.categories.treatment_access_initiatives) {
+            html += `<div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #e0f2fe; padding-bottom: 0.75rem;">
+                    <i class="fas fa-pills"></i> Treatment Access Initiatives
+                </h3>`;
+
+            initiatives.categories.treatment_access_initiatives.forEach(treat => {
+                html += `<div class="research-item" style="border-left: 4px solid #ec4899;">
+                    <div class="research-item-header">
+                        <div class="research-item-title">
+                            <h3>${treat.treatment_name}</h3>
+                        </div>
+                        <span class="stage-badge genetic">${treat.status}</span>
+                    </div>
+                    ${treat.target_mutation ? `<p><strong>Target:</strong> ${treat.target_mutation}</p>` : ''}
+                    ${treat.current_cost ? `<p><strong>Current Cost:</strong> <span style="color: #dc2626;">${treat.current_cost}</span></p>` : ''}
+                    ${treat.india_access ? `
+                        <div style="background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <h4 style="color: #dc2626; margin: 0 0 0.5rem 0; font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> India Access Status</h4>
+                            <p style="margin: 0 0 0.5rem 0;"><strong>Status:</strong> ${treat.india_access.current_status}</p>
+                            ${treat.india_access.recommendation ? `<p style="margin: 0 0 0.5rem 0;"><strong>Recommendation:</strong> ${treat.india_access.recommendation}</p>` : ''}
+                            ${treat.india_access.program_link ? `<p style="margin: 0;"><a href="${treat.india_access.program_link}" target="_blank" style="color: #0077b6;">View Early Access Program</a></p>` : ''}
+                        </div>
+                    ` : ''}
+                    ${treat.sources && Array.isArray(treat.sources) ? `
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                            <strong style="font-size: 0.8rem; color: #64748b;"><i class="fas fa-link"></i> Sources:</strong>
+                            <div style="font-size: 0.8rem; margin-top: 0.5rem;">
+                                ${treat.sources.map((src, i) => {
+                    if (src.startsWith('http')) {
+                        return `<a href="${src}" target="_blank" style="color: #0077b6; display: block; margin: 0.25rem 0;">${src}</a>`;
+                    } else {
+                        return `<span style="color: #475569; display: block; margin: 0.25rem 0;"><i class="fab fa-whatsapp" style="color: #25D366;"></i> ${src}</span>`;
+                    }
+                }).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>`;
+            });
+            html += '</div>';
+        }
+
+        // ============================================
+        // PART 2: COMMUNITY ACHIEVEMENTS & MILESTONES
+        // ============================================
+        html += `
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%); border-radius: 16px; padding: 2rem; margin: 3rem 0; border: 1px solid #fcd34d;">
+                <h2 style="color: #b45309; font-size: 1.75rem; margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-trophy" style="color: #f59e0b;"></i>
+                    Part 2: Community Achievements & Milestones
+                </h2>
+                <p style="color: #78350f; margin: 0; font-size: 1rem;">
+                    Timeline of major achievements, WhatsApp community discussions, and emotional journey from zero ALS infrastructure to global recognition.
+                </p>
+            </div>
+        `;
+
+        // Timeline with enhanced details
+        if (initiatives.timeline) {
+            html += `<div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #fcd34d; padding-bottom: 0.75rem;">
+                    <i class="fas fa-history"></i> Major Milestones Timeline
+                </h3>`;
+
+            // Sort timeline entries by date (most recent first for display)
+            const timelineEntries = Object.entries(initiatives.timeline);
+
+            timelineEntries.forEach(([key, value], index) => {
                 const period = key.replace(/_/g, ' ').toUpperCase();
+                const isRecent = index >= timelineEntries.length - 4;
+
                 html += `
-                    <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--research-border);">
-                        <h4 style="color: var(--research-primary); margin: 0 0 0.5rem 0;">${value.title}</h4>
-                        <p style="color: var(--research-secondary); font-size: 0.85rem; margin: 0 0 0.5rem 0;">${period}</p>
-                        <ul style="margin: 0; padding-left: 1.5rem; color: var(--research-secondary); font-size: 0.9rem;">
-                            ${value.events.slice(0, 3).map(e => `<li>${e}</li>`).join('')}
+                    <div class="research-item" style="border-left: 4px solid ${isRecent ? '#f59e0b' : '#cbd5e1'}; ${isRecent ? 'background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #ffffff 100%);' : ''}">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                            <div>
+                                <h4 style="color: var(--research-primary); margin: 0; font-size: 1.1rem;">${value.title}</h4>
+                                ${value.subtitle ? `<p style="color: #0077b6; font-weight: 600; margin: 0.25rem 0 0 0; font-size: 0.9rem;">${value.subtitle}</p>` : ''}
+                            </div>
+                            <span style="background: ${isRecent ? '#fef3c7' : '#f1f5f9'}; color: ${isRecent ? '#b45309' : '#475569'}; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap;">${period}</span>
+                        </div>
+                        
+                        <ul style="margin: 0 0 1rem 0; padding-left: 1.5rem; color: var(--research-secondary); font-size: 0.9rem;">
+                            ${value.events.map(e => `<li style="margin-bottom: 0.25rem;">${e}</li>`).join('')}
                         </ul>
+                        
+                        ${value.community_response ? `
+                            <div style="background: #f0fdf4; border-left: 3px solid #22c55e; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin-top: 0.75rem;">
+                                <strong style="color: #15803d; font-size: 0.85rem;"><i class="fab fa-whatsapp" style="color: #25D366;"></i> Community Response:</strong>
+                                <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #475569;">
+                                    ${value.community_response.excitement_level || value.community_response.sentiment || value.community_response.overwhelmingly_positive || ''}
+                                </p>
+                            </div>
+                        ` : ''}
+                        
+                        ${value.community_sentiment ? `
+                            <div style="background: #f0fdf4; border-left: 3px solid #22c55e; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin-top: 0.75rem;">
+                                <strong style="color: #15803d; font-size: 0.85rem;"><i class="fas fa-heart" style="color: #ef4444;"></i> Emotional Impact:</strong>
+                                <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #475569;">
+                                    ${value.community_sentiment.overwhelmingly_positive || ''} ${value.community_sentiment.tears_of_joy || ''}
+                                </p>
+                            </div>
+                        ` : ''}
+                        
+                        ${value.practical_details ? `
+                            <div style="background: #f1f5f9; padding: 0.75rem 1rem; border-radius: 8px; margin-top: 0.75rem;">
+                                <strong style="color: #334155; font-size: 0.85rem;"><i class="fas fa-clipboard-list"></i> Practical Details:</strong>
+                                <p style="margin: 0.25rem 0 0 0; font-size: 0.85rem; color: #475569;">
+                                    ${value.practical_details.process || value.practical_details.cost_to_families || ''}
+                                </p>
+                            </div>
+                        ` : ''}
                     </div>
                 `;
             });
-            html += '</div></div>';
+            html += '</div>';
         }
 
         // Success Stories
         if (initiatives.success_stories) {
-            html += `<div style="margin-bottom: 2rem;">
-                <h3 style="color: var(--research-accent); font-size: 1.3rem; margin-bottom: 1rem;">
-                    <i class="fas fa-trophy"></i> Community Achievements
+            html += `<div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--research-accent); font-size: 1.4rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #fcd34d; padding-bottom: 0.75rem;">
+                    <i class="fas fa-star"></i> Community Achievements Summary
                 </h3>
-                <div class="info-grid">`;
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">`;
 
-            initiatives.success_stories.forEach(story => {
+            initiatives.success_stories.forEach((story, index) => {
+                const colors = ['#0077b6', '#059669', '#7c3aed', '#dc2626', '#f59e0b', '#ec4899'];
+                const color = colors[index % colors.length];
+
                 html += `
-                    <div class="highlight-box">
-                        <h4><i class="fas fa-star"></i> ${story.achievement}</h4>
-                        <p>${story.description}</p>
+                    <div style="background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #e2e8f0; border-top: 4px solid ${color}; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h4 style="color: ${color}; margin: 0 0 0.75rem 0; display: flex; align-items: center; gap: 0.5rem; font-size: 1rem;">
+                            <i class="fas fa-award"></i>
+                            ${story.achievement}
+                        </h4>
+                        <p style="color: #475569; margin: 0; font-size: 0.9rem; line-height: 1.5;">${story.description}</p>
                     </div>
                 `;
             });

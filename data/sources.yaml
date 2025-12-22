@@ -7,134 +7,134 @@ sources:
   # TIER 1: Authoritative Medical & Research Sources
   # Trust Score: 9-10
   # ========================================
-  tier1:
-    # Research News Sources
-    - name: "ALS News Today"
-      url: "https://alsnewstoday.com/"
-      trust_score: 10
-      categories: ["research_trials", "medical_news"]
-      description: "PhD science writers providing daily ALS research updates"
+  # tier1:
+  #   # Research News Sources
+  #   - name: "ALS News Today"
+  #     url: "https://alsnewstoday.com/"
+  #     trust_score: 10
+  #     categories: ["research_trials", "medical_news"]
+  #     description: "PhD science writers providing daily ALS research updates"
     
-    - name: "MND Research Blog"
-      url: "https://mndresearch.blog/"
-      trust_score: 10
-      categories: ["medical_authority", "research_trials"]
-      description: "UK MND Association official research blog"
+  #   - name: "MND Research Blog"
+  #     url: "https://mndresearch.blog/"
+  #     trust_score: 10
+  #     categories: ["medical_authority", "research_trials"]
+  #     description: "UK MND Association official research blog"
     
-    - name: "ALS TDI News"
-      url: "https://www.als.net/news/"
-      trust_score: 10
-      categories: ["research_trials", "medical_authority"]
-      description: "Leading biotech nonprofit for ALS research"
+  #   - name: "ALS TDI News"
+  #     url: "https://www.als.net/news/"
+  #     trust_score: 10
+  #     categories: ["research_trials", "medical_authority"]
+  #     description: "Leading biotech nonprofit for ALS research"
     
-    - name: "Target ALS News"
-      url: "https://www.targetals.org/news-stories/"
-      trust_score: 10
-      categories: ["research_trials", "biomarkers"]
-      description: "Biomarker research leader in ALS field"
+  #   - name: "Target ALS News"
+  #     url: "https://www.targetals.org/news-stories/"
+  #     trust_score: 10
+  #     categories: ["research_trials", "biomarkers"]
+  #     description: "Biomarker research leader in ALS field"
     
-    # Medical Authority Sources
-    - name: "NEALS Consortium"
-      url: "https://www.neals.org/"
-      trust_score: 10
-      categories: ["medical_authority", "research_trials"]
-      description: "Network of 100+ ALS research centers worldwide"
+  #   # Medical Authority Sources
+  #   - name: "NEALS Consortium"
+  #     url: "https://www.neals.org/"
+  #     trust_score: 10
+  #     categories: ["medical_authority", "research_trials"]
+  #     description: "Network of 100+ ALS research centers worldwide"
     
-    - name: "ClinicalTrials.gov"
-      url: "https://clinicaltrials.gov"
-      trust_score: 10
-      categories: ["research_trials"]
-      description: "US National Institutes of Health clinical trials database"
+  #   - name: "ClinicalTrials.gov"
+  #     url: "https://clinicaltrials.gov"
+  #     trust_score: 10
+  #     categories: ["research_trials"]
+  #     description: "US National Institutes of Health clinical trials database"
     
-    - name: "ALSUntangled"
-      url: "https://www.alsuntangled.com/"
-      trust_score: 10
-      categories: ["medical_authority", "treatment_evaluation"]
-      description: "Peer-reviewed analysis with A-F grading for alternative treatments"
+  #   - name: "ALSUntangled"
+  #     url: "https://www.alsuntangled.com/"
+  #     trust_score: 10
+  #     categories: ["medical_authority", "treatment_evaluation"]
+  #     description: "Peer-reviewed analysis with A-F grading for alternative treatments"
     
-    - name: "NINDS (NIH)"
-      url: "https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als"
-      trust_score: 10
-      categories: ["medical_authority", "research_trials"]
-      description: "US Government research institute for neurological disorders"
+  #   - name: "NINDS (NIH)"
+  #     url: "https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als"
+  #     trust_score: 10
+  #     categories: ["medical_authority", "research_trials"]
+  #     description: "US Government research institute for neurological disorders"
     
-    - name: "Mayo Clinic ALS Center"
-      url: "https://www.mayoclinic.org/diseases-conditions/amyotrophic-lateral-sclerosis"
-      trust_score: 10
-      categories: ["medical_authority"]
-      description: "Top-tier medical center ALS information"
+  #   - name: "Mayo Clinic ALS Center"
+  #     url: "https://www.mayoclinic.org/diseases-conditions/amyotrophic-lateral-sclerosis"
+  #     trust_score: 10
+  #     categories: ["medical_authority"]
+  #     description: "Top-tier medical center ALS information"
     
-    - name: "MND Association UK"
-      url: "https://www.mndassociation.org"
-      trust_score: 10
-      categories: ["medical_authority", "equipment_care", "community_wisdom"]
-      description: "Official UK MND organization with PIF Tick certified information"
+  #   - name: "MND Association UK"
+  #     url: "https://www.mndassociation.org"
+  #     trust_score: 10
+  #     categories: ["medical_authority", "equipment_care", "community_wisdom"]
+  #     description: "Official UK MND organization with PIF Tick certified information"
 
   # ========================================
   # TIER 2: Clinical & Support Organizations
   # Trust Score: 8-9
   # ========================================
-  tier2:
+  tier1:
     # Support Organizations
     - name: "ALS Care & Support India"
-      url: "https://alscas.com/"
-      trust_score: 9
+      url: "https://alslifemanagement.weebly.com/"
+      trust_score: 10
       categories: ["community_wisdom", "medical_authority", "india_specific"]
       description: "Primary ALS support organization for India with 24/7 WhatsApp support"
     
-    - name: "ALS Association (USA)"
-      url: "https://www.als.org"
-      trust_score: 9
-      categories: ["medical_authority", "community_wisdom", "research_trials"]
-      description: "Largest US ALS nonprofit organization"
+    # - name: "ALS Association (USA)"
+    #   url: "https://www.als.org"
+    #   trust_score: 9
+    #   categories: ["medical_authority", "community_wisdom", "research_trials"]
+    #   description: "Largest US ALS nonprofit organization"
     
-    - name: "ALS Canada"
-      url: "https://als.ca/"
-      trust_score: 9
-      categories: ["medical_authority", "community_wisdom", "support_services"]
-      description: "Leading Canadian ALS charity and support organization"
+    # - name: "ALS Canada"
+    #   url: "https://als.ca/"
+    #   trust_score: 9
+    #   categories: ["medical_authority", "community_wisdom", "support_services"]
+    #   description: "Leading Canadian ALS charity and support organization"
     
-    - name: "International Alliance of ALS/MND Associations"
-      url: "https://www.als-mnd.org/"
-      trust_score: 9
-      categories: ["medical_authority", "global_network", "research_trials"]
-      description: "Global network of 50+ member associations worldwide"
+    # - name: "International Alliance of ALS/MND Associations"
+    #   url: "https://www.als-mnd.org/"
+    #   trust_score: 9
+    #   categories: ["medical_authority", "global_network", "research_trials"]
+    #   description: "Global network of 50+ member associations worldwide"
     
-    # Additional Medical Resources
-    - name: "Johns Hopkins ALS Clinic"
-      url: "https://www.hopkinsmedicine.org/neurology_neurosurgery/centers_clinics/als"
-      trust_score: 9
-      categories: ["medical_authority", "clinical_care"]
-      description: "Leading academic medical center for ALS treatment and research"
+    # # Additional Medical Resources
+    # - name: "Johns Hopkins ALS Clinic"
+    #   url: "https://www.hopkinsmedicine.org/neurology_neurosurgery/centers_clinics/als"
+    #   trust_score: 9
+    #   categories: ["medical_authority", "clinical_care"]
+    #   description: "Leading academic medical center for ALS treatment and research"
 
   # ========================================
   # TIER 3: Community & Patient Resources
   # Trust Score: 7-8
   # ========================================
-  tier3:
-    - name: "ALS Forums Community"
-      url: "https://www.alsforums.com/"
-      trust_score: 8
-      categories: ["community_wisdom", "patient_experience"]
-      description: "Patient and caregiver community forum for shared experiences"
+  # tier3:
+  #   - name: "ALS Forums Community"
+  #     url: "https://www.alsforums.com/"
+  #     trust_score: 8
+  #     categories: ["community_wisdom", "patient_experience"]
+  #     description: "Patient and caregiver community forum for shared experiences"
     
-    - name: "PatientsLikeMe ALS Community"
-      url: "https://www.patientslikeme.com/conditions/amyotrophic-lateral-sclerosis-als"
-      trust_score: 8
-      categories: ["community_wisdom", "patient_data"]
-      description: "Patient network for tracking symptoms and sharing experiences"
+  #   - name: "PatientsLikeMe ALS Community"
+  #     url: "https://www.patientslikeme.com/conditions/amyotrophic-lateral-sclerosis-als"
+  #     trust_score: 8
+  #     categories: ["community_wisdom", "patient_data"]
+  #     description: "Patient network for tracking symptoms and sharing experiences"
     
-    - name: "I AM ALS"
-      url: "https://www.iamals.org"
-      trust_score: 8
-      categories: ["community_wisdom", "advocacy"]
-      description: "Patient-led organization focused on advocacy and accelerating research"
+  #   - name: "I AM ALS"
+  #     url: "https://www.iamals.org"
+  #     trust_score: 8
+  #     categories: ["community_wisdom", "advocacy"]
+  #     description: "Patient-led organization focused on advocacy and accelerating research"
     
-    - name: "Team Gleason"
-      url: "https://www.teamgleason.org/"
-      trust_score: 8
-      categories: ["equipment_care", "assistive_technology", "community_wisdom"]
-      description: "Nonprofit providing assistive technology and support to PALS"
+  #   - name: "Team Gleason"
+  #     url: "https://www.teamgleason.org/"
+  #     trust_score: 8
+  #     categories: ["equipment_care", "assistive_technology", "community_wisdom"]
+  #     description: "Nonprofit providing assistive technology and support to PALS"
 
 # ========================================
 # Community Insights (WhatsApp/Forums)

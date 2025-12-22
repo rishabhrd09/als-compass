@@ -1,22 +1,484 @@
 """
-Advanced Agentic AI System with Multi-Step Reasoning
+Advanced Agentic AI System with Multi-Step Reasoning and Relevance Detection
 Supports: Claude, OpenAI, Gemini, Grok
-Features: Query analysis, multi-stage retrieval, intelligent context preparation
+Features: Query analysis, ALS relevance detection, multi-agent review, multi-stage retrieval
 """
 import os
 import logging
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from image_manager import get_image_manager
 
 logger = logging.getLogger(__name__)
 
 
+# =============================================================================
+# RELEVANCE ANALYZER - Detects if query is ALS/MND related
+# =============================================================================
+
+class RelevanceAnalyzer:
+    """
+    Detects if a query is related to ALS/MND caregiving.
+    Returns out-of-scope response for unrelated queries.
+    """
+    
+    # Comprehensive ALS/MND keyword categories
+    ALS_KEYWORDS = {
+        # Disease Terminology
+        'disease': [
+            'als', 'mnd', 'amyotrophic', 'lateral sclerosis', 'motor neuron',
+            'lou gehrig', 'bulbar', 'limb onset', 'progressive muscular atrophy',
+            'pals', 'cals', 'umn', 'lmn', 'fvc', 'fasciculation', 'atrophy',
+            'neurodegenerative', 'motor neurone', 'kennedy disease'
+        ],
+        
+        # Vital Signs & Monitoring
+        'vitals': [
+            'spo2', 'oxygen saturation', 'pulse', 'heart rate', 'bp', 'blood pressure',
+            'rr', 'respiratory rate', 'temperature', 'fever', 'pulse oximeter',
+            'vital signs', 'monitoring', 'abg', 'co2', 'carbon dioxide', 'etco2',
+            'saturation', 'vitals', 'heart beat', 'bpm'
+        ],
+        
+        # Respiratory Equipment & Care
+        'respiratory': [
+            'bipap', 'cpap', 'ventilator', 'oxygen', 'concentrator', 'nebulizer',
+            'ambu', 'ambu bag', 'mask', 'nasal cannula', 'avaps', 'ivaps',
+            'ipap', 'epap', 'tidal volume', 'respiratory', 'breathing',
+            'breathlessness', 'dyspnea', 'gasping', 'choking', 'trilogy',
+            'dreamstation', 'resmed', 'philips', 'stellar', 'lumis'
+        ],
+        
+        # Tracheostomy Care
+        'tracheostomy': [
+            'tracheostomy', 'trach', 'cannula', 'cuff', 'stoma', 'subglottic',
+            'inner cannula', 'decannulation', 'speaking valve', 'fenestrated',
+            'shiley', 'portex', 'tracheotomy', 'tt tube'
+        ],
+        
+        # Feeding & Nutrition
+        'nutrition': [
+            'peg', 'peg tube', 'ryles tube', 'ng tube', 'feeding tube', 'gastrostomy',
+            'swallowing', 'dysphagia', 'aspiration', 'nutrition', 'weight loss',
+            'feeding', 'blended diet', 'ensure', 'protein', 'calorie', 'nasogastric',
+            'enteral', 'bolus feeding', 'gravity feeding'
+        ],
+        
+        # Secretion Management
+        'secretions': [
+            'suction', 'suctioning', 'secretion', 'saliva', 'sialorrhea', 'drooling',
+            'mucus', 'phlegm', 'thick secretions', 'foamy saliva', 'mucolytic',
+            'mucinac', 'inhalex', 'nebulization', 'cough assist', 'clearance'
+        ],
+        
+        # Equipment & Mobility
+        'equipment': [
+            'wheelchair', 'hospital bed', 'fowler bed', 'recliner', 'air mattress',
+            'bedsore', 'pressure sore', 'hoyer lift', 'patient lift', 'commode',
+            'bedridden', 'bed-bound', 'immobile', 'positioning', 'transfer board',
+            'slide sheet', 'sling', 'turning', 'egg crate mattress'
+        ],
+        
+        # Power Backup (Critical for Ventilator Patients)
+        'power': [
+            'ups', 'inverter', 'generator', 'battery backup', 'power cut',
+            'electricity', 'power failure', 'kva', 'backup power', 'power outage',
+            'battery', 'tubular battery', 'sine wave'
+        ],
+        
+        # Daily Care & Symptoms
+        'care': [
+            'caregiver', 'caregiving', 'nursing', 'home care', 'home icu',
+            'daily routine', 'positioning', 'turning', 'range of motion', 'rom',
+            'physiotherapy', 'exercise', 'massage', 'pain', 'discomfort',
+            'cramps', 'spasticity', 'stiffness', 'insomnia', 'sleep',
+            'fatigue', 'weakness', 'muscle', 'atrophy'
+        ],
+        
+        # Medical Complications
+        'medical': [
+            'pneumonia', 'infection', 'uti', 'constipation', 'edema', 'swelling',
+            'fever', 'tlc', 'cbc', 'antibiotic', 'chest infection',
+            'aspiration pneumonia', 'dehydration', 'bedsore', 'pressure ulcer',
+            'dvt', 'blood clot', 'sepsis'
+        ],
+        
+        # Medications
+        'medications': [
+            'riluzole', 'rilutor', 'radicava', 'edaravone', 'nuedexta',
+            'baclofen', 'tizanidine', 'glycopyrrolate', 'atropine',
+            'botox', 'injection', 'medicine', 'medication', 'dosage',
+            'levolin', 'foracort', 'budecort', 'asthalin', 'duolin',
+            'emeset', 'ondansetron', 'lactulose', 'cremaffin'
+        ],
+        
+        # Communication
+        'communication': [
+            'speech', 'speaking', 'dysarthria', 'aac', 'eye tracker', 'tobii',
+            'communication board', 'voice banking', 'text to speech',
+            'eye gaze', 'grid pad', 'letter board'
+        ],
+        
+        # Emotional & Support
+        'emotional': [
+            'burnout', 'stress', 'depression', 'anxiety', 'coping', 'support',
+            'counseling', 'mental health', 'caregiver fatigue', 'grief',
+            'emotional', 'psychological', 'wellbeing', 'self care'
+        ],
+        
+        # Emergency
+        'emergency': [
+            'emergency', 'crisis', 'urgent', '911', '102', '108',
+            'dropping', 'falling', 'unconscious', 'not responding',
+            'choking', 'cannot breathe', 'blue lips', 'cyanosis'
+        ],
+        
+        # India-specific terms
+        'india': [
+            'india', 'indian', 'delhi', 'mumbai', 'bangalore', 'kolkata',
+            'chennai', 'hyderabad', 'pune', 'nimhans', 'aiims', '₹', 'rupees',
+            'lakh', 'crore', 'als care india', 'alscas'
+        ]
+    }
+    
+    # Relevance threshold (0.5 = at least one keyword match is sufficient)
+    RELEVANCE_THRESHOLD = 0.5
+    
+    # Common question patterns in ALS community (to help catch natural questions)
+    QUESTION_PATTERNS = [
+        'when to', 'right time', 'which machine', 'which bipap', 'what to feed',
+        'how to manage', 'how to do', 'when should', 'is it time', 'when does',
+        'how much', 'where to buy', 'which brand', 'best machine', 'costs',
+        'nurse charges', 'attendant cost', 'how to prepare', 'what equipment'
+    ]
+    # Common misspellings in ALS community (caregivers type quickly!)
+    COMMON_MISSPELLINGS = {
+        'trahceostomy': 'tracheostomy',
+        'tracostomy': 'tracheostomy',
+        'trachestomy': 'tracheostomy',
+        'tracheotomy': 'tracheostomy',
+        'trachea': 'tracheostomy',
+        'biaap': 'bipap',
+        'biapap': 'bipap',
+        'bi-pap': 'bipap',
+        'cpap': 'bipap',
+        'peg tube': 'peg',
+        'feeding tube': 'peg',
+        'ryle': 'ryles',
+        'ryels': 'ryles',
+        'ng tube': 'ryles',
+        'suction': 'suctioning',
+        'nebuliser': 'nebulizer',
+        'ventilater': 'ventilator',
+        'oximeter': 'pulse oximeter',
+        'oxigen': 'oxygen',
+        'constipaton': 'constipation',
+        'bedsore': 'bedsores',
+        'bed sore': 'bedsores',
+    }
+    
+    def __init__(self):
+        # Flatten all keywords for quick lookup
+        self.all_keywords = set()
+        for category_keywords in self.ALS_KEYWORDS.values():
+            self.all_keywords.update(kw.lower() for kw in category_keywords)
+    
+    def is_als_relevant(self, query: str) -> Tuple[bool, float, List[str]]:
+        """
+        Check if query is ALS/MND related.
+        Enhanced with fuzzy matching for common misspellings.
+        
+        Returns:
+            Tuple of (is_relevant, confidence_score, matched_keywords)
+        """
+        query_lower = query.lower()
+        matched_keywords = []
+        category_matches = {}
+        
+        # First, fix common misspellings in the query
+        corrected_query = query_lower
+        for misspelling, correction in self.COMMON_MISSPELLINGS.items():
+            if misspelling in corrected_query:
+                corrected_query = corrected_query.replace(misspelling, correction)
+                matched_keywords.append(f"{misspelling}→{correction}")
+        
+        # Check each category for keywords
+        for category, keywords in self.ALS_KEYWORDS.items():
+            for keyword in keywords:
+                if keyword.lower() in corrected_query:
+                    matched_keywords.append(keyword)
+                    category_matches[category] = category_matches.get(category, 0) + 1
+        
+        # Also check question patterns (common ALS caregiver questions)
+        for pattern in self.QUESTION_PATTERNS:
+            if pattern in query_lower:
+                # Give partial credit for question patterns
+                category_matches['question_pattern'] = 0.5
+                break
+        
+        # Calculate relevance score
+        # - Each keyword match = 1 point
+        # - Multiple categories = bonus 0.5 per additional category
+        base_score = len([k for k in matched_keywords if '→' not in k])
+        # Misspelling matches also count
+        misspelling_bonus = len([k for k in matched_keywords if '→' in k]) * 0.8
+        category_bonus = max(0, (len(category_matches) - 1) * 0.5)
+        relevance_score = base_score + misspelling_bonus + category_bonus
+        
+        # Determine if relevant
+        is_relevant = relevance_score >= self.RELEVANCE_THRESHOLD
+        
+        logger.info(f"Relevance check: score={relevance_score:.1f}, relevant={is_relevant}, keywords={matched_keywords[:5]}")
+        
+        return (is_relevant, relevance_score, matched_keywords)
+    
+    def get_out_of_scope_response(self, query: str) -> Dict[str, Any]:
+        """
+        Generate a friendly out-of-scope response for non-ALS queries.
+        """
+        return {
+            'response': """### I Specialize in ALS/MND Caregiving 🩺
+
+I'm an AI assistant specifically designed to help with **ALS (Amyotrophic Lateral Sclerosis)** and **MND (Motor Neuron Disease)** caregiving.
+
+Your question doesn't seem to be related to ALS/MND topics. I'm not able to answer general questions outside my area of expertise.
+
+**I can help you with:**
+- 🫁 Respiratory care (BiPAP, ventilators, oxygen)
+- 🍽️ Feeding and nutrition (PEG tubes, Ryles tubes)
+- 🏥 Home ICU setup and equipment
+- 💊 Medications and symptom management
+- 👨‍⚕️ Daily caregiving routines
+- 🚨 Emergency protocols
+- 💰 Costs and resources in India
+
+**Please feel free to ask me anything about ALS/MND caregiving!**
+
+💡 *If you believe your question IS related to ALS care, try rephrasing it with specific terms like "PALS", "caregiver", "BiPAP", "ventilator", etc.*""",
+            'citations': [],
+            'confidence': 'not_applicable',
+            'out_of_scope': True,
+            'timestamp': datetime.now().isoformat(),
+            'query_type': 'out_of_scope',
+            'sources_used': 0,
+            'emergency': False,
+            'model_used': 'relevance_filter',
+            'images': []  # No images for out-of-scope queries
+        }
+
+
+# =============================================================================
+# MULTI-AGENT SYSTEM - Dedicated agents for each source type
+# =============================================================================
+
+class WhatsAppAgent:
+    """
+    Agent for WhatsApp Community content.
+    Retrieves and synthesizes practical solutions from caregiver discussions.
+    """
+    
+    SOURCE_LABEL = "💬 WhatsApp Community Discussion"
+    SOURCE_PRIORITY = 1  # Highest priority
+    
+    def __init__(self, vector_store):
+        self.vector_store = vector_store
+    
+    def retrieve(self, query: str, plan, max_docs: int = 5) -> List[Dict]:
+        """Retrieve relevant WhatsApp community content"""
+        try:
+            # Use hybrid_search with India priority (WhatsApp is India-focused)
+            all_docs = self.vector_store.hybrid_search(
+                query=query,
+                category='india',  # Prioritize community collections
+                india_priority=True,
+                emergency_mode=getattr(plan, 'emergency_mode', False),
+                n_results=max_docs * 2  # Get more then filter
+            )
+            
+            # Filter for WhatsApp sources only
+            whatsapp_docs = []
+            for doc in all_docs:
+                source = doc.get('source', '').lower()
+                collection = doc.get('collection', '').lower()
+                
+                # Check if it's from WhatsApp/community sources
+                if ('whatsapp' in source or 
+                    'community' in collection or 
+                    'als care' in source and 'india' in source):
+                    whatsapp_docs.append(doc)
+            
+            logger.info(f"WhatsAppAgent: Found {len(whatsapp_docs)} community docs from {len(all_docs)} total")
+            return whatsapp_docs[:max_docs]
+            
+        except Exception as e:
+            logger.error(f"WhatsAppAgent retrieval error: {e}")
+            return []
+    
+    def format_for_prompt(self, docs: List[Dict]) -> str:
+        """Format WhatsApp content for LLM prompt"""
+        if not docs:
+            return ""
+        
+        sections = [
+            "\n" + "=" * 60,
+            f"🥇 {self.SOURCE_LABEL} (HIGHEST PRIORITY)",
+            "Real experiences from 650+ Indian ALS caregiving families",
+            "=" * 60
+        ]
+        
+        for i, doc in enumerate(docs, 1):
+            chunk_type = doc.get('chunk_type', 'discussion')
+            source = doc.get('source', 'Community')
+            symptoms = doc.get('symptoms', '')
+            
+            sections.append(f"\n[COMMUNITY INSIGHT #{i}]")
+            sections.append(f"Source: {source}")
+            if chunk_type == 'qa_pair':
+                sections.append("⭐ This is a Q&A Solution from the community")
+            if symptoms and symptoms != '[]':
+                sections.append(f"Related to: {symptoms}")
+            
+            content = doc.get('content', '')[:800]
+            sections.append(content)
+            sections.append("-" * 40)
+        
+        return "\n".join(sections)
+
+
+class ALSCASAgent:
+    """
+    Agent for ALS Care And Support India website content.
+    Retrieves structured guidance from ALSCAS.
+    """
+    
+    SOURCE_LABEL = "🇮🇳 ALS Care & Support India"
+    SOURCE_PRIORITY = 2
+    
+    def __init__(self, vector_store):
+        self.vector_store = vector_store
+    
+    def retrieve(self, query: str, plan, max_docs: int = 4) -> List[Dict]:
+        """Retrieve ALSCAS website content (non-WhatsApp India sources)"""
+        try:
+            # Get India-specific content
+            all_docs = self.vector_store.hybrid_search(
+                query=query,
+                india_priority=True,
+                n_results=max_docs * 2
+            )
+            
+            # Filter for ALSCAS (non-WhatsApp India sources)
+            alscas_docs = []
+            for doc in all_docs:
+                source = doc.get('source', '').lower()
+                is_india = doc.get('india_specific', False)
+                
+                # ALSCAS = India sources that are NOT WhatsApp
+                if is_india and 'whatsapp' not in source:
+                    alscas_docs.append(doc)
+            
+            logger.info(f"ALSCASAgent: Found {len(alscas_docs)} ALSCAS docs")
+            return alscas_docs[:max_docs]
+            
+        except Exception as e:
+            logger.error(f"ALSCASAgent retrieval error: {e}")
+            return []
+    
+    def format_for_prompt(self, docs: List[Dict]) -> str:
+        """Format ALSCAS content for LLM prompt"""
+        if not docs:
+            return ""
+        
+        sections = [
+            "\n" + "=" * 60,
+            f"🥈 {self.SOURCE_LABEL}",
+            "Structured guidance from Indian ALS support organization",
+            "=" * 60
+        ]
+        
+        for i, doc in enumerate(docs, 1):
+            source = doc.get('source', 'ALSCAS')
+            sections.append(f"\n[ALSCAS GUIDANCE #{i}]")
+            sections.append(f"Source: {source}")
+            content = doc.get('content', '')[:700]
+            sections.append(content)
+            sections.append("-" * 40)
+        
+        return "\n".join(sections)
+
+
+class MedicalSourcesAgent:
+    """
+    Agent for medical authority sources.
+    Retrieves evidence-based medical guidance.
+    """
+    
+    SOURCE_LABEL = "📚 Medical Authority Sources"
+    SOURCE_PRIORITY = 3
+    
+    def __init__(self, vector_store):
+        self.vector_store = vector_store
+    
+    def retrieve(self, query: str, plan, max_docs: int = 3) -> List[Dict]:
+        """Retrieve medical authority content"""
+        try:
+            # Search with medical category priority
+            all_docs = self.vector_store.hybrid_search(
+                query=query,
+                category='medical',
+                india_priority=False,  # Global medical sources
+                n_results=max_docs * 2
+            )
+            
+            # Filter for medical sources (not community)
+            medical_docs = []
+            for doc in all_docs:
+                collection = doc.get('collection', '').lower()
+                source = doc.get('source', '').lower()
+                
+                # Medical = from medical collections or medical-sounding sources
+                if ('medical' in collection or 
+                    any(term in source for term in ['mayo', 'nih', 'mnd assoc', 'als assoc', 'clinic', 'hospital'])):
+                    medical_docs.append(doc)
+            
+            logger.info(f"MedicalAgent: Found {len(medical_docs)} medical docs")
+            return medical_docs[:max_docs]
+            
+        except Exception as e:
+            logger.error(f"MedicalSourcesAgent retrieval error: {e}")
+            return []
+    
+    def format_for_prompt(self, docs: List[Dict]) -> str:
+        """Format medical content for LLM prompt"""
+        if not docs:
+            return ""
+        
+        sections = [
+            "\n" + "=" * 60,
+            f"🥉 {self.SOURCE_LABEL}",
+            "Evidence-based medical guidance from trusted organizations",
+            "=" * 60
+        ]
+        
+        for i, doc in enumerate(docs, 1):
+            source = doc.get('source', 'Medical Source')
+            sections.append(f"\n[MEDICAL SOURCE #{i}]: {source}")
+            content = doc.get('content', '')[:600]
+            sections.append(content)
+            sections.append("-" * 40)
+        
+        return "\n".join(sections)
+
+
+# =============================================================================
+# QUERY PLAN - Data structure for query execution
+# =============================================================================
+
 @dataclass
 class QueryPlan:
-    """Query execution plan"""
-    query_type: str  # 'simple', 'complex', 'emergency', 'comparison'
+    """Query execution plan with relevance tracking"""
+    query_type: str  # 'simple', 'complex', 'emergency', 'comparison', 'out_of_scope'
     categories: List[str]  # Relevant categories
     search_strategy: str  # 'focused', 'broad', 'multi-stage'
     india_priority: bool
@@ -24,6 +486,10 @@ class QueryPlan:
     needs_cost_info: bool
     needs_technical_details: bool
     requires_multi_source: bool
+    # New relevance fields
+    is_als_relevant: bool = True
+    relevance_score: float = 0.0
+    relevance_keywords: List[str] = field(default_factory=list)
 
 
 class QueryAnalyzer:
@@ -125,7 +591,7 @@ class QueryAnalyzer:
 
 
 class AgenticAISystem:
-    """Advanced agentic AI system with planning and execution"""
+    """Advanced agentic AI system with multi-agent architecture"""
     
     def __init__(self, model_provider: str = None):
         self.model_provider = model_provider or os.getenv('DEFAULT_MODEL_PROVIDER', 'openai')
@@ -134,6 +600,12 @@ class AgenticAISystem:
         from vector_store_enhanced import EnhancedVectorStore
         self.vector_store = EnhancedVectorStore()
         self.query_analyzer = QueryAnalyzer()
+        self.relevance_analyzer = RelevanceAnalyzer()  # For topic gating
+        
+        # Initialize 3 dedicated source agents
+        self.whatsapp_agent = WhatsAppAgent(self.vector_store)
+        self.alscas_agent = ALSCASAgent(self.vector_store)
+        self.medical_agent = MedicalSourcesAgent(self.vector_store)
         
         # Initialize image manager
         try:
@@ -146,9 +618,10 @@ class AgenticAISystem:
         # Initialize provider
         self._init_provider()
         
-        logger.info("✅ Agentic AI System initialized")
+        logger.info("✅ Multi-Agent AI System initialized")
         logger.info(f"   Provider: {self.model_provider}")
         logger.info(f"   Model: {self.model_name}")
+        logger.info(f"   Agents: WhatsApp 🥇 | ALSCAS 🥈 | Medical 🥉")
     
     def _init_provider(self):
         """Initialize AI provider"""
@@ -233,51 +706,72 @@ class AgenticAISystem:
             raise ImportError("Install: pip install openai")
     
     def process_query(self, query: str) -> Dict[str, Any]:
-        """Main agentic processing pipeline"""
+        """Main agentic processing pipeline with multi-agent retrieval"""
         try:
-            # Step 1: Analyze and plan
+            # Step 0: CHECK RELEVANCE FIRST (Topic Gating)
+            is_relevant, relevance_score, matched_keywords = self.relevance_analyzer.is_als_relevant(query)
+            
+            if not is_relevant:
+                logger.info(f"❌ Query not ALS-relevant (score={relevance_score:.1f}): {query[:50]}...")
+                return self.relevance_analyzer.get_out_of_scope_response(query)
+            
+            logger.info(f"✅ Query is ALS-relevant (score={relevance_score:.1f}): {matched_keywords[:5]}")
+            
+            # Step 1: Analyze and plan (with relevance info)
             plan = self.query_analyzer.analyze_query(query)
+            plan.is_als_relevant = is_relevant
+            plan.relevance_score = relevance_score
+            plan.relevance_keywords = matched_keywords
+            
             logger.info(f"Query Plan: {plan.query_type}, Categories: {plan.categories}")
             
             # Step 2: Handle emergency immediately
             if plan.emergency_mode:
                 return self._handle_emergency(query, plan)
             
-            # Step 3: Execute multi-stage retrieval
-            documents = self._execute_retrieval(query, plan)
+            # Step 3: Execute MULTI-AGENT retrieval (3 agents)
+            agent_results = self._execute_multi_agent_retrieval(query, plan)
             
-            # Step 4: Synthesize response with agent reasoning
-            response = self._synthesize_with_reasoning(query, documents, plan)
+            # Also get documents via traditional method for backward compatibility
+            documents = agent_results['all_docs']
+            
+            # Step 4: Synthesize response using multi-agent context
+            multi_agent_context = self._prepare_multi_agent_context(agent_results, plan)
+            response = self._synthesize_with_multi_agent(query, multi_agent_context, agent_results, plan)
             
             # Step 4.5: Suggest relevant images
             images = []
-            if self.image_manager:
+            if self.image_manager and plan.is_als_relevant:
                 try:
-                    context = self._prepare_context_intelligent(documents, plan)
-                    images = self.image_manager.suggest_images(query, context[:500], max_images=3)
+                    images = self.image_manager.suggest_images(
+                        query, 
+                        multi_agent_context[:500], 
+                        max_images=3,
+                        als_relevant=True
+                    )
                     if images:
                         logger.info(f"✅ Selected {len(images)} images for query: {query[:50]}...")
-                        for img in images:
-                            logger.info(f"   📷 {img['description']}")
-                    else:
-                        logger.info(f"ℹ️  No matching images found for query: {query[:50]}...")
                 except Exception as e:
                     logger.error(f"❌ Error suggesting images: {e}")
-            else:
-                logger.warning("⚠️  Image manager not initialized")
-
             
             # Step 5: Add comprehensive metadata
             response.update({
                 'timestamp': datetime.now().isoformat(),
                 'query_type': plan.query_type,
                 'categories': plan.categories,
-                'sources_used': len(documents),
+                'sources_used': agent_results['total_count'],
+                'source_breakdown': {
+                    'whatsapp': agent_results['whatsapp']['count'],
+                    'alscas': agent_results['alscas']['count'],
+                    'medical': agent_results['medical']['count']
+                },
                 'emergency': False,
                 'model_used': f"{self.model_provider}/{self.model_name}",
                 'india_prioritized': plan.india_priority,
-                'search_strategy': plan.search_strategy,
-                'images': images
+                'search_strategy': 'multi_agent',
+                'images': images,
+                'relevance_score': relevance_score,
+                'relevance_keywords': matched_keywords[:10]
             })
             
             return response
@@ -343,6 +837,258 @@ class AgenticAISystem:
         
         logger.info(f"Retrieved {len(documents)} documents")
         return documents
+    
+    def _execute_multi_agent_retrieval(self, query: str, plan: QueryPlan) -> Dict[str, Any]:
+        """
+        Execute retrieval using 3 dedicated agents.
+        Returns structured results from each source with explicit attribution.
+        """
+        logger.info("🤖 Running Multi-Agent Retrieval...")
+        
+        # Agent 1: WhatsApp Community (HIGHEST PRIORITY)
+        logger.info("   🥇 WhatsApp Agent retrieving community content...")
+        whatsapp_docs = self.whatsapp_agent.retrieve(query, plan, max_docs=5)
+        whatsapp_context = self.whatsapp_agent.format_for_prompt(whatsapp_docs)
+        logger.info(f"      Found {len(whatsapp_docs)} WhatsApp discussions")
+        
+        # Agent 2: ALSCAS Website
+        logger.info("   🥈 ALSCAS Agent retrieving website content...")
+        alscas_docs = self.alscas_agent.retrieve(query, plan, max_docs=4)
+        alscas_context = self.alscas_agent.format_for_prompt(alscas_docs)
+        logger.info(f"      Found {len(alscas_docs)} ALSCAS documents")
+        
+        # Agent 3: Medical Sources
+        logger.info("   🥉 Medical Agent retrieving authority content...")
+        medical_docs = self.medical_agent.retrieve(query, plan, max_docs=3)
+        medical_context = self.medical_agent.format_for_prompt(medical_docs)
+        logger.info(f"      Found {len(medical_docs)} medical sources")
+        
+        # Combine all documents for metadata
+        all_docs = whatsapp_docs + alscas_docs + medical_docs
+        
+        return {
+            'whatsapp': {
+                'docs': whatsapp_docs,
+                'context': whatsapp_context,
+                'count': len(whatsapp_docs),
+                'label': self.whatsapp_agent.SOURCE_LABEL
+            },
+            'alscas': {
+                'docs': alscas_docs,
+                'context': alscas_context,
+                'count': len(alscas_docs),
+                'label': self.alscas_agent.SOURCE_LABEL
+            },
+            'medical': {
+                'docs': medical_docs,
+                'context': medical_context,
+                'count': len(medical_docs),
+                'label': self.medical_agent.SOURCE_LABEL
+            },
+            'all_docs': all_docs,
+            'total_count': len(all_docs)
+        }
+    
+    def _prepare_multi_agent_context(self, agent_results: Dict[str, Any], plan: QueryPlan) -> str:
+        """
+        Prepare context from multi-agent retrieval with clear source sections.
+        """
+        sections = []
+        
+        # Header
+        sections.append("=" * 70)
+        sections.append("KNOWLEDGE BASE CONTEXT (Multi-Agent Retrieval)")
+        sections.append("Sources prioritized: WhatsApp 🥇 > ALSCAS 🥈 > Medical 🥉")
+        sections.append("=" * 70)
+        
+        # WhatsApp Section (HIGHEST PRIORITY)
+        if agent_results['whatsapp']['context']:
+            sections.append(agent_results['whatsapp']['context'])
+        else:
+            sections.append("\n[No WhatsApp community discussions found for this topic]")
+        
+        # ALSCAS Section
+        if agent_results['alscas']['context']:
+            sections.append(agent_results['alscas']['context'])
+        else:
+            sections.append("\n[No ALSCAS website content found for this topic]")
+        
+        # Medical Section
+        if agent_results['medical']['context']:
+            sections.append(agent_results['medical']['context'])
+        else:
+            sections.append("\n[No medical authority sources found for this topic]")
+        
+        # Footer with instructions
+        sections.append("\n" + "=" * 70)
+        sections.append("RESPONSE FORMAT INSTRUCTIONS:")
+        sections.append("Your response MUST have these 3 sections with explicit source labels:")
+        sections.append("1. 💬 From WhatsApp Community - [community experiences]")
+        sections.append("2. 🇮🇳 From ALS Care India - [structured guidance]")
+        sections.append("3. 📚 From Medical Sources - [evidence-based info]")
+        sections.append("4. ✅ Combined Recommendation - [synthesized answer]")
+        sections.append("=" * 70)
+        
+        return "\n".join(sections)
+
+    def _synthesize_with_multi_agent(
+        self,
+        query: str,
+        multi_agent_context: str,
+        agent_results: Dict[str, Any],
+        plan: QueryPlan
+    ) -> Dict[str, Any]:
+        """Synthesize response using multi-agent context with explicit source sections"""
+        
+        # Build system prompt for multi-agent response
+        system_prompt = self._get_multi_agent_system_prompt(plan, agent_results)
+        
+        # Build user prompt with multi-agent context
+        user_prompt = self._build_multi_agent_user_prompt(query, multi_agent_context, plan)
+        
+        # Call LLM
+        try:
+            if self.model_provider == 'claude':
+                response_text = self._call_claude(system_prompt, user_prompt)
+            elif self.model_provider in ['openai', 'openai-advanced', 'openai-gpt4o', 'openai-o1-mini', 'openai-o1']:
+                response_text = self._call_openai(system_prompt, user_prompt)
+            elif self.model_provider in ['gemini', 'gemini-thinking']:
+                response_text = self._call_gemini(system_prompt, user_prompt)
+            elif self.model_provider == 'grok':
+                response_text = self._call_grok(system_prompt, user_prompt)
+            else:
+                response_text = self._call_openai(system_prompt, user_prompt)
+            
+            # Calculate confidence based on source coverage
+            has_whatsapp = agent_results['whatsapp']['count'] > 0
+            has_alscas = agent_results['alscas']['count'] > 0
+            has_medical = agent_results['medical']['count'] > 0
+            
+            source_coverage = sum([has_whatsapp, has_alscas, has_medical])
+            if source_coverage >= 2:
+                confidence = 'high'
+            elif source_coverage == 1:
+                confidence = 'medium'
+            else:
+                confidence = 'low'
+            
+            return {
+                'response': response_text,
+                'citations': [],  # TODO: Extract citations from response
+                'confidence': confidence,
+                'source_coverage': {
+                    'whatsapp': has_whatsapp,
+                    'alscas': has_alscas,
+                    'medical': has_medical
+                }
+            }
+            
+        except Exception as e:
+            logger.error(f"Multi-agent synthesis error: {e}")
+            return self._generate_fallback_response(str(e))
+    
+    def _get_multi_agent_system_prompt(self, plan: QueryPlan, agent_results: Dict[str, Any]) -> str:
+        """System prompt for multi-agent response generation with flowchart-based answers"""
+        prompt = """You are an AI assistant SPECIALIZED in ALS/MND caregiving for Indian families.
+You provide answers in a FLOWCHART/DECISION-TREE style, helping caregivers understand "IF this situation, THEN do that."
+
+**CRITICAL RESPONSE FORMAT:**
+Your response MUST have these 5 sections. Use the EXACT section headers with emojis:
+
+### 💬 From WhatsApp Community (650+ Indian ALS Families)
+[MANDATORY: State clearly that this is from real experiences shared in the ALS Care & Support India WhatsApp community]
+[Include practical solutions, costs in ₹, stories, and hindsight perspectives]
+[Example opening: "Based on discussions among 650+ Indian ALS caregiving families in the WhatsApp community..."]
+[If no WhatsApp content available, write: "No specific community discussions found for this topic in the WhatsApp archive."]
+
+### 🇮🇳 From ALS Care & Support India (ALSCAS)
+[Structured guidance from ALSCAS website - alslifemanagement.weebly.com]
+[If no ALSCAS content available, write: "No specific ALSCAS website guidance found for this topic."]
+
+### 📚 From Medical Sources
+[Evidence-based medical guidance from trusted organizations]
+[If no medical content available, write: "No specific medical authority guidance found for this topic."]
+
+### 🔀 Decision Matrix (IF → THEN)
+[CRITICAL: Use this flowchart format for situational guidance]
+
+**IF** [condition/situation] **→ THEN** [action to take]
+**ELSE IF** [alternative condition] **→ THEN** [alternative action]
+**OTHERWISE** → [default action]
+
+Examples:
+• **IF** SpO₂ is 96%+ BUT morning headaches present **→ THEN** Start BiPAP immediately (CO₂ retention likely)
+• **IF** PALS takes >45 min per meal OR choking frequently **→ THEN** Discuss feeding tube with doctor NOW
+• **IF** on BiPAP 24x7 + frequent infections **→ THEN** Plan tracheostomy proactively (don't wait for emergency)
+
+### ✅ Stage-Based Recommendation (Ready Reckoner)
+[Map the user's situation to the appropriate ALS journey stage]
+
+**ALS JOURNEY STAGES (from ALSCAS Ready Reckoner):**
+1. **Just Diagnosed** → Confirm with 3-4 neurologists, join support group, focus on nutrition
+2. **Mobility Issues** → Prevent falls, use walker/wheelchair, consider airbed early
+3. **Breathing Concern** → THIS IS YOUR TIME TO ACT: Get BiPAP before SpO₂ drops, never use plain oxygen alone
+4. **Nutrition Issues** → If taking 30+ min to eat, consider feeding tube EARLY
+5. **Speech/Swallowing** → Voice banking NOW while speech is clear, use eye trackers
+6. **Assistive Breathing** → Increase BiPAP gradually, plan tracheostomy if BiPAP becomes 24x7
+7. **Home ICU Setup** → Backups for ALL devices, trained caregivers, emergency protocols
+8. **Advanced Care** → Daily procedures: oral suction 80-120x/day, trach suction 2-12x/day
+9. **Caregiver Breaks** → MANDATORY breaks to prevent burnout, have backup caregivers
+
+[Based on user's situation, recommend which stage they're at and what actions to take NOW]
+
+**HINDSIGHT WISDOM - THE HARD LESSON:**
+[Include quotes showing what experienced caregivers wish they had known]
+- "We were too hopeful to be practical"
+- "Early BiPAP ≠ giving up, it = muscle preservation"
+- "ALS progression punishes delay, not preparedness"
+- "Support early, not in crisis"
+
+**CRITICAL SOURCE ATTRIBUTION RULES:**
+1. **WhatsApp Content = HIGHEST VALUE** - Real stories from caregivers who lived through it
+2. ALWAYS explicitly state: "According to WhatsApp community discussions..." or "Community members shared..."
+3. Emphasize the practical/hindsight nature of community wisdom
+4. For costs, cite WhatsApp community: "Community members report costs of ₹..."
+5. NEVER present WhatsApp content as if it came from medical sources
+
+**FLOWCHART PHRASING STYLE (from ALSCAS):**
+- Use "THIS IS YOUR TIME TO ACT" for urgent situations
+- Use "Your motto should be..." for guiding principles
+- Use "The less fatigue we give to the body, the better we are dealing with ALS"
+- Frame BiPAP as "gym rest for the diaphragm" - preserves muscle strength
+- Emphasize: "In ALS, using support DOES NOT make you dependent - it's the REVERSE"
+
+**OTHER IMPORTANT RULES:**
+1. ONLY use information from the provided KNOWLEDGE BASE CONTEXT
+2. Do NOT generate information from general knowledge
+3. Always use ₹ for costs when discussing India
+4. Be compassionate and practical
+5. Acknowledge emotional challenges caregivers face
+
+**TONE:** Compassionate, action-oriented, with urgency where appropriate. Voice of "we understand what you're going through - here's what works" """
+
+        # Add source availability info
+        prompt += f"\n\n**AVAILABLE SOURCES FOR THIS QUERY:**\n"
+        prompt += f"- WhatsApp Community: {agent_results['whatsapp']['count']} discussions found\n"
+        prompt += f"- ALSCAS Website: {agent_results['alscas']['count']} documents found\n"
+        prompt += f"- Medical Sources: {agent_results['medical']['count']} sources found\n"
+        
+        return prompt
+    
+    def _build_multi_agent_user_prompt(self, query: str, context: str, plan: QueryPlan) -> str:
+        """Build user prompt for multi-agent synthesis"""
+        prompt = f"""**USER QUESTION:**
+{query}
+
+**KNOWLEDGE BASE CONTEXT:**
+{context}
+
+**INSTRUCTIONS:**
+Please provide a comprehensive answer using ONLY the information from the knowledge base context above.
+Format your response with the 4 required sections (WhatsApp, ALSCAS, Medical, Combined).
+Prioritize practical, actionable advice from community experience."""
+
+        return prompt
     
     def _synthesize_with_reasoning(
         self,
@@ -467,45 +1213,56 @@ class AgenticAISystem:
         return "\n".join(context_sections)
     
     def _get_system_prompt_agentic(self, plan: QueryPlan) -> str:
-        """Advanced system prompt with reasoning framework"""
-        base_prompt = """You are an empathetic, intelligent AI assistant specialized in ALS caregiving.
+        """Advanced system prompt with source prioritization and attribution"""
+        base_prompt = """You are an AI assistant EXCLUSIVELY specialized in ALS/MND caregiving.
 
 **YOUR ROLE:**
-- Primary: Support ALS caregivers with evidence-based, practical guidance
+- Primary: Support ALS/MND caregivers with evidence-based, practical guidance
+- Advocacy: Empower caregivers to question protocols and advocate for home care based on community experience
 - Context: Focused on Indian caregivers but with global medical knowledge
-- Approach: Multi-step reasoning, synthesis from diverse sources
+- Approach: Multi-step reasoning, synthesis from the KNOWLEDGE BASE ONLY
 
-**CRITICAL RULES:**
-1. 🚨 EMERGENCIES: If query involves breathing difficulty, choking, or urgent crisis:
-   - Immediately advise calling emergency services (India: 102/108, USA: 911)
+**CRITICAL RESTRICTIONS:**
+1. ❌ ONLY answer from the provided KNOWLEDGE BASE CONTEXT
+2. ❌ Do NOT generate information from general knowledge
+3. ❌ If no relevant information found in context, say: "I don't have specific information about this in my ALS knowledge base."
+4. ❌ NEVER make up facts, statistics, or medical information
+
+**SOURCE PRIORITIZATION (Highest to Lowest):**
+1. 🥇 ALS Care & Support India - HIGHEST priority (real experience from 650+ Indian families)
+2. 🥈 WhatsApp Community Discussions - Label explicitly as community source
+3. 🥉 Medical Authority Sources (Mayo Clinic, MND Association, etc.)
+
+**MANDATORY SOURCE ATTRIBUTION:**
+For EVERY answer, you MUST cite sources:
+- From WhatsApp/Community: "According to discussions in the ALS Care & Support India WhatsApp community..."
+- From Medical: "According to [Source Name]..."
+- Mixed sources: Clearly indicate which part comes from which source
+
+**EMERGENCY RULES:**
+🚨 If query involves breathing difficulty, choking, or urgent crisis:
+   - IMMEDIATELY advise calling emergency services (India: 102/108, USA: 911)
    - Provide first-aid guidance if applicable
    - Do NOT delay with extensive information
 
-2. 🇮🇳 INDIA PRIORITY: Prioritize information from "ALS Care and Support India" community
-   - This is REAL experience from 650+ Indian families
-   - Cost information in ₹ is highly valuable
-   - Local context matters
+**🇮🇳 INDIA PRIORITY:**
+- Prioritize information from "ALS Care and Support India"
+- Cost information in ₹ is highly valuable
+- Local context (hospitals, equipment brands) matters
 
-3. 📊 EVIDENCE-BASED: Synthesize from multiple sources
-   - Compare community experience with medical guidelines
-   - Be transparent about confidence level
-
-4. ❌ NEVER GENERATE:
-   - Personal information (names, phones, emails)
-   - Medical diagnoses or prescriptions
-   - False hope or unverified claims
+**NEVER GENERATE:**
+- Personal information (names, phones, emails)
+- Medical diagnoses or prescriptions
+- False hope or unverified claims
+- Information not present in the knowledge base context
 
 **RESPONSE STRUCTURE:**
 - Use ### for main section headings
 - Use numbered lists (1., 2., 3.) for steps
 - Use **bold** for emphasis (sparingly)
-- Include 🚨 for warnings, 🇮🇳 for India-specific, 💰 for costs
+- Include 🚨 for warnings, 🇮🇳 for India-specific, 💰 for costs, 💬 for community insights
 
-**ATTRIBUTION FORMAT:**
-- Community: "According to ALS Care & Support India community..."
-- Medical: "According to [Organization]..."
-
-**TONE:** Compassionate, practical, evidence-based"""
+**TONE:** Compassionate, practical, evidence-based, with clear source attribution"""
 
         # Add query-specific instructions
         if plan.query_type == 'emergency':

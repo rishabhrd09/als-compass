@@ -43,32 +43,124 @@ class IntelligentDataIngestion:
         }
     
     def scrub_pii(self, text: str) -> str:
-        """Enhanced PII removal"""
-        # Email
+        """Enhanced PII removal for WhatsApp messages"""
+        # 1. WhatsApp message sender format: "12/15/23, 10:30 AM - John Doe:"
+        text = re.sub(
+            r'(\d{1,2}/\d{1,2}/\d{2,4},?\s*\d{1,2}:\d{2}(?:\s*[AP]M)?\s*-\s*)([^:]+)(:)',
+            r'\1[MEMBER]\3', text
+        )
+        
+        # 2. Indian phone numbers - multiple formats
+        text = re.sub(r'\+91[-\s]?\d{10}', '[PHONE]', text)
+        text = re.sub(r'\b91\d{10}\b', '[PHONE]', text)
+        text = re.sub(r'\b[6-9]\d{9}\b', '[PHONE]', text)  # Indian mobile starts with 6-9
+        text = re.sub(r'\b0\d{10}\b', '[PHONE]', text)  # Landline with 0 prefix
+        
+        # 3. International phone formats
+        text = re.sub(
+            r'\b(?:\+\d{1,3}\s?)?[\(\[]?\d{3,4}[\)\]]?[\s.-]?\d{3,4}[\s.-]?\d{4}\b', 
+            '[PHONE]', text
+        )
+        
+        # 4. Names with common Indian/English titles
+        text = re.sub(
+            r'\b(Dr|Mr|Mrs|Ms|Shri|Smt|Prof|Er)\.\s*[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?', 
+            r'[NAME]', text
+        )
+        
+        # 5. WhatsApp @mentions (phone-based)
+        text = re.sub(r'@\d{10,13}', '[MEMBER]', text)
+        text = re.sub(r'@[A-Za-z]+\s*[A-Za-z]*', '[MEMBER]', text)
+        
+        # 6. Email addresses
         text = re.sub(
             r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', 
-            '[EMAIL]', 
-            text
+            '[EMAIL]', text
         )
-        # Phone - Indian and international formats
-        text = re.sub(
-            r'\b(?:\+\d{1,3}\s?)?\(?\d{3,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{4}\b', 
-            '[PHONE]', 
-            text
-        )
-        # Names with Dr./Mr./Mrs. prefix
-        text = re.sub(
-            r'\b(Dr\.|Mr\.|Mrs\.|Ms\.)\s+[A-Z][a-z]+\s+[A-Z][a-z]+\b', 
-            r'\1 [NAME]', 
-            text
-        )
-        # URLs
+        
+        # 7. URLs
         text = re.sub(
             r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', 
-            '[URL]', 
-            text
+            '[URL]', text
         )
+        
         return text
+    
+    # Topic categories for WhatsApp message clustering
+    TOPIC_CATEGORIES = {
+        'breathing_bipap': {
+            'keywords': ['bipap', 'breathing', 'spo2', 'oxygen', 'ventilator', 'respiratory', 
+                        'cpap', 'avaps', 'trilogy', 'co2', 'breathless', 'gasping'],
+            'priority': 10,
+            'description': 'Respiratory care and BiPAP support'
+        },
+        'feeding_nutrition': {
+            'keywords': ['peg', 'ryles', 'feeding', 'swallow', 'dysphagia', 'nutrition', 
+                        'choking', 'aspiration', 'weight', 'tube feeding'],
+            'priority': 9,
+            'description': 'Feeding tubes and nutrition management'
+        },
+        'tracheostomy': {
+            'keywords': ['trach', 'tracheostomy', 'cannula', 'cuff', 'stoma', 'suction',
+                        'speaking valve', 'inner cannula'],
+            'priority': 9,
+            'description': 'Tracheostomy care and management'
+        },
+        'emergency': {
+            'keywords': ['emergency', 'urgent', 'crisis', 'dropping', 'blue', 'unconscious',
+                        '102', '108', 'hospital', 'icu', 'critical'],
+            'priority': 10,
+            'description': 'Emergency situations and protocols'
+        },
+        'equipment': {
+            'keywords': ['ups', 'inverter', 'generator', 'machine', 'purchase', 'cost',
+                        'wheelchair', 'bed', 'mattress', 'suction machine'],
+            'priority': 7,
+            'description': 'Equipment and power backup'
+        },
+        'medication': {
+            'keywords': ['medicine', 'drug', 'riluzole', 'tablet', 'injection', 'dosage',
+                        'prescription', 'nebulization', 'levolin'],
+            'priority': 8,
+            'description': 'Medications and treatments'
+        },
+        'secretions': {
+            'keywords': ['saliva', 'secretion', 'mucus', 'phlegm', 'drooling', 'foamy',
+                        'suctioning', 'thick secretion'],
+            'priority': 8,
+            'description': 'Secretion management'
+        },
+        'caregiver_support': {
+            'keywords': ['caregiver', 'burnout', 'stress', 'tired', 'help', 'support',
+                        'family', 'sleep', 'exhausted'],
+            'priority': 6,
+            'description': 'Caregiver wellbeing and support'
+        },
+        'daily_care': {
+            'keywords': ['bedsore', 'pressure', 'positioning', 'turning', 'bath', 'hygiene',
+                        'physiotherapy', 'exercise', 'constipation'],
+            'priority': 7,
+            'description': 'Daily care routines'
+        }
+    }
+    
+    def detect_topic_category(self, text: str) -> Tuple[str, float]:
+        """Detect primary topic category for a message"""
+        text_lower = text.lower()
+        scores = {}
+        
+        for category, config in self.TOPIC_CATEGORIES.items():
+            score = 0
+            for keyword in config['keywords']:
+                if keyword in text_lower:
+                    score += config['priority']
+            scores[category] = score
+        
+        if not scores or max(scores.values()) == 0:
+            return ('general', 0.0)
+        
+        best_category = max(scores, key=scores.get)
+        return (best_category, scores[best_category])
     
     def extract_context_metadata(self, text: str) -> Dict:
         """Extract semantic metadata from text"""
@@ -196,7 +288,7 @@ class IntelligentDataIngestion:
         thread: List[Dict], 
         thread_id: Optional[str]
     ) -> Optional[Dict]:
-        """Create a semantic chunk from conversation thread"""
+        """Create a semantic chunk from conversation thread with topic categorization"""
         if not thread:
             return None
         
@@ -224,6 +316,9 @@ class IntelligentDataIngestion:
             has_q = has_q or meta['has_question']
             has_sol = has_sol or meta['has_solution']
         
+        # Detect topic category
+        topic_category, topic_score = self.detect_topic_category(combined_text)
+        
         # Determine chunk type
         if has_q and has_sol:
             chunk_type = 'qa_pair'
@@ -240,6 +335,8 @@ class IntelligentDataIngestion:
             'text': combined_text,
             'thread_id': thread_id or hashlib.md5(combined_text.encode()).hexdigest()[:12],
             'chunk_type': chunk_type,
+            'topic_category': topic_category,
+            'topic_score': topic_score,
             'symptoms': list(all_symptoms),
             'costs': all_costs,
             'emergency': is_emergency,
@@ -253,8 +350,8 @@ class IntelligentDataIngestion:
         filepath: str, 
         limit: Optional[int] = None
     ) -> Dict[str, int]:
-        """Intelligent WhatsApp ingestion with semantic chunking"""
-        logger.info("📱 Intelligent WhatsApp ingestion starting...")
+        """Enhanced WhatsApp ingestion with topic clustering and source tagging"""
+        logger.info("📱 Enhanced WhatsApp ingestion starting...")
         
         with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
             lines = f.readlines()
@@ -269,52 +366,85 @@ class IntelligentDataIngestion:
         chunks = self.chunk_whatsapp_conversation(lines)
         logger.info(f"   Created {len(chunks)} semantic chunks")
         
-        # Ingest into appropriate collections
+        # Track statistics by topic
         stats = {
             'qa_pairs': 0,
             'emergency_cases': 0,
             'general_discussions': 0,
-            'total_chunks': len(chunks)
+            'total_chunks': len(chunks),
+            'by_topic': {}
         }
         
         for chunk in tqdm(chunks, desc="Ingesting chunks"):
             if not chunk:
                 continue
             
-            # Determine collection based on chunk type
+            topic = chunk.get('topic_category', 'general')
+            stats['by_topic'][topic] = stats['by_topic'].get(topic, 0) + 1
+            
+            # Determine collection based on chunk type - USE EXISTING COLLECTIONS
             if chunk['chunk_type'] == 'qa_pair':
-                collection = 'community_qa_pairs'
+                collection = 'community_qa_pairs'  # Q&A solutions
                 stats['qa_pairs'] += 1
             elif chunk['chunk_type'] == 'emergency_discussion':
-                collection = 'emergency_experiences'
+                collection = 'emergency_experiences'  # Emergency cases
                 stats['emergency_cases'] += 1
             else:
-                collection = 'community_discussions'
+                collection = 'community_discussions'  # General discussions
                 stats['general_discussions'] += 1
             
-            # Add to vector store
+            # Determine trust score based on content quality
+            trust_score = 7  # Base score
+            if chunk['chunk_type'] == 'qa_pair':
+                trust_score = 9  # Q&A pairs are highly valuable
+            elif chunk['chunk_type'] == 'emergency_discussion':
+                trust_score = 9  # Emergency experiences are critical
+            elif chunk.get('topic_score', 0) > 20:
+                trust_score = 8  # High topic relevance
+            
+            # Add to vector store with enhanced metadata
             self.store.add_document(
                 collection_name=collection,
                 text=chunk['text'],
                 metadata={
-                    'source': 'ALS Care & Support India - WhatsApp',
+                    # Source attribution (CRITICAL for multi-agent)
+                    'source': 'ALS Care & Support India - WhatsApp Community',
+                    'source_type': 'whatsapp_community',
+                    'source_label': '💬 WhatsApp Community Discussion',
+                    
+                    # Content classification
                     'chunk_type': chunk['chunk_type'],
+                    'topic_category': topic,
+                    'topic_score': chunk.get('topic_score', 0),
+                    
+                    # Symptoms and costs
                     'symptoms': str(chunk['symptoms']),
-                    'thread_id': chunk['thread_id'],
-                    'emergency': chunk['emergency'],
-                    'india_specific': chunk['india_specific'],
                     'costs_mentioned': str(chunk['costs']),
                     'avg_cost': chunk['avg_cost'] or 0,
-                    'trust_score': 8 if chunk['chunk_type'] == 'qa_pair' else 7,
+                    
+                    # Flags
+                    'emergency': chunk['emergency'],
+                    'india_specific': True,  # All WhatsApp content is India-specific
+                    'is_qa_solution': chunk['chunk_type'] == 'qa_pair',
+                    
+                    # Quality indicators
+                    'trust_score': trust_score,
+                    'message_count': chunk['message_count'],
+                    'thread_id': chunk['thread_id'],
+                    
+                    # Metadata
                     'ingestion_date': datetime.now().isoformat()
                 },
-                doc_id=f"whatsapp_{chunk['thread_id']}"
+                doc_id=f"whatsapp_{topic}_{chunk['thread_id']}"
             )
         
-        logger.info("✅ WhatsApp ingestion complete:")
-        logger.info(f"   - Q&A pairs: {stats['qa_pairs']}")
-        logger.info(f"   - Emergency cases: {stats['emergency_cases']}")
-        logger.info(f"   - General discussions: {stats['general_discussions']}")
+        logger.info("✅ Enhanced WhatsApp ingestion complete:")
+        logger.info(f"   - Q&A Solutions: {stats['qa_pairs']}")
+        logger.info(f"   - Emergency Discussions: {stats['emergency_cases']}")
+        logger.info(f"   - General Discussions: {stats['general_discussions']}")
+        logger.info(f"   📊 By Topic:")
+        for topic, count in sorted(stats['by_topic'].items(), key=lambda x: -x[1]):
+            logger.info(f"      - {topic}: {count}")
         
         return stats
     
@@ -399,7 +529,7 @@ class IntelligentDataIngestion:
         )
     
     def ingest_faq_json(self, filepath: str) -> int:
-        """Ingest FAQ JSON file into knowledge base"""
+        """Ingest FAQ JSON file into knowledge base - handles Q&A pairs, Ready Reckoner stages, and core principles"""
         logger.info(f"📋 Loading FAQ from {filepath}...")
         
         import json
@@ -433,9 +563,10 @@ class IntelligentDataIngestion:
             qa_metadata = qa.get('metadata', {})
             urgency = qa_metadata.get('urgency', 'medium')
             qa_type = qa_metadata.get('type', 'general')
+            stage = qa_metadata.get('stage', 0)
             
             # Determine if emergency
-            is_emergency = urgency == 'high' or 'emergency' in question.lower()
+            is_emergency = urgency in ['high', 'critical'] or 'emergency' in question.lower()
             
             # Add to vector store
             self.store.add_document(
@@ -453,13 +584,102 @@ class IntelligentDataIngestion:
                     'trust_score': trust_score,
                     'qa_type': qa_type,
                     'urgency': urgency,
+                    'stage': stage,
                     'ingestion_date': datetime.now().isoformat()
                 },
                 doc_id=f"faq_{hashlib.md5(question.encode()).hexdigest()[:12]}"
             )
             count += 1
         
-        logger.info(f"✅ Loaded {count} FAQ entries from {filepath}")
+        # Process Ready Reckoner stages (for flowchart_based_faq.json)
+        stages = data.get('ready_reckoner_stages', [])
+        for stage_data in stages:
+            stage_num = stage_data.get('stage', 0)
+            stage_name = stage_data.get('name', '')
+            key_actions = stage_data.get('key_actions', [])
+            decision_matrix = stage_data.get('decision_matrix', [])
+            
+            if not stage_name:
+                continue
+            
+            # Build stage content
+            text_parts = [
+                f"ALS Journey Stage {stage_num}: {stage_name}",
+                "",
+                f"Key Actions at this stage:"
+            ]
+            text_parts.extend([f"• {action}" for action in key_actions])
+            
+            if decision_matrix:
+                text_parts.append("\nDecision Matrix (IF → THEN):")
+                for dm in decision_matrix:
+                    if_condition = dm.get('if', '')
+                    then_action = dm.get('then', '')
+                    text_parts.append(f"• IF {if_condition} → THEN {then_action}")
+            
+            # Add hindsight wisdom if present
+            hindsight = stage_data.get('hindsight_wisdom', '')
+            if hindsight:
+                text_parts.append(f"\nHindsight Wisdom: \"{hindsight}\"")
+            
+            # Add community insight if present
+            insight = stage_data.get('community_insight', '')
+            if insight:
+                text_parts.append(f"\nCommunity Insight: {insight}")
+            
+            text = "\n".join(text_parts)
+            
+            # Determine if emergency stage (breathing concern is urgent)
+            is_emergency_stage = stage_num in [3, 6, 7]  # Breathing, Assistive, Home ICU
+            
+            self.store.add_document(
+                collection_name='community_qa_pairs',
+                text=text,
+                metadata={
+                    'source': source_name,
+                    'chunk_type': 'ready_reckoner_stage',
+                    'category': 'flowchart_guidance',
+                    'stage_number': stage_num,
+                    'stage_name': stage_name,
+                    'emergency': is_emergency_stage,
+                    'india_specific': india_specific,
+                    'trust_score': 10,  # Ready Reckoner is highest priority
+                    'has_decision_matrix': len(decision_matrix) > 0,
+                    'ingestion_date': datetime.now().isoformat()
+                },
+                doc_id=f"stage_{stage_num}_{stage_name.replace(' ', '_').lower()[:20]}"
+            )
+            count += 1
+        
+        # Process core principles (for flowchart_based_faq.json)
+        principles = data.get('core_principles', [])
+        for principle in principles:
+            title = principle.get('principle', principle.get('title', ''))
+            explanation = principle.get('explanation', principle.get('description', ''))
+            
+            if not title or not explanation:
+                continue
+            
+            text = f"Core Principle: {title}\n\n{explanation}"
+            
+            self.store.add_document(
+                collection_name='community_qa_pairs',
+                text=text,
+                metadata={
+                    'source': source_name,
+                    'chunk_type': 'core_principle',
+                    'category': 'guidance_principles',
+                    'principle_name': title,
+                    'emergency': False,
+                    'india_specific': india_specific,
+                    'trust_score': 10,
+                    'ingestion_date': datetime.now().isoformat()
+                },
+                doc_id=f"principle_{hashlib.md5(title.encode()).hexdigest()[:12]}"
+            )
+            count += 1
+        
+        logger.info(f"✅ Loaded {count} entries from {filepath}")
         return count
 
 
@@ -484,7 +704,6 @@ def main():
     
     # Handle --clear flag: delete database directory first
     if args.clear:
-        from pathlib import Path
         db_path = Path("./chroma_db_enhanced")
         if db_path.exists():
             print("🗑️  --clear flag detected")
@@ -553,11 +772,55 @@ def main():
     if bipap_faq_path.exists():
         ingestion.ingest_faq_json(str(bipap_faq_path))
     
-    # Ingest WhatsApp with intelligence
+    # Ingest Practical Wisdom FAQ (HIGHEST PRIORITY - curated hindsight wisdom)
+    practical_wisdom_path = Path("data/practical_wisdom_faq.json")
+    if practical_wisdom_path.exists():
+        print("📋 Loading PRACTICAL WISDOM FAQ (hindsight stories, reverse principle)...")
+        ingestion.ingest_faq_json(str(practical_wisdom_path))
+    
+    # Ingest Community Wisdom FAQ (HIGH PRIORITY - curated Q&A)
+    community_wisdom_path = Path("data/community_wisdom_faq.json")
+    if community_wisdom_path.exists():
+        print("📋 Loading Community Wisdom FAQ (curated high-quality Q&A)...")
+        ingestion.ingest_faq_json(str(community_wisdom_path))
+    
+    # Ingest ALS Community FAQ
+    als_faq_path = Path("data/als_community_faq.json")
+    if als_faq_path.exists():
+        ingestion.ingest_faq_json(str(als_faq_path))
+    
+    # Ingest WhatsApp Detailed FAQ (HIGHEST PRIORITY - decision matrices & hindsight)
+    whatsapp_detailed_path = Path("data/whatsapp_detailed_faq.json")
+    if whatsapp_detailed_path.exists():
+        print("📋 Loading WhatsApp Detailed FAQ (decision matrices, IF/THEN logic, hindsight)...")
+        ingestion.ingest_faq_json(str(whatsapp_detailed_path))
+    
+    # Ingest Flowchart Based FAQ (NEW - Ready Reckoner 9-stage guidance)
+    flowchart_faq_path = Path("data/flowchart_based_faq.json")
+    if flowchart_faq_path.exists():
+        print("📋 Loading Flowchart FAQ (Ready Reckoner 9 stages, IF/THEN decision trees)...")
+        ingestion.ingest_faq_json(str(flowchart_faq_path))
+    
+    # Ingest ALS Comprehensive FAQ (enhanced stage-based content)
+    als_comprehensive_path = Path("data/als_comprehensive_faq.json")
+    if als_comprehensive_path.exists():
+        print("📋 Loading ALS Comprehensive FAQ (complete Q&A library)...")
+        ingestion.ingest_faq_json(str(als_comprehensive_path))
+    
+    # Ingest Top 10 Community FAQ (HIGHEST PRIORITY - exact WhatsApp Q&As)
+    top10_path = Path("data/top10_community_faq.json")
+    if top10_path.exists():
+        print("📋 Loading TOP 10 Community FAQ (most asked questions with exact answers)...")
+        ingestion.ingest_faq_json(str(top10_path))
+    
+    # Ingest WhatsApp with intelligence (PROCESS ALL MESSAGES)
     if whatsapp_path:
+        print("\n📱 Processing WhatsApp Community Discussions...")
+        print("   ⚠️  This will process ALL messages (may take 5-10 minutes)")
+        print("   Processing entire dataset for maximum coverage of community wisdom")
         stats = ingestion.ingest_whatsapp_intelligently(
             str(whatsapp_path), 
-            limit=5000  # Process up to 5000 messages
+            limit=None  # Process ALL messages for complete coverage
         )
 
     
