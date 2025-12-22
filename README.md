@@ -1,28 +1,29 @@
 # ALS Caregiver Compass
 
-A comprehensive web application and AI assistant for ALS caregivers that brings daily care routines, trusted ALS information, and an intelligent chatbot together in one place.
+A comprehensive web application and AI assistant for ALS caregivers that brings daily care routines, trusted ALS information, and an intelligent chatbot together in one place. Developed in collaboration with the **ALSCAS (ALS Care and Support India)** community.
 
 ## Features
 
-- **Multi-Model AI Assistant** - Choose from GPT-4, Claude Sonnet 4, Gemini 2.0, or Grok with agentic reasoning
-- **Knowledge Base** - Curated information from trusted medical sources and caregiver experiences
+- **Multi-Model AI Assistant** - Choose from GPT-4, Claude Sonnet, Gemini 2.0, or Grok with agentic reasoning
+- **Community-Curated FAQ** - Over 68 curated Q&A entries with decision matrices and flowchart-based guidance
+- **Knowledge Base** - Curated information from trusted medical sources and 134,000+ WhatsApp community discussions
 - **Emergency Protocols** - Critical action guides for emergency situations
 - **Care Resources** - Daily schedules, home ICU setup, communication tools
-- **Research Updates** - Latest ALS research, clinical trials, and treatment options
+- **Research Updates** - Latest ALS research, clinical trials, and India-specific research initiatives
 - **India-Specific Information** - Costs, availability, and resources for Indian caregivers
 
 ## Quick Start
 
 ### Prerequisites
 - Python 3.10+
-- API key (at least one: OpenAI, Claude, or Gemini)
+- API key (at least one: OpenAI, Anthropic/Claude, or Gemini)
 
 ### Installation
 
 ```bash
 # Clone repository
 git clone <your-repo-url>
-cd als-caregiver-compass
+cd als-compass
 
 # Create virtual environment
 python -m venv venv
@@ -68,73 +69,91 @@ PORT=5000
 ```
 ├── app.py                      # Main Flask application
 ├── ai_system_agentic.py        # Advanced agentic AI with multi-step reasoning
+│                               #   - RelevanceAnalyzer with misspelling tolerance
+│                               #   - Enhanced system prompts with flowchart formatting
 ├── ai_system_unified.py        # Unified multi-model AI system
 ├── vector_store_enhanced.py    # Enhanced vector store with multi-collection hierarchy
 ├── ingest_data_intelligent.py  # Intelligent data ingestion with semantic chunking
 ├── manage_research.py          # GUI tool for managing research updates
-├── clear_database.py           # Database reset utility
-├── test_models.py              # AI model testing utility
 ├── data/
-│   ├── sources.yaml            # Trusted ALS medical sources
+│   ├── sources.yaml                # Trusted ALS medical sources
 │   ├── research_categorized.json   # Categorized research data
-│   ├── research_updates.json   # Legacy research updates
-│   ├── bipap_faq.json          # BiPAP FAQ content
-│   └── communication_technology.json  # Communication technology data
+│   ├── research_initiatives_india.json  # India research collaborations (verified)
+│   ├── bipap_faq.json              # BiPAP FAQ content
+│   ├── als_comprehensive_faq.json  # Complete FAQ with decision matrices
+│   ├── practical_wisdom_faq.json   # Hindsight stories, "What I Wish I Knew"
+│   ├── community_wisdom_faq.json   # Curated high-quality community Q&A
+│   ├── flowchart_based_faq.json    # Ready Reckoner 9-stage flowchart guidance
+│   ├── top10_community_faq.json    # Most-asked questions with exact answers
+│   └── whatsapp_detailed_faq.json  # Detailed FAQ with IF/THEN logic
 ├── templates/                  # HTML pages (16 templates)
 │   ├── index.html              # Homepage
 │   ├── ai_assistant.html       # AI chatbot interface
 │   ├── understanding_als.html  # ALS information
 │   ├── emergency_protocol.html # Emergency procedures
-│   ├── faq.html                # Frequently asked questions
+│   ├── faq.html                # Community FAQ with conditional guidance
 │   ├── home_icu_guide.html     # Home ICU setup guide
 │   ├── daily_schedule.html     # Daily care schedule
 │   ├── communication.html      # Communication resources
-│   ├── communication_technology.html  # Eye trackers, AAC devices
-│   ├── research_updates.html   # Latest research and trials
-│   ├── experiences.html        # Caregiver experiences
+│   ├── research_updates.html   # Research initiatives & collaborations
 │   └── ...                     # Error pages and partials
 └── static/                     # CSS, JavaScript, and images
-    ├── css/
-    ├── js/
-    └── images/
 ```
+
+## Data Sources
+
+The knowledge base is built from:
+- **WhatsApp Community Discussions** - 134,000+ messages from ALSCAS groups (2021-2025)
+- **ALSCAS Website** - [alslifemanagement.weebly.com](https://alslifemanagement.weebly.com)
+- **Curated FAQ Files** - 6 specialized FAQ collections with 68+ entries
+- **Research Initiatives** - Verified collaborations with Target ALS, NIMHANS, AIIMS
+
+### Database Statistics
+| Collection | Documents |
+|------------|-----------|
+| community_qa_pairs | ~7,400 |
+| emergency_experiences | ~680 |
+| community_discussions | ~14,000 |
+| medical_authoritative | 1 |
+| **Total** | **~22,000** |
 
 ## Usage
 
 ### AI Assistant
 Navigate to `/ai-assistant` to chat with the AI. Features include:
-- **Model Selection** - Choose between OpenAI, Claude, Gemini, or Grok
+- **Model Selection** - Choose between OpenAI, Claude Sonnet, Gemini, or Grok
 - **Agentic Mode** - Advanced reasoning with multi-step query analysis
-- **India Priority** - Automatically prioritizes India-specific information
+- **Misspelling Tolerance** - Handles common misspellings (BiPap, AlS, trakeostomy)
+- **Flowchart-Style Answers** - Structured IF→THEN decision guidance
 - **Source Citations** - Responses include citations from trusted sources
 
 Ask questions about:
-- ALS symptoms and progression
-- Daily care routines and schedules
-- Emergency procedures
-- Equipment and resources
+- BiPAP timing and settings ("When should BiPAP be started?")
+- Tracheostomy decision criteria ("When is tracheostomy needed?")
+- PEG/feeding tube timing ("When to consider feeding tube?")
+- Daily care routines and equipment
 - India-specific costs and availability
 
-### Care Resources
-- **Daily Schedule** (`/daily-schedule`) - Structured care routines
-- **Emergency Protocols** (`/emergency-protocol`) - Critical action guides
-- **Home ICU Guide** (`/home-icu-guide`) - Setup and equipment information
-- **Communication Tools** (`/communication`) - Adaptive communication aids
-- **Communication Technology** (`/communication-technology`) - Eye trackers, AAC devices
-- **FAQ** (`/faq`) - Frequently asked questions including BiPAP support
+### Community FAQ
+Navigate to `/faq` for curated community wisdom including:
+- **Decision Matrices** - IF→THEN conditional guidance
+- **Hindsight Stories** - "What I Wish I Knew Earlier"
+- **Practical Tips** - Equipment, costs, and care protocols
+- **Key Principles** - Community-tested caregiving wisdom
 
 ### Research Updates
-View latest ALS research, clinical trials, and treatment options at `/research-updates`. Includes:
-- Approved treatments with India availability and costs
-- Active clinical trials (Phase 2-3)
-- Pre-clinical research and GWAS studies
-- India-specific research hubs (NIMHANS, etc.)
+Navigate to `/research-updates` for:
+- **India Research Initiatives** - AIIMS, NIMHANS, Target ALS collaboration
+- **Genetic Testing Programs** - CSIR-IGIB free testing, commercial options
+- **Treatment Access** - Tofersen, clinical trials, compassionate use
+- **Global Research** - Latest clinical trials and pipeline therapies
 
 ## Tech Stack
 
-- **Backend**: Flask (Python)
-- **AI Models**: OpenAI GPT-4, Claude Sonnet 4, Gemini 2.0, Grok
+- **Backend**: Flask (Python 3.10+)
+- **AI Models**: OpenAI GPT-4, Claude Sonnet, Gemini 2.0, Grok
 - **Vector Database**: ChromaDB with sentence-transformers embeddings
+- **Embeddings**: all-MiniLM-L6-v2
 - **Frontend**: HTML, CSS, JavaScript
 - **Production Server**: Gunicorn (auto-configured)
 
@@ -146,51 +165,50 @@ View latest ALS research, clinical trials, and treatment options at `/research-u
 python test_models.py
 ```
 
-### Managing Research Updates
+### Database Rebuild
 ```bash
-# Launch GUI tool for updating research data
-python manage_research.py
+# Rebuild vector database (if schema errors occur)
+python ingest_data_intelligent.py --clear
+# Type REBUILD when prompted
 ```
 
-### Database Management
-```bash
-# Reset and reinitialize database
-python clear_database.py
-python ingest_data_intelligent.py
-```
+### Adding New FAQ Content
+1. Add entries to appropriate JSON file in `data/`
+2. Run `python ingest_data_intelligent.py` to update vector store
+3. Restart `python app.py`
 
 ## API Endpoints
 
 - `POST /api/ai-assistant` - Chat with AI (supports model selection and agentic mode)
+- `GET /api/community-faq` - Get community FAQ data for FAQ page
 - `GET /api/research-categorized` - Get categorized research data
-- `GET /api/research-updates` - Get legacy research updates
-- `GET /api/communication-tech` - Get communication technology data
+- `GET /api/research-initiatives` - Get India research initiatives
 - `GET /api/health` - Health check and API key status
 - `POST /api/clear-history` - Clear chat history
 
 ## Features in Detail
+
+### Relevance Analyzer
+The AI includes intelligent query filtering:
+- **Keyword Matching** - 200+ ALS-related terms across 15 categories
+- **Misspelling Tolerance** - 50+ common misspelling mappings
+- **Threshold Scoring** - Configurable relevance threshold (default: 0.5)
+- **Out-of-Scope Detection** - Politely redirects non-ALS queries
 
 ### Agentic AI System
 The advanced AI system includes:
 - **Query Analysis** - Intelligent categorization and planning
 - **Multi-Stage Retrieval** - Hierarchical search across collections
 - **Emergency Detection** - Automatic priority handling for urgent queries
-- **India Prioritization** - Boosts India-specific content in responses
+- **Flowchart Formatting** - Structures answers with IF→THEN logic
 - **Confidence Scoring** - Evaluates response reliability
 
 ### Vector Store
 Enhanced vector database with:
-- **Multi-Collection Hierarchy** - Separate collections for medical knowledge, equipment, caregiving, etc.
+- **Multi-Collection Hierarchy** - 6 separate collections for different content types
 - **Hybrid Search** - Combines semantic search with priority routing
 - **Source Diversity** - Ensures varied sources in results
 - **Trust Scoring** - Weights sources by reliability
-
-### Data Ingestion
-Intelligent data processing with:
-- **Semantic Chunking** - Context-aware text segmentation
-- **PII Scrubbing** - Automatic removal of personal information
-- **Metadata Extraction** - Detects symptoms, costs, India-specific content
-- **FAQ Integration** - Structured Q&A ingestion
 
 ## Contributing
 
@@ -200,10 +218,16 @@ When adding new features:
 3. Test with `python test_models.py`
 4. Update this README if adding new routes or features
 
+## Acknowledgments
+
+- **ALSCAS Community** - For sharing invaluable caregiving wisdom
+- **Target ALS** - For research collaboration
+- **NIMHANS & AIIMS** - For clinical partnership
+
 ## License
 
 [Your License Here]
 
 ## Support
 
-For questions or issues, please [contact information or issue tracker].
+For questions or issues, contact the ALSCAS community or open an issue on GitHub.
