@@ -249,15 +249,20 @@ def get_research_initiatives():
 
 @app.route('/api/community-faq')
 def get_community_faq():
-    """Get community FAQ data compiled from ALSCAS discussions"""
+    """Get comprehensive FAQ data with practical wisdom from caregivers"""
     try:
-        with open('data/als_community_faq_enhanced.json', 'r', encoding='utf-8') as f:
+        with open('data/als_comprehensive_faq.json', 'r', encoding='utf-8') as f:
             return jsonify(json.load(f))
     except FileNotFoundError:
-        return jsonify({
-            "metadata": {"title": "FAQ not found"},
-            "categories": []
-        })
+        # Fallback to old file if new one not found
+        try:
+            with open('data/als_community_faq_enhanced.json', 'r', encoding='utf-8') as f:
+                return jsonify(json.load(f))
+        except:
+            return jsonify({
+                "metadata": {"title": "FAQ not found"},
+                "categories": []
+            })
     except Exception as e:
         logger.error(f"Error loading community FAQ data: {e}")
         return jsonify({"error": str(e)}), 500

@@ -154,7 +154,11 @@ class ImageManager:
                 self.category_keywords[category] = set()
             self.category_keywords[category].update(metadata['keywords'])
     
-    def suggest_images(self, query: str, context: str = "", max_images: int = 3) -> List[Dict[str, Any]]:
+    # Minimum relevance score to suggest an image
+    MINIMUM_RELEVANCE_SCORE = 3.0
+    
+    def suggest_images(self, query: str, context: str = "", max_images: int = 3, 
+                       als_relevant: bool = True) -> List[Dict[str, Any]]:
         """
         Suggest relevant images based on query and context
         
@@ -162,10 +166,16 @@ class ImageManager:
             query: User's question
             context: Additional context from RAG
             max_images: Maximum number of images to return
+            als_relevant: Whether the query is ALS-related (if False, returns empty)
             
         Returns:
             List of image metadata dictionaries
         """
+        # CRITICAL: Only suggest images if query is ALS-relevant
+        if not als_relevant:
+            logger.info("Query not ALS-relevant - skipping image suggestions")
+            return []
+        
         if not self.catalog:
             return []
         
@@ -176,7 +186,8 @@ class ImageManager:
         scored_images = []
         for img_path, metadata in self.catalog.items():
             score = self._calculate_relevance_score(search_text, metadata)
-            if score > 0:
+            # Only include images above minimum threshold
+            if score >= self.MINIMUM_RELEVANCE_SCORE:
                 scored_images.append({
                     'path': img_path,
                     'score': score,
@@ -193,11 +204,14 @@ class ImageManager:
                 'path': item['path'],
                 'description': item['metadata']['description'],
                 'category': item['metadata']['category'],
-                'alt_text': item['metadata']['description']
+                'alt_text': item['metadata']['description'],
+                'relevance_score': item['score']  # Include score for debugging
             })
         
         if results:
-            logger.info(f"Selected {len(results)} images for query: {query[:50]}...")
+            logger.info(f"Selected {len(results)} images for query (scores: {[r['relevance_score'] for r in results]})")
+        else:
+            logger.info(f"No images above threshold ({self.MINIMUM_RELEVANCE_SCORE}) for query: {query[:50]}...")
         
         return results
     
