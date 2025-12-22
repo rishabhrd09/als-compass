@@ -13,3 +13,8 @@ IMAGE_SYSTEM_QUICKSTART.txt
 # Documentation - keep only essential docs
 *.md
 !README.md
+
+read_docx.py
+test_relevance.py
+update_faq_content.py
+data/10_Common_Questions_ALSCAS_WhatsApp.md.pdf
