@@ -162,6 +162,21 @@
                     "evidence": [
                         "community_experience"
                     ]
+                },
+                {
+                    "question": "How to thicken water for PALS with swallowing difficulty (dysphagia)?",
+                    "answer": "<p><strong>Why Thicken Liquids?</strong></p><p>Water and thin liquids can be difficult to control because they move too quickly. For PALS with weakened swallowing muscles, thickened liquids slow down the flow and make swallowing easier and safer, reducing choking and aspiration risk.</p><h4>When to Start Thickening:</h4><ul><li>Coughing or choking when drinking water</li><li>Feeling like liquids 'go down the wrong way'</li><li>Wet/gurgly voice after swallowing</li><li>Speech therapist recommends modified consistency</li></ul><h4>Community-Recommended Thickening Products:</h4><p><strong>1. Nestle Resource ThickenUp Clear</strong> (₹600-800)<br>'We have been using this quite effectively since last 6-8 months'<br>Clear, dissolves well without lumps, available on Amazon, Flipkart, medical stores.</p><p><strong>2. Nature's Velvet Xanthan Gum Powder</strong> (₹400-500 for 500gms)<br>'I used it a couple of times'<br>Natural thickening agent, cost-effective alternative.</p><p><strong>3. Thick-It (Imported)</strong> (₹1,200-1,800)<br>Well-known international brand, available on Amazon India.</p><table class=\"faq-table\"><thead><tr><th>Thickening Level</th><th>Consistency</th><th>Description</th></tr></thead><tbody><tr><td>Slightly Thick</td><td>Like anti-reflux formula</td><td>Flows quickly</td></tr><tr><td>Mildly Thick</td><td>Like lassi</td><td>Flows slower</td></tr><tr><td>Moderately Thick</td><td>Like honey</td><td>Drips slowly</td></tr><tr><td>Extremely Thick</td><td>Like pudding</td><td>Holds shape</td></tr></tbody></table><h4>Practical Tips:</h4><ul><li><strong>Start small:</strong> Add thickener gradually, wait 1-2 mins for full effect</li><li><strong>Mix properly:</strong> Use blender for lump-free consistency</li><li><strong>Thicken all liquids:</strong> Water, tea, juice, dal, rasam</li><li><strong>Carry when traveling:</strong> Keep small container ready</li><li><strong>Check temperature:</strong> Hot liquids may need re-thickening after cooling</li></ul><div class=\"perspectives-box\"><h4>Community Wisdom:</h4><div class=\"perspective-quote\">'We thicken everything now. Even water for brushing teeth. It reduced his choking episodes significantly.'</div><div class=\"perspective-quote\">'Initially he resisted because it tastes different. But after explaining the aspiration risk, he understood. Safety over taste.'</div></div>",
+                    "recommendation": "Consult a speech therapist to determine the right consistency level for your PALS. Monitor hydration as some PALS drink less due to texture change.",
+                    "tags": [
+                        "thickening",
+                        "dysphagia",
+                        "swallowing",
+                        "nutrition",
+                        "aspiration-prevention"
+                    ],
+                    "evidence": [
+                        "community_observed"
+                    ]
                 }
             ]
         },

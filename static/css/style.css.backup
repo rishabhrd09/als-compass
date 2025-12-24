@@ -203,37 +203,35 @@ button {
 .navbar-container {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    height: 110px;
-    padding: 0 var(--space-6);
-    max-width: 1400px;
+    justify-content: space-between;
+    height: 90px;
+    padding: 0 var(--space-8);
+    max-width: 1320px;
     margin: 0 auto;
-    gap: var(--space-6);
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
     text-decoration: none;
     transition: opacity 0.2s ease;
-    flex-shrink: 0;
 }
 
 .navbar-brand:hover {
-    opacity: 0.8;
+    opacity: 0.75;
 }
 
 .navbar-logo {
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     color: #B8860B;
 }
 
 .navbar-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.375rem;
+    font-weight: 600;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #1a1a1a;
     letter-spacing: -0.02em;
 }
@@ -241,10 +239,21 @@ button {
 .navbar-nav {
     display: none;
     align-items: center;
-    gap: 0.25rem;
-    margin: 0 auto;
-    padding: 0 var(--space-4);
+    gap: var(--space-2);
+    margin-left: var(--space-8);
+    padding-left: var(--space-8);
     position: relative;
+}
+
+.navbar-nav::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
@@ -258,31 +267,29 @@ button {
     position: relative;
     font-size: 0.9375rem;
     font-weight: 500;
-    font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #374151;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #4A4A4A;
     text-decoration: none;
-    padding: 0.625rem 1.125rem;
-    border-radius: 4px;
+    padding: 0.5rem 0.875rem;
+    border-radius: 6px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: 0.005em;
-    white-space: nowrap;
 }
 
 .nav-link:hover {
     color: #1a1a1a;
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.05);
 }
 
 .nav-link.active {
-    color: #0d9488;
-    background-color: rgba(13, 148, 136, 0.08);
+    color: #a18cd1;
+    background-color: rgba(161, 140, 209, 0.1);
     font-weight: 600;
 }
 
 .nav-link.active::after {
     width: 100%;
-    background: #0d9488;
-    height: 2.5px;
+    background: #a18cd1;
+    height: 2px;
 }
 
 /* MOBILE MENU */
@@ -556,11 +563,11 @@ button {
 /* RESEARCH UPDATES CARD - Tobii/Apple inspired design */
 .research-card {
     position: relative;
-    background: linear-gradient(135deg, rgba(251, 248, 243, 1) 0%, rgba(240, 247, 255, 0.6) 50%, rgba(251, 248, 243, 1) 100%);
-    border: 1px solid rgba(209, 229, 247, 0.4);
+    background: linear-gradient(135deg, #F0F7FF 0%, #E8F3FF 100%);
+    border: 1px solid #D1E5F7;
     border-radius: 20px;
     padding: var(--space-6);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.04);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
     overflow: visible;
 }
 
@@ -572,7 +579,7 @@ button {
     right: 0;
     bottom: 0;
     background-image:
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><defs><linearGradient id="grad1" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%23a18cd1;stop-opacity:0.06"/><stop offset="100%25" style="stop-color:%233b82f6;stop-opacity:0.04"/></linearGradient></defs><g fill="none"><path d="M680 60 Q700 100 680 140 Q660 180 680 220 Q700 260 680 300 Q660 340 680 380" stroke="url(%23grad1)" stroke-width="1.5"/><circle cx="680" cy="60" r="4" fill="%23a18cd1" opacity="0.06"/><circle cx="680" cy="140" r="4" fill="%233b82f6" opacity="0.05"/><circle cx="680" cy="220" r="4" fill="%23a18cd1" opacity="0.06"/><circle cx="680" cy="300" r="4" fill="%233b82f6" opacity="0.05"/><circle cx="680" cy="380" r="4" fill="%23a18cd1" opacity="0.06"/><path d="M720 80 Q700 120 720 160 Q740 200 720 240 Q700 280 720 320 Q740 360 720 400" stroke="url(%23grad1)" stroke-width="1.5"/><line x1="680" y1="60" x2="720" y2="80" stroke="%23a18cd1" stroke-width="0.8" opacity="0.05"/><line x1="680" y1="140" x2="720" y2="160" stroke="%233b82f6" stroke-width="0.8" opacity="0.04"/><line x1="680" y1="220" x2="720" y2="240" stroke="%23a18cd1" stroke-width="0.8" opacity="0.05"/><line x1="680" y1="300" x2="720" y2="320" stroke="%233b82f6" stroke-width="0.8" opacity="0.04"/><circle cx="750" cy="150" r="18" stroke="%233b82f6" stroke-width="1" opacity="0.05"/><circle cx="750" cy="150" r="10" stroke="%23a18cd1" stroke-width="0.8" opacity="0.04"/><circle cx="750" cy="150" r="3" fill="%233b82f6" opacity="0.05"/><circle cx="100" cy="120" r="22" stroke="%23a18cd1" stroke-width="1" opacity="0.04"/><circle cx="100" cy="120" r="12" stroke="%233b82f6" stroke-width="0.8" opacity="0.03"/><circle cx="250" cy="80" r="3" fill="%23a18cd1" opacity="0.04"/><circle cx="280" cy="100" r="2" fill="%233b82f6" opacity="0.03"/><circle cx="320" cy="70" r="2.5" fill="%23a18cd1" opacity="0.04"/><path d="M400 50 L420 70 L400 90 L380 70 Z" stroke="%233b82f6" stroke-width="0.8" opacity="0.04" fill="none"/><circle cx="500" cy="100" r="15" stroke="%23a18cd1" stroke-width="0.8" opacity="0.03"/><rect x="150" y="350" width="20" height="45" rx="3" stroke="%23a18cd1" stroke-width="1" opacity="0.04" fill="none"/><ellipse cx="160" cy="350" rx="10" ry="4" stroke="%23a18cd1" stroke-width="0.8" opacity="0.04"/><circle cx="155" cy="370" r="2" fill="%233b82f6" opacity="0.03"/><circle cx="165" cy="380" r="1.5" fill="%23a18cd1" opacity="0.04"/><circle cx="350" cy="450" r="16" stroke="%23a18cd1" stroke-width="0.8" opacity="0.03"/><circle cx="350" cy="450" r="8" stroke="%233b82f6" stroke-width="0.6" opacity="0.03"/><path d="M550 400 Q570 380 590 400 Q610 420 630 400" stroke="%23a18cd1" stroke-width="0.8" opacity="0.04"/><circle cx="550" cy="400" r="3" fill="%233b82f6" opacity="0.03"/><circle cx="590" cy="400" r="3" fill="%23a18cd1" opacity="0.04"/><circle cx="630" cy="400" r="3" fill="%233b82f6" opacity="0.03"/><path d="M80 250 L100 230 L120 250 L100 270 Z" stroke="%233b82f6" stroke-width="0.6" opacity="0.03" fill="none"/><circle cx="450" cy="280" r="12" stroke="%23a18cd1" stroke-width="0.6" opacity="0.03"/><path d="M200 200 Q220 180 240 200 Q260 220 280 200" stroke="%233b82f6" stroke-width="0.6" opacity="0.03" stroke-dasharray="3,3"/><rect x="600" cy="500" width="25" height="50" rx="4" stroke="%23a18cd1" stroke-width="0.8" opacity="0.03" fill="none"/></g></svg>');
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><g opacity="0.15" fill="none" stroke="%233b82f6" stroke-width="2"><circle cx="150" cy="100" r="30"/><circle cx="150" cy="100" r="20"/><circle cx="150" cy="100" r="10"/><path d="M200 120 L250 80 L300 120 L350 80 L400 120" stroke-dasharray="5,5"/><rect x="500" y="80" width="50" height="80" rx="8"/><circle cx="525" cy="100" r="8"/><ellipse cx="650" cy="120" rx="40" ry="25"/><path d="M 100 350 Q 200 300 300 350 T 500 350" stroke-dasharray="3,3"/><circle cx="150" cy="400" r="4"/><circle cx="200" cy="380" r="4"/><circle cx="250" cy="420" r="4"/><circle cx="300" cy="390" r="4"/><line x1="600" y1="350" x2="700" y2="450"/><line x1="700" y1="350" x2="600" y2="450"/><circle cx="650" cy="400" r="35" stroke-width="2"/><path d="M 50 500 L 100 480 L 150 500 L 200 480" stroke-dasharray="4,4"/><rect x="300" y="480" width="40" height="60" rx="6" opacity="0.5"/><circle cx="450" cy="500" r="25"/><circle cx="450" cy="500" r="15"/></g></svg>');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -677,193 +684,6 @@ button {
 
 .treatment-link:hover {
     color: #9B87C9;
-}
-
-/* 2-Column Research Card Layout */
-.research-card-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    position: relative;
-    z-index: 1;
-}
-
-.research-card-content::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 1rem;
-    bottom: 1rem;
-    width: 1px;
-    background: rgba(0, 0, 0, 0.08);
-    transform: translateX(-50%);
-}
-
-.research-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.research-column-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.research-column-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1rem;
-}
-
-.research-column-icon.treatments {
-    background: linear-gradient(135deg, #a18cd1 0%, #fda085 100%);
-}
-
-.research-column-icon.news {
-    background: #3b82f6;
-}
-
-.research-column-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1e293b;
-    margin: 0;
-}
-
-.research-news-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.research-news-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.research-news-item:last-child {
-    border-bottom: none;
-}
-
-.research-news-info {
-    flex: 1;
-}
-
-.research-news-name {
-    font-weight: 500;
-    color: #1e293b;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-    transition: color 0.2s;
-}
-
-.research-news-desc {
-    font-size: 0.75rem;
-    color: #64748b;
-}
-
-.research-news-link {
-    color: #3b82f6;
-    font-size: 0.85rem;
-    text-decoration: none;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    transition: color 0.2s, transform 0.2s;
-}
-
-.research-news-link:hover {
-    color: #2563eb;
-    transform: translateX(2px);
-}
-
-@media (max-width: 768px) {
-    .research-card-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .research-card-content::before {
-        display: none;
-    }
-}
-
-/* Research News Cards - Clickable anywhere */
-.research-news-card {
-    display: block;
-    text-decoration: none;
-    padding: 0.65rem 0.75rem;
-    margin: 0 -0.75rem;
-    border-radius: 8px;
-    transition: background-color 0.2s, transform 0.15s;
-    cursor: pointer;
-}
-
-.research-news-card:hover {
-    background-color: rgba(59, 130, 246, 0.06);
-    transform: translateX(3px);
-}
-
-.research-news-card:hover .research-news-name {
-    color: #3b82f6;
-}
-
-.research-news-card+.research-news-card {
-    border-top: 1px solid #f1f5f9;
-}
-
-/* Resource Item Links */
-.resource-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.resource-item-link {
-    display: block;
-    text-decoration: none;
-    padding: 0.65rem 0.5rem;
-    margin: 0 -0.5rem;
-    border-radius: 8px;
-    transition: background-color 0.2s, transform 0.15s;
-    cursor: pointer;
-}
-
-.resource-item-link:hover {
-    background-color: rgba(59, 130, 246, 0.06);
-    transform: translateX(3px);
-}
-
-.resource-item-link:hover .resource-name {
-    color: #3b82f6;
-}
-
-.resource-item-link+.resource-item-link {
-    border-top: 1px solid #f1f5f9;
-}
-
-.resource-name {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #1e293b;
-    margin-bottom: 0.2rem;
-    transition: color 0.2s;
-}
-
-.resource-desc {
-    font-size: 0.75rem;
-    color: #64748b;
 }
 
 /* CARDS - USER PATTERN */

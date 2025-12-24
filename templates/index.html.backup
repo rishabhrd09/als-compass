@@ -1,0 +1,497 @@
+{% extends "base.html" %}
+
+{% block title %}ALS Caregiver's Compass - AI-Powered Support Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Your Guide Through the <span class="highlight">ALS Journey</span></h1>
+            <!-- <p class="hero-tagline">Every Journey Matters</p> -->
+            <!-- <p class="hero-subtitle">
+                AI-powered support, evidence-based guidance, and compassionate resources for ALS caregivers worldwide.
+            </p> -->
+
+
+
+            <div class="nav-card" style="background: #f1f5f9; border: 1px solid #e2e8f0;">
+                <a href="/understanding-als" class="nav-item" style="color: #334155;">
+                    <i class="fas fa-book-open" style="color: #334155;"></i>
+                    <span>Understand ALS</span>
+                </a>
+                <a href="#tools" class="nav-item" style="color: #334155;">
+                    <i class="fas fa-compass" style="color: #334155;"></i>
+                    <span>Explore</span>
+                </a>
+                <a href="#medical-sources" class="nav-item" style="color: #334155;">
+                    <i class="fas fa-link" style="color: #334155;"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="/ai-assistant" class="nav-item nav-item-primary" style="color: #334155;">
+                    <i class="fas fa-comments" style="color: #334155;"></i>
+                    <span>Ask AI Assistant</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Research Updates Card -->
+        <div class="research-card">
+            <a href="{{ url_for('research_updates_page') }}"
+                style="text-decoration: none; color: inherit; display: block;">
+                <div class="research-card-header" style="cursor: pointer;">
+                    <div class="research-card-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="research-card-title"
+                        style="color: #64748b; transition: all 0.3s ease; user-select: text; cursor: pointer; border-bottom: 2px solid transparent; display: inline-block; padding-bottom: 2px;"
+                        onmouseover="this.style.color='#475569'; this.style.borderBottomColor='#64748b';"
+                        onmouseout="this.style.color='#64748b'; this.style.borderBottomColor='transparent';">
+                        Explore All Research Updates →
+                    </h3>
+                </div>
+            </a>
+            <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-bottom: 1rem;">FDA-approved
+                treatments and promising Phase 2/3 trials</p>
+
+            <div class="research-treatments">
+                <!-- BrainStorm -->
+                <div class="treatment-item">
+                    <div>
+                        <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">
+                            <a href="https://www.brainstorm-cell.com" target="_blank" rel="noopener"
+                                style="color: #1e293b; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;"
+                                onmouseover="this.style.borderBottomColor='#3b82f6';"
+                                onmouseout="this.style.borderBottomColor='transparent';">BrainStorm Cell
+                                Therapeutics</a> (NurOwn®)
+                        </div>
+                        <div style="font-size: 0.85rem; color: #64748b;">MSC-NTF cells • Stem cell therapy</div>
+                    </div>
+                </div>
+
+                <!-- Biogen -->
+                <div class="treatment-item">
+                    <div>
+                        <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">
+                            <a href="https://www.biogen.com/qalsody" target="_blank" rel="noopener"
+                                style="color: #1e293b; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;"
+                                onmouseover="this.style.borderBottomColor='#3b82f6';"
+                                onmouseout="this.style.borderBottomColor='transparent';">Biogen</a> (Qalsody™)
+                        </div>
+                        <div style="font-size: 0.85rem; color: #64748b;">SOD1 targeting • Antisense oligonucleotide
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AB Science -->
+                <div class="treatment-item">
+                    <div>
+                        <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">
+                            <a href="https://www.ab-science.com" target="_blank" rel="noopener"
+                                style="color: #1e293b; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;"
+                                onmouseover="this.style.borderBottomColor='#3b82f6';"
+                                onmouseout="this.style.borderBottomColor='transparent';">AB Science</a> (Masitinib)
+                        </div>
+                        <div style="font-size: 0.85rem; color: #64748b;">Neuroinflammation • Tyrosine kinase inhibitor
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Denali -->
+                <div class="treatment-item">
+                    <div>
+                        <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">
+                            <a href="https://www.denalitherapeutics.com" target="_blank" rel="noopener"
+                                style="color: #1e293b; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;"
+                                onmouseover="this.style.borderBottomColor='#3b82f6';"
+                                onmouseout="this.style.borderBottomColor='transparent';">Denali Therapeutics</a>
+                            (DNL343)
+                        </div>
+                        <div style="font-size: 0.85rem; color: #64748b;">RIPK1 inhibitor • Blocks cell death</div>
+                    </div>
+                </div>
+
+                <!-- Clene -->
+                <div class="treatment-item">
+                    <div>
+                        <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">
+                            <a href="https://clene.com" target="_blank" rel="noopener"
+                                style="color: #1e293b; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;"
+                                onmouseover="this.style.borderBottomColor='#3b82f6';"
+                                onmouseout="this.style.borderBottomColor='transparent';">Clene Nanomedicine</a>
+                            (CNM-Au8)
+                        </div>
+                        <div style="font-size: 0.85rem; color: #64748b;">Gold nanocrystals • ATP support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Cards Section -->
+<section class="cards-section" id="tools">
+    <div class="container">
+        <div class="cards-grid">
+            <a href="/home-icu-guide" class="card">
+                <h3 class="card-title">Home ICU Setup Guide</h3>
+                <p class="card-description">
+                    Comprehensive step-by-step instructions for creating a safe, comfortable, and functional home care
+                    environment with medical-grade standards.
+                </p>
+                <span class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" <svg
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+            </a>
+
+            <a href="/diet-chart-tool" class="card">
+                <h3 class="card-title">Diet Chart Tool</h3>
+                <p class="card-description">
+                    Plan and track nutrition for your PALS. Create personalized diet charts, track calorie intake,
+                    and manage feeding schedules effectively.
+                </p>
+                <span class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+            </a>
+
+            <a href="/daily-schedule" class="card">
+                <h3 class="card-title">View Daily Schedule</h3>
+                <p class="card-description">
+                    Reference guide for structured daily routines covering physical care, nutrition management,
+                    medication schedules, and emotional support.
+                </p>
+                <span class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+            </a>
+
+            <a href="/communication-technology" class="card">
+                <h3 class="card-title">Communication Technology</h3>
+                <p class="card-description">
+                    Eye trackers, head trackers, apps, and assistive devices to help PALS communicate.
+                    Includes setup guides for Tobii Eye Trackers and community recommendations.
+                </p>
+                <span class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+            </a>
+
+            <a href="/power-backup-guide" class="card">
+                <h3 class="card-title">Power Backup / UPS Guide</h3>
+                <p class="card-description">
+                    Calculate your power requirements and find the right UPS and battery combination.
+                    Get exact specifications based on your equipment and backup needs.
+                </p>
+                <span class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+            </a>
+
+            <a href="/inventory-management" class="card">
+                <h3 class="card-title">Home ICU Inventory Management</h3>
+                <p class="card-description">
+                    Track and manage all medical supplies, equipment, and consumables required for home ICU setup
+                    and daily care. Never run out of essential items.
+                </p>
+                <span class="card-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ALS Research & Innovation Section -->
+<section id="medical-sources" style="background: #f8fafc; padding: 3rem 1.5rem; border-top: 1px solid #e2e8f0;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 2.5rem;">
+            <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">
+                ALS Research & Innovation
+            </h2>
+            <p style="color: #64748b; font-size: 0.9rem; max-width: 700px; margin: 0 auto;">
+                Trusted sources, medical authorities, and breakthrough therapies to stay informed and hopeful.
+            </p>
+        </div>
+
+        <!-- Research News & Medical Authority -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+
+            <!-- Table 1: Research News -->
+            <div style="background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #e2e8f0;">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                    <div
+                        style="width: 40px; height: 40px; background: #3b82f6; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-newspaper" style="color: white; font-size: 1rem;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.1rem; font-weight: 600; color: #1e293b; margin: 0;">Research News</h3>
+                    </div>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">ALS News Today</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">PhD science
+                                    writers, daily updates</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://alsnewstoday.com/" target="_blank" rel="noopener"
+                                    style="color: #3b82f6; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">MND Research Blog</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">UK MND Association
+                                    official</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://mndresearch.blog/" target="_blank" rel="noopener"
+                                    style="color: #3b82f6; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">ALS TDI News</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Leading biotech
+                                    nonprofit</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.als.net/news/" target="_blank" rel="noopener"
+                                    style="color: #3b82f6; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">Target ALS News</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Biomarker research
+                                    leader</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.targetals.org/news-stories/" target="_blank" rel="noopener"
+                                    style="color: #3b82f6; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Table 2: Medical Resources -->
+            <div style="background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #e2e8f0;">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                    <div
+                        style="width: 40px; height: 40px; background: #64748b; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-stethoscope" style="color: white; font-size: 1rem;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.1rem; font-weight: 600; color: #1e293b; margin: 0;">Medical Authority
+                        </h3>
+                    </div>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">NEALS Consortium</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">100+ ALS research
+                                    centers</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.neals.org/" target="_blank" rel="noopener"
+                                    style="color: #64748b; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">ClinicalTrials.gov</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">US Gov NIH
+                                    database</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener"
+                                    style="color: #64748b; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">ALSUntangled</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Peer-reviewed, A-F
+                                    grading</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.alsuntangled.com/" target="_blank" rel="noopener"
+                                    style="color: #64748b; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">NINDS (NIH)</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">US Gov research
+                                    institute</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als"
+                                    target="_blank" rel="noopener"
+                                    style="color: #64748b; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">Mayo Clinic ALS</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Top-tier medical
+                                    center</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.mayoclinic.org/diseases-conditions/amyotrophic-lateral-sclerosis"
+                                    target="_blank" rel="noopener"
+                                    style="color: #64748b; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Support Organizations Section -->
+        <div style="display: flex; justify-content: center;">
+            <div
+                style="background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #e2e8f0; width: 100%; max-width: 600px;">
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                    <div
+                        style="width: 40px; height: 40px; background: #6366f1; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-users" style="color: white; font-size: 1rem;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.1rem; font-weight: 600; color: #1e293b; margin: 0;">Support
+                            Organizations</h3>
+                    </div>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">ALS Care & Support India</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Region: India |
+                                    24/7 WhatsApp support</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://alscas.com/" target="_blank" rel="noopener"
+                                    style="color: #6366f1; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">ALS Association (USA)</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Region: USA |
+                                    Largest US nonprofit</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.als.org/" target="_blank" rel="noopener"
+                                    style="color: #6366f1; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">MND Association (UK)</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Region: UK | PIF
+                                    Tick certified charity</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.mndassociation.org/" target="_blank" rel="noopener"
+                                    style="color: #6366f1; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">ALS Canada</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Region: Canada |
+                                    Leading Canadian charity</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://als.ca/" target="_blank" rel="noopener"
+                                    style="color: #6366f1; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                            <td style="padding: 0.75rem 0;">
+                                <div style="font-weight: 500; color: #1e293b;">International Alliance</div>
+                                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">Region: Global |
+                                    50+ member associations</div>
+                            </td>
+                            <td style="padding: 0.75rem 0; text-align: right; vertical-align: top;">
+                                <a href="https://www.als-mnd.org/" target="_blank" rel="noopener"
+                                    style="color: #6366f1; font-size: 0.8rem; text-decoration: none;">Visit <i
+                                        class="fas fa-external-link-alt" style="font-size: 0.65rem;"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin-top: 1.5rem;">
+            💡 Use ClinicalTrials.gov & ALSUntangled to verify "miracle cure" claims before investing time or money.
+        </p>
+    </div>
+</section>
+
+
+
+<!-- Quote Section -->
+<!-- <section class="quote-section">
+    <div class="container">
+        <div class="quote-container">
+            <h2 class="section-title">Every Caregiver's Journey Matters</h2>
+            <div class="quote-box">
+                <p class="quote-text">
+                    "In the quiet strength of daily care, we find the most profound expressions of love and resilience.
+                    Caring for someone with ALS requires both practical skills and emotional fortitude - this guide
+                    provides both."
+                </p>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+{% endblock %}

@@ -2,1127 +2,702 @@
 
 {% block title %}Home ICU Setup Guide | ALS Caregiver's Compass{% endblock %}
 
-{% block content %}
-<div class="container" style="max-width: 1000px; padding-top: 2rem;">
-    <!-- Page Header -->
-    <!-- <div class="text-center" style="margin-bottom: 2rem;">
-        <h1 style="font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Home ICU Setup Guide</h1>
-        <p style="font-size: 1.125rem; color: #6b7280;">A guide for caregivers setting up a home ICU for a person with
-            tracheostomy and ventilator support.</p>
-    </div> -->
+{% block extra_css %}
+<style>
+    /* CSS Variables - Claude/Apple Inspired Theme */
+    :root {
+        --icu-primary: #1d1d1f;
+        --icu-secondary: #6e6e73;
+        --icu-accent: #c4a284;
+        --icu-bg: #ffffff;
+        --icu-bg-alt: #f8fafc;
+        --icu-border: #e2e8f0;
+        --icu-text: #1e293b;
+        --icu-muted: #64748b;
+        --icu-font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        --icu-font-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+    }
 
-    <!-- Introduction -->
-    <!-- <div class="content-card" style="margin-bottom: 2rem;">
-        <h2 style="font-size: 1.25rem; font-weight: 700; color: #1f2937;">Introduction</h2>
-        <p style="margin-top: 0.5rem; color: #374151;">This guide is intended for caregivers who are transitioning a
-            loved one with ALS from hospital to home care, either due to an emergency or as a planned step. It covers
-            the essential equipment and considerations for creating a safe, supportive environment for someone with a
-            tracheostomy and requiring ventilator support.</p>
-    </div> -->
-
-    <!-- Enhanced Page Header - Clean & Professional -->
-    <div style="
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 2.5rem 2rem 2rem;
-        margin-bottom: 2rem;
+    /* Hero Section - Light Sky Blue Theme (Matching Communication Technology) */
+    .icu-hero {
         text-align: center;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    ">
-        <!-- Badge -->
+        padding: 4rem 1.5rem 3rem;
+        background: #e8f0f6 url('/static/images/hero_bg_v2.png') center/cover no-repeat;
+        color: var(--icu-primary);
+        margin-bottom: 0;
+        position: relative;
+    }
 
+    .icu-hero::before {
+        display: none;
+    }
 
-        <!-- Title -->
-        <h1 style="
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 0 0 1rem 0;
-            letter-spacing: -0.025em;
-            line-height: tight;
-            font-family: system-ui, -apple-system, sans-serif;
-        ">
-            Home ICU Setup Guide
-        </h1>
+    .icu-hero>* {
+        position: relative;
+        z-index: 1;
+    }
 
-        <!-- Description -->
-        <p style="
-            margin: 0 0 2rem 0;
-            color: #64748b;
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        ">
-            A comprehensive guide for caregivers setting up a home ICU for their loved one with ALS — covering essential
-            equipment, power backup, and setup recommendations.
-        </p>
+    .icu-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.03em;
+        color: var(--icu-primary);
+        font-family: var(--icu-font-display);
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
 
-        <!-- Navigation Buttons -->
-        <div style="
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            justify-content: center;
-            align-items: center;
-        ">
-            <a href="#equipment-sections" style="
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.75rem 1.25rem;
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 8px;
-                text-decoration: none;
-                color: #334155;
-                font-weight: 600;
-                font-size: 0.925rem;
-                transition: all 0.2s ease;
-            ">
-                <i class="fas fa-list-check" style="font-size: 0.875rem; color: #64748b;"></i>
-                Equipment List
-            </a>
-            <a href="#power-calculator" style="
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.75rem 1.25rem;
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 8px;
-                text-decoration: none;
-                color: #334155;
-                font-weight: 600;
-                font-size: 0.925rem;
-                transition: all 0.2s ease;
-            ">
-                <i class="fas fa-calculator" style="font-size: 0.875rem; color: #64748b;"></i>
-                Power Calculator
-            </a>
-            <a href="#ups-guide" style="
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.75rem 1.25rem;
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 8px;
-                text-decoration: none;
-                color: #334155;
-                font-weight: 600;
-                font-size: 0.925rem;
-                transition: all 0.2s ease;
-            ">
-                <i class="fas fa-bolt" style="font-size: 0.875rem; color: #64748b;"></i>
-                UPS Buying Guide
-            </a>
-            <a href="/emergency-protocol" style="
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.75rem 1.25rem;
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 8px;
-                text-decoration: none;
-                color: #334155;
-                font-weight: 600;
-                font-size: 0.925rem;
-                transition: all 0.2s ease;
-            ">
-                <i class="fas fa-shield-alt" style="font-size: 0.875rem; color: #64748b;"></i>
-                Emergency Protocol
-            </a>
-        </div>
+    .icu-hero p {
+        font-size: 1.1rem;
+        color: #424245;
+        max-width: 750px;
+        margin: 0 auto;
+        line-height: 1.65;
+        font-weight: 400;
+        font-family: var(--icu-font-text);
+    }
+
+    /* Hero Navigation Pills - Floating Glass Style */
+    .icu-hero-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        max-width: 900px;
+        margin: 1.5rem auto 0;
+        padding: 0.875rem;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .icu-hero-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.65rem 1.1rem;
+        background: transparent;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--icu-secondary);
+        font-weight: 500;
+        font-size: 0.875rem;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: var(--icu-font-text);
+        letter-spacing: -0.01em;
+    }
+
+    .icu-hero-nav a:hover {
+        background: rgba(196, 162, 132, 0.12);
+        color: var(--icu-accent);
+    }
+
+    .icu-hero-nav a i {
+        font-size: 0.8rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="icu-hero">
+    <div class="container">
+        <h1>Home ICU Setup Guide</h1>
+        <p>Comprehensive guide for caregivers setting up a home ICU — covering essential equipment, power backup, and
+            emergency preparedness.</p>
+        <nav class="icu-hero-nav">
+            <a href="#equipment-sections"><i class="fas fa-list-check"></i> Equipment List</a>
+            <a href="/power-backup-guide"><i class="fas fa-bolt"></i> Power Backup Guide</a>
+            <a href="/emergency-protocol"><i class="fas fa-shield-alt"></i> Emergency Protocols</a>
+            <a href="/inventory-management"><i class="fas fa-boxes"></i> Inventory Management</a>
+        </nav>
     </div>
+</section>
 
-    <!-- External Resource Card - Clean -->
+<div class="container" style="max-width: 1000px; padding-top: 2rem;">
+
+    <!-- SECTION 1: Daily Care Protocols Card - Compact Design -->
     <div style="
         background: #f8fafc;
         border: 1px solid #e2e8f0;
         border-radius: 12px;
-        padding: 1.5rem 2rem;
-        margin-bottom: 2.5rem;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
     ">
-        <div style="text-align: center;">
-            <p style="
-                font-size: 0.95rem;
-                color: #475569;
-                margin-bottom: 1rem;
-                font-weight: 500;
-            ">
-                For detailed daily protocols, please refer to <strong style="color: #0f172a;">ALS Care & Support
-                    India</strong>:
-            </p>
-            <a href="https://alslifemanagement.weebly.com/home-vent-care-management-procedures-equipments-and-required-supplies.html"
-                target="_blank" class="icu-nav-link" style="
-                    text-decoration: none;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 0.625rem;
-                    padding: 0.75rem 1.5rem;
-                    background: #ffffff;
-                    border: 1px solid #cbd5e1;
-                    border-radius: 8px;
-                    color: #334155;
-                    font-weight: 600;
-                    font-size: 1rem;
-                    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-                    transition: all 0.2s ease;
-            ">
-                <span>Daily Care Protocols</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.75rem; color: #64748b;"></i>
-            </a>
-            <p style="
-                font-size: 0.875rem;
-                color: #64748b;
-                margin-top: 1rem;
-                line-height: 1.5;
-                font-weight: 400;
-                max-width: 600px;
-                margin-left: auto;
-                margin-right: auto;
-            ">
-                Trusted resource for home ventilator management, tracheostomy care, and daily ICU protocols.
-            </p>
-        </div>
-    </div>
-
-
-
-
-    <!-- Equipment Sections -->
-    <div id="equipment-sections" style="margin-top: 3rem;">
-
-        <!-- Ventilator & Accessories -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Ventilator & Accessories</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card" data-buy-link="">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/ventilator.jpg', 'Ventilator/BiPAP Machine')">
-                        <img src="/static/images/icu-guide/ventilator.jpg" alt="Ventilator/BiPAP Machine"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Ventilator/BiPAP Machine</h3>
-                </div>
-                <div class="icu-card" data-buy-link="">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/catheter-mount.jpg', 'Catheter Mount')">
-                        <img src="/static/images/icu-guide/catheter-mount.jpg" alt="Catheter Mount"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Catheter Mount</h3>
-                </div>
-                <div class="icu-card" data-buy-link="">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/inlet-filter.jpg', 'Back Filter / Inlet Filter')">
-                        <img src="/static/images/icu-guide/inlet-filter.jpg" alt="Back Filter / Inlet Filter"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Back Filter / Inlet Filter</h3>
-                </div>
-                <div class="icu-card" data-buy-link="">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/hme-filter.jpg', 'HME Filter')">
-                        <img src="/static/images/icu-guide/hme-filter.jpg" alt="HME Filter"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>HME Filter</h3>
-                </div>
-                <div class="icu-card" data-buy-link="">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/bacteria-filter.jpg', 'Bacteria Filter')">
-                        <img src="/static/images/icu-guide/bacteria-filter.jpg" alt="Bacteria Filter"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Bacteria Filter</h3>
-                </div>
-                <div class="icu-card" data-buy-link="">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/ventilator-circuit.jpg', 'Ventilator Circuit/Pipes')">
-                        <img src="/static/images/icu-guide/ventilator-circuit.jpg" alt="Ventilator Circuit/Pipes"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Ventilator Circuit / Pipes</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/whisper-swivel.jpg" alt="Whisper Swivel"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Whisper Swivel</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/ambu-bag.jpg" alt="Ambu Bag"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Ambu Bag</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/oxygen-concentrator.jpg" alt="Oxygen Concentrator"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Oxygen Concentrator</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Suction -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Suction</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/suction-machine.jpg" alt="Yuwell Suction Machine"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Yuwell Suction Machine</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/vacuum-set.jpg" alt="Vacuum Set"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Vacuum Set</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/suction-catheter.jpg" alt="Suction Catheter"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Suction Catheter</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/suction-filter.jpg" alt="Suction Machine Filter"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Suction Machine Filter</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/syringe.jpg" alt="Single use syringe"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Single use syringe ( 10 ml and 5 ml )</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/normal-saline.jpg" alt="Normal Saline (NS)"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Normal Saline (NS)</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tracheostomy Dressing / TT Tube Change -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Tracheostomy Dressing / TT Tube Change</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/gauze.jpg" alt="Gauze Swabs/Piece"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Gauze Swabs/Piece</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/betadine.jpg" alt="Betadine Solution"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Betadine Solution</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/gloves.jpg" alt="Sterilized Gloves"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Sterilized Gloves</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/scissor.jpg" alt="Scissor"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Scissor</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Nebulization -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Nebulization</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/nebulizer.jpg" alt="Nebulizer"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Nebulizer</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/nebulizer-tube.jpg" alt="Nebulizer Tube"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Nebulizer Tube</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/t-section-neb.jpg" alt="T-Section Neb"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>T-Section Neb</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/normal-saline-neb.jpg" alt="Normal Saline (NS)"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Normal Saline (NS)</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/neb-medicines.jpg" alt="Nebulizer Medicines"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Nebulizer Medicines</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Vitals Monitoring -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Vitals Monitoring</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/multiparamonitor.jpg" alt="Multiparamonitor"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Multiparamonitor</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/oximeter.jpg" alt="Oximeter"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Oximeter</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/bp-cuff.jpg" alt="BP Cuff"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>BP Cuff</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/thermometer.jpg" alt="Thermometer"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Thermometer</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recliner Beds & Tables -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Recliner Beds & Tables</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/recliner-bed.jpg" alt="Recliner Bed"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Recliner Bed</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Other Important Items -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Other Important Items</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/alexa.jpg" alt="Alexa" onerror="this.style.display='none'">
-                    </div>
-                    <h3>Alexa</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/smart-tv.jpg" alt="Smart TV"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Smart TV</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/tobii-eyetracker.jpg" alt="Tobii Eye Tracker"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Tobii Eye Tracker</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/ac.jpg" alt="Air Conditioner"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Air Conditioner</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- UPS Backup System -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                UPS Backup System</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/ups-unit.png', 'Uniline 3kVA UPS Unit')">
-                        <img src="/static/images/icu-guide/ups-unit.png" alt="Uniline 3kVA UPS Unit"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Uniline 3kVA UPS</h3>
-                    <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">72VDC Input • 230VAC Output</p>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/battery-exide.png', 'Exide PowerSafe Plus 42Ah Battery')">
-                        <img src="/static/images/icu-guide/battery-exide.png" alt="Exide PowerSafe Plus 42Ah Battery"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Exide 12V 42Ah Battery</h3>
-                    <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Sealed Lead-Acid • 6 per UPS</p>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder"
-                        onclick="openLightbox('/static/images/icu-guide/ups-label.png', 'UPS Specifications Label')">
-                        <img src="/static/images/icu-guide/ups-label.png" alt="UPS Specifications Label"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>UPS Specifications</h3>
-                    <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Model: MF1103L6 • 3kVA/2.4kW</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Motion / Stool -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Motion / Stool</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/cremaffin.jpg" alt="Cremaffin Plus"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Cremaffin Plus</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/jelly.jpg" alt="Jelly" onerror="this.style.display='none'">
-                    </div>
-                    <h3>Jelly</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/enema.jpg" alt="Enema (Emergency)"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Enema (Emergency)</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/cotton.jpg" alt="Cotton" onerror="this.style.display='none'">
-                    </div>
-                    <h3>Cotton</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/pads.jpg" alt="Pads" onerror="this.style.display='none'">
-                    </div>
-                    <h3>UnderPads</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/sheet.jpg" alt="Sheet" onerror="this.style.display='none'">
-                    </div>
-                    <h3>Sheet</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hygiene -->
-        <div style="margin-bottom: 3rem;">
-            <h2
-                style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                Hygiene</h2>
-            <div class="icu-equipment-grid">
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/urine-pot.jpg" alt="Urine Pot"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Urine Pot</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/dettol.jpg" alt="Dettol" onerror="this.style.display='none'">
-                    </div>
-                    <h3>Dettol</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/wipes.jpg" alt="Wipes" onerror="this.style.display='none'">
-                    </div>
-                    <h3>Wipes</h3>
-                </div>
-                <div class="icu-card">
-                    <div class="icu-image-placeholder">
-                        <img src="/static/images/icu-guide/sanitizer.jpg" alt="Sanitizer"
-                            onerror="this.style.display='none'">
-                    </div>
-                    <h3>Sanitizer</h3>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Key Recommendations -->
-    <div class="content-card" style="margin-top: 2.5rem;">
-        <h2 style="font-size: 1.25rem; font-weight: 700; color: #1f2937;">Key Recommendations</h2>
-        <ul style="margin-top: 1rem; padding-left: 1.25rem; list-style-type: disc; color: #374151;">
-            <li style="margin-bottom: 0.5rem;">Ensure the room has proper ventilation to maintain air quality.</li>
-            <li style="margin-bottom: 0.5rem;">Arrange and test all listed equipment *before* bringing the PALS home
-                to ensure everything is functional.</li>
-            <li>Environmental comfort tools like a TV, Alexa for music, and an AC are not luxuries; they are vital for
-                mental well-being and quality of life.</li>
-        </ul>
-    </div>
-
-    <!-- Power Backup Guide -->
-    <div id="ups-guide" class="content-card power-guide" style="margin-top: 2.5rem;">
-        <h2 style="font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; text-align: center;">
-            Power Backup Guide
-        </h2>
-        <p style="color: #6b7280; font-size: 0.95rem; text-align: center; margin-bottom: 2rem;">
-            Understanding how to calculate and plan backup power for medical equipment
+        <p style="
+            margin: 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+        ">
+            Visit <a
+                href="https://alslifemanagement.weebly.com/home-vent-care-management-procedures-equipments-and-required-supplies.html"
+                target="_blank"
+                style="color: #1e293b; font-weight: 600; text-decoration: none; border-bottom: 1px solid #cbd5e1;"
+                onmouseover="this.style.borderBottomColor='#1e293b';"
+                onmouseout="this.style.borderBottomColor='#cbd5e1';">ALS Care & Support India</a>
+            <span style="color: #94a3b8;">(trusted support group with practical protocols and guides for
+                caregivers)</span>
+            to get comprehensive protocols for home ventilator management, tracheostomy care, and daily ICU routines.
         </p>
+    </div>
 
-        <!-- Understanding Power Backup -->
-        <div style="margin-bottom: 2rem;">
-            <h3
-                style="font-size: 1.1rem; font-weight: 600; color: #374151; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;">
-                Understanding Power Backup
-            </h3>
-            <p style="color: #4b5563; line-height: 1.7; margin-bottom: 1rem;">
-                Your power backup system works like a water tank. The <strong>batteries</strong> store energy (measured
-                in Amp-hours, or Ah),
-                the <strong>devices</strong> consume energy (measured in Watts), and the <strong>UPS</strong> converts
-                and delivers that stored energy to your equipment.
-            </p>
-            <p style="color: #4b5563; line-height: 1.7;">
-                To calculate backup time, you need to know: <strong>(1)</strong> how much energy your batteries hold,
-                and
-                <strong>(2)</strong> how much power your devices consume. The formula is:
-            </p>
-            <div
-                style="background: #f9fafb; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center; border: 1px solid #e5e7eb;">
-                <p style="font-family: monospace; color: #374151; margin: 0;">
-                    Backup Time (hours) = (Battery Capacity in Wh × 0.75) ÷ Total Load in Watts
-                </p>
-                <p style="font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem;">
-                    We use 0.75 (75% efficiency) to account for battery and UPS energy losses
-                </p>
-            </div>
+    <!-- Equipment List Table Section -->
+    <div id="equipment-sections" style="
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    ">
+        <h2 style="
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 1.5rem 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        ">
+            <i class="fas fa-list-check" style="margin-right: 0.5rem; color: #64748b;"></i>
+            Equipment List
+        </h2>
+
+        <div style="overflow-x: auto;">
+            <table style="
+                width: 100%;
+                border-collapse: collapse;
+                font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+                font-size: 0.9rem;
+            ">
+                <thead>
+                    <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                        <th style="padding: 0.875rem 1rem; text-align: left; font-weight: 600; color: #475569;">Category
+                        </th>
+                        <th style="padding: 0.875rem 1rem; text-align: left; font-weight: 600; color: #475569;">Items
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Ventilator & Accessories</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Ventilator/BiPAP Machine, Catheter
+                            Mount, Back Filter/Inlet Filter, HME Filter, Bacteria Filter, Ventilator Circuit/Pipes,
+                            Whisper Swivel, Ambu Bag, Oxygen Concentrator, Oxygen Cylinder</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            BACKUP</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Spare TT tube (same size), Oxygen
+                            cylinder, Backup bipap,Ventilator Circuit/Pipes
+                            backup filters and suction machines, feeding tubes</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Suction</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Yuwell Suction Machine, Vacuum Set,
+                            Suction Catheter, Suction Machine Filter, Single use syringe (10ml & 5ml), Normal Saline
+                            (NS)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Tracheostomy Care</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Gauze Swabs/Piece, Betadine
+                            Solution, Sterilized Gloves, Scissor</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Nebulization</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Nebulizer Machine, Nebulizer Tube,
+                            T-Section Neb, Normal Saline (NS), Nebulizer Medicines</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Vitals Monitoring</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Multiparamonitor, Oximeter, BP
+                            Cuff, Thermometer</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Recliner Beds & Furniture</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Recliner Bed, Bedside Table</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Comfort & Communication</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Alexa, Smart TV, Tobii Eye Tracker,
+                            Air Conditioner (AC)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Power Backup</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Uniline 3kVA UPS, Exide 12V 42Ah
+                            Battery (x6), Generator (optional)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Motion & Bowel Care</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Cremaffin Plus, Jelly, Enema
+                            (Emergency), Cotton, UnderPads, Sheet</td>
+                    </tr>
+                    <tr style="background: #fafbfc;">
+                        <td
+                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
+                            Hygiene</td>
+                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Urine Pot, Dettol, Wipes, Sanitizer
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- Our Current Setup -->
-        <div style="margin-bottom: 2rem;">
-            <h3
-                style="font-size: 1.1rem; font-weight: 600; color: #374151; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;">
-                Our Current Setup
-            </h3>
-            <p style="color: #4b5563; margin-bottom: 1rem;">
-                This is the equipment we are currently using for our home ICU setup:
-            </p>
-
-            <!-- Equipment Table -->
-            <div style="overflow-x: auto; margin-bottom: 1.5rem;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                    <thead>
-                        <tr style="background: #f3f4f6;">
-                            <th
-                                style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #d1d5db; color: #374151;">
-                                Equipment</th>
-                            <th
-                                style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #d1d5db; color: #374151;">
-                                Model/Specs</th>
-                            <th
-                                style="padding: 0.75rem; text-align: center; border-bottom: 2px solid #d1d5db; color: #374151;">
-                                Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>UPS</strong></td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Uniline 3kVA (72V DC, 230V
-                                AC output)</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">2 units
-                            </td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>Batteries</strong>
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Exide PowerSafe Plus 12V
-                                42Ah (6 per UPS)</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">12 total
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Power Consumption Table with Duty Cycle -->
-            <p style="color: #4b5563; margin-bottom: 0.5rem;">
-                <strong>Power consumption</strong> of our medical devices:
-            </p>
-            <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 1rem; font-style: italic;">
-                💡 Important: Not all devices run continuously. The ventilator runs 100% of the time, but oxygen
-                concentrator and suction machine are used intermittently.
-            </p>
-            <div style="overflow-x: auto; margin-bottom: 1.5rem;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
-                    <thead>
-                        <tr style="background: #374151; color: white;">
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 600;">Device</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 600;">Power</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 600;">Usage %</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 600;">Effective Load</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 600;">Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Ventilator (Trilogy EV300)
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">120W
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">
-                                <strong>100%</strong>
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">
-                                <strong>120W</strong>
-                            </td>
-                            <td
-                                style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; font-size: 0.8rem; color: #6b7280;">
-                                Runs continuously 24/7</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Oxygen Concentrator</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">610W
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~24%
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~146W
-                            </td>
-                            <td
-                                style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; font-size: 0.8rem; color: #6b7280;">
-                                ~1.2hr per 5 hours</td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Suction Machine</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">75W</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~24%
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~18W
-                            </td>
-                            <td
-                                style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; font-size: 0.8rem; color: #6b7280;">
-                                ~1.2hr per 5hrs (frequent short use)</td>
-                        </tr>
-                        <tr style="background: #F9F7F4;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;" colspan="2">
-                                <strong>Total (if all run 100%)</strong>
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">—</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">805W
-                            </td>
-                            <td
-                                style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; font-size: 0.8rem; color: #6b7280;">
-                                Worst case</td>
-                        </tr>
-                        <tr style="background: #F0F7F4;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;" colspan="2">
-                                <strong>Actual Average Load</strong>
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">—</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">
-                                <strong>~284W</strong>
-                            </td>
-                            <td
-                                style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; font-size: 0.8rem; color: #4A7B5A;">
-                                Realistic scenario</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Battery Capacity -->
-            <p style="color: #4b5563; margin-bottom: 0.5rem;">
-                <strong>Battery capacity per UPS:</strong>
-            </p>
-            <p
-                style="color: #4b5563; background: #f9fafb; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb;">
-                6 batteries × 42Ah × 12V = <strong>3,024 Watt-hours</strong> of stored energy per UPS
-            </p>
-        </div>
-
-        <!-- Backup Time Calculations -->
-        <div style="margin-bottom: 2rem;">
-            <h3
-                style="font-size: 1.1rem; font-weight: 600; color: #374151; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;">
-                Backup Time Calculations
-            </h3>
-
-            <div style="overflow-x: auto; margin-bottom: 1rem;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
-                    <thead>
-                        <tr style="background: #374151; color: white;">
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 600;">Scenario</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 600;">Load</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 600;">Calculated</th>
-                            <th style="padding: 0.75rem; text-align: center; font-weight: 600;">Observed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="background: #fef2f2;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Worst case (all 100%)</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">805W
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~3 hours
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">2.5–3
-                                hours</td>
-                        </tr>
-                        <tr style="background: #F0F7F4;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>Realistic usage (24%
-                                    duty cycle)</strong></td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">
-                                <strong>~284W</strong>
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">
-                                <strong>~8 hours</strong>
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">
-                                <strong>~6+ hours</strong>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Split load (both UPS)</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~100W
-                                each</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~24 hrs
-                                each</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~6 hrs
-                                observed</td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Ventilator only (emergency)
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">120W
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">~20
-                                hours</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: center;">18–20
-                                hours</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p style="font-size: 0.85rem; color: #6b7280; font-style: italic;">
-                Note: "Realistic usage" accounts for ~24% intermittent use of O2 concentrator and suction machine.
-            </p>
-        </div>
-
-        <!-- UPS Power Calculator Tool -->
-        <div id="power-calculator"
-            style="margin-bottom: 2rem; background: #FBF8F3; padding: 1.5rem; border-radius: 12px; border: 1px solid #D4C5B0;">
-            <h3
-                style="font-size: 1.2rem; font-weight: 700; color: #6B5B95; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                🧮 UPS Power Calculator
-            </h3>
-            <p style="color: #7A6F5C; font-size: 0.9rem; margin-bottom: 1.5rem;">
-                Calculate your actual power needs and get personalized UPS & battery recommendations.
-            </p>
-
-            <!-- Device Input Form -->
-            <div id="deviceInputs" style="margin-bottom: 1rem;">
-                <div class="calc-device-row"
-                    style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
-                    <input type="text" id="device1_name" value="Ventilator" placeholder="Device name"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem;">
-                    <input type="number" id="device1_power" value="120" placeholder="Watts"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem; text-align: center;">
-                    <input type="number" id="device1_usage" value="100" min="0" max="100" placeholder="Usage %"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem; text-align: center;">
-                    <span style="font-size: 0.75rem; color: #6b7280; text-align: center;">%</span>
-                    <span></span>
-                </div>
-                <div class="calc-device-row"
-                    style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
-                    <input type="text" id="device2_name" value="Oxygen Concentrator" placeholder="Device name"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem;">
-                    <input type="number" id="device2_power" value="610" placeholder="Watts"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem; text-align: center;">
-                    <input type="number" id="device2_usage" value="24" min="0" max="100" placeholder="Usage %"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem; text-align: center;">
-                    <span style="font-size: 0.75rem; color: #6b7280; text-align: center;">%</span>
-                    <span></span>
-                </div>
-                <div class="calc-device-row"
-                    style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
-                    <input type="text" id="device3_name" value="Suction Machine" placeholder="Device name"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem;">
-                    <input type="number" id="device3_power" value="75" placeholder="Watts"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem; text-align: center;">
-                    <input type="number" id="device3_usage" value="24" min="0" max="100" placeholder="Usage %"
-                        style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem; text-align: center;">
-                    <span style="font-size: 0.75rem; color: #6b7280; text-align: center;">%</span>
-                    <span></span>
-                </div>
-            </div>
-
-            <!-- Headers for the table -->
-            <div
-                style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 1rem; font-size: 0.75rem; color: #6b7280; font-weight: 600;">
-                <span>Device Name</span>
-                <span style="text-align: center;">Power (W)</span>
-                <span style="text-align: center;">Usage</span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <!-- Backup Time Input -->
-            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
-                <label style="font-size: 0.9rem; color: #374151; font-weight: 600;">Desired Backup Time:</label>
-                <input type="number" id="desiredBackupHours" value="8" min="1" max="48"
-                    style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.875rem; width: 80px; text-align: center;">
-                <span style="font-size: 0.9rem; color: #6b7280;">hours (worst case safety margin)</span>
-            </div>
-
-            <!-- Calculate Button -->
-            <button onclick="calculateUPS()"
-                style="background: linear-gradient(135deg, #a18cd1 0%, #8E7CC3 100%); color: white; padding: 0.75rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem;">
-                ⚡ Calculate & Get Recommendations
-            </button>
-
-            <!-- Results Area -->
-            <div id="calcResults"
-                style="display: none; margin-top: 1.5rem; background: white; padding: 1.25rem; border-radius: 10px; border: 1px solid #E7E5E0;">
-                <h4 style="font-size: 1rem; font-weight: 600; color: #6B5B95; margin-bottom: 1rem;">📊 Calculation
-                    Results</h4>
-
-                <!-- Power Summary -->
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                    <div
-                        style="background: #FDF2F2; padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid #E5D0D0;">
-                        <div style="font-size: 0.75rem; color: #8B6B6B; margin-bottom: 0.25rem;">Worst Case Load</div>
-                        <div id="resultWorstCase" style="font-size: 1.25rem; font-weight: 700; color: #9B4B4B;">0W</div>
-                    </div>
-                    <div
-                        style="background: #F0F7F4; padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid #D0E5D8;">
-                        <div style="font-size: 0.75rem; color: #5B7B65; margin-bottom: 0.25rem;">Effective Load</div>
-                        <div id="resultEffective" style="font-size: 1.25rem; font-weight: 700; color: #4A7B5A;">0W</div>
-                    </div>
-                    <div
-                        style="background: #F5F3F9; padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid #D4C5E0;">
-                        <div style="font-size: 0.75rem; color: #6B5B8B; margin-bottom: 0.25rem;">Energy Needed</div>
-                        <div id="resultEnergy" style="font-size: 1.25rem; font-weight: 700; color: #6B5B95;">0 Wh</div>
-                    </div>
-                </div>
-
-                <!-- Recommendation -->
-                <div
-                    style="background: #FBF5ED; padding: 1rem; border-radius: 8px; border-left: 4px solid #D4895F; margin-bottom: 1rem;">
-                    <h5 style="font-size: 0.95rem; font-weight: 600; color: #8B6B4A; margin-bottom: 0.5rem;">💡 Our
-                        Recommendation</h5>
-                    <div id="resultRecommendation" style="font-size: 0.9rem; color: #6B5B4A;"></div>
-                </div>
-
-                <!-- Calculation Breakdown -->
-                <details style="margin-top: 1rem;">
-                    <summary style="font-size: 0.875rem; color: #6b7280; cursor: pointer; font-weight: 600;">📋 View
-                        Calculation Breakdown</summary>
-                    <div id="resultBreakdown"
-                        style="margin-top: 0.75rem; font-size: 0.85rem; color: #4b5563; background: #f9fafb; padding: 1rem; border-radius: 6px; font-family: monospace;">
-                    </div>
-                </details>
-            </div>
-        </div>
-
-        <!-- Recommended Configuration -->
-        <div style="margin-bottom: 2rem;">
-            <h3
-                style="font-size: 1.1rem; font-weight: 600; color: #374151; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;">
-                Recommended Configuration
-            </h3>
-            <p style="color: #4b5563; line-height: 1.7; margin-bottom: 1rem;">
-                We recommend separating the load across both UPS units. This ensures the ventilator continues running
-                even if one UPS battery is depleted.
-            </p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-                <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <h4 style="font-size: 0.95rem; font-weight: 600; color: #374151; margin-bottom: 0.75rem;">
-                        UPS 1 — Critical Equipment
-                    </h4>
-                    <ul style="font-size: 0.875rem; color: #4b5563; padding-left: 1rem; margin: 0;">
-                        <li>Ventilator (120W)</li>
-                        <li style="margin-top: 0.25rem;">Expected backup: 20+ hours</li>
-                    </ul>
-                </div>
-                <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <h4 style="font-size: 0.95rem; font-weight: 600; color: #374151; margin-bottom: 0.75rem;">
-                        UPS 2 — Support Equipment
-                    </h4>
-                    <ul style="font-size: 0.875rem; color: #4b5563; padding-left: 1rem; margin: 0;">
-                        <li>Oxygen Concentrator + Suction (685W)</li>
-                        <li style="margin-top: 0.25rem;">Expected backup: 3–4 hours</li>
-                    </ul>
-                </div>
-            </div>
-
-            <p
-                style="font-size: 0.875rem; color: #4b5563; background: #f9fafb; padding: 1rem; border-radius: 8px; border-left: 3px solid #9ca3af;">
-                <strong>Why this matters:</strong> If the support equipment UPS runs out, the ventilator on UPS 1
-                continues operating, giving you time to arrange alternative power.
-            </p>
-        </div>
-
-        <!-- Buying Guide for New Users -->
-        <div style="margin-bottom: 2rem;">
-            <h3
-                style="font-size: 1.1rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;">
-                📋 Buying Guide for New Users
-            </h3>
-            <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
-                Use this quick reference table to decide what to buy based on your needs. Assumes standard 12V battery
-                setup.
-            </p>
-
-            <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
-                    <thead>
-                        <tr style="background: #374151; color: white;">
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 600;">If your Load is...</th>
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 600;">Backup Needed...</th>
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 600;">Battery Bank Required</th>
-                            <th style="padding: 0.75rem; text-align: left; font-weight: 600;">UPS Rating</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Ventilator Only (150W)</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">12 Hours</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">2× 150Ah Batteries (24V)
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">1 kVA</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Ventilator Only (150W)</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">24 Hours</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">4× 150Ah Batteries (48V)
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">1 kVA</td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">Full ICU (800W)</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">4 Hours</td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">4× 150Ah Batteries (48V)
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;">2 kVA</td>
-                        </tr>
-                        <tr style="background: #fef9c3;">
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>Full ICU
-                                    (800W)</strong></td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>8 Hours</strong>
-                            </td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>6× 150Ah Batteries
-                                    (72V)</strong></td>
-                            <td style="padding: 0.75rem; border-bottom: 1px solid #e5e7eb;"><strong>2–3 kVA</strong>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Expert Note on Your Setup -->
+        <!-- Key Recommendations - Moved here -->
         <div
-            style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); padding: 1.25rem; border-radius: 10px; border-left: 4px solid #ca8a04; margin-bottom: 1.5rem;">
-            <h4 style="font-size: 1rem; font-weight: 600; color: #854d0e; margin-bottom: 0.75rem;">
-                💡 Expert Note on Your Setup
-            </h4>
-            <p style="font-size: 0.9rem; color: #713f12; margin-bottom: 0.75rem;">
-                Your current setup (<strong>3kVA UPS + 42Ah Batteries</strong>) is a <strong>"High Power, Medium
-                    Backup"</strong> setup:
-            </p>
-            <ul style="font-size: 0.875rem; color: #713f12; padding-left: 1.25rem; margin-bottom: 1rem;">
-                <li>The <strong>3kVA UPS</strong> is powerful enough to run heavy equipment (even a small AC).</li>
-                <li>The <strong>42Ah Batteries</strong> are the limiting factor. Great for short outages (3 hours) but
-                    limited for long outages if running the oxygen machine continuously.</li>
-            </ul>
-        </div>
-
-        <!-- Potential Upgrade -->
-        <div style="background: #f9fafb; padding: 1.25rem; border-radius: 8px; border: 1px solid #e5e7eb;">
-            <h4 style="font-size: 1rem; font-weight: 600; color: #374151; margin-bottom: 0.75rem;">
-                🔼 If You Need to Upgrade
-            </h4>
-            <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 0.75rem;">
-                Keep your Uniline UPS (it's excellent). Just replace the <strong>42Ah</strong> batteries with
-                <strong>100Ah or 120Ah</strong> batteries.
-                This would instantly increase your backup time:
-            </p>
-            <ul style="font-size: 0.875rem; color: #4b5563; padding-left: 1.25rem; margin: 0;">
-                <li>With <strong>100Ah batteries</strong>: ~7–8 hours at full load</li>
-                <li>With <strong>120Ah batteries</strong>: ~9–10 hours at full load (triple your current backup!)</li>
+            style="margin-top: 1.5rem; padding: 1.25rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #c4a284;">
+            <h3 style="font-size: 1rem; font-weight: 600; color: #334155; margin: 0 0 0.75rem 0;">Key Recommendations
+            </h3>
+            <ul
+                style="margin: 0; padding-left: 1.25rem; list-style-type: disc; color: #475569; font-size: 0.9rem; line-height: 1.8;">
+                <li>Ensure the room has proper ventilation to maintain air quality.</li>
+                <li>Arrange and test all equipment at regular intervals to ensure everything is functional.</li>
+                <li>TV, Alexa for music, and AC are vital for mental well-being of pals</li>
             </ul>
         </div>
     </div>
+
+    <!-- Equipment Images Section -->
+
+    <!-- Ventilator & Accessories -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Ventilator & Accessories</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card" data-buy-link="">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/ventilator.jpg', 'Ventilator/BiPAP Machine')">
+                    <img src="/static/images/icu-guide/ventilator.jpg" alt="Ventilator/BiPAP Machine"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Ventilator/BiPAP Machine</h3>
+            </div>
+            <div class="icu-card" data-buy-link="">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/catheter-mount.jpg', 'Catheter Mount')">
+                    <img src="/static/images/icu-guide/catheter-mount.jpg" alt="Catheter Mount"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Catheter Mount</h3>
+            </div>
+            <div class="icu-card" data-buy-link="">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/inlet-filter.jpg', 'Back Filter / Inlet Filter')">
+                    <img src="/static/images/icu-guide/inlet-filter.jpg" alt="Back Filter / Inlet Filter"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Back Filter / Inlet Filter</h3>
+            </div>
+            <div class="icu-card" data-buy-link="">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/hme-filter.jpg', 'HME Filter')">
+                    <img src="/static/images/icu-guide/hme-filter.jpg" alt="HME Filter"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>HME Filter</h3>
+            </div>
+            <div class="icu-card" data-buy-link="">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/bacteria-filter.jpg', 'Bacteria Filter')">
+                    <img src="/static/images/icu-guide/bacteria-filter.jpg" alt="Bacteria Filter"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Bacteria Filter</h3>
+            </div>
+            <div class="icu-card" data-buy-link="">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/ventilator-circuit.jpg', 'Ventilator Circuit/Pipes')">
+                    <img src="/static/images/icu-guide/ventilator-circuit.jpg" alt="Ventilator Circuit/Pipes"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Ventilator Circuit / Pipes</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/whisper-swivel.jpg" alt="Whisper Swivel"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Whisper Swivel</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/ambu-bag.jpg" alt="Ambu Bag" onerror="this.style.display='none'">
+                </div>
+                <h3>Ambu Bag</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/oxygen-concentrator.jpg" alt="Oxygen Concentrator"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Oxygen Concentrator</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suction -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Suction</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/suction-machine.jpg" alt="Yuwell Suction Machine"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Yuwell Suction Machine</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/vacuum-set.jpg" alt="Vacuum Set"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Vacuum Set</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/suction-catheter.jpg" alt="Suction Catheter"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Suction Catheter</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/suction-filter.jpg" alt="Suction Machine Filter"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Suction Machine Filter</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/syringe.jpg" alt="Single use syringe"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Single use syringe ( 10 ml and 5 ml )</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/normal-saline.jpg" alt="Normal Saline (NS)"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Normal Saline (NS)</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracheostomy Dressing / TT Tube Change -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Tracheostomy Dressing / TT Tube Change</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/gauze.jpg" alt="Gauze Swabs/Piece"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Gauze Swabs/Piece</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/betadine.jpg" alt="Betadine Solution"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Betadine Solution</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/gloves.jpg" alt="Sterilized Gloves"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Sterilized Gloves</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/scissor.jpg" alt="Scissor" onerror="this.style.display='none'">
+                </div>
+                <h3>Scissor</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nebulization -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Nebulization</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/nebulizer.jpg" alt="Nebulizer"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Nebulizer</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/nebulizer-tube.jpg" alt="Nebulizer Tube"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Nebulizer Tube</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/t-section-neb.jpg" alt="T-Section Neb"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>T-Section Neb</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/normal-saline-neb.jpg" alt="Normal Saline (NS)"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Normal Saline (NS)</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/neb-medicines.jpg" alt="Nebulizer Medicines"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Nebulizer Medicines</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vitals Monitoring -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Vitals Monitoring</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/multiparamonitor.jpg" alt="Multiparamonitor"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Multiparamonitor</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/oximeter.jpg" alt="Oximeter" onerror="this.style.display='none'">
+                </div>
+                <h3>Oximeter</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/bp-cuff.jpg" alt="BP Cuff" onerror="this.style.display='none'">
+                </div>
+                <h3>BP Cuff</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/thermometer.jpg" alt="Thermometer"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Thermometer</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recliner Beds & Tables -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Recliner Beds & Tables</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/recliner-bed.jpg" alt="Recliner Bed"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Recliner Bed</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Important Items -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Other Important Items</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/alexa.jpg" alt="Alexa" onerror="this.style.display='none'">
+                </div>
+                <h3>Alexa</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/smart-tv.jpg" alt="Smart TV" onerror="this.style.display='none'">
+                </div>
+                <h3>Smart TV</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/tobii-eyetracker.jpg" alt="Tobii Eye Tracker"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Tobii Eye Tracker</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/ac.jpg" alt="Air Conditioner"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Air Conditioner</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPS Backup System -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            UPS Backup System</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/ups-unit.png', 'Uniline 3kVA UPS Unit')">
+                    <img src="/static/images/icu-guide/ups-unit.png" alt="Uniline 3kVA UPS Unit"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Uniline 3kVA UPS</h3>
+                <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">72VDC Input • 230VAC Output</p>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/battery-exide.png', 'Exide PowerSafe Plus 42Ah Battery')">
+                    <img src="/static/images/icu-guide/battery-exide.png" alt="Exide PowerSafe Plus 42Ah Battery"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Exide 12V 42Ah Battery</h3>
+                <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Sealed Lead-Acid • 6 per UPS</p>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder"
+                    onclick="openLightbox('/static/images/icu-guide/ups-label.png', 'UPS Specifications Label')">
+                    <img src="/static/images/icu-guide/ups-label.png" alt="UPS Specifications Label"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>UPS Specifications</h3>
+                <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Model: MF1103L6 • 3kVA/2.4kW</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Motion / Stool -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Motion / Stool</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/cremaffin.jpg" alt="Cremaffin Plus"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Cremaffin Plus</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/jelly.jpg" alt="Jelly" onerror="this.style.display='none'">
+                </div>
+                <h3>Jelly</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/enema.jpg" alt="Enema (Emergency)"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Enema (Emergency)</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/cotton.jpg" alt="Cotton" onerror="this.style.display='none'">
+                </div>
+                <h3>Cotton</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/pads.jpg" alt="Pads" onerror="this.style.display='none'">
+                </div>
+                <h3>UnderPads</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/sheet.jpg" alt="Sheet" onerror="this.style.display='none'">
+                </div>
+                <h3>Sheet</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hygiene -->
+    <div style="margin-bottom: 3rem;">
+        <h2
+            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            Hygiene</h2>
+        <div class="icu-equipment-grid">
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/urine-pot.jpg" alt="Urine Pot"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Urine Pot</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/dettol.jpg" alt="Dettol" onerror="this.style.display='none'">
+                </div>
+                <h3>Dettol</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/wipes.jpg" alt="Wipes" onerror="this.style.display='none'">
+                </div>
+                <h3>Wipes</h3>
+            </div>
+            <div class="icu-card">
+                <div class="icu-image-placeholder">
+                    <img src="/static/images/icu-guide/sanitizer.jpg" alt="Sanitizer"
+                        onerror="this.style.display='none'">
+                </div>
+                <h3>Sanitizer</h3>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
+
 
 <!-- Lightbox Modal -->
 <div id="imageLightbox" class="image-lightbox" onclick="closeLightbox()">
@@ -1292,51 +867,59 @@
         text-underline-offset: 3px;
     }
 
-    /* ICU Equipment Grid */
+    /* ICU Equipment Grid - 4 Cards Per Row */
     .icu-equipment-grid {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
-    @media (min-width: 640px) {
-        .icu-equipment-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
         .icu-equipment-grid {
             grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
         }
     }
 
-    /* ICU Card */
+    @media (min-width: 1200px) {
+        .icu-equipment-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+    }
+
+    /* ICU Card - Claude/Apple Enhanced Styling */
     .icu-card {
-        background: white;
-        padding: var(--space-4);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--color-border);
+        background: var(--icu-bg);
+        padding: 1.25rem;
+        border-radius: 14px;
+        border: 1px solid var(--icu-border);
         text-align: center;
-        transition: all 0.2s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .icu-card:hover {
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        transform: translateY(-4px);
+        border-color: #cbd5e1;
     }
 
-    /* Image Placeholder */
+    /* Image Placeholder - Refined */
     .icu-image-placeholder {
         width: 100%;
-        height: 180px;
-        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-        border-radius: 0.5rem;
+        height: 160px;
+        background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+        border-radius: 10px;
         margin-bottom: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
         position: relative;
+        cursor: pointer;
     }
 
     .icu-image-placeholder img {
@@ -1344,19 +927,34 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
-        transition: transform 0.3s ease;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .icu-image-placeholder:hover img {
-        transform: scale(1.05);
+        transform: scale(1.06);
     }
 
-    /* Card Title */
+    /* Card Title - Claude Typography */
     .icu-card h3 {
-        font-size: var(--font-size-base);
-        font-weight: 500;
-        color: #1f2937;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--icu-text);
         margin: 0;
+        font-family: var(--icu-font-text);
+        letter-spacing: -0.01em;
+        line-height: 1.4;
+    }
+
+    /* Section Headers - Refined */
+    .icu-section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--icu-text);
+        border-bottom: 1px solid var(--icu-border);
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
+        font-family: var(--icu-font-display);
+        letter-spacing: -0.02em;
     }
 
     /* Details/Summary Styling */

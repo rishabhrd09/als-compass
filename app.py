@@ -41,10 +41,20 @@ def ai_assistant():
     """AI Assistant page"""
     return render_template('ai_assistant.html')
 
-@app.route('/experiences')
-def experiences():
-    """Caregiver experiences page"""
-    return render_template('experiences.html', page='experiences')
+@app.route('/diet-chart-tool')
+def diet_chart_tool():
+    """Diet Chart Tool - Coming Soon page"""
+    return render_template('diet_chart_tool.html', page='diet_chart')
+
+@app.route('/inventory-management')
+def inventory_management():
+    """Home ICU Inventory Management - Coming Soon page"""
+    return render_template('inventory_management.html', page='inventory')
+
+@app.route('/power-backup-guide')
+def power_backup_guide():
+    """Power Backup Guide page - UPS and battery calculations"""
+    return render_template('power_backup_guide.html', page='power_backup')
 
 @app.route('/home-icu-guide')
 def home_icu_guide():
@@ -216,6 +226,16 @@ def communication_technology_page():
 def verified_communication_solutions_page():
     """Verified Communication Solutions page - Research-verified eye tracking and AAC solutions"""
     return render_template('verified_communication_solutions.html')
+
+@app.route('/eye-tracker-setup')
+def eye_tracker_setup_page():
+    """Eye Tracker Setup Guide - Detailed setup instructions for Tobii Eye Trackers"""
+    return render_template('eye_tracker_setup.html')
+
+@app.route('/comm-tech-research')
+def comm_tech_research_page():
+    """Communication Technology Research - Wearable eye-tracking and BCI research"""
+    return render_template('comm_tech_research.html')
 
 @app.route('/api/communication-tech')
 def get_communication_tech():

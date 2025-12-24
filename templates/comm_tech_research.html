@@ -1,0 +1,766 @@
+{% extends "base.html" %}
+
+{% block title %}Communication Technology Research - Eye Tracking & BCI Research{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Apple/Tobii-inspired Design */
+    :root {
+        --ct-primary: #1d1d1f;
+        --ct-secondary: #6e6e73;
+        --ct-accent: #0071e3;
+        --ct-bg: #ffffff;
+        --ct-bg-alt: #fbfbfd;
+        --ct-border: #d2d2d7;
+        --ct-text: #1d1d1f;
+        --ct-muted: #86868b;
+    }
+
+    /* Hero Section - Light Sky Blue Theme */
+    .research-hero {
+        text-align: center;
+        padding: 4.5rem 1.5rem 3rem;
+        background:
+            linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%),
+            url('/static/images/hero_bg_v2.png') center/cover no-repeat;
+        background-color: #f5f7fa;
+        color: var(--ct-primary);
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    .research-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        pointer-events: none;
+    }
+
+    .research-hero>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .research-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.04em;
+        color: #1d1d1f;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .research-hero p {
+        font-size: 1.125rem;
+        color: #424245;
+        max-width: 720px;
+        margin: 0 auto;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .back-nav {
+        max-width: 1100px;
+        margin: 1.5rem auto 0;
+        padding: 0 1rem;
+    }
+
+    .back-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--ct-accent);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .back-nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* Section Styles */
+    .research-section {
+        max-width: 1100px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--ct-border);
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        letter-spacing: -0.02em;
+        margin: 0;
+    }
+
+    .section-desc {
+        color: var(--ct-secondary);
+        font-size: 0.95rem;
+        margin: 0 0 1.5rem;
+    }
+
+    /* Info Alert */
+    .info-alert {
+        background: #f5f5f7;
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .info-alert h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .info-alert p {
+        font-size: 0.9rem;
+        color: var(--ct-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Research Card */
+    .research-card {
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+    }
+
+    .research-card-header {
+        padding: 1.25rem;
+        background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+        color: white;
+    }
+
+    .research-card-header h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0 0 0.35rem;
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .research-card-header p {
+        font-size: 0.9rem;
+        margin: 0;
+        opacity: 0.95;
+        color: #e0e7ff;
+    }
+
+    .research-card-body {
+        padding: 1.5rem;
+    }
+
+    /* Spec Grid */
+    .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .spec-item {
+        background: var(--ct-bg-alt);
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .spec-label {
+        font-size: 0.75rem;
+        color: var(--ct-secondary);
+        margin-bottom: 0.25rem;
+    }
+
+    .spec-value {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+    }
+
+    .spec-note {
+        font-size: 0.75rem;
+        color: var(--ct-secondary);
+        margin-top: 0.25rem;
+    }
+
+    /* Device Grid */
+    .device-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .device-card {
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+    }
+
+    .device-card h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .device-card .subtitle {
+        font-size: 0.85rem;
+        color: var(--ct-secondary);
+        margin-bottom: 1rem;
+    }
+
+    .device-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+    }
+
+    .badge-warning {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .badge-info {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .device-notes {
+        margin: 0;
+        padding-left: 1.25rem;
+        font-size: 0.85rem;
+        color: var(--ct-text);
+        line-height: 1.7;
+    }
+
+    /* BCI Section */
+    .bci-note {
+        background: #f5f5f7;
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .bci-note h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .bci-note p {
+        font-size: 0.9rem;
+        color: var(--ct-secondary);
+        margin: 0;
+    }
+
+    .bci-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .bci-card {
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .bci-card-header {
+        padding: 1rem;
+        background: var(--ct-bg-alt);
+        border-bottom: 1px solid var(--ct-border);
+    }
+
+    .bci-card-header h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 0 0 0.25rem;
+    }
+
+    .bci-card-header .company {
+        font-size: 0.85rem;
+        color: var(--ct-secondary);
+    }
+
+    .bci-card-body {
+        padding: 1rem;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+    }
+
+    .status-approved {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .status-trial {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+    .status-research {
+        background: #f3e8ff;
+        color: #6b21a8;
+    }
+
+    /* Academic Research */
+    .academic-grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .academic-card {
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 8px;
+        padding: 1rem;
+    }
+
+    .academic-card h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .academic-card p {
+        font-size: 0.85rem;
+        color: var(--ct-text);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Links */
+    .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    .link-btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: var(--ct-primary);
+        color: white;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .link-btn:hover {
+        background: #000;
+    }
+
+    .link-btn.secondary {
+        background: transparent;
+        border: 1px solid var(--ct-border);
+        color: var(--ct-text);
+    }
+
+    .link-btn.secondary:hover {
+        background: var(--ct-bg-alt);
+    }
+
+    @media (max-width: 768px) {
+        .research-hero h1 {
+            font-size: 1.75rem;
+        }
+
+        .spec-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .device-grid,
+        .bci-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="research-hero">
+    <div class="container">
+        <h1>Communication Technology Research</h1>
+        <p>Emerging technologies, wearable eye trackers, and brain-computer interfaces for ALS communication.</p>
+    </div>
+</section>
+
+<!-- Back Navigation -->
+<div class="back-nav">
+    <a href="/communication-technology">← Back to Communication Technology</a>
+</div>
+
+<!-- Brain-Computer Interfaces Section -->
+<section class="research-section" style="margin-top: 2rem;">
+    <div class="section-header">
+        <h2>Brain-Computer Interfaces (BCIs)</h2>
+    </div>
+
+    <div class="bci-note">
+        <h4>Note: BCIs are not commercially available</h4>
+        <p>Currently only accessible via clinical trials in USA, Australia. No trials in India. Commercial availability
+            is 2-5+ years away.</p>
+    </div>
+
+    <div class="bci-grid">
+        <div class="bci-card">
+            <div class="bci-card-header">
+                <h4>Synchron Stentrode</h4>
+                <div class="company">Synchron</div>
+            </div>
+            <div class="bci-card-body">
+                <span class="status-badge status-approved">FDA Approved (Nov 2025)</span>
+                <p style="font-size: 0.85rem; color: var(--ct-text); margin-bottom: 0.75rem;"><strong>Minimally
+                        Invasive</strong> (via blood vessels)</p>
+                <ul class="device-notes">
+                    <li>No open brain surgery required</li>
+                    <li>Implanted via jugular vein</li>
+                    <li>Apple integration announced (May 2025)</li>
+                </ul>
+                <p style="margin: 1rem 0 0; font-size: 0.8rem; color: var(--ct-muted);">No trials in India. 2-5 years
+                    from commercial availability.</p>
+            </div>
+        </div>
+
+        <div class="bci-card">
+            <div class="bci-card-header">
+                <h4>Neuralink Telepathy</h4>
+                <div class="company">Neuralink (Elon Musk)</div>
+            </div>
+            <div class="bci-card-body">
+                <span class="status-badge status-trial">Clinical Trials</span>
+                <p style="font-size: 0.85rem; color: var(--ct-text); margin-bottom: 0.75rem;"><strong>Surgical</strong>
+                    (1000+ electrodes)</p>
+                <ul class="device-notes">
+                    <li>Surgical robot placement</li>
+                    <li>5+ patients implanted by mid-2025</li>
+                    <li>Expanding to Canada, UK, Germany, UAE</li>
+                </ul>
+                <p style="margin: 1rem 0 0; font-size: 0.8rem; color: var(--ct-muted);">No trials in India currently.
+                </p>
+            </div>
+        </div>
+
+        <div class="bci-card">
+            <div class="bci-card-header">
+                <h4>BrainGate</h4>
+                <div class="company">BrainGate Consortium</div>
+            </div>
+            <div class="bci-card-body">
+                <span class="status-badge status-research">Research</span>
+                <p style="font-size: 0.85rem; color: var(--ct-text); margin-bottom: 0.75rem;"><strong>Surgical</strong>
+                    (Utah Array)</p>
+                <ul class="device-notes">
+                    <li>UC Davis: 97% speech decoding for ALS patient (June 2025)</li>
+                    <li>Academic research consortium</li>
+                    <li>20+ years of experience</li>
+                </ul>
+                <p style="margin: 1rem 0 0; font-size: 0.8rem; color: var(--ct-muted);">Academic only. No commercial
+                    access.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Academic Research Section -->
+<section class="research-section">
+    <div class="section-header">
+        <h2>Academic Research & Future Technologies</h2>
+    </div>
+
+    <div class="academic-grid">
+        <div class="academic-card">
+            <h4>Google/Nature Communications SpeakFaster (December 2024)</h4>
+            <p>LLM-powered text entry achieving <strong>29-60% typing speed improvement</strong> over baseline
+                predictive keyboards. Works with existing Tobii hardware as software enhancement. Collaboration between
+                Google Research and Team Gleason Foundation.</p>
+        </div>
+
+        <div class="academic-card">
+            <h4>IEEE Wearable Gaze-Based Communication Study (2024)</h4>
+            <p>See-through head-mounted display with integrated gaze estimation enabling communication <strong>without
+                    temporal, spatial, or physical restrictions</strong>—representing the type of system that could
+                eventually replace screen-based trackers.</p>
+        </div>
+
+        <div class="academic-card">
+            <h4>Northwestern University/Shirley Ryan AbilityLab</h4>
+            <p>Ongoing research on eye gaze characterization for assistive device control, including addressing the
+                "Midas touch problem" (differentiating gaze for perception vs. interface operation). Study included ALS
+                participants.</p>
+        </div>
+    </div>
+
+    <h4 style="margin: 2rem 0 1rem; font-weight: 600; color: var(--ct-primary);">Emerging Technologies (12-36 Month
+        Horizon)</h4>
+    <ul class="device-notes">
+        <li><strong>GazeTrak acoustic sensing:</strong> Power-efficient alternative using sound instead of cameras</li>
+        <li><strong>BlinkWise radio-wave tracking:</strong> University of Pennsylvania project for ultra-low-power eye
+            tracking</li>
+        <li><strong>ElectraSight hybrid EOG:</strong> Non-invasive smart glasses with onboard processing</li>
+        <li><strong>EMG-based blink control glasses:</strong> Published in Biomedical Signal Processing 2023, tested
+            with ALS patients</li>
+    </ul>
+</section>
+
+<!-- Wearable Eye-Tracking Section -->
+<section class="research-section">
+    <div class="section-header">
+        <h2>Wearable Eye-Tracking Glasses</h2>
+    </div>
+    <p class="section-desc">Research-stage wearable eye-tracking glasses. These differ from proven screen-mounted
+        devices and require technical expertise.</p>
+
+    <div class="info-alert">
+        <h3>Wearable Glasses vs. Screen-Mounted Devices</h3>
+        <p><strong>Screen-mounted devices</strong> (like Tobii 4C, 5, PCEye) are proven, affordable, and recommended for
+            most ALS patients. <strong>Wearable glasses</strong> below are emerging solutions requiring technical
+            expertise and higher cost.</p>
+    </div>
+
+    <!-- Pupil Labs Neon -->
+    <div class="research-card">
+        <div class="research-card-header">
+            <h3>Pupil Labs Neon</h3>
+            <p>Only viable consumer-ready wearable glasses solution for ALS mouse control</p>
+        </div>
+        <div class="research-card-body">
+            <div class="spec-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Price</div>
+                    <div class="spec-value">€6,250 (~$6,800)</div>
+                    <div class="spec-note">~₹9.5 Lakh in India</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Sampling Rate</div>
+                    <div class="spec-value">200 Hz</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Accuracy</div>
+                    <div class="spec-value">1.3° with offset</div>
+                </div>
+                <div class="spec-item" style="background: #dcfce7;">
+                    <div class="spec-label" style="color: #166534;">Calibration</div>
+                    <div class="spec-value" style="color: #15803d;">NONE REQUIRED</div>
+                    <div class="spec-note" style="color: #166534;">Critical for ALS</div>
+                </div>
+            </div>
+
+            <div style="background: #dcfce7; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                <h5 style="margin: 0 0 0.5rem; font-size: 0.9rem; font-weight: 600; color: #166534;">✓ Why This Matters
+                    for ALS</h5>
+                <p style="margin: 0; font-size: 0.85rem; color: #15803d; line-height: 1.6;">No calibration
+                    required—traditional eye trackers require following targets, which is impossible for advanced ALS
+                    patients. Uses AprilTag markers around monitor for screen mapping.</p>
+            </div>
+
+            <p style="margin: 0.75rem 0; font-size: 0.85rem; color: var(--ct-secondary);">
+                <strong>Requirements:</strong> Windows PC, Python 3.8+, technical expertise • <strong>India:</strong>
+                Via pupil-labs.com/resellers
+            </p>
+
+            <div class="link-list">
+                <a href="https://pupil-labs.com" target="_blank" class="link-btn">Website</a>
+                <a href="https://github.com/pupil-labs/real-time-screen-gaze" target="_blank"
+                    class="link-btn secondary">GitHub SDK</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alternative Wearable Options - Simplified -->
+    <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin: 2rem 0 1rem;">Other Wearable
+        Options</h3>
+    <div class="device-grid">
+        <div class="device-card">
+            <h4>AdHawk MindLink</h4>
+            <div class="subtitle">~$10,000 • Calibration Required</div>
+            <span class="device-badge badge-warning">Not suitable for ALS</span>
+            <p style="font-size: 0.85rem; color: var(--ct-text);">Requires calibration routines—not usable by advanced
+                ALS patients.</p>
+        </div>
+
+        <div class="device-card">
+            <h4>EyeControl (Israel)</h4>
+            <div class="subtitle">Screen-Free Communication</div>
+            <span class="device-badge badge-info">Emerging</span>
+            <p style="font-size: 0.85rem; color: var(--ct-text);">Bone conduction audio approach. Does NOT provide
+                Windows mouse control.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Experimental & Try-Out Solutions Section -->
+<section class="research-section">
+    <div class="section-header">
+        <h2>⚠️ Experimental & Try-Out Solutions</h2>
+    </div>
+    <p class="section-desc">Research-grade and experimental technologies for tech-savvy users. These require technical
+        expertise and should only be used with a proven backup system.</p>
+
+    <div
+        style="background: #fef2f2; border-left: 4px solid #dc2626; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+        <h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600; color: #991b1b;">⚠️ WARNING: Experimental
+            Technologies</h3>
+        <p style="margin: 0; font-size: 0.9rem; color: #7f1d1d; line-height: 1.6;">These are experimental technologies
+            NOT proven for reliable ALS communication. Only try with backup system in place. Not recommended as primary
+            communication device.</p>
+    </div>
+
+    <div class="device-grid">
+        <!-- Pupil Labs Neon + Custom Scripts -->
+        <div class="device-card" style="border: 2px solid #fbbf24;">
+            <h4>Pupil Labs Neon + Custom Python Scripts</h4>
+            <div class="subtitle">EXPERIMENTAL - For tech-savvy users only</div>
+            <span class="device-badge badge-warning">MEDIUM - Unproven for ALS, requires backup system</span>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">What This Is:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Using Pupil Labs Neon with
+                    custom Python scripts for advanced mouse control and multi-screen setups</p>
+            </div>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Who Can Try:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Users with programming
+                    background or CS student helper, early-stage ALS patients who can assist with setup</p>
+            </div>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Cost:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text); font-weight: 600;">~₹9.5 lakhs
+                    (Neon hardware) + ₹5,000-15,000 (setup assistance)</p>
+            </div>
+
+            <div
+                style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                <strong style="color: #0369a1;">💡 Recommendation</strong>
+                <p style="margin: 0.5rem 0 0; color: #0c4a6e; font-size: 0.85rem;">Only as supplement to proven system,
+                    not as primary device</p>
+            </div>
+        </div>
+
+        <!-- Webcam + Head Tracking -->
+        <div class="device-card" style="border: 2px solid #fbbf24;">
+            <h4>Webcam + Head Tracking (Enable Viacam / Camera Mouse)</h4>
+            <div class="subtitle">EXPERIMENTAL - Free but requires head movement</div>
+            <span class="device-badge badge-info">LOW - Free to try, but limited applicability</span>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">What This Is:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Free software that tracks head
+                    movement via webcam to control mouse. NOT eye tracking.</p>
+            </div>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Who Can Try:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Early-stage patients with some
+                    head control remaining</p>
+            </div>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Cost:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text); font-weight: 600;">FREE (uses
+                    existing webcam)</p>
+            </div>
+
+            <div
+                style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                <strong style="color: #991b1b;">⚠️ Critical Limitation</strong>
+                <p style="margin: 0.5rem 0 0; color: #7f1d1d; font-size: 0.85rem;">Requires head movement - NOT suitable
+                    for advanced ALS with zero head control</p>
+            </div>
+
+            <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
+                <strong style="color: #0369a1;">💡 Recommendation</strong>
+                <p style="margin: 0.5rem 0 0; color: #0c4a6e; font-size: 0.85rem;">Try early in disease progression,
+                    have eye-tracking backup ready</p>
+            </div>
+        </div>
+
+        <!-- DIY AprilTag + Smartphone -->
+        <div class="device-card" style="border: 2px solid #dc2626;">
+            <h4>DIY AprilTag + Smartphone Eye Tracking</h4>
+            <div class="subtitle">EXPERIMENTAL - Research projects only</div>
+            <span class="device-badge" style="background: #fef2f2; color: #991b1b;">HIGH - May waste time and
+                money</span>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">What This Is:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Academic research projects
+                    using smartphone cameras and AprilTag markers for low-cost eye tracking</p>
+            </div>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Who Can Try:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">University researchers, CS
+                    students, hobbyists</p>
+            </div>
+
+            <div style="margin: 1rem 0;">
+                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Cost:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text); font-weight: 600;">
+                    ~₹5,000-15,000 (smartphone + markers + 3D printed mounts)</p>
+            </div>
+
+            <div
+                style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                <strong style="color: #991b1b;">⚠️ Critical Limitation</strong>
+                <p style="margin: 0.5rem 0 0; color: #7f1d1d; font-size: 0.85rem;">Unreliable, unproven, no support,
+                    requires extensive troubleshooting</p>
+            </div>
+
+            <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
+                <strong style="color: #0369a1;">💡 Recommendation</strong>
+                <p style="margin: 0.5rem 0 0; color: #0c4a6e; font-size: 0.85rem;">NOT RECOMMENDED for patients needing
+                    reliable communication. Research interest only.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Important Note -->
+<section class="research-section">
+    <div class="info-alert">
+        <h3>Important: Screen-Mounted Devices Remain the Proven Standard</h3>
+        <p>For most ALS patients, <strong>screen-mounted devices like Tobii 4C/5 + OptiKey</strong> remain significantly
+            easier to deploy, more affordable (₹25,000-40,000 vs. ₹9.5 Lakh+), and proven in the ALS community. Wearable
+            glasses and BCI solutions require technical expertise and are primarily for specific use cases or future
+            consideration.</p>
+    </div>
+</section>
+{% endblock %}

@@ -1,14 +1,18 @@
 # ALS Caregiver Compass
 
-A comprehensive web application and AI assistant for ALS caregivers that brings daily care routines, trusted ALS information, and an intelligent chatbot together in one place. Developed in collaboration with the **ALSCAS (ALS Care and Support India)** community.
+A comprehensive web application and AI assistant for ALS caregivers that brings daily care routines, trusted ALS information, and an intelligent chatbot together in one place. Developed in collaboration
 
 ## Features
 
 - **Multi-Model AI Assistant** - Choose from GPT-4, Claude Sonnet, Gemini 2.0, or Grok with agentic reasoning
 - **Community-Curated FAQ** - Over 68 curated Q&A entries with decision matrices and flowchart-based guidance
 - **Knowledge Base** - Curated information from trusted medical sources and 134,000+ WhatsApp community discussions
-- **Emergency Protocols** - Critical action guides for emergency situations
-- **Care Resources** - Daily schedules, home ICU setup, communication tools
+- **Emergency Protocols** - Critical action guides for respiratory emergencies with visual flowcharts
+- **Communication Technology** - Comprehensive eye tracker setup guides with PDF export
+  - Tobii Eye Tracker 5 with OptiKey (recommended)
+  - Tobii Eye Tracker 5 with Windows Eye Control (beta driver)
+  - Tobii Eye Tracker 4C with Windows Eye Control
+- **Home ICU Setup** - Equipment guides, power backup calculator, and inventory management
 - **Research Updates** - Latest ALS research, clinical trials, and India-specific research initiatives
 - **India-Specific Information** - Costs, availability, and resources for Indian caregivers
 
@@ -69,8 +73,6 @@ PORT=5000
 ```
 ├── app.py                      # Main Flask application
 ├── ai_system_agentic.py        # Advanced agentic AI with multi-step reasoning
-│                               #   - RelevanceAnalyzer with misspelling tolerance
-│                               #   - Enhanced system prompts with flowchart formatting
 ├── ai_system_unified.py        # Unified multi-model AI system
 ├── vector_store_enhanced.py    # Enhanced vector store with multi-collection hierarchy
 ├── ingest_data_intelligent.py  # Intelligent data ingestion with semantic chunking
@@ -78,24 +80,25 @@ PORT=5000
 ├── data/
 │   ├── sources.yaml                # Trusted ALS medical sources
 │   ├── research_categorized.json   # Categorized research data
-│   ├── research_initiatives_india.json  # India research collaborations (verified)
-│   ├── bipap_faq.json              # BiPAP FAQ content
+│   ├── research_initiatives_india.json  # India research collaborations
+│   ├── communication_technology.json    # Eye tracker specifications
 │   ├── als_comprehensive_faq.json  # Complete FAQ with decision matrices
 │   ├── practical_wisdom_faq.json   # Hindsight stories, "What I Wish I Knew"
-│   ├── community_wisdom_faq.json   # Curated high-quality community Q&A
-│   ├── flowchart_based_faq.json    # Ready Reckoner 9-stage flowchart guidance
-│   ├── top10_community_faq.json    # Most-asked questions with exact answers
-│   └── whatsapp_detailed_faq.json  # Detailed FAQ with IF/THEN logic
-├── templates/                  # HTML pages (16 templates)
-│   ├── index.html              # Homepage
+│   └── ...                         # Additional FAQ files
+├── templates/                  # HTML pages (21 templates)
+│   ├── index.html              # Homepage with research updates card
 │   ├── ai_assistant.html       # AI chatbot interface
 │   ├── understanding_als.html  # ALS information
-│   ├── emergency_protocol.html # Emergency procedures
+│   ├── emergency_protocol.html # Emergency procedures with flowcharts
 │   ├── faq.html                # Community FAQ with conditional guidance
 │   ├── home_icu_guide.html     # Home ICU setup guide
-│   ├── daily_schedule.html     # Daily care schedule
-│   ├── communication.html      # Communication resources
-│   ├── research_updates.html   # Research initiatives & collaborations
+│   ├── power_backup_guide.html # UPS/battery calculator
+│   ├── communication_technology.html  # Eye tracker overview
+│   ├── eye_tracker_setup.html  # Step-by-step setup guides (PDF export)
+│   ├── comm_tech_research.html # Communication tech research
+│   ├── research_updates.html   # Research initiatives & trials
+│   ├── diet_chart_tool.html    # Diet planning tool
+│   ├── inventory_management.html # Equipment inventory tracker
 │   └── ...                     # Error pages and partials
 └── static/                     # CSS, JavaScript, and images
 ```

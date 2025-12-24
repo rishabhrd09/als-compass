@@ -1,5 +1,5 @@
 {
-    "last_updated": "2025-12-14",
+    "last_updated": "2025-12-24",
     "categories": {
         "eye_tracking": {
             "title": "Eye Tracking Devices",
@@ -14,13 +14,12 @@
                     "price_inr": "₹15,000-20,000 (used)",
                     "community_rating": 5,
                     "status": "DISCONTINUED - Buy Used Only",
-                    "stage": "Early-Mid",
                     "india_access": "eBay, used marketplaces",
                     "works_with_windows_eye_control": true,
-                    "community_verdict": "BEST option for Windows Eye Control - rated excellent by experienced PALS",
+                    "community_verdict": "Good option for Windows Eye Control - used by experienced PALS",
                     "key_notes": [
                         "Native Windows Eye Control support",
-                        "Best Windows compatibility",
+                        "Windows compatible",
                         "Only available second-hand now",
                         "Install Tobii Core Software for full functionality"
                     ],
@@ -35,15 +34,13 @@
                     "price_inr": "₹25,000-40,000",
                     "community_rating": 4,
                     "status": "Available",
-                    "stage": "Early-Mid",
                     "india_access": "Amazon India, USA import",
                     "works_with_windows_eye_control": false,
                     "community_verdict": "Good but needs driver workaround. Does NOT support Windows Eye Control natively!",
                     "key_notes": [
                         "Gaming device - NOT designed for accessibility",
-                        "Requires beta driver installation",
-                        "Works with OptiKey via mouse emulation",
-                        "OpenTrack supported for head tracking"
+                        "Requires beta driver installation to work with windows eye control",
+                        "Works with OptiKey"
                     ],
                     "setup_links": {
                         "beta_driver": "https://drive.google.com/u/1/uc?id=1hHW8f5ka0MdJjBU_A0_8JfUJ-XW71AtE&export=download",
@@ -61,10 +58,9 @@
                     "price_inr": "₹2.5+ Lakh",
                     "community_rating": 3,
                     "status": "Available",
-                    "stage": "All Stages",
                     "india_access": "Import via authorized dealers",
                     "works_with_windows_eye_control": true,
-                    "community_verdict": "Overkill for most users. Complicated software. Only if budget allows.",
+                    "community_verdict": "Good if budget allows.",
                     "key_notes": [
                         "Purpose-built for accessibility",
                         "Outdoor tracking capability",
@@ -80,7 +76,6 @@
                     "price_inr": "₹15+ Lakh",
                     "community_rating": 4,
                     "status": "Available",
-                    "stage": "Mid-Late",
                     "india_access": "Import via authorized dealers",
                     "works_with_windows_eye_control": true,
                     "community_verdict": "Industry leader but extremely expensive. Consider renting or used.",
@@ -101,7 +96,6 @@
                     "price_inr": "₹15+ Lakh",
                     "community_rating": 4,
                     "status": "Available",
-                    "stage": "Late (Ptosis)",
                     "india_access": "Import only (LC Technologies)",
                     "community_verdict": "Best for droopy eyelids and dry eyes - common ALS complications",
                     "key_notes": [
@@ -123,7 +117,7 @@
                     "name": "GlassOuse V1.4",
                     "category": "Wearable Head Mouse",
                     "price_usd": 400,
-                    "price_inr": "₹35,000-45,000",
+                    "price_inr": "₹90,000-95,000 (Import)",
                     "community_rating": 4,
                     "status": "Available",
                     "stage": "Early-Mid",
@@ -134,7 +128,7 @@
                         "Bite switch, puff switch, or dwell clicking",
                         "Connects via Bluetooth to any device"
                     ],
-                    "community_verdict": "Highly praised for responsiveness. Note: Bite switch silicone may crack over time.",
+                    "community_verdict": "Highly praised for responsiveness",
                     "recommended": true
                 },
                 {
@@ -142,7 +136,7 @@
                     "name": "GlassOuse PRO",
                     "category": "Advanced Wearable",
                     "price_usd": 700,
-                    "price_inr": "₹60,000-70,000",
+                    "price_inr": "₹1,50,000-1,70,000 (Import)",
                     "community_rating": 4,
                     "status": "Available",
                     "stage": "Limited Movement",
@@ -153,14 +147,14 @@
                         "8 customizable switches",
                         "Minimal head movement required"
                     ],
-                    "community_verdict": "'Connects you to the world' - transforms life for mobility-impaired users"
+                    "community_verdict": "Advanced features for users with limited movement"
                 },
                 {
                     "id": 3,
                     "name": "HeadMouse Nano",
                     "category": "Optical Head Tracker",
                     "price_usd": 1200,
-                    "price_inr": "₹1+ Lakh",
+                    "price_inr": "₹1.8+ Lakh (Import)",
                     "community_rating": 4,
                     "status": "Available",
                     "stage": "Early-Mid",
@@ -208,30 +202,30 @@
                     "id": 1,
                     "name": "Synchron Stentrode",
                     "company": "Synchron",
-                    "status": "FDA Approved (Nov 2025)",
+                    "status": "Clinical Trials (COMMAND Complete)",
                     "invasiveness": "Minimally Invasive (via blood vessels)",
                     "als_relevance": "HIGH - Designed specifically for ALS",
                     "key_notes": [
                         "No open brain surgery required",
                         "Implanted via jugular vein",
                         "Apple integration announced (May 2025)",
-                        "90% cursor accuracy, 14+ chars/min typing",
-                        "ALS patient controlled iPad with thought (Aug 2025)"
+                        "Successful control of iPad and Apple Vision Pro (2025)",
+                        "Preparing for larger pivotal trials"
                     ],
-                    "trial_info": "COMMAND study active in USA",
-                    "india_access": "No trials in India. 2-5 years from commercial availability."
+                    "trial_info": "COMMAND study successfully met safety endpoints",
+                    "india_access": "No trials in India. Commercial access estimated ~2027."
                 },
                 {
                     "id": 2,
                     "name": "Neuralink Telepathy",
                     "company": "Neuralink (Elon Musk)",
-                    "status": "Clinical Trials",
+                    "status": "Clinical Trials (PRIME Study)",
                     "invasiveness": "Surgical (1000+ electrodes)",
                     "als_relevance": "HIGH - Primary focus on ALS/quadriplegia",
                     "key_notes": [
                         "Surgical robot placement",
-                        "5+ patients implanted by mid-2025",
-                        "Expanding to Canada, UK, Germany, UAE",
+                        "12+ patients implanted by late 2025",
+                        "Expanding to Canada, UK (Paul in UK implant successful Oct 2025)",
                         "Target: 20-30 patients by end of 2025"
                     ],
                     "trial_info": "Apply at neuralink.com/patient-registry",
@@ -268,7 +262,7 @@
                     "platform": "Windows 10/11",
                     "price": "FREE (Built-in)",
                     "community_rating": 5,
-                    "community_verdict": "MOST RECOMMENDED by experienced PALS. Best option for beginners.",
+                    "community_verdict": "Most recommended for beginners with compatible eye trackers",
                     "works_with": [
                         "Tobii 4C",
                         "Tobii PCEye 5",
@@ -292,7 +286,7 @@
                     "platform": "Windows",
                     "price": "FREE (Open Source)",
                     "community_rating": 4,
-                    "community_verdict": "Good alternative when Windows Eye Control isn't available. Complex interface.",
+                    "community_verdict": "Good alternative when Windows Eye Control isn't available",
                     "works_with": [
                         "Tobii 4C (native)",
                         "Tobii 5 (via mouse emulation)",
@@ -313,7 +307,7 @@
                     "platform": "Windows",
                     "price": "FREE",
                     "community_rating": 3,
-                    "community_verdict": "Good for office work. Requires head movement.",
+                    "community_verdict": "Requires head movement",
                     "works_with": [
                         "Any webcam"
                     ],
@@ -369,7 +363,6 @@
                     "platform": "Android",
                     "price": "FREE",
                     "community_rating": 4,
-                    "community_verdict": "Used daily by PALS. Needs Bluetooth speaker for calling attention.",
                     "features": [
                         "Look left/right/up to select phrases",
                         "Works with phone camera",
@@ -398,11 +391,10 @@
                     "price": "₹5,000-15,000",
                     "origin": "Made in India (Chennai)",
                     "community_rating": 4,
-                    "community_verdict": "Critical for non-English speakers. Supports Indian languages.",
+                    "community_verdict": "Supports Indian languages.",
                     "features": [
                         "Picture-based AAC",
-                        "Hindi, Tamil, Kannada, Marathi, Malayalam, Telugu support",
-                        "Bridges gap for non-English patients"
+                        "Hindi, Tamil, Kannada, Marathi, Malayalam, Telugu support"
                     ]
                 },
                 {
@@ -430,28 +422,15 @@
                 {
                     "id": 1,
                     "name": "Alphabet Board",
-                    "price": "₹200-500",
-                    "community_rating": 5,
-                    "community_verdict": "MOST EFFECTIVE - One user has used it for 6 years. Always have as backup.",
-                    "description": "Transparent board with letters. Caregiver reads letter when patient looks at it.",
-                    "why_essential": "Works when all tech fails. No batteries. No software issues.",
+                    "community_verdict": "Always keep this handy",
+                    "description": "Take a physical whiteboard and divide it into 6 groups, each with 6 letters. The last group has numbers. Caregiver first confirms the group from PALS, then iterates over the letters.",
+                    "why_essential": "Works when you cannot guess common words or PALS need to say something new. Keep this handy as you cannot use an eye tracker all the time.",
                     "recommended": true
                 },
                 {
                     "id": 2,
-                    "name": "LCD Writing Tablet",
-                    "price": "₹300-1,000",
-                    "community_rating": 4,
-                    "community_verdict": "Good when hands still work. Easy to use.",
-                    "description": "Electronic writing pad that can be erased with a button",
-                    "stage": "Early stage while hands still functional"
-                },
-                {
-                    "id": 3,
                     "name": "Bell/Buzzer Systems",
-                    "price": "₹200-1,000",
-                    "community_rating": 4,
-                    "community_verdict": "Motion sensor recommended for later stages when hands don't work.",
+                    "community_verdict": "Motion sensor bell , Push button bell",
                     "types": [
                         "Push button bell (early stage)",
                         "Motion sensor bell (later stage)",
@@ -492,34 +471,6 @@
                 }
             ]
         }
-    },
-    "budget_setup_india": {
-        "title": "Budget Setup for India",
-        "total_cost": "Under ₹50,000",
-        "comparison": "vs ₹10+ Lakh for medical-grade systems",
-        "components": [
-            {
-                "item": "Tobii Eye Tracker 5",
-                "cost": "₹25,000-40,000",
-                "source": "Amazon India or USA import"
-            },
-            {
-                "item": "OptiKey Software",
-                "cost": "FREE",
-                "source": "github.com/OptiKey/OptiKey"
-            },
-            {
-                "item": "Windows Laptop (i3+, 8GB RAM)",
-                "cost": "₹30,000-50,000",
-                "requirements": "Windows 10/11 64-bit"
-            },
-            {
-                "item": "Alphabet Board (backup)",
-                "cost": "₹200-500",
-                "note": "ESSENTIAL backup"
-            }
-        ],
-        "community_tip": "Contact USA-based PALS community for help importing Tobii 5 at better prices (~₹25k)"
     },
     "key_recommendations": [
         {

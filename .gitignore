@@ -10,6 +10,8 @@ whatsapp_anonymized.txt
 IMAGE_SYSTEM_QUICKSTART.txt
 *.docx
 
+
+
 # Documentation - keep only essential docs
 *.md
 !README.md

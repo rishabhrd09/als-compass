@@ -4,83 +4,120 @@
 
 {% block extra_css %}
 <style>
-    /* Professional Tobii-inspired Design - Sober Colors */
+    /* Professional Apple-inspired Design - Light & Clean */
     :root {
-        --ct-primary: #1e293b;
-        --ct-secondary: #64748b;
-        --ct-accent: #0077b6;
+        --ct-primary: #1d1d1f;
+        --ct-secondary: #6e6e73;
+        --ct-accent: #0071e3;
         --ct-bg: #ffffff;
-        --ct-bg-alt: #f8fafc;
-        --ct-border: #e2e8f0;
-        --ct-text: #334155;
-        --ct-muted: #94a3b8;
+        --ct-bg-alt: #f5f5f7;
+        --ct-border: #d2d2d7;
+        --ct-text: #1d1d1f;
+        --ct-muted: #86868b;
+        --ct-hero-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%);
     }
 
-    /* Hero Section - Similar to Research Updates */
+    /* Hero Section - Light Sky Blue Theme */
     .ct-hero {
         text-align: center;
-        padding: 3.5rem 1.5rem;
+        padding: 4.5rem 1.5rem 3rem;
         background:
-            linear-gradient(135deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 64, 95, 0.72) 100%),
-            url('/static/images/comm_tech_header_bg.png') center/cover no-repeat;
-        color: white;
+            var(--ct-hero-gradient),
+            url('/static/images/hero_bg_v2.png') center/cover no-repeat;
+        background-color: #f5f7fa;
+        color: var(--ct-primary);
         margin-bottom: 0;
-        border-bottom: 1px solid var(--ct-border);
+        position: relative;
+    }
+
+    .ct-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        pointer-events: none;
+    }
+
+    .ct-hero>* {
+        position: relative;
+        z-index: 1;
     }
 
     .ct-hero h1 {
-        font-size: 2.25rem;
+        font-size: 2.75rem;
         font-weight: 700;
         margin-bottom: 0.75rem;
-        letter-spacing: -0.02em;
-        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-        color: #ffffff !important;
+        letter-spacing: -0.04em;
+        color: #1d1d1f;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     }
 
     .ct-hero p {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.95) !important;
-        max-width: 750px;
+        font-size: 1.125rem;
+        color: #424245;
+        max-width: 720px;
         margin: 0 auto;
         line-height: 1.6;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        font-weight: 400;
     }
 
-    /* Category Navigation - Tobii-style Cards */
+    /* Category Navigation - Apple Tab Style */
     .ct-nav {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 0.85rem;
-        max-width: 1000px;
-        margin: 0 auto 2rem;
-        padding: 1.5rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        max-width: 1100px;
+        margin: -2rem auto 3rem;
+        padding: 1rem;
         position: relative;
         z-index: 10;
-        background: linear-gradient(180deg, rgba(30, 64, 95, 0.55) 0%, transparent 100%);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .ct-nav-card {
-        background: rgba(255, 255, 255, 0.98);
+        background: transparent;
         border-radius: 10px;
-        padding: 0.9rem 0.6rem;
+        padding: 0.7rem 1.1rem;
         text-align: center;
         text-decoration: none;
-        color: var(--ct-primary);
-        transition: all 0.2s ease;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        color: var(--ct-secondary);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
     }
 
     .ct-nav-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        border-color: var(--ct-accent);
+        background: rgba(0, 113, 227, 0.08);
+        color: var(--ct-accent);
+        transform: translateY(-1px);
+    }
+
+    .ct-nav-card.active {
+        background: var(--ct-accent);
+        color: white;
+        box-shadow: 0 2px 8px rgba(0, 113, 227, 0.25);
+    }
+
+    .ct-nav-card.active:hover {
+        background: #000;
+        color: white;
     }
 
     .ct-nav-card span {
-        font-weight: 600;
-        font-size: 0.82rem;
-        color: var(--ct-text);
+        font-weight: 500;
+        font-size: 0.875rem;
         letter-spacing: -0.01em;
     }
 
@@ -190,11 +227,11 @@
     }
 
     .ct-device-card.recommended .ct-device-header {
-        background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%);
+        background: #f5f5f7;
     }
 
     .ct-device-card.recommended .ct-device-header * {
-        color: white !important;
+        color: #000 !important;
     }
 
     .ct-device-header {
@@ -726,119 +763,67 @@
 
 <!-- Category Navigation -->
 <nav class="ct-nav">
-    <a href="/verified-communication-solutions" class="ct-nav-card"
-        style="background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%); color: white;"><span
-            style="color: white; font-weight: 600;">✓ Verified Solutions</span></a>
+    <a href="/eye-tracker-setup" class="ct-nav-card"><span>Verified Solutions & Setup Guides</span></a>
     <a href="#eye-tracking" class="ct-nav-card"><span>Eye Tracking</span></a>
+    <a href="#low-tech" class="ct-nav-card"><span>Low-Tech</span></a>
     <a href="#head-tracking" class="ct-nav-card"><span>Head Tracking</span></a>
     <a href="#free-software" class="ct-nav-card"><span>Free Software</span></a>
     <a href="#mobile-apps" class="ct-nav-card"><span>Mobile Apps</span></a>
-    <a href="#low-tech" class="ct-nav-card"><span>Low-Tech</span></a>
     <a href="#bci" class="ct-nav-card"><span>BCIs</span></a>
+    <a href="/comm-tech-research" class="ct-nav-card"><span>Research & Experimental</span></a>
 </nav>
 
-<!-- Voice Banking Alert -->
-<div class="ct-alert">
-    <div class="ct-alert-inner">
-        <h3>Voice Bank Now</h3>
-        <p style="margin-bottom: 1rem;">Create a synthetic clone of your voice before speech declines. Requires ~30
-            minutes of recording.</p>
-
-        <div
-            style="background: var(--ct-bg-alt); border: 2px solid var(--ct-accent); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
-            <h4 style="margin: 0 0 0.5rem; color: var(--ct-primary); font-size: 0.95rem;">
-                <strong>FREE for ALS/MND Patients:</strong> ElevenLabs Impact Program
-            </h4>
-            <p style="margin: 0 0 0.75rem; font-size: 0.9rem; color: var(--ct-text); line-height: 1.6;">
-                ElevenLabs offers <strong>completely free voice cloning</strong> for people with ALS/MND through their
-                Impact Program.
-                Includes Indian accents and multilingual support.
-            </p>
-            <a href="https://elevenlabs.io/blog/impact-program-announcement" target="_blank"
-                style="display: inline-block; background: var(--ct-accent); color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem;">
-                Apply for Free Access →
-            </a>
-        </div>
-
-        <div style="font-size: 0.9rem; color: var(--ct-text);">
-            <strong>Alternative Free Option:</strong>
-            <a href="https://www.modeltalker.org/" target="_blank"
-                style="color: #0077b6; font-weight: 500;">ModelTalker</a>
-            (Open-source, US English only)
-        </div>
+<!-- Voice Banking Notice -->
+<div style="max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem;">
+    <div style="background: #f5f5f7; border-radius: 12px; padding: 1.5rem;">
+        <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">Voice Banking
+        </h3>
+        <p style="margin: 0 0 1rem; font-size: 0.95rem; color: var(--ct-secondary); line-height: 1.5;">
+            Create a synthetic voice clone before speech declines. Free for ALS/MND patients through ElevenLabs.
+        </p>
+        <a href="https://elevenlabs.io/blog/impact-program-announcement" target="_blank"
+            style="display: inline-block; background: var(--ct-primary); color: white; padding: 0.6rem 1.25rem; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: background 0.2s;">
+            Apply for Free Access
+        </a>
+        <span style="margin-left: 1rem; font-size: 0.85rem; color: var(--ct-muted);">
+            or try <a href="https://www.modeltalker.org/" target="_blank"
+                style="color: var(--ct-accent);">ModelTalker</a>
+        </span>
     </div>
 </div>
 
 <!-- Key Recommendations -->
-<section class="ct-recommendations">
-    <div class="ct-section-header">
-        <h2>Community Recommendations</h2>
-    </div>
+<section style="max-width: 900px; margin: 0 auto 2.5rem; padding: 0 1rem;">
+    <h2
+        style="font-size: 1.25rem; font-weight: 600; color: var(--ct-primary); margin-bottom: 1rem; letter-spacing: -0.02em;">
+        Quick Recommendations</h2>
 
-    <div class="ct-recommendation-card" style="border-left: 4px solid var(--ct-accent);">
-        <div class="ct-recommendation-number">1</div>
-        <div class="ct-recommendation-content">
-            <h4>Start with Tobii Eye Tracker 5 + OptiKey</h4>
-            <p>Budget-friendly. Cost: ~₹25,000-40,000 for tracker + FREE software. <strong>Note:</strong> Does NOT work
-                with Windows Eye Control.</p>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div
+            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f5f7; border-radius: 10px;">
+            <span
+                style="width: 28px; height: 28px; background: var(--ct-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;">1</span>
+            <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Start with Tobii Eye Tracker 5 or
+                Tobii Eye Tracker 4C</span>
         </div>
-    </div>
-
-    <div class="ct-recommendation-card" style="border-left: 4px solid var(--ct-accent);">
-        <div class="ct-recommendation-number">2</div>
-        <div class="ct-recommendation-content">
-            <h4>Always have Alphabet Board as backup</h4>
-            <p>"Most effective" - used for 6 years. Works when all tech fails. Cost: ₹200-500.</p>
+        <div
+            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f5f7; border-radius: 10px;">
+            <span
+                style="width: 28px; height: 28px; background: var(--ct-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;">2</span>
+            <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Always have an Alphabet Board as
+                backup</span>
         </div>
-    </div>
-
-    <div class="ct-recommendation-card" style="border-left: 4px solid var(--ct-accent);">
-        <div class="ct-recommendation-number">3</div>
-        <div class="ct-recommendation-content">
-            <h4>Look to Speak + Bluetooth Speaker</h4>
-            <p>Free Android app for calling attention when caregiver is in another room.</p>
+        <div
+            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f5f7; border-radius: 10px;">
+            <span
+                style="width: 28px; height: 28px; background: var(--ct-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;">3</span>
+            <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Look to Speak Android app +
+                Bluetooth Speaker</span>
         </div>
     </div>
 </section>
 
-<!-- Budget Setup -->
-<section class="ct-budget-section">
-    <div class="ct-budget-header">
-        <h2>Budget Setup for India</h2>
-        <p>Complete communication setup</p>
-    </div>
 
-    <div class="ct-budget-comparison">
-        <div class="ct-budget-price">
-            <div class="amount">₹50,000</div>
-            <div class="label">Recommended Setup</div>
-        </div>
-        <div style="font-size: 1.5rem; color: var(--ct-muted);">vs</div>
-        <div class="ct-budget-price expensive">
-            <div class="amount">₹10+ Lakh</div>
-            <div class="label">Medical-Grade</div>
-        </div>
-    </div>
-
-    <div class="ct-budget-items">
-        <div class="ct-budget-item">
-            <span>Tobii Eye Tracker 5</span>
-            <span>₹25,000-40,000</span>
-        </div>
-        <div class="ct-budget-item">
-            <span>OptiKey Software</span>
-            <span style="color: #16a34a; font-weight: 600;">FREE</span>
-        </div>
-        <div class="ct-budget-item">
-            <span>Windows Laptop (i3+, 8GB RAM)</span>
-            <span>₹30,000-50,000</span>
-        </div>
-        <div class="ct-budget-item">
-            <span>Alphabet Board (backup)</span>
-            <span>₹200-500</span>
-        </div>
-    </div>
-</section>
 
 <!-- Eye Tracking Section -->
 <section id="eye-tracking" class="ct-section">
@@ -850,42 +835,12 @@
     <div class="ct-device-grid" id="eyeTrackingDevices"></div>
 </section>
 
-<!-- Head Tracking Section -->
-<section id="head-tracking" class="ct-section">
-    <div class="ct-section-header">
-        <h2>Head Tracking Devices</h2>
-    </div>
-    <p class="ct-section-desc">For PALS who retain head movement.</p>
-
-    <div class="ct-device-grid" id="headTrackingDevices"></div>
-</section>
-
-<!-- Free Software Section -->
-<section id="free-software" class="ct-section">
-    <div class="ct-section-header">
-        <h2>Free & Open Source Software</h2>
-    </div>
-    <p class="ct-section-desc">Free tools to reduce costs for ALS communication.</p>
-
-    <div class="ct-software-grid" id="freeSoftware"></div>
-</section>
-
-<!-- Mobile Apps Section -->
-<section id="mobile-apps" class="ct-section">
-    <div class="ct-section-header">
-        <h2>Mobile Apps</h2>
-    </div>
-    <p class="ct-section-desc">Smartphone and tablet apps for communication.</p>
-
-    <div class="ct-software-grid" id="mobileApps"></div>
-</section>
-
 <!-- Low-Tech Solutions -->
 <section id="low-tech" class="ct-section">
     <div class="ct-section-header">
         <h2>Low-Tech Solutions</h2>
     </div>
-    <p class="ct-section-desc">Simple, reliable, and highly valued. Never underestimate these.</p>
+    <p class="ct-section-desc">Simple and reliable</p>
 
     <div class="ct-device-grid" id="lowTechSolutions"></div>
 
@@ -958,13 +913,12 @@
                 <li><strong>Common Words First:</strong> Always try common daily words before using spatial alphabet
                 </li>
                 <li><strong>Practice:</strong> Once adapted, eliminates need for physical alphabet board</li>
-                <li><strong>Backup:</strong> Works when all technology fails - no batteries, no software</li>
             </ul>
 
             <div
                 style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;">
                 <p style="margin: 0; font-size: 0.85rem; color: #0369a1;">
-                    <strong>WhatsApp-friendly explanation:</strong> "Imagine dividing the room into 6 zones. When
+                    <strong>simple explanation:</strong> "Imagine dividing the room into 6 zones. When
                     PALS looks at top-left corner = letters A-F. Left wall = G-J. Front wall = K-P. Top-right = Q-T.
                     Right wall = U-Z. Looking at ceiling fan = numbers. Before spelling, PALS looks at fan to
                     indicate word length, then we start guessing!"
@@ -974,347 +928,40 @@
     </div>
 </section>
 
-<!-- Research Updates Section -->
-<section id="research-updates" class="ct-section">
+
+<!-- Head Tracking Section -->
+<section id="head-tracking" class="ct-section">
     <div class="ct-section-header">
-        <h2>Research Updates: Wearable Eye-Tracking Glasses</h2>
+        <h2>Head Tracking Devices</h2>
     </div>
-    <p class="ct-section-desc">Latest research on wearable eye-tracking glasses for zero head movement scenarios. These
-        differ from screen-mounted devices and are primarily research/development stage.</p>
+    <p class="ct-section-desc">For PALS who retain head movement.</p>
 
-    <!-- Important Distinction -->
-    <div class="ct-alert">
-        <div class="ct-alert-inner">
-            <h3>Wearable Glasses vs. Screen-Mounted Devices</h3>
-            <p><strong>Screen-mounted devices</strong> (like Tobii 4C, 5, PCEye above) are proven, affordable, and
-                recommended for most ALS patients. <strong>Wearable glasses</strong> below are emerging solutions
-                requiring technical expertise and higher cost. No commercial wearable glasses product exists
-                specifically designed for ALS mouse control—this represents a significant market gap.</p>
-        </div>
-    </div>
-
-    <!-- Pupil Labs Neon - Primary Wearable Solution -->
-    <div
-        style="margin-top: 2rem; background: white; border: 2px solid var(--ct-accent); border-radius: 12px; overflow: hidden;">
-        <div
-            style="padding: 1.25rem; background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%); border-bottom: 1px solid var(--ct-border);">
-            <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600; color: white;">Pupil Labs Neon</h3>
-            <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: rgba(255,255,255,0.95);">Only viable consumer-ready
-                wearable glasses solution for ALS mouse control</p>
-        </div>
-        <div style="padding: 1.5rem;">
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
-                <div style="background: var(--ct-bg-alt); padding: 1rem; border-radius: 8px;">
-                    <div style="font-size: 0.75rem; color: var(--ct-secondary); margin-bottom: 0.25rem;">Price</div>
-                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">€6,250 (~$6,800 USD)
-                    </div>
-                    <div style="font-size: 0.8rem; color: var(--ct-secondary); margin-top: 0.25rem;">~₹5.7 Lakh</div>
-                </div>
-                <div style="background: var(--ct-bg-alt); padding: 1rem; border-radius: 8px;">
-                    <div style="font-size: 0.75rem; color: var(--ct-secondary); margin-bottom: 0.25rem;">Sampling Rate
-                    </div>
-                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">200 Hz</div>
-                </div>
-                <div style="background: var(--ct-bg-alt); padding: 1rem; border-radius: 8px;">
-                    <div style="font-size: 0.75rem; color: var(--ct-secondary); margin-bottom: 0.25rem;">Accuracy</div>
-                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">1.3° with offset</div>
-                </div>
-                <div style="background: #dcfce7; padding: 1rem; border-radius: 8px;">
-                    <div style="font-size: 0.75rem; color: #166534; margin-bottom: 0.25rem;">Calibration</div>
-                    <div style="font-size: 1.1rem; font-weight: 600; color: #15803d;">NONE REQUIRED ✓</div>
-                    <div style="font-size: 0.75rem; color: #166534; margin-top: 0.25rem;">Critical for ALS</div>
-                </div>
-            </div>
-
-            <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">How It
-                Works</h4>
-            <ul
-                style="margin: 0 0 1rem; padding-left: 1.25rem; font-size: 0.9rem; color: var(--ct-text); line-height: 1.7;">
-                <li><strong>AprilTag Markers:</strong> Place 4+ printed markers around monitor edges</li>
-                <li><strong>Homography Mapping:</strong> Scene camera detects markers and maps gaze to screen
-                    coordinates</li>
-                <li><strong>Real-time Tracking:</strong> 200 Hz gaze data transformed to pixel coordinates</li>
-                <li><strong>Slippage-Invariant:</strong> Deep learning maintains accuracy even if glasses shift position
-                </li>
-            </ul>
-
-            <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">Why
-                Calibration-Free Matters</h4>
-            <p style="font-size: 0.9rem; color: var(--ct-text); line-height: 1.6; margin: 0 0 1rem;">Traditional eye
-                trackers require users to follow targets during calibration—impossible for advanced ALS patients. Neon's
-                deep-learning model eliminates per-session calibration, making it uniquely suited for ALS use.</p>
-
-            <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--ct-primary);">Setup
-                Requirements</h4>
-            <ul
-                style="margin: 0 0 1rem; padding-left: 1.25rem; font-size: 0.9rem; color: var(--ct-text); line-height: 1.7;">
-                <li>Windows laptop/desktop with Python 3.8+</li>
-                <li>Printed AprilTag markers (tag36h11 family)</li>
-                <li>Moderate technical expertise (Python, command-line)</li>
-                <li>Works with OptiKey for full Windows control</li>
-            </ul>
-
-            <div
-                style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 1rem; margin-top: 1rem;">
-                <h4 style="margin: 0 0 0.5rem; font-size: 0.9rem; font-weight: 600; color: #0369a1;">Official Resources
-                </h4>
-                <div style="display: grid; gap: 0.5rem; font-size: 0.85rem;">
-                    <div><strong>Website:</strong> <a href="https://pupil-labs.com" target="_blank"
-                            style="color: #0284c7;">pupil-labs.com</a></div>
-                    <div><strong>GitHub SDK:</strong> <a href="https://github.com/pupil-labs/real-time-screen-gaze"
-                            target="_blank" style="color: #0284c7;">github.com/pupil-labs/real-time-screen-gaze</a>
-                    </div>
-                    <div><strong>Cursor Demo:</strong> <a
-                            href="https://github.com/pupil-labs/gaze-controlled-cursor-demo" target="_blank"
-                            style="color: #0284c7;">github.com/pupil-labs/gaze-controlled-cursor-demo</a></div>
-                    <div><strong>Documentation:</strong> <a
-                            href="https://docs.pupil-labs.com/alpha-lab/gaze-contingency-assistive/" target="_blank"
-                            style="color: #0284c7;">docs.pupil-labs.com/alpha-lab/gaze-contingency-assistive/</a></div>
-                    <div><strong>Contact:</strong> info@pupil-labs.com</div>
-                    <div><strong>India Availability:</strong> Through international resellers at <a
-                            href="https://pupil-labs.com/resellers" target="_blank"
-                            style="color: #0284c7;">pupil-labs.com/resellers</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Open-Source Projects -->
-    <div style="margin-top: 2rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin-bottom: 1rem;">Open-Source
-            Projects</h3>
-
-        <div class="ct-software-grid">
-            <!-- Gaze-Controlled Cursor Demo -->
-            <div class="ct-software-card recommended">
-                <div class="ct-software-name">
-                    Pupil Labs Gaze-Controlled Cursor Demo
-                    <span class="ct-free-badge">Free</span>
-                </div>
-                <div class="ct-software-platform">Windows • Python • MIT License</div>
-
-                <div class="ct-rating">
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                </div>
-
-                <div class="ct-device-verdict">
-                    Official demo for controlling PC mouse cursor with Neon glasses. Actively maintained (2024).
-                </div>
-
-                <ul class="ct-device-notes">
-                    <li>AprilTag detection for screen surface</li>
-                    <li>Dwell-time filtering for clicks</li>
-                    <li>Full Windows mouse cursor control</li>
-                </ul>
-
-                <a href="https://github.com/pupil-labs/gaze-controlled-cursor-demo" target="_blank" class="ct-setup-btn"
-                    style="margin-top: 0.75rem;">View on GitHub</a>
-            </div>
-
-            <!-- gazeMapper -->
-            <div class="ct-software-card">
-                <div class="ct-software-name">
-                    gazeMapper
-                    <span class="ct-free-badge">Free</span>
-                </div>
-                <div class="ct-software-platform">Python • Multi-device support</div>
-
-                <div class="ct-rating">
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot"></div>
-                </div>
-
-                <div class="ct-device-verdict">
-                    Automated world-based analysis supporting multiple wearable trackers.
-                </div>
-
-                <ul class="ct-device-notes">
-                    <li>Supports Pupil Labs, Tobii Pro, AdHawk, SeeTrue</li>
-                    <li>Homography transformation included</li>
-                    <li>Camera calibration tools</li>
-                </ul>
-
-                <a href="https://github.com/dcnieho/gazeMapper" target="_blank" class="ct-setup-btn"
-                    style="margin-top: 0.75rem;">View on GitHub</a>
-            </div>
-
-            <!-- EyeWriter -->
-            <div class="ct-software-card">
-                <div class="ct-software-name">
-                    EyeWriter (Legacy)
-                    <span class="ct-free-badge">Free</span>
-                </div>
-                <div class="ct-software-platform">DIY • OpenFrameworks • C++</div>
-
-                <div class="ct-rating">
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot filled"></div>
-                    <div class="ct-rating-dot"></div>
-                    <div class="ct-rating-dot"></div>
-                </div>
-
-                <div class="ct-device-verdict">
-                    Low-cost (~$200) DIY system originally built for ALS patient TEMPTONE in 2003.
-                </div>
-
-                <ul class="ct-device-notes">
-                    <li>Head-mounted glasses with IR LEDs</li>
-                    <li>Modified PS3 Eye camera</li>
-                    <li>Primarily for drawing, not general mouse control</li>
-                </ul>
-
-                <a href="https://github.com/eyewriter/eyewriter" target="_blank" class="ct-setup-btn"
-                    style="margin-top: 0.75rem;">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Alternative Wearable Options -->
-    <div style="margin-top: 2rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin-bottom: 1rem;">Alternative
-            Wearable Options (With Limitations)</h3>
-
-        <div class="ct-device-grid">
-            <!-- AdHawk MindLink -->
-            <div class="ct-device-card">
-                <div class="ct-device-header">
-                    <div class="ct-device-name">AdHawk MindLink</div>
-                    <div class="ct-device-category">Camera-free MEMS Technology</div>
-                </div>
-                <div class="ct-device-body">
-                    <div class="ct-device-price">
-                        <div>
-                            <div class="ct-price-usd">~$10,000</div>
-                        </div>
-                        <span class="ct-stage-badge" style="background: #fef3c7; color: #92400e;">⚠️ Calibration
-                            Required</span>
-                    </div>
-
-                    <div class="ct-device-verdict" style="background: #fef3c7; border-left: 3px solid #f59e0b;">
-                        <strong>Not suitable for ALS:</strong> Requires calibration routines (following targets with
-                        eyes). Company status uncertain (Google acquisition talks).
-                    </div>
-
-                    <ul class="ct-device-notes">
-                        <li>Highest sampling rate: 500 Hz</li>
-                        <li>Sub-1° accuracy</li>
-                        <li>ArUco marker screen tracking support</li>
-                    </ul>
-
-                    <div class="ct-india-badge">
-                        India: Direct contact required • adhawkmicrosystems.com
-                    </div>
-                </div>
-            </div>
-
-            <!-- EyeControl Israel -->
-            <div class="ct-device-card">
-                <div class="ct-device-header">
-                    <div class="ct-device-name">EyeControl (Israel)</div>
-                    <div class="ct-device-category">Screen-Free Communication</div>
-                </div>
-                <div class="ct-device-body">
-                    <div class="ct-device-price">
-                        <div>
-                            <div class="ct-price-usd">Few hundred dollars</div>
-                            <div class="ct-price-inr">(Target price)</div>
-                        </div>
-                        <span class="ct-stage-badge">Emerging</span>
-                    </div>
-
-                    <div class="ct-device-verdict">
-                        Innovative screen-free approach using bone conduction audio. Does NOT provide Windows mouse
-                        control.
-                    </div>
-
-                    <ul class="ct-device-notes">
-                        <li>Glasses-mounted IR camera + smartphone app</li>
-                        <li>Bone conduction audio for communication</li>
-                        <li>No screen required</li>
-                    </ul>
-
-                    <div class="ct-india-badge">
-                        Website: <a href="https://eyecontrol.co.il" target="_blank"
-                            style="color: #0077b6;">eyecontrol.co.il</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Academic Research -->
-    <div style="margin-top: 2rem; background: var(--ct-bg-alt); border-radius: 12px; padding: 1.5rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin: 0 0 1rem;">Academic Research
-            & Future Technologies</h3>
-
-        <div style="display: grid; gap: 1rem;">
-            <!-- Google SpeakFaster -->
-            <div style="background: white; border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem;">
-                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">
-                    Google/Nature Communications SpeakFaster (December 2024)</h4>
-                <p style="margin: 0; font-size: 0.85rem; color: var(--ct-text); line-height: 1.6;">
-                    LLM-powered text entry achieving <strong>29-60% typing speed improvement</strong> over baseline
-                    predictive keyboards. Works with existing Tobii hardware as software enhancement. Collaboration
-                    between Google Research and Team Gleason Foundation.
-                </p>
-            </div>
-
-            <!-- IEEE Study -->
-            <div style="background: white; border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem;">
-                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">IEEE
-                    Wearable Gaze-Based Communication Study (2024)</h4>
-                <p style="margin: 0; font-size: 0.85rem; color: var(--ct-text); line-height: 1.6;">
-                    See-through head-mounted display with integrated gaze estimation enabling communication
-                    <strong>without temporal, spatial, or physical restrictions</strong>—representing the type of system
-                    that could eventually replace screen-based trackers.
-                </p>
-            </div>
-
-            <!-- Northwestern -->
-            <div style="background: white; border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem;">
-                <h4 style="margin: 0 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">
-                    Northwestern University/Shirley Ryan AbilityLab</h4>
-                <p style="margin: 0; font-size: 0.85rem; color: var(--ct-text); line-height: 1.6;">
-                    Ongoing research on eye gaze characterization for assistive device control, including addressing the
-                    "Midas touch problem" (differentiating gaze for perception vs. interface operation). Study included
-                    ALS participants.
-                </p>
-            </div>
-        </div>
-
-        <h4 style="margin: 1.5rem 0 0.75rem; font-size: 0.95rem; font-weight: 600; color: var(--ct-primary);">Emerging
-            Technologies (12-36 Month Horizon)</h4>
-        <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: var(--ct-text); line-height: 1.7;">
-            <li><strong>GazeTrak acoustic sensing:</strong> Power-efficient alternative using sound instead of cameras
-            </li>
-            <li><strong>BlinkWise radio-wave tracking:</strong> University of Pennsylvania project for ultra-low-power
-                eye tracking</li>
-            <li><strong>ElectraSight hybrid EOG:</strong> Non-invasive smart glasses with onboard processing</li>
-            <li><strong>EMG-based blink control glasses:</strong> Published in Biomedical Signal Processing 2023, tested
-                with ALS patients</li>
-        </ul>
-    </div>
-
-    <!-- Critical Note -->
-    <div class="ct-bci-note" style="margin-top: 1.5rem;">
-        <h4>Important: Screen-Mounted Devices Remain the Proven Standard</h4>
-        <p>For most ALS patients, <strong>screen-mounted devices like Tobii 4C/5 + OptiKey</strong> (covered above)
-            remain significantly easier to deploy, more affordable (₹25,000-40,000 vs. ₹5.7 Lakh+), and proven in the
-            ALS community. Wearable glasses solutions require technical expertise and are primarily for specific use
-            cases where mobility is essential.</p>
-    </div>
+    <div class="ct-device-grid" id="headTrackingDevices"></div>
 </section>
 
-<!-- BCI Section -->
+<!-- Free Software Section -->
+<section id="free-software" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Free & Open Source Software</h2>
+    </div>
+    <p class="ct-section-desc">Free tools to reduce costs for ALS communication.</p>
+
+    <div class="ct-software-grid" id="freeSoftware"></div>
+</section>
+
+<!-- Mobile Apps Section -->
+<section id="mobile-apps" class="ct-section">
+    <div class="ct-section-header">
+        <h2>Mobile Apps</h2>
+    </div>
+    <p class="ct-section-desc">Smartphone and tablet apps for communication.</p>
+
+    <div class="ct-software-grid" id="mobileApps"></div>
+</section>
+
+
+
+<!-- BCI Section --><!-- BCI Section -->
 <section id="bci" class="ct-section">
     <div class="ct-section-header">
         <h2>Brain-Computer Interfaces (BCIs)</h2>
@@ -1343,7 +990,7 @@
                     <li>Windows 10 (64-bit) — Note: Core Software not compatible with Windows 11</li>
                     <li>Processor: Intel i3 or higher</li>
                     <li>RAM: 8 GB or more</li>
-                    <li>USB 3.0 port</li>
+
                 </ul>
             </div>
 
@@ -1355,9 +1002,8 @@
                 <div class="ct-setup-step-content">
                     <ul>
                         <li>Stick magnetic strip to bottom center of monitor</li>
-                        <li>Attach Tobii 4C to the magnetic strip</li>
+                        <li>Attach Tobii 4C to the magnetic strip or use double sided tape</li>
                         <li>Plug into USB 3.0 port</li>
-                        <li>Red lights indicate powered on</li>
                     </ul>
                 </div>
             </div>
@@ -1483,15 +1129,38 @@
                     <li>Windows 10 or 11 (64-bit, version 1709+)</li>
                     <li>Processor: Intel i3 or higher</li>
                     <li>RAM: 8 GB or more</li>
-                    <li>USB 3.0 port (USB-A)</li>
+
                 </ul>
             </div>
 
             <!-- PATH A: OptiKey -->
             <div
-                style="border: 1px solid var(--ct-border); border-radius: 8px; padding: 1rem; margin: 1.5rem 0; background: var(--ct-bg-alt);">
-                <h4 style="margin: 0 0 1rem; color: var(--ct-primary);">Path A: OptiKey Setup (Recommended)</h4>
+                style="border: 2px solid #0077b6; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+                <h4 style="margin: 0 0 0.5rem; color: var(--ct-primary); font-size: 1.1rem;">✅ Path A: OptiKey Setup
+                    (Recommended & Verified Working)</h4>
+                <p
+                    style="margin: 0 0 1.25rem; font-size: 0.85rem; color: #0369a1; background: #e0f2fe; padding: 0.5rem 0.75rem; border-radius: 6px; border-left: 3px solid #0077b6;">
+                    <strong>Community Verified:</strong> This setup is tested and working for ALS patients. The Tobii
+                    Eye Tracker 5 does NOT officially support Windows Eye Control, but works perfectly with OptiKey Pro
+                    Classic v3.
+                </p>
 
+                <!-- Important Compatibility Note -->
+                <div
+                    style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 1rem; margin-bottom: 1.25rem;">
+                    <h5 style="margin: 0 0 0.5rem; color: #92400e; font-size: 0.9rem;">⚠️ Critical Compatibility Notes
+                    </h5>
+                    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; color: #78350f;">
+                        <li><strong>OptiKey v4 does NOT support Tobii Eye Tracker 5</strong> — You must use OptiKey
+                            Classic (v3)</li>
+                        <li><strong>Windows Eye Control is NOT compatible</strong> with Eye Tracker 5 by design (Tobii
+                            official policy)</li>
+                        <li>For Windows Eye Control, you need Tobii 4C (discontinued) or Tobii Dynavox PCEye (expensive)
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Step 1: Hardware -->
                 <div class="ct-setup-step">
                     <div class="ct-setup-step-header">
                         <div class="ct-setup-step-num">1</div>
@@ -1499,76 +1168,228 @@
                     </div>
                     <div class="ct-setup-step-content">
                         <ul>
-                            <li>Use Flex Mount at bottom center of monitor</li>
-                            <li>Plug into USB 3.0 port</li>
-                            <li>Keep plugged in for all steps</li>
+                            <li>Attach the Flex Mount at bottom center of your monitor</li>
+                            <li>Connect Eye Tracker 5 to <strong>USB 3.0 port</strong> (USB-A)</li>
+                            <li>Purple LEDs should light up when connected</li>
+                            <li>Position yourself 45-95 cm from the tracker for optimal range</li>
+                            <li>Keep the device plugged in for all remaining steps</li>
                         </ul>
                     </div>
                 </div>
 
+                <!-- Step 2: Install Official Driver -->
                 <div class="ct-setup-step">
                     <div class="ct-setup-step-header">
                         <div class="ct-setup-step-num">2</div>
-                        <div class="ct-setup-step-title">Install Tobii Experience</div>
+                        <div class="ct-setup-step-title">Install Official Tobii Driver</div>
                     </div>
                     <div class="ct-setup-step-content">
                         <ul>
-                            <li>Go to: <a href="https://gaming.tobii.com/getstarted/"
-                                    target="_blank">gaming.tobii.com/getstarted</a></li>
-                            <li>Download "Tobii Experience for Eye Tracker 5"</li>
-                            <li>Run installer as Administrator</li>
-                            <li>Wait 5-10 min for app to install from Microsoft Store</li>
-                            <li>Or install from: <a href="https://apps.microsoft.com/detail/9NWRCZ6K7PBW"
-                                    target="_blank">Microsoft Store</a></li>
+                            <li>Go to: <a href="https://gaming.tobii.com/getstarted/" target="_blank"
+                                    style="color: #0077b6; font-weight: 600;">gaming.tobii.com/getstarted</a></li>
+                            <li>Select <strong>"Tobii Eye Tracker 5"</strong> from the dropdown</li>
+                            <li>Click <strong>"DOWNLOAD DRIVER"</strong> button</li>
+                            <li>This downloads: <code
+                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">Tobii.EyeTracker5.Offline.Installer_4.183.0.30025</code>
+                            </li>
+                            <li>Run installer as <strong>Administrator</strong></li>
+                            <li>Restart your computer after installation</li>
                         </ul>
+                        <div style="margin-top: 1rem; text-align: center;">
+                            <img src="/static/images/tobii5_official_driver.png"
+                                alt="Tobii Official Driver Download Page"
+                                style="width: 100%; max-width: 550px; border-radius: 8px; border: 1px solid var(--ct-border); cursor: pointer; box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);"
+                                onclick="window.open(this.src, '_blank')">
+                            <p style="font-size: 0.8rem; color: var(--ct-secondary); margin: 0.5rem 0 0;">
+                                Select "Tobii Eye Tracker 5" and download the official driver
+                            </p>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Step 3: Install Tobii Experience App -->
                 <div class="ct-setup-step">
                     <div class="ct-setup-step-header">
                         <div class="ct-setup-step-num">3</div>
-                        <div class="ct-setup-step-title">Configure & Calibrate</div>
+                        <div class="ct-setup-step-title">Install Tobii Experience App</div>
                     </div>
                     <div class="ct-setup-step-content">
                         <ul>
-                            <li>Launch Tobii Experience</li>
-                            <li>Create profile → Display Setup → Calibration</li>
-                            <li>Enable auto-start in Windows Settings</li>
+                            <li>The driver installation will prompt you to install <strong>Tobii Experience app</strong>
+                                from Microsoft Store</li>
+                            <li>Or install directly from: <a href="https://apps.microsoft.com/detail/9NWRCZ6K7PBW"
+                                    target="_blank" style="color: #0077b6;">Microsoft Store - Tobii Experience</a></li>
+                            <li>Wait 5-10 minutes for the app to fully install</li>
+                            <li>Current version: <code
+                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">1.69.32600.0</code>
+                                (as of Dec 2024)</li>
                         </ul>
+                        <div style="margin-top: 1rem; text-align: center;">
+                            <img src="/static/images/tobii_experience_app.png" alt="Tobii Experience App"
+                                style="width: 100%; max-width: 350px; border-radius: 8px; border: 1px solid var(--ct-border); cursor: pointer; box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);"
+                                onclick="window.open(this.src, '_blank')">
+                            <p style="font-size: 0.8rem; color: var(--ct-secondary); margin: 0.5rem 0 0;">
+                                Tobii Experience app version 1.69.32600.0 for calibration
+                            </p>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Step 4: Calibrate in Tobii Experience -->
                 <div class="ct-setup-step">
                     <div class="ct-setup-step-header">
                         <div class="ct-setup-step-num">4</div>
-                        <div class="ct-setup-step-title">Verify Services</div>
+                        <div class="ct-setup-step-title">Configure & Calibrate in Tobii Experience</div>
                     </div>
                     <div class="ct-setup-step-content">
                         <ul>
-                            <li>Press <code>Win + R</code>, type <code>services.msc</code></li>
-                            <li>Tobii Eye Tracker Generic Service → Running</li>
-                            <li>Tobii Runtime Service → Running</li>
-                            <li>Tobii Service → Running</li>
+                            <li>Launch <strong>Tobii Experience</strong> from Start Menu</li>
+                            <li>Create a user profile for the PALS</li>
+                            <li>Complete <strong>Display Setup</strong> — align the tracker position on screen</li>
+                            <li>Run <strong>Calibration</strong> — follow the dots with your eyes</li>
+                            <li>Test tracking: Eye icon should appear when looking at screen</li>
+                            <li>Enable auto-start: Settings → Startup → Enable "Start with Windows"</li>
                         </ul>
+                        <p
+                            style="margin: 0.75rem 0 0; padding: 0.5rem 0.75rem; background: #e0f2fe; border-radius: 6px; font-size: 0.85rem; color: #0369a1;">
+                            <strong>Tip:</strong> Calibrate in both light and dark room conditions for best results
+                            across different times of day.
+                        </p>
                     </div>
                 </div>
 
+                <!-- Step 5: Verify Services & Installation -->
                 <div class="ct-setup-step">
                     <div class="ct-setup-step-header">
                         <div class="ct-setup-step-num">5</div>
-                        <div class="ct-setup-step-title">Install OptiKey Pro</div>
+                        <div class="ct-setup-step-title">Verify Services & Installation</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Check that all required services are
+                            running:</p>
+                        <ul>
+                            <li>Press <code
+                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">Win + R</code>,
+                                type <code
+                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">services.msc</code>,
+                                press Enter</li>
+                            <li>Find these services and ensure all show <strong>"Running"</strong>:
+                                <ul style="margin-top: 0.25rem;">
+                                    <li>Tobii Eye Tracker Generic Service</li>
+                                    <li>Tobii Runtime Service</li>
+                                    <li>Tobii Service</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p style="font-size: 0.85rem; margin: 0.75rem 0 0.5rem;">Verify installed apps (Settings → Apps
+                            & Features → search "Tobii"):</p>
+                        <div style="margin-top: 0.75rem; text-align: center;">
+                            <img src="/static/images/tobii5_installed_apps.png" alt="Tobii Installed Apps and Services"
+                                style="width: 100%; max-width: 550px; border-radius: 8px; border: 1px solid var(--ct-border); cursor: pointer; box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);"
+                                onclick="window.open(this.src, '_blank')">
+                            <p style="font-size: 0.8rem; color: var(--ct-secondary); margin: 0.5rem 0 0;">
+                                Required: Tobii Experience (app), Tobii Experience Software, and Device Drivers
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Install OptiKey Pro Classic -->
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">6</div>
+                        <div class="ct-setup-step-title">Install OptiKey Pro Classic (v3.2.5)</div>
+                    </div>
+                    <div class="ct-setup-step-content">
+                        <div
+                            style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 6px; padding: 0.75rem; margin-bottom: 0.75rem;">
+                            <p style="margin: 0; font-size: 0.85rem; color: #92400e;">
+                                <strong>⚠️ Important:</strong> You MUST download <strong>OptiKey Classic (v3)</strong>,
+                                NOT OptiKey v4. Version 4 does NOT support Tobii Eye Tracker 5!
+                            </p>
+                        </div>
+                        <ul>
+                            <li>Go to: <a href="https://optikey.org/help/versions" target="_blank"
+                                    style="color: #0077b6; font-weight: 600;">optikey.org/help/versions</a></li>
+                            <li>Scroll to <strong>"OptiKey Classic (V3)"</strong> section at the bottom</li>
+                            <li>Click <strong>"Download OptiKey Pro Classic (v3.2.5)"</strong></li>
+                            <li>Or direct download: <a
+                                    href="https://github.com/OptiKey/OptiKey/releases/download/v3.2.5/OptiKeySetup-3.2.5-Pro.exe"
+                                    target="_blank" style="color: #0077b6;">OptiKeySetup-3.2.5-Pro.exe</a></li>
+                            <li>Run installer as <strong>Administrator</strong></li>
+                        </ul>
+                        <div
+                            style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                            <div style="text-align: center;">
+                                <img src="/static/images/optikey_versions_page.png" alt="OptiKey Versions Page"
+                                    style="width: 100%; max-width: 280px; border-radius: 8px; border: 1px solid var(--ct-border); cursor: pointer; box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);"
+                                    onclick="window.open(this.src, '_blank')">
+                                <p style="font-size: 0.75rem; color: var(--ct-secondary); margin: 0.5rem 0 0;">
+                                    OptiKey versions page — look for Classic (V3)
+                                </p>
+                            </div>
+                            <div style="text-align: center;">
+                                <img src="/static/images/optikey_classic_download.png"
+                                    alt="OptiKey Classic Download Section"
+                                    style="width: 100%; max-width: 280px; border-radius: 8px; border: 1px solid var(--ct-border); cursor: pointer; box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);"
+                                    onclick="window.open(this.src, '_blank')">
+                                <p style="font-size: 0.75rem; color: var(--ct-secondary); margin: 0.5rem 0 0;">
+                                    Download "OptiKey Pro Classic (v3.2.5)"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Configure OptiKey -->
+                <div class="ct-setup-step">
+                    <div class="ct-setup-step-header">
+                        <div class="ct-setup-step-num">7</div>
+                        <div class="ct-setup-step-title">Configure OptiKey for Tobii Eye Tracker 5</div>
                     </div>
                     <div class="ct-setup-step-content">
                         <ul>
-                            <li>Download: <a
-                                    href="https://github.com/OptiKey/OptiKey/releases/download/v3.2.5/OptiKeySetup-3.2.5-Pro.exe"
-                                    target="_blank">OptiKey Pro Classic v3.2.5</a></li>
-                            <li>Run installer as Administrator</li>
-                            <li>Open OptiKey → Menu → Settings</li>
-                            <li>Pointing & Selecting → Source → "Tobii EyeX"</li>
-                            <li>Menu → Management → Calibration</li>
+                            <li>Launch <strong>OptiKey Pro</strong> from Start Menu</li>
+                            <li>Click the <strong>Menu</strong> icon (hamburger menu at top-left)</li>
+                            <li>Go to <strong>Settings</strong></li>
+                            <li>Navigate to <strong>Pointing & Selecting</strong> tab</li>
+                            <li>Set <strong>Source</strong> to <strong>"Tobii EyeX"</strong> (this works for Eye Tracker
+                                5)</li>
+                            <li>Go to <strong>Management</strong> tab → Click <strong>Calibration</strong></li>
+                            <li>Complete OptiKey's own calibration process</li>
                         </ul>
+                        <div
+                            style="margin-top: 1rem; text-align: center; background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%); padding: 1.25rem; border-radius: 10px; border: 1px solid #93c5fd;">
+                            <img src="/static/images/tobii_optikey_setup.jpg"
+                                alt="OptiKey Pro Working with Tobii Eye Tracker 5"
+                                style="width: 100%; max-width: 500px; border-radius: 8px; border: 2px solid #60a5fa; margin-bottom: 0.75rem; cursor: pointer; box-shadow: 0 6px 20px rgb(0 0 0 / 0.2);"
+                                onclick="window.open(this.src, '_blank')">
+                            <p style="font-size: 0.9rem; color: #1e40af; margin: 0; font-weight: 600;">
+                                ✅ OptiKey Pro Classic v3.2.5 working with Tobii Eye Tracker 5
+                            </p>
+                            <p style="font-size: 0.8rem; color: #3b82f6; margin: 0.25rem 0 0;">
+                                This is the verified working setup for ALS communication
+                            </p>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Summary Box -->
+                <div
+                    style="background: #dcfce7; border: 1px solid #22c55e; border-radius: 8px; padding: 1rem; margin-top: 1.25rem;">
+                    <h5 style="margin: 0 0 0.5rem; color: #166534; font-size: 0.95rem;">✅ What You Should Have Installed
+                    </h5>
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem; color: #15803d;">
+                        <div><strong>Driver:</strong> Tobii.EyeTracker5 v4.183.0.30025</div>
+                        <div><strong>App:</strong> Tobii Experience v1.69.x</div>
+                        <div><strong>Software:</strong> OptiKey Pro Classic v3.2.5</div>
+                        <div><strong>Source Setting:</strong> "Tobii EyeX"</div>
+                    </div>
+                    <p style="margin: 0.75rem 0 0; font-size: 0.8rem; color: #166534;">
+                        <strong>Result:</strong> Full eye tracking control of keyboard, mouse, and speech output through
+                        OptiKey!
+                    </p>
                 </div>
             </div>
 
@@ -1744,14 +1565,19 @@
             <!-- Download Links -->
             <div class="ct-download-box">
                 <h4>Download Links</h4>
-                <a href="https://gaming.tobii.com/getstarted/" target="_blank">Tobii Experience (Official)</a>
-                <a href="https://apps.microsoft.com/detail/9NWRCZ6K7PBW" target="_blank">Tobii Experience (Microsoft
+                <p style="font-size: 0.8rem; color: var(--ct-secondary); margin: 0 0 0.75rem;">Path A (Recommended):</p>
+                <a href="https://gaming.tobii.com/getstarted/" target="_blank">Tobii Official Driver
+                    (v4.183.0.30025)</a>
+                <a href="https://apps.microsoft.com/detail/9NWRCZ6K7PBW" target="_blank">Tobii Experience App (Microsoft
                     Store)</a>
+                <a href="https://optikey.org/help/versions" target="_blank" style="font-weight: 600;">OptiKey All
+                    Versions (Choose v3.2.5)</a>
                 <a href="https://github.com/OptiKey/OptiKey/releases/download/v3.2.5/OptiKeySetup-3.2.5-Pro.exe"
-                    target="_blank">OptiKey Pro Classic v3.2.5</a>
-                <a href="http://optikey.org/help/versions" target="_blank">OptiKey All Versions</a>
+                    target="_blank">OptiKey Pro Classic v3.2.5 (Direct Download)</a>
+                <p style="font-size: 0.8rem; color: var(--ct-secondary); margin: 0.75rem 0;">Path B (Experimental - NOT
+                    recommended):</p>
                 <a href="https://drive.google.com/u/1/uc?id=1hHW8f5ka0MdJjBU_A0_8JfUJ-XW71AtE&export=download"
-                    target="_blank">Beta Driver (Community)</a>
+                    target="_blank" style="color: #92400e;">Beta Driver v5.0.0.6035 (Community - Use at own risk)</a>
             </div>
         </div>
     </div>
@@ -1833,7 +1659,6 @@
                             <div class="ct-price-usd">$${device.price_usd.toLocaleString()}</div>
                             <div class="ct-price-inr">${device.price_inr}</div>
                         </div>
-                        ${renderStageBadge(device.stage)}
                     </div>
                     
                     <div class="ct-rating">
@@ -1848,8 +1673,8 @@
                         ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
                     </ul>
                     
-                    ${device.name.includes('4C') ? '<button class="ct-setup-btn" onclick="openModal(\'tobii4c\')">Setup Guide</button>' : ''}
-                    ${device.name.includes('Tracker 5') ? '<button class="ct-setup-btn" onclick="openModal(\'tobii5\')">Setup Guide</button>' : ''}
+                    ${device.name.includes('4C') ? '<a href="/eye-tracker-setup?tab=tobii4c" class="ct-setup-btn">Setup Guide</a>' : ''}
+                    ${device.name.includes('Tracker 5') ? '<a href="/eye-tracker-setup?tab=tobii5-optikey" class="ct-setup-btn">Setup Guide</a>' : ''}
                     
                     <div class="ct-india-badge">
                         India: ${device.india_access}
@@ -1867,32 +1692,32 @@
             <div class="ct-device-card ${device.recommended ? 'recommended' : ''}">
                 <div class="ct-device-header">
                     <div class="ct-device-name">${device.name}</div>
-                    <div class="ct-device-category">${device.category}</div>
+                    <div class="ct-device-category">${device.category || ''}</div>
                 </div>
                 <div class="ct-device-body">
-                    <div class="ct-device-price">
+                    ${device.price_usd ? `<div class="ct-device-price">
                         <div>
                             <div class="ct-price-usd">$${device.price_usd.toLocaleString()}</div>
-                            <div class="ct-price-inr">${device.price_inr}</div>
+                            <div class="ct-price-inr">${device.price_inr || ''}</div>
                         </div>
-                        ${renderStageBadge(device.stage)}
-                    </div>
+                        ${device.stage ? renderStageBadge(device.stage) : ''}
+                    </div>` : ''}
                     
-                    <div class="ct-rating">
+                    ${device.community_rating ? `<div class="ct-rating">
                         ${renderRatingDots(device.community_rating)}
-                    </div>
+                    </div>` : ''}
                     
-                    <div class="ct-device-verdict">
+                    ${device.community_verdict ? `<div class="ct-device-verdict">
                         ${device.community_verdict}
-                    </div>
+                    </div>` : ''}
                     
-                    <ul class="ct-device-notes">
+                    ${device.key_notes && device.key_notes.length ? `<ul class="ct-device-notes">
                         ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
-                    </ul>
+                    </ul>` : ''}
                     
-                    <div class="ct-india-badge">
+                    ${device.india_access ? `<div class="ct-india-badge">
                         India: ${device.india_access}
-                    </div>
+                    </div>` : ''}
                 </div>
             </div>
         `).join('');
@@ -1908,19 +1733,19 @@
                     ${sw.name}
                     <span class="ct-free-badge">Free</span>
                 </div>
-                <div class="ct-software-platform">${sw.platform}</div>
+                <div class="ct-software-platform">${sw.platform || ''}</div>
                 
-                <div class="ct-rating">
+                ${sw.community_rating ? `<div class="ct-rating">
                     ${renderRatingDots(sw.community_rating)}
-                </div>
+                </div>` : ''}
                 
-                <div class="ct-device-verdict">
+                ${sw.community_verdict ? `<div class="ct-device-verdict">
                     ${sw.community_verdict}
-                </div>
+                </div>` : ''}
                 
-                <ul class="ct-device-notes">
+                ${sw.features && sw.features.length ? `<ul class="ct-device-notes">
                     ${sw.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
-                </ul>
+                </ul>` : ''}
                 
                 ${sw.download ? `<a href="${sw.download}" target="_blank" class="ct-setup-btn" style="margin-top: 0.75rem;">Download</a>` : ''}
             </div>
@@ -1935,21 +1760,21 @@
             <div class="ct-software-card">
                 <div class="ct-software-name">
                     ${app.name}
-                    ${app.price === 'FREE' || app.price.includes('FREE') ? '<span class="ct-free-badge">Free</span>' : ''}
+                    ${app.price === 'FREE' || (app.price && app.price.includes('FREE')) ? '<span class="ct-free-badge">Free</span>' : ''}
                 </div>
-                <div class="ct-software-platform">${app.platform}</div>
+                <div class="ct-software-platform">${app.platform || ''}</div>
                 
-                <div class="ct-rating">
+                ${app.community_rating ? `<div class="ct-rating">
                     ${renderRatingDots(app.community_rating)}
-                </div>
+                </div>` : ''}
                 
-                <div class="ct-device-verdict">
+                ${app.community_verdict ? `<div class="ct-device-verdict">
                     ${app.community_verdict}
-                </div>
+                </div>` : ''}
                 
-                <ul class="ct-device-notes">
+                ${app.features && app.features.length ? `<ul class="ct-device-notes">
                     ${app.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
-                </ul>
+                </ul>` : ''}
             </div>
         `).join('');
     }
@@ -1959,26 +1784,19 @@
         const tools = techData.categories.low_tech.tools;
 
         container.innerHTML = tools.map(tool => `
-            <div class="ct-device-card ${tool.recommended ? 'recommended' : ''}">
-                <div class="ct-device-header">
-                    <div class="ct-device-name">${tool.name}</div>
+            <div class="ct-device-card ${tool.recommended ? 'recommended' : ''}" style="border-radius: 12px; overflow: hidden;">
+                <div class="ct-device-header" style="padding: 1rem 1.25rem; background: #f5f5f7;">
+                    <div class="ct-device-name" style="color: #000; font-size: 1rem; font-weight: 600;">${tool.name}</div>
+                    ${tool.community_verdict ? `<div style="font-size: 0.8rem; color: #000; margin-top: 0.25rem;">${tool.community_verdict}</div>` : ''}
                 </div>
-                <div class="ct-device-body">
-                    <div class="ct-device-price">
-                        <div class="ct-price-inr" style="font-size: 1.1rem; font-weight: 600;">${tool.price}</div>
-                    </div>
+                <div class="ct-device-body" style="padding: 1.25rem;">
+                    ${tool.description ? `<div style="font-size: 0.9rem; color: var(--ct-text); line-height: 1.6; margin-bottom: ${tool.why_essential ? '1rem' : '0'};">
+                        <strong style="color: var(--ct-primary);">How it works:</strong> ${tool.description}
+                    </div>` : ''}
                     
-                    <div class="ct-rating">
-                        ${renderRatingDots(tool.community_rating)}
-                    </div>
-                    
-                    <div class="ct-device-verdict">
-                        ${tool.community_verdict}
-                    </div>
-                    
-                    <p style="font-size: 0.85rem; color: var(--ct-secondary); margin: 0;">
-                        ${tool.description || ''}
-                    </p>
+                    ${tool.why_essential ? `<div style="background: #f5f5f7; border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--ct-text); line-height: 1.5;">
+                        <strong style="color: var(--ct-primary);">Why keep this:</strong> ${tool.why_essential}
+                    </div>` : ''}
                 </div>
             </div>
         `).join('');
@@ -2172,6 +1990,40 @@
         `).join('');
     }
 
-    document.addEventListener('DOMContentLoaded', loadTechData);
+    // Handle active tab highlighting
+    function handleTabHighlighting() {
+        const navLinks = document.querySelectorAll('.ct-nav-card');
+        const hash = window.location.hash;
+
+        // Remove active class from all links
+        navLinks.forEach(link => link.classList.remove('active'));
+
+        // If there's a hash, highlight the corresponding section link
+        if (hash) {
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === hash) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    }
+
+    // Update highlighting when hash changes
+    window.addEventListener('hashchange', handleTabHighlighting);
+
+    // Add click handlers to section links
+    document.addEventListener('DOMContentLoaded', () => {
+        loadTechData();
+        handleTabHighlighting();
+
+        // Handle clicks on section links
+        document.querySelectorAll('.ct-nav-card[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const navLinks = document.querySelectorAll('.ct-nav-card');
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
 </script>
 {% endblock %}

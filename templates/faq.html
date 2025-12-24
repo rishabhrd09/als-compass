@@ -2,167 +2,284 @@
 
 {% block title %}Frequently Asked Questions | ALS Caregiver's Compass{% endblock %}
 
-{% block content %}
+{% block extra_css %}
 <style>
-    /* Minimalist FAQ Styling - Claude-inspired */
-    .faq-container {
-        max-width: 800px;
+    /* CSS Variables - Professional Apple/Claude-inspired Design */
+    :root {
+        --ct-primary: #1d1d1f;
+        --ct-secondary: #6e6e73;
+        --ct-accent: #0071e3;
+        --ct-highlight: #c9a98c;
+        --ct-highlight-bg: #faf7f4;
+        --ct-bg: #ffffff;
+        --ct-bg-alt: #f5f5f7;
+        --ct-border: #d2d2d7;
+        --ct-text: #1d1d1f;
+        --ct-muted: #86868b;
+        --ct-hero-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%);
+    }
+
+    /* Hero Section - Light Sky Blue Theme (Matching Communication Technology) */
+    .faq-hero {
+        text-align: center;
+        padding: 4.5rem 1.5rem 3rem;
+        background:
+            var(--ct-hero-gradient),
+            url('/static/images/hero_bg_v2.png') center/cover no-repeat;
+        background-color: #f5f7fa;
+        color: var(--ct-primary);
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    .faq-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        pointer-events: none;
+    }
+
+    .faq-hero>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .faq-hero h1 {
+        font-size: 2.75rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.04em;
+        color: #1d1d1f;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .faq-hero p {
+        font-size: 1.125rem;
+        color: #424245;
+        max-width: 720px;
         margin: 0 auto;
-        padding: 3rem 1.5rem;
-        background: #faf9f6;
+        line-height: 1.6;
+        font-weight: 400;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="faq-hero">
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p>compilation of Common questions about ALS caregiving answered by experience pals and cals
+        </p>
+    </div>
+</section>
+
+<style>
+    /* Minimalist FAQ Styling - Matching Communication Technology */
+    .faq-container {
+        max-width: 900px;
+        margin: -2rem auto 0;
+        padding: 0 1.5rem 3rem;
+        background: transparent;
         min-height: 100vh;
+        position: relative;
+        z-index: 10;
     }
 
     .faq-header {
-        margin-bottom: 3rem;
-        border-bottom: 1px solid #e5e5e5;
-        padding-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
     }
 
     .faq-title {
         font-size: 2rem;
         font-weight: 600;
-        color: #1a1a1a;
+        color: #1A1A1A;
         margin: 0 0 0.5rem 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        letter-spacing: -0.02em;
     }
 
     .faq-subtitle {
         font-size: 1rem;
-        color: #666;
+        color: #6B6B6B;
         margin: 0;
         font-weight: 400;
+        font-family: 'Inter', system-ui, sans-serif;
     }
 
     .faq-disclaimer {
-        background: #fffbeb;
-        border: 1px solid #e5e5e5;
-        border-radius: 6px;
+        background: #FFFFFF;
+        border: 1px solid #E8E5E1;
+        border-radius: 8px;
         padding: 1rem 1.25rem;
         margin-bottom: 2rem;
-        font-size: 0.9rem;
-        color: #92400e;
+        font-size: 0.875rem;
+        color: #6B6B6B;
         line-height: 1.6;
+        font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .faq-disclaimer strong {
+        color: #1A1A1A;
     }
 
     .faq-search {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     .faq-search input {
         width: 100%;
         padding: 0.875rem 1rem;
-        border: 1px solid #e5e5e5;
-        border-radius: 6px;
-        font-size: 1rem;
-        background: #fff;
-        color: #1a1a1a;
+        border: 1px solid #E8E5E1;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        background: #FFFFFF;
+        color: #1A1A1A;
         outline: none;
-        transition: border-color 0.2s;
+        transition: border-color 0.15s;
+        font-family: 'Inter', system-ui, sans-serif;
     }
 
     .faq-search input:focus {
-        border-color: #666;
+        border-color: #1A1A1A;
     }
 
     .faq-search input::placeholder {
-        color: #999;
+        color: #9A9A9A;
     }
 
-    /* Category pills */
+    /* Category pills - Floating Glass Style (Matching Communication Technology) */
     .faq-categories {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-        margin-bottom: 2.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid #e5e5e5;
+        margin: 0 auto 2rem;
+        padding: 1rem;
+        max-width: 800px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-radius: 14px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        justify-content: center;
     }
 
     .category-pill {
-        padding: 0.5rem 1rem;
-        border: 1px solid #e5e5e5;
-        background: #fff;
-        color: #666;
-        border-radius: 20px;
+        padding: 0.6rem 1.1rem;
+        border: none;
+        background: transparent;
+        color: var(--ct-secondary);
+        border-radius: 10px;
         cursor: pointer;
         font-size: 0.875rem;
         font-weight: 500;
-        transition: all 0.2s;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+        letter-spacing: -0.01em;
     }
 
     .category-pill:hover {
-        border-color: #333;
-        color: #333;
+        background: rgba(201, 169, 140, 0.12);
+        color: #a88b70;
     }
 
     .category-pill.active {
-        background: #1a1a1a;
-        color: #fff;
-        border-color: #1a1a1a;
+        background: #c9a98c;
+        color: #FFFFFF;
+        box-shadow: 0 2px 8px rgba(201, 169, 140, 0.3);
     }
 
-    /* FAQ sections */
+    /* FAQ sections - each category as a distinct card */
     .faq-section {
-        margin-bottom: 3rem;
+        background: var(--ct-bg);
+        border: 1px solid var(--ct-border);
+        border-radius: 14px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .faq-section-title {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
         font-weight: 600;
-        color: #1a1a1a;
-        margin: 0 0 1.5rem 0;
+        color: var(--ct-primary);
+        margin: 0 0 1.25rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
         padding-bottom: 0.75rem;
-        border-bottom: 2px solid #1a1a1a;
-        display: inline-block;
+        border-bottom: 1px solid var(--ct-border);
     }
 
     .faq-item {
-        margin-bottom: 2.5rem;
-        padding-bottom: 2.5rem;
-        border-bottom: 1px solid #e5e5e5;
+        background: var(--ct-bg-alt);
+        border-radius: 8px;
+        margin-bottom: 0.625rem;
+        overflow: hidden;
+        transition: all 0.2s ease;
+    }
+
+    .faq-item:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .faq-item:last-child {
-        border-bottom: none;
         margin-bottom: 0;
-        padding-bottom: 0;
     }
 
     .faq-question {
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: 600;
-        color: #1a1a1a;
-        margin: 0 0 1rem 0;
+        color: var(--ct-primary);
+        margin: 0;
+        padding: 1.125rem 1.25rem;
         line-height: 1.5;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         gap: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+        transition: all 0.15s;
     }
 
     .faq-question:hover {
-        color: #333;
+        background: #F5F5F5;
+    }
+
+    .faq-item.open .faq-question {
+        background: #FFFFFF;
+        border-bottom: 1px solid #E8E5E1;
     }
 
     .faq-toggle {
-        color: #666;
-        font-size: 0.875rem;
+        color: var(--ct-muted);
+        font-size: 0.75rem;
         flex-shrink: 0;
         transition: transform 0.2s;
     }
 
     .faq-item.open .faq-toggle {
         transform: rotate(180deg);
+        color: var(--ct-accent);
     }
 
     .faq-answer {
-        font-size: 1rem;
-        color: #333;
-        line-height: 1.7;
-        margin: 0;
+        font-size: 0.925rem;
+        color: var(--ct-text);
+        line-height: 1.8;
+        padding: 1.5rem 1.5rem 1.25rem 1.5rem;
         display: none;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+        background: var(--ct-bg);
     }
 
     .faq-item.open .faq-answer {
@@ -170,80 +287,110 @@
     }
 
     .faq-answer p {
-        margin: 0 0 1rem 0;
+        margin: 0 0 1.25rem 0;
+        color: var(--ct-text);
     }
 
     .faq-answer p:last-child {
         margin-bottom: 0;
     }
 
+    .faq-answer h4 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--ct-primary);
+        margin: 1.5rem 0 0.75rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    }
+
+    .faq-answer h4:first-child {
+        margin-top: 0;
+    }
+
     .faq-answer strong {
-        color: #1a1a1a;
+        color: var(--ct-primary);
         font-weight: 600;
     }
 
     .faq-list {
-        margin: 1rem 0;
+        margin: 1rem 0 1.25rem 0;
         padding-left: 1.5rem;
     }
 
     .faq-list li {
-        margin-bottom: 0.5rem;
-        color: #333;
+        margin-bottom: 0.625rem;
+        color: var(--ct-text);
+        line-height: 1.7;
+    }
+
+    .faq-list li::marker {
+        color: var(--ct-secondary);
     }
 
     .faq-table {
         width: 100%;
         border-collapse: collapse;
-        margin: 1.5rem 0;
+        margin: 1.25rem 0;
+        font-size: 0.875rem;
+        background: var(--ct-bg-alt);
+        border-radius: 8px;
+        overflow: hidden;
     }
 
     .faq-table th,
     .faq-table td {
-        padding: 0.75rem;
+        padding: 0.75rem 1rem;
         text-align: left;
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid var(--ct-border);
     }
 
     .faq-table th {
         font-weight: 600;
-        color: #1a1a1a;
-        background: #f5f5f5;
+        color: var(--ct-primary);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+        background: var(--ct-bg-alt);
     }
 
     .faq-table td {
-        color: #333;
+        color: var(--ct-text);
+    }
+
+    .faq-table tr:last-child td {
+        border-bottom: none;
     }
 
     .faq-note {
-        font-size: 0.95rem;
-        color: #666;
-        font-style: italic;
-        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #9A9A9A;
+        margin-top: 0.75rem;
     }
 
     /* Conditional guidance - subtle styling */
     .conditional-guidance {
-        background: #f8f9fa;
-        border-left: 3px solid #666;
-        padding: 1rem 1.25rem;
-        margin: 1.25rem 0;
-        border-radius: 0 4px 4px 0;
+        background: #F8F7F6;
+        border-radius: 6px;
+        padding: 1rem;
+        margin: 1rem 0;
     }
 
     .conditional-guidance h4 {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        color: #1a1a1a;
-        margin: 0 0 0.75rem 0;
+        color: #6B6B6B;
+        margin: 0 0 0.625rem 0;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.05em;
     }
 
     .conditional-item {
-        font-size: 0.95rem;
-        margin-bottom: 0.5rem;
-        color: #333;
+        font-size: 0.875rem;
+        margin-bottom: 0.375rem;
+        color: #4A4A4A;
     }
 
     .conditional-item:last-child {
@@ -252,151 +399,123 @@
 
     .if-label {
         font-weight: 600;
-        color: #1a1a1a;
+        color: #1A1A1A;
+        font-size: 0.75rem;
     }
 
     .then-label {
-        color: #666;
+        color: #9A9A9A;
+        font-size: 0.75rem;
     }
 
-    /* Warning box - subtle */
+    /* Warning box - subtle monochrome */
     .warning-box {
-        background: #fef2f2;
-        border-left: 3px solid #dc2626;
-        padding: 1rem 1.25rem;
-        margin: 1.25rem 0;
-        border-radius: 0 4px 4px 0;
-        font-size: 0.95rem;
-        color: #7f1d1d;
+        background: #F8F7F6;
+        border-left: 2px solid #6B6B6B;
+        padding: 0.875rem 1rem;
+        margin: 1rem 0;
+        border-radius: 0 6px 6px 0;
+        font-size: 0.875rem;
+        color: #4A4A4A;
     }
 
-    /* Recommendation - subtle */
+    .warning-box strong {
+        color: #1A1A1A;
+    }
+
+    /* Recommendation - subtle monochrome */
     .recommendation-box {
-        background: #f0fdf4;
-        border-left: 3px solid #16a34a;
-        padding: 1rem 1.25rem;
-        margin: 1.25rem 0;
-        border-radius: 0 4px 4px 0;
-        font-size: 0.95rem;
-        color: #14532d;
+        background: #F8F7F6;
+        border-left: 2px solid #9A9A9A;
+        padding: 0.875rem 1rem;
+        margin: 1rem 0;
+        border-radius: 0 6px 6px 0;
+        font-size: 0.875rem;
+        color: #4A4A4A;
+    }
+
+    .recommendation-box strong {
+        color: #1A1A1A;
     }
 
     /* Community perspectives */
     .perspectives-box {
-        background: #faf9f6;
-        border: 1px solid #e5e5e5;
+        background: #F8F7F6;
         border-radius: 6px;
-        padding: 1rem 1.25rem;
-        margin: 1.25rem 0;
+        padding: 1rem;
+        margin: 1rem 0;
     }
 
     .perspectives-box h4 {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        color: #666;
-        margin: 0 0 0.75rem 0;
+        color: #6B6B6B;
+        margin: 0 0 0.625rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
     .perspective-quote {
         font-style: italic;
-        color: #555;
-        margin-bottom: 0.75rem;
-        padding-left: 1rem;
-        border-left: 2px solid #ddd;
-        font-size: 0.95rem;
+        color: #6B6B6B;
+        margin-bottom: 0.5rem;
+        padding-left: 0.75rem;
+        border-left: 2px solid #E8E5E1;
+        font-size: 0.875rem;
     }
 
     .perspective-quote:last-child {
         margin-bottom: 0;
     }
 
-    /* Evidence tags - minimal */
+    /* Evidence tags - minimal monochrome */
     .evidence-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 1.25rem;
-        padding-top: 1rem;
-        border-top: 1px solid #e5e5e5;
+        gap: 0.375rem;
+        margin-top: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #E8E5E1;
     }
 
     .evidence-tag {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.625rem;
-        border-radius: 3px;
-        font-weight: 500;
-    }
-
-    .evidence-tag.clinical {
-        background: #e5e5e5;
-        color: #333;
-    }
-
-    .evidence-tag.community {
-        background: #e5e5e5;
-        color: #333;
-    }
-
-    .evidence-tag.caution {
-        background: #fef2f2;
-        color: #7f1d1d;
-    }
-
-    /* Quick reference */
-    .quick-reference {
-        background: #fff;
-        border: 1px solid #e5e5e5;
-        border-radius: 6px;
-        padding: 1.5rem;
-        margin-top: 3rem;
-    }
-
-    .quick-reference h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #dc2626;
-        margin: 0 0 1.25rem 0;
-    }
-
-    .emergency-item {
-        background: #fef2f2;
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
         border-radius: 4px;
-        padding: 1rem;
-        margin-bottom: 0.75rem;
+        font-weight: 500;
+        background: #F0F0F0;
+        color: #6B6B6B;
     }
 
-    .emergency-item:last-child {
-        margin-bottom: 0;
-    }
-
-    .emergency-item h4 {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #991b1b;
-        margin: 0 0 0.5rem 0;
-    }
-
-    .emergency-item p {
-        font-size: 0.9rem;
-        color: #7f1d1d;
-        margin: 0;
-        line-height: 1.6;
-    }
-
-    /* Key principles */
+    /* Key principles - prominent standalone card */
     .key-principles {
-        background: #faf9f6;
-        border: 1px solid #e5e5e5;
-        border-radius: 6px;
-        padding: 1.5rem;
-        margin-top: 2rem;
+        background: #FFFFFF;
+        border: 1px solid #1A1A1A;
+        border-radius: 8px;
+        padding: 1.75rem;
+        margin-top: 3rem;
+        position: relative;
+    }
+
+    .key-principles::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #1A1A1A;
+        border-radius: 8px 0 0 8px;
     }
 
     .key-principles h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #1a1a1a;
-        margin: 0 0 1rem 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1A1A1A;
+        margin: 0 0 1.25rem 0;
+        font-family: 'Inter', system-ui, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
     }
 
     .key-principles ul {
@@ -405,9 +524,14 @@
     }
 
     .key-principles li {
-        margin-bottom: 0.5rem;
-        color: #333;
-        font-size: 0.95rem;
+        margin-bottom: 0.625rem;
+        color: #1A1A1A;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .key-principles li::marker {
+        color: #1A1A1A;
     }
 
     .key-principles li:last-child {
@@ -424,7 +548,8 @@
         }
 
         .faq-question {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
+            padding: 0.875rem 1rem;
         }
 
         .category-pill {
@@ -435,16 +560,16 @@
 </style>
 
 <div class="faq-container">
-    <div class="faq-header">
+    <!-- <div class="faq-header">
         <h1 class="faq-title">Frequently Asked Questions</h1>
         <p class="faq-subtitle">Common questions about ALS caregiving from the community</p>
-    </div>
+    </div> -->
 
-    <div class="faq-disclaimer">
+    <!-- <div class="faq-disclaimer">
         <strong>Medical Disclaimer:</strong> This FAQ is compiled from experiences shared by caregivers and patients in
         the ALS Care & Support India community. It is for educational purposes only and does NOT constitute medical
         advice. Always consult your treating physician before making any medical decisions.
-    </div>
+    </div> -->
 
     <div class="faq-search">
         <input type="text" id="faqSearch" placeholder="Search FAQs...">
@@ -458,11 +583,6 @@
         <!-- Dynamic FAQ content loaded here -->
     </div>
 
-
-    <div id="quickReference">
-        <!-- Quick reference loaded dynamically -->
-    </div>
-
     <div id="keyPrinciples">
         <!-- Key principles loaded dynamically -->
     </div>
@@ -471,6 +591,27 @@
 <script>
     let faqData = null;
     let currentCategory = 'all';
+
+    // Function to strip emojis from content
+    function stripEmojis(text) {
+        // Remove common emojis used in FAQs
+        return text
+            .replace(/[\u{1F600}-\u{1F64F}]/gu, '') // Emoticons
+            .replace(/[\u{1F300}-\u{1F5FF}]/gu, '') // Misc symbols and pictographs
+            .replace(/[\u{1F680}-\u{1F6FF}]/gu, '') // Transport and map symbols
+            .replace(/[\u{1F700}-\u{1F77F}]/gu, '') // Alchemical symbols
+            .replace(/[\u{1F780}-\u{1F7FF}]/gu, '') // Geometric shapes extended
+            .replace(/[\u{1F800}-\u{1F8FF}]/gu, '') // Supplemental arrows
+            .replace(/[\u{1F900}-\u{1F9FF}]/gu, '') // Supplemental symbols and pictographs
+            .replace(/[\u{1FA00}-\u{1FA6F}]/gu, '') // Chess symbols
+            .replace(/[\u{1FA70}-\u{1FAFF}]/gu, '') // Symbols and pictographs extended-A
+            .replace(/[\u{2600}-\u{26FF}]/gu, '')   // Misc symbols
+            .replace(/[\u{2700}-\u{27BF}]/gu, '')   // Dingbats
+            .replace(/[\u{2300}-\u{23FF}]/gu, '')   // Misc technical
+            .replace(/✅|❌|⚠️|⚠|🚨|📋|📝|💡|🔬|📊|💬|🇮🇳|🔀|✓/g, '') // Specific emojis
+            .replace(/\s+/g, ' ')  // Clean up extra whitespace
+            .trim();
+    }
 
     document.addEventListener('DOMContentLoaded', async function () {
         await loadFAQData();
@@ -483,7 +624,6 @@
             faqData = await response.json();
             renderCategories();
             renderFAQ('all');
-            renderQuickReference();
             renderKeyPrinciples();
         } catch (error) {
             console.error('Error loading FAQ:', error);
@@ -544,14 +684,14 @@
             answerHtml += renderConditional(q.conditional);
         }
 
-        // Warning
+        // Warning - no emoji
         if (q.warning) {
-            answerHtml += `<div class="warning-box"><strong>⚠️ Warning:</strong> ${q.warning}</div>`;
+            answerHtml += `<div class="warning-box"><strong>Important:</strong> ${q.warning}</div>`;
         }
 
-        // Recommendation
+        // Recommendation - no emoji
         if (q.recommendation) {
-            answerHtml += `<div class="recommendation-box"><strong>💡 Pro Tip:</strong> ${q.recommendation}</div>`;
+            answerHtml += `<div class="recommendation-box"><strong>Tip:</strong> ${q.recommendation}</div>`;
         }
 
         // Perspectives
@@ -562,7 +702,7 @@
         </div>`;
         }
 
-        // Evidence
+        // Evidence - no emoji
         if (q.evidence && q.evidence.length > 0) {
             answerHtml += `<div class="evidence-tags">
             ${q.evidence.map(e => renderEvidenceTag(e)).join('')}
@@ -580,8 +720,11 @@
     }
 
     function formatAnswer(answer) {
+        // Strip emojis for clean appearance
+        let html = stripEmojis(answer);
+
         // Convert markdown-like formatting to HTML
-        let html = answer
+        html = html
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\n\n/g, '</p><p>')
             .replace(/• (.*?)(?=\n|$)/g, '<li>$1</li>');
@@ -615,14 +758,14 @@
 
     function renderEvidenceTag(type) {
         const tags = {
-            'clinically_proven': { class: 'clinical', label: '🔬 Clinically Proven' },
-            'community_observed': { class: 'community', label: '📊 Community Observed' },
-            'individual_experience': { class: 'community', label: '💡 Individual Experience' },
-            'caution_advised': { class: 'caution', label: '⚠️ Caution Advised' }
+            'clinically_proven': { label: 'Clinically Proven' },
+            'community_observed': { label: 'Community Observed' },
+            'individual_experience': { label: 'Individual Experience' },
+            'caution_advised': { label: 'Caution Advised' }
         };
 
-        const tag = tags[type] || { class: 'community', label: type };
-        return `<span class="evidence-tag ${tag.class}">${tag.label}</span>`;
+        const tag = tags[type] || { label: type };
+        return `<span class="evidence-tag">${tag.label}</span>`;
     }
 
     function toggleFaq(element) {
@@ -630,20 +773,12 @@
         item.classList.toggle('open');
     }
 
-    function renderQuickReference() {
-        if (!faqData.quick_reference) return;
-
-
-
-
-    }
-
     function renderKeyPrinciples() {
         if (!faqData.key_principles) return;
 
         const container = document.getElementById('keyPrinciples');
         let html = `<div class="key-principles">
-        <h3><strong> Key Principles from the Community </strong></h3>
+        <h3>Key Principles from the Community</h3>
         <ul>${faqData.key_principles.map(p => `<li>${p}</li>`).join('')}</ul>
     </div>`;
 
@@ -670,7 +805,7 @@
             // Show/hide sections based on visible items
             document.querySelectorAll('.faq-section').forEach(section => {
                 const visibleItems = section.querySelectorAll('.faq-item:not([style*="display: none"])').length;
-                section.style.display = visibleItems > 0 || section.id === 'featuredFaq' ? 'block' : 'none';
+                section.style.display = visibleItems > 0 ? 'block' : 'none';
             });
         });
     }

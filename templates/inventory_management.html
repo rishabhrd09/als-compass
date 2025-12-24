@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Home ICU Inventory Management - Coming Soon{% endblock %}
+
+{% block content %}
+<section style="min-height: 70vh; display: flex; align-items: center; justify-content: center; background: #FAFAF9;">
+    <div class="container" style="text-align: center; padding: 3rem 1.5rem;">
+        <div
+            style="background: #FFFFFF; border-radius: 16px; padding: 3rem 2.5rem; max-width: 560px; margin: 0 auto; border: 1px solid #E8E5E1;">
+
+            <h1
+                style="font-size: 1.75rem; font-weight: 600; color: #1A1A1A; margin: 0 0 0.75rem 0; letter-spacing: -0.02em; font-family: 'Inter', system-ui, sans-serif;">
+                Home ICU Inventory
+            </h1>
+
+            <span
+                style="display: inline-block; background: #FDF6F0; color: #C4704F; padding: 0.375rem 0.875rem; border-radius: 6px; font-weight: 500; font-size: 0.8rem; margin-bottom: 1.25rem; font-family: 'Inter', system-ui, sans-serif;">
+                Coming Soon
+            </span>
+
+            <p
+                style="color: #6B6B6B; line-height: 1.65; margin-bottom: 2rem; font-size: 0.95rem; font-family: 'Inter', system-ui, sans-serif;">
+                Track and manage all medical supplies, equipment, and consumables for your home ICU setup. Never run out
+                of essential items.
+            </p>
+
+            <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; text-align: left;">
+                <div>
+                    <p
+                        style="font-size: 0.75rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 500;">
+                        Features</p>
+                    <ul
+                        style="list-style: none; padding: 0; margin: 0; color: #4A4A4A; font-size: 0.85rem; line-height: 1.9;">
+                        <li style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span style="color: #C4704F; font-size: 0.6rem;">●</span>
+                            Login & Signup
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span style="color: #C4704F; font-size: 0.6rem;">●</span>
+                            Add & update items
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span style="color: #C4704F; font-size: 0.6rem;">●</span>
+                            Low stock alerts
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p
+                        style="font-size: 0.75rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 500;">
+                        &nbsp;</p>
+                    <ul
+                        style="list-style: none; padding: 0; margin: 0; color: #4A4A4A; font-size: 0.85rem; line-height: 1.9;">
+                        <li style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span style="color: #C4704F; font-size: 0.6rem;">●</span>
+                            Expiry tracking
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span style="color: #C4704F; font-size: 0.6rem;">●</span>
+                            Category management
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span style="color: #C4704F; font-size: 0.6rem;">●</span>
+                            Export shopping list
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                style="background: #F8F7F6; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; text-align: left;">
+                <p
+                    style="font-size: 0.75rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 500;">
+                    Track supplies for</p>
+                <p
+                    style="color: #6B6B6B; font-size: 0.85rem; line-height: 1.6; margin: 0; font-family: 'Inter', system-ui, sans-serif;">
+                    Surgical items · Feeding supplies · Tracheostomy care · BiPAP accessories · Suction equipment ·
+                    Medicines · Disposables
+                </p>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 0.75rem 1.25rem;
+                    background: #FFFFFF;
+                    border: 1px solid #E0E0E0;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    color: #1A1A1A;
+                    font-weight: 500;
+                    font-size: 0.875rem;
+                    transition: all 0.15s ease;
+                    font-family: 'Inter', system-ui, sans-serif;
+                " onmouseover="this.style.background='#F5F5F5'; this.style.borderColor='#D0D0D0';"
+                    onmouseout="this.style.background='#FFFFFF'; this.style.borderColor='#E0E0E0';">
+                    ← Back to Home
+                </a>
+                <a href="/home-icu-guide" style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 0.75rem 1.25rem;
+                    background: #1A1A1A;
+                    border: 1px solid #1A1A1A;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    color: #FFFFFF;
+                    font-weight: 500;
+                    font-size: 0.875rem;
+                    transition: all 0.15s ease;
+                    font-family: 'Inter', system-ui, sans-serif;
+                " onmouseover="this.style.background='#333333';" onmouseout="this.style.background='#1A1A1A';">
+                    View Home ICU Guide
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
