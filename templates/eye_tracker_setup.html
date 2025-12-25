@@ -640,10 +640,10 @@
         background: #b8987b;
     }
 
-    /* Print Styles - Hide everything except active tab */
+    /* Print Styles - Beautiful PDF Export */
     @media print {
 
-        /* Hide navigation, header, footer, buttons */
+        /* === HIDE NON-ESSENTIAL ELEMENTS === */
         nav,
         footer,
         header,
@@ -659,57 +659,281 @@
             display: none !important;
         }
 
-        /* Hide inactive tabs */
         .et-tab-content:not(.active) {
             display: none !important;
         }
 
-        /* Show only active tab content */
+        /* === PAGE SETUP === */
+        @page {
+            margin: 1.5cm;
+            size: A4;
+        }
+
+        body {
+            background: white !important;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            font-size: 11pt !important;
+            line-height: 1.6 !important;
+            color: #1e293b !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* === ACTIVE TAB CONTENT === */
         .et-tab-content.active {
             display: block !important;
             max-width: 100% !important;
             margin: 0 !important;
-            padding: 1rem !important;
+            padding: 0 !important;
         }
 
-        /* Reset body styling for print */
-        body {
-            background: white !important;
-            font-size: 11pt !important;
-            line-height: 1.5 !important;
+        /* === PDF TITLE (Injected via JS) === */
+        .pdf-title {
+            display: block !important;
+            font-size: 20pt !important;
+            font-weight: 700 !important;
+            color: #0f172a !important;
+            margin: 0 0 1rem 0 !important;
+            padding-bottom: 0.75rem !important;
+            border-bottom: 3px solid #0077b6 !important;
+            text-align: center !important;
         }
 
-        /* Make images smaller for print */
-        .et-step-image img {
-            max-height: 300px !important;
-            box-shadow: none !important;
-        }
-
-        /* Adjust section styling */
+        /* === SECTION HEADERS === */
         .et-section {
             page-break-inside: avoid;
             margin-bottom: 1.5rem !important;
+            padding: 0 !important;
         }
 
+        .et-section-header {
+            margin-bottom: 1rem !important;
+            padding-bottom: 0.5rem !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+
+        .et-section-header h2 {
+            font-size: 14pt !important;
+            font-weight: 600 !important;
+            color: #1e40af !important;
+            margin: 0 !important;
+        }
+
+        /* === STEPS === */
         .et-step {
             page-break-inside: avoid;
+            margin-bottom: 1.25rem !important;
+            padding: 1rem !important;
+            background: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 8px !important;
+            border-left: 4px solid #0077b6 !important;
         }
 
-        /* Print-friendly colors */
+        .et-step-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .et-step-num {
+            width: 2rem !important;
+            height: 2rem !important;
+            background: #0077b6 !important;
+            color: white !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 11pt !important;
+            font-weight: 700 !important;
+            flex-shrink: 0 !important;
+        }
+
+        .et-step-title {
+            font-size: 12pt !important;
+            font-weight: 600 !important;
+            color: #1e293b !important;
+            margin: 0 !important;
+        }
+
+        .et-step-content {
+            margin-left: 0 !important;
+            padding-left: 2.75rem !important;
+            font-size: 10pt !important;
+            line-height: 1.6 !important;
+        }
+
+        .et-step-content ul {
+            margin: 0.5rem 0 !important;
+            padding-left: 1.25rem !important;
+        }
+
+        .et-step-content li {
+            margin-bottom: 0.35rem !important;
+        }
+
+        .et-step-content p {
+            margin: 0.5rem 0 !important;
+        }
+
+        /* === IMAGES === */
+        .et-step-image,
+        .et-image-item {
+            margin: 1rem 0 !important;
+            text-align: center !important;
+            page-break-inside: avoid !important;
+        }
+
+        .et-step-image img,
+        .et-image-item img,
+        img[style*="max-width"] {
+            max-width: 90% !important;
+            max-height: 300px !important;
+            width: auto !important;
+            height: auto !important;
+            border: 2px solid #e2e8f0 !important;
+            border-radius: 8px !important;
+            box-shadow: none !important;
+            display: block !important;
+            margin: 0 auto !important;
+        }
+
+        .et-step-image p,
+        .et-image-item p {
+            font-size: 9pt !important;
+            font-style: italic !important;
+            color: #64748b !important;
+            margin-top: 0.5rem !important;
+            text-align: center !important;
+        }
+
+        .et-image-row {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 1rem !important;
+            justify-content: center !important;
+            margin: 1rem 0 !important;
+        }
+
+        .et-image-row .et-image-item {
+            flex: 1 1 45% !important;
+            max-width: 48% !important;
+        }
+
+        /* === LINKS - Clickable with visible URLs === */
         a {
             color: #0077b6 !important;
             text-decoration: underline !important;
+            font-weight: 500 !important;
         }
 
-        /* Add tab title at top of print */
-        .et-tab-content.active::before {
-            content: attr(data-title);
-            display: block;
-            font-size: 18pt;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #333;
+        /* Show URL after external links for reference */
+        a[href^="http"]:after {
+            content: " (" attr(href) ")";
+            font-size: 8pt !important;
+            color: #64748b !important;
+            font-weight: 400 !important;
+            word-break: break-all !important;
+        }
+
+        /* Don't show URL for image onclick links */
+        a[onclick]:after,
+        img[onclick]:after {
+            content: none !important;
+        }
+
+        /* === ALERT BOXES === */
+        .et-alert {
+            padding: 0.75rem 1rem !important;
+            margin: 0.75rem 0 !important;
+            font-size: 9.5pt !important;
+            border-radius: 6px !important;
+            page-break-inside: avoid !important;
+        }
+
+        .et-alert-info {
+            background: #eff6ff !important;
+            border: 1px solid #bfdbfe !important;
+            border-left: 4px solid #3b82f6 !important;
+        }
+
+        .et-alert-warning {
+            background: #fffbeb !important;
+            border: 1px solid #fde68a !important;
+            border-left: 4px solid #f59e0b !important;
+        }
+
+        .et-alert-danger {
+            background: #fef2f2 !important;
+            border: 1px solid #fecaca !important;
+            border-left: 4px solid #ef4444 !important;
+        }
+
+        /* === INFO BOXES (Quick Steps, What You Need, etc.) === */
+        div[style*="background: #f8f6f1"],
+        div[style*="background: linear-gradient"],
+        div[style*="background:#f8f6f1"] {
+            background: #f8fafc !important;
+            padding: 1rem !important;
+            margin: 1rem 0 !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 8px !important;
+            page-break-inside: avoid !important;
+        }
+
+        /* === SETUP GUIDE CONTAINER === */
+        .et-setup-guide {
+            border: none !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+        }
+
+        .et-setup-guide-header {
+            display: none !important;
+        }
+
+        .et-setup-guide-body {
+            padding: 0 !important;
+        }
+
+        /* === CODE ELEMENTS === */
+        code {
+            background: #f1f5f9 !important;
+            padding: 0.15rem 0.4rem !important;
+            border-radius: 4px !important;
+            font-family: 'Consolas', 'Monaco', monospace !important;
+            font-size: 9pt !important;
+            color: #0f172a !important;
+        }
+
+        /* === DOWNLOAD BOXES === */
+        .et-download-box,
+        .et-requirements-box {
+            padding: 0.75rem !important;
+            margin: 0.75rem 0 !important;
+            background: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 6px !important;
+        }
+
+        /* === HIDE SPECIAL ELEMENTS IN PRINT === */
+        .et-download-btn,
+        button,
+        .et-tab-buttons {
+            display: none !important;
+        }
+
+        /* === ENSURE GOOD PAGE BREAKS === */
+        h2,
+        h3,
+        h4 {
+            page-break-after: avoid !important;
+        }
+
+        img {
+            page-break-inside: avoid !important;
         }
     }
 </style>
@@ -760,7 +984,8 @@
                     5:</strong></p>
             <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; color: #475569; line-height: 1.6;">
                 <li>Gaming device — NOT designed for accessibility</li>
-                <li>Does NOT support Windows Eye Control natively</li>
+                <li>Does NOT support Windows Eye Control natively (Requires beta driver installation to use Windows Eye
+                    Control)</li>
                 <li>compatible with <strong>OptiKey</strong></li>
             </ul>
         </div>
@@ -793,8 +1018,7 @@
                         style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #0077b6; text-decoration: none; border: 1px solid #e2e8f0;">
                         Tobii Experience Driver v4.183.0.30025
                     </a>
-                    <a href="https://github.com/OptiKey/OptiKey/releases/download/v3.2.5/OptiKeySetup-3.2.5-Pro.exe"
-                        target="_blank"
+                    <a href="https://optikey.org/help/versions" target="_blank"
                         style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #0077b6; text-decoration: none; border: 1px solid #e2e8f0;">
                         OptiKey Pro Classic v3.2.5
                     </a>
@@ -811,17 +1035,44 @@
             </ul>
         </div>
 
-        <!-- Quick Steps Preview -->
+        <!-- Quick Steps Overview -->
         <div
-            style="background: #f8f6f1; border: 1px solid #e5e0d5; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
-            <h4 style="margin: 0 0 0.75rem; font-size: 1rem; color: #1e293b;">Quick Steps Overview</h4>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.9rem; color: #475569;">
-                <span><strong>1.</strong> Install Tobii Experience Driver v4.183.0.30025</span>
-                <span><strong>2.</strong> Connect Eye Tracker 5 hardware</span>
-                <span><strong>3.</strong> Setup Tobii Experience app</span>
-                <span><strong>4.</strong> Verify installation in Apps & Features</span>
-                <span><strong>5.</strong> Install OptiKey Pro Classic v3.2.5</span>
-                <span><strong>6.</strong> Use OptiKey for eye tracking</span>
+            style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: 1px solid #dee2e6; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <h4
+                style="margin: 0 0 1rem; font-size: 1.05rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.1rem;">📋</span> Quick Steps Overview
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: #475569;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
+                    <span>Install Tobii Experience Driver v4.183.0.30025</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
+                    <span>Connect Eye Tracker 5 hardware</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
+                    <span>Setup Tobii Experience app</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
+                    <span>Verify installation in Apps & Features</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
+                    <span>Install OptiKey Pro Classic v3.2.5</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
+                    <span>Use OptiKey for eye tracking</span>
+                </div>
             </div>
         </div>
 
@@ -857,7 +1108,7 @@
                                     style="color: #0077b6; font-weight: 600;">gaming.tobii.com/getstarted</a></li>
                             <li>Under "1. Select the hardware", choose <strong>"Tobii" (Eye Tracking)</strong></li>
                             <li>Under "2. Select Tobii device", choose <strong>"Tobii Eye Tracker 5"</strong></li>
-                            <li>Click the blue <strong>"DOWNLOAD DRIVER"</strong> button</li>
+                            <li>Click <strong>"DOWNLOAD DRIVER"</strong></li>
                         </ul>
                         <div class="et-step-image">
                             <img src="/static/images/tobii5_download_page.png" alt="Tobii Download Page"
@@ -869,10 +1120,10 @@
                         <ul>
                             <li>Find the downloaded file: <code>Tobii.EyeTracker5.Offline.Installer_4.183.0.30025</code>
                             </li>
-                            <li><strong>Right-click</strong> the file</li>
-                            <li>Select <strong>"Run as administrator"</strong> (important!)</li>
+                            <li><strong>Right-click</strong> the file Select <strong>"Run as administrator" </strong>
+                            </li>
                             <li>Follow the installation prompts, click "Next" until finished</li>
-                            <li>The installer may also install <strong>Tobii Experience Software</strong></li>
+                            <li>The installer will also install <strong>Tobii Experience Software</strong></li>
                         </ul>
                         <div class="et-step-image">
                             <img src="/static/images/tobii5_driver_installing.png" alt="Tobii Driver Installing"
@@ -882,33 +1133,22 @@
 
                         <div class="et-alert et-alert-warning" style="margin-top: 1rem;">
                             <strong>After installation:</strong> Check Apps & Features → search "Tobii" to verify the
-                            driver is installed, then <strong>Restart your computer</strong>.
+                            driver is installed
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 2: Connect Hardware -->
+                <!-- Step 2: Connect Tobii Eye Tracker 5 -->
                 <div class="et-step">
                     <div class="et-step-header">
                         <div class="et-step-num">2</div>
-                        <h4 class="et-step-title">Connect the Hardware</h4>
+                        <h4 class="et-step-title">Connect Tobii Eye Tracker 5</h4>
                     </div>
                     <div class="et-step-content">
-                        <p><strong>1. Plug In:</strong></p>
                         <ul>
-                            <li>Connect Tobii Eye Tracker 5 to a USB port on your computer</li>
-                        </ul>
-
-                        <p style="margin-top: 0.75rem;"><strong>2. Check Lights:</strong></p>
-                        <ul>
-                            <li>You should see faint <strong>red LEDs</strong> on the tracker when connected</li>
-                        </ul>
-
-                        <p style="margin-top: 0.75rem;"><strong>3. Position:</strong></p>
-                        <ul>
-                            <li>Stick the <strong>magnetic mount</strong> to the bottom center of your screen</li>
-                            <li>Attach the tracker to the mount or use double sided tape</li>
-                            <li><strong>Keep plugged in</strong> for all remaining steps</li>
+                            <li>Attach the Eye Tracker 5 to the bottom center of your monitor using the magnetic mount
+                                or double-sided tape</li>
+                            <li>Plug the Eye Tracker 5 into a USB port on your computer</li>
                         </ul>
                     </div>
                 </div>
@@ -930,51 +1170,53 @@
                             <li>If not found: Open <strong>Microsoft Store</strong>, search "Tobii Experience", and
                                 install it</li>
                         </ul>
-
-                        <p style="margin-top: 0.75rem;"><strong>2. Create Profile & Calibrate:</strong></p>
-                        <ul>
-                            <li>App will ask you to <strong>create a user profile</strong> (enter name)</li>
-                            <li>Complete <strong>Display Setup</strong> — align the lines to the marks on top of your
-                                tracker</li>
-                            <li>Run <strong>Calibration</strong>:
-                                <ul>
-                                    <li>Follow dots on screen with <strong>EYES ONLY</strong></li>
-                                    <li>Keep head still</li>
-                                    <li>Look at each dot until it disappears</li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                        <div class="et-image-row">
-                            <div class="et-image-item">
-                                <img src="/static/images/tobii5_display_alignment.png" alt="Display Alignment"
-                                    onclick="window.open(this.src, '_blank')">
-                                <p>Display Setup — align lines to marks on your tracker</p>
-                            </div>
-                            <div class="et-image-item">
-                                <img src="/static/images/tobii5_experience_app_ui.png" alt="Tobii Experience App"
-                                    onclick="window.open(this.src, '_blank')">
-                                <p>Tobii Experience app — calibration & settings</p>
-                            </div>
+                        <div class="et-step-image" style="margin: 1.5rem 0;">
+                            <img src="/static/images/tobii5_experience_app.png" alt="Tobii Experience App"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Tobii Experience App:</strong> Main interface with calibration and display setup
+                                options
+                            </p>
                         </div>
 
-                        <p style="margin-top: 0.75rem;"><strong>3. Test Tracking:</strong></p>
+                        <p style="margin-top: 1rem;"><strong>2. Display Setup:</strong></p>
                         <ul>
-                            <li>Look around your screen</li>
-                            <li>You should see a <strong>"bubble" or indicator</strong> following your gaze</li>
-                            <li>If tracking is poor, recalibrate</li>
+                            <li>Click <strong>"Set up display"</strong> button</li>
+                            <li>Align the on-screen lines to the physical marks on top of your eye tracker</li>
+                            <li>Click <strong>"Done"</strong> when aligned</li>
                         </ul>
-                        <div class="et-step-image">
-                            <img src="/static/images/tobii5_gaze_tracking_bubble.png" alt="Gaze Tracking Bubble"
-                                onclick="window.open(this.src, '_blank')">
-                            <p>The gaze bubble indicator follows your eyes around the screen</p>
+                        <div class="et-step-image" style="margin: 1.5rem 0;">
+                            <img src="/static/images/tobii5_display_setup.png"
+                                alt="Display Setup - Align lines to tracker marks"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Display Setup:</strong> Move the dashed lines to align with the marks on your
+                                Tobii Eye Tracker 5
+                            </p>
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>3. Calibrate:</strong></p>
+                        <ul>
+                            <li>Click <strong>"Improve calibration"</strong> button</li>
+                            <li>Follow the dots on screen with <strong>EYES ONLY</strong> — keep your head still</li>
+                            <li>Look at each dot until it disappears</li>
+                            <li>Save your calibration profile when complete</li>
+                        </ul>
+                        <div class="et-step-image" style="margin: 1.5rem 0;">
+                            <img src="/static/images/tobii5_calibration_dots.png" alt="Calibration - Follow the dots"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Calibration:</strong> Look at each blue dot until it disappears — keep your head
+                                still
+                            </p>
                         </div>
 
                         <div class="et-alert et-alert-info">
-                            <strong>About Tobii Experience:</strong> This is the official app for Tobii Eye Tracker 5.
-                            Use it to improve calibration, recalibrate whenever needed, change profiles, and re-run
-                            Display Setup if you move the tracker. Recalibrate if accuracy drops or user position
-                            changes.
+                            <strong>About Tobii Experience:</strong> Use this app to improve calibration, recalibrate
+                            whenever needed, change profiles, and re-run Display Setup if you move the tracker.
                         </div>
                     </div>
                 </div>
@@ -1017,7 +1259,7 @@
                         <p>OptiKey is the actual software used for communication.</p>
 
                         <div class="et-alert et-alert-danger">
-                            <strong>⚠️ CRITICAL:</strong> Do NOT download Version 4. It will NOT work with Tobii Eye
+                            Do NOT download Version 4. It will NOT work with Tobii Eye
                             Tracker 5.<br>
                             You <strong>MUST</strong> use <strong>Version 3 (OptiKey Classic)</strong>.
                         </div>
@@ -1155,7 +1397,8 @@
         <!-- Device Context -->
         <div
             style="background: #f8f6f1; border: 1px solid #e5e0d5; border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0;">
-            <p style="margin: 0 0 0.5rem; font-size: 0.9rem; color: #1e293b;"><strong>About This Setup:</strong></p>
+            <p style="margin: 0 0 0.5rem; font-size: 0.9rem; color: #1e293b;"><strong>About Tobii Eye Tracker
+                    5:</strong></p>
             <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; color: #475569; line-height: 1.6;">
                 <li>Gaming device — NOT designed for accessibility</li>
                 <li>Does NOT support Windows Eye Control natively</li>
@@ -1193,8 +1436,8 @@
                         Beta Driver v5.0.0.6035 (Community Archive)
                     </a>
                 </div>
-                <p style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #78350f;">This is NOT an official Tobii
-                    download. Use at your own risk.</p>
+                <p style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #78350f;">Warning: This uses a discontinued
+                    beta driver with no official Tobii support.</p>
             </div>
         </div>
 
@@ -1207,26 +1450,48 @@
             </ul>
         </div>
 
-        <!-- Quick Steps Preview -->
+        <!-- Quick Steps Overview -->
         <div
-            style="background: #f8f6f1; border: 1px solid #e5e0d5; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
-            <h4 style="margin: 0 0 0.75rem; font-size: 1rem; color: #1e293b;">Quick Steps Overview</h4>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.9rem; color: #475569;">
-                <span><strong>1.</strong> Remove old Tobii files</span>
-                <span><strong>2.</strong> Install Beta Driver v5.0.0.6035</span>
-                <span><strong>3.</strong> Verify in Apps & Features</span>
-                <span><strong>4.</strong> Configure Display & Calibrate in Tobii Experience</span>
-                <span><strong>5.</strong> Enable Windows Eye Control in Settings</span>
-                <span><strong>6.</strong> Restart & Test</span>
+            style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: 1px solid #dee2e6; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <h4
+                style="margin: 0 0 1rem; font-size: 1.05rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.1rem;">📋</span> Quick Steps Overview
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: #475569;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
+                    <span>Remove old Tobii files</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
+                    <span>Install Beta Driver v5.0.0.6035</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
+                    <span>Verify in Apps & Features</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
+                    <span>Connect Tobii Eye Tracker 5</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
+                    <span>Display Setup & Calibration in Tobii app</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
+                    <span>Enable Windows Eye Control</span>
+                </div>
             </div>
         </div>
 
-        <!-- Warning -->
-        <p
-            style="background: #fef3c7; border-left: 3px solid #f59e0b; padding: 0.75rem 1rem; font-size: 0.9rem; margin: 0;">
-            <strong>Warning:</strong> This uses a discontinued beta driver with no official Tobii support. Consider
-            using <strong>Tab 1 (OptiKey)</strong> for a stable experience.
-        </p>
+
     </section>
 
     <!-- Setup Guide -->
@@ -1250,7 +1515,7 @@
 
                         <p style="margin-top: 0.75rem;"><strong>1. Check Apps & Features</strong> → search "Tobii"</p>
                         <ul>
-                            <li>If no Tobii software or driver found, proceed to Step 2</li>
+                            <li><strong>if no Tobii software or driver found, proceed to Step 2</strong></li>
                             <li>If found, uninstall <strong>ALL</strong> entries:
                                 <ul>
                                     <li>Tobii Experience Software</li>
@@ -1285,7 +1550,8 @@
                         <ul>
                             <li>Download the beta driver from: <a
                                     href="https://www.touslesdrivers.com/index.php?v_page=23&v_code=69377"
-                                    target="_blank" style="color: #0077b6; font-weight: 600;">TousLesDrivers</a></li>
+                                    target="_blank" style="color: #0077b6; font-weight: 600;">TousLesDrivers</a>
+                                (warning: This is NOT an official Tobii download)</li>
                             <li>File name: <code>Tobii.EyeTracker5.Offline.Installer_5.0.0.6035.exe</code></li>
                             <li>File size: 5.3 MB</li>
                             <li>Right-click the installer and select <strong>"Run as Administrator"</strong></li>
@@ -1322,32 +1588,87 @@
                     </div>
                 </div>
 
-                <!-- Step 4 -->
+                <!-- Step 4: Connect Tobii Eye Tracker 5 -->
                 <div class="et-step">
                     <div class="et-step-header">
                         <div class="et-step-num">4</div>
-                        <h4 class="et-step-title">Configure Display & Calibrate</h4>
+                        <h4 class="et-step-title">Connect Tobii Eye Tracker 5</h4>
                     </div>
                     <div class="et-step-content">
                         <ul>
-                            <li>Launch <strong>Tobii Experience</strong> from Start Menu (auto-installed from Microsoft
-                                Store)</li>
-                            <li>Position the Eye Tracker 5 at the bottom center of your monitor</li>
-                            <li>Complete <strong>Display Setup</strong> to align the tracker position</li>
-                            <li>Position yourself within the tracking zone (45-95 cm from screen)</li>
-                            <li>Run <strong>Calibration</strong> — follow the dots with your eyes</li>
+                            <li>Attach the Eye Tracker 5 to the bottom center of your monitor using the magnetic mount
+                                or double-sided tape</li>
+                            <li>Plug the Eye Tracker 5 into a USB port on your computer</li>
                         </ul>
-                        <div class="et-alert et-alert-info">
-                            <strong>Tip:</strong> Allow the Eye Tracker to position correctly on your face. A
-                            positioning guide will appear showing where your eyes are in the tracking zone.
-                        </div>
                     </div>
                 </div>
 
-                <!-- Step 5 -->
+                <!-- Step 5: Configure Display & Calibrate -->
                 <div class="et-step">
                     <div class="et-step-header">
                         <div class="et-step-num">5</div>
+                        <h4 class="et-step-title">Display Setup & Calibration in Tobii app</h4>
+                    </div>
+                    <div class="et-step-content">
+
+                        <!-- Sub-step 1: Launch & Display Setup -->
+                        <p style="margin-top: 0;"><strong>1. Launch Tobii Experience & Set Up Display:</strong></p>
+                        <ul>
+                            <li>Launch <strong>Tobii Experience</strong> from Start Menu (auto-installed from Microsoft
+                                Store)</li>
+                            <li>Click <strong>"Set up display"</strong> button when prompted</li>
+                            <li>Align the on-screen lines to the physical marks on top of your eye tracker</li>
+                        </ul>
+                        <div class="et-step-image" style="margin: 1.5rem 0 2rem 0;">
+                            <img src="/static/images/tobii5_winec_display_setup.png"
+                                alt="Display Setup - Align lines to tracker marks"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Display Setup:</strong> Click "Set up display" → Align the dashed lines with the
+                                physical marks on your Tobii Eye Tracker 5
+                            </p>
+                        </div>
+
+                        <!-- Sub-step 2: Run Calibration -->
+                        <p style="margin-top: 1.5rem;"><strong>2. Run Calibration:</strong></p>
+                        <ul>
+                            <li>Position yourself within the tracking zone (45-95 cm from screen)</li>
+                            <li>Click <strong>"Improve calibration"</strong> in Tobii Experience</li>
+                            <li>Adjust the screen angle or slightly elevate PALS bed until the two white dots are
+                                visible in the center</li>
+
+                            <div class="et-step-image" style="margin: 1.5rem 0 2rem 0;">
+                                <img src="/static/images/tobii5_winec_calibration_dots.png"
+                                    alt="Calibration - Follow the dots with your eyes"
+                                    onclick="window.open(this.src, '_blank')"
+                                    style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+
+                            </div>
+                            <li>Follow dots on screen with <strong>EYES ONLY</strong> — do not move your head</li>
+                            <li>Look at each dot until it disappears</li>
+                            <div class="et-step-image" style="margin: 1.5rem 0 1rem 0;">
+                                <img src="/static/images/tobii5_winec_calibration_blue_dots.png"
+                                    alt="Calibration Screen - Follow the blue dots"
+                                    onclick="window.open(this.src, '_blank')"
+                                    style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                <p
+                                    style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                    <strong>Calibration Screen:</strong> Look at each blue dot until it disappears —
+                                    keep your head still
+                                </p>
+                            </div>
+                    </div>
+
+                    </ul>
+
+
+                </div>
+
+                <!-- Step 6: Enable Windows Eye Control -->
+                <div class="et-step">
+                    <div class="et-step-header">
+                        <div class="et-step-num">6</div>
                         <h4 class="et-step-title">Enable Windows Eye Control</h4>
                     </div>
                     <div class="et-step-content">
@@ -1360,7 +1681,7 @@
                             <li>Toggle <strong>"Turn on eye control (EN-US keyboard layout only)"</strong> to
                                 <strong>ON</strong>
                             </li>
-                            <li><strong>RESTART your computer</strong> (critical step!)</li>
+                            <li><strong>RESTART your computer</strong> if windows eye control doesn't work</li>
                             <li>After restart, Eye Control should recognize the tracker</li>
                             <li>The Eye Control launchpad (toolbar) will appear at the top of screen</li>
                         </ul>
@@ -1373,8 +1694,9 @@
 
 
                         <div class="et-alert et-alert-warning">
-                            <strong>Important:</strong> You MUST restart your computer after enabling Eye Control. The
-                            feature may not work properly without a restart.
+                            <strong>Important:</strong> You may need restart your computer after enabling Eye Control.
+                            The
+                            feature may not work properly without a restart sometimes.
                         </div>
                     </div>
                 </div>
@@ -1431,7 +1753,6 @@
                     4C:</strong></p>
             <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; color: #475569; line-height: 1.6;">
                 <li><strong>Native Windows Eye Control support</strong> — no workarounds needed</li>
-                <li>Best Windows compatibility for accessibility</li>
                 <li>Discontinued — only available second-hand now</li>
             </ul>
         </div>
@@ -1452,7 +1773,7 @@
                         Tobii Eye Tracker 4C — <span style="color: #0077b6;">Available on eBay (used)</span>
                     </a>
                 </div>
-                <p style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #64748b;">India: Amazon India (USA import),
+                <p style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #64748b;">
                     eBay — ₹15,000-20,000 (used)</p>
             </div>
 
@@ -1479,24 +1800,50 @@
             </ul>
         </div>
 
-        <!-- Quick Steps Preview -->
+        <!-- Quick Steps Overview -->
         <div
-            style="background: #f8f6f1; border: 1px solid #e5e0d5; border-radius: 8px; padding: 1.25rem; margin: 1.5rem 0;">
-            <h4 style="margin: 0 0 0.75rem; font-size: 1rem; color: #1e293b;">Quick Steps Overview</h4>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.9rem; color: #475569;">
-                <span><strong>1.</strong> Mount & Connect Eye Tracker 4C</span>
-                <span><strong>2.</strong> Install Tobii Core Software</span>
-                <span><strong>3.</strong> Calibrate in Tobii app</span>
-                <span><strong>4.</strong> Enable Windows Eye Control in Settings</span>
-                <span><strong>5.</strong> Verify tracking works</span>
+            style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border: 1px solid #dee2e6; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <h4
+                style="margin: 0 0 1rem; font-size: 1.05rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.1rem;">📋</span> Quick Steps Overview
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: #475569;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
+                    <span>Download from <a href="https://gaming.tobii.com/getstarted/" target="_blank"
+                            style="color: #0077b6; text-decoration: underline; font-weight: 500;">gaming.tobii.com/getstarted</a>
+                        → Select 4C & Core Software</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
+                    <span>Install software</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
+                    <span>Verify in Apps & Features → "Tobii Eye Tracking" installed</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
+                    <span>Connect Tobii Eye Tracker 4C</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
+                    <span>Display Setup & Calibration in Tobii app</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span
+                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
+                    <span>Enable Windows Eye Control in Settings</span>
+                </div>
             </div>
         </div>
 
-        <!-- Note -->
-        <p
-            style="background: #f8f6f1; border-left: 3px solid #94a3b8; padding: 0.75rem 1rem; font-size: 0.9rem; margin: 0;">
-            <strong>Note:</strong> Tobii 4C Core Software is NOT compatible with Windows 11. Use Windows 10 only.
-        </p>
+
     </section>
 
     <!-- Setup Guide -->
@@ -1508,26 +1855,11 @@
         <div class="et-setup-guide">
             <div class="et-setup-guide-body">
 
-                <!-- Step 1 -->
+                <!-- Step 1: Download Software -->
                 <div class="et-step">
                     <div class="et-step-header">
                         <div class="et-step-num">1</div>
-                        <h4 class="et-step-title">Mount & Connect Hardware</h4>
-                    </div>
-                    <div class="et-step-content">
-                        <ul>
-                            <li>Stick magnetic strip to bottom center of monitor</li>
-                            <li>Attach Tobii 4C to the magnetic strip or use double sided tape</li>
-                            <li>Plug into USB 3.0 port</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="et-step">
-                    <div class="et-step-header">
-                        <div class="et-step-num">2</div>
-                        <h4 class="et-step-title">Download Software</h4>
+                        <h4 class="et-step-title">Download Tobii Core Software</h4>
                     </div>
                     <div class="et-step-content">
                         <ul>
@@ -1537,62 +1869,88 @@
                             <li>Select "Tobii Eye Tracking Core Software"</li>
                             <li>Download <strong>Tobii Eye Tracking Core Software v2.16.8</strong></li>
                         </ul>
-                        <div class="et-step-image">
-                            <img src="/static/images/tobii4c_download.png" alt="Tobii 4C Download Page"
-                                onclick="window.open(this.src, '_blank')">
-                            <p>Select Tobii Eye Tracker 4C and download Core Software</p>
+                        <div class="et-step-image" style="margin: 1.5rem 0;">
+                            <img src="/static/images/tobii4c_download_page.png"
+                                alt="Tobii Download Page - Select Eye Tracker 4C and Core Software"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Download Page:</strong> Select "Tobii Eye Tracker 4C" and "Tobii Eye Tracking
+                                Core Software", then click Download
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 3 -->
+                <!-- Step 2: Install & Restart -->
                 <div class="et-step">
                     <div class="et-step-header">
-                        <div class="et-step-num">3</div>
+                        <div class="et-step-num">2</div>
                         <h4 class="et-step-title">Install & Restart</h4>
                     </div>
                     <div class="et-step-content">
                         <ul>
                             <li>Run the downloaded installer</li>
                             <li>Complete installation</li>
-                            <li>Restart your computer</li>
+                            <li>Restart your computer ( optional )</li>
                         </ul>
-                        <div class="et-step-image">
-                            <img src="/static/images/tobii4c_install_success.png" alt="Installation Successful"
-                                onclick="window.open(this.src, '_blank')">
-                            <p>Installation completed successfully</p>
+                        <div class="et-step-image" style="margin: 1.5rem 0;">
+                            <img src="/static/images/tobii4c_install_startup.png"
+                                alt="Tobii Installation and Starting Up" onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Installation:</strong> Run the downloaded installer and wait for Tobii Eye
+                                Tracking to start up
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 4: Verify Installation (moved from Step 6) -->
+                <!-- Step 3: Verify Installation -->
                 <div class="et-step">
                     <div class="et-step-header">
-                        <div class="et-step-num">4</div>
+                        <div class="et-step-num">3</div>
                         <h4 class="et-step-title">Verify Installation</h4>
                     </div>
                     <div class="et-step-content">
                         <ul>
-                            <li>Check Apps & Features → search "Tobii" → should show v2.16.8</li>
-                            <li>Press <code>Win + R</code>, type <code>services.msc</code></li>
-                            <li>Find "Tobii Service" → should show "Running"</li>
+                            <li>Check settings → Apps & Features → search "Tobii" → should show v2.16.8</li>
                         </ul>
-                        <div class="et-image-row">
-                            <div class="et-image-item">
-                                <img src="/static/images/tobii4c_apps.png" alt="Tobii in Apps"
-                                    onclick="window.open(this.src, '_blank')">
-                                <p>Tobii Core Software in Apps & Features</p>
-                            </div>
-                            <div class="et-image-item">
-                                <img src="/static/images/tobii4c_services.png" alt="Tobii Service Running"
-                                    onclick="window.open(this.src, '_blank')">
-                                <p>Tobii Service running in Windows Services</p>
-                            </div>
+                        <div class="et-step-image" style="margin: 1.5rem 0;">
+                            <img src="/static/images/tobii4c_apps_verify.png"
+                                alt="Apps & Features showing Tobii Eye Tracking installed"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Verify Installation:</strong> Apps & Features should show "Tobii Eye Tracking"
+                                v2.16.8.214 (760 MB)
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 5: Display Setup & Calibration (was Step 4) -->
+                <!-- Step 4: Connect Tobii Eye Tracker 4C -->
+                <div class="et-step">
+                    <div class="et-step-header">
+                        <div class="et-step-num">4</div>
+                        <h4 class="et-step-title">Connect Tobii Eye Tracker 4C</h4>
+                    </div>
+                    <div class="et-step-content">
+                        <ul>
+                            <li>Attach the Tobii 4C to the bottom center of your monitor using the magnetic strip or
+                                double-sided tape</li>
+                            <li>Plug into USB 3.0 port</li>
+                            <li>Wait for Windows to detect the device</li>
+                        </ul>
+                        <p style="margin-top: 0.75rem;"><strong>Verify Tobii Service is Running:</strong></p>
+                        <ul>
+                            <li>Press <code>Win + R</code>, type <code>services.msc</code></li>
+                            <li>Find "Tobii Service" → should show "Running"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 5: Display Setup & Calibration -->
                 <div class="et-step">
                     <div class="et-step-header">
                         <div class="et-step-num">5</div>
@@ -1600,11 +1958,35 @@
                     </div>
                     <div class="et-step-content">
                         <ul>
-                            <li>Open Tobii Eye Tracking from Start Menu or system tray</li>
-                            <li>Go to Display Setup → align tracker edges on screen</li>
-                            <li>Run Calibration → follow the dots with your eyes</li>
-                            <li>Save your profile</li>
+                            <li>Launch Tobii Eye Tracking → Click <strong>"Set up display"</strong></li>
+                            <li>Align the on-screen lines to the physical marks on top of your eye tracker</li>
                         </ul>
+                        <div class="et-step-image" style="margin: 1.5rem 0 2rem 0;">
+                            <img src="/static/images/tobii4c_display_setup.png"
+                                alt="Display Setup - Move lines to tracker marks"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Display Setup:</strong> Move the dashed lines to align with the marks on your
+                                Tobii 4C
+                            </p>
+                        </div>
+
+                        <p style="margin-top: 1rem;"><strong>Run Calibration:</strong></p>
+                        <ul>
+                            <li>Click <strong>"Improve calibration"</strong> in Tobii Eye Tracking app</li>
+                            <li>Look at each blue dot until it explodes — keep your head still</li>
+                            <li>Save your calibration profile after success</li>
+                        </ul>
+                        <div class="et-step-image" style="margin: 1.5rem 0;">
+                            <img src="/static/images/tobii4c_calibration.png" alt="Calibration - Follow the dots"
+                                onclick="window.open(this.src, '_blank')"
+                                style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="margin-top: 0.75rem; text-align: center; color: #64748b; font-size: 0.875rem;">
+                                <strong>Calibration:</strong> Look at each blue dot until it explodes, then save your
+                                profile
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -1701,17 +2083,33 @@
         const activeTab = document.querySelector('.et-tab-content.active');
         const tabTitle = activeTab ? activeTab.getAttribute('data-title') : 'Eye Tracker Setup Guide';
 
-        // Set document title for the PDF
+        // Set document title for the PDF filename
         const originalTitle = document.title;
         document.title = tabTitle;
 
-        // Trigger print dialog
-        window.print();
+        // Create and inject PDF title at the top of the active tab
+        const pdfTitleElement = document.createElement('h1');
+        pdfTitleElement.className = 'pdf-title';
+        pdfTitleElement.textContent = tabTitle;
+        pdfTitleElement.style.cssText = 'display:none;'; // Hidden on screen, shown in print CSS
 
-        // Restore original title after a short delay
+        // Insert at the beginning of active tab
+        if (activeTab && activeTab.firstChild) {
+            activeTab.insertBefore(pdfTitleElement, activeTab.firstChild);
+        }
+
+        // Small delay to ensure DOM updates, then print
         setTimeout(function () {
-            document.title = originalTitle;
-        }, 1000);
+            window.print();
+
+            // Cleanup: remove injected title and restore document title
+            setTimeout(function () {
+                if (pdfTitleElement && pdfTitleElement.parentNode) {
+                    pdfTitleElement.parentNode.removeChild(pdfTitleElement);
+                }
+                document.title = originalTitle;
+            }, 500);
+        }, 100);
     }
 </script>
 {% endblock %}

@@ -16,6 +16,7 @@ IMAGE_SYSTEM_QUICKSTART.txt
 *.md
 !README.md
 
+
 read_docx.py
 test_relevance.py
 update_faq_content.py
