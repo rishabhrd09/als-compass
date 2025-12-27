@@ -12,28 +12,27 @@
 
 {% block extra_css %}
 <style>
-    /* CSS Variables - Professional Apple/Claude-inspired Design (Matching Communication Technology) */
+    /* CSS Variables - Clean Minimal Design (Matching Eye Tracker Setup) */
     :root {
-        --ep-primary: #1d1d1f;
-        --ep-secondary: #6e6e73;
-        --ep-accent: #0071e3;
-        --ep-highlight: #c9a98c;
-        --ep-highlight-bg: #faf7f4;
+        --ep-primary: #1e293b;
+        --ep-secondary: #64748b;
+        --ep-accent: #0077b6;
         --ep-bg: #ffffff;
-        --ep-bg-alt: #f5f5f7;
-        --ep-border: #d2d2d7;
-        --ep-text: #1d1d1f;
-        --ep-muted: #86868b;
-        --ep-hero-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%);
-        --ep-font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-        --ep-font-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+        --ep-bg-alt: #f8fafc;
+        --ep-border: #e2e8f0;
+        --ep-text: #334155;
+        --ep-muted: #94a3b8;
+        --ep-success: #16a34a;
+        --ep-warning: #f59e0b;
+        --ep-danger: #dc2626;
     }
 
     body {
-        background-color: var(--ep-bg-alt);
+        background-color: var(--ep-bg);
         color: var(--ep-text);
-        font-family: var(--ep-font-text);
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
         line-height: 1.65;
+        font-size: 0.95rem;
     }
 
     .protocol-container {
@@ -42,66 +41,78 @@
         padding: 40px 24px;
     }
 
-    /* Typography - Claude/Apple Style */
+    /* Typography - Clean & Professional */
     h1,
     h2,
     h3 {
-        font-family: var(--ep-font-display);
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
         color: var(--ep-primary);
-        font-weight: 700;
+        font-weight: 600;
         letter-spacing: -0.02em;
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
         margin-bottom: 0.5rem;
         text-align: center;
         letter-spacing: -0.03em;
+        font-weight: 700;
     }
 
     h2 {
-        font-size: 1.375rem;
+        font-size: 1.35rem;
         margin-top: 2.5rem;
         margin-bottom: 1rem;
-        border-bottom: 1px solid var(--ep-border);
+        border-bottom: 2px solid var(--ep-border);
         padding-bottom: 0.75rem;
+        position: relative;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background: var(--ep-accent);
     }
 
     h3 {
-        font-size: 1.125rem;
+        font-size: 1.1rem;
         margin-top: 1.5rem;
         margin-bottom: 0.75rem;
         font-weight: 600;
+        color: var(--ep-primary);
     }
 
     .subtitle {
         text-align: center;
-        color: var(--ep-muted);
-        font-size: 1.1rem;
+        color: var(--ep-secondary);
+        font-size: 1rem;
         margin-bottom: 2.5rem;
         font-weight: 400;
     }
 
-    /* Section boxes - Communication Technology Style */
+    /* Section boxes - Clean white cards */
     .section-box {
         border: 1px solid var(--ep-border);
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-        border-radius: 14px;
+        border-radius: 12px;
         background: var(--ep-bg);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
         max-width: 900px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    /* Warning and tip boxes - Refined */
+    /* Warning and tip boxes - Minimal style */
     .warning-box {
         border: 1px solid var(--ep-border);
-        border-left: 4px solid var(--ep-accent);
+        border-left: 3px solid var(--ep-accent);
         background: var(--ep-bg);
         padding: 1.25rem;
-        border-radius: 10px;
+        border-radius: 8px;
         margin: 1.25rem auto;
         max-width: 900px;
     }
@@ -110,45 +121,47 @@
         border: 1px solid var(--ep-border);
         background: var(--ep-bg-alt);
         padding: 1rem 1.25rem;
-        border-radius: 10px;
+        border-radius: 8px;
         margin: 1rem 0;
+        font-size: 0.9rem;
     }
 
-    /* Step numbers */
+    /* Step numbers - Clean circular badges */
     .step-num {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         width: 26px;
         height: 26px;
-        background: #1a1a1a;
+        background: var(--ep-primary);
         color: white;
         border-radius: 50%;
-        font-size: 14px;
-        font-weight: bold;
-        margin-right: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        margin-right: 12px;
         flex-shrink: 0;
     }
 
-    /* Parameter tags */
+    /* Parameter tags - Subtle styling */
     .param-box {
         display: inline-block;
-        background: #f3f4f6;
-        border: 1px solid #d1d5db;
+        background: var(--ep-bg-alt);
+        border: 1px solid var(--ep-border);
         padding: 4px 10px;
-        border-radius: 4px;
-        font-family: monospace;
-        font-size: 13px;
-        margin: 2px;
+        border-radius: 6px;
+        font-family: 'SF Mono', 'Consolas', monospace;
+        font-size: 0.8rem;
+        margin: 3px;
+        color: var(--ep-primary);
     }
 
-    /* Highlight - Subtle Claude Orange */
+    /* Highlight - Subtle underline */
     .highlight {
-        background: var(--ep-highlight-bg);
-        padding: 2px 6px;
-        border-radius: 3px;
-        border-bottom: 2px solid var(--ep-highlight);
-        color: #6b5744;
+        background: transparent;
+        padding: 0 2px;
+        border-bottom: 2px solid var(--ep-accent);
+        color: var(--ep-primary);
+        font-weight: 500;
     }
 
     /* Grid layout */
@@ -164,7 +177,7 @@
         }
     }
 
-    /* Lists */
+    /* Lists - Clean styling */
     ul,
     ol {
         margin: 12px 0;
@@ -173,7 +186,8 @@
 
     li {
         margin: 8px 0;
-        color: #1a1a1a;
+        color: var(--ep-text);
+        line-height: 1.6;
     }
 
     /* Contact grid */
@@ -185,28 +199,31 @@
     }
 
     .contact-item {
-        padding: 12px;
-        border: 1px solid #d4d4d4;
-        border-radius: 6px;
-        background: white;
+        padding: 12px 16px;
+        border: 1px solid var(--ep-border);
+        border-radius: 8px;
+        background: var(--ep-bg);
     }
 
     .contact-label {
-        font-size: 0.85rem;
-        color: #666;
+        font-size: 0.8rem;
+        color: var(--ep-muted);
         margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
     }
 
     .contact-value {
-        border-bottom: 1px solid #1a1a1a;
+        border-bottom: 1px solid var(--ep-border);
         padding: 8px 0;
+        color: var(--ep-secondary);
     }
 
-    /* ============ CSS FLOWCHART STYLES ============ */
+    /* ============ FLOWCHART STYLES - Minimal ============ */
     .flowchart {
-        background: #fafafa;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
+        background: var(--ep-bg-alt);
+        border: 1px solid var(--ep-border);
+        border-radius: 12px;
         padding: 30px 20px;
         margin: 20px 0;
         overflow-x: auto;
@@ -222,28 +239,27 @@
     }
 
     .flow-node {
-        background: white;
-        border: 1px solid #666;
-        border-radius: 8px;
-        padding: 12px 16px;
+        background: var(--ep-bg);
+        border: 1px solid var(--ep-border);
+        border-radius: 10px;
+        padding: 14px 18px;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         max-width: 280px;
         min-width: 180px;
         position: relative;
     }
 
     .flow-node.start {
-        background: #f0f0f0;
+        background: var(--ep-bg);
         border-radius: 25px;
-        border: 2px solid #1a1a1a;
+        border: 2px solid var(--ep-primary);
     }
 
     .flow-node.decision {
-        background: #fafafa;
-        border: 2px solid #1a1a1a;
-        transform: rotate(0deg);
-        border-radius: 4px;
+        background: var(--ep-bg);
+        border: 2px solid var(--ep-primary);
+        border-radius: 8px;
     }
 
     .flow-node.decision::before {
@@ -251,48 +267,50 @@
         position: absolute;
         top: -10px;
         right: -10px;
-        background: #1a1a1a;
+        background: var(--ep-primary);
         color: white;
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        font-size: 12px;
+        font-size: 11px;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-weight: 600;
     }
 
     .flow-node.action {
-        background: white;
-        border: 1px solid #666;
+        background: var(--ep-bg);
+        border: 1px solid var(--ep-border);
     }
 
     .flow-node.warning {
-        background: #f5f5f5;
-        border: 2px solid #1a1a1a;
+        background: var(--ep-bg);
+        border: 2px solid var(--ep-primary);
     }
 
     .flow-node.success {
-        background: #f0f7f0;
-        border: 1px solid #4a7c4a;
+        background: var(--ep-bg);
+        border: 1px solid var(--ep-success);
     }
 
     .flow-node.pals {
-        background: #f9f9f9;
-        border: 2px dashed #333;
+        background: var(--ep-bg);
+        border: 2px dashed var(--ep-secondary);
     }
 
     .flow-node strong {
         display: block;
         margin-bottom: 4px;
-        color: #1a1a1a;
+        color: var(--ep-primary);
+        font-weight: 600;
     }
 
     .flow-arrow {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #666;
+        color: var(--ep-secondary);
         font-size: 1.5rem;
         margin: 5px 0;
     }
@@ -317,8 +335,8 @@
 
     .flow-label {
         font-size: 0.75rem;
-        color: #666;
-        background: #fafaf8;
+        color: var(--ep-secondary);
+        background: var(--ep-bg-alt);
         padding: 2px 8px;
         border-radius: 10px;
         margin: 0 5px;
@@ -341,27 +359,29 @@
     }
 
     .flow-branch-label {
-        background: #e0e0e0;
+        background: var(--ep-bg-alt);
+        border: 1px solid var(--ep-border);
         padding: 4px 12px;
         border-radius: 15px;
         font-size: 0.8rem;
         margin-bottom: 10px;
         text-align: center;
+        color: var(--ep-secondary);
     }
 
     .flow-section {
-        border: 1px dashed #ccc;
-        border-radius: 8px;
+        border: 1px solid var(--ep-border);
+        border-radius: 12px;
         padding: 20px;
         margin: 20px 0;
-        background: white;
+        background: var(--ep-bg);
     }
 
     .flow-section-title {
-        background: #1a1a1a;
+        background: var(--ep-primary);
         color: white;
         padding: 6px 16px;
-        border-radius: 4px;
+        border-radius: 6px;
         font-size: 0.85rem;
         font-weight: 600;
         display: inline-block;
@@ -384,7 +404,7 @@
 
     .branch-connector {
         text-align: center;
-        color: #666;
+        color: var(--ep-secondary);
         font-size: 1.2rem;
         margin: 5px 0;
     }
@@ -416,6 +436,22 @@
         .paths-grid {
             grid-template-columns: 1fr;
         }
+    }
+
+    /* Links - Accent color */
+    a {
+        color: var(--ep-accent);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Strong text */
+    strong {
+        font-weight: 600;
+        color: var(--ep-primary);
     }
 </style>
 {% endblock %}

@@ -1,5 +1,5 @@
 {
-    "last_updated": "2025-12-22",
+    "last_updated": "2025-12-26",
     "data_sources": [
         "ALSCAS WhatsApp Group Discussions (2021-2025)",
         "Target ALS Global Natural History Study",
@@ -32,9 +32,10 @@
                     "TBK1"
                 ],
                 "participants": {
-                    "first_batch_2022": "59+ PALS",
+                    "first_batch_2022": "62 PALS registered, 59 completed testing",
                     "november_2025_batch": "39 PALS",
-                    "status": "Testing still ongoing"
+                    "status": "Testing still ongoing",
+                    "logistics_support": "ALSCAS covers home collection logistics costs (₹500-1000 per sample)"
                 },
                 "research_purpose": [
                     "Build India's first ALS genetic database",
@@ -72,10 +73,11 @@
                 "providers": [
                     {
                         "name": "Medgenome",
-                        "contact": "Mr. Satyendra Gupta",
-                        "cost_inr": "17,000-20,000",
+                        "contact": "Dr. Priya Pande, Head - Scientific Affairs",
+                        "cost_inr": "17,000-18,000",
                         "coverage": "Pan-India sample collection",
-                        "prescription": "Required from neurologist"
+                        "prescription": "Required from neurologist",
+                        "limitation": "Does NOT test for C9orf72 (as of September 2022)"
                     },
                     {
                         "name": "Neuberg Diagnostics",
@@ -83,7 +85,7 @@
                         "cost_inr": "Similar range"
                     }
                 ],
-                "genes_tested": "Comprehensive ALS panel including SOD1, C9orf72, FUS, TARDBP, OPTN",
+                "genes_tested": "Comprehensive ALS panel including SOD1, FUS, TARDBP, OPTN (Note: Check with provider for latest gene coverage)",
                 "turnaround_time": "2-3 weeks",
                 "sources": [
                     "ALSCAS WhatsApp Group discussions"
@@ -120,10 +122,12 @@
                 },
                 "detailed_info": {
                     "about_target_als": "Nonprofit organization focused on accelerating research and drug development for ALS. Connects scientists, clinicians, and pharmaceutical companies worldwide.",
+                    "connection_story": "ALSCAS met Dr. Vishnu during an online meeting of International Alliance of ALS/MND Associations, which led to the Target ALS connection.",
                     "meeting_details": {
                         "date": "December 2024",
-                        "format": "Online meeting",
-                        "participants": "ALSCAS team and Dr. Manish Raisinghani"
+                        "format": "Connected via Montreal Congress, then online meeting",
+                        "participants": "ALSCAS team and Dr. Manish Raisinghani",
+                        "facilitator": "Dr. Nirmal Surya facilitated ALSCAS attendance at Montreal and provided continued support"
                     },
                     "global_natural_history_study": {
                         "purpose": "Collect comprehensive data and biological samples from ALS patients worldwide to understand disease patterns and progression",
@@ -139,14 +143,24 @@
                     "annual_conference": {
                         "date": "May 2025",
                         "format": "Virtual participation for ALSCAS members",
+                        "registration": "Registration link shared with community on May 5, 2025",
                         "focus": "Latest advancements in ALS research, drug development updates, clinical trial opportunities"
                     },
                     "significance_for_india": [
-                        "First major Target ALS collaboration in India (NIMHANS already contributed 700+ patient samples)",
+                        "First major Target ALS collaboration in India",
+                        "NIMHANS already working with Dr. Nalini & Dr. Venugopalan to build data of Indian ALS patients",
                         "AIIMS and NIMHANS designated as clinical trial sites",
                         "Indian patients may access experimental treatments",
-                        "Data from Indian population contributes to global understanding"
+                        "Data from Indian population contributes to global understanding",
+                        "Our connect with Target ALS was more significant as their main motto is to connect global scientists and teams together"
                     ]
+                },
+                "montreal_congress": {
+                    "event": "International Alliance Congress",
+                    "date": "December 2-4, 2024",
+                    "location": "Montreal, Canada",
+                    "representative": "Raj Kakumani (brother of Vijaya Bharati) represented ALSCAS",
+                    "acknowledgment": "Grateful to Dr. Nirmal Surya who made one expensive registration complimentary"
                 },
                 "events": {
                     "may_2025": "ALSCAS members invited to Target ALS Annual Conference (virtual participation)",
@@ -160,7 +174,7 @@
                 "sources": [
                     "https://www.targetals.org",
                     "https://targetals.org/global-natural-history-study/",
-                    "ALSCAS WhatsApp Group - Messages from December 2024, March 2025"
+                    "ALSCAS WhatsApp Group - Messages from December 2024, March 2025, May 2025"
                 ]
             },
             {
@@ -168,8 +182,9 @@
                 "collaboration_name": "ProjectMinE - Trans-Ancestral Genetics (TAG)",
                 "status": "Active (2022-Present)",
                 "meeting_date": "September 30, 2022",
+                "lead_organizer": "Dr. Al Khleifat Ahmad, King's College London",
                 "participants": [
-                    "Dr. Ahmad (King's College London)",
+                    "Dr. Al Khleifat Ahmad (King's College London)",
                     "Dr. Mohammed Faruq (CSIR-IGIB)",
                     "Dr. Gauri Devi (India)",
                     "ALSCAS representatives"
@@ -182,8 +197,8 @@
                 ],
                 "action_items": [
                     "Medical data collection for Indian ALS patients",
-                    "Finding solutions for Indian patients to access new treatments like AMX0035 (Relyvrio)",
-                    "Addressing lack of clinical trial opportunities in India"
+                    "Clinical trial opportunities for Indian patients",
+                    "National database for pharma company engagement"
                 ],
                 "sources": [
                     "https://www.projectmine.com",
@@ -192,22 +207,30 @@
             },
             {
                 "id": 3,
-                "collaboration_name": "IFNR & IAN - First ALS/MND Awareness Day in India",
-                "status": "Completed (2024)",
+                "collaboration_name": "IFNR & IAN - ALS/MND Awareness Recognition",
+                "status": "Ongoing (2024-Present)",
                 "organization": "Indian Federation of Neurorehabilitation (IFNR) & Indian Academy of Neurology (IAN)",
                 "has_detailed_info": true,
+                "key_figure": {
+                    "name": "Dr. Nirmal Surya",
+                    "roles": [
+                        "President of IFNR",
+                        "Past President of IAN"
+                    ],
+                    "contribution": "Facilitated recognition of ALS awareness at institutional level"
+                },
                 "event_details": {
-                    "name": "India's First ALS/MND Awareness Day",
+                    "name": "India's First ALS/MND Awareness Day Recognition",
                     "organizers": [
                         "IFNR",
                         "IAN",
                         "ALSCAS"
                     ],
                     "format": "Virtual event",
-                    "key_organizer": "Dr. Nirmal Surya"
+                    "significance": "Indian Academy of Neurology (IAN) and IFNR recognize importance of ALS awareness day for first time ever in India"
                 },
                 "speakers": [
-                    "Dr. Nirmal Surya (Eminent neurologist)",
+                    "Dr. Nirmal Surya (Eminent neurologist, IFNR President)",
                     "Satvinder Kaur (ALSCAS Co-Founder)",
                     "CALS (Caregiver sharing experiences)"
                 ],
@@ -217,6 +240,12 @@
                     "Caregiver experiences and insights",
                     "Available support resources in India"
                 ],
+                "ifnrcon_2025": {
+                    "event": "13th Annual IFNR Conference (IFNRCON 2025)",
+                    "location": "CMC Ludhiana",
+                    "dates": "March 13-16, 2025",
+                    "alscas_participation": "Satvinder Kaur invited as panelist for Rehabilitation in ALS session"
+                },
                 "detailed_info": {
                     "significance": "First ever organized ALS/MND awareness program in India at institutional level",
                     "impact": "Increased awareness among medical community and general public about ALS/MND",
@@ -230,24 +259,26 @@
                 },
                 "sources": [
                     "https://www.youtube.com/live/T50GFEOfUfM",
-                    "ALSCAS WhatsApp Group - Event announcements 2024"
+                    "ALSCAS WhatsApp Group - Event announcements 2024, March 2025"
                 ]
             },
             {
                 "id": 4,
                 "collaboration_name": "International Alliance of ALS/MND Associations",
-                "status": "Active Member (July 2024-Present)",
+                "status": "Full Member (July 2024-Present)",
                 "organization": "International Alliance of ALS/MND Associations",
                 "has_detailed_info": true,
                 "membership_details": {
                     "achievement_date": "July 2024",
                     "membership_type": "Full Membership",
-                    "organization_name": "ALS Care and Support Foundation (ALSCAS)"
+                    "organization_name": "ALS Care and Support Foundation India (ALSCAS)",
+                    "announcement": "Our ALS care and support foundation just received full membership"
                 },
                 "detailed_info": {
                     "about_alliance": "Global network of ALS/MND associations working together to support patients, caregivers, and advance research worldwide",
                     "significance_for_india": [
                         "First Indian organization to receive full membership",
+                        "Application to join the Alliance as a full member has been approved",
                         "Recognition of ALSCAS's impactful work in India",
                         "Access to global best practices and research",
                         "Platform to showcase Indian ALS community's progress"
@@ -260,14 +291,16 @@
                     ],
                     "congress_participation": {
                         "event": "International Alliance Congress",
-                        "year": "2024",
+                        "location": "Montreal, Canada",
+                        "dates": "December 2-4, 2024",
+                        "representative": "Raj Kakumani represented ALSCAS",
                         "significance": "Opportunity to showcase India's ALS research and care initiatives to global medical community",
                         "acknowledgment": "Dr. Nirmal Surya facilitated ALSCAS attendance and provided continued support"
                     }
                 },
                 "sources": [
                     "https://www.als-mnd.org",
-                    "ALSCAS WhatsApp Group - July 2024 announcement"
+                    "ALSCAS WhatsApp Group - July 2024 announcement, December 2024 congress updates"
                 ]
             },
             {
@@ -275,7 +308,7 @@
                 "collaboration_name": "IHBAS - ALS Clinic & Patient Needs Study",
                 "status": "In Discussion (2024-Present)",
                 "organization": "Institute of Human Behaviour and Allied Sciences (IHBAS), Delhi",
-                "director": "Dr. R.K. Dhamija",
+                "director": "Prof. Dr. R.K. Dhamija",
                 "has_detailed_info": true,
                 "proposed_initiatives": [
                     {
@@ -286,13 +319,18 @@
                     {
                         "name": "Patient Needs Assessment Study",
                         "status": "Proposed",
-                        "description": "Research study to assess specific needs of ALS patients in India"
+                        "description": "IHBAS can conduct a study on the need assessment of ALS patients"
+                    },
+                    {
+                        "name": "Doctor Training Session",
+                        "status": "Requested",
+                        "description": "He would like us to conduct a session for the doctors at IHBAS"
                     }
                 ],
                 "detailed_info": {
                     "meeting_details": {
                         "year": "2024",
-                        "participants": "ALSCAS team and Dr. R.K. Dhamija (Director, IHBAS)",
+                        "participants": "ALSCAS team and Prof. Dr. R.K. Dhamija (Director, IHBAS)",
                         "outcome": "Productive discussions on establishing ALS clinic and conducting patient needs study"
                     },
                     "proposed_als_clinic": {
@@ -321,20 +359,20 @@
             },
             {
                 "id": 6,
-                "collaboration_name": "AKV9 (NU-9) Experimental Therapy - Global Research Update",
-                "status": "Research Stage - US Development (No India Collaboration)",
+                "collaboration_name": "AKV9 (NU-9) - Global Research Awareness",
+                "status": "USA-Only Research (NO India Collaboration)",
                 "organization": "AKAVA Therapeutics (USA) & Northwestern University",
                 "has_detailed_info": true,
-                "important_clarification": "⚠️ NOTE: AKV9 is being developed in the USA. There is currently NO India-based collaboration for AKV9. This section provides information for awareness only.",
+                "important_clarification": "⚠️ IMPORTANT: AKV9 is being developed exclusively in the USA. There is currently NO India-based collaboration for AKV9. This section is included for informational awareness only.",
                 "about_akv9": {
                     "original_name": "NU-9 (Northwestern University compound)",
                     "current_name": "AKV9",
                     "developer": "AKAVA Therapeutics (USA), based on Northwestern University research",
                     "lead_researchers": [
                         "Dr. Richard Silverman (Northwestern University)",
-                        "Dr. P. Hande Ozdinler (Northwestern University)",
-                        "Dr. Mukesh Gautam (Northwestern University - NOT DRDO)"
+                        "Dr. P. Hande Ozdinler (Northwestern University)"
                     ],
+                    "note_on_indian_researchers": "Dr. Mukesh Gautam is an Indian researcher AT Northwestern University in USA - he is NOT affiliated with DRDO or any Indian government organization",
                     "type": "Experimental neuroprotective therapy",
                     "target": "Upper motor neuron protection",
                     "unique_aspect": "Aims to protect and potentially reverse upper motor neuron degeneration"
@@ -348,9 +386,9 @@
                 "india_status": {
                     "current_collaboration": "NONE - No India collaboration exists for AKV9",
                     "india_availability": "NOT available in India",
-                    "clinical_trials_in_india": "NONE planned as of 2025"
+                    "clinical_trials_in_india": "NONE planned as of December 2025"
                 },
-                "why_included": "ALSCAS members discuss AKV9 as a potential future therapy. This information helps families understand the global ALS research landscape.",
+                "why_included": "ALSCAS members discussed NU-9 with government officials (DRDO meeting March 2022) as an example of promising global research that India could support. This information helps families understand the global ALS research landscape.",
                 "sources": [
                     "Northwestern University press releases",
                     "AKAVA Therapeutics official website",
@@ -364,6 +402,7 @@
                 "institution": "AIIMS Delhi",
                 "status": "Active (2024-Present)",
                 "key_contact": "Dr. Vishnu VY - Associate Professor, In-charge of Neuro-muscular Cell",
+                "connection_story": "ALSCAS met Dr. Vishnu during an online meeting of International Alliance of ALS/MND Associations",
                 "initiatives": [
                     {
                         "name": "ALS Clinic Establishment",
@@ -390,17 +429,27 @@
                     "date": "June 25, 2025",
                     "venue": "J.L. Auditorium, AIIMS Delhi",
                     "capacity": "500 seats",
-                    "speakers": [
+                    "chief_guest": "Prof. M. Srinivas (Director, AIIMS)",
+                    "participants": [
                         "Prof. M. Srinivas (Director, AIIMS)",
                         "Dr. Vishnu VY and senior neurologists from AIIMS",
-                        "HOD and senior doctors of Neurology attended"
+                        "HOD and senior doctors of Neurology"
                     ],
+                    "format": "Event was live-streamed for wider reach",
                     "outcomes": [
                         "First major institutional collaboration for ALS in India",
                         "Increased awareness among medical community",
                         "Commitment from AIIMS for ongoing support",
-                        "Event live-streamed for wider reach"
+                        "Gratitude expressed to Prof. M. Srinivas for unprecedented director-level support"
                     ]
+                },
+                "additional_engagement": {
+                    "race_for_7": "ALSCAS attended Racefor7 event at AIIMS Delhi and got permission to place standee (February 2024)"
+                },
+                "january_2025_meeting": {
+                    "date": "January 2025",
+                    "type": "In-person meeting",
+                    "note": "Meeting with AIIMS finally getting realised (expected to be in next week) - from January 7, 2025 message"
                 },
                 "rare_disease_package": {
                     "status": "In Development",
@@ -408,7 +457,7 @@
                     "alscas_contribution": "Shared economic impact study of ALS with AIIMS"
                 },
                 "sources": [
-                    "ALSCAS WhatsApp Group - Messages from January 2025, June 2025"
+                    "ALSCAS WhatsApp Group - Messages from January 2025, June 2025, February 2024"
                 ]
             },
             {
@@ -420,6 +469,10 @@
                     "Dr. Keerthi Priya (ALS specialist)",
                     "Dr. Deepak Menon (Research trials)"
                 ],
+                "target_als_collaboration": {
+                    "status": "Active",
+                    "role": "Working with Dr. Nalini & Dr. Venugopalan to build data of Indian ALS patients"
+                },
                 "services": [
                     {
                         "name": "Home Visit Program",
@@ -472,21 +525,24 @@
             {
                 "id": 1,
                 "organization": "DRDO (Defence Research & Development Organisation)",
-                "status": "Initiated (2022-2023)",
-                "meeting_date": "March 2022",
-                "duration": "45-minute meeting with high-rank DRDO officer",
+                "status": "Advocacy Meeting (March 2022)",
+                "meeting_date": "March 18, 2022",
+                "important_clarification": "⚠️ This was a government advocacy meeting to seek guidance on ALS research funding - NOT a research collaboration",
+                "meeting_details": {
+                    "duration": "45-minute meeting with high-rank DRDO officer",
+                    "purpose": "Seeking government guidance for ALS research and drug discovery"
+                },
                 "discussion_topics": [
-                    "Government approach for ALS research and drug discovery",
-                    "Guidance on approaching government for ALS research funding",
-                    "Potential defense research applications for ALS",
+                    "How to approach Government for demands on ALS research funding",
+                    "Guidance on drug discovery on existing world research (e.g., NU-9) from India perspective",
                     "General inquiry about government support for rare disease research"
                 ],
-                "follow_up": [
-                    "Discussion about using genetic data for future DRDO projects",
-                    "Exploring research collaborations"
-                ],
+                "outcome": {
+                    "guidance_received": "Officer guided ALSCAS on how to approach government for research funding",
+                    "note": "This was an advocacy meeting, NOT a DRDO research project or collaboration"
+                },
                 "sources": [
-                    "ALSCAS WhatsApp Group - March 2022, September 2022 messages"
+                    "ALSCAS WhatsApp Group - March 18, 2022 message: 'we three met with high rank DRDO officer for 45 mins today evening.. who listened to us and guided us how to approach Govt for our demands on ALS research and drug discovery on existing world research (e.g. NU-9) from India'"
                 ]
             }
         ],
@@ -531,6 +587,21 @@
                 "sources": [
                     "ALSCAS WhatsApp Group - August 2024, February 2025 messages"
                 ]
+            },
+            {
+                "id": 3,
+                "treatment_name": "Relyvrio (AMX0035) - WITHDRAWN",
+                "status": "WITHDRAWN from market",
+                "timeline": {
+                    "march_2024": "Phase 3 clinical trial failure announced",
+                    "january_2025": "Amylyx Pharmaceuticals announced formal intention to remove Relyvrio from market"
+                },
+                "note": "Relyvrio is no longer being pursued as a treatment option. Families should focus on other available supportive care and emerging treatments.",
+                "sources": [
+                    "https://www.amylyx.com/news/amylyx-pharmaceuticals-announces-formal-intention-to-remove-relyvrior...",
+                    "ALSCAS WhatsApp Group - March 25, 2024: 'Relyvrio has failed its Phase 3 clinical trial and will soon be pulled from the market'",
+                    "January 2, 2025 announcement"
+                ]
             }
         ],
         "educational_initiatives": [
@@ -562,7 +633,8 @@
                     {
                         "name": "Race for 7 Events",
                         "location": "AIIMS",
-                        "frequency": "Multiple years"
+                        "frequency": "Multiple years",
+                        "note": "ALSCAS attended Racefor7 event at AIIMS Delhi (February 2024)"
                     },
                     {
                         "name": "Global ALS Awareness Day",
@@ -587,7 +659,7 @@
             "events": [
                 "Contact established with CSIR-IGIB",
                 "First members explore genetic testing options",
-                "Discussions with DRDO about ALS research"
+                "March 2022: Advocacy meeting with DRDO seeking government guidance for ALS research"
             ]
         },
         "september_2022": {
@@ -604,6 +676,7 @@
             "community_response": {
                 "excitement_level": "Very high - members calling it 'game-changer'",
                 "registration_speed": "62 families registered within first week",
+                "completed_testing": "59 members actually completed testing",
                 "significance": "Previously genetic testing cost ₹17,000-20,000, now FREE through GOMED program",
                 "emotional_impact": "Hope for gene-specific treatments like Tofersen (SOD1)"
             },
@@ -619,17 +692,16 @@
             "subtitle": "ProjectMinE Trans-Ancestral Genetics Meeting",
             "events": [
                 "Virtual meeting: ProjectMinE-TAG with King's College London",
-                "Participants: Dr. Ahmad (King's College), Dr. Faruq (CSIR-IGIB), Dr. Gauri Devi, Indian neurologists, ALSCAS team",
+                "Organized by Dr. Al Khleifat Ahmad of King's College, UK",
+                "Participants: Dr. Al Khleifat Ahmad (King's College), Dr. Faruq (CSIR-IGIB), Dr. Gauri Devi, Indian neurologists, ALSCAS team",
                 "Discussion: Building India's first national ALS genetic database",
                 "Plans announced: Present Indian data at international medical symposiums",
-                "Goal defined: Attract pharmaceutical companies to India for clinical trials",
-                "Action items: Medical data collection standardization, treatment access pathways"
+                "Goal defined: Attract pharmaceutical companies to India for clinical trials"
             ],
             "community_significance": {
                 "milestone": "First time Indian ALS community represented in global genetic research consortium",
                 "patient_hope": "Indian genetic data could reveal unique patterns, enable future trials",
                 "discussion_topics": [
-                    "How to access AMX0035 (Relyvrio) in India",
                     "Clinical trial opportunities for Indian patients",
                     "National database for pharma company engagement"
                 ]
@@ -646,7 +718,7 @@
             "events": [
                 "Dr. Faruq presents ALS genetic research findings at National Neurology Conference",
                 "Publicly acknowledges ALSCAS collaboration and community contribution",
-                "Highlights: India's first large-scale ALS genetic study with 62+ participants",
+                "Highlights: India's first large-scale ALS genetic study with 62 registered, 59 completed participants",
                 "Data showing genetic patterns in Indian ALS population",
                 "Academic recognition of patient advocacy group's role in research"
             ],
@@ -662,16 +734,27 @@
                 "future_implications": "Foundation for understanding ALS in South Asian populations"
             }
         },
+        "july_2024": {
+            "title": "International Alliance Membership",
+            "subtitle": "Full Membership Achieved",
+            "events": [
+                "ALS Care and Support Foundation India's application to join the Alliance as a full member has been approved",
+                "First Indian organization to receive full membership in International Alliance of ALS/MND Associations",
+                "Recognition of ALSCAS's impactful work in building India's ALS support community"
+            ]
+        },
         "december_2024": {
             "title": "Target ALS Connection",
             "subtitle": "India Joins Global Research Network",
             "events": [
-                "ALSCAS team meets Dr. Manish Raisinghani (CEO, Target ALS) at International Alliance Congress in Montreal",
+                "International Alliance Congress held December 2-4 in Montreal, Canada",
+                "Raj Kakumani represented ALSCAS at the congress",
+                "ALSCAS team connects with Dr. Manish Raisinghani (CEO, Target ALS)",
                 "Follow-up online meeting organized within weeks",
                 "Discussion: India's participation in Global Natural History Study",
                 "AIIMS Delhi and NIMHANS Bangalore designated as clinical trial sites",
                 "Invitation extended: ALSCAS members to attend May 2025 Target ALS Annual Conference (virtual)",
-                "Data collection plans: South Asian population insights for global research"
+                "Grateful to Dr. Nirmal Surya who made one expensive registration complimentary"
             ],
             "breakthrough_significance": {
                 "historic_first": "First time India included in major global ALS research consortium",
@@ -697,6 +780,7 @@
             "subtitle": "First Major Institutional Collaboration",
             "events": [
                 "In-person meeting: ALSCAS team with Dr. Vishnu VY (Associate Professor, AIIMS Delhi)",
+                "Meeting with AIIMS finally getting realised (January 7, 2025)",
                 "Dr. Vishnu supportive of dedicated ALS clinic establishment at AIIMS",
                 "Discussion: Multi-disciplinary approach covering neurology, pulmonology, nutrition, palliative care",
                 "Approval granted: Public ALS awareness programs at AIIMS",
@@ -719,23 +803,41 @@
                 "gratitude_expressed": "Towards Dr. Vishnu for taking ALS seriously and being supportive"
             }
         },
+        "march_2025": {
+            "title": "IFNRCON 2025",
+            "subtitle": "ALSCAS Representation at National Conference",
+            "events": [
+                "13th Annual IFNR Conference (IFNRCON 2025) at CMC Ludhiana, March 13-16",
+                "Satvinder Kaur (ALSCAS Co-Founder) invited as panelist for Rehabilitation in ALS session"
+            ]
+        },
+        "may_2025": {
+            "title": "Target ALS Annual Meeting",
+            "subtitle": "Virtual Participation",
+            "events": [
+                "ALSCAS members received registration link for Target ALS Annual Meet (May 5, 2025)",
+                "Virtual participation for Indian ALS community",
+                "Focus: Latest advancements in ALS research, drug development updates, clinical trial opportunities"
+            ]
+        },
         "june_2025": {
             "title": "Historic AIIMS Event",
             "subtitle": "ALS/MND Awareness Day - 500-Person Capacity",
             "events": [
-                "Venue: J.L. Auditorium, AIIMS Delhi (500-seat capacity) - fully booked",
+                "Date: June 25, 2025",
+                "Venue: J.L. Auditorium, AIIMS Delhi (500-seat capacity)",
                 "Chief Guest: Prof. M. Srinivas (Director, AIIMS) - unprecedented director-level support",
-                "20+ senior doctors and neurologists from AIIMS departments attended",
+                "HOD and senior doctors of Neurology attended",
                 "Speakers: Dr. Vishnu VY, senior AIIMS neurologists, ALSCAS representatives",
                 "Topics: ALS diagnosis, management, multi-disciplinary care, caregiver support",
                 "Live-streamed for nationwide access",
-                "Media coverage: Several news outlets covered the event",
-                "Commitment announced: AIIMS ongoing support for ALS clinic and research"
+                "Commitment announced: AIIMS ongoing support for ALS clinic and research",
+                "We are truly grateful to Prof. M. Srinivas, Director, AIIMS"
             ],
             "unprecedented_achievement": {
                 "first_in_india": "Largest institutional ALS awareness event ever organized in India",
                 "director_attendance": "AIIMS Director's presence = highest-level institutional backing",
-                "doctor_participation": "20+ doctors learning about ALS = ripple effect across departments",
+                "doctor_participation": "HOD and senior doctors of Neurology being present = ripple effect across departments",
                 "symbolic_importance": "ALS is no longer invisible disease in India's top hospital"
             },
             "community_sentiment": {
@@ -756,7 +858,7 @@
             "events": [
                 "CSIR-IGIB publishes research study in peer-reviewed journal",
                 "Paper explicitly acknowledges ALSCAS participation and contribution",
-                "Data from 62+ Indian ALS patients now in scientific literature",
+                "Data from 62 registered, 59 completed Indian ALS patients now in scientific literature",
                 "Genetic patterns specific to Indian/South Asian population documented",
                 "Presentation of findings at medical symposiums to attract pharmaceutical interest",
                 "First time Indian ALS genetic data available for global research community"
@@ -784,6 +886,7 @@
             "subtitle": "Second Batch - Streamlined Process",
             "events": [
                 "39 new PALS enrolled for genetic testing (second batch)",
+                "First list of 39 PALS sent in first batch (November 19, 2025)",
                 "Streamlined home collection process based on first batch learnings",
                 "ALSCAS now covering home collection logistics costs (₹500-1000 per sample)",
                 "Faster enrollment: Google Form refined, approval within days",
@@ -845,15 +948,28 @@
                 "position": "ALS Specialist, NIMHANS",
                 "focus": "Clinical trials, patient care",
                 "contact": "Through NIMHANS"
+            },
+            {
+                "name": "Dr. Nirmal Surya",
+                "position": "President, IFNR; Past President, IAN",
+                "focus": "Medical community engagement, ALS awareness facilitation",
+                "contribution": "Facilitated ALSCAS attendance at international events"
+            },
+            {
+                "name": "Dr. Al Khleifat Ahmad",
+                "position": "Researcher, King's College London",
+                "focus": "ProjectMinE Trans-Ancestral Genetics",
+                "contact": "Via ProjectMinE"
             }
         ],
         "testing_services": [
             {
                 "name": "Medgenome",
-                "contact": "Mr. Satyendra Gupta",
+                "contact": "Dr. Priya Pande, Head - Scientific Affairs",
                 "service": "Commercial genetic testing",
-                "cost_inr": "17,000-20,000",
-                "coverage": "Pan-India sample collection"
+                "cost_inr": "17,000-18,000",
+                "coverage": "Pan-India sample collection",
+                "limitation": "Does NOT test for C9orf72 (as of September 2022)"
             },
             {
                 "name": "CSIR-IGIB GOMED",
@@ -904,15 +1020,15 @@
         },
         {
             "achievement": "First ALS Genetic Study in India",
-            "description": "62+ patients in initial batch. Published research acknowledging ALSCAS. Building national genetic database."
+            "description": "62 registered, 59 completed patients in initial batch. Published research acknowledging ALSCAS. Building national genetic database."
         },
         {
             "achievement": "AIIMS Partnership",
-            "description": "First institutional collaboration. Historic awareness event (June 2025). Commitment for ALS clinic. Director-level support."
+            "description": "First institutional collaboration. Historic awareness event (June 25, 2025). Commitment for ALS clinic. Director-level support from Prof. M. Srinivas."
         },
         {
             "achievement": "Global Recognition",
-            "description": "Target ALS partnership. ProjectMinE collaboration. International Alliance for ALS/MND membership. Featured in global ALS community."
+            "description": "Target ALS partnership. ProjectMinE collaboration. International Alliance for ALS/MND full membership (July 2024). Featured in global ALS community."
         },
         {
             "achievement": "Government Engagement",
@@ -938,7 +1054,7 @@
             {
                 "expectation": "Clinical Trial in India",
                 "status": "Dr. Faruq mentioned potential trial (February 2025)",
-                "target": "Possibly for FUS or SOD1 mutations",
+                "target": "Possibly for FUS, SOD1, or other ALS-associated gene mutations",
                 "significance": "Would be first ALS clinical trial in India"
             },
             {
@@ -981,7 +1097,7 @@
             },
             {
                 "expectation": "Cure/Disease Modification",
-                "description": "Treatments that stop progression. Reversal of symptoms (like NU-9 promises). Prevention for familial cases. Precision medicine based on genetic profile."
+                "description": "Treatments that stop progression. Reversal of symptoms. Prevention for familial cases. Precision medicine based on genetic profile."
             }
         ]
     },
@@ -999,6 +1115,21 @@
             "Results take 3 months",
             "Clinical trials 2-3 years away minimum with strict eligibility criteria"
         ],
+        "what_was_corrected": {
+            "note": "This data was verified against ALSCAS WhatsApp chat records (2021-2025) in December 2025",
+            "corrections_made": [
+                "AKV9/NU-9: Clarified this is USA-only research with NO India collaboration; Dr. Mukesh Gautam is at Northwestern University, NOT DRDO",
+                "DRDO meeting: Reframed as advocacy meeting for government guidance, NOT a research collaboration",
+                "First genetic testing batch: Corrected to 62 registered, 59 completed",
+                "Satvinder Kaur: Correctly identified as ALSCAS Co-Founder",
+                "Relyvrio: Updated timeline - Phase 3 failure March 2024, withdrawal announced January 2025",
+                "Medgenome contact: Updated to Dr. Priya Pande; noted C9orf72 limitation",
+                "Added: Dr. Al Khleifat Ahmad as ProjectMinE organizer",
+                "Added: Raj Kakumani as Montreal Congress representative",
+                "Added: Race for 7 event at AIIMS (February 2024)",
+                "Added: IFNRCON 2025 participation details"
+            ]
+        },
         "bottom_line": "India's ALS community is building the foundation for future breakthroughs, one patient, one test, one collaboration at a time. Cure not imminent (5-10 year horizon more realistic). Current focus: Understanding disease, preparing for trials. Participation in research helps future generations even if not current patients."
     }
 }
