@@ -56,6 +56,11 @@ def power_backup_guide():
     """Power Backup Guide page - UPS and battery calculations"""
     return render_template('power_backup_guide.html', page='power_backup')
 
+@app.route('/ups-faq')
+def ups_faq():
+    """UPS FAQ page - Comprehensive power backup FAQ for home ICU"""
+    return render_template('ups_faq.html', page='ups_faq')
+
 @app.route('/home-icu-guide')
 def home_icu_guide():
     """Home ICU guide page"""

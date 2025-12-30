@@ -4,30 +4,25 @@
 
 {% block extra_css %}
 <style>
-    /* CSS Variables - Professional Apple/Claude-inspired Design */
+    /* CSS Variables - Claude-style Minimalist Design */
     :root {
-        --ct-primary: #1d1d1f;
-        --ct-secondary: #6e6e73;
-        --ct-accent: #0071e3;
-        --ct-highlight: #c9a98c;
-        --ct-highlight-bg: #faf7f4;
-        --ct-bg: #ffffff;
-        --ct-bg-alt: #f5f5f7;
-        --ct-border: #d2d2d7;
-        --ct-text: #1d1d1f;
-        --ct-muted: #86868b;
-        --ct-hero-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%);
+        --faq-primary: #1a1a1a;
+        --faq-secondary: #4a4a4a;
+        --faq-muted: #6b6b6b;
+        --faq-accent: #c9a98c;
+        --faq-accent-soft: #d4a574;
+        --faq-bg: #ffffff;
+        --faq-bg-alt: #fafafa;
+        --faq-border: #e5e5e5;
+        --faq-border-soft: #f0f0f0;
     }
 
-    /* Hero Section - Light Sky Blue Theme (Matching Communication Technology) */
+    /* Hero Section - Subtle & Elegant */
     .faq-hero {
         text-align: center;
-        padding: 4.5rem 1.5rem 3rem;
-        background:
-            var(--ct-hero-gradient),
-            url('/static/images/hero_bg_v2.png') center/cover no-repeat;
-        background-color: #f5f7fa;
-        color: var(--ct-primary);
+        padding: 4rem 1.5rem 2.5rem;
+        background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+        color: var(--faq-primary);
         margin-bottom: 0;
         position: relative;
     }
@@ -39,7 +34,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        background: radial-gradient(ellipse at center top, rgba(201, 169, 140, 0.08) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -49,23 +44,26 @@
     }
 
     .faq-hero h1 {
-        font-size: 2.75rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        letter-spacing: -0.04em;
-        color: #1d1d1f;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        font-size: 2.25rem;
+        font-weight: 600;
+        margin-bottom: 0.625rem;
+        letter-spacing: -0.025em;
+        color: #1a1a1a;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     .faq-hero p {
-        font-size: 1.125rem;
-        color: #424245;
-        max-width: 720px;
+        font-size: 1.0625rem;
+        color: #6b6b6b;
+        max-width: 560px;
         margin: 0 auto;
         line-height: 1.6;
         font-weight: 400;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        letter-spacing: 0.01em;
+        -webkit-font-smoothing: antialiased;
     }
 </style>
 {% endblock %}
@@ -79,484 +77,6 @@
     </div>
 </section>
 
-<style>
-    /* Minimalist FAQ Styling - Matching Communication Technology */
-    .faq-container {
-        max-width: 900px;
-        margin: -2rem auto 0;
-        padding: 0 1.5rem 3rem;
-        background: transparent;
-        min-height: 100vh;
-        position: relative;
-        z-index: 10;
-    }
-
-    .faq-header {
-        margin-bottom: 2.5rem;
-        text-align: center;
-    }
-
-    .faq-title {
-        font-size: 2rem;
-        font-weight: 600;
-        color: #1A1A1A;
-        margin: 0 0 0.5rem 0;
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        letter-spacing: -0.02em;
-    }
-
-    .faq-subtitle {
-        font-size: 1rem;
-        color: #6B6B6B;
-        margin: 0;
-        font-weight: 400;
-        font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    .faq-disclaimer {
-        background: #FFFFFF;
-        border: 1px solid #E8E5E1;
-        border-radius: 8px;
-        padding: 1rem 1.25rem;
-        margin-bottom: 2rem;
-        font-size: 0.875rem;
-        color: #6B6B6B;
-        line-height: 1.6;
-        font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    .faq-disclaimer strong {
-        color: #1A1A1A;
-    }
-
-    .faq-search {
-        margin-bottom: 1.5rem;
-    }
-
-    .faq-search input {
-        width: 100%;
-        padding: 0.875rem 1rem;
-        border: 1px solid #E8E5E1;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        background: #FFFFFF;
-        color: #1A1A1A;
-        outline: none;
-        transition: border-color 0.15s;
-        font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    .faq-search input:focus {
-        border-color: #1A1A1A;
-    }
-
-    .faq-search input::placeholder {
-        color: #9A9A9A;
-    }
-
-    /* Category pills - Floating Glass Style (Matching Communication Technology) */
-    .faq-categories {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin: 0 auto 2rem;
-        padding: 1rem;
-        max-width: 800px;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border-radius: 14px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        justify-content: center;
-    }
-
-    .category-pill {
-        padding: 0.6rem 1.1rem;
-        border: none;
-        background: transparent;
-        color: var(--ct-secondary);
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        font-weight: 500;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-        letter-spacing: -0.01em;
-    }
-
-    .category-pill:hover {
-        background: rgba(201, 169, 140, 0.12);
-        color: #a88b70;
-    }
-
-    .category-pill.active {
-        background: #c9a98c;
-        color: #FFFFFF;
-        box-shadow: 0 2px 8px rgba(201, 169, 140, 0.3);
-    }
-
-    /* FAQ sections - each category as a distinct card */
-    .faq-section {
-        background: var(--ct-bg);
-        border: 1px solid var(--ct-border);
-        border-radius: 14px;
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    }
-
-    .faq-section-title {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--ct-primary);
-        margin: 0 0 1.25rem 0;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--ct-border);
-    }
-
-    .faq-item {
-        background: var(--ct-bg-alt);
-        border-radius: 8px;
-        margin-bottom: 0.625rem;
-        overflow: hidden;
-        transition: all 0.2s ease;
-    }
-
-    .faq-item:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .faq-item:last-child {
-        margin-bottom: 0;
-    }
-
-    .faq-question {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--ct-primary);
-        margin: 0;
-        padding: 1.125rem 1.25rem;
-        line-height: 1.5;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-        transition: all 0.15s;
-    }
-
-    .faq-question:hover {
-        background: #F5F5F5;
-    }
-
-    .faq-item.open .faq-question {
-        background: #FFFFFF;
-        border-bottom: 1px solid #E8E5E1;
-    }
-
-    .faq-toggle {
-        color: var(--ct-muted);
-        font-size: 0.75rem;
-        flex-shrink: 0;
-        transition: transform 0.2s;
-    }
-
-    .faq-item.open .faq-toggle {
-        transform: rotate(180deg);
-        color: var(--ct-accent);
-    }
-
-    .faq-answer {
-        font-size: 0.925rem;
-        color: var(--ct-text);
-        line-height: 1.8;
-        padding: 1.5rem 1.5rem 1.25rem 1.5rem;
-        display: none;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-        background: var(--ct-bg);
-    }
-
-    .faq-item.open .faq-answer {
-        display: block;
-    }
-
-    .faq-answer p {
-        margin: 0 0 1.25rem 0;
-        color: var(--ct-text);
-    }
-
-    .faq-answer p:last-child {
-        margin-bottom: 0;
-    }
-
-    .faq-answer h4 {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--ct-primary);
-        margin: 1.5rem 0 0.75rem 0;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-    }
-
-    .faq-answer h4:first-child {
-        margin-top: 0;
-    }
-
-    .faq-answer strong {
-        color: var(--ct-primary);
-        font-weight: 600;
-    }
-
-    .faq-list {
-        margin: 1rem 0 1.25rem 0;
-        padding-left: 1.5rem;
-    }
-
-    .faq-list li {
-        margin-bottom: 0.625rem;
-        color: var(--ct-text);
-        line-height: 1.7;
-    }
-
-    .faq-list li::marker {
-        color: var(--ct-secondary);
-    }
-
-    .faq-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1.25rem 0;
-        font-size: 0.875rem;
-        background: var(--ct-bg-alt);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .faq-table th,
-    .faq-table td {
-        padding: 0.75rem 1rem;
-        text-align: left;
-        border-bottom: 1px solid var(--ct-border);
-    }
-
-    .faq-table th {
-        font-weight: 600;
-        color: var(--ct-primary);
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-        background: var(--ct-bg-alt);
-    }
-
-    .faq-table td {
-        color: var(--ct-text);
-    }
-
-    .faq-table tr:last-child td {
-        border-bottom: none;
-    }
-
-    .faq-note {
-        font-size: 0.875rem;
-        color: #9A9A9A;
-        margin-top: 0.75rem;
-    }
-
-    /* Conditional guidance - subtle styling */
-    .conditional-guidance {
-        background: #F8F7F6;
-        border-radius: 6px;
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-
-    .conditional-guidance h4 {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: #6B6B6B;
-        margin: 0 0 0.625rem 0;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .conditional-item {
-        font-size: 0.875rem;
-        margin-bottom: 0.375rem;
-        color: #4A4A4A;
-    }
-
-    .conditional-item:last-child {
-        margin-bottom: 0;
-    }
-
-    .if-label {
-        font-weight: 600;
-        color: #1A1A1A;
-        font-size: 0.75rem;
-    }
-
-    .then-label {
-        color: #9A9A9A;
-        font-size: 0.75rem;
-    }
-
-    /* Warning box - subtle monochrome */
-    .warning-box {
-        background: #F8F7F6;
-        border-left: 2px solid #6B6B6B;
-        padding: 0.875rem 1rem;
-        margin: 1rem 0;
-        border-radius: 0 6px 6px 0;
-        font-size: 0.875rem;
-        color: #4A4A4A;
-    }
-
-    .warning-box strong {
-        color: #1A1A1A;
-    }
-
-    /* Recommendation - subtle monochrome */
-    .recommendation-box {
-        background: #F8F7F6;
-        border-left: 2px solid #9A9A9A;
-        padding: 0.875rem 1rem;
-        margin: 1rem 0;
-        border-radius: 0 6px 6px 0;
-        font-size: 0.875rem;
-        color: #4A4A4A;
-    }
-
-    .recommendation-box strong {
-        color: #1A1A1A;
-    }
-
-    /* Community perspectives */
-    .perspectives-box {
-        background: #F8F7F6;
-        border-radius: 6px;
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-
-    .perspectives-box h4 {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: #6B6B6B;
-        margin: 0 0 0.625rem 0;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .perspective-quote {
-        font-style: italic;
-        color: #6B6B6B;
-        margin-bottom: 0.5rem;
-        padding-left: 0.75rem;
-        border-left: 2px solid #E8E5E1;
-        font-size: 0.875rem;
-    }
-
-    .perspective-quote:last-child {
-        margin-bottom: 0;
-    }
-
-    /* Evidence tags - minimal monochrome */
-    .evidence-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.375rem;
-        margin-top: 1rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid #E8E5E1;
-    }
-
-    .evidence-tag {
-        font-size: 0.7rem;
-        padding: 0.25rem 0.5rem;
-        border-radius: 4px;
-        font-weight: 500;
-        background: #F0F0F0;
-        color: #6B6B6B;
-    }
-
-    /* Key principles - prominent standalone card */
-    .key-principles {
-        background: #FFFFFF;
-        border: 1px solid #1A1A1A;
-        border-radius: 8px;
-        padding: 1.75rem;
-        margin-top: 3rem;
-        position: relative;
-    }
-
-    .key-principles::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background: #1A1A1A;
-        border-radius: 8px 0 0 8px;
-    }
-
-    .key-principles h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        color: #1A1A1A;
-        margin: 0 0 1.25rem 0;
-        font-family: 'Inter', system-ui, sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.025em;
-    }
-
-    .key-principles ul {
-        margin: 0;
-        padding-left: 1.25rem;
-    }
-
-    .key-principles li {
-        margin-bottom: 0.625rem;
-        color: #1A1A1A;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    .key-principles li::marker {
-        color: #1A1A1A;
-    }
-
-    .key-principles li:last-child {
-        margin-bottom: 0;
-    }
-
-    @media (max-width: 640px) {
-        .faq-container {
-            padding: 2rem 1rem;
-        }
-
-        .faq-title {
-            font-size: 1.5rem;
-        }
-
-        .faq-question {
-            font-size: 0.95rem;
-            padding: 0.875rem 1rem;
-        }
-
-        .category-pill {
-            font-size: 0.8rem;
-            padding: 0.4rem 0.75rem;
-        }
-    }
-</style>
 
 <div class="faq-container">
     <!-- <div class="faq-header">
@@ -586,6 +106,555 @@
         <!-- Key principles loaded dynamically -->
     </div>
 </div>
+
+<style>
+    /* Claude-Style Minimalist FAQ Styling */
+    /* Clean subtle color palette with warm neutrals */
+    /* Font smoothing for improved display quality */
+    /* Increased letter-spacing for better readability */
+
+    .faq-container {
+        max-width: 52rem;
+        margin: -2rem auto 0;
+        padding: 0 1.75rem 3.5rem;
+        background: transparent;
+        min-height: 100vh;
+        position: relative;
+        z-index: 10;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        color: #4a4a4a;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+        text-rendering: optimizeLegibility;
+    }
+
+    .faq-header {
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+
+    .faq-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0 0 0.5rem 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        letter-spacing: -0.015em;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .faq-subtitle {
+        font-size: 1rem;
+        color: #6b6b6b;
+        margin: 0;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+    }
+
+    .faq-disclaimer {
+        background: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 2rem;
+        font-size: 0.9375rem;
+        color: #4a4a4a;
+        line-height: 1.7;
+    }
+
+    .faq-disclaimer strong {
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    .faq-search {
+        margin-bottom: 1.5rem;
+    }
+
+    .faq-search input {
+        width: 100%;
+        padding: 0.9rem 1.1rem;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        font-size: 0.9375rem;
+        background: #ffffff;
+        color: #1a1a1a;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        letter-spacing: 0.01em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .faq-search input:focus {
+        border-color: #c9a98c;
+        box-shadow: 0 0 0 3px rgba(201, 169, 140, 0.1);
+    }
+
+    .faq-search input::placeholder {
+        color: #9a9a9a;
+    }
+
+    /* Category pills - Elegant minimal style */
+    .faq-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0 auto 2rem;
+        padding: 1rem 1.25rem;
+        max-width: 100%;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        border: 1px solid #e5e5e5;
+        justify-content: center;
+    }
+
+    .category-pill {
+        padding: 0.55rem 1rem;
+        border: 1px solid transparent;
+        background: transparent;
+        color: #6b6b6b;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        letter-spacing: 0.015em;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .category-pill:hover {
+        background: #f5f5f5;
+        color: #1a1a1a;
+    }
+
+    .category-pill.active {
+        background: #1a1a1a;
+        color: #ffffff;
+        border-color: #1a1a1a;
+    }
+
+    /* FAQ sections - Clean card style */
+    .faq-section {
+        background: #ffffff;
+        border: 1px solid #e5e5e5;
+        border-radius: 12px;
+        padding: 1.75rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Section headings - Refined minimal style */
+    .faq-section-title {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #6b6b6b;
+        margin: 0 0 1.5rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        padding-bottom: 0.875rem;
+        border-bottom: 1px solid #e5e5e5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* FAQ Item - Generous spacing */
+    .faq-item {
+        background: #fafafa;
+        border-radius: 10px;
+        margin-bottom: 1.25rem;
+        overflow: hidden;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+    }
+
+    .faq-item:hover {
+        border-color: #e5e5e5;
+    }
+
+    .faq-item:last-child {
+        margin-bottom: 0;
+    }
+
+    /* FAQ questions - Clean typography */
+    .faq-question {
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0;
+        padding: 1.125rem 1.25rem;
+        line-height: 1.55;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        transition: background 0.15s;
+        letter-spacing: 0.01em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .faq-question:hover {
+        background: #f5f5f5;
+    }
+
+    .faq-item.open .faq-question {
+        background: #ffffff;
+    }
+
+    .faq-toggle {
+        color: #9a9a9a;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+        transition: transform 0.2s, color 0.2s;
+    }
+
+    .faq-item.open .faq-toggle {
+        transform: rotate(180deg);
+        color: #1a1a1a;
+    }
+
+    /* Body text - Optimized readability */
+    .faq-answer {
+        font-size: 0.9375rem;
+        color: #4a4a4a;
+        line-height: 1.75;
+        padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+        display: none;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        background: #ffffff;
+        letter-spacing: 0.01em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .faq-item.open .faq-answer {
+        display: block;
+    }
+
+    .faq-answer p {
+        margin: 0 0 1.25rem 0;
+        color: #4a4a4a;
+    }
+
+    .faq-answer p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Subsection headings - Refined */
+    .faq-answer h4 {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 1.75rem 0 0.875rem 0;
+        letter-spacing: 0.015em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .faq-answer h4:first-child {
+        margin-top: 0;
+    }
+
+    .faq-answer strong {
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    /* Lists - Clean spacing */
+    .faq-list,
+    .faq-answer ul,
+    .faq-answer ol {
+        margin: 1rem 0 1.25rem 0;
+        padding-left: 1.5rem;
+        font-size: 0.9375rem;
+    }
+
+    .faq-list li,
+    .faq-answer ul li,
+    .faq-answer ol li {
+        margin-bottom: 0.625rem;
+        color: #4a4a4a;
+        line-height: 1.7;
+    }
+
+    .faq-list li::marker,
+    .faq-answer ul li::marker,
+    .faq-answer ol li::marker {
+        color: #c9a98c;
+    }
+
+    /* Tables - Minimal elegant design */
+    .faq-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.25rem 0;
+        font-size: 0.9375rem;
+        background: #ffffff;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .faq-table th {
+        padding: 0.875rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e5e5e5;
+        font-weight: 600;
+        color: #1a1a1a;
+        font-size: 0.8125rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        background: #fafafa;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .faq-table td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+        color: #4a4a4a;
+        line-height: 1.6;
+    }
+
+    .faq-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .faq-note {
+        font-size: 0.875rem;
+        color: #6b6b6b;
+        margin-top: 0.75rem;
+        font-style: italic;
+    }
+
+    /* Conditional guidance - Subtle accent */
+    .conditional-guidance {
+        background: #fafafa;
+        border-left: 2px solid #c9a98c;
+        border-radius: 0 8px 8px 0;
+        padding: 1rem 1.25rem;
+        margin: 1.25rem 0;
+    }
+
+    .conditional-guidance h4 {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0 0 0.75rem 0;
+        letter-spacing: 0.01em;
+    }
+
+    .conditional-item {
+        font-size: 0.9375rem;
+        margin-bottom: 0.5rem;
+        color: #4a4a4a;
+        line-height: 1.6;
+    }
+
+    .conditional-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .if-label {
+        font-weight: 600;
+        color: #1a1a1a;
+    }
+
+    .then-label {
+        color: #6b6b6b;
+    }
+
+    /* Alert boxes - Warm subtle accent */
+    .warning-box {
+        background: #fdf8f3;
+        border-left: 2px solid #d4a574;
+        padding: 1rem 1.25rem;
+        margin: 1.25rem 0;
+        border-radius: 0 8px 8px 0;
+        font-size: 0.9375rem;
+        color: #4a4a4a;
+        line-height: 1.7;
+    }
+
+    .warning-box strong {
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    /* Info boxes - Cool subtle accent */
+    .recommendation-box {
+        background: #f8fafb;
+        border-left: 2px solid #8aa8c7;
+        padding: 1rem 1.25rem;
+        margin: 1.25rem 0;
+        border-radius: 0 8px 8px 0;
+        font-size: 0.9375rem;
+        color: #4a4a4a;
+        line-height: 1.7;
+    }
+
+    .recommendation-box strong {
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    /* Community perspectives - Elegant quote style */
+    .perspectives-box {
+        background: #fafafa;
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin: 1.25rem 0;
+    }
+
+    .perspectives-box h4 {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #6b6b6b;
+        margin: 0 0 0.875rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    .perspective-quote {
+        font-style: italic;
+        color: #4a4a4a;
+        margin-bottom: 0.75rem;
+        padding-left: 1rem;
+        border-left: 2px solid #e5e5e5;
+        font-size: 0.9375rem;
+        line-height: 1.7;
+    }
+
+    .perspective-quote:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Evidence tags - Minimal subtle */
+    .evidence-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .evidence-tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 6px;
+        font-weight: 500;
+        background: #f5f5f5;
+        color: #6b6b6b;
+        letter-spacing: 0.02em;
+    }
+
+    /* Key principles - Distinctive card */
+    .key-principles {
+        background: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 3rem;
+        position: relative;
+    }
+
+    .key-principles::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 1.5rem;
+        bottom: 1.5rem;
+        width: 3px;
+        background: #c9a98c;
+        border-radius: 3px;
+    }
+
+    .key-principles h3 {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: #6b6b6b;
+        margin: 0 0 1.25rem 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .key-principles ul {
+        margin: 0;
+        padding-left: 1.25rem;
+    }
+
+    .key-principles li {
+        margin-bottom: 0.625rem;
+        color: #2c3e50;
+        font-size: 10.5pt;
+        line-height: 1.65;
+    }
+
+    .key-principles li::marker {
+        color: #5b9bd5;
+    }
+
+    .key-principles li:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Print and PDF optimization */
+    @media print {
+        .faq-container {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .faq-categories,
+        .faq-search {
+            display: none;
+        }
+
+        .faq-item {
+            page-break-inside: avoid;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .faq-container {
+            padding: 2rem 1rem;
+        }
+
+        .faq-title {
+            font-size: 1.5rem;
+        }
+
+        .faq-question {
+            font-size: 13pt;
+            padding: 0.875rem 1rem;
+        }
+
+        .category-pill {
+            font-size: 9pt;
+            padding: 0.4rem 0.75rem;
+        }
+    }
+</style>
+
 
 <script>
     let faqData = null;
@@ -665,6 +734,11 @@
             html += `<div class="faq-section" data-category="${category.id}">
             <h3 class="faq-section-title">${category.name}</h3>`;
 
+            // Display section note if present
+            if (category.section_note) {
+                html += `<div class="warning-box" style="margin-bottom: 1.25rem;"><strong>Important:</strong> ${category.section_note}</div>`;
+            }
+
             questions.forEach(q => {
                 html += renderQuestion(q);
             });
@@ -674,6 +748,7 @@
 
         content.innerHTML = html;
     }
+
 
     function renderQuestion(q) {
         let answerHtml = formatAnswer(q.answer);

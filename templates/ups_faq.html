@@ -1,0 +1,717 @@
+{% extends "base.html" %}
+
+{% block title %}Power Backup FAQ | ALS Caregiver's Compass{% endblock %}
+
+{% block content %}
+<style>
+    /* PDF-Optimized Styling */
+    .ups-faq-container {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        color: #2c3e50;
+        line-height: 1.65;
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 2rem 2.5rem;
+        background: #fff;
+        user-select: text;
+        -webkit-user-select: text;
+    }
+
+    /* FAQ Question Styling */
+    .faq-question {
+        font-size: 15pt;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 0 0 1rem 0;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #e8f4f8;
+    }
+
+    /* Section Headings */
+    .ups-faq-container h3 {
+        font-size: 12.5pt;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 1.5rem 0 0.75rem 0;
+    }
+
+    /* Subsection Headings */
+    .ups-faq-container h4 {
+        font-size: 11pt;
+        font-weight: 600;
+        font-style: italic;
+        color: #2c3e50;
+        margin: 1.25rem 0 0.5rem 0;
+    }
+
+    /* Body Text */
+    .ups-faq-container p {
+        font-size: 10.5pt;
+        text-align: justify;
+        margin: 0.75rem 0;
+    }
+
+    /* Lists */
+    .ups-faq-container ul,
+    .ups-faq-container ol {
+        font-size: 10.5pt;
+        margin: 0.75rem 0 0.75rem 1.5rem;
+        padding: 0;
+    }
+
+    .ups-faq-container li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Alert/Important Boxes */
+    .alert-box {
+        background: #fffbf0;
+        border-left: 4px solid #f39c12;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .alert-box p {
+        margin: 0;
+    }
+
+    /* Info/Tip Boxes */
+    .info-box {
+        background: #f0f8ff;
+        border-left: 4px solid #5b9bd5;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .info-box p {
+        margin: 0;
+    }
+
+    /* Tables */
+    .ups-faq-container table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10.5pt;
+        margin: 1rem 0;
+        background: #fff;
+    }
+
+    .ups-faq-container th {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 12px 10px;
+        text-align: left;
+        font-weight: 600;
+    }
+
+    .ups-faq-container td {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    /* FAQ Sections */
+    .faq-section {
+        margin-bottom: 35px;
+        page-break-inside: avoid;
+    }
+
+    /* Images */
+    .equipment-images {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 1.25rem 0;
+        justify-content: center;
+    }
+
+    .equipment-image {
+        text-align: center;
+        flex: 1;
+        min-width: 180px;
+        max-width: 250px;
+    }
+
+    .equipment-image img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .equipment-image figcaption {
+        font-size: 9pt;
+        color: #666;
+        margin-top: 0.5rem;
+    }
+
+    /* Back Link */
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        color: #6B6B6B;
+        text-decoration: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .back-link:hover {
+        color: #1A1A1A;
+    }
+
+    /* Download Button */
+    .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        background: #c9a98c;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 0.875rem;
+        transition: all 0.15s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    .download-btn:hover {
+        background: #b8987b;
+    }
+
+    /* Checklist */
+    .checklist {
+        list-style: none;
+        margin: 0.75rem 0;
+        padding-left: 0;
+    }
+
+    .checklist li {
+        position: relative;
+        padding-left: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .checklist li::before {
+        content: '☐';
+        position: absolute;
+        left: 0;
+        color: #5b9bd5;
+    }
+
+    /* Grid Layout for Backup Time Cards */
+    .backup-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin: 1.25rem 0;
+    }
+
+    .backup-card {
+        background: #f8f7f6;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .backup-card .label {
+        font-size: 9pt;
+        color: #9A9A9A;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+    }
+
+    .backup-card .desc {
+        font-size: 9pt;
+        color: #666;
+        margin-bottom: 0.5rem;
+    }
+
+    .backup-card .value {
+        font-size: 16pt;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    .backup-card .sub {
+        font-size: 9pt;
+        color: #666;
+        margin-top: 0.25rem;
+    }
+
+    .backup-card.worst .value {
+        color: #C4704F;
+    }
+
+    .backup-card.realistic .value {
+        color: #4A7B5A;
+    }
+
+    /* Layer Table */
+    .layer-row {
+        display: grid;
+        grid-template-columns: 80px 1fr 120px 1fr;
+        gap: 0.5rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #eee;
+        align-items: center;
+    }
+
+    .layer-badge {
+        background: #e8f4f8;
+        color: #2c3e50;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 9pt;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Print Styles */
+    @media print {
+
+        /* Hide base template elements */
+        nav,
+        header,
+        footer,
+        .navbar,
+        .nav-container,
+        .site-header,
+        .site-footer {
+            display: none !important;
+        }
+
+        /* Reset body for clean print */
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: 11pt !important;
+        }
+
+        /* Maintain readable width - A4 with margins */
+        .ups-faq-container {
+            max-width: 180mm !important;
+            margin: 0 auto !important;
+            padding: 15mm 15mm !important;
+            font-size: 11pt;
+            line-height: 1.5;
+        }
+
+        .back-link,
+        .download-btn {
+            display: none !important;
+        }
+
+        .faq-section {
+            page-break-inside: avoid;
+            margin-bottom: 20pt;
+        }
+
+        /* Better heading sizing for print */
+        .faq-question {
+            font-size: 14pt !important;
+            margin-bottom: 10pt;
+        }
+
+        h3 {
+            font-size: 12pt !important;
+            margin-top: 12pt;
+        }
+
+        h4 {
+            font-size: 11pt !important;
+        }
+
+        p,
+        li {
+            font-size: 10.5pt !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Tables - prevent overflow */
+        table {
+            width: 100% !important;
+            font-size: 10pt !important;
+        }
+
+        th,
+        td {
+            padding: 8px 6px !important;
+        }
+
+        /* Boxes - proper sizing */
+        .alert-box,
+        .info-box {
+            padding: 10pt 12pt !important;
+            margin: 10pt 0 !important;
+        }
+
+        /* Images - reasonable size */
+        .equipment-images {
+            gap: 10pt !important;
+        }
+
+        .equipment-image img {
+            max-width: 150px !important;
+        }
+
+        /* Backup cards - fit on page */
+        .backup-cards {
+            gap: 8pt !important;
+        }
+
+        .backup-card {
+            padding: 8pt !important;
+        }
+
+        .backup-card .value {
+            font-size: 14pt !important;
+        }
+
+        /* Ensure backgrounds and colors print */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+    }
+</style>
+
+<div class="ups-faq-container">
+    <!-- Page Header -->
+    <div style="margin-bottom: 2rem; text-align: center;">
+
+
+        <button onclick="window.print()" class="download-btn">
+            🖨️ Print / Save as PDF
+        </button>
+    </div>
+
+    <!-- FAQ 1: Why is this life-critical? -->
+    <div class="faq-section">
+        <h2 class="faq-question">How to Plan Power Backup for Home ICU?</h2>
+
+        <div class="alert-box">
+            <p><strong>Why is This Important?</strong></p>
+            <p style="margin-top: 0.5rem;">This may seem like an overly cautious plan, but we are planning for the
+                worst-case scenario. You might not face any problems throughout the year, but that one rainy day when
+                your area experiences severe power outages - the panic it creates is overwhelming. Having more backup
+                gives you more time and peace of mind.</p>
+        </div>
+
+        <h3>Real Experience: Be Prepared</h3>
+        <p>Last July, we faced a power outage of around <strong>10 hours</strong> in our area. Unexpected long outages
+            during monsoon season are common. Good power backup planning can help you stay calm during such emergencies.
+        </p>
+
+        <h4>Key Preparations</h4>
+        <ul>
+            <li><strong>Plan for at least 10 hours of backup</strong> - This gives you enough buffer for extended
+                outages</li>
+            <li><strong>Save contact numbers of people who can arrange generators immediately</strong> - Know who to
+                call when
+                UPS backup runs low</li>
+            <li><strong>Keep electricity board contact numbers handy</strong> - For outage updates and priority
+                restoration</li>
+            <li><strong>Pre-inform the electricity department about your medical condition</strong> - Many electricity
+                boards have provisions for priority power restoration for homes with life-support equipment</li>
+        </ul>
+
+
+        <h3>Understanding Power Backup</h3>
+        <p>Your power backup system consists of three key components: <strong>batteries</strong> that store energy
+            (measured in Amp-hours), <strong>devices</strong> that consume energy (measured in Watts), and the
+            <strong>UPS</strong> (Uninterruptible Power Supply) that converts and delivers stored energy to your
+            equipment.
+        </p>
+
+        <div class="info-box">
+            <p><strong>Backup Time Formula:</strong><br>
+                Backup Time = (Battery Capacity in Wh × 0.75) ÷ Total Load in Watts</p>
+            <p style="margin-top: 0.5rem; font-size: 9.5pt; color: #666;">The 75% efficiency accounts for battery and
+                UPS energy losses.</p>
+        </div>
+    </div>
+
+    <!-- FAQ 2: Reference Setup -->
+    <div class="faq-section">
+        <h2 class="faq-question">What Equipment Do We Use? (Reference Setup)</h2>
+
+        <h3>Our UPS and Battery Configuration</h3>
+        <p>The following equipment is used in our home ICU setup. You can use this as a reference when planning your own
+            backup system.</p>
+
+        <!-- Equipment Images -->
+        <div class="equipment-images">
+            <figure class="equipment-image">
+                <img src="{{ url_for('static', filename='images/ups-faq/ups_label_3kva.png') }}"
+                    alt="Uniline 3KVA UPS Label">
+                <figcaption>Uniline 3KVA UPS - Front Label</figcaption>
+            </figure>
+            <figure class="equipment-image">
+                <img src="{{ url_for('static', filename='images/ups-faq/ups_specifications.png') }}"
+                    alt="UPS Specifications">
+                <figcaption>UPS Technical Specifications</figcaption>
+            </figure>
+            <figure class="equipment-image">
+                <img src="{{ url_for('static', filename='images/ups-faq/exide_battery.png') }}"
+                    alt="Exide PowerSafe Plus Battery">
+                <figcaption>Exide PowerSafe Plus 12V 42Ah</figcaption>
+            </figure>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment</th>
+                    <th>Model</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>UPS</td>
+                    <td>Uniline 3kVA (72V DC input, 230V AC output)</td>
+                    <td style="text-align: center;">2</td>
+                </tr>
+                <tr>
+                    <td>Batteries</td>
+                    <td>Exide PowerSafe Plus 12V 42Ah (6 per UPS)</td>
+                    <td style="text-align: center;">12</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Power Consumption of Devices</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Power (Watts)</th>
+                    <th>Runs All The Time?</th>
+                    <th>Effective Load</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ventilator</td>
+                    <td style="text-align: center;">120W</td>
+                    <td style="text-align: center;">Yes (100%)</td>
+                    <td style="text-align: center;">120W</td>
+                </tr>
+                <tr>
+                    <td>Oxygen Concentrator</td>
+                    <td style="text-align: center;">610W</td>
+                    <td style="text-align: center;">Sometimes (~25%)</td>
+                    <td style="text-align: center;">~153W</td>
+                </tr>
+                <tr>
+                    <td>Suction Machine</td>
+                    <td style="text-align: center;">75W</td>
+                    <td style="text-align: center;">Sometimes (~25%)</td>
+                    <td style="text-align: center;">~19W</td>
+                </tr>
+                <tr style="background: #f8f8f8; font-weight: 600;">
+                    <td>Total Average Load</td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center; color: #C4704F;">~292W</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FAQ 3: Understanding Usage % -->
+    <div class="faq-section">
+        <h2 class="faq-question">What Does "25% Usage" Mean?</h2>
+
+        <p>This is an important concept for planning backup time accurately. Consider this example: You need 10 hours of
+            backup during a power cut.</p>
+
+        <p>The oxygen concentrator doesn't run continuously - perhaps it runs for 2.5 hours out of those 10 hours.
+            That's 2.5 ÷ 10 = 25% duty cycle.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Why Not 100%?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Ventilator</strong></td>
+                    <td>Always on → PALS needs continuous breathing support</td>
+                </tr>
+                <tr>
+                    <td><strong>Oxygen Concentrator</strong></td>
+                    <td>Used only when extra oxygen is needed</td>
+                </tr>
+                <tr>
+                    <td><strong>Suction Machine</strong></td>
+                    <td>Used only during suctioning (a few minutes at a time)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Why This Matters</h3>
+        <p>Calculating with realistic usage dramatically affects backup time:</p>
+
+        <div class="backup-cards">
+            <div class="backup-card worst">
+                <div class="label">Worst Case</div>
+                <div class="desc">All devices at 100%</div>
+                <div class="value">~2.8 hrs</div>
+                <div class="sub">805W load</div>
+            </div>
+            <div class="backup-card realistic">
+                <div class="label">Realistic Usage</div>
+                <div class="desc">25% duty cycle</div>
+                <div class="value">~7.8 hrs</div>
+                <div class="sub">292W effective</div>
+            </div>
+            <div class="backup-card">
+                <div class="label">Ventilator Only</div>
+                <div class="desc">Emergency mode</div>
+                <div class="value">~19 hrs</div>
+                <div class="sub">120W load</div>
+            </div>
+        </div>
+
+        <div class="alert-box">
+            <p><strong>Real-World Observation:</strong> While calculations show ~7.8 hours of backup, during an actual
+                severe outage, we observed around <strong>6.5 hours</strong> of backup time. Always expect 15-20% less
+                than calculated values due to battery aging and real-world conditions.</p>
+        </div>
+
+        <h4>Planning Your Backup</h4>
+        <p>Based on your power requirements, you have two options:</p>
+        <ul>
+            <li><strong>Option A:</strong> Have a backup UPS + battery set (Recommended)</li>
+            <li><strong>Option B:</strong> Have an additional battery set with higher Ah capacity</li>
+        </ul>
+
+        <div class="info-box">
+            <p><strong>Why Two Complete UPS + Battery Sets?</strong></p>
+            <p style="margin-top: 0.5rem;">UPS devices are generally reliable, but during severe power outages with
+                frequent fluctuations, they can sometimes develop problems. A sudden voltage spike or prolonged stress
+                can cause internal faults. Having a <strong>second complete UPS + battery set</strong> ensures you have
+                a fully functional backup if your primary UPS fails - not just extra battery capacity, but a complete
+                working system ready to take over.</p>
+        </div>
+
+        <div class="info-box">
+            <p><strong>Why emergency mode matters:</strong> If one UPS runs out, the ventilator on backup UPS keeps
+                running → buying you critical time to arrange a generator, contact an electrician, or get help.</p>
+        </div>
+    </div>
+
+
+
+    <!-- FAQ 5: Key Tips -->
+    <div class="faq-section">
+        <h2 class="faq-question">What Are the Key Tips for Power Backup?</h2>
+
+        <ul>
+            <li><strong>Keep a second UPS as backup, or use an Inverter for secondary backup</strong> → In case the
+                primary UPS fails</li>
+            <li><strong>Test your backup monthly</strong> → Batteries degrade over time</li>
+            <li><strong>Know your electrician's number</strong> → For quick repairs</li>
+            <li><strong>Label all plugs clearly</strong> → Know which device is on which UPS</li>
+            <li><strong>Keep generator fuel stocked</strong> → You can't buy fuel during a power cut</li>
+            <li><strong>Charge batteries fully</strong> → Partial charge = reduced backup time</li>
+        </ul>
+    </div>
+
+    <!-- FAQ 6: Warning Signs -->
+    <div class="faq-section">
+        <h2 class="faq-question">What Are the Warning Signs to Watch?</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Warning Sign</th>
+                    <th>What It Means</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>UPS beeping continuously</strong></td>
+                    <td>Battery low or overloaded</td>
+                </tr>
+                <tr>
+                    <td><strong>Backup time decreasing</strong></td>
+                    <td>Batteries aging, may need replacement</td>
+                </tr>
+                <tr>
+                    <td><strong>Devices shutting off</strong></td>
+                    <td>UPS overloaded or battery dead</td>
+                </tr>
+                <tr>
+                    <td><strong>UPS not switching on</strong></td>
+                    <td>Internal fault, use backup UPS immediately</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert-box">
+            <p><strong>Important:</strong> If your UPS shows any warning signs, have it checked immediately. Don't wait
+                for a power outage to discover problems.</p>
+        </div>
+    </div>
+
+
+
+    <!-- FAQ 8: How to Split Load -->
+    <div class="faq-section">
+        <h2 class="faq-question">How Should I Split the Load Across Two UPS Units?</h2>
+
+        <h3>Recommended Configuration</h3>
+        <p></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>UPS Unit</th>
+                    <th>Connected Devices</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>UPS 1 (Primary)</strong></td>
+                    <td>Ventilator + Suction</td>
+                </tr>
+                <tr>
+                    <td><strong>UPS 2 (Secondary)</strong></td>
+                    <td>Oxygen Concentrator</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FAQ 9: Battery Capacity Calculation -->
+    <div class="faq-section">
+        <h2 class="faq-question">How Do I Calculate Battery Capacity Needed?</h2>
+
+        <h4>Step 1: Calculate Total Energy Needed</h4>
+        <p>Energy (Wh) = Load (Watts) × Backup Time (Hours) ÷ 0.75</p>
+        <p><em>Example:</em> For 292W load for 8 hours: 292 × 8 ÷ 0.75 = 3,115 Wh</p>
+
+        <h4>Step 2: Choose Battery Configuration</h4>
+        <p>For a 72V UPS system with 12V batteries (6 batteries in series):</p>
+        <p>Battery Ah needed = Energy (Wh) ÷ 72V = 3,115 ÷ 72 = 43.3 Ah</p>
+        <p>So you would need 6 batteries of at least 45Ah each.</p>
+
+        <h4>Our Actual Setup</h4>
+        <p>Each UPS has: 6 × 42Ah × 12V = 3,024 Wh storage.<br>
+            After 75% efficiency: 2,268 Wh usable energy.<br>
+            At 292W average load: 2,268 ÷ 292 = ~7.8 hours backup.</p>
+    </div>
+
+
+</div>
+{% endblock %}
