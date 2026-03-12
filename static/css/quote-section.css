@@ -1,7 +1,7 @@
 /* INSPIRATIONAL QUOTE SECTION */
 .quote-section {
     padding: 4rem 0;
-    background: linear-gradient(135deg, #FBF5ED 0%, #F8EDE0 100%);
+    background: linear-gradient(135deg, #e8eef5 0%, #dce6f0 100%);
 }
 
 .quote-box {
@@ -12,7 +12,7 @@
     background: #FFFFFF;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-left: 4px solid #D4A574;
+    border-left: 4px solid #1e3a5f;
     position: relative;
 }
 
@@ -22,19 +22,19 @@
     justify-content: center;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #D4A574 0%, #C09563 100%);
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a4f7c 100%);
     border-radius: 50%;
     color: white;
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
 }
 
 .quote-text {
     font-size: 1.5rem;
     font-weight: 500;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #2C3E50;
+    color: #1e293b;
     line-height: 1.7;
     margin: 0 0 1.5rem 0;
     font-style: italic;
@@ -44,7 +44,7 @@
 .quote-tagline {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #8B7355;
+    color: #1e3a5f;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.1em;

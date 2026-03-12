@@ -168,7 +168,7 @@ function initBackToTop() {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #7a3828, #a05040);
+            background: linear-gradient(135deg, #1e3a5f, #2a4f7c);
             color: white;
             border: none;
             cursor: pointer;
@@ -180,7 +180,7 @@ function initBackToTop() {
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(122, 56, 40, 0.3);
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
         `;
         document.body.appendChild(backToTop);
     }
@@ -207,12 +207,12 @@ function initBackToTop() {
     // Hover effect
     backToTop.addEventListener('mouseenter', () => {
         backToTop.style.transform = 'translateY(-3px) scale(1.1)';
-        backToTop.style.boxShadow = '0 8px 25px rgba(122, 56, 40, 0.42)';
+        backToTop.style.boxShadow = '0 8px 25px rgba(30, 58, 95, 0.42)';
     });
 
     backToTop.addEventListener('mouseleave', () => {
         backToTop.style.transform = 'translateY(0) scale(1)';
-        backToTop.style.boxShadow = '0 4px 15px rgba(122, 56, 40, 0.3)';
+        backToTop.style.boxShadow = '0 4px 15px rgba(30, 58, 95, 0.3)';
     });
 }
 

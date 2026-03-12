@@ -7,147 +7,154 @@
 {% endblock %}
 
 {% block content %}
-<!-- Section 1 — Hero -->
+<!-- Section 1 — Hero: Title-only centered -->
 <section class="hero">
-    <!-- Neural globe background — right side -->
-    <div class="hero__neural" id="hero-neural-container" aria-hidden="true">
-        <canvas id="hero-neural-cvs"></canvas>
-    </div>
-
-    <div class="hero-container">
-        <!-- LEFT: Title only -->
-        <div class="hero-content">
-            <h1 class="hero-title anim-hero-title">Your Guide Through the <span class="highlight">ALS Journey</span></h1>
-        </div>
-
-        <!-- RIGHT: 2×2 nav button grid -->
-        <div class="hero-nav-grid anim-fade-up">
-            <a href="/understanding-als" class="nav-item">
-                <i class="fas fa-book-open"></i>
-                <span>Understand ALS</span>
-            </a>
-            <a href="#explore-cards" class="nav-item">
-                <i class="fas fa-compass"></i>
-                <span>Explore</span>
-            </a>
-            <a href="#resources-section" class="nav-item">
-                <i class="fas fa-link"></i>
-                <span>Resources</span>
-            </a>
-            <a href="/ai-assistant" class="nav-item">
-                <i class="fas fa-comments"></i>
-                <span>Ask AI Assistant</span>
-            </a>
+    <div class="hero-center">
+        <h1 class="hero-title anim-hero-title">Your Guide Through the <span class="highlight">ALS<br>Journey</span></h1>
+        <div class="scroll-cue anim-scroll-cue">
+            <div class="scroll-cue-line"></div>
         </div>
     </div>
 </section>
 
-<!-- Section 2 — Research Band -->
-<section class="research-band">
-    <div class="research-band-inner">
-        <div class="research-card-content">
-            <!-- Left Column: Research Updates/Treatments -->
-            <div class="research-column">
-                <div class="research-column-header">
-                    <div class="research-column-icon treatments">
-                        <i class="fas fa-flask"></i>
+<!-- Section 2 — Navigation + Research Intelligence (side by side) -->
+<section class="dashboard-section">
+    <div class="dashboard-inner">
+        <!-- LEFT: Quick Nav Links -->
+        <div class="dashboard-nav anim-nav-card">
+            <h2 class="dashboard-nav-heading">Quick Access</h2>
+            <div class="dashboard-nav-list">
+                <a href="/understanding-als" class="dash-link">
+                    <div class="dash-link-icon"><i class="fas fa-brain"></i></div>
+                    <div class="dash-link-body">
+                        <span class="dash-link-label">Understand ALS</span>
+                        <span class="dash-link-desc">Disease overview, stages & symptoms</span>
                     </div>
-                    <a href="{{ url_for('research_updates_page') }}" class="research-header-link">
-                        <h3 class="research-column-title">
-                            Explore All Research Updates →
-                        </h3>
-                    </a>
-                </div>
-                <p class="research-meta-label">FDA-approved treatments &
-                    Phase 2/3 trials</p>
-
-                <div class="research-treatments">
-                    <!-- BrainStorm -->
-                    <div class="treatment-item">
-                        <div class="treatment-item-name">
-                            <a href="https://www.brainstorm-cell.com" target="_blank" rel="noopener"
-                                class="treatment-link-name">BrainStorm Cell
-                                Therapeutics</a> (NurOwn®)
-                        </div>
-                        <div class="treatment-item-desc">MSC-NTF cells • Stem cell therapy</div>
+                    <i class="fas fa-chevron-right dash-link-chevron"></i>
+                </a>
+                <a href="#explore-cards" class="dash-link">
+                    <div class="dash-link-icon"><i class="fas fa-compass"></i></div>
+                    <div class="dash-link-body">
+                        <span class="dash-link-label">Explore Tools</span>
+                        <span class="dash-link-desc">ICU setup, diet, schedules & more</span>
                     </div>
-
-                    <!-- Biogen -->
-                    <div class="treatment-item">
-                        <div class="treatment-item-name">
-                            <a href="https://www.biogen.com/qalsody" target="_blank" rel="noopener"
-                                class="treatment-link-name">Biogen</a> (Qalsody™)
-                        </div>
-                        <div class="treatment-item-desc">SOD1 targeting • Antisense oligonucleotide
-                        </div>
+                    <i class="fas fa-chevron-right dash-link-chevron"></i>
+                </a>
+                <a href="#resources-section" class="dash-link">
+                    <div class="dash-link-icon"><i class="fas fa-book-medical"></i></div>
+                    <div class="dash-link-body">
+                        <span class="dash-link-label">Resources</span>
+                        <span class="dash-link-desc">Organizations & medical authorities</span>
                     </div>
-
-                    <!-- AB Science -->
-                    <div class="treatment-item">
-                        <div class="treatment-item-name">
-                            <a href="https://www.ab-science.com" target="_blank" rel="noopener"
-                                class="treatment-link-name">AB Science</a> (Masitinib)
-                        </div>
-                        <div class="treatment-item-desc">Neuroinflammation • Tyrosine kinase
-                            inhibitor</div>
+                    <i class="fas fa-chevron-right dash-link-chevron"></i>
+                </a>
+                <a href="/ai-assistant" class="dash-link">
+                    <div class="dash-link-icon"><i class="fas fa-comment-medical"></i></div>
+                    <div class="dash-link-body">
+                        <span class="dash-link-label">AI Assistant</span>
+                        <span class="dash-link-desc">Ask questions, get instant guidance</span>
                     </div>
-
-                    <!-- Denali -->
-                    <div class="treatment-item">
-                        <div class="treatment-item-name">
-                            <a href="https://www.denalitherapeutics.com" target="_blank" rel="noopener"
-                                class="treatment-link-name">Denali Therapeutics</a>
-                            (DNL343)
-                        </div>
-                        <div class="treatment-item-desc">RIPK1 inhibitor • Blocks cell death</div>
-                    </div>
-
-                    <!-- Clene -->
-                    <div class="treatment-item">
-                        <div class="treatment-item-name">
-                            <a href="https://clene.com" target="_blank" rel="noopener"
-                                class="treatment-link-name">Clene Nanomedicine</a>
-                            (CNM-Au8)
-                        </div>
-                        <div class="treatment-item-desc">Gold nanocrystals • ATP support</div>
-                    </div>
-                </div>
+                    <i class="fas fa-chevron-right dash-link-chevron"></i>
+                </a>
             </div>
+        </div>
 
-            <!-- Right Column: Research News -->
-            <div class="research-column">
-                <div class="research-column-header">
-                    <div class="research-column-icon news">
-                        <i class="fas fa-newspaper"></i>
+        <!-- RIGHT: Research Intelligence -->
+        <div class="dashboard-research">
+            <div class="research-card-content">
+                <!-- Left Column: Research Updates/Treatments -->
+                <div class="research-column anim-research-left">
+                    <div class="research-col-panel">
+                        <canvas class="live-particles" data-color="126,184,212"></canvas>
+                        <div class="research-column-header">
+                            <div class="research-column-icon treatments">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <a href="{{ url_for('research_updates_page') }}" class="research-header-link">
+                                <h3 class="research-column-title">
+                                    Explore All Research Updates &rarr;
+                                </h3>
+                            </a>
+                            <span class="live-badge"><span class="live-dot"></span></span>
+                        </div>
                     </div>
-                    <h3 class="research-column-title">Latest Research News</h3>
+                    <p class="research-meta-label">FDA-approved treatments &
+                        Phase 2/3 trials</p>
+
+                    <div class="research-treatments">
+                        <div class="treatment-item">
+                            <div class="treatment-item-name">
+                                <a href="https://www.brainstorm-cell.com" target="_blank" rel="noopener"
+                                    class="treatment-link-name">BrainStorm Cell
+                                    Therapeutics</a> (NurOwn)
+                            </div>
+                            <div class="treatment-item-desc">MSC-NTF cells - Stem cell therapy</div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-item-name">
+                                <a href="https://www.biogen.com/qalsody" target="_blank" rel="noopener"
+                                    class="treatment-link-name">Biogen</a> (Qalsody)
+                            </div>
+                            <div class="treatment-item-desc">SOD1 targeting - Antisense oligonucleotide</div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-item-name">
+                                <a href="https://www.ab-science.com" target="_blank" rel="noopener"
+                                    class="treatment-link-name">AB Science</a> (Masitinib)
+                            </div>
+                            <div class="treatment-item-desc">Neuroinflammation - Tyrosine kinase inhibitor</div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-item-name">
+                                <a href="https://www.denalitherapeutics.com" target="_blank" rel="noopener"
+                                    class="treatment-link-name">Denali Therapeutics</a>
+                                (DNL343)
+                            </div>
+                            <div class="treatment-item-desc">RIPK1 inhibitor - Blocks cell death</div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-item-name">
+                                <a href="https://clene.com" target="_blank" rel="noopener"
+                                    class="treatment-link-name">Clene Nanomedicine</a>
+                                (CNM-Au8)
+                            </div>
+                            <div class="treatment-item-desc">Gold nanocrystals - ATP support</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="research-news-list">
-                    <!-- ALS News Today -->
-                    <a href="https://alsnewstoday.com/" target="_blank" rel="noopener" class="research-news-card">
-                        <div class="research-news-name">ALS News Today</div>
-                        <div class="research-news-desc">PhD science writers, daily updates</div>
-                    </a>
+                <!-- Right Column: Research News -->
+                <div class="research-column anim-research-right">
+                    <div class="research-col-panel">
+                        <canvas class="live-particles" data-color="30,58,95"></canvas>
+                        <div class="research-column-header">
+                            <div class="research-column-icon news">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <h3 class="research-column-title">Latest Research News</h3>
+                            <span class="live-badge news-badge"><span class="live-dot"></span></span>
+                        </div>
+                    </div>
 
-                    <!-- MND Research Blog -->
-                    <a href="https://mndresearch.blog/" target="_blank" rel="noopener" class="research-news-card">
-                        <div class="research-news-name">MND Research Blog</div>
-                        <div class="research-news-desc">UK MND Association official</div>
-                    </a>
-
-                    <!-- ALS TDI News -->
-                    <a href="https://www.als.net/news/" target="_blank" rel="noopener" class="research-news-card">
-                        <div class="research-news-name">ALS TDI News</div>
-                        <div class="research-news-desc">Leading biotech nonprofit</div>
-                    </a>
-
-                    <!-- Target ALS News -->
-                    <a href="https://www.targetals.org/news-stories/" target="_blank" rel="noopener"
-                        class="research-news-card">
-                        <div class="research-news-name">Target ALS News</div>
-                        <div class="research-news-desc">Biomarker research leader</div>
-                    </a>
+                    <div class="research-news-list">
+                        <a href="https://alsnewstoday.com/" target="_blank" rel="noopener" class="research-news-card">
+                            <div class="research-news-name">ALS News Today</div>
+                            <div class="research-news-desc">PhD science writers, daily updates</div>
+                        </a>
+                        <a href="https://mndresearch.blog/" target="_blank" rel="noopener" class="research-news-card">
+                            <div class="research-news-name">MND Research Blog</div>
+                            <div class="research-news-desc">UK MND Association official</div>
+                        </a>
+                        <a href="https://www.als.net/news/" target="_blank" rel="noopener" class="research-news-card">
+                            <div class="research-news-name">ALS TDI News</div>
+                            <div class="research-news-desc">Leading biotech nonprofit</div>
+                        </a>
+                        <a href="https://www.targetals.org/news-stories/" target="_blank" rel="noopener"
+                            class="research-news-card">
+                            <div class="research-news-name">Target ALS News</div>
+                            <div class="research-news-desc">Biomarker research leader</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -335,7 +342,7 @@
         </div>
 
         <p class="resources-footnote">
-            💡 Use ClinicalTrials.gov & ALSUntangled to verify "miracle cure" claims before investing time or money.
+            Use ClinicalTrials.gov & ALSUntangled to verify treatment claims before investing time or money.
         </p>
     </div>
 </section>
@@ -368,34 +375,209 @@ window.addEventListener('load', function() {
   if (typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero entrance
-  gsap.from('.hero-title', {
-    y: 28, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.1
-  });
-  gsap.from('.hero-nav-grid .nav-item', {
-    y: 20, opacity: 0, stagger: 0.08, duration: 0.5,
-    ease: 'power2.out', delay: 0.32
+  // Motion foundation
+  var easeOut = 'power3.out';
+  var easeSmooth = 'power2.out';
+  var easeSpring = 'back.out(1.2)';
+
+  // ── HERO TIMELINE ──
+  var heroTL = gsap.timeline({ defaults: { ease: easeOut } });
+
+  heroTL
+    .fromTo('.anim-hero-title',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, clearProps: 'opacity' }
+    )
+    .fromTo('.anim-scroll-cue',
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, clearProps: 'opacity' },
+      '-=0.3'
+    );
+
+  // ── DASHBOARD — scroll triggered ──
+  var dashTrigger = { trigger: '.dashboard-section', start: 'top 85%' };
+
+  // Quick Access heading fade
+  gsap.fromTo('.dashboard-nav-heading',
+    { y: 12, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.4, ease: easeSmooth, clearProps: 'opacity',
+      scrollTrigger: dashTrigger }
+  );
+
+  // Nav links — stagger from left with spring
+  gsap.fromTo('.dash-link',
+    { x: -28, opacity: 0 },
+    {
+      x: 0, opacity: 1,
+      stagger: 0.1,
+      duration: 0.55,
+      ease: easeSpring,
+      clearProps: 'opacity',
+      scrollTrigger: dashTrigger
+    }
+  );
+
+  // Nav link icons — scale pop after links land
+  gsap.fromTo('.dash-link-icon',
+    { scale: 0.7, opacity: 0 },
+    {
+      scale: 1, opacity: 1,
+      stagger: 0.1,
+      duration: 0.4,
+      ease: easeSpring,
+      delay: 0.15,
+      clearProps: 'opacity,transform',
+      scrollTrigger: dashTrigger
+    }
+  );
+
+  // Research column headers — fade up
+  gsap.fromTo('.research-column-header',
+    { y: 16, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      stagger: 0.15,
+      duration: 0.5,
+      ease: easeSmooth,
+      clearProps: 'opacity',
+      scrollTrigger: { trigger: '.research-card-content', start: 'top 85%' }
+    }
+  );
+
+  // Treatments — stagger from left
+  gsap.fromTo('.anim-research-left .treatment-item',
+    { x: -20, opacity: 0 },
+    {
+      x: 0, opacity: 1,
+      stagger: 0.08,
+      duration: 0.45,
+      ease: easeSmooth,
+      clearProps: 'opacity',
+      scrollTrigger: { trigger: '.research-card-content', start: 'top 80%' }
+    }
+  );
+
+  // News cards — stagger from right
+  gsap.fromTo('.anim-research-right .research-news-card',
+    { x: 20, opacity: 0 },
+    {
+      x: 0, opacity: 1,
+      stagger: 0.1,
+      duration: 0.45,
+      ease: easeSmooth,
+      clearProps: 'opacity',
+      scrollTrigger: { trigger: '.research-card-content', start: 'top 80%' }
+    }
+  );
+
+  // Gentle continuous float on research column icons
+  gsap.to('.research-column-icon', {
+    y: -3,
+    duration: 2,
+    ease: 'sine.inOut',
+    yoyo: true,
+    repeat: -1,
+    stagger: 0.5
   });
 
-  // Research band
-  gsap.from('.research-band', {
-    scrollTrigger: { trigger: '.research-band', start: 'top 88%' },
-    y: 28, opacity: 0, duration: 0.6, ease: 'power2.out'
+  // Live badge pulse
+  gsap.to('.live-badge', {
+    scale: 1.04,
+    duration: 1.2,
+    ease: 'sine.inOut',
+    yoyo: true,
+    repeat: -1,
+    stagger: 0.3
   });
 
-  // Explore cards
-  gsap.from('.explore-card', {
-    scrollTrigger: { trigger: '.cards-grid', start: 'top 84%' },
-    y: 32, opacity: 0, stagger: 0.08,
-    duration: 0.5, ease: 'power2.out'
+  // ── LIVE PARTICLE CANVASES ──
+  document.querySelectorAll('.live-particles').forEach(function(canvas) {
+    var ctx = canvas.getContext('2d');
+    var rgb = canvas.dataset.color || '126,184,212';
+    var particles = [];
+    var count = 18;
+
+    function resize() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (var i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.5,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.2,
+        alpha: Math.random() * 0.4 + 0.1
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + rgb + ',' + p.alpha + ')';
+        ctx.fill();
+
+        // Draw subtle connections
+        for (var j = i + 1; j < particles.length; j++) {
+          var q = particles[j];
+          var dx = p.x - q.x;
+          var dy = p.y - q.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 80) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = 'rgba(' + rgb + ',' + (0.08 * (1 - dist / 80)) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
   });
 
-  // Resource cards
-  gsap.from('.resource-card', {
-    scrollTrigger: { trigger: '.resources-grid', start: 'top 84%' },
-    y: 24, opacity: 0, stagger: 0.12,
-    duration: 0.5, ease: 'power2.out'
-  });
+  // ── EXPLORE CARDS ──
+  gsap.fromTo('.explore-card',
+    { y: 32, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      stagger: 0.08,
+      duration: 0.55,
+      ease: easeSpring,
+      clearProps: 'opacity',
+      scrollTrigger: { trigger: '.cards-grid', start: 'top 84%' }
+    }
+  );
+
+  // ── RESOURCE CARDS ──
+  gsap.fromTo('.resource-card',
+    { y: 24, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      stagger: 0.12,
+      duration: 0.5,
+      ease: easeSmooth,
+      clearProps: 'opacity',
+      scrollTrigger: { trigger: '.resources-grid', start: 'top 84%' }
+    }
+  );
 });
 </script>
 {% endblock %}
