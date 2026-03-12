@@ -1,20 +1,50 @@
-/* index.css — Visual polish for homepage */
+/* index.css — Homepage-specific styles */
 
-/* Smooth hover on explore cards */
+/* ── HERO RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-nav-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+  .hero-nav-grid .nav-item {
+    min-height: 96px;
+    padding: 1.15rem 1.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+  .hero-nav-grid .nav-item {
+    flex-direction: row;
+    align-items: center;
+    min-height: auto;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* ── EXPLORE CARD HOVER ── */
 .explore-card {
-  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
-              box-shadow 0.22s ease,
-              border-color 0.22s ease;
+  transition: transform 0.2s var(--ease-standard),
+              box-shadow 0.2s var(--ease-standard),
+              border-color 0.2s var(--ease-standard);
 }
 .explore-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgba(161,140,209,0.16);
+  box-shadow: var(--shadow-card-hover);
+  border-color: #c4a882;
 }
 
-/* Research card hover */
-.research-card {
-  transition: box-shadow 0.25s ease;
-}
-.research-card:hover {
-  box-shadow: 0 18px 36px rgba(161,140,209,0.12);
+/* ── FOCUS VISIBLE ── */
+.card:focus-visible,
+.nav-item:focus-visible,
+.research-news-card:focus-visible,
+.resource-item-link:focus-visible,
+.nav-link:focus-visible,
+.mobile-nav-link:focus-visible {
+  outline: 2px solid rgba(122, 56, 40, 0.4);
+  outline-offset: 3px;
 }
