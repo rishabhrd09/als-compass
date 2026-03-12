@@ -22,3 +22,8 @@ tqdm>=4.66.0
 # Utilities
 python-dotenv>=1.0.0
 requests>=2.31.0
+
+# Animation (optional — for rendering Manim educational videos)
+# Install with: pip install manim
+# Also requires FFmpeg: winget install Gyan.FFmpeg
+manim>=0.18.0

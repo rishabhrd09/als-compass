@@ -3,64 +3,68 @@
 {% block title %}Power Backup Guide | ALS Caregiver's Compass{% endblock %}
 
 {% block content %}
-<div class="container" style="max-width: 900px; padding-top: 2rem;">
-
-    <!-- Page Header -->
-    <div style="margin-bottom: 2.5rem; text-align: center;">
-        <a href="/home-icu-guide" style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.85rem;
-            color: #6B6B6B;
-            text-decoration: none;
-            margin-bottom: 1rem;
-            font-family: 'Inter', system-ui, sans-serif;
-        " onmouseover="this.style.color='#1A1A1A';" onmouseout="this.style.color='#6B6B6B';">
-            ← Back to Home ICU Guide
-        </a>
-
+<!-- Hero Section - Dark Theme -->
+<section style="
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+">
+    <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(196,162,132,0.12) 0%, transparent 70%); pointer-events: none;"></div>
+    <div class="container" style="position: relative; z-index: 1;">
         <h1 style="
-            font-size: 2rem;
-            font-weight: 600;
-            color: #1A1A1A;
-            margin: 0.5rem 0 0.75rem 0;
-            letter-spacing: -0.02em;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        ">
-            Power Backup Guide
-        </h1>
-
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 0.75rem 0;
+            letter-spacing: -0.03em;
+            font-family: 'Manrope', sans-serif;
+        ">Power Backup Guide</h1>
         <p style="
-            margin: 0 0 1.5rem 0;
-            color: #6B6B6B;
-            font-size: 1rem;
+            margin: 0 auto 1.5rem;
+            color: rgba(255,255,255,0.55);
+            font-size: 1.1rem;
             max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-            font-family: 'Inter', system-ui, sans-serif;
-        ">
-            Calculate and plan backup power for your medical equipment
-        </p>
-
+            line-height: 1.7;
+            font-family: 'DM Sans', sans-serif;
+        ">Calculate and plan backup power for your medical equipment</p>
         <a href="#power-calculator" style="
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.625rem 1.25rem;
-            background: #c9a98c;
-            border-radius: 8px;
+            padding: 0.7rem 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
             text-decoration: none;
-            color: #FFFFFF;
-            font-weight: 500;
-            font-size: 0.875rem;
-            transition: all 0.15s ease;
-            font-family: 'Inter', system-ui, sans-serif;
-        " onmouseover="this.style.background='#b8987b';" onmouseout="this.style.background='#c9a98c';">
+            color: #2dd4bf;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.2s ease;
+        " onmouseover="this.style.background='rgba(255,255,255,0.15)';" onmouseout="this.style.background='rgba(255,255,255,0.1)';">
             Jump to Calculator
         </a>
     </div>
+</section>
+
+<!-- Back Navigation -->
+<div style="max-width: 900px; margin: 1.5rem auto 0; padding: 0 2rem;">
+    <a href="/home-icu-guide" style="
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #0071e3;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-decoration: none;
+        font-family: 'DM Sans', sans-serif;
+    ">&#8592; Back to Home ICU Guide</a>
+</div>
+
+<div class="container" style="max-width: 900px; padding-top: 2rem;">
 
     <!-- Understanding Power Backup -->
     <div

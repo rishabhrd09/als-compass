@@ -19,27 +19,22 @@
         --et-danger: #dc2626;
     }
 
-    /* Hero Section - Light Sky Blue Theme (Matching Communication Technology) */
+    /* Hero Section - Dark Theme */
     .et-hero {
         text-align: center;
-        padding: 4rem 1.5rem 3rem;
-        background:
-            linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%),
-            url('/static/images/hero_bg_v2.png') center/cover no-repeat;
-        background-color: #f5f7fa;
-        color: var(--et-primary);
+        padding: 5rem 2rem 4rem;
+        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        color: #ffffff;
         margin-bottom: 0;
         position: relative;
+        overflow: hidden;
     }
 
     .et-hero::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(0,119,182,0.12) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -49,22 +44,23 @@
     }
 
     .et-hero h1 {
-        font-size: 2.25rem;
-        font-weight: 700;
+        font-size: clamp(2rem, 4.5vw, 2.5rem);
+        font-weight: 800;
         margin-bottom: 0.75rem;
         letter-spacing: -0.03em;
-        color: #1d1d1f;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        color: #ffffff;
+        font-family: 'Manrope', sans-serif;
+        text-shadow: none;
     }
 
     .et-hero p {
-        font-size: 1rem;
-        color: #424245;
+        font-size: 1.05rem;
+        color: rgba(255,255,255,0.55);
         max-width: 750px;
         margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.7;
         font-weight: 400;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Back Navigation */

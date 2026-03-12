@@ -3,6 +3,8 @@ Main Flask application for ALS Caregiver's Compass
 Multi-model AI system with runtime selection
 """
 import os
+import subprocess
+import threading
 from flask import Flask, render_template, request, jsonify, session
 from dotenv import load_dotenv
 import logging
@@ -292,6 +294,128 @@ def get_community_faq():
         logger.error(f"Error loading community FAQ data: {e}")
         return jsonify({"error": str(e)}), 500
 
+# ==================== MANIM ANIMATION RENDERING ====================
+
+# Track render state in memory
+_render_state = {'status': 'idle', 'message': ''}
+
+def _find_manim():
+    """Locate manim executable."""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    venv_manim = os.path.join(base_dir, 'venv', 'Scripts', 'manim.exe')
+    if os.path.isfile(venv_manim):
+        return venv_manim
+    # Check PATH
+    import shutil as _sh
+    if _sh.which('manim'):
+        return 'manim'
+    return None
+
+def _videos_exist():
+    """Check if rendered videos are already present."""
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'videos')
+    return (os.path.isfile(os.path.join(base, 'motor_neuron_als.webm'))
+            or os.path.isfile(os.path.join(base, 'motor_neuron_als.mp4')))
+
+def _render_manim_videos(quality='l'):
+    """Background task to render Manim animations.
+    quality: 'l' = 480p (fast, ~30s), 'm' = 720p (~2min), 'h' = 1080p (~8min)
+    """
+    global _render_state
+    _render_state = {'status': 'rendering', 'message': 'Starting Manim render...'}
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    videos_dir = os.path.join(base_dir, 'static', 'videos')
+    os.makedirs(videos_dir, exist_ok=True)
+
+    manim_cmd = _find_manim()
+    if not manim_cmd:
+        _render_state = {'status': 'error', 'message': 'Manim not installed. Run setup.bat first.'}
+        return
+
+    scene_file = os.path.join(base_dir, 'manim_scenes', 'motor_neuron.py')
+    if not os.path.isfile(scene_file):
+        _render_state = {'status': 'error', 'message': 'manim_scenes/motor_neuron.py not found'}
+        return
+
+    media_dir = os.path.join(base_dir, 'manim_media')
+    quality_flag = f'-q{quality}'
+
+    renders = [
+        ('MotorNeuronALS', 'mp4', 'motor_neuron_als.mp4'),
+        ('MotorNeuronComparison', 'mp4', 'motor_neuron_comparison.mp4'),
+    ]
+
+    for i, (scene_name, fmt, out_name) in enumerate(renders, 1):
+        _render_state['message'] = f'Rendering {scene_name} ({i}/{len(renders)})...'
+        logger.info(f"Manim: rendering {scene_name} at {quality_flag}...")
+        try:
+            result = subprocess.run(
+                [manim_cmd, quality_flag, f'--format={fmt}',
+                 f'--media_dir={media_dir}', scene_file, scene_name],
+                capture_output=True, text=True, timeout=600, cwd=base_dir
+            )
+            if result.returncode != 0:
+                err = result.stderr[:300] if result.stderr else 'Unknown error'
+                logger.warning(f"Manim render {scene_name} failed: {err}")
+                _render_state = {'status': 'error', 'message': f'Failed: {err[:150]}'}
+                return
+        except FileNotFoundError:
+            _render_state = {'status': 'error', 'message': 'Manim not found in PATH.'}
+            return
+        except subprocess.TimeoutExpired:
+            _render_state = {'status': 'error', 'message': f'{scene_name} timed out (10 min limit)'}
+            return
+
+        # Find and copy rendered file
+        import glob as _glob
+        pattern = os.path.join(media_dir, '**', f'{scene_name}.{fmt}')
+        matches = _glob.glob(pattern, recursive=True)
+        if matches:
+            import shutil as _sh
+            _sh.copy2(matches[0], os.path.join(videos_dir, out_name))
+            logger.info(f"  -> Copied {out_name} to static/videos/")
+
+    _render_state = {'status': 'done', 'message': 'All animations rendered successfully!'}
+    logger.info("Manim animations rendered successfully")
+
+
+@app.route('/api/render-animation', methods=['POST'])
+def render_animation():
+    """Trigger Manim animation rendering in background."""
+    if _render_state['status'] == 'rendering':
+        return jsonify({'status': 'rendering', 'message': 'Already rendering, please wait...'})
+
+    # Use medium quality (720p) for user-triggered renders — good balance
+    thread = threading.Thread(target=_render_manim_videos, args=('m',), daemon=True)
+    thread.start()
+    return jsonify({'status': 'started', 'message': 'Rendering started (720p)...'})
+
+
+@app.route('/api/render-status')
+def render_status():
+    """Check the current Manim render status."""
+    return jsonify(_render_state)
+
+
+@app.route('/api/animation-available')
+def animation_available():
+    """Check if pre-rendered Manim videos exist."""
+    return jsonify({'available': _videos_exist()})
+
+
+def _auto_render_on_startup():
+    """Auto-render animations in background if not present. Uses 480p for speed."""
+    if not _videos_exist() and _find_manim():
+        import shutil as _sh
+        if _sh.which('ffmpeg'):
+            logger.info("Auto-rendering Manim animations in background (480p)...")
+            thread = threading.Thread(target=_render_manim_videos, args=('l',), daemon=True)
+            thread.start()
+        else:
+            logger.info("Skipping auto-render: FFmpeg not found")
+
+
 # ==================== ERROR HANDLERS ====================
 
 @app.errorhandler(404)
@@ -307,7 +431,12 @@ def server_error(error):
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     debug = os.getenv('FLASK_ENV') == 'development'
-    
+
+    # Auto-render Manim animations in background (non-blocking)
+    # In debug mode, Flask reloads twice — only render on the reloader process
+    if not debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+        _auto_render_on_startup()
+
     if debug:
         # Development server
         app.run(host='0.0.0.0', port=port, debug=True)

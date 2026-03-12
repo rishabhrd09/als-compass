@@ -1,0 +1,77 @@
+/* faq.css — Visual refinement for FAQ page */
+
+/* ── Search input — enhanced focus ── */
+#faqSearch {
+    transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+#faqSearch:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(161,140,209,0.15);
+    outline: none;
+}
+
+/* ── Category pills ── */
+.category-pill {
+    transition: background 0.18s ease, color 0.18s ease,
+                transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+}
+.category-pill:hover {
+    transform: translateY(-1px);
+}
+.category-pill.active {
+    font-weight: 700;
+}
+
+/* ── FAQ section title ── */
+.faq-section-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+}
+
+/* ── FAQ question row ── */
+.faq-question {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: color 0.18s ease;
+}
+.faq-question:hover {
+    color: var(--color-primary);
+}
+
+/* ── Toggle icon ── */
+.faq-toggle {
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), color 0.18s ease;
+    flex-shrink: 0;
+}
+.faq-item.open .faq-toggle {
+    transform: rotate(45deg);
+    color: var(--color-primary);
+}
+
+/* ── FAQ answer smooth expand ── */
+.faq-answer {
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1),
+                opacity 0.3s ease;
+}
+
+/* ── Answer text ── */
+.faq-answer p, .faq-answer li {
+    font-size: 0.9375rem;
+    line-height: 1.78;
+}
+
+/* ── No results message ── */
+.faq-no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    display: none;
+}
+.faq-no-results.visible {
+    display: block;
+}

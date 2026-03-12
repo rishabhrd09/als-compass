@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="/static/css/pages/emergency.css">
 <style>
     /* CSS Variables - Clean Minimal Design (Matching Eye Tracker Setup) */
     :root {
@@ -31,14 +32,14 @@
         background-color: var(--ep-bg);
         color: var(--ep-text);
         font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
-        line-height: 1.65;
-        font-size: 0.95rem;
+        line-height: 1.72;
+        font-size: 1.0625rem;
     }
 
     .protocol-container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 40px 24px;
+        padding: 40px 32px;
     }
 
     /* Typography - Clean & Professional */
@@ -101,7 +102,7 @@
         margin-bottom: 1.5rem;
         border-radius: 12px;
         background: var(--ep-bg);
-        max-width: 900px;
+        max-width: 1200px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -114,7 +115,7 @@
         padding: 1.25rem;
         border-radius: 8px;
         margin: 1.25rem auto;
-        max-width: 900px;
+        max-width: 1200px;
     }
 
     .tip-box {
@@ -457,49 +458,43 @@
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section - Matching Communication Technology -->
+<!-- Hero Section - Dark Theme -->
 <section class="ep-hero" style="
     text-align: center;
-    padding: 4.5rem 1.5rem 3rem;
-    background:
-        linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%),
-        url('/static/images/hero_bg_v2.png') center/cover no-repeat;
-    background-color: #f5f7fa;
-    color: #1d1d1f;
+    padding: 5rem 2rem 4rem;
+    background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+    color: #ffffff;
     margin-bottom: 0;
     position: relative;
+    overflow: hidden;
 ">
     <div style="
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(220,38,38,0.1) 0%, transparent 70%);
         pointer-events: none;
     "></div>
     <div class="container" style="position: relative; z-index: 1;">
         <h1 style="
-            font-size: 2.75rem;
-            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
+            font-weight: 800;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.04em;
-            color: #1d1d1f;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            font-family: 'Manrope', sans-serif;
         ">Respiratory Emergency Protocol</h1>
         <p style="
-            font-size: 1.125rem;
-            color: #424245;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.55);
             margin: 0.5rem auto 0;
             font-weight: 400;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+            font-family: 'DM Sans', sans-serif;
         ">(this protocol is for PALS on tracheostomy + BiPAP / ventilator)</p>
     </div>
 </section>
 
 <!-- Back to Home ICU Guide -->
-<div style="max-width: 900px; margin: 1.5rem auto 0; padding: 0 1.5rem;">
+<div style="max-width: 1200px; margin: 1.5rem auto 0; padding: 0 2rem;">
     <a href="/home-icu-guide" style="
         display: inline-flex;
         align-items: center;
@@ -508,10 +503,10 @@
         font-size: 0.9rem;
         font-weight: 500;
         text-decoration: none;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+        font-family: 'DM Sans', sans-serif;
         transition: opacity 0.2s;
     ">
-        <span style="font-size: 1.1rem;">←</span> Back to Home ICU Setup Guide
+        <span style="font-size: 1.1rem;">&#8592;</span> Back to Home ICU Setup Guide
     </a>
 </div>
 
@@ -1142,4 +1137,23 @@
 </div>
 
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+window.addEventListener('load', function() {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Subtle step reveals — no bouncy animations for emergency context */
+    gsap.utils.toArray('.warning-box, .protocol-section').forEach(function(el) {
+        gsap.from(el, {
+            scrollTrigger: { trigger: el, start: 'top 92%' },
+            y: 16, opacity: 0, duration: 0.4, ease: 'power1.out'
+        });
+    });
+});
+</script>
 {% endblock %}

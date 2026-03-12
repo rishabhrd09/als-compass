@@ -3,6 +3,7 @@
 {% block title %}Frequently Asked Questions | ALS Caregiver's Compass{% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="/static/css/pages/faq.css">
 <style>
     /* CSS Variables - Claude-style Minimalist Design */
     :root {
@@ -17,24 +18,22 @@
         --faq-border-soft: #f0f0f0;
     }
 
-    /* Hero Section - Subtle & Elegant */
+    /* Hero Section - Dark Theme */
     .faq-hero {
         text-align: center;
-        padding: 4rem 1.5rem 2.5rem;
-        background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
-        color: var(--faq-primary);
+        padding: 5rem 2rem 4rem;
+        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        color: #ffffff;
         margin-bottom: 0;
         position: relative;
+        overflow: hidden;
     }
 
     .faq-hero::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(ellipse at center top, rgba(201, 169, 140, 0.08) 0%, transparent 70%);
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(201,169,140,0.12) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -44,26 +43,22 @@
     }
 
     .faq-hero h1 {
-        font-size: 2.25rem;
-        font-weight: 600;
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 800;
         margin-bottom: 0.625rem;
-        letter-spacing: -0.025em;
-        color: #1a1a1a;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+        font-family: 'Manrope', sans-serif;
     }
 
     .faq-hero p {
-        font-size: 1.0625rem;
-        color: #6b6b6b;
-        max-width: 560px;
+        font-size: 1.1rem;
+        color: rgba(255,255,255,0.55);
+        max-width: 700px;
         margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.7;
         font-weight: 400;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-        letter-spacing: 0.01em;
-        -webkit-font-smoothing: antialiased;
+        font-family: 'DM Sans', sans-serif;
     }
 </style>
 {% endblock %}
@@ -114,9 +109,9 @@
     /* Increased letter-spacing for better readability */
 
     .faq-container {
-        max-width: 52rem;
+        max-width: 72rem;
         margin: -2rem auto 0;
-        padding: 0 1.75rem 3.5rem;
+        padding: 0 2.5rem 3.5rem;
         background: transparent;
         min-height: 100vh;
         position: relative;
@@ -286,7 +281,7 @@
 
     /* FAQ questions - Clean typography */
     .faq-question {
-        font-size: 1.0625rem;
+        font-size: 1.1875rem;
         font-weight: 600;
         color: #1a1a1a;
         margin: 0;
@@ -326,7 +321,7 @@
 
     /* Body text - Optimized readability */
     .faq-answer {
-        font-size: 0.9375rem;
+        font-size: 1.0625rem;
         color: #4a4a4a;
         line-height: 1.75;
         padding: 1.5rem 1.5rem 1.5rem 1.5rem;
@@ -861,8 +856,18 @@
 
     function initSearch() {
         const searchInput = document.getElementById('faqSearch');
+        if (!searchInput) return;
+
+        // Create "no results" element
+        const noResults = document.createElement('p');
+        noResults.className = 'faq-no-results';
+        noResults.textContent = 'No FAQs match your search. Try different keywords.';
+        const faqContainer = document.querySelector('.faq-container') || document.querySelector('main');
+        if (faqContainer) faqContainer.appendChild(noResults);
+
         searchInput.addEventListener('input', function () {
             const query = this.value.toLowerCase();
+            let visibleCount = 0;
 
             document.querySelectorAll('.faq-item').forEach(item => {
                 const question = item.querySelector('.faq-question').textContent.toLowerCase();
@@ -871,6 +876,7 @@
 
                 if (question.includes(query) || answer.includes(query) || tags.includes(query)) {
                     item.style.display = 'block';
+                    visibleCount++;
                 } else {
                     item.style.display = 'none';
                 }
@@ -881,6 +887,9 @@
                 const visibleItems = section.querySelectorAll('.faq-item:not([style*="display: none"])').length;
                 section.style.display = visibleItems > 0 ? 'block' : 'none';
             });
+
+            // Show/hide no-results message
+            noResults.classList.toggle('visible', query.length > 0 && visibleCount === 0);
         });
     }
 </script>

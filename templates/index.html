@@ -2,12 +2,16 @@
 
 {% block title %}ALS Caregiver's Compass - AI-Powered Support Platform{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/pages/index.css">
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <h1 class="hero-title">Your Guide Through the <span class="highlight">ALS Journey</span></h1>
+            <h1 class="hero-title anim-hero-title">Your Guide Through the <span class="highlight">ALS Journey</span></h1>
             <!-- <p class="hero-tagline">Every Journey Matters</p> -->
             <!-- <p class="hero-subtitle">
                 AI-powered support, evidence-based guidance, and compassionate resources for ALS caregivers worldwide.
@@ -15,7 +19,7 @@
 
 
 
-            <div class="nav-card" style="background: transparent; border: none; margin-right: auto;">
+            <div class="nav-card anim-fade-up" style="background: transparent; border: none; margin-right: auto;">
                 <a href="/understanding-als" class="nav-item" style="color: #334155;">
                     <i class="fas fa-book-open" style="color: #334155;"></i>
                     <span>Understand ALS</span>
@@ -36,7 +40,7 @@
         </div>
 
         <!-- Research Updates Card - 2 Column Layout -->
-        <div class="research-card">
+        <div class="research-card anim-reveal">
             <div class="research-card-content">
                 <!-- Left Column: Research Updates/Treatments -->
                 <div class="research-column">
@@ -64,7 +68,7 @@
                                     onmouseout="this.style.borderBottomColor='transparent';">BrainStorm Cell
                                     Therapeutics</a> (NurOwn®)
                             </div>
-                            <div style="font-size: 0.8rem; color: #64748b;">MSC-NTF cells • Stem cell therapy</div>
+                            <div style="font-size: 0.9375rem; color: #64748b;">MSC-NTF cells • Stem cell therapy</div>
                         </div>
 
                         <!-- Biogen -->
@@ -75,7 +79,7 @@
                                     onmouseover="this.style.borderBottomColor='#3b82f6';"
                                     onmouseout="this.style.borderBottomColor='transparent';">Biogen</a> (Qalsody™)
                             </div>
-                            <div style="font-size: 0.8rem; color: #64748b;">SOD1 targeting • Antisense oligonucleotide
+                            <div style="font-size: 0.9375rem; color: #64748b;">SOD1 targeting • Antisense oligonucleotide
                             </div>
                         </div>
 
@@ -87,7 +91,7 @@
                                     onmouseover="this.style.borderBottomColor='#3b82f6';"
                                     onmouseout="this.style.borderBottomColor='transparent';">AB Science</a> (Masitinib)
                             </div>
-                            <div style="font-size: 0.8rem; color: #64748b;">Neuroinflammation • Tyrosine kinase
+                            <div style="font-size: 0.9375rem; color: #64748b;">Neuroinflammation • Tyrosine kinase
                                 inhibitor</div>
                         </div>
 
@@ -100,7 +104,7 @@
                                     onmouseout="this.style.borderBottomColor='transparent';">Denali Therapeutics</a>
                                 (DNL343)
                             </div>
-                            <div style="font-size: 0.8rem; color: #64748b;">RIPK1 inhibitor • Blocks cell death</div>
+                            <div style="font-size: 0.9375rem; color: #64748b;">RIPK1 inhibitor • Blocks cell death</div>
                         </div>
 
                         <!-- Clene -->
@@ -112,7 +116,7 @@
                                     onmouseout="this.style.borderBottomColor='transparent';">Clene Nanomedicine</a>
                                 (CNM-Au8)
                             </div>
-                            <div style="font-size: 0.8rem; color: #64748b;">Gold nanocrystals • ATP support</div>
+                            <div style="font-size: 0.9375rem; color: #64748b;">Gold nanocrystals • ATP support</div>
                         </div>
                     </div>
                 </div>
@@ -162,7 +166,7 @@
 <section class="cards-section" id="explore-cards">
     <div class="container">
         <div class="cards-grid">
-            <a href="/home-icu-guide" class="card">
+            <a href="/home-icu-guide" class="card explore-card">
                 <h3 class="card-title">Home ICU Setup Guide</h3>
                 <p class="card-description">
                     Comprehensive step-by-step instructions for creating a safe, comfortable, and functional home care
@@ -177,7 +181,7 @@
                 </span>
             </a>
 
-            <a href="/diet-chart-tool" class="card">
+            <a href="/diet-chart-tool" class="card explore-card">
                 <h3 class="card-title">Diet Chart Tool</h3>
                 <p class="card-description">
                     Plan and track nutrition for your PALS. Create personalized diet charts, track calorie intake,
@@ -191,7 +195,7 @@
                 </span>
             </a>
 
-            <a href="/daily-schedule" class="card">
+            <a href="/daily-schedule" class="card explore-card">
                 <h3 class="card-title">View Daily Schedule</h3>
                 <p class="card-description">
                     Reference guide for structured daily routines covering physical care, nutrition management,
@@ -205,7 +209,7 @@
                 </span>
             </a>
 
-            <a href="/communication-technology" class="card">
+            <a href="/communication-technology" class="card explore-card">
                 <h3 class="card-title">Communication Technology</h3>
                 <p class="card-description">
                     Eye trackers, head trackers, apps, and assistive devices to help PALS communicate.
@@ -219,7 +223,7 @@
                 </span>
             </a>
 
-            <a href="/power-backup-guide" class="card">
+            <a href="/power-backup-guide" class="card explore-card">
                 <h3 class="card-title">Power Backup / UPS Guide</h3>
                 <p class="card-description">
                     Calculate your power requirements and find the right UPS and battery combination.
@@ -233,7 +237,7 @@
                 </span>
             </a>
 
-            <a href="/inventory-management" class="card">
+            <a href="/inventory-management" class="card explore-card">
                 <h3 class="card-title">Home ICU Inventory Management</h3>
                 <p class="card-description">
                     Track and manage all medical supplies, equipment, and consumables required for home ICU setup
@@ -254,12 +258,12 @@
 
 <!-- ALS Research & Innovation Section -->
 <section id="resources-section" style="background: #f8fafc; padding: 3rem 1.5rem; border-top: 1px solid #e2e8f0;">
-    <div style="max-width: 1200px; margin: 0 auto;">
+    <div style="max-width: 1400px; margin: 0 auto;">
         <div style="text-align: center; margin-bottom: 2.5rem;">
-            <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">
+            <h2 style="font-size: 1.875rem; font-weight: 700; color: #1e293b; margin-bottom: 0.75rem; letter-spacing: -0.02em;">
                 ALS Research & Innovation
             </h2>
-            <p style="color: #64748b; font-size: 0.9rem; max-width: 700px; margin: 0 auto;">
+            <p style="color: #64748b; font-size: 1.125rem; max-width: 800px; margin: 0 auto; line-height: 1.7;">
                 Trusted sources, medical authorities, and breakthrough therapies to stay informed and hopeful.
             </p>
         </div>
@@ -364,4 +368,32 @@
     </div>
 </section> -->
 
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+window.addEventListener('load', function() {
+  if (typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Hero entrance */
+  gsap.from('.hero-title', { y: 32, opacity: 0, duration: 0.85, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.hero-subtitle', { y: 22, opacity: 0, duration: 0.65, ease: 'power2.out', delay: 0.35 });
+  gsap.from('.nav-card', { y: 18, opacity: 0, duration: 0.55, ease: 'power2.out', delay: 0.55 });
+
+  /* Research card on scroll */
+  gsap.from('.research-card', {
+    scrollTrigger: { trigger: '.research-card', start: 'top 86%' },
+    y: 40, opacity: 0, duration: 0.7, ease: 'power2.out'
+  });
+
+  /* Explore cards stagger */
+  gsap.from('.explore-card', {
+    scrollTrigger: { trigger: '.cards-grid', start: 'top 84%' },
+    y: 36, opacity: 0, stagger: 0.09, duration: 0.55, ease: 'power2.out'
+  });
+});
+</script>
 {% endblock %}

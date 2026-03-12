@@ -54,18 +54,17 @@
     --shadow-lg: 0 10px 15px -3px rgba(161, 140, 209, 0.1), 0 4px 6px -4px rgba(161, 140, 209, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(161, 140, 209, 0.1), 0 8px 10px -6px rgba(161, 140, 209, 0.1);
 
-    /* TYPOGRAPHY SCALE - Claude-inspired sizing */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 0.9375rem;
-    /* Slightly smaller base - Claude style */
-    --font-size-md: 1rem;
-    --font-size-lg: 1.0625rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
-    --font-size-5xl: 3rem;
+    /* TYPOGRAPHY SCALE — generous sizing for readability */
+    --font-size-xs: 0.875rem;
+    --font-size-sm: 1rem;
+    --font-size-base: 1.125rem;
+    --font-size-md: 1.1875rem;
+    --font-size-lg: 1.3125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 1.75rem;
+    --font-size-3xl: 2.25rem;
+    --font-size-4xl: 2.75rem;
+    --font-size-5xl: 3.5rem;
 
     /* SPACING SCALE */
     --space-1: 0.25rem;
@@ -96,7 +95,7 @@
 /* BASE STYLES */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 120px;
+    scroll-padding-top: 140px;
 }
 
 *,
@@ -110,7 +109,9 @@ html {
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: var(--font-size-base);
-    line-height: 1.6;
+    line-height: 1.68;
+    font-weight: 400;
+    letter-spacing: -0.008em;
     color: var(--color-text-primary);
     background-color: var(--color-background);
     -webkit-font-smoothing: antialiased;
@@ -124,8 +125,9 @@ h4,
 h5,
 h6 {
     font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
     color: var(--color-text-primary);
 }
 
@@ -138,42 +140,42 @@ button {
     font-family: inherit;
 }
 
-/* CONTAINER UTILITIES */
+/* CONTAINER UTILITIES — wide content layout */
 .container {
     width: 100%;
     margin: 0 auto;
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-6);
 }
 
 @media (min-width: 640px) {
     .container {
-        max-width: 640px;
+        max-width: 96%;
         padding: 0 var(--space-6);
     }
 }
 
 @media (min-width: 768px) {
     .container {
-        max-width: 768px;
+        max-width: 94%;
     }
 }
 
 @media (min-width: 1024px) {
     .container {
-        max-width: 1024px;
+        max-width: 92%;
         padding: 0 var(--space-8);
     }
 }
 
 @media (min-width: 1280px) {
     .container {
-        max-width: 1280px;
+        max-width: 1400px;
     }
 }
 
 @media (min-width: 1536px) {
     .container {
-        max-width: 1536px;
+        max-width: 1600px;
     }
 }
 
@@ -204,11 +206,11 @@ button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 110px;
-    padding: 0 var(--space-6);
+    height: 130px;
+    padding: 0 var(--space-12);
     max-width: 1400px;
     margin: 0 auto;
-    gap: var(--space-6);
+    gap: var(--space-8);
 }
 
 .navbar-brand {
@@ -225,25 +227,25 @@ button {
 }
 
 .navbar-logo {
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 56px;
     color: #B8860B;
 }
 
 .navbar-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 800;
     font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #1a1a1a;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
 }
 
 .navbar-nav {
     display: none;
     align-items: center;
-    gap: 0.25rem;
+    gap: 1rem;
     margin: 0 auto;
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-8);
     position: relative;
 }
 
@@ -256,15 +258,15 @@ button {
 
 .nav-link {
     position: relative;
-    font-size: 0.9375rem;
+    font-size: 1.25rem;
     font-weight: 500;
-    font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.005em;
     color: #374151;
     text-decoration: none;
-    padding: 0.625rem 1.125rem;
-    border-radius: 4px;
+    padding: 0.85rem 1.5rem;
+    border-radius: 6px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: 0.005em;
     white-space: nowrap;
 }
 
@@ -324,8 +326,10 @@ button {
 
 .mobile-nav-link {
     display: block;
-    padding: var(--space-4);
+    padding: 1rem var(--space-4);
+    font-size: 1.1875rem;
     font-weight: 600;
+    font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--color-text-primary);
     border-bottom: 1px solid var(--color-border-light);
 }
@@ -470,11 +474,11 @@ button {
 }
 
 .hero-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-weight: 900;
     margin-bottom: var(--space-6);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: 1.06;
+    letter-spacing: -0.035em;
 }
 
 .hero-tagline {
@@ -502,6 +506,7 @@ button {
 .hero-title .highlight {
     color: #b89fce;
     /* Soft mauve/purple for "ALS Journey" */
+    font-weight: 900;
 }
 
 .hero-actions {
@@ -605,8 +610,8 @@ button {
 }
 
 .research-card-title {
-    font-size: 1.0625rem;
-    font-weight: 600;
+    font-size: 1.1875rem;
+    font-weight: 700;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #1e293b;
     margin: 0;
@@ -638,8 +643,8 @@ button {
 }
 
 .treatment-name {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.0625rem;
+    font-weight: 700;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: #1a1a1a;
     margin-bottom: 4px;
@@ -854,15 +859,15 @@ button {
 }
 
 .resource-name {
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 1.0625rem;
+    font-weight: 600;
     color: #1e293b;
     margin-bottom: 0.2rem;
     transition: color 0.2s;
 }
 
 .resource-desc {
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
     color: #64748b;
 }
 
@@ -921,10 +926,12 @@ button {
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(161,140,209,0.18);
     border-color: rgba(125, 211, 252, 0.6);
     background: rgba(255, 255, 255, 1);
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.25s ease;
 }
 
 .card:hover::before {
@@ -952,20 +959,20 @@ button {
 }
 
 .card-title {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
+    font-size: 1.375rem;
+    font-weight: 700;
     color: #1e293b;
     margin-bottom: var(--space-4);
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
 }
 
 .card-description {
     color: #64748b;
-    line-height: 1.65;
+    line-height: 1.7;
     flex-grow: 1;
     margin-bottom: var(--space-6);
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
 }
 
 .card-link {
@@ -1157,7 +1164,7 @@ button {
 
 .footer-bottom p {
     color: rgba(255, 255, 255, 0.6);
-    font-size: var(--font-size-sm);
+    font-size: 1rem;
 }
 
 /* FEATURE CARDS (Homepage) */
@@ -1521,7 +1528,7 @@ button {
     gap: var(--space-2);
     justify-content: center;
     align-items: stretch;
-    max-width: 800px;
+    max-width: 1000px;
     margin: var(--space-10) auto 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
@@ -1578,4 +1585,55 @@ button {
 
 .source-card:hover .source-link svg {
     transform: translate(2px, -2px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   GLOBAL ANIMATION UTILITIES
+   ═══════════════════════════════════════════════════════ */
+
+/* Research card hover */
+.research-card {
+    transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.28s ease;
+}
+.research-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px rgba(161,140,209,0.14);
+}
+
+/* Treatment item hover */
+.treatment-item {
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+.treatment-item:hover {
+    transform: translateX(3px);
+}
+
+/* Research news card hover */
+.research-news-card {
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+.research-news-card:hover {
+    transform: translateX(4px);
+}
+
+/* Float gentle keyframe */
+@keyframes float-gentle {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+}
+
+/* Pulse glow keyframe */
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(161,140,209,0.3); }
+    50%      { box-shadow: 0 0 20px 4px rgba(161,140,209,0.15); }
+}
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

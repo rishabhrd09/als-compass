@@ -225,218 +225,416 @@
         animation: signal-pulse-als 1.5s infinite ease-in-out;
     }
 
-    /* Info Card Styles */
+    /* ═══════════════════════════════════════════════════════
+       PREMIUM EDITORIAL CONTENT STYLES
+       ═══════════════════════════════════════════════════════ */
+
+    /* ── Info Cards — Clean White Editorial ── */
     .info-card {
-        background: var(--color-surface);
-        border-radius: 16px;
-        padding: var(--space-8);
-        margin-bottom: var(--space-8);
-        border: 1px solid var(--color-border);
-        box-shadow: var(--shadow-md);
-        transition: all 0.3s ease;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 2.75rem 3rem;
+        margin-bottom: 2.5rem;
+        border: none;
+        font-size: 1.125rem;
+        line-height: 1.82;
+        color: #3d4152;
+        box-shadow:
+            0 1px 2px rgba(0,0,0,0.03),
+            0 4px 12px rgba(0,0,0,0.04),
+            0 16px 40px rgba(0,0,0,0.04);
+        transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        position: relative;
+        overflow: hidden;
     }
-
+    .info-card::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #0d9488, #7c3aed);
+        border-radius: 20px 0 0 20px;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+    }
     .info-card:hover {
-        box-shadow: var(--shadow-lg);
-        border-color: var(--color-primary);
-        transform: translateY(-2px);
+        box-shadow:
+            0 2px 4px rgba(0,0,0,0.04),
+            0 8px 24px rgba(0,0,0,0.06),
+            0 24px 56px rgba(0,0,0,0.06);
+        transform: translateY(-4px);
+    }
+    .info-card:hover::before {
+        opacity: 1;
     }
 
+    /* ── Section Headings — Crimson Pro editorial serif ── */
+    .info-card h2,
+    .info-card h3 {
+        font-family: 'Crimson Pro', Georgia, serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #1a1a2e;
+    }
+    .info-card h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); }
+    .info-card h3 { font-size: clamp(1.5rem, 2.5vw, 1.875rem); }
+
+    /* ── Section Icons — refined with soft glow ── */
     .icon-wrapper {
         display: flex;
         justify-content: center;
-        margin-bottom: var(--space-6);
+        margin-bottom: 1.75rem;
     }
-
     .section-icon {
-        width: 64px;
-        height: 64px;
-        background: var(--color-primary-light);
-        border-radius: 16px;
+        width: 72px;
+        height: 72px;
+        background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(124,58,237,0.08));
+        border-radius: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--color-primary);
+        color: #0d9488;
         font-size: 32px;
+        transition: all 0.35s ease;
+        box-shadow: 0 4px 16px rgba(13,148,136,0.08);
+    }
+    .info-card:hover .section-icon {
+        transform: scale(1.06);
+        box-shadow: 0 6px 24px rgba(13,148,136,0.14);
     }
 
+    /* ── Symptom Grid — wider, cleaner ── */
     .symptom-grid {
         display: grid;
-        gap: var(--space-4);
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        margin-bottom: var(--space-6);
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        margin-bottom: 1.75rem;
     }
-
     .symptom-card {
         display: flex;
         align-items: center;
-        gap: var(--space-4);
-        padding: var(--space-4);
-        border-radius: 12px;
-        border-left: 4px solid var(--color-primary);
-        background: var(--color-background);
-        transition: all 0.2s ease;
+        gap: 1.125rem;
+        padding: 1.25rem 1.5rem;
+        border-radius: 14px;
+        border: none;
+        border-left: 4px solid #7c3aed;
+        background: #f8f7fc;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        font-size: 1rem;
     }
-
+    .symptom-card strong {
+        color: #1a1a2e;
+        font-weight: 650;
+        font-family: 'Manrope', sans-serif;
+    }
+    .symptom-card .text-sm {
+        color: #5a5e72;
+        line-height: 1.55;
+    }
     .symptom-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-sm);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        background: #f3f1fa;
     }
-
     .symptom-card.secondary {
-        border-left-color: var(--color-secondary);
-        background: var(--color-secondary-light);
+        border-left-color: #0d9488;
+        background: #f0fdf9;
     }
-
+    .symptom-card.secondary:hover {
+        background: #e6faf5;
+    }
     .symptom-card.accent {
-        border-left-color: var(--color-accent);
-        background: var(--color-accent-light);
+        border-left-color: #d97706;
+        background: #fffbf0;
     }
-
+    .symptom-card.accent:hover {
+        background: #fff7e0;
+    }
     .symptom-icon {
-        font-size: 24px;
-        color: var(--color-primary);
-        min-width: 40px;
+        font-size: 26px;
+        min-width: 44px;
         text-align: center;
+        color: #7c3aed;
+        opacity: 0.85;
     }
-
     .symptom-card.secondary .symptom-icon {
-        color: var(--color-secondary-dark);
+        color: #0d9488;
     }
-
     .symptom-card.accent .symptom-icon {
-        color: var(--color-accent);
+        color: #d97706;
     }
 
+    /* ── Key Message — refined accent box ── */
     .key-message {
-        margin-top: var(--space-6);
+        margin-top: 2rem;
         text-align: center;
-        padding: var(--space-4);
-        background: var(--color-primary-light);
-        border-radius: 12px;
-        color: var(--color-text-primary);
+        padding: 1.75rem 2rem;
+        background: linear-gradient(135deg, rgba(13,148,136,0.05), rgba(124,58,237,0.05));
+        border-radius: 16px;
+        color: #1a1a2e;
         font-weight: 500;
-        border: 1px solid var(--color-primary);
+        border: 1px solid rgba(13,148,136,0.12);
     }
 
+    /* ── Timeline — refined markers and cards ── */
     .timeline-container {
         position: relative;
-        padding: var(--space-4);
-        margin-top: var(--space-8);
+        padding: 1.5rem 0;
+        margin-top: 2.5rem;
     }
-
     .timeline-line {
         position: absolute;
         left: 50%;
         top: 0;
         bottom: 0;
-        width: 2px;
-        background: linear-gradient(to bottom, var(--color-secondary), var(--color-accent));
+        width: 3px;
+        background: linear-gradient(to bottom, #0d9488, #7c3aed, #d97706);
         transform: translateX(-50%);
+        border-radius: 3px;
     }
-
     .timeline-stage {
         position: relative;
         display: flex;
         align-items: center;
-        gap: var(--space-8);
-        margin-bottom: var(--space-8);
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
     }
-
     .timeline-marker {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         border-radius: 50%;
         border: 4px solid white;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1), 0 0 0 3px rgba(13,148,136,0.12);
         z-index: 2;
     }
-
     .stage-card {
-        padding: var(--space-6);
-        border-radius: 12px;
-        background: var(--color-surface);
-        box-shadow: var(--shadow-md);
-        transition: all 0.3s ease;
-        border: 1px solid var(--color-border);
+        padding: 1.75rem 2rem;
+        border-radius: 16px;
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05);
+        transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        border: none;
     }
-
     .stage-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.07);
     }
-
     .stage-card h4 {
         font-family: 'Manrope', sans-serif;
-        font-weight: 700;
+        font-weight: 750;
+        font-size: 1.125rem;
     }
-
+    .stage-card .text-sm {
+        color: #5a5e72;
+        line-height: 1.7;
+    }
     .stage-card.left {
         text-align: right;
-        border-right: 4px solid var(--color-secondary);
+        border-right: 4px solid #0d9488;
     }
-
     .stage-card.right {
-        border-left: 4px solid var(--color-accent);
+        border-left: 4px solid #d97706;
     }
-
     .stage-card.center {
-        border-right: 4px solid var(--color-primary);
+        border-right: 4px solid #7c3aed;
     }
 
+    /* ── FAQ Section — clean editorial ── */
     .faq-section {
-        background: var(--color-surface);
-        border-radius: 16px;
-        padding: var(--space-8);
-        margin-bottom: var(--space-8);
-        border: 1px solid var(--color-border);
-        box-shadow: var(--shadow-md);
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 2.75rem 3rem;
+        margin-bottom: 2.5rem;
+        border: none;
+        box-shadow:
+            0 1px 2px rgba(0,0,0,0.03),
+            0 4px 12px rgba(0,0,0,0.04),
+            0 16px 40px rgba(0,0,0,0.04);
+        position: relative;
+        overflow: hidden;
     }
-
+    .faq-section::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #7c3aed, #0d9488);
+        border-radius: 20px 0 0 20px;
+    }
     .faq-item {
-        margin-bottom: var(--space-6);
-        border-bottom: 1px solid var(--color-border);
-        padding-bottom: var(--space-4);
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 1.5rem;
     }
-
     .faq-item:last-child {
         border-bottom: none;
         margin-bottom: 0;
         padding-bottom: 0;
     }
-
     .faq-question {
         font-weight: 700;
-        font-size: var(--font-size-lg);
-        color: var(--color-text-primary);
-        margin-bottom: var(--space-2);
+        font-size: 1.125rem;
+        font-family: 'Manrope', sans-serif;
+        color: #1a1a2e;
+        margin-bottom: 0.5rem;
         display: flex;
         align-items: center;
-        gap: var(--space-3);
+        gap: 0.75rem;
+    }
+    .faq-question i {
+        color: #0d9488;
+        font-size: 0.875rem;
+    }
+    .faq-answer {
+        color: #5a5e72;
+        padding-left: 2rem;
+        line-height: 1.72;
+        font-size: 1.0625rem;
     }
 
-    .faq-answer {
-        color: var(--color-text-secondary);
-        padding-left: 32px;
+    /* Three.js Neural Globe */
+    .hero-3d-banner {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0;
+        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        padding: 5rem 3rem;
+        margin: 0;
+        min-height: 420px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .hero-3d-banner .hero-text {
+        position: relative;
+        z-index: 2;
+        max-width: 55%;
+    }
+    .hero-3d-banner .hero-text h1 {
+        color: #fff;
+        font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+        font-weight: 900;
+        font-family: 'Crimson Pro', Georgia, serif;
+        letter-spacing: -0.035em;
+        line-height: 1.08;
+        margin-bottom: 1.25rem;
+    }
+    .hero-3d-banner .hero-text h1 .accent-teal { color: #2dd4bf; }
+    .hero-3d-banner .hero-text p {
+        color: rgba(255,255,255,0.7);
+        font-size: 1.25rem;
+        line-height: 1.7;
+        max-width: 600px;
+        font-family: 'DM Sans', system-ui, sans-serif;
+    }
+    .hero__3d {
+        position: absolute;
+        right: -5%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+    .hero__3d canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+    @media (max-width: 900px) {
+        .hero__3d { display: none; }
+        .hero-3d-banner .hero-text { max-width: 100%; }
+    }
+
+    /* ── Inner content boxes — refined tints ── */
+    .info-card div[style*="background: var(--color-secondary-light)"] {
+        background: #eefbf7 !important;
+        border-color: #0d9488 !important;
+    }
+    .info-card div[style*="background: var(--color-primary-light)"] {
+        background: #f5f0ff !important;
+    }
+    .info-card div[style*="background: var(--color-accent-light)"] {
+        background: #fef9ee !important;
+        border-color: #d97706 !important;
+    }
+    .info-card div[style*="background: var(--color-bg-body)"] {
+        background: #fafafa !important;
+    }
+    .info-card p,
+    .info-card li {
+        color: #3d4152;
+    }
+    .info-card .text-sm {
+        color: #5a5e72;
+        font-size: 0.9375rem;
         line-height: 1.6;
     }
+    .info-card strong {
+        color: #1a1a2e;
+    }
+    .info-card h4 {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
+        font-size: 1.0625rem;
+    }
+    .info-card h5 {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+    /* ── Neural simulation — wider padding ── */
+    .neural-simulation-section {
+        padding: 2.5rem 2.75rem;
+        border-radius: 20px;
+        margin-bottom: 2.5rem;
+    }
+
+    /* GSAP scroll progress bar */
+    .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #2dd4bf, #a78bfa);
+        z-index: 9999;
+        width: 0%;
+        transition: width 0.1s linear;
+    }
+
+
 </style>
 {% endblock %}
 
 {% block content %}
-<section class="section-padding bg-body">
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- Full-width dark hero banner -->
+<div class="hero-3d-banner" style="border-radius: 0; margin: 0; min-height: 380px;">
+    <div style="max-width: 1600px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; width: 100%;">
+        <div class="hero-text" style="max-width: 60%;">
+            <h1>Understanding <span class="accent-teal">ALS</span></h1>
+        </div>
+    </div>
+    <div class="hero__3d" id="three-container" aria-hidden="true">
+        <canvas id="three-cvs"></canvas>
+    </div>
+</div>
+
+<section class="section-padding" style="background: linear-gradient(180deg, #f5f3ee 0%, #faf8f4 30%, #fff 60%, #faf8f4 100%);">
     <div class="container">
         <!-- Understanding ALS Section -->
-        <!-- Understanding ALS Section -->
-        <div style="max-width: 1200px; margin: 3rem auto 0;">
+        <div style="max-width: 1520px; margin: 2.5rem auto 0;">
             <style>
                 .als-layout-grid {
                     display: grid;
-                    grid-template-columns: 1fr 280px;
-                    gap: 3rem;
+                    grid-template-columns: 1fr 240px;
+                    gap: 4rem;
                     position: relative;
                 }
 
@@ -444,31 +642,32 @@
                     position: sticky;
                     top: 2rem;
                     height: fit-content;
-                    padding-top: 0;
+                    padding-top: 0.5rem;
                 }
 
                 .als-nav-link {
                     display: block;
-                    padding: 0.5rem 0.75rem;
-                    margin-bottom: 0.125rem;
-                    border-radius: 6px;
-                    color: #334155;
+                    padding: 0.625rem 1rem;
+                    margin-bottom: 0.25rem;
+                    border-radius: 8px;
+                    color: #64748b;
                     text-decoration: none;
-                    transition: background-color 0.15s ease, color 0.15s ease;
+                    transition: all 0.2s ease;
                     font-weight: 500;
-                    font-size: 0.9rem;
+                    font-size: 0.9375rem;
+                    font-family: 'DM Sans', system-ui, sans-serif;
                     border: none;
                 }
 
                 .als-nav-link:hover {
-                    background: #f1f5f9;
-                    color: #0f172a;
+                    background: rgba(13,148,136,0.06);
+                    color: #0d9488;
                     transform: none;
                 }
 
                 .als-nav-link.active {
-                    background: #e2e8f0;
-                    color: #0f172a;
+                    background: rgba(13,148,136,0.08);
+                    color: #0d9488;
                     font-weight: 600;
                     box-shadow: none;
                 }
@@ -477,12 +676,8 @@
                     .als-layout-grid {
                         display: flex;
                         flex-direction: column-reverse;
-                        /* Content bottom, Nav top? No, Sidebar is 2nd in DOM. */
-                        /* If I want Nav on TOP on mobile, and Sidebar is 2nd in DOM, I need column-reverse */
                         gap: 2rem;
                     }
-
-                    /* Wait, if I use column-reverse, sidebar (2nd) goes to TOP. Main (1st) goes to BOTTOM. */
                     .als-sidebar {
                         position: static;
                         top: 0;
@@ -695,170 +890,105 @@
                         </div>
                     </div>
 
-                    <!-- Neural Simulation Section -->
-                    <div class="neural-simulation-section">
-                        <h2 class="neural-simulation-title">Visualizing the Brain-Muscle Connection</h2>
+                    <!-- ═══════════════════════════════════════════
+                         ENHANCED NEURAL SIMULATION SECTION
+                         Manim video + Three.js 3D motor neuron
+                         ═══════════════════════════════════════════ -->
+                    <div class="neural-simulation-section" style="padding: 2.5rem 2.75rem;">
+                        <h2 class="neural-simulation-title" style="font-family: 'Crimson Pro', Georgia, serif; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em;">
+                            Visualizing the Brain–Muscle Connection
+                        </h2>
+                        <p style="text-align: center; color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 600px; margin: -1rem auto 2rem; font-family: 'DM Sans', system-ui, sans-serif;">
+                            Explore how motor neurons transmit signals — and how ALS progressively disrupts this pathway
+                        </p>
 
-                        <!-- Color Legend -->
-                        <div
-                            style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 20px; height: 4px; background: #00ffff; border-radius: 2px;"></div>
-                                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">Healthy neuron</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 20px; height: 4px; background: #ff9966; border-radius: 2px;"></div>
-                                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">Damaged neuron</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                <div style="width: 12px; height: 12px; background: #ff0; border-radius: 50%;"></div>
-                                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.8);">Nerve signal</span>
+                        <!-- ── Manim Video Player + Render Trigger ── -->
+                        <div id="manim-video-wrapper" style="display: none; margin-bottom: 2.5rem;">
+                            <div style="position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.06);">
+                                <video id="manim-player" muted playsinline loop
+                                    style="width: 100%; display: block; border-radius: 14px;"
+                                    poster="">
+                                    <source src="{{ url_for('static', filename='videos/motor_neuron_als.webm') }}" type="video/webm">
+                                    <source src="{{ url_for('static', filename='videos/motor_neuron_als.mp4') }}" type="video/mp4">
+                                </video>
+                                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 0.75rem 1.25rem; background: linear-gradient(transparent, rgba(0,0,0,0.7)); display: flex; align-items: center; justify-content: space-between;">
+                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif;">
+                                        <i class="fas fa-film" style="margin-right: 6px;"></i>Rendered with Manim
+                                    </span>
+                                    <button id="manim-play-btn" onclick="document.getElementById('manim-player').paused ? document.getElementById('manim-player').play() : document.getElementById('manim-player').pause()"
+                                        style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 0.4rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s ease;">
+                                        <i class="fas fa-play" style="margin-right: 4px;"></i>Play
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="simulation-grid">
-
-
-                            <!-- Healthy System -->
-                            <div class="simulation-section">
-                                <h3 class="simulation-title healthy">Healthy System</h3>
-                                <div class="simulation-container">
-                                    <svg width="400" height="250" viewBox="0 0 400 250">
-                                        <!-- Dendrites -->
-                                        <path class="glow-healthy" d="M40 120 C20 80, 10 60, 5 40" stroke="#00ffff"
-                                            stroke-width="2" fill="none" />
-                                        <path class="glow-healthy" d="M40 120 C25 100, 5 90, 10 70" stroke="#00ffff"
-                                            stroke-width="2" fill="none" />
-                                        <path class="glow-healthy" d="M40 120 C15 130, 0 150, 5 160" stroke="#00ffff"
-                                            stroke-width="2" fill="none" />
-                                        <path class="glow-healthy" d="M40 120 C25 150, 5 180, 0 200" stroke="#00ffff"
-                                            stroke-width="2" fill="none" />
-
-                                        <!-- Soma -->
-                                        <circle class="glow-healthy" cx="60" cy="120" r="20" fill="#005577"
-                                            stroke="#00ffff" stroke-width="2" />
-                                        <text x="60" y="95" text-anchor="middle" class="fade-in"
-                                            id="label-dendrites-h">Dendrites</text>
-                                        <text x="60" y="125" text-anchor="middle" class="fade-in" id="label-soma-h">Cell
-                                            Body</text>
-                                        <text x="60" y="150" text-anchor="middle" class="fade-in"
-                                            id="label-neuron-h">Motor
-                                            Neuron</text>
-
-                                        <!-- Axon with myelin segments -->
-                                        <line class="glow-healthy" x1="80" y1="120" x2="320" y2="120" stroke="#00ffff"
-                                            stroke-width="2" />
-                                        <g stroke="#00ffff" stroke-width="6" class="glow-healthy">
-                                            <line x1="100" y1="120" x2="120" y2="120" />
-                                            <line x1="140" y1="120" x2="160" y2="120" />
-                                            <line x1="180" y1="120" x2="200" y2="120" />
-                                            <line x1="220" y1="120" x2="240" y2="120" />
-                                            <line x1="260" y1="120" x2="280" y2="120" />
-                                        </g>
-                                        <text x="200" y="110" text-anchor="middle" class="fade-in"
-                                            id="label-axon-h">Axon</text>
-                                        <text x="160" y="140" text-anchor="middle" class="fade-in"
-                                            id="label-myelin-h">Myelin
-                                            Sheath</text>
-
-                                        <!-- Axon terminals -->
-                                        <path class="glow-healthy" d="M320 120 C340 100, 360 140, 380 120"
-                                            stroke="#00ffff" stroke-width="2" fill="none" />
-                                        <circle class="glow-healthy" cx="380" cy="120" r="10" fill="#ffaa00"
-                                            stroke="#fff" stroke-width="1" />
-                                        <text x="380" y="105" text-anchor="middle" class="fade-in"
-                                            id="label-muscle-h">Muscle</text>
-
-                                        <!-- Signal -->
-                                        <circle class="pulse-signal" r="5" fill="#ff0" id="signal-healthy"
-                                            style="opacity: 0;">
-                                            <animateMotion dur="3s" repeatCount="1" fill="freeze" begin="indefinite"
-                                                path="M80,120 L320,120 C340,100 360,140 380,120" />
-                                        </circle>
-                                    </svg>
-                                </div>
-                                <p class="simulation-explanation">
-                                    <strong>Healthy Signal Transmission:</strong> Electrical impulses (action
-                                    potentials) travel rapidly along the axon—up to 120 m/s—protected by the myelin
-                                    sheath. At the neuromuscular junction, acetylcholine is released, triggering
-                                    immediate, precise muscle contraction.
-                                </p>
-                            </div>
-
-                            <!-- ALS System -->
-                            <div class="simulation-section">
-                                <h3 class="simulation-title als">ALS-Affected System</h3>
-                                <div class="simulation-container">
-                                    <svg width="400" height="250" viewBox="0 0 400 250">
-                                        <!-- Damaged Dendrites -->
-                                        <path class="glow-als" d="M40 120 C20 80, 10 60, 5 40" stroke="#ff9966"
-                                            stroke-width="2" fill="none" stroke-dasharray="4,2" />
-                                        <path class="glow-als" d="M40 120 C25 100, 5 90, 10 70" stroke="#ff9966"
-                                            stroke-width="2" fill="none" stroke-dasharray="4,2" />
-
-                                        <!-- Soma -->
-                                        <circle class="glow-als" cx="60" cy="120" r="20" fill="#662222" stroke="#ff9966"
-                                            stroke-width="2" />
-                                        <text x="60" y="95" text-anchor="middle" class="fade-in label-als"
-                                            id="label-dendrites-a">Dendrites</text>
-                                        <text x="60" y="125" text-anchor="middle" class="fade-in label-als"
-                                            id="label-soma-a">Cell Body</text>
-                                        <text x="60" y="150" text-anchor="middle" class="fade-in label-als"
-                                            id="label-neuron-a">Motor Neuron</text>
-
-                                        <!-- Damaged Axon -->
-                                        <line class="glow-als" x1="80" y1="120" x2="320" y2="120" stroke="#ff9966"
-                                            stroke-width="2" stroke-dasharray="4,2" />
-                                        <g stroke="#ff9966" stroke-width="6" opacity="0.5" class="glow-als">
-                                            <line x1="100" y1="120" x2="120" y2="120" />
-                                            <line x1="140" y1="120" x2="160" y2="120" />
-                                            <line x1="180" y1="120" x2="200" y2="120" />
-                                        </g>
-                                        <text x="200" y="110" text-anchor="middle" class="fade-in label-als"
-                                            id="label-axon-a">Axon</text>
-                                        <text x="160" y="140" text-anchor="middle" class="fade-in label-als"
-                                            id="label-myelin-a">Myelin Sheath</text>
-
-                                        <!-- Signal Blocked Indicator -->
-                                        <g class="fade-in" id="signal-blocked-marker">
-                                            <line x1="255" y1="110" x2="275" y2="130" stroke="#ff3333" stroke-width="3"
-                                                opacity="0.9" />
-                                            <line x1="275" y1="110" x2="255" y2="130" stroke="#ff3333" stroke-width="3"
-                                                opacity="0.9" />
-                                            <text x="265" y="160" text-anchor="middle" fill="#ff6666" font-size="10"
-                                                font-weight="bold">Signal Blocked</text>
-                                        </g>
-
-                                        <!-- Axon terminals -->
-                                        <path class="glow-als" d="M320 120 C340 100, 360 140, 380 120" stroke="#ff9966"
-                                            stroke-width="2" fill="none" />
-                                        <circle class="glow-als" cx="380" cy="120" r="10" fill="#884444" stroke="#fff"
-                                            stroke-width="1" opacity="0.6" />
-                                        <text x="380" y="105" text-anchor="middle" class="fade-in label-als"
-                                            id="label-muscle-a">Weak Muscle</text>
-
-                                        <!-- Signal -->
-                                        <circle class="pulse-signal-als" r="5" fill="#ff9966" id="signal-als"
-                                            style="opacity: 0;">
-                                            <animateMotion dur="5s" repeatCount="1" fill="freeze" begin="indefinite"
-                                                path="M80,120 L260,120" />
-                                        </circle>
-                                    </svg>
-                                </div>
-                                <p class="simulation-explanation">
-                                    <strong>ALS Disruption:</strong> Motor neurons progressively degenerate—axons
-                                    retract, myelin breaks down, and the neuromuscular junction is lost. Signals weaken,
-                                    slow down, or stop completely. Without neural stimulation, muscles atrophy (shrink)
-                                    and eventually become paralyzed.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="shared-animation-control">
-                            <button class="toggle-control" id="animation-control" tabindex="0">
-                                <i class="fas fa-play icon play-icon"></i>
-                                <i class="fas fa-pause icon pause-icon"></i>
+                        <!-- ── Render Prompt (shown when video not available) ── -->
+                        <div id="manim-render-prompt" style="display: none; margin-bottom: 2.5rem; text-align: center; padding: 2rem; border-radius: 14px; background: rgba(45,212,191,0.06); border: 1px dashed rgba(45,212,191,0.25);">
+                            <i class="fas fa-film" style="font-size: 2rem; color: rgba(45,212,191,0.5); margin-bottom: 1rem; display: block;"></i>
+                            <p style="color: rgba(255,255,255,0.7); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.5;">
+                                A detailed Manim animation explaining motor neuron degeneration is available.<br>
+                                <span style="font-size: 0.85rem; color: rgba(255,255,255,0.4);">Requires Manim + FFmpeg installed (via setup.bat)</span>
+                            </p>
+                            <button id="render-manim-btn" onclick="triggerManimRender()"
+                                style="background: linear-gradient(135deg, rgba(45,212,191,0.2), rgba(167,139,250,0.2)); border: 1px solid rgba(45,212,191,0.35); color: #2dd4bf; padding: 0.7rem 2rem; border-radius: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                <i class="fas fa-magic" style="margin-right: 8px;"></i>Render Animation
                             </button>
+                            <div id="render-status" style="margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif; display: none;"></div>
+                        </div>
+
+                        <!-- ── Interactive 3D Motor Neuron (Three.js) ── -->
+                        <div style="margin-bottom: 2rem;">
+                            <!-- Stage Controls -->
+                            <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+                                <button class="neuron-stage-btn active" data-stage="0"
+                                    style="background: rgba(45,212,191,0.15); border: 1px solid rgba(45,212,191,0.4); color: #2dd4bf; padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    <i class="fas fa-heart" style="margin-right: 6px;"></i>Healthy
+                                </button>
+                                <button class="neuron-stage-btn" data-stage="1"
+                                    style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.2); color: rgba(251,191,36,0.7); padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    Stage 1 — Early
+                                </button>
+                                <button class="neuron-stage-btn" data-stage="2"
+                                    style="background: rgba(255,153,102,0.08); border: 1px solid rgba(255,153,102,0.2); color: rgba(255,153,102,0.7); padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    Stage 2 — Mid
+                                </button>
+                                <button class="neuron-stage-btn" data-stage="3"
+                                    style="background: rgba(255,51,51,0.08); border: 1px solid rgba(255,51,51,0.2); color: rgba(255,51,51,0.6); padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    Stage 3 — Advanced
+                                </button>
+                            </div>
+
+                            <!-- 3D Canvas -->
+                            <div id="neuron-3d-wrap" style="position: relative; height: 380px; border-radius: 14px; overflow: hidden; background: radial-gradient(ellipse at 40% 50%, #1a1838 0%, #0c0e16 100%); border: 1px solid rgba(255,255,255,0.05);">
+                                <canvas id="neuron-3d-canvas"></canvas>
+                                <!-- Stage Description Overlay -->
+                                <div id="neuron-stage-desc" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); pointer-events: none;">
+                                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9375rem; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;" id="stage-desc-text">
+                                        <strong style="color: #2dd4bf;">Healthy:</strong> Electrical signals travel rapidly along the myelinated axon at up to 120 m/s. At the synapse, acetylcholine triggers immediate muscle contraction.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Color Legend -->
+                            <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #2dd4bf; border-radius: 50%;"></div>
+                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Healthy neuron</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #ff9966; border-radius: 50%;"></div>
+                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Damaged neuron</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #fbbf24; border-radius: 50%; box-shadow: 0 0 6px rgba(251,191,36,0.5);"></div>
+                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Signal pulse</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 10px; height: 10px; background: #ff3333; border-radius: 50%;"></div>
+                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Signal blocked</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1161,13 +1291,13 @@
 
                     <!-- Core Message -->
                     <div
-                        style="background: #fafafa; border: 1px solid #e5e5e5; border-radius: 12px; padding: var(--space-6); margin-top: var(--space-6); text-align: center;">
+                        style="background: linear-gradient(135deg, rgba(13,148,136,0.04), rgba(124,58,237,0.04)); border: 1px solid rgba(13,148,136,0.1); border-radius: 16px; padding: 2rem 2.5rem; margin-top: 2.5rem; text-align: center;">
                         <p
-                            style="color: #6b6b6b; font-weight: 600; font-size: var(--font-size-base); margin-bottom: var(--space-3); letter-spacing: 0.5px;">
+                            style="color: #0d9488; font-weight: 700; font-size: 0.8125rem; margin-bottom: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Manrope', sans-serif;">
                             Remember
                         </p>
                         <p
-                            style="color: #2d2d2d; font-size: var(--font-size-lg); line-height: 1.7; max-width: 600px; margin: 0 auto;">
+                            style="color: #1a1a2e; font-size: 1.1875rem; line-height: 1.75; max-width: 640px; margin: 0 auto; font-family: 'Crimson Pro', Georgia, serif; font-weight: 500;">
                             ALS changes how the body works, but it does not change who a person is. Every person
                             with ALS
                             deserves respect, good care, and a life filled with meaning.
@@ -1176,9 +1306,9 @@
 
                     <!-- Medical Disclaimer -->
                     <div
-                        style="background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: var(--space-4); margin-top: var(--space-6); text-align: center;">
-                        <p style="color: #6b6b6b; font-size: var(--font-size-sm); line-height: 1.6; margin: 0;">
-                            <strong>Disclaimer:</strong> This guide is for informational purposes only and does not
+                        style="background: #f9fafb; border: none; border-radius: 12px; padding: 1.25rem 2rem; margin-top: 1.5rem; text-align: center;">
+                        <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.6; margin: 0; font-family: 'DM Sans', system-ui, sans-serif;">
+                            <strong style="color: #64748b;">Disclaimer:</strong> This guide is for informational purposes only and does not
                             constitute medical advice. Always consult with your neurologist or healthcare team for
                             medical
                             decisions specific to your condition.
@@ -1187,7 +1317,7 @@
                 </div> <!-- Close als-main-content -->
                 <!-- Sidebar -->
                 <aside class="als-sidebar">
-                    <nav style="padding: 0.5rem 0 0.5rem 1.5rem; border-left: 1px solid #e2e8f0; height: 100%;">
+                    <nav style="padding: 0.5rem 0 0.5rem 1.25rem; border-left: 2px solid rgba(13,148,136,0.15); height: 100%;">
                         <div style="display: flex; flex-direction: column; gap: 0.125rem;">
                             <a href="#what-is-als" class="als-nav-link">What is ALS?</a>
                             <a href="#how-als-affects" class="als-nav-link">How it Affects Body</a>
@@ -1205,136 +1335,613 @@
 
 {% block extra_js %}
 <script>
-    // Global animation state
-    let isPlaying = false;
-    let animationTimeouts = [];
+    /* ═══════════════════════════════════════════════════════
+       MANIM VIDEO DETECTION + ON-DEMAND RENDERING
+       ═══════════════════════════════════════════════════════ */
+    (function() {
+        var video = document.getElementById('manim-player');
+        var wrapper = document.getElementById('manim-video-wrapper');
+        var renderPrompt = document.getElementById('manim-render-prompt');
+        if (!video || !wrapper) return;
 
-    // Animation control functions
-    function resetAnimations() {
-        // Reset all signals to invisible
-        document.getElementById('signal-healthy').style.opacity = '0';
-        document.getElementById('signal-als').style.opacity = '0';
-
-        // Reset all labels to invisible
-        const healthyLabels = ['label-dendrites-h', 'label-soma-h', 'label-neuron-h', 'label-axon-h', 'label-myelin-h', 'label-muscle-h'];
-        const alsLabels = ['label-dendrites-a', 'label-soma-a', 'label-neuron-a', 'label-axon-a', 'label-myelin-a', 'label-muscle-a'];
-
-        [...healthyLabels, ...alsLabels].forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-                element.classList.remove('visible');
-            }
+        video.addEventListener('loadeddata', function() {
+            wrapper.style.display = 'block';
+            if (renderPrompt) renderPrompt.style.display = 'none';
         });
-
-        // Stop any running animations
-        const healthySignal = document.querySelector('#signal-healthy animateMotion');
-        const alsSignal = document.querySelector('#signal-als animateMotion');
-
-        if (healthySignal) healthySignal.endElement();
-        if (alsSignal) alsSignal.endElement();
-    }
-
-    function clearAllTimeouts() {
-        animationTimeouts.forEach(timeout => clearTimeout(timeout));
-        animationTimeouts = [];
-    }
-
-    function playAnimations() {
-        // Reset everything to start from scratch
-        resetAnimations();
-        clearAllTimeouts();
-
-        // Show signals immediately
-        document.getElementById('signal-healthy').style.opacity = '1';
-        document.getElementById('signal-als').style.opacity = '1';
-
-        // Start signal animations
-        const healthySignal = document.querySelector('#signal-healthy animateMotion');
-        const alsSignal = document.querySelector('#signal-als animateMotion');
-
-        if (healthySignal) healthySignal.beginElement();
-        if (alsSignal) alsSignal.beginElement();
-
-        // Show labels progressively for healthy system
-        const healthyLabelTimings = [
-            { id: 'label-dendrites-h', delay: 200 },
-            { id: 'label-soma-h', delay: 600 },
-            { id: 'label-neuron-h', delay: 800 },
-            { id: 'label-axon-h', delay: 1200 },
-            { id: 'label-myelin-h', delay: 1800 },
-            { id: 'label-muscle-h', delay: 2600 }
-        ];
-
-        // Show labels progressively for ALS system (slower progression)
-        const alsLabelTimings = [
-            { id: 'label-dendrites-a', delay: 200 },
-            { id: 'label-soma-a', delay: 600 },
-            { id: 'label-neuron-a', delay: 800 },
-            { id: 'label-axon-a', delay: 1500 },
-            { id: 'label-myelin-a', delay: 2500 },
-            { id: 'signal-blocked-marker', delay: 3500 },
-            { id: 'label-muscle-a', delay: 4000 }
-        ];
-
-        [...healthyLabelTimings, ...alsLabelTimings].forEach(({ id, delay }) => {
-            const timeout = setTimeout(() => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.classList.add('visible');
-                }
-            }, delay);
-            animationTimeouts.push(timeout);
+        video.addEventListener('error', function() {
+            wrapper.style.display = 'none';
+            // Show render prompt when video isn't available
+            if (renderPrompt) renderPrompt.style.display = 'block';
         });
+        // Try loading
+        video.load();
+    })();
 
-        // Auto-reset after longest animation completes
-        const resetTimeout = setTimeout(() => {
-            isPlaying = false;
-            updateButton();
-        }, 5500);
-        animationTimeouts.push(resetTimeout);
+    /* Trigger Manim rendering from the UI */
+    function triggerManimRender() {
+        var btn = document.getElementById('render-manim-btn');
+        var statusEl = document.getElementById('render-status');
+        if (!btn || !statusEl) return;
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Rendering...';
+        btn.style.opacity = '0.6';
+        statusEl.style.display = 'block';
+        statusEl.textContent = 'Starting render — this may take a few minutes...';
+
+        fetch('/api/render-animation', { method: 'POST' })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                statusEl.textContent = data.message;
+                // Poll for completion
+                pollRenderStatus();
+            })
+            .catch(function(err) {
+                statusEl.textContent = 'Error: ' + err.message;
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-magic" style="margin-right: 8px;"></i>Retry Render';
+                btn.style.opacity = '1';
+            });
     }
 
-    function updateButton() {
-        const btn = document.getElementById('animation-control');
-        if (isPlaying) {
-            btn.classList.add('playing');
-        } else {
-            btn.classList.remove('playing');
+    function pollRenderStatus() {
+        var statusEl = document.getElementById('render-status');
+        var btn = document.getElementById('render-manim-btn');
+        var interval = setInterval(function() {
+            fetch('/api/render-status')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    statusEl.textContent = data.message;
+                    if (data.status === 'done') {
+                        clearInterval(interval);
+                        statusEl.innerHTML = '<i class="fas fa-check-circle" style="color: #2dd4bf; margin-right: 6px;"></i>Animations rendered! Loading video...';
+                        // Reload the video element
+                        var video = document.getElementById('manim-player');
+                        var wrapper = document.getElementById('manim-video-wrapper');
+                        var renderPrompt = document.getElementById('manim-render-prompt');
+                        if (video) {
+                            video.load();
+                            video.addEventListener('loadeddata', function onceLoaded() {
+                                wrapper.style.display = 'block';
+                                if (renderPrompt) renderPrompt.style.display = 'none';
+                                video.removeEventListener('loadeddata', onceLoaded);
+                            }, { once: true });
+                        }
+                    } else if (data.status === 'error') {
+                        clearInterval(interval);
+                        statusEl.innerHTML = '<i class="fas fa-exclamation-circle" style="color: #f87171; margin-right: 6px;"></i>' + data.message;
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-magic" style="margin-right: 8px;"></i>Retry Render';
+                        btn.style.opacity = '1';
+                    }
+                });
+        }, 3000);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       THREE.JS — Interactive 3D Motor Neuron
+       ═══════════════════════════════════════════════════════ */
+    (function initNeuron3D() {
+        var wrap = document.getElementById('neuron-3d-wrap');
+        var canvas = document.getElementById('neuron-3d-canvas');
+        if (!wrap || !canvas) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Wait for Three.js (loaded for hero globe)
+        function tryInit() {
+            if (typeof THREE === 'undefined') { setTimeout(tryInit, 200); return; }
+            buildScene();
         }
-    }
 
-    function toggleAnimation() {
-        if (isPlaying) {
-            // Currently playing, so stop and reset
-            isPlaying = false;
-            resetAnimations();
-            clearAllTimeouts();
-        } else {
-            // Currently stopped, so play from scratch
-            isPlaying = true;
-            playAnimations();
-        }
-        updateButton();
-    }
+        function buildScene() {
+            var W = wrap.clientWidth, H = wrap.clientHeight;
+            if (W < 10 || H < 10) return;
 
-    // Initialize animation control
-    document.addEventListener('DOMContentLoaded', () => {
-        const animationControl = document.getElementById('animation-control');
-        if (animationControl) {
-            animationControl.addEventListener('click', toggleAnimation);
+            var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(W, H);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0x000000, 0);
 
-            // Make it keyboard accessible
-            animationControl.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleAnimation();
-                }
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(50, W / H, 0.1, 500);
+            camera.position.set(0, 0.5, 10);
+
+            // Lighting
+            var ambient = new THREE.AmbientLight(0x404060, 0.6);
+            scene.add(ambient);
+            var pointLight = new THREE.PointLight(0x2dd4bf, 1.2, 30);
+            pointLight.position.set(-3, 3, 5);
+            scene.add(pointLight);
+            var pointLight2 = new THREE.PointLight(0xa78bfa, 0.6, 25);
+            pointLight2.position.set(4, -2, 3);
+            scene.add(pointLight2);
+
+            var neuronGroup = new THREE.Group();
+            scene.add(neuronGroup);
+
+            // ── Colors per stage ──
+            var stages = [
+                { soma: 0x005577, axon: 0x2dd4bf, myelin: 0x2dd4bf, muscle: 0xffaa00, dendrite: 0x2dd4bf, dendriteOp: 1, myelinOp: [0.5,0.5,0.5,0.5,0.5,0.5,0.5], axonOp: 0.9, muscleScale: 1, signal: 1.0, signalStop: 1.0 },
+                { soma: 0x664422, axon: 0xff9966, myelin: 0xff9966, muscle: 0xcc8800, dendrite: 0xff9966, dendriteOp: 0.5, myelinOp: [0.5,0.5,0.4,0.3,0.2,0.1,0], axonOp: 0.65, muscleScale: 0.92, signal: 0.9, signalStop: 1.0 },
+                { soma: 0x553311, axon: 0x884422, myelin: 0x884422, muscle: 0x886633, dendrite: 0x884422, dendriteOp: 0.25, myelinOp: [0.3,0.2,0.1,0,0,0,0], axonOp: 0.4, muscleScale: 0.82, signal: 0.5, signalStop: 0.45 },
+                { soma: 0x442211, axon: 0x662222, myelin: 0x662222, muscle: 0x663322, dendrite: 0x662222, dendriteOp: 0.1, myelinOp: [0.1,0,0,0,0,0,0], axonOp: 0.15, muscleScale: 0.65, signal: 0, signalStop: 0.3 }
+            ];
+            var currentStage = 0;
+
+            // ── Build Soma ──
+            var somaGeo = new THREE.SphereGeometry(0.65, 32, 32);
+            var somaMat = new THREE.MeshPhongMaterial({ color: 0x005577, transparent: true, opacity: 0.92, shininess: 60 });
+            var soma = new THREE.Mesh(somaGeo, somaMat);
+            soma.position.set(-3.5, 0, 0);
+            neuronGroup.add(soma);
+
+            var nucleusGeo = new THREE.SphereGeometry(0.28, 16, 16);
+            var nucleusMat = new THREE.MeshPhongMaterial({ color: 0x007799, emissive: 0x003344, transparent: true, opacity: 0.85 });
+            var nucleus = new THREE.Mesh(nucleusGeo, nucleusMat);
+            nucleus.position.copy(soma.position);
+            neuronGroup.add(nucleus);
+
+            // ── Build Dendrites ──
+            var dendriteMat = new THREE.LineBasicMaterial({ color: 0x2dd4bf, transparent: true, opacity: 1 });
+            var dendrites = [];
+            var dData = [
+                [[-4.15,0,0],[-5.5,1.3,0.4],[-6.2,1.8,0.2]],
+                [[-4.15,0,0],[-5.8,0.5,-0.5],[-6.5,0.8,-0.3]],
+                [[-4.15,0,0],[-5.3,-0.9,0.3],[-6.0,-1.4,0.5]],
+                [[-4.15,0,0],[-5.5,-1.4,-0.2],[-6.3,-1.9,-0.1]],
+                [[-4.15,0,0],[-5.0,1.6,0.6],[-5.8,2.1,0.4]],
+                [[-4.15,0,0],[-5.2,-0.3,0.7],[-5.9,-0.1,1.0]],
+            ];
+            dData.forEach(function(pts) {
+                var geo = new THREE.BufferGeometry().setFromPoints(
+                    pts.map(function(p){ return new THREE.Vector3(p[0],p[1],p[2]); })
+                );
+                var mat = dendriteMat.clone();
+                var line = new THREE.Line(geo, mat);
+                neuronGroup.add(line);
+                dendrites.push(line);
             });
 
-            // Set initial state
-            resetAnimations();
-            updateButton();
+            // ── Build Axon ──
+            var axonPts = [];
+            for (var i = 0; i <= 40; i++) {
+                var t = i / 40;
+                axonPts.push(new THREE.Vector3(
+                    -2.85 + t * 8.5,
+                    Math.sin(t * Math.PI * 2) * 0.12,
+                    Math.cos(t * Math.PI * 3) * 0.08
+                ));
+            }
+            var axonCurve = new THREE.CatmullRomCurve3(axonPts);
+            var axonGeo = new THREE.TubeGeometry(axonCurve, 64, 0.07, 8, false);
+            var axonMat = new THREE.MeshPhongMaterial({ color: 0x2dd4bf, transparent: true, opacity: 0.9, shininess: 40 });
+            var axonMesh = new THREE.Mesh(axonGeo, axonMat);
+            neuronGroup.add(axonMesh);
+
+            // ── Myelin Sheaths ──
+            var myelinMeshes = [];
+            for (var i = 0; i < 7; i++) {
+                var t = (i + 0.5) / 7;
+                var pos = axonCurve.getPoint(t);
+                var mGeo = new THREE.CylinderGeometry(0.2, 0.2, 0.5, 12, 1, true);
+                var mMat = new THREE.MeshPhongMaterial({ color: 0x2dd4bf, transparent: true, opacity: 0.5, side: THREE.DoubleSide });
+                var mMesh = new THREE.Mesh(mGeo, mMat);
+                mMesh.position.copy(pos);
+                mMesh.rotation.z = Math.PI / 2;
+                neuronGroup.add(mMesh);
+                myelinMeshes.push(mMesh);
+            }
+
+            // ── Muscle Fiber ──
+            var muscleGeo = new THREE.BoxGeometry(1.3, 0.7, 0.5);
+            var muscleMat = new THREE.MeshPhongMaterial({ color: 0xffaa00, transparent: true, opacity: 0.75, shininess: 30 });
+            var muscle = new THREE.Mesh(muscleGeo, muscleMat);
+            muscle.position.set(6.5, 0, 0);
+            neuronGroup.add(muscle);
+
+            // ── Synapse dots ──
+            var synapseDots = [];
+            for (var d = -1; d <= 1; d++) {
+                var sGeo = new THREE.SphereGeometry(0.07, 8, 8);
+                var sMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24 });
+                var sDot = new THREE.Mesh(sGeo, sMat);
+                sDot.position.set(5.8, d * 0.15, 0);
+                neuronGroup.add(sDot);
+                synapseDots.push(sDot);
+            }
+
+            // ── Signal Pulse ──
+            var pulseGeo = new THREE.SphereGeometry(0.15, 12, 12);
+            var pulseMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.95 });
+            var pulse = new THREE.Mesh(pulseGeo, pulseMat);
+            var pulseGlow = new THREE.PointLight(0xfbbf24, 0.8, 3);
+            pulse.add(pulseGlow);
+            neuronGroup.add(pulse);
+            var pulseT = 0;
+
+            // ── Block X marker (hidden initially) ──
+            var blockMat = new THREE.LineBasicMaterial({ color: 0xff3333, linewidth: 2 });
+            var bPts1 = [new THREE.Vector3(-0.3,0.3,0), new THREE.Vector3(0.3,-0.3,0)];
+            var bPts2 = [new THREE.Vector3(0.3,0.3,0), new THREE.Vector3(-0.3,-0.3,0)];
+            var blockLine1 = new THREE.Line(new THREE.BufferGeometry().setFromPoints(bPts1), blockMat);
+            var blockLine2 = new THREE.Line(new THREE.BufferGeometry().setFromPoints(bPts2), blockMat);
+            var blockGroup = new THREE.Group();
+            blockGroup.add(blockLine1, blockLine2);
+            blockGroup.visible = false;
+            neuronGroup.add(blockGroup);
+
+            // Center the neuron
+            neuronGroup.position.x = -1;
+
+            // ── Stage descriptions ──
+            var descs = [
+                '<strong style="color:#2dd4bf;">Healthy:</strong> Electrical signals travel rapidly along the myelinated axon at up to 120 m/s. At the synapse, acetylcholine triggers immediate muscle contraction.',
+                '<strong style="color:#fbbf24;">Stage 1 — Early:</strong> Some dendrites begin to retract. The cell body shows early stress. Signal transmission is slightly delayed but still reaches the muscle.',
+                '<strong style="color:#ff9966;">Stage 2 — Mid:</strong> Myelin sheath degrades significantly. The axon weakens. Signals slow dramatically and may not reach the muscle. Muscle begins to weaken.',
+                '<strong style="color:#ff3333;">Stage 3 — Advanced:</strong> Motor neuron is severely damaged. Axon fragmented, myelin lost. Signal is completely blocked. Muscle atrophies from lack of stimulation.'
+            ];
+
+            // ── Apply stage ──
+            function applyStage(idx) {
+                var s = stages[idx];
+                currentStage = idx;
+                somaMat.color.setHex(s.soma);
+                axonMat.color.setHex(s.axon);
+                axonMat.opacity = s.axonOp;
+                dendrites.forEach(function(d) {
+                    d.material.color.setHex(s.dendrite);
+                    d.material.opacity = s.dendriteOp;
+                });
+                myelinMeshes.forEach(function(m, i) {
+                    m.material.color.setHex(s.myelin);
+                    m.material.opacity = s.myelinOp[i] || 0;
+                });
+                muscleMat.color.setHex(s.muscle);
+                muscle.scale.setScalar(s.muscleScale);
+                blockGroup.visible = (idx >= 3);
+                if (idx >= 3) {
+                    var bPos = axonCurve.getPoint(s.signalStop);
+                    blockGroup.position.copy(bPos);
+                }
+                document.getElementById('stage-desc-text').innerHTML = descs[idx];
+                // Update buttons
+                document.querySelectorAll('.neuron-stage-btn').forEach(function(btn) {
+                    btn.classList.toggle('active', parseInt(btn.dataset.stage) === idx);
+                    if (parseInt(btn.dataset.stage) === idx) {
+                        btn.style.opacity = '1';
+                        btn.style.transform = 'scale(1.05)';
+                    } else {
+                        btn.style.opacity = '0.7';
+                        btn.style.transform = 'scale(1)';
+                    }
+                });
+            }
+
+            // ── Button handlers ──
+            document.querySelectorAll('.neuron-stage-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    applyStage(parseInt(this.dataset.stage));
+                });
+            });
+
+            // ── Mouse parallax ──
+            var mx = 0, my = 0;
+            wrap.addEventListener('mousemove', function(e) {
+                var rect = wrap.getBoundingClientRect();
+                mx = ((e.clientX - rect.left) / rect.width - 0.5) * 0.4;
+                my = ((e.clientY - rect.top) / rect.height - 0.5) * 0.3;
+            });
+
+            // ── Resize ──
+            window.addEventListener('resize', function() {
+                var nW = wrap.clientWidth, nH = wrap.clientHeight;
+                if (nW < 10 || nH < 10) return;
+                camera.aspect = nW / nH;
+                camera.updateProjectionMatrix();
+                renderer.setSize(nW, nH);
+            });
+
+            // ── Animate ──
+            var frame = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                frame++;
+
+                // Gentle auto-rotate + mouse parallax
+                neuronGroup.rotation.y = Math.sin(frame * 0.003) * 0.08 + mx * 0.3;
+                neuronGroup.rotation.x = Math.sin(frame * 0.002) * 0.04 + my * 0.2;
+
+                // Soma breathing
+                var breathe = 1 + Math.sin(frame * 0.02) * 0.02;
+                soma.scale.setScalar(breathe);
+                nucleus.scale.setScalar(breathe * 0.95);
+
+                // Signal pulse
+                var s = stages[currentStage];
+                if (s.signal > 0) {
+                    pulseT += 0.005 * (currentStage === 0 ? 1 : currentStage === 1 ? 0.7 : 0.4);
+                    if (pulseT > s.signalStop) pulseT = 0;
+                    var pos = axonCurve.getPoint(Math.min(pulseT / s.signalStop, 1) * s.signalStop);
+                    // Offset to match neuron group position plus soma start
+                    pulse.position.copy(pos);
+                    pulseMat.opacity = s.signal * (0.6 + 0.4 * Math.sin(frame * 0.1));
+                    pulseGlow.intensity = s.signal * 0.8;
+                    pulse.visible = true;
+
+                    // Muscle pulse when signal reaches end (healthy only)
+                    if (currentStage === 0 && pulseT > 0.95) {
+                        var mBreathe = 1 + Math.sin(frame * 0.15) * 0.04;
+                        muscle.scale.setScalar(mBreathe);
+                    }
+                } else {
+                    pulse.visible = false;
+                }
+
+                // Block X rotation
+                if (blockGroup.visible) {
+                    blockGroup.rotation.z = Math.sin(frame * 0.03) * 0.1;
+                }
+
+                renderer.render(scene, camera);
+            }
+            animate();
         }
+        tryInit();
+    })();
+
+    /* ═══════════════════════════════════════════════════════
+       SCROLL PROGRESS BAR
+       ═══════════════════════════════════════════════════════ */
+    (function initScrollProgress() {
+        const bar = document.getElementById('scroll-progress');
+        if (!bar) return;
+        window.addEventListener('scroll', function() {
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
+        });
+    })();
+
+    /* ═══════════════════════════════════════════════════════
+       THREE.JS — Neural Network Globe
+       ═══════════════════════════════════════════════════════ */
+    (function initThreeNeuralGlobe() {
+        var container = document.getElementById('three-container');
+        var canvas = document.getElementById('three-cvs');
+        if (!container || !canvas) return;
+        // Check reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+        script.onload = function() {
+            var W = container.clientWidth;
+            var H = container.clientHeight;
+            if (W < 10 || H < 10) return;
+
+            var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(W, H);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0x000000, 0);
+
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(55, W / H, 0.1, 1000);
+            camera.position.set(0, 0, 120);
+
+            var NODE_COUNT = 60;
+            var RADIUS = 46;
+            var nodes = [];
+            var nodeGroup = new THREE.Group();
+
+            var tealColor = new THREE.Color(0x2dd4bf);
+            var purpleColor = new THREE.Color(0xa78bfa);
+            var amberColor = new THREE.Color(0xfbbf24);
+            var palette = [tealColor, tealColor, purpleColor, amberColor];
+
+            for (var i = 0; i < NODE_COUNT; i++) {
+                var phi = Math.acos(1 - (2 * i) / NODE_COUNT);
+                var theta = Math.PI * (1 + Math.sqrt(5)) * i;
+                var x = RADIUS * Math.sin(phi) * Math.cos(theta);
+                var y = RADIUS * Math.sin(phi) * Math.sin(theta);
+                var z = RADIUS * Math.cos(phi);
+                var r = 0.6 + Math.random() * 0.8;
+                var geo = new THREE.SphereGeometry(r, 8, 8);
+                var mat = new THREE.MeshBasicMaterial({
+                    color: palette[Math.floor(Math.random() * palette.length)],
+                    transparent: true,
+                    opacity: 0.55 + Math.random() * 0.35
+                });
+                var sphere = new THREE.Mesh(geo, mat);
+                sphere.position.set(x, y, z);
+                nodeGroup.add(sphere);
+                nodes.push({ mesh: sphere, pos: new THREE.Vector3(x, y, z) });
+            }
+
+            var MAX_DIST = 38;
+            var lineMat = new THREE.LineBasicMaterial({ color: 0x2dd4bf, transparent: true, opacity: 0.18 });
+            for (var i = 0; i < nodes.length; i++) {
+                for (var j = i + 1; j < nodes.length; j++) {
+                    var d = nodes[i].pos.distanceTo(nodes[j].pos);
+                    if (d < MAX_DIST) {
+                        var lg = new THREE.BufferGeometry().setFromPoints([nodes[i].pos, nodes[j].pos]);
+                        var line = new THREE.Line(lg, lineMat.clone());
+                        line.material.opacity = (1 - d / MAX_DIST) * 0.22;
+                        nodeGroup.add(line);
+                    }
+                }
+            }
+            scene.add(nodeGroup);
+
+            var pulseGeo = new THREE.SphereGeometry(1.4, 8, 8);
+            var pulseMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.9 });
+            var pulse = new THREE.Mesh(pulseGeo, pulseMat);
+            scene.add(pulse);
+
+            var pulseT = 0;
+            var pA = nodes[0], pB = nodes[5];
+
+            function nextPulseEdge() {
+                pA = pB;
+                var best = null, bestD = Infinity;
+                nodes.forEach(function(n) {
+                    if (n === pA) return;
+                    var dd = pA.pos.distanceTo(n.pos);
+                    if (dd < MAX_DIST && dd < bestD) { bestD = dd; best = n; }
+                });
+                pB = best || nodes[Math.floor(Math.random() * nodes.length)];
+                pulseT = 0;
+            }
+
+            window.addEventListener('resize', function() {
+                var nW = container.clientWidth;
+                var nH = container.clientHeight;
+                if (nW < 10 || nH < 10) return;
+                camera.aspect = nW / nH;
+                camera.updateProjectionMatrix();
+                renderer.setSize(nW, nH);
+            });
+
+            /* Mouse parallax */
+            var mx = 0, my = 0;
+            document.addEventListener('mousemove', function(e) {
+                mx = (e.clientX / window.innerWidth - 0.5) * 0.3;
+                my = (e.clientY / window.innerHeight - 0.5) * 0.3;
+            });
+
+            var frame = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                frame++;
+                nodeGroup.rotation.y += 0.0018 + mx * 0.002;
+                nodeGroup.rotation.x += 0.0006 + my * 0.002;
+                pulseT += 0.022;
+                if (pulseT >= 1) nextPulseEdge();
+                var lp = new THREE.Vector3().lerpVectors(pA.pos, pB.pos, pulseT);
+                lp.applyEuler(nodeGroup.rotation);
+                pulse.position.copy(lp);
+                pulseMat.opacity = 0.6 + 0.3 * Math.sin(frame * 0.12);
+                renderer.render(scene, camera);
+            }
+            animate();
+        };
+        document.head.appendChild(script);
+    })();
+</script>
+
+<!-- GSAP Scroll Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+window.addEventListener('load', function() {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ── Hero banner entrance ── */
+    gsap.from('.hero-3d-banner .hero-text h1', { y: 32, opacity: 0, duration: 0.85, ease: 'power3.out', delay: 0.1 });
+    gsap.from('.hero-3d-banner .hero-text p', { y: 22, opacity: 0, duration: 0.65, ease: 'power2.out', delay: 0.35 });
+
+    /* ── Sidebar subtle entrance ── */
+    gsap.from('.als-sidebar', { x: 20, opacity: 0, duration: 0.7, delay: 0.3, ease: 'power2.out' });
+
+    /* ── Info cards — gentle rise on scroll ── */
+    gsap.utils.toArray('.info-card').forEach(function(el) {
+        gsap.fromTo(el,
+            { y: 40, opacity: 0 },
+            {
+                y: 0, opacity: 1,
+                duration: 0.7, ease: 'power3.out',
+                scrollTrigger: { trigger: el, start: 'top 87%', toggleActions: 'play none none none' }
+            }
+        );
     });
+
+    /* ── Section icons — subtle pop ── */
+    gsap.utils.toArray('.section-icon').forEach(function(el) {
+        gsap.fromTo(el,
+            { scale: 0.5, opacity: 0 },
+            {
+                scale: 1, opacity: 1,
+                duration: 0.5, ease: 'back.out(2)',
+                scrollTrigger: { trigger: el, start: 'top 90%' }
+            }
+        );
+    });
+
+    /* ── Symptom cards — staggered rise ── */
+    gsap.utils.toArray('.symptom-card').forEach(function(el, i) {
+        gsap.fromTo(el,
+            { y: 20, opacity: 0 },
+            {
+                y: 0, opacity: 1,
+                duration: 0.45, delay: i * 0.06,
+                ease: 'power2.out',
+                scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' }
+            }
+        );
+    });
+
+    /* ── Timeline stages — subtle slide from sides ── */
+    gsap.utils.toArray('.timeline-stage').forEach(function(el, i) {
+        var fromX = (i % 2 === 0) ? -30 : 30;
+        gsap.fromTo(el,
+            { x: fromX, opacity: 0 },
+            {
+                x: 0, opacity: 1,
+                duration: 0.6, ease: 'power2.out',
+                scrollTrigger: { trigger: el, start: 'top 87%', toggleActions: 'play none none none' }
+            }
+        );
+    });
+
+    /* ── Neural simulation section: scale + blur reveal ── */
+    gsap.fromTo('.neural-simulation-section',
+        { y: 50, opacity: 0, scale: 0.97, filter: 'blur(4px)' },
+        {
+            y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
+            duration: 0.85, ease: 'power3.out',
+            scrollTrigger: { trigger: '.neural-simulation-section', start: 'top 85%' }
+        }
+    );
+
+    /* ── Stage buttons stagger reveal ── */
+    gsap.fromTo('.neuron-stage-btn',
+        { y: 15, opacity: 0 },
+        {
+            y: 0, opacity: 1,
+            duration: 0.5, stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: '#neuron-3d-wrap', start: 'top 90%', toggleActions: 'play none none none' }
+        }
+    );
+
+    /* ── 3D canvas reveal ── */
+    gsap.fromTo('#neuron-3d-wrap',
+        { scale: 0.95, opacity: 0 },
+        {
+            scale: 1, opacity: 1,
+            duration: 0.8, delay: 0.3,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: '#neuron-3d-wrap', start: 'top 88%', toggleActions: 'play none none none' }
+        }
+    );
+
+    /* ── FAQ section — gentle rise ── */
+    gsap.from('.faq-section', {
+        y: 35, opacity: 0, duration: 0.65, ease: 'power2.out',
+        scrollTrigger: { trigger: '.faq-section', start: 'top 87%' }
+    });
+
+    /* ── FAQ items stagger ── */
+    gsap.utils.toArray('.faq-item').forEach(function(el, i) {
+        gsap.fromTo(el,
+            { x: -15, opacity: 0 },
+            {
+                x: 0, opacity: 1,
+                duration: 0.4, delay: i * 0.08,
+                ease: 'power2.out',
+                scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' }
+            }
+        );
+    });
+});
 </script>
 {% endblock %}

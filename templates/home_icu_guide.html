@@ -3,6 +3,7 @@
 {% block title %}Home ICU Setup Guide | ALS Caregiver's Compass{% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="/static/css/pages/home-icu.css">
 <style>
     /* CSS Variables - Claude/Apple Inspired Theme */
     :root {
@@ -18,18 +19,23 @@
         --icu-font-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
     }
 
-    /* Hero Section - Light Sky Blue Theme (Matching Communication Technology) */
+    /* Hero Section - Dark Theme */
     .icu-hero {
         text-align: center;
-        padding: 4rem 1.5rem 3rem;
-        background: #e8f0f6 url('/static/images/hero_bg_v2.png') center/cover no-repeat;
-        color: var(--icu-primary);
+        padding: 5rem 2rem 4rem;
+        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        color: #ffffff;
         margin-bottom: 0;
         position: relative;
+        overflow: hidden;
     }
 
     .icu-hero::before {
-        display: none;
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(196,162,132,0.15) 0%, transparent 70%);
+        pointer-events: none;
     }
 
     .icu-hero>* {
@@ -38,23 +44,27 @@
     }
 
     .icu-hero h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 800;
         margin-bottom: 0.75rem;
         letter-spacing: -0.03em;
-        color: var(--icu-primary);
-        font-family: var(--icu-font-display);
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        color: #ffffff;
+        font-family: 'Manrope', sans-serif;
+        text-shadow: none;
     }
 
     .icu-hero p {
         font-size: 1.1rem;
-        color: #424245;
+        color: rgba(255,255,255,0.6);
         max-width: 750px;
         margin: 0 auto;
-        line-height: 1.65;
+        line-height: 1.7;
         font-weight: 400;
-        font-family: var(--icu-font-text);
+        font-family: 'DM Sans', sans-serif;
+    }
+    .icu-hero p a {
+        color: #2dd4bf !important;
+        text-shadow: none;
     }
 
     /* Hero Navigation Pills - Floating Glass Style */
@@ -63,15 +73,15 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.5rem;
-        max-width: 900px;
-        margin: 1.5rem auto 0;
+        max-width: 1100px;
+        margin: 2rem auto 0;
         padding: 0.875rem;
-        background: rgba(255, 255, 255, 0.98);
+        background: rgba(255, 255, 255, 0.06);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .icu-hero-nav a {
@@ -82,17 +92,17 @@
         background: transparent;
         border-radius: 10px;
         text-decoration: none;
-        color: var(--icu-secondary);
+        color: rgba(255,255,255,0.65);
         font-weight: 500;
         font-size: 0.875rem;
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        font-family: var(--icu-font-text);
+        font-family: 'DM Sans', sans-serif;
         letter-spacing: -0.01em;
     }
 
     .icu-hero-nav a:hover {
-        background: rgba(196, 162, 132, 0.12);
-        color: var(--icu-accent);
+        background: rgba(255,255,255,0.08);
+        color: #2dd4bf;
     }
 
     .icu-hero-nav a i {
@@ -120,7 +130,7 @@
     </div>
 </section>
 
-<div class="container" style="max-width: 1000px; padding-top: 2rem;">
+<div class="container" style="max-width: 1400px; padding-top: 2rem;">
 
     <!-- Equipment List Table Section -->
     <div id="equipment-sections" style="
@@ -147,7 +157,7 @@
                 width: 100%;
                 border-collapse: collapse;
                 font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-                font-size: 0.9rem;
+                font-size: 1rem;
             ">
                 <thead>
                     <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
@@ -247,7 +257,7 @@
             <h3 style="font-size: 1rem; font-weight: 600; color: #334155; margin: 0 0 0.75rem 0;">Key Recommendations
             </h3>
             <ul
-                style="margin: 0; padding-left: 1.25rem; list-style-type: disc; color: #475569; font-size: 0.9rem; line-height: 1.8;">
+                style="margin: 0; padding-left: 1.25rem; list-style-type: disc; color: #475569; font-size: 1rem; line-height: 1.8;">
                 <li>Ensure the room has proper ventilation to maintain air quality.</li>
                 <li>Arrange and test all equipment at regular intervals to ensure everything is functional.</li>
                 <li>TV, Alexa for music, and AC are vital for mental well-being of pals</li>
@@ -658,7 +668,7 @@
 </div>
 
 <!-- Home ICU Equipment Infographic -->
-<div class="container" style="max-width: 1000px; padding: 2rem 0 3rem; text-align: center;">
+<div class="container" style="max-width: 1400px; padding: 2rem 0 3rem; text-align: center;">
     <img src="/static/images/home_icu_equipment.png" alt="Home ICU Setup: Essential Equipment & Room Preparation"
         style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);">
 </div>
@@ -900,7 +910,7 @@
 
     /* Card Title - Claude Typography */
     .icu-card h3 {
-        font-size: 0.9rem;
+        font-size: 1rem;
         font-weight: 600;
         color: var(--icu-text);
         margin: 0;
@@ -1023,4 +1033,23 @@
         text-align: center;
     }
 </style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+window.addEventListener('load', function() {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Subtle card reveals on scroll */
+    gsap.utils.toArray('.icu-card').forEach(function(el) {
+        gsap.from(el, {
+            scrollTrigger: { trigger: el, start: 'top 90%' },
+            y: 24, opacity: 0, duration: 0.5, ease: 'power2.out'
+        });
+    });
+});
+</script>
 {% endblock %}
