@@ -4,24 +4,24 @@
 
 {% block extra_css %}
 <style>
-    /* Professional Apple-inspired Design - Light & Clean */
+    /* Clinician Navy Theme */
     :root {
-        --ct-primary: #1d1d1f;
-        --ct-secondary: #6e6e73;
-        --ct-accent: #0071e3;
-        --ct-bg: #ffffff;
-        --ct-bg-alt: #f5f5f7;
+        --ct-primary: #1e3a5f;
+        --ct-secondary: #64748b;
+        --ct-accent: #7eb8d4;
+        --ct-bg: #fafaf8;
+        --ct-bg-alt: #f5f3ef;
         --ct-border: #d2d2d7;
-        --ct-text: #1d1d1f;
-        --ct-muted: #86868b;
-        --ct-hero-gradient: linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%);
+        --ct-text: #3d3830;
+        --ct-muted: #64748b;
+        --ct-hero-gradient: linear-gradient(135deg, rgba(126, 184, 212, 0.15) 0%, rgba(245, 243, 239, 0.25) 100%);
     }
 
     /* Hero Section - Dark Theme */
     .ct-hero {
         text-align: center;
         padding: 5rem 2rem 4rem;
-        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        background: linear-gradient(135deg, #1a2f4a, #223d5c, #162840);
         color: #ffffff;
         margin-bottom: 0;
         position: relative;
@@ -32,7 +32,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(0,113,227,0.12) 0%, transparent 70%);
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.12) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -66,10 +66,10 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.5rem;
-        max-width: 1100px;
+        gap: 0.6rem;
+        max-width: 1320px;
         margin: -2rem auto 3rem;
-        padding: 1rem;
+        padding: 1.2rem 1.5rem;
         position: relative;
         z-index: 10;
         background: rgba(255, 255, 255, 0.98);
@@ -83,74 +83,77 @@
     .ct-nav-card {
         background: transparent;
         border-radius: 10px;
-        padding: 0.7rem 1.1rem;
+        padding: 0.85rem 1.5rem;
         text-align: center;
         text-decoration: none;
         color: var(--ct-secondary);
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         border: none;
-        font-size: 0.875rem;
-        font-weight: 500;
-        letter-spacing: -0.01em;
+        font-size: 1.075rem;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-nav-card:hover {
-        background: rgba(0, 113, 227, 0.08);
-        color: var(--ct-accent);
+        background: rgba(30, 58, 95, 0.08);
+        color: #1e3a5f;
         transform: translateY(-1px);
     }
 
     .ct-nav-card.active {
-        background: var(--ct-accent);
+        background: #1e3a5f;
         color: white;
-        box-shadow: 0 2px 8px rgba(0, 113, 227, 0.25);
+        box-shadow: 0 2px 8px rgba(30, 58, 95, 0.25);
     }
 
     .ct-nav-card.active:hover {
-        background: #000;
+        background: #162840;
         color: white;
     }
 
     .ct-nav-card span {
-        font-weight: 500;
-        font-size: 0.875rem;
-        letter-spacing: -0.01em;
+        font-weight: 700;
+        font-size: 1.075rem;
+        letter-spacing: -0.015em;
     }
 
     /* Alert Box - Claude-style subtle (centered container) */
     .ct-alert {
         background: transparent;
-        max-width: 900px;
-        margin: 0 auto 1.5rem;
-        padding: 0;
+        max-width: 1000px;
+        margin: 0 auto 1.75rem;
+        padding: 0 1rem;
     }
 
     .ct-alert-inner {
-        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        background: linear-gradient(135deg, #f0f7fc, #f8fafc);
         border: 1px solid #e2e8f0;
-        border-left: 4px solid var(--ct-accent);
+        border-left: 4px solid #1e3a5f;
         border-radius: 12px;
-        padding: 1.25rem 1.5rem;
+        padding: 1.5rem 1.75rem;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .ct-alert h3 {
-        color: #1e293b;
-        font-size: 1.05rem;
-        font-weight: 600;
+        color: #1e3a5f;
+        font-size: 1.15rem;
+        font-weight: 700;
         margin-bottom: 0.5rem;
         letter-spacing: -0.01em;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-alert p {
         color: #475569;
-        font-size: 0.9rem;
+        font-size: 1.0625rem;
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .ct-alert a {
-        color: #0077b6;
+        color: #1e3a5f;
         font-weight: 500;
     }
 
@@ -160,15 +163,15 @@
 
     /* Section Styles - Tobii-inspired */
     .ct-section {
-        max-width: 1100px;
+        max-width: 1280px;
         margin: 0 auto 3rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 
     .ct-section-header {
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.5rem;
         padding-bottom: 0.85rem;
-        border-bottom: 2px solid var(--ct-border);
+        border-bottom: 2px solid #e2e8f0;
         position: relative;
     }
 
@@ -183,31 +186,33 @@
     }
 
     .ct-section-header h2 {
-        font-size: 1.35rem;
-        font-weight: 700;
+        font-size: 1.55rem;
+        font-weight: 800;
         color: var(--ct-primary);
         margin: 0;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-section-desc {
         color: var(--ct-secondary);
         margin: 0 0 1.5rem;
-        font-size: 0.9rem;
-        line-height: 1.5;
+        font-size: 1.0625rem;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Device Cards - Professional Tobii-style */
     .ct-device-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 1.25rem;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 1.5rem;
     }
 
     .ct-device-card {
         background: white;
-        border-radius: 12px;
-        border: 1px solid var(--ct-border);
+        border-radius: 14px;
+        border: 1px solid #e2e8f0;
         overflow: hidden;
         transition: all 0.25s ease;
     }
@@ -218,58 +223,63 @@
     }
 
     .ct-device-card.recommended {
-        border-color: var(--ct-accent);
-        box-shadow: 0 0 0 1px var(--ct-accent);
+        border-color: #1e3a5f;
+        box-shadow: 0 0 0 1px #1e3a5f;
     }
 
     .ct-device-card.recommended .ct-device-header {
-        background: #f5f5f7;
+        background: #edf3f8;
     }
 
     .ct-device-card.recommended .ct-device-header * {
-        color: #000 !important;
+        color: #1e3a5f !important;
     }
 
     .ct-device-header {
-        padding: 1.1rem 1.25rem;
-        background: var(--ct-bg-alt);
-        border-bottom: 1px solid var(--ct-border);
+        padding: 1.25rem 1.5rem;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
     }
 
     .ct-device-name {
-        font-size: 1.05rem;
-        font-weight: 600;
+        font-size: 1.15rem;
+        font-weight: 700;
         color: var(--ct-primary);
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.25rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-device-category {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: var(--ct-secondary);
+        font-family: 'DM Sans', sans-serif;
     }
 
     .ct-device-body {
-        padding: 1.25rem;
+        padding: 1.5rem;
     }
 
     .ct-device-price {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid var(--ct-border);
+        margin-bottom: 1.15rem;
+        padding-bottom: 1.15rem;
+        border-bottom: 1px solid #e2e8f0;
     }
 
     .ct-price-usd {
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 700;
         color: var(--ct-primary);
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-price-inr {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         color: var(--ct-secondary);
+        font-weight: 500;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Simple rating dots */
@@ -287,17 +297,19 @@
     }
 
     .ct-rating-dot.filled {
-        background: #3b82f6;
+        background: #7eb8d4;
     }
 
     .ct-device-verdict {
-        background: var(--ct-bg-alt);
-        padding: 0.75rem;
-        font-size: 0.85rem;
-        color: var(--ct-text);
-        margin-bottom: 1rem;
-        border-radius: 6px;
-        line-height: 1.5;
+        background: linear-gradient(135deg, #f0f7fc, #f8fafc);
+        padding: 0.95rem 1.1rem;
+        font-size: 1rem;
+        color: #3d4f63;
+        margin-bottom: 1.15rem;
+        border-radius: 8px;
+        line-height: 1.65;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 500;
     }
 
     .ct-device-notes {
@@ -307,103 +319,110 @@
     }
 
     .ct-device-notes li {
-        font-size: 0.85rem;
-        color: var(--ct-secondary);
-        padding: 0.3rem 0;
-        padding-left: 1rem;
+        font-size: 0.975rem;
+        color: #475569;
+        padding: 0.35rem 0;
+        padding-left: 1.1rem;
         position: relative;
+        font-family: 'DM Sans', sans-serif;
+        line-height: 1.6;
     }
 
     .ct-device-notes li::before {
         content: '—';
         position: absolute;
         left: 0;
-        color: var(--ct-muted);
+        color: #7eb8d4;
     }
 
     /* Stage Badge */
     .ct-stage-badge {
         display: inline-block;
-        padding: 0.2rem 0.6rem;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        font-weight: 500;
+        padding: 0.25rem 0.7rem;
+        border-radius: 5px;
+        font-size: 0.75rem;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.03em;
-        background: #f1f5f9;
-        color: var(--ct-text);
+        background: #f0f4f8;
+        color: var(--ct-primary);
+        font-family: 'Manrope', sans-serif;
     }
 
     /* India Badge */
     .ct-india-badge {
         display: block;
-        padding: 0.5rem 0;
-        font-size: 0.8rem;
-        color: var(--ct-secondary);
-        margin-top: 0.75rem;
-        border-top: 1px solid var(--ct-border);
-        padding-top: 0.75rem;
+        padding: 0.6rem 0;
+        font-size: 0.925rem;
+        color: #475569;
+        margin-top: 0.85rem;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 0.85rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Setup Guide Button */
     .ct-setup-btn {
         display: inline-block;
-        margin-top: 0.75rem;
-        padding: 0.5rem 1rem;
+        margin-top: 0.85rem;
+        padding: 0.6rem 1.2rem;
         background: var(--ct-primary);
         color: white;
         border: none;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: 500;
+        border-radius: 8px;
+        font-size: 0.925rem;
+        font-weight: 600;
         cursor: pointer;
         transition: background 0.2s;
         text-decoration: none;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .ct-setup-btn:hover {
-        background: #0f172a;
+        background: #162840;
     }
 
     /* Software Cards */
     .ct-software-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.25rem;
     }
 
     .ct-software-card {
         background: white;
-        border: 1px solid var(--ct-border);
-        border-radius: 10px;
-        padding: 1.25rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
     }
 
     .ct-software-card.recommended {
-        border-color: #3b82f6;
+        border-color: #1e3a5f;
     }
 
     .ct-software-name {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.1rem;
+        font-weight: 700;
         color: var(--ct-primary);
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.3rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-software-platform {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: var(--ct-secondary);
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.85rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .ct-free-badge {
         display: inline-block;
         background: #16a34a;
         color: white;
-        font-size: 0.65rem;
-        font-weight: 600;
-        padding: 0.15rem 0.4rem;
-        border-radius: 3px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
         margin-left: 0.5rem;
         text-transform: uppercase;
     }
@@ -411,29 +430,31 @@
     /* Budget Setup - Subtle Design */
     .ct-budget-section {
         background: white;
-        border: 1px solid var(--ct-border);
-        border-radius: 10px;
-        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 2rem;
         margin: 2rem auto;
-        max-width: 900px;
+        max-width: 1000px;
     }
 
     .ct-budget-header {
         text-align: center;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.5rem;
     }
 
     .ct-budget-header h2 {
         color: var(--ct-primary);
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 0.25rem;
+        font-size: 1.45rem;
+        font-weight: 800;
+        margin-bottom: 0.35rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-budget-header p {
-        color: var(--ct-secondary);
-        font-size: 0.9rem;
+        color: #475569;
+        font-size: 1.0625rem;
         margin: 0;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .ct-budget-comparison {
@@ -477,9 +498,11 @@
     .ct-budget-item {
         display: flex;
         justify-content: space-between;
-        padding: 0.6rem 0;
-        border-bottom: 1px solid var(--ct-border);
-        font-size: 0.9rem;
+        padding: 0.7rem 0;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 1rem;
+        font-family: 'DM Sans', sans-serif;
+        color: #475569;
     }
 
     .ct-budget-item:last-child {
@@ -488,69 +511,76 @@
 
     /* Recommendations */
     .ct-recommendations {
-        max-width: 900px;
+        max-width: 1000px;
         margin: 1.5rem auto;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 
     .ct-recommendation-card {
         display: flex;
-        gap: 1rem;
+        gap: 1.15rem;
         background: white;
-        border: 1px solid var(--ct-border);
-        border-radius: 8px;
-        padding: 1rem 1.25rem;
-        margin-bottom: 0.75rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 0.85rem;
         align-items: flex-start;
     }
 
     .ct-recommendation-number {
         background: var(--ct-primary);
         color: white;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
-        font-weight: 600;
+        font-size: 0.85rem;
+        font-weight: 700;
         flex-shrink: 0;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-recommendation-content h4 {
-        margin: 0 0 0.25rem;
-        font-size: 0.95rem;
-        font-weight: 600;
+        margin: 0 0 0.35rem;
+        font-size: 1.075rem;
+        font-weight: 700;
         color: var(--ct-primary);
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-recommendation-content p {
         margin: 0;
-        color: var(--ct-secondary);
-        font-size: 0.85rem;
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.65;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* BCI Note */
     .ct-bci-note {
-        background: var(--ct-bg-alt);
-        border: 1px solid var(--ct-border);
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 1.25rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .ct-bci-note h4 {
         color: var(--ct-primary);
         margin: 0 0 0.5rem;
-        font-size: 0.95rem;
-        font-weight: 600;
+        font-size: 1.075rem;
+        font-weight: 700;
+        font-family: 'Manrope', sans-serif;
     }
 
     .ct-bci-note p {
-        color: var(--ct-secondary);
+        color: #475569;
         margin: 0;
-        font-size: 0.85rem;
+        font-size: 1rem;
+        line-height: 1.65;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Modal Styles */
@@ -662,7 +692,7 @@
     }
 
     .ct-setup-step-content a {
-        color: #2563eb;
+        color: #1e3a5f;
         word-break: break-all;
     }
 
@@ -695,8 +725,8 @@
     }
 
     .ct-download-box {
-        background: #f0f9ff;
-        border: 1px solid #bae6fd;
+        background: #edf3f8;
+        border: 1px solid #c8dce8;
         border-radius: 8px;
         padding: 1rem;
         margin-top: 1rem;
@@ -705,13 +735,13 @@
     .ct-download-box h4 {
         font-size: 0.9rem;
         font-weight: 600;
-        color: #0369a1;
+        color: #1e3a5f;
         margin: 0 0 0.5rem;
     }
 
     .ct-download-box a {
         display: block;
-        color: #0284c7;
+        color: #1e3a5f;
         font-size: 0.85rem;
         margin-bottom: 0.25rem;
         word-break: break-all;
@@ -771,7 +801,7 @@
 
 <!-- Voice Banking Notice -->
 <div style="max-width: 900px; margin: 0 auto 2rem; padding: 0 1rem;">
-    <div style="background: #f5f5f7; border-radius: 12px; padding: 1.5rem;">
+    <div style="background: #f5f3ef; border-radius: 12px; padding: 1.5rem;">
         <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">Voice Banking
         </h3>
         <p style="margin: 0 0 1rem; font-size: 0.95rem; color: var(--ct-secondary); line-height: 1.5;">
@@ -792,21 +822,21 @@
 
     <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <div
-            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f5f7; border-radius: 10px;">
+            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f3ef; border-radius: 10px;">
             <span
                 style="width: 28px; height: 28px; background: var(--ct-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;">1</span>
             <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Start with Tobii Eye Tracker 5 or
                 Tobii Eye Tracker 4C</span>
         </div>
         <div
-            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f5f7; border-radius: 10px;">
+            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f3ef; border-radius: 10px;">
             <span
                 style="width: 28px; height: 28px; background: var(--ct-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;">2</span>
             <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Always have an Alphabet Board as
                 backup</span>
         </div>
         <div
-            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f5f7; border-radius: 10px;">
+            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f3ef; border-radius: 10px;">
             <span
                 style="width: 28px; height: 28px; background: var(--ct-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;">3</span>
             <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Look to Speak Android app +
@@ -908,8 +938,8 @@
             </ul>
 
             <div
-                style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;">
-                <p style="margin: 0; font-size: 0.85rem; color: #0369a1;">
+                style="margin-top: 1rem; padding: 1rem; background: #edf3f8; border: 1px solid #c8dce8; border-radius: 8px;">
+                <p style="margin: 0; font-size: 0.85rem; color: #1e3a5f;">
                     <strong>simple explanation:</strong> "Imagine dividing the room into 6 zones. When
                     PALS looks at top-left corner = letters A-F. Left wall = G-J. Front wall = K-P. Top-right = Q-T.
                     Right wall = U-Z. Looking at ceiling fan = numbers. Before spelling, PALS looks at fan to
@@ -1126,11 +1156,11 @@
 
             <!-- PATH A: OptiKey -->
             <div
-                style="border: 2px solid #0077b6; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+                style="border: 2px solid #1e3a5f; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; background: linear-gradient(135deg, #edf3f8 0%, #dce9f2 100%);">
                 <h4 style="margin: 0 0 0.5rem; color: var(--ct-primary); font-size: 1.1rem;">✅ Path A: OptiKey Setup
                     (Recommended & Verified Working)</h4>
                 <p
-                    style="margin: 0 0 1.25rem; font-size: 0.85rem; color: #0369a1; background: #e0f2fe; padding: 0.5rem 0.75rem; border-radius: 6px; border-left: 3px solid #0077b6;">
+                    style="margin: 0 0 1.25rem; font-size: 0.85rem; color: #1e3a5f; background: #dce9f2; padding: 0.5rem 0.75rem; border-radius: 6px; border-left: 3px solid #1e3a5f;">
                     <strong>Community Verified:</strong> This setup is tested and working for ALS patients. The Tobii
                     Eye Tracker 5 does NOT officially support Windows Eye Control, but works perfectly with OptiKey Pro
                     Classic v3.
@@ -1177,11 +1207,11 @@
                     <div class="ct-setup-step-content">
                         <ul>
                             <li>Go to: <a href="https://gaming.tobii.com/getstarted/" target="_blank"
-                                    style="color: #0077b6; font-weight: 600;">gaming.tobii.com/getstarted</a></li>
+                                    style="color: #1e3a5f; font-weight: 600;">gaming.tobii.com/getstarted</a></li>
                             <li>Select <strong>"Tobii Eye Tracker 5"</strong> from the dropdown</li>
                             <li>Click <strong>"DOWNLOAD DRIVER"</strong> button</li>
                             <li>This downloads: <code
-                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">Tobii.EyeTracker5.Offline.Installer_4.183.0.30025</code>
+                                    style="background: #e8e4de; padding: 0.15rem 0.4rem; border-radius: 4px;">Tobii.EyeTracker5.Offline.Installer_4.183.0.30025</code>
                             </li>
                             <li>Run installer as <strong>Administrator</strong></li>
                             <li>Restart your computer after installation</li>
@@ -1209,10 +1239,10 @@
                             <li>The driver installation will prompt you to install <strong>Tobii Experience app</strong>
                                 from Microsoft Store</li>
                             <li>Or install directly from: <a href="https://apps.microsoft.com/detail/9NWRCZ6K7PBW"
-                                    target="_blank" style="color: #0077b6;">Microsoft Store - Tobii Experience</a></li>
+                                    target="_blank" style="color: #1e3a5f;">Microsoft Store - Tobii Experience</a></li>
                             <li>Wait 5-10 minutes for the app to fully install</li>
                             <li>Current version: <code
-                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">1.69.32600.0</code>
+                                    style="background: #e8e4de; padding: 0.15rem 0.4rem; border-radius: 4px;">1.69.32600.0</code>
                                 (as of Dec 2024)</li>
                         </ul>
                         <div style="margin-top: 1rem; text-align: center;">
@@ -1242,7 +1272,7 @@
                             <li>Enable auto-start: Settings → Startup → Enable "Start with Windows"</li>
                         </ul>
                         <p
-                            style="margin: 0.75rem 0 0; padding: 0.5rem 0.75rem; background: #e0f2fe; border-radius: 6px; font-size: 0.85rem; color: #0369a1;">
+                            style="margin: 0.75rem 0 0; padding: 0.5rem 0.75rem; background: #dce9f2; border-radius: 6px; font-size: 0.85rem; color: #1e3a5f;">
                             <strong>Tip:</strong> Calibrate in both light and dark room conditions for best results
                             across different times of day.
                         </p>
@@ -1260,9 +1290,9 @@
                             running:</p>
                         <ul>
                             <li>Press <code
-                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">Win + R</code>,
+                                    style="background: #e8e4de; padding: 0.15rem 0.4rem; border-radius: 4px;">Win + R</code>,
                                 type <code
-                                    style="background: #e2e8f0; padding: 0.15rem 0.4rem; border-radius: 4px;">services.msc</code>,
+                                    style="background: #e8e4de; padding: 0.15rem 0.4rem; border-radius: 4px;">services.msc</code>,
                                 press Enter</li>
                             <li>Find these services and ensure all show <strong>"Running"</strong>:
                                 <ul style="margin-top: 0.25rem;">
@@ -1301,12 +1331,12 @@
                         </div>
                         <ul>
                             <li>Go to: <a href="https://optikey.org/help/versions" target="_blank"
-                                    style="color: #0077b6; font-weight: 600;">optikey.org/help/versions</a></li>
+                                    style="color: #1e3a5f; font-weight: 600;">optikey.org/help/versions</a></li>
                             <li>Scroll to <strong>"OptiKey Classic (V3)"</strong> section at the bottom</li>
                             <li>Click <strong>"Download OptiKey Pro Classic (v3.2.5)"</strong></li>
                             <li>Or direct download: <a
                                     href="https://github.com/OptiKey/OptiKey/releases/download/v3.2.5/OptiKeySetup-3.2.5-Pro.exe"
-                                    target="_blank" style="color: #0077b6;">OptiKeySetup-3.2.5-Pro.exe</a></li>
+                                    target="_blank" style="color: #1e3a5f;">OptiKeySetup-3.2.5-Pro.exe</a></li>
                             <li>Run installer as <strong>Administrator</strong></li>
                         </ul>
                         <div
@@ -1350,15 +1380,15 @@
                             <li>Complete OptiKey's own calibration process</li>
                         </ul>
                         <div
-                            style="margin-top: 1rem; text-align: center; background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%); padding: 1.25rem; border-radius: 10px; border: 1px solid #93c5fd;">
+                            style="margin-top: 1rem; text-align: center; background: linear-gradient(135deg, #edf3f8 0%, #dbeafe 100%); padding: 1.25rem; border-radius: 10px; border: 1px solid #93c5fd;">
                             <img src="/static/images/tobii_optikey_setup.jpg"
                                 alt="OptiKey Pro Working with Tobii Eye Tracker 5"
                                 style="width: 100%; max-width: 500px; border-radius: 8px; border: 2px solid #60a5fa; margin-bottom: 0.75rem; cursor: pointer; box-shadow: 0 6px 20px rgb(0 0 0 / 0.2);"
                                 onclick="window.open(this.src, '_blank')">
-                            <p style="font-size: 0.9rem; color: #1e40af; margin: 0; font-weight: 600;">
+                            <p style="font-size: 0.9rem; color: #1e3a5f; margin: 0; font-weight: 600;">
                                 ✅ OptiKey Pro Classic v3.2.5 working with Tobii Eye Tracker 5
                             </p>
-                            <p style="font-size: 0.8rem; color: #3b82f6; margin: 0.25rem 0 0;">
+                            <p style="font-size: 0.8rem; color: #7eb8d4; margin: 0.25rem 0 0;">
                                 This is the verified working setup for ALS communication
                             </p>
                         </div>
@@ -1776,7 +1806,7 @@
 
         container.innerHTML = tools.map(tool => `
             <div class="ct-device-card ${tool.recommended ? 'recommended' : ''}" style="border-radius: 12px; overflow: hidden;">
-                <div class="ct-device-header" style="padding: 1rem 1.25rem; background: #f5f5f7;">
+                <div class="ct-device-header" style="padding: 1rem 1.25rem; background: #f5f3ef;">
                     <div class="ct-device-name" style="color: #000; font-size: 1rem; font-weight: 600;">${tool.name}</div>
                     ${tool.community_verdict ? `<div style="font-size: 0.8rem; color: #000; margin-top: 0.25rem;">${tool.community_verdict}</div>` : ''}
                 </div>
@@ -1785,7 +1815,7 @@
                         <strong style="color: var(--ct-primary);">How it works:</strong> ${tool.description}
                     </div>` : ''}
                     
-                    ${tool.why_essential ? `<div style="background: #f5f5f7; border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--ct-text); line-height: 1.5;">
+                    ${tool.why_essential ? `<div style="background: #f5f3ef; border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--ct-text); line-height: 1.5;">
                         <strong style="color: var(--ct-primary);">Why keep this:</strong> ${tool.why_essential}
                     </div>` : ''}
                 </div>
@@ -1835,23 +1865,23 @@
         const solutions = researchData.categories.communication_technology;
 
         container.innerHTML = solutions.map(solution => `
-            <div class="research-item" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; background: white;">
+            <div class="research-item" style="border: 1px solid #e8e4de; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; background: white;">
                 <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
                     <div>
-                        <h3 style="color: #0f172a; font-size: 1.25rem; margin: 0 0 0.5rem 0;">${solution.solution_name}</h3>
+                        <h3 style="color: #1e3a5f; font-size: 1.25rem; margin: 0 0 0.5rem 0;">${solution.solution_name}</h3>
                         <div style="color: #64748b; font-size: 0.9rem;">${solution.category} | ${solution.form_factor}</div>
                     </div>
-                    <span style="background: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#dcfce7' : '#f1f5f9'}; color: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#166534' : '#475569'}; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500;">${solution.status}</span>
+                    <span style="background: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#dcfce7' : '#f1f5f9'}; color: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#166534' : '#64748b'}; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500;">${solution.status}</span>
                 </div>
 
-                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <strong style="color: #0369a1;"><i class="fas fa-info-circle"></i> What This Is</strong>
-                    <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.what_it_is}</p>
+                <div style="background: #edf3f8; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <strong style="color: #1e3a5f;"><i class="fas fa-info-circle"></i> What This Is</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #3d3830;">${solution.what_it_is}</p>
                 </div>
 
                 <div style="margin-bottom: 1rem;">
-                    <strong style="color: #1e293b; font-size: 0.9rem;">How It Works:</strong>
-                    <p style="margin: 0.5rem 0 0 0; color: #475569; font-size: 0.9rem;">${solution.how_it_works}</p>
+                    <strong style="color: #1e3a5f; font-size: 0.9rem;">How It Works:</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #64748b; font-size: 0.9rem;">${solution.how_it_works}</p>
                 </div>
 
                 ${solution.key_advantages ? `
@@ -1873,11 +1903,11 @@
                 ` : ''}
 
                 <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
-                    <strong style="color: #0f172a;"><i class="fas fa-map-marker-alt"></i> India Availability</strong>
+                    <strong style="color: #1e3a5f;"><i class="fas fa-map-marker-alt"></i> India Availability</strong>
                     <div style="margin-top: 0.75rem;">
                         <p style="margin: 0.25rem 0;"><strong>Status:</strong> ${solution.india_availability.available === true ? 'Available' : solution.india_availability.available}</p>
                         ${solution.india_availability.how_to_get ? `<p style="margin: 0.25rem 0;"><strong>How to Get:</strong> ${solution.india_availability.how_to_get}</p>` : ''}
-                        ${solution.india_availability.cost_inr ? `<p style="margin: 0.25rem 0; color: #0077b6; font-weight: 600;"><strong>Cost:</strong> ${solution.india_availability.cost_inr}</p>` : ''}
+                        ${solution.india_availability.cost_inr ? `<p style="margin: 0.25rem 0; color: #1e3a5f; font-weight: 600;"><strong>Cost:</strong> ${solution.india_availability.cost_inr}</p>` : ''}
                         ${solution.india_availability.delivery_time ? `<p style="margin: 0.25rem 0;"><strong>Delivery:</strong> ${solution.india_availability.delivery_time}</p>` : ''}
                         ${solution.india_availability.funding_options ? `
                             <p style="margin: 0.5rem 0 0.25rem 0;"><strong>Funding Options:</strong></p>
@@ -1890,37 +1920,37 @@
 
                 ${solution.who_should_use ? `
                     <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
-                        <strong style="color: #1e40af;"><i class="fas fa-user-check"></i> Who Should Use This</strong>
+                        <strong style="color: #1e3a5f;"><i class="fas fa-user-check"></i> Who Should Use This</strong>
                         <p style="margin: 0.5rem 0 0 0; color: #1e3a8a;">${solution.who_should_use}</p>
                     </div>
                 ` : ''}
 
                 ${solution.comparison_to_tobii && typeof solution.comparison_to_tobii === 'object' ? `
-                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
-                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii Dynavox</strong>
+                    <div style="border-top: 2px solid #e8e4de; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #1e3a5f;"><i class="fas fa-balance-scale"></i> Comparison to Tobii Dynavox</strong>
                         ${solution.comparison_to_tobii.rating ? `<p style="margin: 0.5rem 0;"><strong>Rating:</strong> ${solution.comparison_to_tobii.rating}</p>` : ''}
                         ${solution.comparison_to_tobii.cost_savings ? `<p style="margin: 0.5rem 0; color: #16a34a; font-weight: 600;"><strong>Cost Savings:</strong> ${solution.comparison_to_tobii.cost_savings}</p>` : ''}
                         ${solution.comparison_to_tobii.pros_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Advantages:</strong> ${solution.comparison_to_tobii.pros_vs_tobii}</p>` : ''}
                         ${solution.comparison_to_tobii.cons_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Disadvantages:</strong> ${solution.comparison_to_tobii.cons_vs_tobii}</p>` : ''}
                     </div>
                 ` : solution.comparison_to_tobii ? `
-                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
-                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii</strong>
+                    <div style="border-top: 2px solid #e8e4de; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #1e3a5f;"><i class="fas fa-balance-scale"></i> Comparison to Tobii</strong>
                         <p style="margin: 0.5rem 0 0 0;">${solution.comparison_to_tobii}</p>
                     </div>
                 ` : ''}
 
                 ${solution.realistic_expectations ? `
-                    <div style="background: #f1f5f9; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                        <strong style="color: #0f172a;"><i class="fas fa-info-circle"></i> Realistic Expectations</strong>
-                        <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.realistic_expectations}</p>
+                    <div style="background: #f1f5f9; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong style="color: #1e3a5f;"><i class="fas fa-info-circle"></i> Realistic Expectations</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #3d3830;">${solution.realistic_expectations}</p>
                     </div>
                 ` : ''}
 
                 ${solution.sources && solution.sources.length > 0 ? `
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e8e4de;">
                         ${solution.sources.map(source => `
-                            <a href="${source}" target="_blank" style="display: inline-block; margin-right: 1rem; margin-bottom: 0.5rem; color: #0077b6; text-decoration: none; font-size: 0.9rem;">
+                            <a href="${source}" target="_blank" style="display: inline-block; margin-right: 1rem; margin-bottom: 0.5rem; color: #1e3a5f; text-decoration: none; font-size: 0.9rem;">
                                 <i class="fas fa-external-link-alt"></i> Learn More
                             </a>
                         `).join('')}
@@ -1973,9 +2003,9 @@
                     </div>
                 ` : ''}
 
-                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
-                    <strong style="color: #0369a1;"><i class="fas fa-lightbulb"></i> Recommendation</strong>
-                    <p style="margin: 0.5rem 0 0 0; color: #0c4a6e;">${tech.recommendation}</p>
+                <div style="background: #edf3f8; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px;">
+                    <strong style="color: #1e3a5f;"><i class="fas fa-lightbulb"></i> Recommendation</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #1e3a5f;">${tech.recommendation}</p>
                 </div>
             </div>
         `).join('');

@@ -6,7 +6,7 @@
 <style>
     /* Neural Simulation Section Styles */
     .neural-simulation-section {
-        background: radial-gradient(circle at center, #2e2a4e 0%, #1a182d 100%);
+        background: radial-gradient(circle at center, #223d5c 0%, #162840 100%);
         padding: var(--space-8);
         margin-bottom: var(--space-8);
         border-radius: 16px;
@@ -98,13 +98,13 @@
         justify-content: center;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 0 15px rgba(161, 140, 209, 0.3);
+        box-shadow: 0 0 15px rgba(126, 184, 212, 0.3);
         border: none;
     }
 
     .toggle-control:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(161, 140, 209, 0.5);
+        box-shadow: 0 0 20px rgba(126, 184, 212, 0.5);
     }
 
     .toggle-control:active {
@@ -229,21 +229,18 @@
        PREMIUM EDITORIAL CONTENT STYLES
        ═══════════════════════════════════════════════════════ */
 
-    /* ── Info Cards — Clean White Editorial ── */
+    /* ── Info Cards — Clean Medical ── */
     .info-card {
         background: #ffffff;
-        border-radius: 20px;
-        padding: 2.75rem 3rem;
-        margin-bottom: 2.5rem;
-        border: none;
-        font-size: 1.125rem;
-        line-height: 1.82;
+        border-radius: 16px;
+        padding: 2.5rem 2.75rem;
+        margin-bottom: 2.25rem;
+        border: 1px solid rgba(30,58,95,0.07);
+        font-family: 'DM Sans', system-ui, sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.78;
         color: #3d4152;
-        box-shadow:
-            0 1px 2px rgba(0,0,0,0.03),
-            0 4px 12px rgba(0,0,0,0.04),
-            0 16px 40px rgba(0,0,0,0.04);
-        transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 2px 8px rgba(30,58,95,0.04);
         position: relative;
         overflow: hidden;
     }
@@ -251,208 +248,174 @@
         content: '';
         position: absolute;
         left: 0; top: 0; bottom: 0;
-        width: 4px;
-        background: linear-gradient(180deg, #0d9488, #7c3aed);
-        border-radius: 20px 0 0 20px;
-        opacity: 0;
-        transition: opacity 0.35s ease;
-    }
-    .info-card:hover {
-        box-shadow:
-            0 2px 4px rgba(0,0,0,0.04),
-            0 8px 24px rgba(0,0,0,0.06),
-            0 24px 56px rgba(0,0,0,0.06);
-        transform: translateY(-4px);
-    }
-    .info-card:hover::before {
-        opacity: 1;
+        width: 3px;
+        background: linear-gradient(180deg, #1e3a5f, #7eb8d4);
+        border-radius: 16px 0 0 16px;
     }
 
-    /* ── Section Headings — Crimson Pro editorial serif ── */
+    /* ── Section Headings — Manrope consistent ── */
     .info-card h2,
     .info-card h3 {
-        font-family: 'Crimson Pro', Georgia, serif;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: #1a1a2e;
+        font-family: 'Manrope', sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        color: #1e3a5f;
     }
-    .info-card h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); }
-    .info-card h3 { font-size: clamp(1.5rem, 2.5vw, 1.875rem); }
+    .info-card h2 { font-size: clamp(1.6rem, 2.8vw, 2rem); }
+    .info-card h3 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); }
 
-    /* ── Section Icons — refined with soft glow ── */
+    /* ── Section Icons — clean and simple ── */
     .icon-wrapper {
         display: flex;
         justify-content: center;
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.5rem;
     }
     .section-icon {
-        width: 72px;
-        height: 72px;
-        background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(124,58,237,0.08));
-        border-radius: 20px;
+        width: 64px;
+        height: 64px;
+        background: rgba(30,58,95,0.06);
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #0d9488;
-        font-size: 32px;
-        transition: all 0.35s ease;
-        box-shadow: 0 4px 16px rgba(13,148,136,0.08);
-    }
-    .info-card:hover .section-icon {
-        transform: scale(1.06);
-        box-shadow: 0 6px 24px rgba(13,148,136,0.14);
+        color: #1e3a5f;
+        font-size: 28px;
     }
 
-    /* ── Symptom Grid — wider, cleaner ── */
+    /* ── Symptom Grid — wider, educational ── */
     .symptom-grid {
         display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        margin-bottom: 1.75rem;
+        gap: 0.875rem;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        margin-bottom: 1.5rem;
     }
     .symptom-card {
         display: flex;
         align-items: center;
-        gap: 1.125rem;
-        padding: 1.25rem 1.5rem;
-        border-radius: 14px;
-        border: none;
-        border-left: 4px solid #7c3aed;
-        background: #f8f7fc;
-        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        font-size: 1rem;
+        gap: 1rem;
+        padding: 1.15rem 1.35rem;
+        border-radius: 12px;
+        border: 1px solid rgba(30,58,95,0.06);
+        border-left: 3px solid #1e3a5f;
+        background: #f8fafc;
+        font-size: 0.975rem;
+        font-family: 'DM Sans', system-ui, sans-serif;
     }
     .symptom-card strong {
-        color: #1a1a2e;
-        font-weight: 650;
+        color: #1e3a5f;
+        font-weight: 700;
         font-family: 'Manrope', sans-serif;
+        font-size: 0.95rem;
     }
     .symptom-card .text-sm {
-        color: #5a5e72;
-        line-height: 1.55;
-    }
-    .symptom-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-        background: #f3f1fa;
+        color: #64748b;
+        line-height: 1.5;
+        font-size: 0.9rem;
     }
     .symptom-card.secondary {
-        border-left-color: #0d9488;
-        background: #f0fdf9;
-    }
-    .symptom-card.secondary:hover {
-        background: #e6faf5;
+        border-left-color: #7eb8d4;
     }
     .symptom-card.accent {
-        border-left-color: #d97706;
-        background: #fffbf0;
-    }
-    .symptom-card.accent:hover {
-        background: #fff7e0;
+        border-left-color: #5a9bbd;
     }
     .symptom-icon {
-        font-size: 26px;
-        min-width: 44px;
+        font-size: 24px;
+        min-width: 40px;
         text-align: center;
-        color: #7c3aed;
-        opacity: 0.85;
+        color: #1e3a5f;
+        opacity: 0.75;
     }
     .symptom-card.secondary .symptom-icon {
-        color: #0d9488;
+        color: #5a9bbd;
     }
     .symptom-card.accent .symptom-icon {
-        color: #d97706;
+        color: #5a9bbd;
     }
 
-    /* ── Key Message — refined accent box ── */
+    /* ── Key Message — clean info box ── */
     .key-message {
-        margin-top: 2rem;
+        margin-top: 1.75rem;
         text-align: center;
-        padding: 1.75rem 2rem;
-        background: linear-gradient(135deg, rgba(13,148,136,0.05), rgba(124,58,237,0.05));
-        border-radius: 16px;
-        color: #1a1a2e;
+        padding: 1.5rem 1.75rem;
+        background: #f8fafc;
+        border-radius: 12px;
+        color: #1e3a5f;
         font-weight: 500;
-        border: 1px solid rgba(13,148,136,0.12);
+        border: 1px solid rgba(30,58,95,0.08);
+        font-family: 'DM Sans', system-ui, sans-serif;
     }
 
-    /* ── Timeline — refined markers and cards ── */
+    /* ── Timeline — clean medical progression ── */
     .timeline-container {
         position: relative;
-        padding: 1.5rem 0;
-        margin-top: 2.5rem;
+        padding: 1.25rem 0;
+        margin-top: 2rem;
     }
     .timeline-line {
         position: absolute;
         left: 50%;
         top: 0;
         bottom: 0;
-        width: 3px;
-        background: linear-gradient(to bottom, #0d9488, #7c3aed, #d97706);
+        width: 2px;
+        background: linear-gradient(to bottom, #1e3a5f, #7eb8d4, #1e3a5f);
         transform: translateX(-50%);
-        border-radius: 3px;
+        border-radius: 2px;
     }
     .timeline-stage {
         position: relative;
         display: flex;
         align-items: center;
         gap: 2.5rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2.25rem;
     }
     .timeline-marker {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
-        border: 4px solid white;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1), 0 0 0 3px rgba(13,148,136,0.12);
+        border: 3px solid white;
+        box-shadow: 0 1px 4px rgba(30,58,95,0.15);
         z-index: 2;
     }
     .stage-card {
-        padding: 1.75rem 2rem;
-        border-radius: 16px;
+        padding: 1.5rem 1.75rem;
+        border-radius: 12px;
         background: #ffffff;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05);
-        transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-        border: none;
-    }
-    .stage-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.07);
+        box-shadow: 0 1px 4px rgba(30,58,95,0.05);
+        border: 1px solid rgba(30,58,95,0.06);
+        font-family: 'DM Sans', system-ui, sans-serif;
     }
     .stage-card h4 {
         font-family: 'Manrope', sans-serif;
-        font-weight: 750;
-        font-size: 1.125rem;
+        font-weight: 700;
+        font-size: 1.05rem;
     }
     .stage-card .text-sm {
-        color: #5a5e72;
-        line-height: 1.7;
+        color: #64748b;
+        line-height: 1.65;
+        font-size: 0.925rem;
     }
     .stage-card.left {
         text-align: right;
-        border-right: 4px solid #0d9488;
+        border-right: 3px solid #1e3a5f;
     }
     .stage-card.right {
-        border-left: 4px solid #d97706;
+        border-left: 3px solid #7eb8d4;
     }
     .stage-card.center {
-        border-right: 4px solid #7c3aed;
+        border-right: 3px solid #7eb8d4;
     }
 
-    /* ── FAQ Section — clean editorial ── */
+    /* ── FAQ Section — clean medical ── */
     .faq-section {
         background: #ffffff;
-        border-radius: 20px;
-        padding: 2.75rem 3rem;
-        margin-bottom: 2.5rem;
-        border: none;
-        box-shadow:
-            0 1px 2px rgba(0,0,0,0.03),
-            0 4px 12px rgba(0,0,0,0.04),
-            0 16px 40px rgba(0,0,0,0.04);
+        border-radius: 16px;
+        padding: 2.5rem 2.75rem;
+        margin-bottom: 2.25rem;
+        border: 1px solid rgba(30,58,95,0.07);
+        box-shadow: 0 2px 8px rgba(30,58,95,0.04);
         position: relative;
         overflow: hidden;
     }
@@ -460,14 +423,14 @@
         content: '';
         position: absolute;
         left: 0; top: 0; bottom: 0;
-        width: 4px;
-        background: linear-gradient(180deg, #7c3aed, #0d9488);
-        border-radius: 20px 0 0 20px;
+        width: 3px;
+        background: linear-gradient(180deg, #1e3a5f, #7eb8d4);
+        border-radius: 16px 0 0 16px;
     }
     .faq-item {
-        margin-bottom: 1.5rem;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
+        border-bottom: 1px solid rgba(30,58,95,0.06);
+        padding-bottom: 1.25rem;
     }
     .faq-item:last-child {
         border-bottom: none;
@@ -476,23 +439,24 @@
     }
     .faq-question {
         font-weight: 700;
-        font-size: 1.125rem;
+        font-size: 1.05rem;
         font-family: 'Manrope', sans-serif;
-        color: #1a1a2e;
-        margin-bottom: 0.5rem;
+        color: #1e3a5f;
+        margin-bottom: 0.4rem;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.65rem;
     }
     .faq-question i {
-        color: #0d9488;
-        font-size: 0.875rem;
+        color: #7eb8d4;
+        font-size: 0.8rem;
     }
     .faq-answer {
-        color: #5a5e72;
-        padding-left: 2rem;
-        line-height: 1.72;
-        font-size: 1.0625rem;
+        color: #64748b;
+        padding-left: 1.75rem;
+        line-height: 1.7;
+        font-size: 0.975rem;
+        font-family: 'DM Sans', system-ui, sans-serif;
     }
 
     /* Three.js Neural Globe */
@@ -500,7 +464,7 @@
         position: relative;
         overflow: hidden;
         border-radius: 0;
-        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%);
         padding: 5rem 3rem;
         margin: 0;
         min-height: 420px;
@@ -522,7 +486,7 @@
         line-height: 1.08;
         margin-bottom: 1.25rem;
     }
-    .hero-3d-banner .hero-text h1 .accent-teal { color: #2dd4bf; }
+    .hero-3d-banner .hero-text h1 .accent-teal { color: #7eb8d4; }
     .hero-3d-banner .hero-text p {
         color: rgba(255,255,255,0.7);
         font-size: 1.25rem;
@@ -550,49 +514,54 @@
         .hero-3d-banner .hero-text { max-width: 100%; }
     }
 
-    /* ── Inner content boxes — refined tints ── */
+    /* ── Inner content boxes — cooler tints ── */
     .info-card div[style*="background: var(--color-secondary-light)"] {
-        background: #eefbf7 !important;
-        border-color: #0d9488 !important;
+        background: #f0f5fa !important;
+        border-color: #7eb8d4 !important;
     }
     .info-card div[style*="background: var(--color-primary-light)"] {
-        background: #f5f0ff !important;
+        background: #eef3f8 !important;
     }
     .info-card div[style*="background: var(--color-accent-light)"] {
-        background: #fef9ee !important;
-        border-color: #d97706 !important;
+        background: #f0f5fa !important;
+        border-color: #5a9bbd !important;
     }
     .info-card div[style*="background: var(--color-bg-body)"] {
-        background: #fafafa !important;
+        background: #f8fafc !important;
     }
     .info-card p,
     .info-card li {
-        color: #3d4152;
+        color: #475569;
+        font-family: 'DM Sans', system-ui, sans-serif;
     }
     .info-card .text-sm {
-        color: #5a5e72;
-        font-size: 0.9375rem;
+        color: #64748b;
+        font-size: 0.9rem;
         line-height: 1.6;
+        font-family: 'DM Sans', system-ui, sans-serif;
     }
     .info-card strong {
-        color: #1a1a2e;
+        color: #1e3a5f;
     }
     .info-card h4 {
         font-family: 'Manrope', sans-serif;
         font-weight: 700;
-        font-size: 1.0625rem;
+        font-size: 1.025rem;
+        color: #1e3a5f;
     }
     .info-card h5 {
         font-family: 'Manrope', sans-serif;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 0.975rem;
+        color: #1e3a5f;
     }
 
-    /* ── Neural simulation — wider padding ── */
+    /* ── Neural simulation — clean dark card ── */
     .neural-simulation-section {
-        padding: 2.5rem 2.75rem;
-        border-radius: 20px;
-        margin-bottom: 2.5rem;
+        padding: 2.25rem 2.5rem;
+        border-radius: 16px;
+        margin-bottom: 2.25rem;
+        border: 1px solid rgba(126,184,212,0.08);
     }
 
     /* GSAP scroll progress bar */
@@ -601,7 +570,7 @@
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #2dd4bf, #a78bfa);
+        background: linear-gradient(90deg, #1e3a5f, #7eb8d4);
         z-index: 9999;
         width: 0%;
         transition: width 0.1s linear;
@@ -626,15 +595,15 @@
     </div>
 </div>
 
-<section class="section-padding" style="background: linear-gradient(180deg, #f5f3ee 0%, #faf8f4 30%, #fff 60%, #faf8f4 100%);">
+<section class="section-padding" style="background: linear-gradient(180deg, #f0f4f8 0%, #f5f7fa 30%, #fff 60%, #f5f7fa 100%);">
     <div class="container">
         <!-- Understanding ALS Section -->
-        <div style="max-width: 1520px; margin: 2.5rem auto 0;">
+        <div style="max-width: 1600px; margin: 2.5rem auto 0;">
             <style>
                 .als-layout-grid {
                     display: grid;
-                    grid-template-columns: 1fr 240px;
-                    gap: 4rem;
+                    grid-template-columns: 1fr 200px;
+                    gap: 3rem;
                     position: relative;
                 }
 
@@ -647,29 +616,27 @@
 
                 .als-nav-link {
                     display: block;
-                    padding: 0.625rem 1rem;
-                    margin-bottom: 0.25rem;
-                    border-radius: 8px;
-                    color: #64748b;
+                    padding: 0.5rem 0.875rem;
+                    margin-bottom: 0.125rem;
+                    border-radius: 6px;
+                    color: #94a3b8;
                     text-decoration: none;
-                    transition: all 0.2s ease;
+                    transition: color 0.2s ease, background 0.2s ease;
                     font-weight: 500;
-                    font-size: 0.9375rem;
+                    font-size: 0.85rem;
                     font-family: 'DM Sans', system-ui, sans-serif;
                     border: none;
                 }
 
                 .als-nav-link:hover {
-                    background: rgba(13,148,136,0.06);
-                    color: #0d9488;
-                    transform: none;
+                    background: rgba(30,58,95,0.04);
+                    color: #1e3a5f;
                 }
 
                 .als-nav-link.active {
-                    background: rgba(13,148,136,0.08);
-                    color: #0d9488;
+                    background: rgba(30,58,95,0.06);
+                    color: #1e3a5f;
                     font-weight: 600;
-                    box-shadow: none;
                 }
 
                 @media (max-width: 992px) {
@@ -924,69 +891,98 @@
                         </div>
 
                         <!-- ── Render Prompt (shown when video not available) ── -->
-                        <div id="manim-render-prompt" style="display: none; margin-bottom: 2.5rem; text-align: center; padding: 2rem; border-radius: 14px; background: rgba(45,212,191,0.06); border: 1px dashed rgba(45,212,191,0.25);">
-                            <i class="fas fa-film" style="font-size: 2rem; color: rgba(45,212,191,0.5); margin-bottom: 1rem; display: block;"></i>
+                        <div id="manim-render-prompt" style="display: none; margin-bottom: 2.5rem; text-align: center; padding: 2rem; border-radius: 14px; background: rgba(126,184,212,0.06); border: 1px dashed rgba(126,184,212,0.25);">
+                            <i class="fas fa-film" style="font-size: 2rem; color: rgba(126,184,212,0.5); margin-bottom: 1rem; display: block;"></i>
                             <p style="color: rgba(255,255,255,0.7); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.5;">
                                 A detailed Manim animation explaining motor neuron degeneration is available.<br>
                                 <span style="font-size: 0.85rem; color: rgba(255,255,255,0.4);">Requires Manim + FFmpeg installed (via setup.bat)</span>
                             </p>
                             <button id="render-manim-btn" onclick="triggerManimRender()"
-                                style="background: linear-gradient(135deg, rgba(45,212,191,0.2), rgba(167,139,250,0.2)); border: 1px solid rgba(45,212,191,0.35); color: #2dd4bf; padding: 0.7rem 2rem; border-radius: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                style="background: linear-gradient(135deg, rgba(126,184,212,0.2), rgba(30,58,95,0.2)); border: 1px solid rgba(126,184,212,0.35); color: #7eb8d4; padding: 0.7rem 2rem; border-radius: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
                                 <i class="fas fa-magic" style="margin-right: 8px;"></i>Render Animation
                             </button>
                             <div id="render-status" style="margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif; display: none;"></div>
                         </div>
 
-                        <!-- ── Interactive 3D Motor Neuron (Three.js) ── -->
+                        <!-- ── Interactive 3D Motor Neuron — Biological Pathway ── -->
                         <div style="margin-bottom: 2rem;">
                             <!-- Stage Controls -->
                             <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
                                 <button class="neuron-stage-btn active" data-stage="0"
-                                    style="background: rgba(45,212,191,0.15); border: 1px solid rgba(45,212,191,0.4); color: #2dd4bf; padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
-                                    <i class="fas fa-heart" style="margin-right: 6px;"></i>Healthy
+                                    style="background: rgba(126,184,212,0.15); border: 1px solid rgba(126,184,212,0.4); color: #7eb8d4; padding: 0.55rem 1.3rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    <i class="fas fa-heartbeat" style="margin-right: 6px;"></i>Healthy Neuron
                                 </button>
                                 <button class="neuron-stage-btn" data-stage="1"
-                                    style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.2); color: rgba(251,191,36,0.7); padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
-                                    Stage 1 — Early
+                                    style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.2); color: rgba(251,191,36,0.7); padding: 0.55rem 1.3rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    <i class="fas fa-exclamation-circle" style="margin-right: 5px;"></i>Early ALS
                                 </button>
                                 <button class="neuron-stage-btn" data-stage="2"
-                                    style="background: rgba(255,153,102,0.08); border: 1px solid rgba(255,153,102,0.2); color: rgba(255,153,102,0.7); padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
-                                    Stage 2 — Mid
+                                    style="background: rgba(255,153,102,0.08); border: 1px solid rgba(255,153,102,0.2); color: rgba(255,153,102,0.7); padding: 0.55rem 1.3rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    <i class="fas fa-exclamation-triangle" style="margin-right: 5px;"></i>Progressive
                                 </button>
                                 <button class="neuron-stage-btn" data-stage="3"
-                                    style="background: rgba(255,51,51,0.08); border: 1px solid rgba(255,51,51,0.2); color: rgba(255,51,51,0.6); padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
-                                    Stage 3 — Advanced
+                                    style="background: rgba(255,51,51,0.08); border: 1px solid rgba(255,51,51,0.2); color: rgba(255,51,51,0.6); padding: 0.55rem 1.3rem; border-radius: 10px; cursor: pointer; font-size: 0.875rem; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;">
+                                    <i class="fas fa-times-circle" style="margin-right: 5px;"></i>Advanced
                                 </button>
                             </div>
 
                             <!-- 3D Canvas -->
-                            <div id="neuron-3d-wrap" style="position: relative; height: 380px; border-radius: 14px; overflow: hidden; background: radial-gradient(ellipse at 40% 50%, #1a1838 0%, #0c0e16 100%); border: 1px solid rgba(255,255,255,0.05);">
+                            <div id="neuron-3d-wrap" style="position: relative; height: 440px; border-radius: 14px; overflow: hidden; background: radial-gradient(ellipse at 35% 45%, #1e3a5a 0%, #162840 60%, #0e1e30 100%); border: 1px solid rgba(126,184,212,0.08);">
                                 <canvas id="neuron-3d-canvas"></canvas>
+
+                                <!-- Anatomical Labels (HTML overlay) -->
+                                <div id="neuro-labels" style="position: absolute; inset: 0; pointer-events: none; font-family: 'DM Sans', sans-serif;">
+                                    <span class="neuro-label" style="left: 6%; top: 12%; color: rgba(126,184,212,0.6); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Dendrites</span>
+                                    <span class="neuro-label" style="left: 16%; top: 60%; color: rgba(126,184,212,0.55); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Cell Body</span>
+                                    <span class="neuro-label" style="left: 27%; top: 14%; color: rgba(126,184,212,0.5); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.04em;">Axon Hillock</span>
+                                    <span class="neuro-label" style="left: 44%; top: 12%; color: rgba(126,184,212,0.5); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Myelin Sheath</span>
+                                    <span class="neuro-label" style="left: 53%; top: 65%; color: rgba(251,191,36,0.45); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.04em;">Nodes of Ranvier</span>
+                                    <span class="neuro-label" style="left: 74%; top: 14%; color: rgba(126,184,212,0.5); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.04em;">Axon Terminal</span>
+                                    <span class="neuro-label" style="left: 79%; top: 65%; color: rgba(251,191,36,0.45); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.04em;">Synapse (NMJ)</span>
+                                    <span class="neuro-label" style="right: 3%; top: 12%; color: rgba(232,160,80,0.55); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Muscle</span>
+                                </div>
+                                <style>
+                                    .neuro-label { position: absolute; white-space: nowrap; }
+                                    @media(max-width:768px) { .neuro-label { font-size: 0.55rem !important; } }
+                                </style>
+
                                 <!-- Stage Description Overlay -->
-                                <div id="neuron-stage-desc" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); pointer-events: none;">
-                                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9375rem; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;" id="stage-desc-text">
-                                        <strong style="color: #2dd4bf;">Healthy:</strong> Electrical signals travel rapidly along the myelinated axon at up to 120 m/s. At the synapse, acetylcholine triggers immediate muscle contraction.
+                                <div id="neuron-stage-desc" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.1rem 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.85)); pointer-events: none;">
+                                    <p style="color: rgba(255,255,255,0.88); font-size: 0.9rem; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.55;" id="stage-desc-text">
+                                        <strong style="color: #7eb8d4;">Healthy Motor Neuron:</strong> Action potentials race along the myelinated axon via <em>saltatory conduction</em> — jumping between Nodes of Ranvier at up to 120 m/s. Na⁺ ions rush in at each node. At the neuromuscular junction, acetylcholine vesicles trigger immediate muscle contraction.
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- Color Legend -->
-                            <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 10px; height: 10px; background: #2dd4bf; border-radius: 50%;"></div>
-                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Healthy neuron</span>
+                            <!-- Biological Legend -->
+                            <div style="display: flex; justify-content: center; gap: 1.25rem; margin-top: 1rem; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                                    <div style="width: 10px; height: 10px; background: #1a5a7a; border-radius: 50%; box-shadow: 0 0 4px rgba(126,184,212,0.3);"></div>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Soma & Axon</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 10px; height: 10px; background: #ff9966; border-radius: 50%;"></div>
-                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Damaged neuron</span>
+                                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                                    <div style="width: 10px; height: 10px; background: #7eb8d4; border-radius: 50%; opacity: 0.6;"></div>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Myelin Sheath</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="display: flex; align-items: center; gap: 0.4rem;">
                                     <div style="width: 10px; height: 10px; background: #fbbf24; border-radius: 50%; box-shadow: 0 0 6px rgba(251,191,36,0.5);"></div>
-                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Signal pulse</span>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Action Potential</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 10px; height: 10px; background: #ff3333; border-radius: 50%;"></div>
-                                    <span style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Signal blocked</span>
+                                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                                    <div style="width: 10px; height: 10px; background: #4dc9f6; border-radius: 50%;"></div>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Na⁺ ions</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                                    <div style="width: 10px; height: 10px; background: #22cc88; border-radius: 50%;"></div>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">K⁺ ions</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                                    <div style="width: 10px; height: 10px; background: #e8a050; border-radius: 50%;"></div>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Muscle Fiber</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.4rem;">
+                                    <div style="width: 10px; height: 10px; background: #553322; border-radius: 3px;"></div>
+                                    <span style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">TDP-43 Aggregates</span>
                                 </div>
                             </div>
                         </div>
@@ -1291,13 +1287,13 @@
 
                     <!-- Core Message -->
                     <div
-                        style="background: linear-gradient(135deg, rgba(13,148,136,0.04), rgba(124,58,237,0.04)); border: 1px solid rgba(13,148,136,0.1); border-radius: 16px; padding: 2rem 2.5rem; margin-top: 2.5rem; text-align: center;">
+                        style="background: #f8fafc; border: 1px solid rgba(30,58,95,0.07); border-radius: 12px; padding: 1.75rem 2.25rem; margin-top: 2rem; text-align: center;">
                         <p
-                            style="color: #0d9488; font-weight: 700; font-size: 0.8125rem; margin-bottom: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Manrope', sans-serif;">
+                            style="color: #1e3a5f; font-weight: 700; font-size: 0.75rem; margin-bottom: 0.6rem; letter-spacing: 1.2px; text-transform: uppercase; font-family: 'Manrope', sans-serif;">
                             Remember
                         </p>
                         <p
-                            style="color: #1a1a2e; font-size: 1.1875rem; line-height: 1.75; max-width: 640px; margin: 0 auto; font-family: 'Crimson Pro', Georgia, serif; font-weight: 500;">
+                            style="color: #475569; font-size: 1.05rem; line-height: 1.72; max-width: 620px; margin: 0 auto; font-family: 'DM Sans', system-ui, sans-serif; font-weight: 400;">
                             ALS changes how the body works, but it does not change who a person is. Every person
                             with ALS
                             deserves respect, good care, and a life filled with meaning.
@@ -1306,8 +1302,8 @@
 
                     <!-- Medical Disclaimer -->
                     <div
-                        style="background: #f9fafb; border: none; border-radius: 12px; padding: 1.25rem 2rem; margin-top: 1.5rem; text-align: center;">
-                        <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.6; margin: 0; font-family: 'DM Sans', system-ui, sans-serif;">
+                        style="background: transparent; border: none; border-radius: 0; padding: 1rem 1.5rem; margin-top: 1.25rem; text-align: center;">
+                        <p style="color: #94a3b8; font-size: 0.8rem; line-height: 1.55; margin: 0; font-family: 'DM Sans', system-ui, sans-serif;">
                             <strong style="color: #64748b;">Disclaimer:</strong> This guide is for informational purposes only and does not
                             constitute medical advice. Always consult with your neurologist or healthcare team for
                             medical
@@ -1317,7 +1313,7 @@
                 </div> <!-- Close als-main-content -->
                 <!-- Sidebar -->
                 <aside class="als-sidebar">
-                    <nav style="padding: 0.5rem 0 0.5rem 1.25rem; border-left: 2px solid rgba(13,148,136,0.15); height: 100%;">
+                    <nav style="padding: 0.5rem 0 0.5rem 1rem; border-left: 1px solid rgba(30,58,95,0.1); height: 100%;">
                         <div style="display: flex; flex-direction: column; gap: 0.125rem;">
                             <a href="#what-is-als" class="als-nav-link">What is ALS?</a>
                             <a href="#how-als-affects" class="als-nav-link">How it Affects Body</a>
@@ -1394,7 +1390,7 @@
                     statusEl.textContent = data.message;
                     if (data.status === 'done') {
                         clearInterval(interval);
-                        statusEl.innerHTML = '<i class="fas fa-check-circle" style="color: #2dd4bf; margin-right: 6px;"></i>Animations rendered! Loading video...';
+                        statusEl.innerHTML = '<i class="fas fa-check-circle" style="color: #7eb8d4; margin-right: 6px;"></i>Animations rendered! Loading video...';
                         // Reload the video element
                         var video = document.getElementById('manim-player');
                         var wrapper = document.getElementById('manim-video-wrapper');
@@ -1421,13 +1417,16 @@
     /* ═══════════════════════════════════════════════════════
        THREE.JS — Interactive 3D Motor Neuron
        ═══════════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════════════════
+       THREE.JS — Biologically Accurate Motor Neuron Pathway
+       Saltatory conduction, ion channels, NMJ, muscle contraction
+       ═══════════════════════════════════════════════════════ */
     (function initNeuron3D() {
         var wrap = document.getElementById('neuron-3d-wrap');
         var canvas = document.getElementById('neuron-3d-canvas');
         if (!wrap || !canvas) return;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-        // Wait for Three.js (loaded for hero globe)
         function tryInit() {
             if (typeof THREE === 'undefined') { setTimeout(tryInit, 200); return; }
             buildScene();
@@ -1443,244 +1442,454 @@
             renderer.setClearColor(0x000000, 0);
 
             var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera(50, W / H, 0.1, 500);
-            camera.position.set(0, 0.5, 10);
+            scene.fog = new THREE.FogExp2(0x162840, 0.018);
 
-            // Lighting
-            var ambient = new THREE.AmbientLight(0x404060, 0.6);
-            scene.add(ambient);
-            var pointLight = new THREE.PointLight(0x2dd4bf, 1.2, 30);
-            pointLight.position.set(-3, 3, 5);
-            scene.add(pointLight);
-            var pointLight2 = new THREE.PointLight(0xa78bfa, 0.6, 25);
-            pointLight2.position.set(4, -2, 3);
-            scene.add(pointLight2);
+            var camera = new THREE.PerspectiveCamera(44, W / H, 0.1, 500);
+            camera.position.set(0, 1.2, 14);
+            camera.lookAt(0.5, 0, 0);
 
-            var neuronGroup = new THREE.Group();
-            scene.add(neuronGroup);
+            // ── Lighting — navy/sky-blue mood ──
+            scene.add(new THREE.AmbientLight(0x304060, 0.5));
+            var keyLight = new THREE.PointLight(0x7eb8d4, 1.4, 40);
+            keyLight.position.set(-4, 4, 8);
+            scene.add(keyLight);
+            var fillLight = new THREE.PointLight(0x1e3a5f, 0.7, 30);
+            fillLight.position.set(5, -2, 5);
+            scene.add(fillLight);
+            var rimLight = new THREE.PointLight(0xfbbf24, 0.25, 20);
+            rimLight.position.set(0, 3, -5);
+            scene.add(rimLight);
 
-            // ── Colors per stage ──
-            var stages = [
-                { soma: 0x005577, axon: 0x2dd4bf, myelin: 0x2dd4bf, muscle: 0xffaa00, dendrite: 0x2dd4bf, dendriteOp: 1, myelinOp: [0.5,0.5,0.5,0.5,0.5,0.5,0.5], axonOp: 0.9, muscleScale: 1, signal: 1.0, signalStop: 1.0 },
-                { soma: 0x664422, axon: 0xff9966, myelin: 0xff9966, muscle: 0xcc8800, dendrite: 0xff9966, dendriteOp: 0.5, myelinOp: [0.5,0.5,0.4,0.3,0.2,0.1,0], axonOp: 0.65, muscleScale: 0.92, signal: 0.9, signalStop: 1.0 },
-                { soma: 0x553311, axon: 0x884422, myelin: 0x884422, muscle: 0x886633, dendrite: 0x884422, dendriteOp: 0.25, myelinOp: [0.3,0.2,0.1,0,0,0,0], axonOp: 0.4, muscleScale: 0.82, signal: 0.5, signalStop: 0.45 },
-                { soma: 0x442211, axon: 0x662222, myelin: 0x662222, muscle: 0x663322, dendrite: 0x662222, dendriteOp: 0.1, myelinOp: [0.1,0,0,0,0,0,0], axonOp: 0.15, muscleScale: 0.65, signal: 0, signalStop: 0.3 }
-            ];
-            var currentStage = 0;
+            var G = new THREE.Group();
+            scene.add(G);
 
-            // ── Build Soma ──
-            var somaGeo = new THREE.SphereGeometry(0.65, 32, 32);
-            var somaMat = new THREE.MeshPhongMaterial({ color: 0x005577, transparent: true, opacity: 0.92, shininess: 60 });
-            var soma = new THREE.Mesh(somaGeo, somaMat);
-            soma.position.set(-3.5, 0, 0);
-            neuronGroup.add(soma);
+            // ═══ SOMA (Cell Body) — with organelles ═══
+            var somaMat = new THREE.MeshPhongMaterial({ color: 0x1a5a7a, transparent: true, opacity: 0.88, shininess: 80, emissive: 0x1a5a7a, emissiveIntensity: 0.1, specular: 0x7eb8d4 });
+            var soma = new THREE.Mesh(new THREE.SphereGeometry(0.85, 48, 48), somaMat);
+            soma.position.set(-4.5, 0, 0);
+            G.add(soma);
 
-            var nucleusGeo = new THREE.SphereGeometry(0.28, 16, 16);
-            var nucleusMat = new THREE.MeshPhongMaterial({ color: 0x007799, emissive: 0x003344, transparent: true, opacity: 0.85 });
-            var nucleus = new THREE.Mesh(nucleusGeo, nucleusMat);
+            // Nucleus
+            var nucleusMat = new THREE.MeshPhongMaterial({ color: 0x0d4a6a, emissive: 0x0a3a5a, emissiveIntensity: 0.15, transparent: true, opacity: 0.9, shininess: 60 });
+            var nucleus = new THREE.Mesh(new THREE.SphereGeometry(0.38, 24, 24), nucleusMat);
             nucleus.position.copy(soma.position);
-            neuronGroup.add(nucleus);
+            G.add(nucleus);
 
-            // ── Build Dendrites ──
-            var dendriteMat = new THREE.LineBasicMaterial({ color: 0x2dd4bf, transparent: true, opacity: 1 });
-            var dendrites = [];
-            var dData = [
-                [[-4.15,0,0],[-5.5,1.3,0.4],[-6.2,1.8,0.2]],
-                [[-4.15,0,0],[-5.8,0.5,-0.5],[-6.5,0.8,-0.3]],
-                [[-4.15,0,0],[-5.3,-0.9,0.3],[-6.0,-1.4,0.5]],
-                [[-4.15,0,0],[-5.5,-1.4,-0.2],[-6.3,-1.9,-0.1]],
-                [[-4.15,0,0],[-5.0,1.6,0.6],[-5.8,2.1,0.4]],
-                [[-4.15,0,0],[-5.2,-0.3,0.7],[-5.9,-0.1,1.0]],
-            ];
-            dData.forEach(function(pts) {
-                var geo = new THREE.BufferGeometry().setFromPoints(
-                    pts.map(function(p){ return new THREE.Vector3(p[0],p[1],p[2]); })
-                );
-                var mat = dendriteMat.clone();
-                var line = new THREE.Line(geo, mat);
-                neuronGroup.add(line);
-                dendrites.push(line);
+            // Nucleolus
+            var nucleolus = new THREE.Mesh(new THREE.SphereGeometry(0.12, 12, 12), new THREE.MeshBasicMaterial({ color: 0x7eb8d4, transparent: true, opacity: 0.65 }));
+            nucleolus.position.set(soma.position.x, soma.position.y + 0.08, soma.position.z);
+            G.add(nucleolus);
+
+            // Mitochondria (ellipsoids inside soma)
+            var mitoPos = [[0.35,0.25,0.15],[-0.3,-0.2,0.2],[0.15,-0.35,-0.1],[-0.25,0.3,-0.15],[0.4,-0.1,-0.2]];
+            var mitochondria = mitoPos.map(function(p) {
+                var g = new THREE.SphereGeometry(0.08, 8, 6); g.scale(1, 0.5, 0.7);
+                var m = new THREE.Mesh(g, new THREE.MeshPhongMaterial({ color: 0x3a8aaa, transparent: true, opacity: 0.55 }));
+                m.position.set(soma.position.x + p[0], soma.position.y + p[1], soma.position.z + p[2]);
+                G.add(m); return m;
             });
 
-            // ── Build Axon ──
+            // TDP-43 Protein Aggregates (visible in ALS stages)
+            var aggPos = [[0.3,0.2,0.1],[-0.2,-0.3,0.15],[0.1,0.35,-0.1],[-0.35,0.1,-0.2],[0.15,-0.15,0.3]];
+            var aggregates = aggPos.map(function(p) {
+                var m = new THREE.Mesh(new THREE.DodecahedronGeometry(0.1, 0), new THREE.MeshPhongMaterial({ color: 0x553322, transparent: true, opacity: 0 }));
+                m.position.set(soma.position.x + p[0], soma.position.y + p[1], soma.position.z + p[2]);
+                G.add(m); return m;
+            });
+
+            // ═══ DENDRITES — Branching tree with spines ═══
+            var dendMat = new THREE.MeshPhongMaterial({ color: 0x5ea0c0, transparent: true, opacity: 0.85, shininess: 30 });
+            var dendMeshes = [];
+            var dendPaths = [
+                { m:[[-5.35,0,0],[-6.2,1.2,0.4],[-7.2,1.8,0.2]], s:[[[-6.2,1.2,0.4],[-6.8,2.0,0.8]],[[-6.8,1.5,0.3],[-7.5,2.2,-0.2]]] },
+                { m:[[-5.35,0,0],[-6.5,0.3,-0.5],[-7.5,0.6,-0.3]], s:[[[-6.5,0.3,-0.5],[-7.0,-0.3,-0.8]]] },
+                { m:[[-5.35,0,0],[-6.0,-1.0,0.3],[-7.0,-1.5,0.5]], s:[[[-6.0,-1.0,0.3],[-6.5,-1.8,0.8]],[[-6.5,-1.3,0.4],[-7.2,-2.0,0.1]]] },
+                { m:[[-5.35,0,0],[-6.3,-0.8,-0.3],[-7.3,-1.2,-0.5]], s:[[[-6.3,-0.8,-0.3],[-6.8,-0.4,-0.7]]] },
+                { m:[[-5.35,0,0],[-5.8,1.5,0.6],[-6.5,2.3,0.4]], s:[[[-5.8,1.5,0.6],[-6.2,2.0,1.0]]] },
+                { m:[[-5.35,0,0],[-6.0,0.2,0.8],[-6.8,0.5,1.2]], s:[] }
+            ];
+            dendPaths.forEach(function(dp) {
+                var pts = dp.m.map(function(p){ return new THREE.Vector3(p[0],p[1],p[2]); });
+                var tube = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 16, 0.06, 6, false), dendMat.clone());
+                G.add(tube); dendMeshes.push(tube);
+                dp.s.forEach(function(sub) {
+                    var sp = sub.map(function(p){ return new THREE.Vector3(p[0],p[1],p[2]); });
+                    var mat = dendMat.clone(); mat.opacity = 0.6;
+                    var st = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sp), 8, 0.035, 4, false), mat);
+                    G.add(st); dendMeshes.push(st);
+                });
+            });
+
+            // Dendritic spines (tiny spheres at tips)
+            var spineTips = [[-7.2,1.8,0.2],[-6.8,2.0,0.8],[-7.5,2.2,-0.2],[-7.5,0.6,-0.3],[-7.0,-0.3,-0.8],[-7.0,-1.5,0.5],[-6.5,-1.8,0.8],[-7.2,-2.0,0.1],[-7.3,-1.2,-0.5],[-6.5,2.3,0.4],[-6.2,2.0,1.0],[-6.8,0.5,1.2]];
+            var spines = spineTips.map(function(p) {
+                var m = new THREE.Mesh(new THREE.SphereGeometry(0.05, 6, 6), new THREE.MeshBasicMaterial({ color: 0x5ea0c0, transparent: true, opacity: 0.7 }));
+                m.position.set(p[0], p[1], p[2]); G.add(m); return m;
+            });
+
+            // ═══ AXON HILLOCK (transition zone) ═══
+            var hillock = new THREE.Mesh(new THREE.ConeGeometry(0.22, 0.6, 12, 1, true),
+                new THREE.MeshPhongMaterial({ color: 0x4a90b0, transparent: true, opacity: 0.8 }));
+            hillock.rotation.z = Math.PI / 2;
+            hillock.position.set(-3.5, 0, 0);
+            G.add(hillock);
+
+            // ═══ MYELINATED AXON ═══
+            var AXON_S = -3.2, AXON_E = 5.0, AXON_L = AXON_E - AXON_S;
             var axonPts = [];
-            for (var i = 0; i <= 40; i++) {
-                var t = i / 40;
-                axonPts.push(new THREE.Vector3(
-                    -2.85 + t * 8.5,
-                    Math.sin(t * Math.PI * 2) * 0.12,
-                    Math.cos(t * Math.PI * 3) * 0.08
-                ));
+            for (var i = 0; i <= 80; i++) {
+                var t = i / 80;
+                axonPts.push(new THREE.Vector3(AXON_S + t * AXON_L, Math.sin(t * Math.PI * 2.5) * 0.08, Math.cos(t * Math.PI * 3) * 0.05));
             }
             var axonCurve = new THREE.CatmullRomCurve3(axonPts);
-            var axonGeo = new THREE.TubeGeometry(axonCurve, 64, 0.07, 8, false);
-            var axonMat = new THREE.MeshPhongMaterial({ color: 0x2dd4bf, transparent: true, opacity: 0.9, shininess: 40 });
-            var axonMesh = new THREE.Mesh(axonGeo, axonMat);
-            neuronGroup.add(axonMesh);
+            var axonMat = new THREE.MeshPhongMaterial({ color: 0x4a90b0, transparent: true, opacity: 0.85, shininess: 50, emissive: 0x4a90b0, emissiveIntensity: 0.05 });
+            G.add(new THREE.Mesh(new THREE.TubeGeometry(axonCurve, 128, 0.055, 8, false), axonMat));
 
-            // ── Myelin Sheaths ──
-            var myelinMeshes = [];
-            for (var i = 0; i < 7; i++) {
-                var t = (i + 0.5) / 7;
-                var pos = axonCurve.getPoint(t);
-                var mGeo = new THREE.CylinderGeometry(0.2, 0.2, 0.5, 12, 1, true);
-                var mMat = new THREE.MeshPhongMaterial({ color: 0x2dd4bf, transparent: true, opacity: 0.5, side: THREE.DoubleSide });
-                var mMesh = new THREE.Mesh(mGeo, mMat);
-                mMesh.position.copy(pos);
-                mMesh.rotation.z = Math.PI / 2;
-                neuronGroup.add(mMesh);
-                myelinMeshes.push(mMesh);
+            // ── Myelin Sheaths with Nodes of Ranvier ──
+            var MYELIN_N = 6, myelinMeshes = [], nodeTs = [];
+            for (var i = 0; i < MYELIN_N; i++) {
+                var tS = (i * 0.85 / MYELIN_N) + 0.05;
+                var tE = tS + 0.85 / MYELIN_N - 0.025;
+                var tM = (tS + tE) / 2;
+                var mPos = axonCurve.getPoint(tM);
+                var mMat = new THREE.MeshPhongMaterial({ color: 0x7eb8d4, transparent: true, opacity: 0.35, side: THREE.DoubleSide, shininess: 40, specular: 0x7eb8d4 });
+                var mMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, AXON_L * (tE - tS) * 0.8, 16, 1, true), mMat);
+                mMesh.position.copy(mPos); mMesh.rotation.z = Math.PI / 2;
+                G.add(mMesh); myelinMeshes.push(mMesh);
+
+                // Node of Ranvier (gold ring between sheaths)
+                if (i < MYELIN_N - 1) {
+                    var nT = tE + 0.012; nodeTs.push(nT);
+                    var nPos = axonCurve.getPoint(nT);
+                    var nodeRing = new THREE.Mesh(new THREE.TorusGeometry(0.12, 0.02, 8, 16),
+                        new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.35 }));
+                    nodeRing.position.copy(nPos); nodeRing.rotation.y = Math.PI / 2;
+                    G.add(nodeRing);
+                }
             }
 
-            // ── Muscle Fiber ──
-            var muscleGeo = new THREE.BoxGeometry(1.3, 0.7, 0.5);
-            var muscleMat = new THREE.MeshPhongMaterial({ color: 0xffaa00, transparent: true, opacity: 0.75, shininess: 30 });
-            var muscle = new THREE.Mesh(muscleGeo, muscleMat);
-            muscle.position.set(6.5, 0, 0);
-            neuronGroup.add(muscle);
+            // ═══ AXON TERMINALS + SYNAPTIC BOUTONS ═══
+            var boutons = [];
+            [[5,0,0],[5.5,0.35,0],[6.05,0.4,0]],
+            [[5,0,0],[5.5,0,0],[6.05,0,0]],
+            [[5,0,0],[5.5,-0.35,0],[6.05,-0.4,0]];
+            var termPaths = [
+                [[5,0,0],[5.5,0.35,0],[6.05,0.4,0]],
+                [[5,0,0],[5.5,0,0],[6.05,0,0]],
+                [[5,0,0],[5.5,-0.35,0],[6.05,-0.4,0]]
+            ];
+            termPaths.forEach(function(path) {
+                var pts = path.map(function(p){ return new THREE.Vector3(p[0],p[1],p[2]); });
+                G.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 12, 0.04, 6, false),
+                    new THREE.MeshPhongMaterial({ color: 0x4a90b0, transparent: true, opacity: 0.8 })));
+                // Bouton sphere
+                var ep = pts[pts.length - 1];
+                var bm = new THREE.Mesh(new THREE.SphereGeometry(0.13, 12, 12),
+                    new THREE.MeshPhongMaterial({ color: 0x4a90b0, emissive: 0x4a90b0, emissiveIntensity: 0.1, transparent: true, opacity: 0.85 }));
+                bm.position.copy(ep); G.add(bm); boutons.push(bm);
+            });
 
-            // ── Synapse dots ──
-            var synapseDots = [];
-            for (var d = -1; d <= 1; d++) {
-                var sGeo = new THREE.SphereGeometry(0.07, 8, 8);
-                var sMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24 });
-                var sDot = new THREE.Mesh(sGeo, sMat);
-                sDot.position.set(5.8, d * 0.15, 0);
-                neuronGroup.add(sDot);
-                synapseDots.push(sDot);
+            // Synaptic vesicles (inside boutons)
+            var vesicles = [];
+            boutons.forEach(function(b) {
+                for (var v = 0; v < 4; v++) {
+                    var vm = new THREE.Mesh(new THREE.SphereGeometry(0.03, 6, 6),
+                        new THREE.MeshBasicMaterial({ color: 0x7eb8d4, transparent: true, opacity: 0.55 }));
+                    vm.position.set(b.position.x + (Math.random()-0.5)*0.08, b.position.y + (Math.random()-0.5)*0.08, b.position.z + (Math.random()-0.5)*0.08);
+                    vm.userData = { basePos: vm.position.clone() };
+                    G.add(vm); vesicles.push(vm);
+                }
+            });
+
+            // ═══ MUSCLE FIBER BUNDLE (striated) ═══
+            var muscleFibers = [], muscleMats = [];
+            [-0.3, 0, 0.3].forEach(function(z) {
+                var fMat = new THREE.MeshPhongMaterial({ color: 0xe8a050, transparent: true, opacity: 0.75, shininess: 30 });
+                var f = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 1.8, 12, 8, false), fMat);
+                f.rotation.z = Math.PI / 2; f.position.set(7.5, 0, z);
+                G.add(f); muscleFibers.push(f); muscleMats.push(fMat);
+            });
+            // Striations (bands on muscle)
+            muscleFibers.forEach(function(fiber) {
+                for (var s = -3; s <= 3; s++) {
+                    var sr = new THREE.Mesh(new THREE.TorusGeometry(0.21, 0.008, 4, 16),
+                        new THREE.MeshBasicMaterial({ color: 0xcc8844, transparent: true, opacity: 0.2 }));
+                    sr.position.set(fiber.position.x + s * 0.22, fiber.position.y, fiber.position.z);
+                    sr.rotation.y = Math.PI / 2; G.add(sr);
+                }
+            });
+
+            // ═══ ION PARTICLE POOL (Na+ cyan, K+ green) ═══
+            var ION_N = 36, ions = [];
+            for (var ip = 0; ip < ION_N; ip++) {
+                var isNa = ip < ION_N / 2;
+                var im = new THREE.Mesh(new THREE.SphereGeometry(0.04, 4, 4),
+                    new THREE.MeshBasicMaterial({ color: isNa ? 0x4dc9f6 : 0x22cc88, transparent: true, opacity: 0 }));
+                im.visible = false;
+                im.userData = { type: isNa ? 'Na' : 'K', on: false, life: 0, vel: new THREE.Vector3() };
+                G.add(im); ions.push(im);
             }
 
-            // ── Signal Pulse ──
-            var pulseGeo = new THREE.SphereGeometry(0.15, 12, 12);
+            // ═══ NEUROTRANSMITTER PARTICLE POOL ═══
+            var NT_N = 18, nts = [];
+            for (var nt = 0; nt < NT_N; nt++) {
+                var nm = new THREE.Mesh(new THREE.SphereGeometry(0.025, 4, 4),
+                    new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0 }));
+                nm.visible = false;
+                nm.userData = { on: false, life: 0, vel: new THREE.Vector3() };
+                G.add(nm); nts.push(nm);
+            }
+
+            // ═══ DENDRITE INPUT SIGNAL POOL ═══
+            var DS_N = 4, dsigs = [];
+            for (var ds = 0; ds < DS_N; ds++) {
+                var dm = new THREE.Mesh(new THREE.SphereGeometry(0.06, 6, 6),
+                    new THREE.MeshBasicMaterial({ color: 0x7eb8d4, transparent: true, opacity: 0 }));
+                dm.visible = false;
+                dm.userData = { on: false, pathIdx: 0, t: 0 };
+                G.add(dm); dsigs.push(dm);
+            }
+
+            // ═══ ACTION POTENTIAL SIGNAL ═══
             var pulseMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.95 });
-            var pulse = new THREE.Mesh(pulseGeo, pulseMat);
-            var pulseGlow = new THREE.PointLight(0xfbbf24, 0.8, 3);
-            pulse.add(pulseGlow);
-            neuronGroup.add(pulse);
-            var pulseT = 0;
+            var pulse = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 16), pulseMat);
+            var pulseGlow = new THREE.PointLight(0xffd700, 1.0, 4);
+            pulse.add(pulseGlow); G.add(pulse);
+            // Trailing afterglow
+            var trailMat = new THREE.MeshBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.35 });
+            var trail = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 8), trailMat);
+            G.add(trail);
 
-            // ── Block X marker (hidden initially) ──
-            var blockMat = new THREE.LineBasicMaterial({ color: 0xff3333, linewidth: 2 });
-            var bPts1 = [new THREE.Vector3(-0.3,0.3,0), new THREE.Vector3(0.3,-0.3,0)];
-            var bPts2 = [new THREE.Vector3(0.3,0.3,0), new THREE.Vector3(-0.3,-0.3,0)];
-            var blockLine1 = new THREE.Line(new THREE.BufferGeometry().setFromPoints(bPts1), blockMat);
-            var blockLine2 = new THREE.Line(new THREE.BufferGeometry().setFromPoints(bPts2), blockMat);
+            // ═══ BLOCK X (advanced stage) ═══
             var blockGroup = new THREE.Group();
-            blockGroup.add(blockLine1, blockLine2);
-            blockGroup.visible = false;
-            neuronGroup.add(blockGroup);
+            var blkM = new THREE.LineBasicMaterial({ color: 0xff3333, linewidth: 2 });
+            blockGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-0.35,0.35,0), new THREE.Vector3(0.35,-0.35,0)]), blkM));
+            blockGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0.35,0.35,0), new THREE.Vector3(-0.35,-0.35,0)]), blkM));
+            blockGroup.visible = false; G.add(blockGroup);
 
-            // Center the neuron
-            neuronGroup.position.x = -1;
+            // Center neuron group
+            G.position.x = -1.2;
 
-            // ── Stage descriptions ──
+            // ═══ STAGE DEFINITIONS (biologically accurate) ═══
+            var stages = [
+                { somaC: 0x1a5a7a, somaOp: 0.88, somaEm: 0.1, dendOp: 0.85, spineOp: 0.7, axOp: 0.85,
+                  myOp: [0.35,0.35,0.35,0.35,0.35,0.35], musC: 0xe8a050, musS: 1.0, musOp: 0.75,
+                  sigSpd: 1.0, sigOp: 0.95, sigStop: 1.0, aggOp: 0, block: false,
+                  doIons: true, doNT: true, doContract: true },
+                { somaC: 0x4a7080, somaOp: 0.8, somaEm: 0.05, dendOp: 0.5, spineOp: 0.35, axOp: 0.7,
+                  myOp: [0.35,0.35,0.3,0.22,0.12,0.05], musC: 0xcc9040, musS: 0.94, musOp: 0.65,
+                  sigSpd: 0.7, sigOp: 0.8, sigStop: 1.0, aggOp: 0.45, block: false,
+                  doIons: true, doNT: true, doContract: true },
+                { somaC: 0x6a5a40, somaOp: 0.7, somaEm: 0.02, dendOp: 0.22, spineOp: 0.12, axOp: 0.42,
+                  myOp: [0.2,0.12,0.06,0.02,0,0], musC: 0x886644, musS: 0.8, musOp: 0.5,
+                  sigSpd: 0.35, sigOp: 0.5, sigStop: 0.5, aggOp: 0.75, block: false,
+                  doIons: false, doNT: false, doContract: false },
+                { somaC: 0x553322, somaOp: 0.5, somaEm: 0, dendOp: 0.08, spineOp: 0.04, axOp: 0.15,
+                  myOp: [0.05,0,0,0,0,0], musC: 0x664433, musS: 0.6, musOp: 0.35,
+                  sigSpd: 0, sigOp: 0, sigStop: 0.25, aggOp: 1.0, block: true,
+                  doIons: false, doNT: false, doContract: false }
+            ];
+            var cStage = 0;
+
+            // Stage descriptions (detailed neuroscience)
             var descs = [
-                '<strong style="color:#2dd4bf;">Healthy:</strong> Electrical signals travel rapidly along the myelinated axon at up to 120 m/s. At the synapse, acetylcholine triggers immediate muscle contraction.',
-                '<strong style="color:#fbbf24;">Stage 1 — Early:</strong> Some dendrites begin to retract. The cell body shows early stress. Signal transmission is slightly delayed but still reaches the muscle.',
-                '<strong style="color:#ff9966;">Stage 2 — Mid:</strong> Myelin sheath degrades significantly. The axon weakens. Signals slow dramatically and may not reach the muscle. Muscle begins to weaken.',
-                '<strong style="color:#ff3333;">Stage 3 — Advanced:</strong> Motor neuron is severely damaged. Axon fragmented, myelin lost. Signal is completely blocked. Muscle atrophies from lack of stimulation.'
+                '<strong style="color:#7eb8d4;">Healthy Motor Neuron:</strong> Action potentials race along the myelinated axon via <em>saltatory conduction</em> — jumping between Nodes of Ranvier at up to 120 m/s. Na⁺ ions rush in (blue) and K⁺ ions flow out (green) at each node, propagating the electrical signal. At the neuromuscular junction, acetylcholine vesicles release neurotransmitters that trigger immediate muscle fiber contraction.',
+                '<strong style="color:#fbbf24;">Early ALS:</strong> TDP-43 protein aggregates (brown) accumulate in the cell body, disrupting normal cellular function. Some dendrites begin to retract, reducing synaptic input. Distal myelin starts to thin. Signal conduction is slightly delayed but still reaches the muscle. Fasciculations (involuntary twitching) may occur.',
+                '<strong style="color:#ff9966;">Progressive ALS:</strong> Significant myelin degradation disrupts saltatory conduction. The axon thins as axonal transport fails. Signals slow dramatically and may not reach the neuromuscular junction. Synaptic vesicle release fails — denervation begins. Muscle fibers start to atrophy from lack of stimulation.',
+                '<strong style="color:#ff3333;">Advanced ALS:</strong> Motor neuron is severely degenerated. TDP-43 aggregates fill the soma. Axon is fragmented, myelin almost entirely lost. Signal transmission is completely blocked. The neuromuscular junction is destroyed. Muscle fibers atrophy from complete denervation — voluntary movement is lost.'
             ];
 
-            // ── Apply stage ──
             function applyStage(idx) {
-                var s = stages[idx];
-                currentStage = idx;
-                somaMat.color.setHex(s.soma);
-                axonMat.color.setHex(s.axon);
-                axonMat.opacity = s.axonOp;
-                dendrites.forEach(function(d) {
-                    d.material.color.setHex(s.dendrite);
-                    d.material.opacity = s.dendriteOp;
-                });
-                myelinMeshes.forEach(function(m, i) {
-                    m.material.color.setHex(s.myelin);
-                    m.material.opacity = s.myelinOp[i] || 0;
-                });
-                muscleMat.color.setHex(s.muscle);
-                muscle.scale.setScalar(s.muscleScale);
-                blockGroup.visible = (idx >= 3);
-                if (idx >= 3) {
-                    var bPos = axonCurve.getPoint(s.signalStop);
-                    blockGroup.position.copy(bPos);
-                }
+                var s = stages[idx]; cStage = idx;
+                somaMat.color.setHex(s.somaC); somaMat.opacity = s.somaOp; somaMat.emissiveIntensity = s.somaEm;
+                dendMeshes.forEach(function(d) { d.material.opacity = s.dendOp; });
+                spines.forEach(function(sp) { sp.material.opacity = s.spineOp; });
+                axonMat.opacity = s.axOp;
+                myelinMeshes.forEach(function(m, i) { m.material.opacity = s.myOp[i] || 0; });
+                muscleMats.forEach(function(mm) { mm.color.setHex(s.musC); mm.opacity = s.musOp; });
+                aggregates.forEach(function(a) { a.material.opacity = s.aggOp; });
+                blockGroup.visible = s.block;
+                if (s.block) { var bp = axonCurve.getPoint(s.sigStop); blockGroup.position.copy(bp); }
                 document.getElementById('stage-desc-text').innerHTML = descs[idx];
-                // Update buttons
                 document.querySelectorAll('.neuron-stage-btn').forEach(function(btn) {
-                    btn.classList.toggle('active', parseInt(btn.dataset.stage) === idx);
-                    if (parseInt(btn.dataset.stage) === idx) {
-                        btn.style.opacity = '1';
-                        btn.style.transform = 'scale(1.05)';
-                    } else {
-                        btn.style.opacity = '0.7';
-                        btn.style.transform = 'scale(1)';
+                    var act = parseInt(btn.dataset.stage) === idx;
+                    btn.classList.toggle('active', act);
+                    btn.style.opacity = act ? '1' : '0.6';
+                    btn.style.transform = act ? 'scale(1.05)' : 'scale(1)';
+                });
+            }
+
+            // ── Spawn ion burst at Node of Ranvier ──
+            function spawnIons(nodeT) {
+                var pos = axonCurve.getPoint(nodeT); var ct = 0;
+                ions.forEach(function(p) {
+                    if (!p.userData.on && ct < 6) {
+                        p.userData.on = true; p.userData.life = 1.0;
+                        p.position.copy(pos);
+                        var dir = p.userData.type === 'Na' ? -1 : 1;
+                        p.userData.vel.set((Math.random()-0.5)*0.02, dir*(0.03+Math.random()*0.04), (Math.random()-0.5)*0.03);
+                        p.material.opacity = 0.85; p.visible = true; ct++;
                     }
                 });
             }
 
-            // ── Button handlers ──
-            document.querySelectorAll('.neuron-stage-btn').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    applyStage(parseInt(this.dataset.stage));
+            // ── Spawn neurotransmitter release at NMJ ──
+            function spawnNT() {
+                var ct = 0;
+                nts.forEach(function(p) {
+                    if (!p.userData.on && ct < 12) {
+                        p.userData.on = true; p.userData.life = 1.0;
+                        var bi = ct % boutons.length;
+                        p.position.copy(boutons[bi].position);
+                        p.userData.vel.set(0.025+Math.random()*0.015, (Math.random()-0.5)*0.01, (Math.random()-0.5)*0.01);
+                        p.material.opacity = 0.9; p.visible = true; ct++;
+                    }
                 });
+            }
+
+            // Button handlers
+            document.querySelectorAll('.neuron-stage-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() { applyStage(parseInt(this.dataset.stage)); });
             });
 
-            // ── Mouse parallax ──
+            // Mouse parallax
             var mx = 0, my = 0;
             wrap.addEventListener('mousemove', function(e) {
-                var rect = wrap.getBoundingClientRect();
-                mx = ((e.clientX - rect.left) / rect.width - 0.5) * 0.4;
-                my = ((e.clientY - rect.top) / rect.height - 0.5) * 0.3;
+                var r = wrap.getBoundingClientRect();
+                mx = ((e.clientX - r.left) / r.width - 0.5) * 0.3;
+                my = ((e.clientY - r.top) / r.height - 0.5) * 0.2;
             });
 
-            // ── Resize ──
+            // Resize
             window.addEventListener('resize', function() {
                 var nW = wrap.clientWidth, nH = wrap.clientHeight;
                 if (nW < 10 || nH < 10) return;
-                camera.aspect = nW / nH;
-                camera.updateProjectionMatrix();
-                renderer.setSize(nW, nH);
+                camera.aspect = nW / nH; camera.updateProjectionMatrix(); renderer.setSize(nW, nH);
             });
 
-            // ── Animate ──
-            var frame = 0;
+            // ═══ ANIMATION LOOP ═══
+            var fr = 0, pulseT = 0, lastNode = -1, musclePhase = 0, ntDone = false;
             function animate() {
-                requestAnimationFrame(animate);
-                frame++;
+                requestAnimationFrame(animate); fr++;
+                var s = stages[cStage];
 
-                // Gentle auto-rotate + mouse parallax
-                neuronGroup.rotation.y = Math.sin(frame * 0.003) * 0.08 + mx * 0.3;
-                neuronGroup.rotation.x = Math.sin(frame * 0.002) * 0.04 + my * 0.2;
+                // Subtle rotation + parallax
+                G.rotation.y = Math.sin(fr * 0.002) * 0.06 + mx * 0.25;
+                G.rotation.x = Math.sin(fr * 0.0015) * 0.03 + my * 0.15;
 
                 // Soma breathing
-                var breathe = 1 + Math.sin(frame * 0.02) * 0.02;
-                soma.scale.setScalar(breathe);
-                nucleus.scale.setScalar(breathe * 0.95);
+                var br = 1 + Math.sin(fr * 0.018) * 0.015;
+                soma.scale.setScalar(br); nucleus.scale.setScalar(br * 0.95);
 
-                // Signal pulse
-                var s = stages[currentStage];
-                if (s.signal > 0) {
-                    pulseT += 0.005 * (currentStage === 0 ? 1 : currentStage === 1 ? 0.7 : 0.4);
-                    if (pulseT > s.signalStop) pulseT = 0;
-                    var pos = axonCurve.getPoint(Math.min(pulseT / s.signalStop, 1) * s.signalStop);
-                    // Offset to match neuron group position plus soma start
-                    pulse.position.copy(pos);
-                    pulseMat.opacity = s.signal * (0.6 + 0.4 * Math.sin(frame * 0.1));
-                    pulseGlow.intensity = s.signal * 0.8;
+                // Mitochondria gentle drift
+                mitochondria.forEach(function(m, i) { m.position.y = soma.position.y + mitoPos[i][1] + Math.sin(fr * 0.012 + i) * 0.012; });
+
+                // Aggregate rotation
+                aggregates.forEach(function(a, i) { a.rotation.x = fr * 0.005 + i; a.rotation.y = fr * 0.007 + i * 0.5; });
+
+                // ═══ ACTION POTENTIAL ═══
+                if (s.sigSpd > 0) {
+                    pulseT += 0.004 * s.sigSpd;
+                    if (pulseT > s.sigStop) { pulseT = 0; lastNode = -1; ntDone = false; }
+
+                    var normT = Math.min(pulseT / s.sigStop, 1) * s.sigStop;
+                    pulse.position.copy(axonCurve.getPoint(normT));
+                    pulseMat.opacity = s.sigOp * (0.6 + 0.4 * Math.sin(fr * 0.15));
+                    pulseGlow.intensity = s.sigOp * 1.2;
                     pulse.visible = true;
 
-                    // Muscle pulse when signal reaches end (healthy only)
-                    if (currentStage === 0 && pulseT > 0.95) {
-                        var mBreathe = 1 + Math.sin(frame * 0.15) * 0.04;
-                        muscle.scale.setScalar(mBreathe);
+                    // Trail
+                    trail.position.copy(axonCurve.getPoint(Math.max(normT - 0.03, 0)));
+                    trailMat.opacity = s.sigOp * 0.3; trail.visible = true;
+
+                    // Saltatory conduction — ion bursts at Nodes of Ranvier
+                    if (s.doIons) {
+                        nodeTs.forEach(function(nT, ni) {
+                            if (normT >= nT && normT < nT + 0.05 && ni > lastNode) { lastNode = ni; spawnIons(nT); }
+                        });
                     }
+
+                    // NT release at synapse
+                    if (s.doNT && normT > 0.92 && !ntDone) {
+                        ntDone = true; spawnNT();
+                        boutons.forEach(function(b) { b.material.emissiveIntensity = 0.5; });
+                    }
+
+                    // Muscle contraction
+                    if (s.doContract && normT > 0.95) {
+                        musclePhase += 0.08;
+                        var c = Math.sin(musclePhase) * 0.06;
+                        muscleFibers.forEach(function(f) {
+                            f.scale.x = s.musS * (1 - c * 0.3);
+                            f.scale.y = s.musS * (1 + c * 0.5);
+                            f.scale.z = s.musS * (1 + c * 0.5);
+                        });
+                    } else {
+                        musclePhase = 0;
+                        muscleFibers.forEach(function(f) { f.scale.setScalar(s.musS); });
+                    }
+
+                    // Reset bouton glow
+                    if (normT < 0.1) boutons.forEach(function(b) { b.material.emissiveIntensity = Math.max(0.1, b.material.emissiveIntensity - 0.01); });
                 } else {
-                    pulse.visible = false;
+                    pulse.visible = false; trail.visible = false;
+                    muscleFibers.forEach(function(f) { f.scale.setScalar(s.musS); });
                 }
 
-                // Block X rotation
-                if (blockGroup.visible) {
-                    blockGroup.rotation.z = Math.sin(frame * 0.03) * 0.1;
+                // ═══ UPDATE ION PARTICLES ═══
+                ions.forEach(function(p) {
+                    if (p.userData.on) {
+                        p.userData.life -= 0.015;
+                        if (p.userData.life <= 0) { p.userData.on = false; p.visible = false; return; }
+                        p.position.add(p.userData.vel);
+                        p.material.opacity = p.userData.life * 0.7;
+                        p.userData.vel.multiplyScalar(0.96);
+                    }
+                });
+
+                // ═══ UPDATE NT PARTICLES ═══
+                nts.forEach(function(p) {
+                    if (p.userData.on) {
+                        p.userData.life -= 0.012;
+                        if (p.userData.life <= 0) { p.userData.on = false; p.visible = false; return; }
+                        p.position.add(p.userData.vel);
+                        p.material.opacity = p.userData.life * 0.8;
+                    }
+                });
+
+                // ═══ DENDRITE INPUT SIGNALS (periodic flashes toward soma) ═══
+                if (fr % 80 === 0 && s.dendOp > 0.2) {
+                    dsigs.forEach(function(d, i) {
+                        if (!d.userData.on && i < 2) {
+                            d.userData.on = true; d.userData.pathIdx = i % dendPaths.length; d.userData.t = 0; d.visible = true;
+                        }
+                    });
                 }
+                dsigs.forEach(function(d) {
+                    if (d.userData.on) {
+                        d.userData.t += 0.025;
+                        if (d.userData.t >= 1) { d.userData.on = false; d.visible = false; return; }
+                        var path = dendPaths[d.userData.pathIdx].m;
+                        var rT = 1 - d.userData.t;
+                        var idx = Math.min(Math.floor(rT * (path.length - 1)), path.length - 2);
+                        var lT = rT * (path.length - 1) - idx;
+                        d.position.set(
+                            path[idx][0] + (path[idx+1][0] - path[idx][0]) * lT,
+                            path[idx][1] + (path[idx+1][1] - path[idx][1]) * lT,
+                            path[idx][2] + (path[idx+1][2] - path[idx][2]) * lT
+                        );
+                        d.material.opacity = 0.7 * Math.sin(d.userData.t * Math.PI);
+                    }
+                });
+
+                // Vesicle gentle jitter
+                vesicles.forEach(function(v, i) {
+                    v.position.x = v.userData.basePos.x + Math.sin(fr * 0.02 + i) * 0.01;
+                    v.position.y = v.userData.basePos.y + Math.cos(fr * 0.025 + i * 0.5) * 0.01;
+                });
+
+                // Block rotation
+                if (blockGroup.visible) blockGroup.rotation.z = Math.sin(fr * 0.03) * 0.15;
 
                 renderer.render(scene, camera);
             }

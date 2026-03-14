@@ -6,7 +6,7 @@
 }
 .icu-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 16px 36px rgba(161,140,209,0.12);
+    box-shadow: 0 16px 36px rgba(30,58,95,0.10);
 }
 
 /* ── Equipment grid items ── */
@@ -15,7 +15,7 @@
 }
 .icu-equipment-grid > *:hover {
     border-color: var(--color-primary);
-    background: rgba(161,140,209,0.04);
+    background: rgba(30,58,95,0.04);
 }
 
 /* ── Hero nav links ── */
@@ -29,8 +29,11 @@
 
 /* ── Section headings — stronger ── */
 .icu-card h2, .icu-card h3 {
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.975rem;
+    color: #1e293b;
 }
 
 /* ── Checklist checkbox — satisfying check ── */
@@ -68,8 +71,10 @@ input[type="checkbox"]:checked + label {
 
 /* ── Body text — comfortable reading ── */
 .icu-card p, .icu-card li {
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    font-family: 'DM Sans', sans-serif;
+    color: #475569;
 }
 
 /* ── Lightbox refinement ── */

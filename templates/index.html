@@ -106,11 +106,11 @@
                         </div>
                         <div class="treatment-item">
                             <div class="treatment-item-name">
-                                <a href="https://www.denalitherapeutics.com" target="_blank" rel="noopener"
-                                    class="treatment-link-name">Denali Therapeutics</a>
-                                (DNL343)
+                                <a href="https://prilenia.com" target="_blank" rel="noopener"
+                                    class="treatment-link-name">Prilenia Therapeutics</a>
+                                (Pridopidine)
                             </div>
-                            <div class="treatment-item-desc">RIPK1 inhibitor - Blocks cell death</div>
+                            <div class="treatment-item-desc">Sigma-1 receptor agonist - Neuroprotection</div>
                         </div>
                         <div class="treatment-item">
                             <div class="treatment-item-name">
@@ -162,9 +162,13 @@
 </section>
 
 
-<!-- Cards Section (Explore) - Moved below ALS Research -->
+<!-- Cards Section (Explore) -->
 <section class="cards-section" id="explore-cards">
     <div class="container">
+        <div class="explore-section-header">
+            <h2 class="explore-section-title">Caregiver Tools & Guides</h2>
+            <p class="explore-section-desc">Practical resources designed for day-to-day ALS caregiving.</p>
+        </div>
         <div class="cards-grid">
             <a href="/home-icu-guide" class="card explore-card">
                 <h3 class="card-title">Home ICU Setup Guide</h3>
@@ -173,8 +177,7 @@
                     environment with medical-grade standards.
                 </p>
                 <span class="card-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" <svg
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
@@ -553,7 +556,18 @@ window.addEventListener('load', function() {
     draw();
   });
 
-  // ── EXPLORE CARDS ──
+  // ── EXPLORE SECTION ──
+  gsap.fromTo('.explore-section-header',
+    { y: 20, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      duration: 0.5,
+      ease: easeSmooth,
+      clearProps: 'opacity',
+      scrollTrigger: { trigger: '.cards-section', start: 'top 85%' }
+    }
+  );
+
   gsap.fromTo('.explore-card',
     { y: 32, opacity: 0 },
     {

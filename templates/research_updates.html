@@ -5,17 +5,17 @@
 {% block extra_css %}
 <style>
     :root {
-        --rp: #0f172a;
+        --rp: #1e3a5f;
         --rs: #64748b;
-        --ra: #0369a1;
+        --ra: #1e3a5f;
         --rbg: #ffffff;
         --rbg2: #f8fafc;
-        --rbd: #e5e7eb;
+        --rbd: #e2e8f0;
     }
 
     /* ── Page background ── */
     .research-page-bg {
-        background: #f4f5f7;
+        background: #f0f4f8;
         min-height: 100vh;
     }
 
@@ -23,7 +23,7 @@
     .rh {
         text-align: center;
         padding: 5rem 2rem 4rem;
-        background: linear-gradient(170deg, #0f172a 0%, #1e293b 55%, #334155 100%);
+        background: linear-gradient(170deg, #1a2f4a 0%, #223d5c 55%, #2a4f7c 100%);
         position: relative;
         overflow: hidden;
     }
@@ -32,7 +32,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(3,105,161,0.18) 0%, transparent 70%);
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.12) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -48,14 +48,14 @@
         border-radius: 9999px;
         margin-bottom: 1.25rem;
     }
-    .rh-badge i { color: #38bdf8; font-size: 0.75rem; }
+    .rh-badge i { color: #7eb8d4; font-size: 0.75rem; }
     .rh-badge span {
         color: rgba(255,255,255,0.7);
-        font-weight: 600;
-        font-size: 0.75rem;
+        font-weight: 700;
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Manrope', sans-serif;
     }
 
     .rh h1 {
@@ -66,12 +66,12 @@
         letter-spacing: -0.03em;
         font-family: 'Manrope', sans-serif;
     }
-    .rh h1 span { color: #38bdf8; }
+    .rh h1 span { color: #7eb8d4; }
 
     .rh p {
-        font-size: 1rem;
-        color: rgba(255,255,255,0.55);
-        max-width: 640px;
+        font-size: 1.125rem;
+        color: rgba(255,255,255,0.6);
+        max-width: 700px;
         margin: 0 auto 1.75rem;
         line-height: 1.7;
         font-family: 'DM Sans', sans-serif;
@@ -91,7 +91,7 @@
     }
 
     /* ── Tabs ── */
-    .rc { max-width: 1320px; margin: 0 auto; padding: 0 1.25rem 3rem; }
+    .rc { max-width: 1360px; margin: 0 auto; padding: 0 1.5rem 3rem; }
 
     .rtabs {
         display: flex;
@@ -113,12 +113,12 @@
         background: transparent;
         border: none;
         color: var(--rs);
-        font-weight: 800;
-        font-size: 1.25rem;
+        font-weight: 700;
+        font-size: 1.1rem;
         cursor: pointer;
         transition: all 0.2s ease;
         border-radius: 10px;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Manrope', sans-serif;
         white-space: nowrap;
     }
 
@@ -127,7 +127,7 @@
     .rtab.active {
         background: var(--ra);
         color: #fff;
-        box-shadow: 0 2px 10px rgba(3,105,161,0.25);
+        box-shadow: 0 2px 10px rgba(30,58,95,0.25);
     }
 
     /* ── Sections ── */
@@ -141,50 +141,54 @@
 
     .cat-intro {
         background: var(--rbg);
-        padding: 1.5rem 1.75rem;
-        border-radius: 12px;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        padding: 1.75rem 2rem;
+        border-radius: 14px;
+        margin-bottom: 1.75rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        border: 1px solid #eef2f7;
+        border-left: 4px solid #1e3a5f;
     }
     .cat-intro h2 {
-        font-size: 1.4rem;
-        font-weight: 700;
+        font-size: 1.5rem;
+        font-weight: 800;
         color: var(--rp);
-        margin: 0 0 0.4rem;
+        margin: 0 0 0.5rem;
         font-family: 'Manrope', sans-serif;
-        letter-spacing: -0.015em;
+        letter-spacing: -0.02em;
     }
     .cat-intro p {
         color: var(--rs);
         margin: 0;
-        line-height: 1.6;
-        font-size: 1rem;
+        line-height: 1.7;
+        font-size: 1.0625rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* ── Cards ── */
-    .research-items { display: grid; gap: 1rem; }
+    .research-items { display: grid; gap: 1.25rem; }
 
     .research-item {
         background: var(--rbg);
-        border-radius: 12px;
-        padding: 1.5rem 1.75rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        border-radius: 14px;
+        padding: 1.75rem 2rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
         transition: box-shadow 0.25s ease, transform 0.25s ease;
         position: relative;
         overflow: hidden;
+        border: 1px solid #eef2f7;
     }
     .research-item::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--ra), #38bdf8);
+        top: 0; left: 0; bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #1e3a5f, #7eb8d4);
         opacity: 0;
         transition: opacity 0.3s ease;
     }
     .research-item:hover {
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-        transform: translateY(-1px);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+        border-color: #d8e0ea;
     }
     .research-item:hover::before { opacity: 1; }
 
@@ -192,50 +196,55 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 0.875rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.875rem;
+        border-bottom: 1px solid #f0f3f7;
         gap: 0.75rem;
         flex-wrap: wrap;
     }
     .research-item-title { flex: 1; min-width: 200px; }
     .research-item-title h3 {
-        font-size: 1.3rem;
-        font-weight: 700;
+        font-size: 1.375rem;
+        font-weight: 800;
         color: var(--rp);
-        margin: 0 0 0.2rem;
+        margin: 0 0 0.25rem;
         font-family: 'Manrope', sans-serif;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.015em;
     }
     .research-item-subtitle {
         color: var(--rs);
-        font-size: 0.925rem;
+        font-size: 1rem;
         font-weight: 500;
-        line-height: 1.5;
+        line-height: 1.55;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* ── Phase / Status badges ── */
     .trial-phase {
         display: inline-block;
-        padding: 0.25rem 0.7rem;
-        border-radius: 6px;
-        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+        border-radius: 7px;
+        font-size: 0.8rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        background: #e0f2fe;
-        color: var(--ra);
+        background: #e8eef5;
+        color: #1e3a5f;
         white-space: nowrap;
         flex-shrink: 0;
+        font-family: 'Manrope', sans-serif;
     }
 
     .stage-badges { display: flex; gap: 0.375rem; flex-wrap: wrap; }
     .stage-badge {
-        padding: 0.2rem 0.6rem;
+        padding: 0.25rem 0.65rem;
         border-radius: 6px;
-        font-size: 0.75rem;
-        font-weight: 600;
+        font-size: 0.8rem;
+        font-weight: 700;
         white-space: nowrap;
+        font-family: 'Manrope', sans-serif;
     }
-    .stage-badge.early { background: #e0f2fe; color: #0369a1; }
+    .stage-badge.early { background: #e8eef5; color: #1e3a5f; }
     .stage-badge.mid { background: #f1f5f9; color: #475569; }
     .stage-badge.late { background: #e2e8f0; color: #334155; }
     .stage-badge.genetic { background: #ede9fe; color: #6d28d9; }
@@ -244,63 +253,67 @@
     /* ── Info Grid ── */
     .research-info-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0.625rem;
-        margin: 1rem 0;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.75rem;
+        margin: 1.125rem 0;
     }
 
     .info-item {
-        padding: 0.875rem 1rem;
+        padding: 1rem 1.15rem;
         background: #f8fafc;
         border-radius: 10px;
+        border: 1px solid #eef2f7;
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: 0.3rem;
     }
     .info-label {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         font-weight: 700;
         text-transform: uppercase;
         color: var(--rs);
-        letter-spacing: 0.07em;
-        font-family: 'DM Sans', sans-serif;
+        letter-spacing: 0.06em;
+        font-family: 'Manrope', sans-serif;
     }
     .info-value {
         color: var(--rp);
-        font-size: 0.975rem;
-        line-height: 1.5;
+        font-size: 1.0625rem;
+        line-height: 1.6;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* ── Boxes — note / warning / india ── */
     .note-box, .warning-box {
-        padding: 1rem 1.25rem;
+        padding: 1.15rem 1.4rem;
         border-radius: 10px;
-        margin-top: 0.875rem;
-        font-size: 0.95rem;
-        line-height: 1.6;
+        margin-top: 1rem;
+        font-size: 1.0625rem;
+        line-height: 1.7;
         border: none;
+        font-family: 'DM Sans', sans-serif;
     }
-    .note-box { background: #f0f7ff; color: #1e3a5f; }
-    .warning-box { background: #f8f8f8; color: #334155; }
+    .note-box { background: #f0f7ff; color: #1e3a5f; border-left: 3px solid #7eb8d4; }
+    .warning-box { background: #fafafa; color: #334155; border-left: 3px solid #94a3b8; }
 
     .note-box strong, .warning-box strong {
         display: flex;
         align-items: center;
-        gap: 0.35rem;
-        margin-bottom: 0.4rem;
+        gap: 0.4rem;
+        margin-bottom: 0.5rem;
         font-weight: 700;
         color: var(--rp);
-        font-size: 0.8125rem;
+        font-size: 0.875rem;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Manrope', sans-serif;
     }
 
     .india-info {
         background: #fafbfc;
-        border: 1px solid #eef0f2;
-        border-radius: 10px;
-        padding: 1rem 1.15rem;
+        border: 1px solid #eef2f7;
+        border-left: 3px solid #1e3a5f;
+        border-radius: 0 10px 10px 0;
+        padding: 1.1rem 1.25rem;
         margin-top: 1rem;
     }
     .india-info-header {
@@ -313,15 +326,16 @@
     .india-info-header span {
         font-weight: 700;
         color: var(--rp);
-        font-size: 0.8125rem;
+        font-size: 0.875rem;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Manrope', sans-serif;
     }
     .india-info-content {
         color: var(--rs);
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        font-family: 'DM Sans', sans-serif;
     }
     .india-info-content ul { margin: 0.4rem 0 0 1.15rem; padding: 0; }
     .india-info-content li { margin-bottom: 0.2rem; }
@@ -329,23 +343,23 @@
     /* ── Source links ── */
     .research-actions {
         display: flex;
-        gap: 0.4rem;
-        margin-top: 1.125rem;
-        padding-top: 1rem;
-        border-top: 1px solid #f0f0f0;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+        padding-top: 1.125rem;
+        border-top: 1px solid #eef2f7;
         flex-wrap: wrap;
     }
     .research-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.35rem;
-        padding: 0.375rem 0.75rem;
+        gap: 0.4rem;
+        padding: 0.425rem 0.85rem;
         background: transparent;
         border: 1px solid var(--rbd);
-        border-radius: 7px;
+        border-radius: 8px;
         color: var(--ra);
         text-decoration: none;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         font-weight: 600;
         transition: all 0.2s ease;
         font-family: 'DM Sans', sans-serif;
@@ -360,29 +374,30 @@
     /* ── Stage recs (inside approved) ── */
     .stage-recs {
         background: #f8fafc;
+        border: 1px solid #eef2f7;
         border-radius: 10px;
-        padding: 1rem 1.15rem;
-        margin: 0.875rem 0;
+        padding: 1.15rem 1.3rem;
+        margin: 1rem 0;
     }
     .stage-recs > strong {
         display: block;
-        font-size: 0.8125rem;
+        font-size: 0.875rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.04em;
         color: var(--rp);
-        margin-bottom: 0.6rem;
-        font-family: 'DM Sans', sans-serif;
+        margin-bottom: 0.7rem;
+        font-family: 'Manrope', sans-serif;
     }
     .stage-row {
-        padding: 0.6rem 0.75rem;
+        padding: 0.7rem 0.85rem;
         background: #ffffff;
         border-radius: 8px;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.45rem;
     }
     .stage-row:last-child { margin-bottom: 0; }
-    .stage-row strong { font-size: 0.925rem; }
-    .stage-row p { margin: 0.15rem 0 0; font-size: 0.925rem; color: var(--rs); }
+    .stage-row strong { font-size: 1rem; font-family: 'Manrope', sans-serif; }
+    .stage-row p { margin: 0.2rem 0 0; font-size: 1rem; color: var(--rs); font-family: 'DM Sans', sans-serif; }
     .stage-pill {
         display: inline-block;
         padding: 1px 7px;
@@ -396,56 +411,60 @@
     /* ── Failed trials ── */
     .failed-card {
         background: #fff;
-        border-radius: 12px;
-        padding: 1.5rem 1.75rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        border-radius: 14px;
+        padding: 1.75rem 2rem;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
         position: relative;
         overflow: hidden;
+        border: 1px solid #eef2f7;
     }
     .failed-card::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 3px;
-        background: #e5e7eb;
+        top: 0; left: 0; bottom: 0;
+        width: 4px;
+        background: #e2e8f0;
     }
     .failed-badge {
         display: inline-block;
-        padding: 0.2rem 0.65rem;
-        border-radius: 5px;
-        font-size: 0.75rem;
+        padding: 0.25rem 0.7rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.04em;
         background: #fef2f2;
         color: #b91c1c;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.6rem;
+        font-family: 'Manrope', sans-serif;
     }
     .failed-card h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
+        font-size: 1.3rem;
+        font-weight: 800;
         color: var(--rp);
         margin: 0 0 0.625rem;
         font-family: 'Manrope', sans-serif;
     }
-    .failed-card p { font-size: 0.95rem; color: var(--rs); margin: 0.3rem 0; line-height: 1.55; }
+    .failed-card p { font-size: 1.0625rem; color: var(--rs); margin: 0.3rem 0; line-height: 1.65; font-family: 'DM Sans', sans-serif; }
     .failed-reason {
         background: #fafafa;
-        padding: 0.875rem 1rem;
+        padding: 1rem 1.15rem;
         border-radius: 8px;
         margin-top: 0.75rem;
-        font-size: 0.95rem;
+        font-size: 1.0625rem;
         color: #374151;
-        line-height: 1.55;
+        line-height: 1.65;
+        font-family: 'DM Sans', sans-serif;
     }
     .failed-lesson {
-        margin-top: 0.625rem;
-        font-size: 0.9rem;
+        margin-top: 0.75rem;
+        font-size: 1rem;
         color: var(--rs);
         font-style: italic;
         display: flex;
         align-items: flex-start;
-        gap: 0.35rem;
+        gap: 0.4rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* ── Responsive ── */
@@ -488,13 +507,13 @@
             <i class="fas fa-check-circle"></i> Approved (5)
         </button>
         <button class="rtab" onclick="showCategory('trials', this)">
-            <i class="fas fa-vial"></i> Clinical Trials (14)
+            <i class="fas fa-vial"></i> Clinical Trials (13)
         </button>
         <button class="rtab" onclick="showCategory('preclinical', this)">
-            <i class="fas fa-microscope"></i> Pre-Clinical (3)
+            <i class="fas fa-microscope"></i> Pre-Clinical (4)
         </button>
         <button class="rtab" onclick="showCategory('failed', this)">
-            <i class="fas fa-ban"></i> Discontinued (4)
+            <i class="fas fa-ban"></i> Discontinued (5)
         </button>
     </div>
 
@@ -613,7 +632,7 @@
                         <strong>Stage-Specific Recommendations</strong>
                         ${treatment.stage_specific_benefit.newly_diagnosed ? `
                             <div class="stage-row">
-                                <strong style="color:#0369a1;">Newly Diagnosed</strong>
+                                <strong style="color:#1e3a5f;">Newly Diagnosed</strong>
                                 <span class="stage-pill" style="background:${treatment.stage_specific_benefit.newly_diagnosed.benefit_level === 'HIGHEST' ? '#dbeafe' : '#f1f5f9'};color:${treatment.stage_specific_benefit.newly_diagnosed.benefit_level === 'HIGHEST' ? '#1d4ed8' : '#475569'};">${treatment.stage_specific_benefit.newly_diagnosed.benefit_level}</span>
                                 <p>${treatment.stage_specific_benefit.newly_diagnosed.recommendation}</p>
                             </div>
@@ -628,7 +647,7 @@
                         ${treatment.stage_specific_benefit.advanced_ventilator ? `
                             <div class="stage-row">
                                 <strong style="color:#1e293b;">Advanced</strong>
-                                <span class="stage-pill" style="background:#e5e7eb;color:#374151;">${treatment.stage_specific_benefit.advanced_ventilator.benefit_level}</span>
+                                <span class="stage-pill" style="background:#e2e8f0;color:#374151;">${treatment.stage_specific_benefit.advanced_ventilator.benefit_level}</span>
                                 <p>${treatment.stage_specific_benefit.advanced_ventilator.recommendation}</p>
                             </div>
                         ` : ''}
@@ -859,28 +878,28 @@
         modal.innerHTML = `
             <div style="background:#fff;border-radius:16px;max-width:780px;width:100%;max-height:90vh;overflow-y:auto;padding:2rem;box-shadow:0 24px 48px rgba(0,0,0,0.15);">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
-                    <h2 style="font-size:1.375rem;color:#0f172a;margin:0;font-family:'Manrope',sans-serif;font-weight:700;">${gwasData.full_title || gwasData.research_area}</h2>
+                    <h2 style="font-size:1.375rem;color:#1e3a5f;margin:0;font-family:'Manrope',sans-serif;font-weight:700;">${gwasData.full_title || gwasData.research_area}</h2>
                     <button onclick="this.closest('div[style]').parentElement.remove()" style="background:#f1f5f9;border:none;width:32px;height:32px;border-radius:8px;font-size:1.2rem;cursor:pointer;color:#64748b;display:flex;align-items:center;justify-content:center;">&times;</button>
                 </div>
                 <p style="color:#475569;line-height:1.65;margin-bottom:1.25rem;font-size:0.9rem;">${gwasData.concept}</p>
 
-                <h3 style="color:#0369a1;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-handshake"></i> Research Collaboration</h3>
+                <h3 style="color:#1e3a5f;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-handshake"></i> Research Collaboration</h3>
                 <div style="background:#f8fafc;border-radius:10px;padding:1.125rem;margin-bottom:1.25rem;font-size:0.875rem;">
                     <p><strong>Lead:</strong> ${gwasData.research_collaboration.lead_organization}</p>
-                    <hr style="border:none;border-top:1px solid #e5e7eb;margin:0.75rem 0;">
+                    <hr style="border:none;border-top:1px solid #e2e8f0;margin:0.75rem 0;">
                     <p style="margin-bottom:0.5rem;"><strong>India Sites:</strong></p>
                     ${gwasData.research_collaboration.india_sites.map(site => `
                         <div style="margin-left:0.75rem;margin-bottom:0.6rem;">
-                            <strong style="color:#0369a1;">${site.institution}</strong><br>
+                            <strong style="color:#1e3a5f;">${site.institution}</strong><br>
                             <span style="color:#475569;">Lead: ${site.lead_researcher}</span>
                             ${site.previous_work ? `<br><em style="color:#64748b;font-size:0.825rem;">${site.previous_work}</em>` : ''}
                         </div>
                     `).join('')}
-                    <hr style="border:none;border-top:1px solid #e5e7eb;margin:0.75rem 0;">
+                    <hr style="border:none;border-top:1px solid #e2e8f0;margin:0.75rem 0;">
                     <p><strong>International:</strong> ${gwasData.research_collaboration.international_partner.institution} (${gwasData.research_collaboration.international_partner.lead_researcher})</p>
                 </div>
 
-                <h3 style="color:#0369a1;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-flask"></i> Study Details</h3>
+                <h3 style="color:#1e3a5f;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-flask"></i> Study Details</h3>
                 <div style="background:#f0f7ff;border-radius:10px;padding:1.125rem;margin-bottom:1.25rem;font-size:0.875rem;">
                     <p><strong>Enrollment:</strong> ${gwasData.study_details.enrollment}</p>
                     <p><strong>Duration:</strong> ${gwasData.study_details.duration}</p>
@@ -891,14 +910,14 @@
                 </div>
 
                 ${gwasData.previous_indian_genetic_findings ? `
-                    <h3 style="color:#0369a1;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-dna"></i> Indian Genetic Findings</h3>
+                    <h3 style="color:#1e3a5f;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-dna"></i> Indian Genetic Findings</h3>
                     <div style="background:#f8fafc;border-radius:10px;padding:1.125rem;margin-bottom:1.25rem;font-size:0.875rem;">
                         <p><strong>Common Mutations:</strong> ${gwasData.previous_indian_genetic_findings.most_common_mutations}</p>
                         <p><strong>Rare Variants:</strong> ${gwasData.previous_indian_genetic_findings.rare_variants}</p>
                     </div>
                 ` : ''}
 
-                <h3 style="color:#0369a1;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-clipboard-check"></i> How to Participate</h3>
+                <h3 style="color:#1e3a5f;font-size:0.95rem;margin-bottom:0.75rem;font-family:'DM Sans',sans-serif;"><i class="fas fa-clipboard-check"></i> How to Participate</h3>
                 <div style="background:#f0fdf4;border-radius:10px;padding:1.125rem;margin-bottom:1.25rem;font-size:0.875rem;">
                     <p><strong>Eligibility:</strong> ${gwasData.participation.eligibility}</p>
                     <p><strong>Cost:</strong> <span style="color:#15803d;font-weight:600;">${gwasData.participation.cost}</span></p>
@@ -906,7 +925,7 @@
                 </div>
 
                 <div style="text-align:center;margin-top:1.25rem;">
-                    <button onclick="this.closest('div[style]').parentElement.remove()" style="padding:0.6rem 2rem;background:#0369a1;color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.85rem;font-family:'DM Sans',sans-serif;">Close</button>
+                    <button onclick="this.closest('div[style]').parentElement.remove()" style="padding:0.6rem 2rem;background:#1e3a5f;color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.85rem;font-family:'DM Sans',sans-serif;">Close</button>
                 </div>
             </div>
         `;

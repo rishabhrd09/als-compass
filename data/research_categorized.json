@@ -1,5 +1,5 @@
 {
-    "last_updated": "2026-03-11",
+    "last_updated": "2026-03-14",
     "data_sources": [
         "FDA Drug Approvals Database - March 2026",
         "ClinicalTrials.gov - March 2026",
@@ -53,7 +53,7 @@
                     "what_it_actually_does": "Modestly extends survival by reducing rate of motor neuron death. Does NOT bring back lost functions."
                 },
                 "quantified_benefit": {
-                    "survival_extension": "2-3 months in clinical trials; 6-21 months in real-world studies",
+                    "survival_extension": "2-3 months in clinical trials; 6-19 months in real-world studies",
                     "functional_improvement": "NONE - Only slows decline, does not improve",
                     "evidence_quality": "Strong (multiple Phase 3 trials, 25+ years of use)"
                 },
@@ -138,7 +138,7 @@
                 "realistic_expectations": "This drug only works in EARLY disease. If you are already using a wheelchair or ventilator, this drug is unlikely to help. It requires daily IV infusions for 14 days each month - significant time and cost burden.",
                 "india_info": {
                     "available": true,
-                    "cost_range_inr": "600-1,600 per vial",
+                    "cost_range_inr": "400-1,600 per vial",
                     "accessibility": "Available but requires hospital visits for IV infusion",
                     "administration_challenge": "Daily IV for 14 days/month - major logistical burden"
                 },
@@ -436,7 +436,7 @@
             {
                 "id": 7,
                 "trial_name": "XS-228 (iPSC Motor Neurons)",
-                "phase": "Phase 1/2 (FDA IND January 2025)",
+                "phase": "Phase 1 (FDA IND January 2025)",
                 "mechanism": "Lab-grown motor neurons from stem cells to REPLACE dead neurons",
                 "benefit_classification": {
                     "primary_effect": "NEURON REPLACEMENT (highly experimental)",
@@ -503,7 +503,7 @@
             {
                 "id": 10,
                 "trial_name": "NUZ-001/Monepantel (HEALEY Platform)",
-                "phase": "HEALEY Platform Trial (Late 2025)",
+                "phase": "HEALEY Platform Trial (FDA cleared Dec 2025, dosing early 2026)",
                 "mechanism": "mTOR inhibitor - induces autophagy to clear toxic protein aggregates (TDP-43)",
                 "scientific_validity": "Moderate (Phase 1 showed safety and biomarker engagement)",
                 "benefit_classification": {
@@ -516,7 +516,7 @@
                     "potential_for": "All ALS patients with TDP-43 pathology (97%)",
                     "current_status": "Early research"
                 },
-                "timeline": "Entering HEALEY Platform Q4 2025",
+                "timeline": "FDA cleared Dec 2025, first patient dosed March 2026 in HEALEY Platform",
                 "india_potential": "HIGH - Originally veterinary drug, may be accessible if repurposed",
                 "sources": [
                     "https://www.biospace.com/"
@@ -543,29 +543,6 @@
                 "sources": [
                     "https://www.spinogenix.com/",
                     "https://www.neurologylive.com/view/fda-authorizes-expanded-access-program-als-treatment-spg302"
-                ]
-            },
-            {
-                "id": 12,
-                "trial_name": "Dewpoint TDP-43 Condensate Modulator",
-                "phase": "Phase 3 cleared by FDA (December 2025)",
-                "mechanism": "First-in-class small molecule that corrects disease-associated TDP-43 condensates — addresses root pathology in >97% of ALS cases",
-                "benefit_classification": {
-                    "primary_effect": "TARGETS ROOT CAUSE — corrects TDP-43 dysfunction in 97%+ of ALS",
-                    "does_it_reverse_damage": "UNCLEAR — early research",
-                    "does_it_restore_function": "UNCLEAR — early research",
-                    "what_it_promises": "First therapy to directly correct TDP-43 condensate pathology, applicable to virtually all ALS patients"
-                },
-                "stage_specific_applicability": {
-                    "potential_for": "ALL ALS patients with TDP-43 pathology (97%+)",
-                    "current_status": "Phase 3 trial initiated"
-                },
-                "partnership": "Collaboration with Mitsubishi Tanabe Pharma (global ALS expertise) — deal potentially worth up to $480M",
-                "timeline": "FDA cleared Phase 3 trial December 2025. Development candidate announced January 2026",
-                "india_potential": "MEDIUM — Small molecule oral drug. Mitsubishi Tanabe partnership may facilitate global distribution",
-                "sources": [
-                    "https://dewpointx.com/",
-                    "https://www.labiotech.eu/best-biotech/als-companies/"
                 ]
             },
             {
@@ -646,9 +623,18 @@
                 "trial_name": "Zilucoplan (UCB) — Complement C5 Inhibitor",
                 "phase": "Phase 2/3 HEALEY Platform — STOPPED EARLY",
                 "mechanism": "Complement C5 inhibitor — aimed to block complement-mediated neuroinflammation",
-                "failure_date": "2023",
+                "failure_date": "February 2022",
                 "reason": "Stopped early for lack of benefit in ALS. Complement inhibition did not show efficacy",
                 "lesson": "Complement pathway may not be a viable therapeutic target in ALS"
+            },
+            {
+                "id": 5,
+                "trial_name": "DNL343 (Denali Therapeutics) — eIF2B Agonist",
+                "phase": "Phase 2/3 HEALEY Platform — FAILED",
+                "mechanism": "eIF2B agonist — aimed to restore protein synthesis in stressed motor neurons",
+                "failure_date": "January 2025",
+                "reason": "Did not meet primary endpoint of slowing disease progression. Follow-up biomarker analyses (March 2025) also showed no treatment effect. Open-label extension discontinued.",
+                "lesson": "eIF2B activation via DNL343 did not translate to clinical benefit, similar to the related ABBV-CLS-7262 failure"
             }
         ],
         "preclinical_research": [
@@ -752,6 +738,25 @@
                     "https://www.nimhans.ac.in/neurology/",
                     "https://mglnimhans.org/",
                     "https://pubmed.ncbi.nlm.nih.gov/33964419/"
+                ]
+            },
+            {
+                "id": 4,
+                "research_area": "Dewpoint TDP-43 Condensate Modulator",
+                "company": "Dewpoint Therapeutics / Mitsubishi Tanabe Pharma",
+                "target": "TDP-43 condensate correction — addresses root pathology in 97%+ of ALS",
+                "concept": "First-in-class small molecule that corrects disease-associated TDP-43 condensates. Development candidate selected January 2026. Collaboration with Mitsubishi Tanabe Pharma worth up to $480M (Dec 2024).",
+                "benefit_classification": {
+                    "primary_effect": "TARGETS ROOT CAUSE — corrects TDP-43 dysfunction in 97%+ of ALS",
+                    "what_it_promises": "First therapy to directly correct TDP-43 condensate pathology, applicable to virtually all ALS patients"
+                },
+                "stage_applicability": "Would need to be applied early before extensive neuron death",
+                "timeline": "Development candidate selected January 2026. IND-enabling studies underway. Clinical trials likely 2027+",
+                "india_relevance": "MEDIUM — Small molecule oral drug. Mitsubishi Tanabe partnership may facilitate global distribution",
+                "who_benefits": "ALL ALS patients with TDP-43 pathology (97%+)",
+                "sources": [
+                    "https://dewpointx.com/",
+                    "https://www.labiotech.eu/best-biotech/als-companies/"
                 ]
             }
         ],

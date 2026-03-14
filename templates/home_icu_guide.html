@@ -5,25 +5,25 @@
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/pages/home-icu.css">
 <style>
-    /* CSS Variables - Claude/Apple Inspired Theme */
+    /* CSS Variables - Clinician Navy Theme */
     :root {
-        --icu-primary: #1d1d1f;
-        --icu-secondary: #6e6e73;
-        --icu-accent: #c4a284;
+        --icu-primary: #1e3a5f;
+        --icu-secondary: #64748b;
+        --icu-accent: #7eb8d4;
         --icu-bg: #ffffff;
         --icu-bg-alt: #f8fafc;
         --icu-border: #e2e8f0;
         --icu-text: #1e293b;
         --icu-muted: #64748b;
-        --icu-font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-        --icu-font-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+        --icu-font-display: 'Manrope', sans-serif;
+        --icu-font-text: 'DM Sans', sans-serif;
     }
 
     /* Hero Section - Dark Theme */
     .icu-hero {
         text-align: center;
         padding: 5rem 2rem 4rem;
-        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%);
         color: #ffffff;
         margin-bottom: 0;
         position: relative;
@@ -34,7 +34,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(196,162,132,0.15) 0%, transparent 70%);
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.08) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -63,7 +63,7 @@
         font-family: 'DM Sans', sans-serif;
     }
     .icu-hero p a {
-        color: #2dd4bf !important;
+        color: #7eb8d4 !important;
         text-shadow: none;
     }
 
@@ -87,26 +87,149 @@
     .icu-hero-nav a {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.65rem 1.1rem;
-        background: transparent;
+        gap: 0.65rem;
+        padding: 0.85rem 1.6rem;
+        background: rgba(255,255,255,0.05);
         border-radius: 10px;
         text-decoration: none;
-        color: rgba(255,255,255,0.65);
-        font-weight: 500;
-        font-size: 0.875rem;
+        color: rgba(255,255,255,0.85);
+        font-weight: 700;
+        font-size: 1.1rem;
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         font-family: 'DM Sans', sans-serif;
         letter-spacing: -0.01em;
+        border: 1px solid rgba(255,255,255,0.08);
     }
 
     .icu-hero-nav a:hover {
-        background: rgba(255,255,255,0.08);
-        color: #2dd4bf;
+        background: rgba(126,184,212,0.12);
+        color: #7eb8d4;
+        border-color: rgba(126,184,212,0.2);
     }
 
     .icu-hero-nav a i {
-        font-size: 0.8rem;
+        font-size: 1.05rem;
+        color: rgba(126,184,212,0.75);
+    }
+
+    /* Equipment Table Section */
+    .equipment-section {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .equipment-section h2 {
+        font-size: 1.65rem;
+        font-weight: 800;
+        color: var(--icu-primary);
+        margin: 0 0 1.75rem 0;
+        font-family: 'Manrope', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    .equipment-section h2 i {
+        margin-right: 0.6rem;
+        color: var(--icu-accent);
+        font-size: 1.4rem;
+    }
+
+    .equipment-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.125rem;
+    }
+
+    .equipment-table thead tr {
+        background: linear-gradient(135deg, #f0f4f8, #f8fafc);
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .equipment-table th {
+        padding: 1.1rem 1.25rem;
+        text-align: left;
+        font-weight: 800;
+        color: var(--icu-primary);
+        font-family: 'Manrope', sans-serif;
+        font-size: 1.0rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .equipment-table td {
+        padding: 1.15rem 1.25rem;
+        line-height: 1.85;
+    }
+
+    .equipment-table tbody tr {
+        border-bottom: 1px solid #f1f5f9;
+        transition: background 0.18s ease;
+    }
+
+    .equipment-table tbody tr:nth-child(even) {
+        background: #fafbfc;
+    }
+
+    .equipment-table tbody tr:hover {
+        background: rgba(126,184,212,0.06);
+    }
+
+    .equipment-table .cat-cell {
+        font-weight: 800;
+        color: #1e293b;
+        vertical-align: top;
+        white-space: nowrap;
+        font-family: 'Manrope', sans-serif;
+        font-size: 1.075rem;
+    }
+
+    .equipment-table .items-cell {
+        color: #3d4f63;
+        font-weight: 500;
+    }
+
+    /* Key Recommendations Box */
+    .key-recommendations {
+        margin-top: 1.75rem;
+        padding: 1.5rem 1.75rem;
+        background: linear-gradient(135deg, #f0f7fc, #f8fafc);
+        border-radius: 12px;
+        border-left: 4px solid var(--icu-accent);
+    }
+
+    .key-recommendations h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--icu-primary);
+        margin: 0 0 0.875rem 0;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .key-recommendations ul {
+        margin: 0;
+        padding-left: 1.25rem;
+        list-style-type: disc;
+        color: #475569;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.85;
+    }
+
+    /* Category section headings below table */
+    .equipment-category-heading {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--icu-primary);
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 0.625rem;
+        margin-bottom: 1.5rem;
+        font-family: 'Manrope', sans-serif;
+        letter-spacing: -0.02em;
     }
 </style>
 {% endblock %}
@@ -133,131 +256,85 @@
 <div class="container" style="max-width: 1400px; padding-top: 2rem;">
 
     <!-- Equipment List Table Section -->
-    <div id="equipment-sections" style="
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 2rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    ">
-        <h2 style="
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin: 0 0 1.5rem 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-        ">
-            <i class="fas fa-list-check" style="margin-right: 0.5rem; color: #64748b;"></i>
+    <div id="equipment-sections" class="equipment-section">
+        <h2>
+            <i class="fas fa-list-check"></i>
             Equipment List
         </h2>
 
         <div style="overflow-x: auto;">
-            <table style="
-                width: 100%;
-                border-collapse: collapse;
-                font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-                font-size: 1rem;
-            ">
+            <table class="equipment-table">
                 <thead>
-                    <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
-                        <th style="padding: 0.875rem 1rem; text-align: left; font-weight: 600; color: #475569;">Category
-                        </th>
-                        <th style="padding: 0.875rem 1rem; text-align: left; font-weight: 600; color: #475569;">Items
-                        </th>
+                    <tr>
+                        <th>Category</th>
+                        <th>Items</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #f1f5f9;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Ventilator & Accessories</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Ventilator/BiPAP Machine, Catheter
+                    <tr>
+                        <td class="cat-cell">Ventilator & Accessories</td>
+                        <td class="items-cell">Ventilator/BiPAP Machine, Catheter
                             Mount, Back Filter/Inlet Filter, HME Filter, Bacteria Filter, Ventilator Circuit/Pipes,
                             Whisper Swivel, Ambu Bag, Oxygen Concentrator, Oxygen Cylinder</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            BACKUP</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Spare TT tube (same size), Oxygen
-                            cylinder, Backup bipap,Ventilator Circuit/Pipes
+                    <tr>
+                        <td class="cat-cell">BACKUP</td>
+                        <td class="items-cell">Spare TT tube (same size), Oxygen
+                            cylinder, Backup bipap, Ventilator Circuit/Pipes,
                             backup filters and suction machines, feeding tubes</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Suction</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Yuwell Suction Machine, Vacuum Set,
+                    <tr>
+                        <td class="cat-cell">Suction</td>
+                        <td class="items-cell">Yuwell Suction Machine, Vacuum Set,
                             Suction Catheter, Suction Machine Filter, Single use syringe (10ml & 5ml), Normal Saline
                             (NS)</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Tracheostomy Care</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Gauze Swabs/Piece, Betadine
+                    <tr>
+                        <td class="cat-cell">Tracheostomy Care</td>
+                        <td class="items-cell">Gauze Swabs/Piece, Betadine
                             Solution, Sterilized Gloves, Scissor</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Nebulization</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Nebulizer Machine, Nebulizer Tube,
+                    <tr>
+                        <td class="cat-cell">Nebulization</td>
+                        <td class="items-cell">Nebulizer Machine, Nebulizer Tube,
                             T-Section Neb, Normal Saline (NS), Nebulizer Medicines</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Vitals Monitoring</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Multiparamonitor, Oximeter, BP
+                    <tr>
+                        <td class="cat-cell">Vitals Monitoring</td>
+                        <td class="items-cell">Multiparamonitor, Oximeter, BP
                             Cuff, Thermometer</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Recliner Beds & Furniture</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Recliner Bed, Bedside Table</td>
+                    <tr>
+                        <td class="cat-cell">Recliner Beds & Furniture</td>
+                        <td class="items-cell">Recliner Bed, Bedside Table</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Comfort & Communication</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Alexa, Smart TV, Tobii Eye Tracker,
+                    <tr>
+                        <td class="cat-cell">Comfort & Communication</td>
+                        <td class="items-cell">Alexa, Smart TV, Tobii Eye Tracker,
                             Air Conditioner (AC)</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbfc;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Power Backup</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Uniline 3kVA UPS, Exide 12V 42Ah
+                    <tr>
+                        <td class="cat-cell">Power Backup</td>
+                        <td class="items-cell">Uniline 3kVA UPS, Exide 12V 42Ah
                             Battery (x6), Generator (optional)</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f1f5f9;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Motion & Bowel Care</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Cremaffin Plus, Jelly, Enema
+                    <tr>
+                        <td class="cat-cell">Motion & Bowel Care</td>
+                        <td class="items-cell">Cremaffin Plus, Jelly, Enema
                             (Emergency), Cotton, UnderPads, Sheet</td>
                     </tr>
-                    <tr style="background: #fafbfc;">
-                        <td
-                            style="padding: 1rem; font-weight: 600; color: #334155; vertical-align: top; white-space: nowrap;">
-                            Hygiene</td>
-                        <td style="padding: 1rem; color: #64748b; line-height: 1.8;">Urine Pot, Dettol, Wipes, Sanitizer
-                        </td>
+                    <tr>
+                        <td class="cat-cell">Hygiene</td>
+                        <td class="items-cell">Urine Pot, Dettol, Wipes, Sanitizer</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- Key Recommendations - Moved here -->
-        <div
-            style="margin-top: 1.5rem; padding: 1.25rem; background: #f8fafc; border-radius: 12px; border-left: 4px solid #c4a284;">
-            <h3 style="font-size: 1rem; font-weight: 600; color: #334155; margin: 0 0 0.75rem 0;">Key Recommendations
-            </h3>
-            <ul
-                style="margin: 0; padding-left: 1.25rem; list-style-type: disc; color: #475569; font-size: 1rem; line-height: 1.8;">
+        <!-- Key Recommendations -->
+        <div class="key-recommendations">
+            <h3><i class="fas fa-lightbulb" style="margin-right: 0.4rem; color: var(--icu-accent);"></i>Key Recommendations</h3>
+            <ul>
                 <li>Ensure the room has proper ventilation to maintain air quality.</li>
                 <li>Arrange and test all equipment at regular intervals to ensure everything is functional.</li>
                 <li>TV, Alexa for music, and AC are vital for mental well-being of pals</li>
@@ -271,7 +348,7 @@
     <!-- Ventilator & Accessories -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Ventilator & Accessories</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card" data-buy-link="">
@@ -348,7 +425,7 @@
     <!-- Suction -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Suction</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -399,7 +476,7 @@
     <!-- Tracheostomy Dressing / TT Tube Change -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Tracheostomy Dressing / TT Tube Change</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -435,7 +512,7 @@
     <!-- Nebulization -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Nebulization</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -479,7 +556,7 @@
     <!-- Vitals Monitoring -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Vitals Monitoring</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -515,7 +592,7 @@
     <!-- UPS Backup System -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             UPS Backup System</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -551,7 +628,7 @@
     <!-- Recliner Beds & Tables -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Recliner Beds & Tables</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -567,7 +644,7 @@
     <!-- Other Important Items -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Other Important Items</h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -602,7 +679,7 @@
     <!-- daily needs / Hygiene -->
     <div style="margin-bottom: 3rem;">
         <h2
-            style="font-size: 1.5rem; font-weight: 700; color: #1f2937; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            class="equipment-category-heading">
             Daily Care / Hygiene </h2>
         <div class="icu-equipment-grid">
             <div class="icu-card">
@@ -835,8 +912,8 @@
 <style>
     /* ICU Navigation Links - Hover Effects */
     .icu-nav-link:hover {
-        color: #6B5B95 !important;
-        background: rgba(161, 140, 209, 0.1);
+        color: #1e3a5f !important;
+        background: rgba(30, 58, 95, 0.1);
         text-decoration: underline;
         text-underline-offset: 3px;
     }

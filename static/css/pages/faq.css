@@ -6,7 +6,7 @@
 }
 #faqSearch:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(161,140,209,0.15);
+    box-shadow: 0 0 0 3px rgba(30,58,95,0.12);
     outline: none;
 }
 
@@ -24,18 +24,20 @@
 
 /* ── FAQ section title ── */
 .faq-section-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin-bottom: 1.25rem;
+    font-family: 'Manrope', sans-serif;
 }
 
 /* ── FAQ question row ── */
 .faq-question {
-    font-size: 0.9375rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     letter-spacing: -0.01em;
     transition: color 0.18s ease;
+    font-family: 'Manrope', sans-serif;
 }
 .faq-question:hover {
     color: var(--color-primary);
@@ -60,8 +62,9 @@
 
 /* ── Answer text ── */
 .faq-answer p, .faq-answer li {
-    font-size: 0.9375rem;
-    line-height: 1.78;
+    font-size: 1.1875rem;
+    line-height: 1.82;
+    font-family: 'DM Sans', sans-serif;
 }
 
 /* ── No results message ── */

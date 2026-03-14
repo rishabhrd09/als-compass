@@ -6,7 +6,7 @@
 <style>
     /* Use research updates styling for consistency */
     .hero-section {
-        background: linear-gradient(135deg, #0c0e16 0%, #12101f 40%, #1a182d 100%);
+        background: linear-gradient(135deg, #1a2f4a, #223d5c, #162840);
         color: white;
         padding: 5rem 2rem 4rem;
         text-align: center;
@@ -19,7 +19,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(0,119,182,0.12) 0%, transparent 70%);
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.12) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -53,22 +53,22 @@
     }
 
     .category-intro {
-        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        border-left: 4px solid #0077b6;
+        background: linear-gradient(135deg, #f5f3ef 0%, #eae7e1 100%);
+        border-left: 4px solid #1e3a5f;
         border-radius: 12px;
         padding: 1.5rem;
         margin-bottom: 2rem;
     }
 
     .category-intro h2 {
-        color: #0f172a;
+        color: #1e3a5f;
         font-size: 1.5rem;
         font-weight: 700;
         margin: 0 0 0.75rem 0;
     }
 
     .category-intro p {
-        color: #475569;
+        color: #64748b;
         margin: 0;
         line-height: 1.6;
     }
@@ -80,8 +80,8 @@
     }
 
     .research-item {
-        background: white;
-        border: 1px solid #e2e8f0;
+        background: #fafaf8;
+        border: 1px solid #e8e4de;
         border-radius: 12px;
         padding: 1.5rem;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -191,20 +191,20 @@
             <div class="research-item">
                 <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
                     <div>
-                        <h3 style="color: #0f172a; font-size: 1.25rem; margin: 0 0 0.5rem 0;">${solution.solution_name}</h3>
+                        <h3 style="color: #1e3a5f; font-size: 1.25rem; margin: 0 0 0.5rem 0;">${solution.solution_name}</h3>
                         <div style="color: #64748b; font-size: 0.9rem;">${solution.category} | ${solution.form_factor}</div>
                     </div>
-                    <span style="background: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#dcfce7' : '#f1f5f9'}; color: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#166534' : '#475569'}; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500;">${solution.status}</span>
+                    <span style="background: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#dcfce7' : '#f5f3ef'}; color: ${solution.status.includes('FDA') || solution.status.includes('Medical') ? '#166534' : '#64748b'}; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 500;">${solution.status}</span>
                 </div>
 
-                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-                    <strong style="color: #0369a1;"><i class="fas fa-info-circle"></i> What This Is</strong>
-                    <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.what_it_is}</p>
+                <div style="background: #edf3f8; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <strong style="color: #1e3a5f;"><i class="fas fa-info-circle"></i> What This Is</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #3d3830;">${solution.what_it_is}</p>
                 </div>
 
                 <div style="margin-bottom: 1rem;">
-                    <strong style="color: #1e293b; font-size: 0.9rem;">How It Works:</strong>
-                    <p style="margin: 0.5rem 0 0 0; color: #475569; font-size: 0.9rem;">${solution.how_it_works}</p>
+                    <strong style="color: #1e3a5f; font-size: 0.9rem;">How It Works:</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #64748b; font-size: 0.9rem;">${solution.how_it_works}</p>
                 </div>
 
                 ${solution.key_advantages ? `
@@ -225,12 +225,12 @@
                     </div>
                 ` : ''}
 
-                <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
-                    <strong style="color: #0f172a;"><i class="fas fa-map-marker-alt"></i> India Availability</strong>
+                <div style="background: #f0f5f9; border: 1px solid #c8dce8; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                    <strong style="color: #1e3a5f;"><i class="fas fa-map-marker-alt"></i> India Availability</strong>
                     <div style="margin-top: 0.75rem;">
                         <p style="margin: 0.25rem 0;"><strong>Status:</strong> ${solution.india_availability.available === true ? 'Available' : solution.india_availability.available}</p>
                         ${solution.india_availability.how_to_get ? `<p style="margin: 0.25rem 0;"><strong>How to Get:</strong> ${solution.india_availability.how_to_get}</p>` : ''}
-                        ${solution.india_availability.cost_inr ? `<p style="margin: 0.25rem 0; color: #0077b6; font-weight: 600;"><strong>Cost:</strong> ${solution.india_availability.cost_inr}</p>` : ''}
+                        ${solution.india_availability.cost_inr ? `<p style="margin: 0.25rem 0; color: #1e3a5f; font-weight: 600;"><strong>Cost:</strong> ${solution.india_availability.cost_inr}</p>` : ''}
                         ${solution.india_availability.delivery_time ? `<p style="margin: 0.25rem 0;"><strong>Delivery:</strong> ${solution.india_availability.delivery_time}</p>` : ''}
                         ${solution.india_availability.funding_options ? `
                             <p style="margin: 0.5rem 0 0.25rem 0;"><strong>Funding Options:</strong></p>
@@ -242,38 +242,38 @@
                 </div>
 
                 ${solution.who_should_use ? `
-                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
-                        <strong style="color: #1e40af;"><i class="fas fa-user-check"></i> Who Should Use This</strong>
-                        <p style="margin: 0.5rem 0 0 0; color: #1e3a8a;">${solution.who_should_use}</p>
+                    <div style="background: #edf3f8; border: 1px solid #c8dce8; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <strong style="color: #1e3a5f;"><i class="fas fa-user-check"></i> Who Should Use This</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #1e3a5f;">${solution.who_should_use}</p>
                     </div>
                 ` : ''}
 
                 ${solution.comparison_to_tobii && typeof solution.comparison_to_tobii === 'object' ? `
-                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
-                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii Dynavox</strong>
+                    <div style="border-top: 2px solid #e8e4de; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #1e3a5f;"><i class="fas fa-balance-scale"></i> Comparison to Tobii Dynavox</strong>
                         ${solution.comparison_to_tobii.rating ? `<p style="margin: 0.5rem 0;"><strong>Rating:</strong> ${solution.comparison_to_tobii.rating}</p>` : ''}
                         ${solution.comparison_to_tobii.cost_savings ? `<p style="margin: 0.5rem 0; color: #16a34a; font-weight: 600;"><strong>Cost Savings:</strong> ${solution.comparison_to_tobii.cost_savings}</p>` : ''}
                         ${solution.comparison_to_tobii.pros_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Advantages:</strong> ${solution.comparison_to_tobii.pros_vs_tobii}</p>` : ''}
                         ${solution.comparison_to_tobii.cons_vs_tobii ? `<p style="margin: 0.5rem 0;"><strong>Disadvantages:</strong> ${solution.comparison_to_tobii.cons_vs_tobii}</p>` : ''}
                     </div>
                 ` : solution.comparison_to_tobii ? `
-                    <div style="border-top: 2px solid #e2e8f0; padding-top: 1rem; margin-top: 1rem;">
-                        <strong style="color: #0f172a;"><i class="fas fa-balance-scale"></i> Comparison to Tobii</strong>
+                    <div style="border-top: 2px solid #e8e4de; padding-top: 1rem; margin-top: 1rem;">
+                        <strong style="color: #1e3a5f;"><i class="fas fa-balance-scale"></i> Comparison to Tobii</strong>
                         <p style="margin: 0.5rem 0 0 0;">${solution.comparison_to_tobii}</p>
                     </div>
                 ` : ''}
 
                 ${solution.realistic_expectations ? `
-                    <div style="background: #f1f5f9; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                        <strong style="color: #0f172a;"><i class="fas fa-info-circle"></i> Realistic Expectations</strong>
-                        <p style="margin: 0.5rem 0 0 0; color: #334155;">${solution.realistic_expectations}</p>
+                    <div style="background: #f5f3ef; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                        <strong style="color: #1e3a5f;"><i class="fas fa-info-circle"></i> Realistic Expectations</strong>
+                        <p style="margin: 0.5rem 0 0 0; color: #3d3830;">${solution.realistic_expectations}</p>
                     </div>
                 ` : ''}
 
                 ${solution.sources && solution.sources.length > 0 ? `
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e8e4de;">
                         ${solution.sources.map(source => `
-                            <a href="${source}" target="_blank" style="display: inline-block; margin-right: 1rem; margin-bottom: 0.5rem; color: #0077b6; text-decoration: none; font-size: 0.9rem;">
+                            <a href="${source}" target="_blank" style="display: inline-block; margin-right: 1rem; margin-bottom: 0.5rem; color: #1e3a5f; text-decoration: none; font-size: 0.9rem;">
                                 <i class="fas fa-external-link-alt"></i> Learn More
                             </a>
                         `).join('')}
@@ -326,9 +326,9 @@
                     </div>
                 ` : ''}
 
-                <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
-                    <strong style="color: #0369a1;"><i class="fas fa-lightbulb"></i> Recommendation</strong>
-                    <p style="margin: 0.5rem 0 0 0; color: #0c4a6e;">${tech.recommendation}</p>
+                <div style="background: #edf3f8; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px;">
+                    <strong style="color: #1e3a5f;"><i class="fas fa-lightbulb"></i> Recommendation</strong>
+                    <p style="margin: 0.5rem 0 0 0; color: #1e3a5f;">${tech.recommendation}</p>
                 </div>
             </div>
         `).join('');

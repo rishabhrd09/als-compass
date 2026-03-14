@@ -584,8 +584,31 @@
 }
 
 /* ══════════════════════════════════════════════
-   EXPLORE CARD HOVER — navy accents
+   EXPLORE SECTION — header + card polish
    ══════════════════════════════════════════════ */
+.explore-section-header {
+  text-align: left;
+  margin-bottom: 2.75rem;
+  padding-left: 0.25rem;
+}
+
+.explore-section-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #1e3a5f;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.5rem;
+}
+
+.explore-section-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.075rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.6;
+}
+
 .explore-card {
   transition:
     transform var(--dur-fast) var(--ease-spring),
@@ -602,9 +625,9 @@
    RESOURCES SECTION — cool near-white
    ══════════════════════════════════════════════ */
 .resources-section {
-  background: #f0f4f8;
-  padding: 3rem 1.5rem;
-  border-top: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #edf2f7 0%, #f5f3ef 100%);
+  padding: 4.5rem 2rem;
+  border-top: 1px solid #dce4ed;
 }
 
 .resources-inner {
@@ -613,16 +636,18 @@
 }
 
 .resources-heading {
-  font-size: 1.875rem;
-  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
   color: #1e3a5f;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
 }
 
 .resources-subtitle {
+  font-family: 'DM Sans', sans-serif;
   color: #64748b;
-  font-size: 1.125rem;
+  font-size: 1.075rem;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.7;
@@ -631,7 +656,7 @@
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -642,11 +667,11 @@
 }
 
 .resource-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid rgba(30, 58, 95, 0.10);
-  box-shadow: 0 1px 4px rgba(30, 58, 95, 0.04);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.75rem;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.04);
   transition:
     transform var(--dur-fast) var(--ease-spring),
     box-shadow var(--dur-mid) var(--ease-smooth);
@@ -687,17 +712,21 @@
 }
 
 .resource-card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e293b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1e3a5f;
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .resources-footnote {
   text-align: center;
-  font-size: 0.75rem;
-  color: #94a3b8;
-  margin-top: 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: #8a94a3;
+  margin-top: 1.75rem;
+  font-weight: 500;
 }
 
 .resources-section .resource-item-link:hover {
