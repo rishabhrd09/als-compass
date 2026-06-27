@@ -19,36 +19,56 @@ A comprehensive web application and AI assistant for ALS caregivers that brings 
 ## Quick Start
 
 ### Prerequisites
-- Python 3.10+
+- Python 3.10, 3.11, or 3.12
+  - Python 3.11 is recommended.
+  - Python 3.13/3.14 may fail with pinned scientific dependencies such as `numpy<2.0`.
 - API key (at least one: OpenAI, Anthropic/Claude, or Gemini)
 
 ### Installation
+
+#### macOS / MacBook
 
 ```bash
 # Clone repository
 git clone <your-repo-url>
 cd als-compass
 
-# Create virtual environment
-python -m venv venv
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Mac/Linux
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Setup environment
-cp .env.example .env
-# Add your API key to .env file
-
-# Initialize database
-python ingest_data_intelligent.py
+# Safe project-local setup
+bash setup_macos.sh
 
 # Run application
-python app.py
+bash run_dev_macos.sh
+```
+
+If macOS says `python: command not found`, use the setup script above. Modern macOS commonly exposes Python as `python3`, not `python`. The setup script also rejects too-new Python versions and tells you how to install Python 3.11 safely.
+
+#### Windows
+
+```bat
+REM Clone repository
+git clone <your-repo-url>
+cd als-compass
+
+REM Safe project-local setup
+setup.bat
+
+REM Run application
+run_dev.bat
 ```
 
 Open http://localhost:5000 in your browser.
+
+To render Manim educational animations, install optional dependencies:
+
+```bash
+bash setup_macos.sh --with-animations
+```
+
+```powershell
+.\setup_windows.ps1 -WithAnimations
+```
+
+The normal web app does not require Manim because pre-rendered videos are included.
 
 ## Configuration
 

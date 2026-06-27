@@ -23,7 +23,5 @@ tqdm>=4.66.0
 python-dotenv>=1.0.0
 requests>=2.31.0
 
-# Animation (optional — for rendering Manim educational videos)
-# Install with: pip install manim
-# Also requires FFmpeg: winget install Gyan.FFmpeg
-manim>=0.18.0
+# Optional animation rendering dependencies live in requirements-optional.txt.
+# The app ships pre-rendered videos, so Manim is not required for normal testing.

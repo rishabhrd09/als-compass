@@ -302,9 +302,13 @@ _render_state = {'status': 'idle', 'message': ''}
 def _find_manim():
     """Locate manim executable."""
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    venv_manim = os.path.join(base_dir, 'venv', 'Scripts', 'manim.exe')
-    if os.path.isfile(venv_manim):
-        return venv_manim
+    candidates = [
+        os.path.join(base_dir, 'venv', 'Scripts', 'manim.exe'),
+        os.path.join(base_dir, 'venv', 'bin', 'manim'),
+    ]
+    for candidate in candidates:
+        if os.path.isfile(candidate):
+            return candidate
     # Check PATH
     import shutil as _sh
     if _sh.which('manim'):
@@ -330,7 +334,7 @@ def _render_manim_videos(quality='l'):
 
     manim_cmd = _find_manim()
     if not manim_cmd:
-        _render_state = {'status': 'error', 'message': 'Manim not installed. Run setup.bat first.'}
+        _render_state = {'status': 'error', 'message': 'Manim not installed. Run setup with optional animations enabled.'}
         return
 
     scene_file = os.path.join(base_dir, 'manim_scenes', 'motor_neuron.py')

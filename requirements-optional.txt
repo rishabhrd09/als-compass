@@ -1,0 +1,3 @@
+# Optional dependencies for rendering educational Manim animations.
+# Normal app testing does not require these because pre-rendered videos are committed.
+manim>=0.18.0
