@@ -4,39 +4,34 @@
 
 {% block extra_css %}
 <style>
-    /* Apple/Tobii-inspired Design */
+    /* Clinician Navy Theme */
     :root {
-        --ct-primary: #1d1d1f;
-        --ct-secondary: #6e6e73;
-        --ct-accent: #0071e3;
-        --ct-bg: #ffffff;
-        --ct-bg-alt: #fbfbfd;
+        --ct-primary: #1e3a5f;
+        --ct-secondary: #64748b;
+        --ct-accent: #7eb8d4;
+        --ct-bg: #fafaf8;
+        --ct-bg-alt: #f5f3ef;
         --ct-border: #d2d2d7;
-        --ct-text: #1d1d1f;
-        --ct-muted: #86868b;
+        --ct-text: #3d3830;
+        --ct-muted: #64748b;
     }
 
-    /* Hero Section - Light Sky Blue Theme */
+    /* Hero Section - Dark Theme */
     .research-hero {
         text-align: center;
-        padding: 4.5rem 1.5rem 3rem;
-        background:
-            linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%),
-            url('/static/images/hero_bg_v2.png') center/cover no-repeat;
-        background-color: #f5f7fa;
-        color: var(--ct-primary);
+        padding: 5rem 2rem 4rem;
+        background: linear-gradient(135deg, #1a2f4a, #223d5c, #162840);
+        color: #ffffff;
         margin-bottom: 0;
         position: relative;
+        overflow: hidden;
     }
 
     .research-hero::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.12) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -46,47 +41,59 @@
     }
 
     .research-hero h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
+        font-size: clamp(2rem, 4.5vw, 2.5rem);
+        font-weight: 800;
         margin-bottom: 0.75rem;
-        letter-spacing: -0.04em;
-        color: #1d1d1f;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        letter-spacing: -0.03em;
+        color: #ffffff;
+        font-family: 'Manrope', sans-serif;
+        text-shadow: none;
     }
 
     .research-hero p {
-        font-size: 1.125rem;
-        color: #424245;
-        max-width: 720px;
+        font-size: 1.15rem;
+        color: rgba(255,255,255,0.6);
+        max-width: 750px;
         margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.7;
         font-weight: 400;
+        font-family: 'DM Sans', sans-serif;
     }
 
-    .back-nav {
-        max-width: 1100px;
-        margin: 1.5rem auto 0;
-        padding: 0 1rem;
-    }
-
-    .back-nav a {
+    .research-hero-nav {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        color: var(--ct-accent);
+        gap: 0.65rem;
+        margin-top: 1.75rem;
+        padding: 0.85rem 1.6rem;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        color: rgba(255,255,255,0.85);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
         text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
     }
 
-    .back-nav a:hover {
-        text-decoration: underline;
+    .research-hero-nav:hover {
+        background: rgba(126,184,212,0.12);
+        color: #7eb8d4;
+        border-color: rgba(126,184,212,0.25);
+        text-decoration: none;
+    }
+
+    .research-hero-nav i {
+        font-size: 1.05rem;
+        color: rgba(126,184,212,0.75);
     }
 
     /* Section Styles */
     .research-section {
-        max-width: 1100px;
+        max-width: 1280px;
         margin: 0 auto 3rem;
         padding: 0 1rem;
     }
@@ -98,39 +105,44 @@
     }
 
     .section-header h2 {
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-size: 1.55rem;
+        font-weight: 800;
         color: var(--ct-primary);
         letter-spacing: -0.02em;
         margin: 0;
+        font-family: 'Manrope', sans-serif;
     }
 
     .section-desc {
         color: var(--ct-secondary);
-        font-size: 0.95rem;
+        font-size: 1.0625rem;
         margin: 0 0 1.5rem;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Info Alert */
     .info-alert {
-        background: #f5f5f7;
+        background: #f5f3ef;
         border-radius: 12px;
         padding: 1.25rem;
         margin-bottom: 2rem;
     }
 
     .info-alert h3 {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.15rem;
+        font-weight: 700;
         color: var(--ct-primary);
         margin: 0 0 0.5rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .info-alert p {
-        font-size: 0.9rem;
+        font-size: 1.0625rem;
         color: var(--ct-secondary);
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Research Card */
@@ -144,23 +156,25 @@
 
     .research-card-header {
         padding: 1.25rem;
-        background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+        background: linear-gradient(135deg, #1e3a5f 0%, #2a5a80 100%);
         color: white;
     }
 
     .research-card-header h3 {
-        font-size: 1.3rem;
-        font-weight: 700;
+        font-size: 1.4rem;
+        font-weight: 800;
         margin: 0 0 0.35rem;
         color: #ffffff;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        font-family: 'Manrope', sans-serif;
     }
 
     .research-card-header p {
-        font-size: 0.9rem;
+        font-size: 1rem;
         margin: 0;
         opacity: 0.95;
-        color: #e0e7ff;
+        color: #c8dce8;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .research-card-body {
@@ -182,27 +196,30 @@
     }
 
     .spec-label {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         color: var(--ct-secondary);
         margin-bottom: 0.25rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .spec-value {
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 700;
         color: var(--ct-primary);
+        font-family: 'Manrope', sans-serif;
     }
 
     .spec-note {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         color: var(--ct-secondary);
         margin-top: 0.25rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Device Grid */
     .device-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
         gap: 1.5rem;
         margin-top: 1.5rem;
     }
@@ -211,29 +228,32 @@
         background: white;
         border: 1px solid var(--ct-border);
         border-radius: 12px;
-        padding: 1.5rem;
+        padding: 1.75rem;
     }
 
     .device-card h4 {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.15rem;
+        font-weight: 700;
         color: var(--ct-primary);
         margin: 0 0 0.5rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .device-card .subtitle {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         color: var(--ct-secondary);
         margin-bottom: 1rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .device-badge {
         display: inline-block;
-        padding: 0.25rem 0.5rem;
+        padding: 0.3rem 0.6rem;
         border-radius: 4px;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         font-weight: 600;
         margin-bottom: 0.75rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .badge-warning {
@@ -242,42 +262,46 @@
     }
 
     .badge-info {
-        background: #dbeafe;
-        color: #1e40af;
+        background: #dbeef8;
+        color: #1e3a5f;
     }
 
     .device-notes {
         margin: 0;
         padding-left: 1.25rem;
-        font-size: 0.85rem;
+        font-size: 1.0625rem;
         color: var(--ct-text);
-        line-height: 1.7;
+        line-height: 1.8;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* BCI Section */
     .bci-note {
-        background: #f5f5f7;
+        background: #f5f3ef;
         border-radius: 12px;
         padding: 1.25rem;
         margin-bottom: 2rem;
     }
 
     .bci-note h4 {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.15rem;
+        font-weight: 700;
         color: var(--ct-primary);
         margin: 0 0 0.5rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .bci-note p {
-        font-size: 0.9rem;
+        font-size: 1.0625rem;
         color: var(--ct-secondary);
         margin: 0;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .bci-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         gap: 1.5rem;
     }
 
@@ -289,34 +313,37 @@
     }
 
     .bci-card-header {
-        padding: 1rem;
+        padding: 1.15rem 1.25rem;
         background: var(--ct-bg-alt);
         border-bottom: 1px solid var(--ct-border);
     }
 
     .bci-card-header h4 {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.15rem;
+        font-weight: 700;
         color: var(--ct-primary);
         margin: 0 0 0.25rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .bci-card-header .company {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         color: var(--ct-secondary);
+        font-family: 'DM Sans', sans-serif;
     }
 
     .bci-card-body {
-        padding: 1rem;
+        padding: 1.25rem;
     }
 
     .status-badge {
         display: inline-block;
-        padding: 0.25rem 0.5rem;
+        padding: 0.3rem 0.6rem;
         border-radius: 4px;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         font-weight: 600;
         margin-bottom: 0.75rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .status-approved {
@@ -325,13 +352,13 @@
     }
 
     .status-trial {
-        background: #dbeafe;
-        color: #1e40af;
+        background: #dbeef8;
+        color: #1e3a5f;
     }
 
     .status-research {
-        background: #f3e8ff;
-        color: #6b21a8;
+        background: #e8f0f7;
+        color: #1e3a5f;
     }
 
     /* Academic Research */
@@ -347,18 +374,24 @@
         padding: 1rem;
     }
 
+    .academic-card {
+        padding: 1.25rem;
+    }
+
     .academic-card h4 {
-        font-size: 0.95rem;
-        font-weight: 600;
+        font-size: 1.1rem;
+        font-weight: 700;
         color: var(--ct-primary);
         margin: 0 0 0.5rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .academic-card p {
-        font-size: 0.85rem;
+        font-size: 1.0625rem;
         color: var(--ct-text);
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Links */
@@ -371,17 +404,18 @@
 
     .link-btn {
         display: inline-block;
-        padding: 0.5rem 1rem;
+        padding: 0.55rem 1.15rem;
         background: var(--ct-primary);
         color: white;
         border-radius: 20px;
         text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 500;
+        font-size: 0.95rem;
+        font-weight: 600;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .link-btn:hover {
-        background: #000;
+        background: #162840;
     }
 
     .link-btn.secondary {
@@ -394,6 +428,89 @@
         background: var(--ct-bg-alt);
     }
 
+    /* Voice / AAC / Platform Cards */
+    .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .tool-card {
+        background: white;
+        border: 1px solid var(--ct-border);
+        border-radius: 12px;
+        padding: 1.75rem;
+        transition: box-shadow 0.25s ease;
+    }
+
+    .tool-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .tool-card h4 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--ct-primary);
+        margin: 0 0 0.35rem;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .tool-card .tool-meta {
+        font-size: 0.9rem;
+        color: var(--ct-secondary);
+        margin-bottom: 0.75rem;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .tool-card p {
+        font-size: 1.0625rem;
+        color: var(--ct-text);
+        margin: 0;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .tool-badge {
+        display: inline-block;
+        padding: 0.3rem 0.65rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .badge-free { background: #dcfce7; color: #166534; }
+    .badge-commercial { background: #dbeef8; color: #1e3a5f; }
+    .badge-research { background: #e8f0f7; color: #1e3a5f; }
+    .badge-trial { background: #fef3c7; color: #92400e; }
+
+    /* Highlight box */
+    .highlight-box {
+        background: linear-gradient(135deg, #f0f7fd, #f5f3ef);
+        border: 1px solid var(--ct-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .highlight-box h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--ct-primary);
+        margin: 0 0 0.5rem;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .highlight-box p {
+        font-size: 1.0625rem;
+        color: var(--ct-text);
+        margin: 0;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
+    }
+
     @media (max-width: 768px) {
         .research-hero h1 {
             font-size: 1.75rem;
@@ -404,7 +521,8 @@
         }
 
         .device-grid,
-        .bci-grid {
+        .bci-grid,
+        .tool-grid {
             grid-template-columns: 1fr;
         }
     }
@@ -417,13 +535,9 @@
     <div class="container">
         <h1>Communication Technology Research</h1>
         <p>Emerging technologies, wearable eye trackers, and brain-computer interfaces for ALS communication.</p>
+        <a href="/communication-technology" class="research-hero-nav"><i class="fas fa-comments"></i> Communication Technology</a>
     </div>
 </section>
-
-<!-- Back Navigation -->
-<div class="back-nav">
-    <a href="/communication-technology">← Back to Communication Technology</a>
-</div>
 
 <!-- Brain-Computer Interfaces Section -->
 <section class="research-section" style="margin-top: 2rem;">
@@ -432,9 +546,8 @@
     </div>
 
     <div class="bci-note">
-        <h4>Note: BCIs are not commercially available</h4>
-        <p>Currently only accessible via clinical trials in USA, Australia. No trials in India. Commercial availability
-            is 2-5+ years away.</p>
+        <h4>Note: BCIs are in clinical trials — not yet commercially available</h4>
+        <p>Currently only accessible via clinical trials in USA, Canada, UK, and Australia. Synchron is furthest along, working toward FDA pre-market approval (estimated ~2028). No BCI trials or commercial access in India. Wider availability expected in 3-5+ years.</p>
     </div>
 
     <div class="bci-grid">
@@ -444,16 +557,16 @@
                 <div class="company">Synchron</div>
             </div>
             <div class="bci-card-body">
-                <span class="status-badge status-approved">FDA Approved (Nov 2025)</span>
-                <p style="font-size: 0.85rem; color: var(--ct-text); margin-bottom: 0.75rem;"><strong>Minimally
+                <span class="status-badge status-trial">Clinical Trials (IDE)</span>
+                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Minimally
                         Invasive</strong> (via blood vessels)</p>
                 <ul class="device-notes">
                     <li>No open brain surgery required</li>
                     <li>Implanted via jugular vein</li>
-                    <li>Apple integration announced (May 2025)</li>
+                    <li>Apple BCI HID integration announced (May 2025)</li>
+                    <li>Working toward FDA pre-market approval (estimated ~2028)</li>
                 </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.8rem; color: var(--ct-muted);">No trials in India. 2-5 years
-                    from commercial availability.</p>
+                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">No trials in India. Estimated cost ~$40-50K (not yet covered by insurance).</p>
             </div>
         </div>
 
@@ -463,16 +576,15 @@
                 <div class="company">Neuralink (Elon Musk)</div>
             </div>
             <div class="bci-card-body">
-                <span class="status-badge status-trial">Clinical Trials</span>
-                <p style="font-size: 0.85rem; color: var(--ct-text); margin-bottom: 0.75rem;"><strong>Surgical</strong>
-                    (1000+ electrodes)</p>
+                <span class="status-badge status-trial">Clinical Trials (PRIME Study)</span>
+                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Surgical</strong>
+                    (over 1,000 electrodes across 64 threads)</p>
                 <ul class="device-notes">
-                    <li>Surgical robot placement</li>
-                    <li>5+ patients implanted by mid-2025</li>
-                    <li>Expanding to Canada, UK, Germany, UAE</li>
+                    <li>R1 surgical robot placement</li>
+                    <li>21+ participants implanted (as of Jan 2026)</li>
+                    <li>Trials active in USA, Canada, UK, UAE; Germany planned</li>
                 </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.8rem; color: var(--ct-muted);">No trials in India currently.
-                </p>
+                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">No trials in India currently.</p>
             </div>
         </div>
 
@@ -483,15 +595,69 @@
             </div>
             <div class="bci-card-body">
                 <span class="status-badge status-research">Research</span>
-                <p style="font-size: 0.85rem; color: var(--ct-text); margin-bottom: 0.75rem;"><strong>Surgical</strong>
-                    (Utah Array)</p>
+                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Surgical</strong>
+                    (Utah Array, 100 electrodes)</p>
                 <ul class="device-notes">
-                    <li>UC Davis: 97% speech decoding for ALS patient (June 2025)</li>
-                    <li>Academic research consortium</li>
-                    <li>20+ years of experience</li>
+                    <li>UC Davis: 97.5% speech decoding accuracy for ALS patient (Aug 2024)</li>
+                    <li>Real-time voice synthesis advancement (June 2025)</li>
+                    <li>Academic research consortium (Brown, MGH, Stanford)</li>
+                    <li>20+ years of research experience</li>
                 </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.8rem; color: var(--ct-muted);">Academic only. No commercial
-                    access.</p>
+                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">Academic only. No commercial access.</p>
+            </div>
+        </div>
+
+        <div class="bci-card">
+            <div class="bci-card-header">
+                <h4>Precision Neuroscience — Layer 7</h4>
+                <div class="company">Precision Neuroscience</div>
+            </div>
+            <div class="bci-card-body">
+                <span class="status-badge status-approved">FDA 510(k) Cleared (March 2025)</span>
+                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Minimally Invasive</strong> (thin film on brain surface)</p>
+                <ul class="device-notes">
+                    <li>1,024 electrodes on flexible film — no penetrating electrodes</li>
+                    <li>Inserted through sub-millimeter skull incision</li>
+                    <li>Up to 4 implants can be deployed simultaneously</li>
+                    <li>Chronic wireless version targeting first-in-human 2026</li>
+                </ul>
+                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">FDA-cleared for recording/monitoring/stimulation (up to 30 days). No trials in India.</p>
+            </div>
+        </div>
+
+        <div class="bci-card">
+            <div class="bci-card-header">
+                <h4>Paradromics — Connexus</h4>
+                <div class="company">Paradromics</div>
+            </div>
+            <div class="bci-card-body">
+                <span class="status-badge status-trial">FDA Approved for Trial (Nov 2025)</span>
+                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Fully Implantable</strong> (hundreds of micro-electrodes)</p>
+                <ul class="device-notes">
+                    <li>Specifically designed for speech restoration in paralysis</li>
+                    <li>200+ bits/second data transfer in pre-clinical trials</li>
+                    <li>First acute in-human recording at University of Michigan (June 2025), ahead of Connect-One trial launch</li>
+                    <li>Targets ALS, stroke, and spinal cord injury</li>
+                </ul>
+                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">Clinical trial stage. No trials in India.</p>
+            </div>
+        </div>
+
+        <div class="bci-card">
+            <div class="bci-card-header">
+                <h4>Cognixion — Axon-R Headset</h4>
+                <div class="company">Cognixion</div>
+            </div>
+            <div class="bci-card-body">
+                <span class="status-badge status-trial">FDA Breakthrough Device (2023) — Clinical Trial (Jan 2025)</span>
+                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Non-Invasive</strong> (EEG headset + AR + AI — no surgery required)</p>
+                <ul class="device-notes">
+                    <li>Only non-invasive BCI in clinical trials for late-stage ALS</li>
+                    <li>Combines EEG brain sensing, augmented reality, and adaptive AI</li>
+                    <li>Currently enrolling up to 10 late-stage ALS adults (NCT06810219)</li>
+                    <li>Funded in part by ALS Association's ALS Accel fund</li>
+                </ul>
+                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">No surgery — critical for patients who cannot undergo implant procedures. No trials in India.</p>
             </div>
         </div>
     </div>
@@ -505,7 +671,7 @@
 
     <div class="academic-grid">
         <div class="academic-card">
-            <h4>Google/Nature Communications SpeakFaster (December 2024)</h4>
+            <h4>Google/Nature Communications SpeakFaster (November 2024)</h4>
             <p>LLM-powered text entry achieving <strong>29-60% typing speed improvement</strong> over baseline
                 predictive keyboards. Works with existing Tobii hardware as software enhancement. Collaboration between
                 Google Research and Team Gleason Foundation.</p>
@@ -524,17 +690,35 @@
                 "Midas touch problem" (differentiating gaze for perception vs. interface operation). Study included ALS
                 participants.</p>
         </div>
+
+        <div class="academic-card">
+            <h4>UC Berkeley/UCSF — Streaming Brain-to-Voice Neuroprosthesis (March 2025)</h4>
+            <p>Converts neural signals to audible speech in near-real-time (<strong>80ms latency</strong>, first sound within 1 second). Uses deep learning RNN transducer models. Personalizes output to participant's pre-injury voice. Listeners understood ~60% of synthesized words. Published in <em>Nature Neuroscience</em>.</p>
+        </div>
+
+        <div class="academic-card">
+            <h4>BISC Chip — Next-Gen BCI (Columbia/Stanford/UPenn, Dec 2025)</h4>
+            <p>Single silicon chip with <strong>65,536 electrodes</strong>, 1,024 recording channels, and 16,384 stimulation channels. Only 50µm thin — occupies &lt;1/1000th the volume of standard implants. Wireless data at <strong>100 Mbps</strong> (100x faster than any other wireless BCI). Published in <em>Nature Electronics</em>. Developed under DARPA's Neural Engineering System Design program.</p>
+        </div>
+
+        <div class="academic-card">
+            <h4>HiFi-GAN for ALS Voice Generation (Late 2024)</h4>
+            <p>Published in <em>Scientific Reports</em> (Nature), this study demonstrated that the HiFi-GAN model can generate high-quality synthetic voices closely resembling ALS patients' natural voices, <strong>preserving vocal identity while improving speech intelligibility</strong>. Provides a research foundation for AI-powered voice preservation specifically validated with ALS speech patterns.</p>
+        </div>
+
+        <div class="academic-card">
+            <h4>Cognixion + Apple Vision Pro BCI Study (2025)</h4>
+            <p>Clinical study using <strong>Apple Vision Pro</strong> with Cognixion's non-invasive BCI to explore how people with ALS, spinal cord injuries, or stroke can communicate using brain signals, eye tracking, and AI combined. Tests whether consumer AR hardware can serve as a medical-grade communication platform.</p>
+        </div>
     </div>
 
-    <h4 style="margin: 2rem 0 1rem; font-weight: 600; color: var(--ct-primary);">Emerging Technologies (12-36 Month
-        Horizon)</h4>
+    <h4 style="margin: 2rem 0 1rem; font-weight: 700; font-size: 1.15rem; color: var(--ct-primary); font-family: 'Manrope', sans-serif;">Emerging Technologies (12-36 Month Horizon)</h4>
     <ul class="device-notes">
-        <li><strong>GazeTrak acoustic sensing:</strong> Power-efficient alternative using sound instead of cameras</li>
-        <li><strong>BlinkWise radio-wave tracking:</strong> University of Pennsylvania project for ultra-low-power eye
-            tracking</li>
-        <li><strong>ElectraSight hybrid EOG:</strong> Non-invasive smart glasses with onboard processing</li>
-        <li><strong>EMG-based blink control glasses:</strong> Published in Biomedical Signal Processing 2023, tested
-            with ALS patients</li>
+        <li><strong>GazeTrak acoustic sensing (Cornell, ACM MobiCom 2024):</strong> Uses FMCW acoustic signals (&gt;18 kHz) bounced off eyeballs — 95% less power than camera-based systems, 3.6° accuracy at 83.3 Hz</li>
+        <li><strong>BlinkWise mmWave blink tracking (UPenn WAVES Lab):</strong> Tracks eyelid movements and blink patterns using millimeter-wave radar — produces eye openness scores rather than full gaze direction</li>
+        <li><strong>ElectraSight hybrid EOG (ETH Zurich, Dec 2024):</strong> Non-invasive smart glasses using hybrid contact/contactless EOG with QVar sensors — 92% accuracy for 6-class eye movements at ultra-low power (15 µA)</li>
+        <li><strong>EMG-based blink control glasses:</strong> Published in Biomedical Signal Processing &amp; Control 2023 (Zhang et al.) — uses corrugator supercilii EMG for voluntary blink detection, tested with ALS and high paraplegia patients</li>
+        <li><strong>Self-powered eye tracker (Dec 2025):</strong> Lightweight glasses that harvest energy from blinking using triboelectric nanogenerators — no batteries or charging needed, works in the dark, detects eye movements as small as 2° with 99% precision</li>
     </ul>
 </section>
 
@@ -563,8 +747,8 @@
             <div class="spec-grid">
                 <div class="spec-item">
                     <div class="spec-label">Price</div>
-                    <div class="spec-value">€6,250 (~$6,800)</div>
-                    <div class="spec-note">~₹9.5 Lakh in India</div>
+                    <div class="spec-value">from €5,900 (~$6,400)</div>
+                    <div class="spec-note">~₹9-10 Lakh in India (est. incl. import)</div>
                 </div>
                 <div class="spec-item">
                     <div class="spec-label">Sampling Rate</div>
@@ -581,15 +765,15 @@
                 </div>
             </div>
 
-            <div style="background: #dcfce7; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
-                <h5 style="margin: 0 0 0.5rem; font-size: 0.9rem; font-weight: 600; color: #166534;">✓ Why This Matters
+            <div style="background: #dcfce7; border-radius: 8px; padding: 1.15rem; margin: 1rem 0;">
+                <h5 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 700; color: #166534; font-family: 'Manrope', sans-serif;">✓ Why This Matters
                     for ALS</h5>
-                <p style="margin: 0; font-size: 0.85rem; color: #15803d; line-height: 1.6;">No calibration
+                <p style="margin: 0; font-size: 1rem; color: #15803d; line-height: 1.7; font-family: 'DM Sans', sans-serif;">No calibration
                     required—traditional eye trackers require following targets, which is impossible for advanced ALS
                     patients. Uses AprilTag markers around monitor for screen mapping.</p>
             </div>
 
-            <p style="margin: 0.75rem 0; font-size: 0.85rem; color: var(--ct-secondary);">
+            <p style="margin: 0.75rem 0; font-size: 1rem; color: var(--ct-secondary); font-family: 'DM Sans', sans-serif;">
                 <strong>Requirements:</strong> Windows PC, Python 3.8+, technical expertise • <strong>India:</strong>
                 Via pupil-labs.com/resellers
             </p>
@@ -603,23 +787,143 @@
     </div>
 
     <!-- Alternative Wearable Options - Simplified -->
-    <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--ct-primary); margin: 2rem 0 1rem;">Other Wearable
+    <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--ct-primary); margin: 2rem 0 1rem; font-family: 'Manrope', sans-serif;">Other Wearable
         Options</h3>
     <div class="device-grid">
         <div class="device-card">
             <h4>AdHawk MindLink</h4>
             <div class="subtitle">~$10,000 • Calibration Required</div>
             <span class="device-badge badge-warning">Not suitable for ALS</span>
-            <p style="font-size: 0.85rem; color: var(--ct-text);">Requires calibration routines—not usable by advanced
-                ALS patients.</p>
+            <p style="font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">Requires calibration routines—not usable by advanced
+                ALS patients. Note: Google is reportedly acquiring AdHawk (March 2025), which may affect future availability.</p>
         </div>
 
         <div class="device-card">
             <h4>EyeControl (Israel)</h4>
             <div class="subtitle">Screen-Free Communication</div>
             <span class="device-badge badge-info">Emerging</span>
-            <p style="font-size: 0.85rem; color: var(--ct-text);">Bone conduction audio approach. Does NOT provide
-                Windows mouse control.</p>
+            <p style="font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">Standalone wearable device with bone conduction audio feedback. Does NOT provide
+                Windows mouse control — designed for basic screen-free communication only.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Voice Preservation & Synthesis Section -->
+<section class="research-section">
+    <div class="section-header">
+        <h2>Voice Preservation & Synthesis</h2>
+    </div>
+    <p class="section-desc">Tools for preserving or recreating a patient's voice. Voice banking should be done as early as possible in disease progression, but newer AI tools can work with legacy recordings.</p>
+
+    <div class="tool-grid">
+        <div class="tool-card">
+            <h4>ElevenLabs Impact Program</h4>
+            <div class="tool-meta">Free for ALS/MND patients</div>
+            <span class="tool-badge badge-free">Free — Available Now</span>
+            <p>AI voice cloning that can recreate a hyper-realistic voice from as little as <strong>1 minute of legacy audio</strong> — old voicemails, home videos, even noisy recordings. Partnership with AudioShake (March 2025) isolates voice from background noise. Partnered with Lenovo (late 2025) for photorealistic AI avatars with restored voice for video calls. Access through <strong>Bridging Voice</strong> nonprofit.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>Apple Personal Voice (iOS 17 now; iOS 19 upcoming)</h4>
+            <div class="tool-meta">Built into iPhone/iPad — Free</div>
+            <span class="tool-badge badge-free">Free — Available Now (iOS 17+)</span>
+            <p>On-device voice banking available today on iOS 17/18 (150 phrases, ~15 minutes). <strong>iOS 19 (upcoming)</strong> will reduce setup to under a minute. All processing happens on-device — voice data stays private. Available on all modern iPhones/iPads. The easiest voice banking option available with no extra hardware needed.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>ModelTalker Gen3</h4>
+            <div class="tool-meta">Nemours Speech Research Lab — Free</div>
+            <span class="tool-badge badge-free">Free — Available Now</span>
+            <p>Third-generation AI voices using generative technology. New inventory of ~300 sentences designed for expressive speech. Now installable as system voices on <strong>Android</strong> devices including phones, tablets, and Android-based AAC devices. Conducting an IRB-approved study on ALS-related dysarthria.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>Bridging Voice Nonprofit</h4>
+            <div class="tool-meta">Free remote support & training</div>
+            <span class="tool-badge badge-free">Free — Available Now</span>
+            <p>Nonprofit providing <strong>free remote support, training, and assistive technology solutions</strong> for ALS patients. Partners with ElevenLabs and AudioShake for voice preservation. AAC specialists help patients set up communication systems. Presented at ASHA Convention 2025.</p>
+        </div>
+    </div>
+</section>
+
+<!-- AAC Software & AI Communication Tools Section -->
+<section class="research-section">
+    <div class="section-header">
+        <h2>AAC Software & AI Communication Tools</h2>
+    </div>
+    <p class="section-desc">Modern AAC (Augmentative and Alternative Communication) apps and devices with AI integration for faster, more natural communication.</p>
+
+    <div class="tool-grid">
+        <div class="tool-card">
+            <h4>Tobii Dynavox — TD Phone & TD Navio</h4>
+            <div class="tool-meta">2025 — With I-Series hardware</div>
+            <span class="tool-badge badge-commercial">Commercial — Available Now</span>
+            <p>New TD Phone app enables <strong>eye-controlled phone calls and text messages</strong> on iPhone/Android through the I-Series device. Xbox gaming integration and eye-controlled drawing also added. TD Navio launched as a portable iPadOS-based AAC device with 5-year warranty.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>Vocable AAC + ChatGPT</h4>
+            <div class="tool-meta">Free, Open Source (MIT license)</div>
+            <span class="tool-badge badge-free">Free — Available Now</span>
+            <p>Free AAC app (iOS/Android) with <strong>ChatGPT integration</strong> for conversational AI. Users communicate via head movements and text-to-speech. AI retains conversational context and enhances predictive patterns. Also optimized for Apple Vision Pro. Open source on GitHub.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>Spoken AAC + ElevenLabs Voice Clones</h4>
+            <div class="tool-meta">Sept 2025 — Freemium (iOS/Android)</div>
+            <span class="tool-badge badge-commercial">Commercial — Available Now</span>
+            <p>Predictive AI AAC app that learns from usage patterns. September 2025 update added <strong>ElevenLabs integration</strong> — create voice clones and prompt-generated voices directly within the app. Supports iOS eye tracking for full hands-free control.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>Voiceitt — Non-Standard Speech Recognition</h4>
+            <div class="tool-meta">2025 — Paid subscription</div>
+            <span class="tool-badge badge-commercial">Commercial — Available Now</span>
+            <p>AI speech recognition trained on individual users' <strong>non-standard speech patterns (dysarthria)</strong>. Voiceitt 2 translates non-standard speech into standard speech in real time, integrates with ChatGPT, and can be embedded in smart speakers/wearables. Ideal for early-to-mid stage ALS.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Platform Accessibility Updates Section -->
+<section class="research-section">
+    <div class="section-header">
+        <h2>Platform Accessibility Updates (2025)</h2>
+    </div>
+    <p class="section-desc">Major OS-level accessibility features now available on consumer devices at no additional cost.</p>
+
+    <div class="highlight-box">
+        <h4>Apple iOS 26 — Built-in Eye Tracking, Head Tracking & BCI Protocol</h4>
+        <p>iOS Eye Tracking now supports switch or dwell selection with improved keyboard typing (new dwell timer + QuickPath). New Head Tracking feature added. Most importantly: a new <strong>Switch Control protocol for BCIs</strong> was added, allowing brain-computer interface devices to control Apple devices without physical movement. Available on all supported iPhones and iPads — <strong>free</strong>.</p>
+    </div>
+</section>
+
+<!-- India-Specific Developments Section -->
+<section class="research-section">
+    <div class="section-header">
+        <h2>India-Specific Developments</h2>
+    </div>
+    <p class="section-desc">Assistive technology initiatives and market developments within India.</p>
+
+    <div class="tool-grid">
+        <div class="tool-card">
+            <h4>Amrita Vishwa Vidyapeetham — UNESCO Chair on Assistive Technologies</h4>
+            <div class="tool-meta">September 2025</div>
+            <span class="tool-badge badge-research">Academic Initiative</span>
+            <p>India's first <strong>UNESCO Chair on Assistive Technologies in Education</strong>, launched in partnership with UNESCO. Showcased assistive technologies at EMPOWER 2025 conference at IIT Delhi. Signals growing institutional support for AT research and development in India.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>India Assistive Device Market Growth</h4>
+            <div class="tool-meta">Market projection through 2030</div>
+            <span class="tool-badge badge-commercial">Growing Market</span>
+            <p>India's disabled &amp; elderly assistive device market valued at <strong>USD 716.2 million in 2023</strong>, projected to reach <strong>USD 2,765.8 million by 2030</strong> (CAGR 20%). Government supported 21 new assistive technology projects in 2025 including solutions for speech disorders.</p>
+        </div>
+
+        <div class="tool-card">
+            <h4>Frontiers Study — AT Needs Survey Across India</h4>
+            <div class="tool-meta">2025 — Research Protocol</div>
+            <span class="tool-badge badge-research">Research</span>
+            <p>Large-scale epidemiological survey protocol designed to assess <strong>assistive technology needs, unmet demands, and barriers</strong> across all six regions of India, involving 180,000 individuals. Published in <em>Frontiers in Rehabilitation Sciences</em>.</p>
         </div>
     </div>
 </section>
@@ -634,9 +938,9 @@
 
     <div
         style="background: #fef2f2; border-left: 4px solid #dc2626; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
-        <h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600; color: #991b1b;">⚠️ WARNING: Experimental
+        <h3 style="margin: 0 0 0.5rem; font-size: 1.15rem; font-weight: 700; color: #991b1b; font-family: 'Manrope', sans-serif;">⚠️ WARNING: Experimental
             Technologies</h3>
-        <p style="margin: 0; font-size: 0.9rem; color: #7f1d1d; line-height: 1.6;">These are experimental technologies
+        <p style="margin: 0; font-size: 1.0625rem; color: #7f1d1d; line-height: 1.7; font-family: 'DM Sans', sans-serif;">These are experimental technologies
             NOT proven for reliable ALS communication. Only try with backup system in place. Not recommended as primary
             communication device.</p>
     </div>
@@ -649,27 +953,27 @@
             <span class="device-badge badge-warning">MEDIUM - Unproven for ALS, requires backup system</span>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">What This Is:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Using Pupil Labs Neon with
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">What This Is:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">Using Pupil Labs Neon with
                     custom Python scripts for advanced mouse control and multi-screen setups</p>
             </div>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Who Can Try:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Users with programming
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">Who Can Try:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">Users with programming
                     background or CS student helper, early-stage ALS patients who can assist with setup</p>
             </div>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Cost:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text); font-weight: 600;">~₹9.5 lakhs
-                    (Neon hardware) + ₹5,000-15,000 (setup assistance)</p>
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">Cost:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-weight: 600; font-family: 'DM Sans', sans-serif;">~₹9-10 lakhs
+                    (Neon hardware, est.) + ₹5,000-15,000 (setup assistance)</p>
             </div>
 
             <div
-                style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                <strong style="color: #0369a1;">💡 Recommendation</strong>
-                <p style="margin: 0.5rem 0 0; color: #0c4a6e; font-size: 0.85rem;">Only as supplement to proven system,
+                style="background: #edf3f8; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                <strong style="color: #1e3a5f; font-family: 'Manrope', sans-serif;">💡 Recommendation</strong>
+                <p style="margin: 0.5rem 0 0; color: #1e3a5f; font-size: 1rem; font-family: 'DM Sans', sans-serif; line-height: 1.7;">Only as supplement to proven system,
                     not as primary device</p>
             </div>
         </div>
@@ -681,33 +985,33 @@
             <span class="device-badge badge-info">LOW - Free to try, but limited applicability</span>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">What This Is:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Free software that tracks head
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">What This Is:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">Free software that tracks head
                     movement via webcam to control mouse. NOT eye tracking.</p>
             </div>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Who Can Try:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Early-stage patients with some
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">Who Can Try:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">Early-stage patients with some
                     head control remaining</p>
             </div>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Cost:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text); font-weight: 600;">FREE (uses
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">Cost:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-weight: 600; font-family: 'DM Sans', sans-serif;">FREE (uses
                     existing webcam)</p>
             </div>
 
             <div
                 style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                <strong style="color: #991b1b;">⚠️ Critical Limitation</strong>
-                <p style="margin: 0.5rem 0 0; color: #7f1d1d; font-size: 0.85rem;">Requires head movement - NOT suitable
+                <strong style="color: #991b1b; font-family: 'Manrope', sans-serif;">⚠️ Critical Limitation</strong>
+                <p style="margin: 0.5rem 0 0; color: #7f1d1d; font-size: 1rem; font-family: 'DM Sans', sans-serif; line-height: 1.7;">Requires head movement - NOT suitable
                     for advanced ALS with zero head control</p>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
-                <strong style="color: #0369a1;">💡 Recommendation</strong>
-                <p style="margin: 0.5rem 0 0; color: #0c4a6e; font-size: 0.85rem;">Try early in disease progression,
+            <div style="background: #edf3f8; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px;">
+                <strong style="color: #1e3a5f; font-family: 'Manrope', sans-serif;">💡 Recommendation</strong>
+                <p style="margin: 0.5rem 0 0; color: #1e3a5f; font-size: 1rem; font-family: 'DM Sans', sans-serif; line-height: 1.7;">Try early in disease progression,
                     have eye-tracking backup ready</p>
             </div>
         </div>
@@ -720,33 +1024,33 @@
                 money</span>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">What This Is:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">Academic research projects
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">What This Is:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">Academic research projects
                     using smartphone cameras and AprilTag markers for low-cost eye tracking</p>
             </div>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Who Can Try:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text);">University researchers, CS
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">Who Can Try:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-family: 'DM Sans', sans-serif; line-height: 1.7;">University researchers, CS
                     students, hobbyists</p>
             </div>
 
             <div style="margin: 1rem 0;">
-                <strong style="color: var(--ct-primary); font-size: 0.9rem;">Cost:</strong>
-                <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--ct-text); font-weight: 600;">
+                <strong style="color: var(--ct-primary); font-size: 1.0625rem; font-family: 'Manrope', sans-serif;">Cost:</strong>
+                <p style="margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ct-text); font-weight: 600; font-family: 'DM Sans', sans-serif;">
                     ~₹5,000-15,000 (smartphone + markers + 3D printed mounts)</p>
             </div>
 
             <div
                 style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                <strong style="color: #991b1b;">⚠️ Critical Limitation</strong>
-                <p style="margin: 0.5rem 0 0; color: #7f1d1d; font-size: 0.85rem;">Unreliable, unproven, no support,
+                <strong style="color: #991b1b; font-family: 'Manrope', sans-serif;">⚠️ Critical Limitation</strong>
+                <p style="margin: 0.5rem 0 0; color: #7f1d1d; font-size: 1rem; font-family: 'DM Sans', sans-serif; line-height: 1.7;">Unreliable, unproven, no support,
                     requires extensive troubleshooting</p>
             </div>
 
-            <div style="background: #f0f9ff; border-left: 4px solid #0077b6; padding: 1rem; border-radius: 8px;">
-                <strong style="color: #0369a1;">💡 Recommendation</strong>
-                <p style="margin: 0.5rem 0 0; color: #0c4a6e; font-size: 0.85rem;">NOT RECOMMENDED for patients needing
+            <div style="background: #edf3f8; border-left: 4px solid #1e3a5f; padding: 1rem; border-radius: 8px;">
+                <strong style="color: #1e3a5f; font-family: 'Manrope', sans-serif;">💡 Recommendation</strong>
+                <p style="margin: 0.5rem 0 0; color: #1e3a5f; font-size: 1rem; font-family: 'DM Sans', sans-serif; line-height: 1.7;">NOT RECOMMENDED for patients needing
                     reliable communication. Research interest only.</p>
             </div>
         </div>
@@ -758,7 +1062,7 @@
     <div class="info-alert">
         <h3>Important: Screen-Mounted Devices Remain the Proven Standard</h3>
         <p>For most ALS patients, <strong>screen-mounted devices like Tobii 4C/5 + OptiKey</strong> remain significantly
-            easier to deploy, more affordable (₹25,000-40,000 vs. ₹9.5 Lakh+), and proven in the ALS community. Wearable
+            easier to deploy, more affordable (₹25,000-40,000 vs. ₹9+ Lakh), and proven in the ALS community. Wearable
             glasses and BCI solutions require technical expertise and are primarily for specific use cases or future
             consideration.</p>
     </div>

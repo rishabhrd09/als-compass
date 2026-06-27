@@ -6,48 +6,50 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;800;900&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet">
 {% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="/static/css/pages/emergency.css">
 <style>
-    /* CSS Variables - Clean Minimal Design (Matching Eye Tracker Setup) */
+    /* CSS Variables - Clinician Navy Theme */
     :root {
-        --ep-primary: #1e293b;
-        --ep-secondary: #64748b;
-        --ep-accent: #0077b6;
-        --ep-bg: #ffffff;
-        --ep-bg-alt: #f8fafc;
-        --ep-border: #e2e8f0;
-        --ep-text: #334155;
-        --ep-muted: #94a3b8;
+        --ep-primary: #1e3a5f;
+        --ep-secondary: #4a6a8a;
+        --ep-accent: #7eb8d4;
+        --ep-highlight: #d4856a;
+        --ep-bg: #fafaf8;
+        --ep-bg-alt: #f5f3ef;
+        --ep-border: #e8e4de;
+        --ep-text: #3d3830;
+        --ep-muted: #8a847c;
         --ep-success: #16a34a;
         --ep-warning: #f59e0b;
         --ep-danger: #dc2626;
     }
 
     body {
-        background-color: var(--ep-bg);
-        color: var(--ep-text);
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
-        line-height: 1.65;
-        font-size: 0.95rem;
+        background-color: #f0f4f8;
+        color: #3d4f63;
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        line-height: 1.78;
+        font-size: 1.125rem;
     }
 
     .protocol-container {
-        max-width: 900px;
+        max-width: 1280px;
         margin: 0 auto;
-        padding: 40px 24px;
+        padding: 44px 36px;
     }
 
     /* Typography - Clean & Professional */
     h1,
     h2,
     h3 {
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+        font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         color: var(--ep-primary);
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: -0.02em;
     }
 
@@ -56,16 +58,18 @@
         margin-bottom: 0.5rem;
         text-align: center;
         letter-spacing: -0.03em;
-        font-weight: 700;
+        font-weight: 800;
     }
 
     h2 {
-        font-size: 1.35rem;
+        font-size: 1.5rem;
+        font-weight: 800;
         margin-top: 2.5rem;
-        margin-bottom: 1rem;
-        border-bottom: 2px solid var(--ep-border);
+        margin-bottom: 1.15rem;
+        border-bottom: 2px solid #e2e8f0;
         padding-bottom: 0.75rem;
         position: relative;
+        letter-spacing: -0.025em;
     }
 
     h2::after {
@@ -79,51 +83,84 @@
     }
 
     h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         margin-top: 1.5rem;
         margin-bottom: 0.75rem;
-        font-weight: 600;
+        font-weight: 700;
         color: var(--ep-primary);
     }
 
     .subtitle {
         text-align: center;
         color: var(--ep-secondary);
-        font-size: 1rem;
+        font-size: 1.075rem;
         margin-bottom: 2.5rem;
         font-weight: 400;
     }
 
+    /* Hero nav button */
+    .ep-hero-nav {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-top: 1.75rem;
+        padding: 0.85rem 1.6rem;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        color: rgba(255,255,255,0.85);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .ep-hero-nav:hover {
+        background: rgba(126,184,212,0.12);
+        color: #7eb8d4;
+        border-color: rgba(126,184,212,0.25);
+        text-decoration: none;
+    }
+
+    .ep-hero-nav i {
+        font-size: 1.05rem;
+        color: rgba(126,184,212,0.75);
+    }
+
     /* Section boxes - Clean white cards */
     .section-box {
-        border: 1px solid var(--ep-border);
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        border-radius: 12px;
-        background: var(--ep-bg);
-        max-width: 900px;
+        border: 1px solid #e2e8f0;
+        padding: 2rem 2.25rem;
+        margin-bottom: 1.75rem;
+        border-radius: 14px;
+        background: #ffffff;
+        max-width: 1280px;
         margin-left: auto;
         margin-right: auto;
     }
 
     /* Warning and tip boxes - Minimal style */
     .warning-box {
-        border: 1px solid var(--ep-border);
-        border-left: 3px solid var(--ep-accent);
-        background: var(--ep-bg);
-        padding: 1.25rem;
-        border-radius: 8px;
-        margin: 1.25rem auto;
-        max-width: 900px;
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid var(--ep-primary);
+        background: #f8fafc;
+        padding: 1.5rem 1.75rem;
+        border-radius: 0 10px 10px 0;
+        margin: 1.5rem auto;
+        max-width: 1280px;
     }
 
     .tip-box {
-        border: 1px solid var(--ep-border);
-        background: var(--ep-bg-alt);
-        padding: 1rem 1.25rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-        font-size: 0.9rem;
+        border: 1px solid #e2e8f0;
+        background: linear-gradient(135deg, #f0f7fc, #f8fafc);
+        padding: 1.25rem 1.5rem;
+        border-radius: 10px;
+        margin: 1.25rem 0;
+        font-size: 1.0625rem;
+        line-height: 1.78;
     }
 
     /* Step numbers - Clean circular badges */
@@ -131,27 +168,29 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 26px;
-        height: 26px;
+        width: 30px;
+        height: 30px;
         background: var(--ep-primary);
         color: white;
         border-radius: 50%;
-        font-size: 13px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 700;
         margin-right: 12px;
         flex-shrink: 0;
+        font-family: 'Manrope', sans-serif;
     }
 
     /* Parameter tags - Subtle styling */
     .param-box {
         display: inline-block;
-        background: var(--ep-bg-alt);
-        border: 1px solid var(--ep-border);
-        padding: 4px 10px;
-        border-radius: 6px;
-        font-family: 'SF Mono', 'Consolas', monospace;
-        font-size: 0.8rem;
-        margin: 3px;
+        background: #f0f4f8;
+        border: 1px solid #e2e8f0;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 4px;
         color: var(--ep-primary);
     }
 
@@ -161,7 +200,7 @@
         padding: 0 2px;
         border-bottom: 2px solid var(--ep-accent);
         color: var(--ep-primary);
-        font-weight: 500;
+        font-weight: 600;
     }
 
     /* Grid layout */
@@ -180,52 +219,56 @@
     /* Lists - Clean styling */
     ul,
     ol {
-        margin: 12px 0;
+        margin: 14px 0;
         padding-left: 24px;
     }
 
     li {
-        margin: 8px 0;
-        color: var(--ep-text);
-        line-height: 1.6;
+        margin: 10px 0;
+        color: #3d4f63;
+        line-height: 1.78;
+        font-size: 1.0625rem;
     }
 
     /* Contact grid */
     .contact-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 16px;
         margin-top: 16px;
     }
 
     .contact-item {
-        padding: 12px 16px;
-        border: 1px solid var(--ep-border);
-        border-radius: 8px;
-        background: var(--ep-bg);
+        padding: 14px 18px;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        background: #f8fafc;
     }
 
     .contact-label {
-        font-size: 0.8rem;
+        font-size: 0.875rem;
         color: var(--ep-muted);
         margin-bottom: 8px;
         text-transform: uppercase;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+        font-family: 'Manrope', sans-serif;
     }
 
     .contact-value {
-        border-bottom: 1px solid var(--ep-border);
+        border-bottom: 1px solid #e2e8f0;
         padding: 8px 0;
-        color: var(--ep-secondary);
+        color: #475569;
+        font-weight: 500;
     }
 
     /* ============ FLOWCHART STYLES - Minimal ============ */
     .flowchart {
-        background: var(--ep-bg-alt);
-        border: 1px solid var(--ep-border);
-        border-radius: 12px;
-        padding: 30px 20px;
-        margin: 20px 0;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 32px 24px;
+        margin: 24px 0;
         overflow-x: auto;
     }
 
@@ -239,12 +282,12 @@
     }
 
     .flow-node {
-        background: var(--ep-bg);
-        border: 1px solid var(--ep-border);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
         border-radius: 10px;
-        padding: 14px 18px;
+        padding: 16px 20px;
         text-align: center;
-        font-size: 0.875rem;
+        font-size: 0.95rem;
         max-width: 280px;
         min-width: 180px;
         position: relative;
@@ -303,7 +346,8 @@
         display: block;
         margin-bottom: 4px;
         color: var(--ep-primary);
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 1rem;
     }
 
     .flow-arrow {
@@ -334,10 +378,11 @@
     }
 
     .flow-label {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
+        font-weight: 500;
         color: var(--ep-secondary);
-        background: var(--ep-bg-alt);
-        padding: 2px 8px;
+        background: #f0f4f8;
+        padding: 3px 10px;
         border-radius: 10px;
         margin: 0 5px;
     }
@@ -359,14 +404,15 @@
     }
 
     .flow-branch-label {
-        background: var(--ep-bg-alt);
-        border: 1px solid var(--ep-border);
-        padding: 4px 12px;
+        background: #f0f4f8;
+        border: 1px solid #e2e8f0;
+        padding: 5px 14px;
         border-radius: 15px;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        font-weight: 600;
         margin-bottom: 10px;
         text-align: center;
-        color: var(--ep-secondary);
+        color: var(--ep-primary);
     }
 
     .flow-section {
@@ -380,12 +426,14 @@
     .flow-section-title {
         background: var(--ep-primary);
         color: white;
-        padding: 6px 16px;
-        border-radius: 6px;
-        font-size: 0.85rem;
-        font-weight: 600;
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 700;
         display: inline-block;
         margin-bottom: 15px;
+        font-family: 'Manrope', sans-serif;
+        letter-spacing: -0.01em;
     }
 
     /* Three column branch layout */
@@ -438,9 +486,9 @@
         }
     }
 
-    /* Links - Accent color */
+    /* Links - Navy accent color */
     a {
-        color: var(--ep-accent);
+        color: var(--ep-primary);
         text-decoration: none;
     }
 
@@ -450,70 +498,51 @@
 
     /* Strong text */
     strong {
-        font-weight: 600;
+        font-weight: 700;
         color: var(--ep-primary);
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<!-- Hero Section - Matching Communication Technology -->
+<!-- Hero Section - Dark Theme -->
 <section class="ep-hero" style="
     text-align: center;
-    padding: 4.5rem 1.5rem 3rem;
-    background:
-        linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%),
-        url('/static/images/hero_bg_v2.png') center/cover no-repeat;
-    background-color: #f5f7fa;
-    color: #1d1d1f;
+    padding: 5rem 2rem 4rem;
+    background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%);
+    color: #ffffff;
     margin-bottom: 0;
     position: relative;
+    overflow: hidden;
 ">
     <div style="
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.12) 0%, transparent 70%);
         pointer-events: none;
     "></div>
     <div class="container" style="position: relative; z-index: 1;">
         <h1 style="
-            font-size: 2.75rem;
-            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
+            font-weight: 800;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.04em;
-            color: #1d1d1f;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            font-family: 'Crimson Pro', 'Manrope', sans-serif;
         ">Respiratory Emergency Protocol</h1>
         <p style="
-            font-size: 1.125rem;
-            color: #424245;
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.6);
             margin: 0.5rem auto 0;
             font-weight: 400;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
         ">(this protocol is for PALS on tracheostomy + BiPAP / ventilator)</p>
+        <a href="/home-icu-guide" class="ep-hero-nav">
+            <i class="fas fa-hospital"></i> Home ICU Setup Guide
+        </a>
     </div>
 </section>
-
-<!-- Back to Home ICU Guide -->
-<div style="max-width: 900px; margin: 1.5rem auto 0; padding: 0 1.5rem;">
-    <a href="/home-icu-guide" style="
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #0071e3;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-decoration: none;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-        transition: opacity 0.2s;
-    ">
-        <span style="font-size: 1.1rem;">←</span> Back to Home ICU Setup Guide
-    </a>
-</div>
 
 <div class="protocol-container">
 
@@ -526,7 +555,7 @@
         <div class="grid-2">
             <!-- <div>
                 <p class="font-semibold mb-2">Over time, PALS can tell you:</p>
-                <ul style="font-size: 0.95rem;">
+                <ul style="font-size: 1.0625rem;">
                     <li>"I think I need Ambu now"</li>
                     <li>"Cough is stuck near balloon area"</li>
                     <li>"Pressure feels insufficient"</li>
@@ -536,7 +565,7 @@
             </div> -->
             <div>
                 <p class="font-semibold mb-2">Always ask PALS:</p>
-                <ul style="font-size: 0.95rem;">
+                <ul style="font-size: 1.0625rem;">
                     <li>How are you feeling right now?</li>
                     <li>Is ventilator pressure feeling OK?</li>
                     <li>Any cough stuck? Where - chest or balloon area?</li>
@@ -575,7 +604,7 @@
             <span class="param-box">Leak Values</span>
         </div>
 
-        <p style="font-size: 0.95rem;">Changes in these parameters indicate something is wrong. But <span
+        <p style="font-size: 1.0625rem;">Changes in these parameters indicate something is wrong. But <span
                 class="highlight">always combine parameter reading with PALS feedback</span> - they often sense
             discomfort before numbers change significantly.</p>
     </div>
@@ -584,9 +613,9 @@
     <div class="section-box">
         <h2>Two-Person Approach</h2>
         <div class="grid-2">
-            <div style="border-right: 1px solid #e0e0e0; padding-right: 20px;">
+            <div style="border-right: 1px solid #e8e4de; padding-right: 20px;">
                 <p class="font-semibold mb-2">Person 1: Immediate Care</p>
-                <ul style="font-size: 0.95rem;">
+                <ul style="font-size: 1.0625rem;">
                     <li>Start Ambu if needed</li>
                     <li>Talk to PALS, get feedback</li>
                     <li>Perform suction/neb</li>
@@ -594,7 +623,7 @@
             </div>
             <div>
                 <p class="font-semibold mb-2">Person 2: Support</p>
-                <ul style="font-size: 0.95rem;">
+                <ul style="font-size: 1.0625rem;">
                     <li>Check equipment & connections</li>
                     <li>Prepare supplies</li>
                     <li>Monitor parameters</li>
@@ -605,7 +634,7 @@
     </div>
     <!-- Main Decision Flowchart - Pure CSS Version -->
     <h2>Decision Flowchart</h2>
-    <p style="color: #666; margin-bottom: 16px;">Follow the path based on what you observe and what PALS tells you</p>
+    <p style="color: #8a847c; margin-bottom: 16px;">Follow the path based on what you observe and what PALS tells you</p>
 
     <div class="flowchart">
         <!-- Start -->
@@ -716,7 +745,7 @@
                         sound</div>
                     <div class="flow-node action"
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
-                        <strong style="display: block; margin-bottom: 8px; color: #1e293b;">SECRETION PATH - TT
+                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">SECRETION PATH - TT
                             Suction</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
                             <li>NS 2ml instillation</li>
@@ -732,7 +761,7 @@
                         out</div>
                     <div class="flow-node action"
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
-                        <strong style="display: block; margin-bottom: 8px; color: #1e293b;">NEBULIZATION PATH</strong>
+                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">NEBULIZATION PATH</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
                             <li>give Levolin or mucomix Neb as per situation</li>
                             <li>Give Ambu</li>
@@ -746,7 +775,7 @@
                         area</div>
                     <div class="flow-node warning"
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
-                        <strong style="display: block; margin-bottom: 8px; color: #1e293b;">⚠️ BALLOON PATH</strong>
+                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">⚠️ BALLOON PATH</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
                             <li>Subglottic suction first</li>
                             <li>Cautiously deflate cuff (only if experienced)</li>
@@ -761,7 +790,7 @@
                         plug</div>
                     <div class="flow-node warning"
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
-                        <strong style="display: block; margin-bottom: 8px; color: #1e293b;">⚠️ MUCUS PLUG</strong>
+                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">⚠️ MUCUS PLUG</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
                             <li>2ml NS + 8-10 Ambu</li>
                             <li>Clearance cycle: Ambu → Suction → Neb → Ambu → Suction</li>
@@ -911,7 +940,7 @@
             <p
                 style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
                 Sequence</p>
-            <div style="font-size: 0.95rem;">
+            <div style="font-size: 1.0625rem;">
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
                         class="step-num">1</span><span>Give Ambu immediately - provides relief</span></p>
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
@@ -1142,4 +1171,23 @@
 </div>
 
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+window.addEventListener('load', function() {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Subtle step reveals — no bouncy animations for emergency context */
+    gsap.utils.toArray('.warning-box, .protocol-section').forEach(function(el) {
+        gsap.from(el, {
+            scrollTrigger: { trigger: el, start: 'top 92%' },
+            y: 16, opacity: 0, duration: 0.4, ease: 'power1.out'
+        });
+    });
+});
+</script>
 {% endblock %}

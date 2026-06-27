@@ -8,7 +8,7 @@
     :root {
         --et-primary: #1e293b;
         --et-secondary: #64748b;
-        --et-accent: #0077b6;
+        --et-accent: #1e3a5f;
         --et-bg: #ffffff;
         --et-bg-alt: #f8fafc;
         --et-border: #e2e8f0;
@@ -19,27 +19,22 @@
         --et-danger: #dc2626;
     }
 
-    /* Hero Section - Light Sky Blue Theme (Matching Communication Technology) */
+    /* Hero Section - Dark Theme */
     .et-hero {
         text-align: center;
-        padding: 4rem 1.5rem 3rem;
-        background:
-            linear-gradient(135deg, rgba(135, 206, 235, 0.15) 0%, rgba(245, 245, 240, 0.25) 100%),
-            url('/static/images/hero_bg_v2.png') center/cover no-repeat;
-        background-color: #f5f7fa;
-        color: var(--et-primary);
+        padding: 5rem 2rem 4rem;
+        background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%);
+        color: #ffffff;
         margin-bottom: 0;
         position: relative;
+        overflow: hidden;
     }
 
     .et-hero::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.15) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -49,53 +44,61 @@
     }
 
     .et-hero h1 {
-        font-size: 2.25rem;
-        font-weight: 700;
+        font-size: clamp(2rem, 4.5vw, 2.5rem);
+        font-weight: 800;
         margin-bottom: 0.75rem;
         letter-spacing: -0.03em;
-        color: #1d1d1f;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        color: #ffffff;
+        font-family: 'Manrope', sans-serif;
+        text-shadow: none;
     }
 
     .et-hero p {
-        font-size: 1rem;
-        color: #424245;
+        font-size: 1.15rem;
+        color: rgba(255,255,255,0.6);
         max-width: 750px;
         margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.7;
         font-weight: 400;
+        font-family: 'DM Sans', sans-serif;
     }
 
-    /* Back Navigation */
-    .et-back-nav {
-        max-width: 1100px;
-        margin: 1rem auto 0;
-        padding: 0 1rem;
-    }
-
-    .et-back-link {
+    .et-hero-nav {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        color: var(--et-accent);
+        gap: 0.65rem;
+        margin-top: 1.75rem;
+        padding: 0.85rem 1.6rem;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        color: rgba(255,255,255,0.85);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
         text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        padding: 0.5rem 0;
-        transition: color 0.2s;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
     }
 
-    .et-back-link:hover {
-        color: #0369a1;
-        text-decoration: underline;
+    .et-hero-nav:hover {
+        background: rgba(126,184,212,0.12);
+        color: #7eb8d4;
+        border-color: rgba(126,184,212,0.25);
+        text-decoration: none;
+    }
+
+    .et-hero-nav i {
+        font-size: 1.05rem;
+        color: rgba(126,184,212,0.75);
     }
 
     /* Tab Navigation */
     .et-tabs {
         display: flex;
         gap: 0;
-        max-width: 1100px;
+        max-width: 1280px;
         margin: 1.5rem auto 0;
         padding: 0 1rem;
         border-bottom: 2px solid var(--et-border);
@@ -103,8 +106,9 @@
 
     .et-tab {
         padding: 1rem 1.5rem;
-        font-size: 0.95rem;
+        font-size: 1.05rem;
         font-weight: 600;
+        font-family: 'DM Sans', sans-serif;
         color: var(--et-secondary);
         background: none;
         border: none;
@@ -135,7 +139,7 @@
     /* Tab Content */
     .et-tab-content {
         display: none;
-        max-width: 1100px;
+        max-width: 1280px;
         margin: 0 auto;
         padding: 2rem 1rem;
     }
@@ -167,18 +171,20 @@
     }
 
     .et-section-header h2 {
-        font-size: 1.35rem;
-        font-weight: 700;
+        font-size: 1.55rem;
+        font-weight: 800;
         color: var(--et-primary);
         margin: 0;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.02em;
+        font-family: 'Manrope', sans-serif;
     }
 
     .et-section-desc {
         color: var(--et-secondary);
         margin: 0 0 1.5rem;
-        font-size: 0.9rem;
-        line-height: 1.5;
+        font-size: 1.0625rem;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Path Comparison */
@@ -214,20 +220,22 @@
     }
 
     .et-path-card.recommended .et-path-card-header {
-        background: linear-gradient(135deg, #0077b6 0%, #0369a1 100%);
+        background: linear-gradient(135deg, #1e3a5f 0%, #264d7a 100%);
         color: white;
     }
 
     .et-path-card-header h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 700;
         margin: 0 0 0.25rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .et-path-card-header p {
-        font-size: 0.85rem;
+        font-size: 0.975rem;
         margin: 0;
         opacity: 0.9;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .et-path-card-body {
@@ -237,21 +245,22 @@
     .et-path-card-body ul {
         margin: 0;
         padding-left: 1.25rem;
-        font-size: 0.9rem;
+        font-size: 1.0625rem;
         color: var(--et-text);
-        line-height: 1.7;
+        line-height: 1.8;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .et-path-btn {
         display: inline-block;
         margin-top: 1rem;
-        padding: 0.6rem 1.25rem;
+        padding: 0.7rem 1.4rem;
         background: var(--et-primary);
         color: white;
         border: none;
         border-radius: 6px;
-        font-size: 0.85rem;
-        font-weight: 500;
+        font-size: 0.95rem;
+        font-weight: 600;
         cursor: pointer;
         text-decoration: none;
         transition: background 0.2s;
@@ -266,7 +275,7 @@
     }
 
     .et-path-card.recommended .et-path-btn:hover {
-        background: #0369a1;
+        background: #264d7a;
     }
 
     /* Requirements Box */
@@ -279,19 +288,21 @@
     }
 
     .et-requirements-box h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 700;
         color: var(--et-primary);
         margin: 0 0 1rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .et-requirements-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.9rem;
+        font-size: 1.0625rem;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .et-requirements-table th,
@@ -302,10 +313,12 @@
     }
 
     .et-requirements-table th {
-        font-weight: 600;
+        font-weight: 700;
         color: var(--et-primary);
         background: white;
         width: 30%;
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.975rem;
     }
 
     .et-requirements-table td {
@@ -333,10 +346,11 @@
     }
 
     .et-setup-guide-header h3 {
-        font-size: 1.15rem;
-        font-weight: 600;
+        font-size: 1.3rem;
+        font-weight: 700;
         color: var(--et-primary);
         margin: 0;
+        font-family: 'Manrope', sans-serif;
     }
 
     .et-setup-guide-body {
@@ -365,30 +379,32 @@
     .et-step-num {
         background: var(--et-primary);
         color: white;
-        width: 2rem;
-        height: 2rem;
+        width: 2.25rem;
+        height: 2.25rem;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.9rem;
-        font-weight: 600;
+        font-size: 0.95rem;
+        font-weight: 700;
         flex-shrink: 0;
     }
 
     .et-step-title {
-        font-size: 1.05rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 700;
         color: var(--et-primary);
         margin: 0;
         padding-top: 0.25rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .et-step-content {
         margin-left: 3rem;
-        font-size: 0.9rem;
+        font-size: 1.0625rem;
         color: var(--et-text);
-        line-height: 1.7;
+        line-height: 1.8;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .et-step-content ul {
@@ -404,7 +420,7 @@
         background: var(--et-bg-alt);
         padding: 0.15rem 0.5rem;
         border-radius: 4px;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         font-family: 'Consolas', monospace;
     }
 
@@ -429,24 +445,26 @@
     }
 
     .et-step-image p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: var(--et-secondary);
         margin: 0.5rem 0 0;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Alert Boxes */
     .et-alert {
-        padding: 1rem 1.25rem;
-        border-radius: 8px;
+        padding: 1.15rem 1.4rem;
+        border-radius: 10px;
         margin: 1rem 0;
-        font-size: 0.9rem;
-        line-height: 1.6;
+        font-size: 1.0625rem;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .et-alert-warning {
         background: #faf8f4;
         border: 1px solid #e5ddd0;
-        border-left: 4px solid #c9a98c;
+        border-left: 4px solid #1e3a5f;
         color: #6b5744;
     }
 
@@ -454,7 +472,7 @@
         background: #e0f2fe;
         border: 1px solid #0284c7;
         border-left: 4px solid #0284c7;
-        color: #0369a1;
+        color: #264d7a;
     }
 
     .et-alert-success {
@@ -481,10 +499,11 @@
     }
 
     .et-checklist h4 {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.1rem;
+        font-weight: 700;
         color: #166534;
         margin: 0 0 1rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .et-checklist-grid {
@@ -497,8 +516,9 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: #15803d;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .et-checklist-item::before {
@@ -516,10 +536,11 @@
     }
 
     .et-download-box h4 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #0369a1;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #264d7a;
         margin: 0 0 1rem;
+        font-family: 'Manrope', sans-serif;
     }
 
     .et-download-links {
@@ -530,9 +551,10 @@
     .et-download-links a {
         display: inline-block;
         color: #0284c7;
-        font-size: 0.9rem;
+        font-size: 1rem;
         text-decoration: none;
         padding: 0.25rem 0;
+        font-family: 'DM Sans', sans-serif;
     }
 
     .et-download-links a:hover {
@@ -543,7 +565,8 @@
     .et-comparison-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.85rem;
+        font-size: 1rem;
+        font-family: 'DM Sans', sans-serif;
         margin: 1.5rem 0;
     }
 
@@ -556,8 +579,10 @@
 
     .et-comparison-table th {
         background: var(--et-bg-alt);
-        font-weight: 600;
+        font-weight: 700;
         color: var(--et-primary);
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.95rem;
     }
 
     .et-comparison-table td:first-child {
@@ -587,9 +612,10 @@
     }
 
     .et-image-item p {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         color: var(--et-secondary);
         margin: 0.5rem 0 0;
+        font-family: 'DM Sans', sans-serif;
     }
 
     /* Responsive */
@@ -624,20 +650,20 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: #c9a98c;
+        padding: 0.6rem 1.1rem;
+        background: #1e3a5f;
         color: #fff;
         border: none;
         border-radius: 6px;
-        font-size: 0.85rem;
-        font-weight: 500;
+        font-size: 0.95rem;
+        font-weight: 600;
         cursor: pointer;
         transition: background 0.2s;
         font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
     }
 
     .et-export-btn:hover {
-        background: #b8987b;
+        background: #264d7a;
     }
 
     /* Print Styles - Beautiful PDF Export */
@@ -695,7 +721,7 @@
             color: #0f172a !important;
             margin: 0 0 1rem 0 !important;
             padding-bottom: 0.75rem !important;
-            border-bottom: 3px solid #0077b6 !important;
+            border-bottom: 3px solid #1e3a5f !important;
             text-align: center !important;
         }
 
@@ -727,7 +753,7 @@
             background: #f8fafc !important;
             border: 1px solid #e2e8f0 !important;
             border-radius: 8px !important;
-            border-left: 4px solid #0077b6 !important;
+            border-left: 4px solid #1e3a5f !important;
         }
 
         .et-step-header {
@@ -740,7 +766,7 @@
         .et-step-num {
             width: 2rem !important;
             height: 2rem !important;
-            background: #0077b6 !important;
+            background: #1e3a5f !important;
             color: white !important;
             border-radius: 50% !important;
             display: flex !important;
@@ -824,7 +850,7 @@
 
         /* === LINKS - Clickable with visible URLs === */
         a {
-            color: #0077b6 !important;
+            color: #1e3a5f !important;
             text-decoration: underline !important;
             font-weight: 500 !important;
         }
@@ -946,19 +972,13 @@
         <h1>Verified Solutions & Setup Guides</h1>
         <p>Step-by-step instructions for setting up Tobii Eye Trackers with detailed screenshots and verified
             configurations for ALS communication</p>
+        <a href="/communication-technology" class="et-hero-nav"><i class="fas fa-comments"></i> Communication Technology</a>
     </div>
 </section>
 
-<!-- Back Navigation -->
-<nav class="et-back-nav">
-    <a href="/communication-technology" class="et-back-link">
-        ← Back to Communication Technology
-    </a>
-</nav>
-
 <!-- Tab Navigation with Export Button -->
 <div
-    style="display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 1.5rem auto 0; padding: 0 1rem;">
+    style="display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 1.5rem auto 0; padding: 0 1rem;">
     <div class="et-tabs" style="margin: 0; flex-grow: 1;">
         <button class="et-tab active" onclick="switchTab('tobii5-optikey')">Tobii Eye Tracker 5 with OptiKey</button>
         <button class="et-tab" onclick="switchTab('tobii5-winec')">Tobii Eye Tracker 5 with Windows Eye Control</button>
@@ -1003,7 +1023,7 @@
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                     <a href="https://www.amazon.in/s?k=tobii+eye+tracker+5" target="_blank"
                         style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #1e293b; text-decoration: none; border: 1px solid #e2e8f0;">
-                        Tobii Eye Tracker 5 — <span style="color: #0077b6;">Amazon India</span>
+                        Tobii Eye Tracker 5 — <span style="color: #1e3a5f;">Amazon India</span>
                     </a>
                 </div>
             </div>
@@ -1015,11 +1035,11 @@
                     Software Downloads</p>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                     <a href="https://gaming.tobii.com/getstarted/" target="_blank"
-                        style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #0077b6; text-decoration: none; border: 1px solid #e2e8f0;">
+                        style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #1e3a5f; text-decoration: none; border: 1px solid #e2e8f0;">
                         Tobii Experience Driver v4.183.0.30025
                     </a>
                     <a href="https://optikey.org/help/versions" target="_blank"
-                        style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #0077b6; text-decoration: none; border: 1px solid #e2e8f0;">
+                        style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #1e3a5f; text-decoration: none; border: 1px solid #e2e8f0;">
                         OptiKey Pro Classic v3.2.5
                     </a>
                 </div>
@@ -1045,32 +1065,32 @@
             <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: #475569;">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
                     <span>Install Tobii Experience Driver v4.183.0.30025</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
                     <span>Connect Eye Tracker 5 hardware</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
                     <span>Setup Tobii Experience app</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
                     <span>Verify installation in Apps & Features</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
                     <span>Install OptiKey Pro Classic v3.2.5</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
                     <span>Use OptiKey for eye tracking</span>
                 </div>
             </div>
@@ -1105,7 +1125,7 @@
                         <p style="margin-top: 0.75rem;"><strong>1. Download the Driver:</strong></p>
                         <ul>
                             <li>Go to: <a href="https://gaming.tobii.com/getstarted/" target="_blank"
-                                    style="color: #0077b6; font-weight: 600;">gaming.tobii.com/getstarted</a></li>
+                                    style="color: #1e3a5f; font-weight: 600;">gaming.tobii.com/getstarted</a></li>
                             <li>Under "1. Select the hardware", choose <strong>"Tobii" (Eye Tracking)</strong></li>
                             <li>Under "2. Select Tobii device", choose <strong>"Tobii Eye Tracker 5"</strong></li>
                             <li>Click <strong>"DOWNLOAD DRIVER"</strong></li>
@@ -1267,7 +1287,7 @@
                         <p style="margin-top: 0.75rem;"><strong>1. Download:</strong></p>
                         <ul>
                             <li>Go to: <a href="https://optikey.org/help/versions" target="_blank"
-                                    style="color: #0077b6; font-weight: 600;">optikey.org/help/versions</a></li>
+                                    style="color: #1e3a5f; font-weight: 600;">optikey.org/help/versions</a></li>
                             <li>Scroll down to find the <strong>"OptiKey Classic (V3)"</strong> section</li>
                             <li>Click: <strong>"Download OptiKey Pro Classic (v3.2.5)"</strong></li>
                         </ul>
@@ -1420,7 +1440,7 @@
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                     <a href="https://www.amazon.in/s?k=tobii+eye+tracker+5" target="_blank"
                         style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #1e293b; text-decoration: none; border: 1px solid #e2e8f0;">
-                        Tobii Eye Tracker 5 — <span style="color: #0077b6;">Amazon India</span>
+                        Tobii Eye Tracker 5 — <span style="color: #1e3a5f;">Amazon India</span>
                     </a>
                 </div>
             </div>
@@ -1460,32 +1480,32 @@
             <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: #475569;">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
                     <span>Remove old Tobii files</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
                     <span>Install Beta Driver v5.0.0.6035</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
                     <span>Verify in Apps & Features</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
                     <span>Connect Tobii Eye Tracker 5</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
                     <span>Display Setup & Calibration in Tobii app</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
                     <span>Enable Windows Eye Control</span>
                 </div>
             </div>
@@ -1550,7 +1570,7 @@
                         <ul>
                             <li>Download the beta driver from: <a
                                     href="https://www.touslesdrivers.com/index.php?v_page=23&v_code=69377"
-                                    target="_blank" style="color: #0077b6; font-weight: 600;">TousLesDrivers</a>
+                                    target="_blank" style="color: #1e3a5f; font-weight: 600;">TousLesDrivers</a>
                                 (warning: This is NOT an official Tobii download)</li>
                             <li>File name: <code>Tobii.EyeTracker5.Offline.Installer_5.0.0.6035.exe</code></li>
                             <li>File size: 5.3 MB</li>
@@ -1770,7 +1790,7 @@
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                     <a href="https://www.ebay.com/sch/i.html?_nkw=tobii+eye+tracker+4c" target="_blank"
                         style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #1e293b; text-decoration: none; border: 1px solid #e2e8f0;">
-                        Tobii Eye Tracker 4C — <span style="color: #0077b6;">Available on eBay (used)</span>
+                        Tobii Eye Tracker 4C — <span style="color: #1e3a5f;">Available on eBay (used)</span>
                     </a>
                 </div>
                 <p style="margin: 0.5rem 0 0; font-size: 0.75rem; color: #64748b;">
@@ -1784,7 +1804,7 @@
                     Software Downloads</p>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                     <a href="https://gaming.tobii.com/getstarted/?bundle=tobii-eye-tracker-4c" target="_blank"
-                        style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #0077b6; text-decoration: none; border: 1px solid #e2e8f0;">
+                        style="background: #f1f5f9; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; color: #1e3a5f; text-decoration: none; border: 1px solid #e2e8f0;">
                         Tobii Core Software (for 4C)
                     </a>
                 </div>
@@ -1810,34 +1830,34 @@
             <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: #475569;">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">1</span>
                     <span>Download from <a href="https://gaming.tobii.com/getstarted/" target="_blank"
-                            style="color: #0077b6; text-decoration: underline; font-weight: 500;">gaming.tobii.com/getstarted</a>
+                            style="color: #1e3a5f; text-decoration: underline; font-weight: 500;">gaming.tobii.com/getstarted</a>
                         → Select 4C & Core Software</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">2</span>
                     <span>Install software</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">3</span>
                     <span>Verify in Apps & Features → "Tobii Eye Tracking" installed</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">4</span>
                     <span>Connect Tobii Eye Tracker 4C</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">5</span>
                     <span>Display Setup & Calibration in Tobii app</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
                     <span
-                        style="background: #0077b6; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
+                        style="background: #1e3a5f; color: white; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">6</span>
                     <span>Enable Windows Eye Control in Settings</span>
                 </div>
             </div>

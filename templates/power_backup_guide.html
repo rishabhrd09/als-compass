@@ -2,186 +2,460 @@
 
 {% block title %}Power Backup Guide | ALS Caregiver's Compass{% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Power Backup Page — Clinician Theme */
+    .pb-hero {
+        text-align: center;
+        padding: 5rem 2rem 4rem;
+        background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%);
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+    }
+    .pb-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.12) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .pb-hero > * { position: relative; z-index: 1; }
+    .pb-hero h1 {
+        font-size: clamp(2rem, 4.5vw, 2.75rem);
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 0 0.75rem 0;
+        letter-spacing: -0.03em;
+        font-family: 'Manrope', sans-serif;
+    }
+    .pb-hero p {
+        margin: 0 auto 1.5rem;
+        color: rgba(255,255,255,0.6);
+        font-size: 1.15rem;
+        max-width: 540px;
+        line-height: 1.7;
+        font-family: 'DM Sans', sans-serif;
+    }
+    .pb-hero-nav {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.85rem 1.6rem;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        text-decoration: none;
+        color: rgba(255,255,255,0.85);
+        font-weight: 700;
+        font-size: 1.1rem;
+        font-family: 'DM Sans', sans-serif;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        margin: 0 0.5rem;
+    }
+    .pb-hero-nav:hover {
+        background: rgba(126,184,212,0.12);
+        color: #7eb8d4;
+        border-color: rgba(126,184,212,0.25);
+        text-decoration: none;
+    }
+    .pb-hero-nav i {
+        font-size: 1.05rem;
+        color: rgba(126,184,212,0.75);
+    }
+
+    /* Content container */
+    .pb-container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 2.5rem 2rem;
+    }
+
+    /* Section cards */
+    .pb-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 2.25rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .pb-card h2 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #1e3a5f;
+        margin: 0 0 1.15rem 0;
+        font-family: 'Manrope', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    .pb-card h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1e3a5f;
+        margin: 0 0 0.875rem 0;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .pb-card h4 {
+        font-size: 1.075rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0 0 0.75rem 0;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .pb-card p {
+        color: #475569;
+        line-height: 1.78;
+        font-size: 1.0625rem;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .pb-card strong {
+        font-weight: 700;
+        color: #1e293b;
+    }
+
+    /* Tables */
+    .pb-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.0625rem;
+    }
+    .pb-table thead tr {
+        background: linear-gradient(135deg, #f0f4f8, #f8fafc);
+        border-bottom: 2px solid #e2e8f0;
+    }
+    .pb-table th {
+        padding: 1rem 0.875rem;
+        text-align: left;
+        font-weight: 800;
+        color: #1e3a5f;
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .pb-table td {
+        padding: 0.95rem 0.875rem;
+        line-height: 1.7;
+        color: #475569;
+        font-size: 1rem;
+    }
+    .pb-table tbody tr {
+        border-bottom: 1px solid #f1f5f9;
+        transition: background 0.18s ease;
+    }
+    .pb-table tbody tr:nth-child(even) {
+        background: #fafbfc;
+    }
+    .pb-table tbody tr:hover {
+        background: rgba(126,184,212,0.06);
+    }
+    .pb-table .cell-label {
+        font-weight: 700;
+        color: #1e293b;
+        font-family: 'Manrope', sans-serif;
+    }
+    .pb-table .cell-value {
+        font-weight: 600;
+        color: #1e3a5f;
+    }
+    .pb-table .cell-highlight {
+        background: #f0f4f8;
+    }
+
+    /* Info boxes */
+    .pb-info-box {
+        background: linear-gradient(135deg, #f0f7fc, #f8fafc);
+        padding: 1.25rem 1.5rem;
+        border-radius: 10px;
+        margin-top: 1.25rem;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.78;
+        color: #475569;
+    }
+
+    .pb-formula-box {
+        background: #f0f4f8;
+        padding: 1.15rem 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .pb-formula-box p:first-child {
+        font-family: 'DM Sans', sans-serif;
+        color: #1e293b;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        margin: 0;
+    }
+    .pb-formula-box p:last-child {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+
+    /* Stat cards */
+    .pb-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    .pb-stat-card {
+        padding: 1.15rem;
+        border-radius: 10px;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+    }
+    .pb-stat-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 0.25rem;
+        font-family: 'Manrope', sans-serif;
+    }
+    .pb-stat-desc {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 0.5rem;
+        font-family: 'DM Sans', sans-serif;
+    }
+    .pb-stat-value {
+        font-size: 1.65rem;
+        font-weight: 800;
+        font-family: 'Manrope', sans-serif;
+    }
+    .pb-stat-sub {
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Option boxes */
+    .pb-option-box {
+        background: #f8fafc;
+        padding: 1.5rem 1.75rem;
+        border-radius: 10px;
+        margin-top: 1.25rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    .pb-option-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 0.875rem;
+    }
+
+    .pb-option-item {
+        background: #ffffff;
+        padding: 1.1rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .pb-option-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        margin-bottom: 0.35rem;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .pb-option-detail {
+        font-size: 1rem;
+        color: #475569;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .pb-option-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1e3a5f;
+        margin-top: 0.3rem;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    .pb-option-sub {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-top: 0.25rem;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .pb-note {
+        font-size: 0.95rem;
+        color: #64748b;
+        margin: 0;
+        font-family: 'DM Sans', sans-serif;
+        line-height: 1.7;
+    }
+
+    .pb-tip {
+        font-size: 0.975rem;
+        color: #64748b;
+        background: #f0f4f8;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        margin: 0;
+        font-family: 'DM Sans', sans-serif;
+        line-height: 1.7;
+    }
+
+    /* Image captions */
+    .pb-img-caption {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-top: 0.5rem;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+        .pb-stat-grid, .pb-option-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container" style="max-width: 900px; padding-top: 2rem;">
+<!-- Hero Section -->
+<section class="pb-hero">
+    <div class="container">
+        <h1>Power Backup Guide</h1>
+        <p>Calculate and plan backup power for your medical equipment</p>
+        <div>
+            <a href="#power-calculator" class="pb-hero-nav">
+                <i class="fas fa-calculator"></i> Jump to Calculator
+            </a>
+            <a href="/home-icu-guide" class="pb-hero-nav">
+                <i class="fas fa-hospital"></i> Home ICU Setup Guide
+            </a>
+        </div>
+    </div>
+</section>
 
-    <!-- Page Header -->
-    <div style="margin-bottom: 2.5rem; text-align: center;">
-        <a href="/home-icu-guide" style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.85rem;
-            color: #6B6B6B;
-            text-decoration: none;
-            margin-bottom: 1rem;
-            font-family: 'Inter', system-ui, sans-serif;
-        " onmouseover="this.style.color='#1A1A1A';" onmouseout="this.style.color='#6B6B6B';">
-            ← Back to Home ICU Guide
-        </a>
+<div class="pb-container">
 
-        <h1 style="
-            font-size: 2rem;
-            font-weight: 600;
-            color: #1A1A1A;
-            margin: 0.5rem 0 0.75rem 0;
-            letter-spacing: -0.02em;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        ">
-            Power Backup Guide
-        </h1>
-
-        <p style="
-            margin: 0 0 1.5rem 0;
-            color: #6B6B6B;
-            font-size: 1rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-            font-family: 'Inter', system-ui, sans-serif;
-        ">
-            Calculate and plan backup power for your medical equipment
+    <!-- India Context Note -->
+    <div class="pb-info-box" style="border-left: 4px solid #7eb8d4; margin-bottom: 1.75rem;">
+        <p style="margin: 0;">
+            <strong><i class="fas fa-info-circle" style="color: #7eb8d4; margin-right: 0.3rem;"></i>India-Specific Guide:</strong>
+            This guide is based on the <strong>Indian power grid (230V AC / 50Hz)</strong>. All UPS ratings, battery brands
+            (Exide, Amaron), and kVA specifications follow Indian market standards (BIS). Power outages in India can last
+            4–12+ hours depending on region, making adequate backup critical for home ICU setups.
         </p>
-
-        <a href="#power-calculator" style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.625rem 1.25rem;
-            background: #c9a98c;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #FFFFFF;
-            font-weight: 500;
-            font-size: 0.875rem;
-            transition: all 0.15s ease;
-            font-family: 'Inter', system-ui, sans-serif;
-        " onmouseover="this.style.background='#b8987b';" onmouseout="this.style.background='#c9a98c';">
-            Jump to Calculator
-        </a>
     </div>
 
     <!-- Understanding Power Backup -->
-    <div
-        style="background: #FFFFFF; border: 1px solid #E8E5E1; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem;">
-        <h2
-            style="font-size: 1.125rem; font-weight: 600; color: #1A1A1A; margin: 0 0 1rem 0; font-family: 'Inter', system-ui, sans-serif;">
-            Understanding Power Backup
-        </h2>
-        <p
-            style="color: #4A4A4A; line-height: 1.7; margin-bottom: 1rem; font-size: 0.925rem; font-family: 'Inter', system-ui, sans-serif;">
-            Your Power backup system : <strong> Batteries</strong> store energy (Amp-hours),
+    <div class="pb-card">
+        <h2>Understanding Power Backup</h2>
+        <p style="margin-bottom: 1.25rem;">
+            Your Power backup system : <strong>Batteries</strong> store energy (Amp-hours),
             <strong>devices</strong> consume energy (Watts), and the <strong>UPS</strong> converts and delivers stored
             energy.
         </p>
-        <div style="background: #F8F7F6; padding: 1rem 1.25rem; border-radius: 8px; text-align: center;">
-            <p style="font-family: 'SF Mono', Monaco, monospace; color: #1A1A1A; margin: 0; font-size: 0.9rem;">
-                Backup Time = (Battery Capacity in Wh × 0.75) ÷ Total Load in Watts
-            </p>
-            <p style="font-size: 0.8rem; color: #9A9A9A; margin-top: 0.5rem; margin-bottom: 0;">
-                75% efficiency accounts for battery and UPS energy losses
+        <div class="pb-formula-box">
+            <p>Backup Time = (Battery Capacity in Wh × 0.75) ÷ Total Load in Watts</p>
+            <p>75% efficiency accounts for battery and UPS inverter conversion losses</p>
+        </div>
+
+        <!-- Heat Warning -->
+        <div class="pb-info-box" style="margin-top: 1.25rem; border-left: 4px solid #f59e0b;">
+            <p style="margin: 0;">
+                <strong><i class="fas fa-temperature-high" style="color: #f59e0b; margin-right: 0.3rem;"></i>Heat Impact (Indian Summers):</strong>
+                The 75% efficiency factor assumes moderate temperatures (~25°C). In Indian summers (35–45°C), lead-acid battery
+                capacity can drop an additional 10–20%. If batteries are in a non-AC room during peak summer, expect
+                <strong>60–65% usable capacity</strong> instead of 75%. Keep batteries in a cool, ventilated space for
+                optimal performance.
             </p>
         </div>
     </div>
 
     <!-- Our Current Setup -->
-    <div
-        style="background: #FFFFFF; border: 1px solid #E8E5E1; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem;">
-        <h2
-            style="font-size: 1.125rem; font-weight: 600; color: #1A1A1A; margin: 0 0 1rem 0; font-family: 'Inter', system-ui, sans-serif;">
-            Reference Setup
-        </h2>
-        <p style="color: #6B6B6B; margin-bottom: 1rem; font-size: 0.9rem;">Current equipment used in our home ICU:</p>
+    <div class="pb-card">
+        <h2>Reference Setup</h2>
+        <p style="margin-bottom: 1.25rem;">Current equipment used in our home ICU:</p>
 
         <div style="overflow-x: auto; margin-bottom: 1.5rem;">
-            <table
-                style="width: 100%; border-collapse: collapse; font-size: 0.875rem; font-family: 'Inter', system-ui, sans-serif;">
+            <table class="pb-table">
                 <thead>
-                    <tr style="border-bottom: 1px solid #E8E5E1;">
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: left; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Equipment</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: left; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Model</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: center; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Qty</th>
+                    <tr>
+                        <th>Equipment</th>
+                        <th>Model</th>
+                        <th style="text-align: center;">Qty</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A; font-weight: 500;">UPS</td>
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">Uniline 3kVA (72V DC)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">2</td>
+                    <tr>
+                        <td class="cell-label">UPS</td>
+                        <td>Uniline 3kVA (72V DC)</td>
+                        <td style="text-align: center;">2</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A; font-weight: 500;">Batteries</td>
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">Exide 12V 42Ah (6 per UPS)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">12</td>
+                        <td class="cell-label">Batteries</td>
+                        <td>Exide 12V 42Ah (6 per UPS)</td>
+                        <td style="text-align: center;">12</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <p style="color: #6B6B6B; margin-bottom: 0.75rem; font-size: 0.9rem;">Power consumption of devices:</p>
+        <p style="margin-bottom: 1rem;">Power consumption of devices:</p>
         <div style="overflow-x: auto;">
-            <table
-                style="width: 100%; border-collapse: collapse; font-size: 0.875rem; font-family: 'Inter', system-ui, sans-serif;">
+            <table class="pb-table">
                 <thead>
-                    <tr style="border-bottom: 1px solid #E8E5E1;">
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: left; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Device</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: center; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Power</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: center; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Usage</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: center; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Effective</th>
+                    <tr>
+                        <th>Device</th>
+                        <th style="text-align: center;">Power</th>
+                        <th style="text-align: center;">Usage</th>
+                        <th style="text-align: center;">Effective</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A;">Ventilator</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">120W</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">100%</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #1A1A1A; font-weight: 500;">120W
-                        </td>
+                    <tr>
+                        <td>Ventilator</td>
+                        <td style="text-align: center;">120W</td>
+                        <td style="text-align: center;">100%</td>
+                        <td style="text-align: center;" class="cell-value">120W</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A;">Oxygen Concentrator</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">610W</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">~25%</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #1A1A1A; font-weight: 500;">~153W
-                        </td>
+                    <tr>
+                        <td>Oxygen Concentrator</td>
+                        <td style="text-align: center;">610W</td>
+                        <td style="text-align: center;">~25%</td>
+                        <td style="text-align: center;" class="cell-value">~153W</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A;">Suction Machine</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">75W</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">~25%</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #1A1A1A; font-weight: 500;">~19W
-                        </td>
+                    <tr>
+                        <td>Suction Machine</td>
+                        <td style="text-align: center;">75W</td>
+                        <td style="text-align: center;">~25%</td>
+                        <td style="text-align: center;" class="cell-value">~19W</td>
                     </tr>
-                    <tr style="background: #F8F7F6;">
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A; font-weight: 500;">Average Load</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #6B6B6B;">—</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #6B6B6B;">—</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #C4704F; font-weight: 600;">~292W
-                        </td>
+                    <tr class="cell-highlight">
+                        <td class="cell-label">Effective Load (25% duty)</td>
+                        <td style="text-align: center; color: #64748b;">—</td>
+                        <td style="text-align: center; color: #64748b;">—</td>
+                        <td style="text-align: center; color: #1e3a5f; font-weight: 700;">~292W</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <!-- Usage % Explanation -->
-        <div style="background: #F8F7F6; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-            <p style="font-size: 0.85rem; color: #4A4A4A; margin: 0; line-height: 1.6;">
-                <strong style="color: #1A1A1A;">What does 25% usage mean?</strong><br>
+        <div class="pb-info-box">
+            <p style="margin: 0;">
+                <strong>What does 25% usage mean?</strong><br>
                 If you need 10 hours of backup, 25% usage means the device runs for about 2.5 hours out of those 10
                 hours.
                 For example, Oxygen concentrator running 2.5 hours during a 10-hour power outage = 2.5/10 = 25% duty
@@ -190,158 +464,122 @@
         </div>
 
         <!-- Equipment Images -->
-        <div style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-            <p style="color: #6B6B6B; margin-bottom: 0.75rem; font-size: 0.9rem;">Our equipment: <span
-                    style="font-size: 0.75rem; color: #9A9A9A;">(click to enlarge)</span></p>
+        <div style="margin-top: 1.75rem; margin-bottom: 1.75rem;">
+            <p style="margin-bottom: 1rem;">Our equipment: <span style="font-size: 0.875rem; color: #64748b;">(click to enlarge)</span></p>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
                 <div style="text-align: center;">
                     <img src="{{ url_for('static', filename='images/icu-guide/ups-unit.png') }}" alt="UPS Unit"
-                        style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; border: 1px solid #E8E5E1; cursor: pointer; transition: transform 0.15s;"
+                        style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: transform 0.15s;"
                         onclick="openLightbox(this.src, 'Uniline 3kVA UPS')"
                         onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
-                    <p style="font-size: 0.8rem; color: #6B6B6B; margin-top: 0.5rem;">Uniline 3kVA UPS</p>
+                    <p class="pb-img-caption">Uniline 3kVA UPS</p>
                 </div>
                 <div style="text-align: center;">
                     <img src="{{ url_for('static', filename='images/icu-guide/ups-label.png') }}" alt="UPS Label"
-                        style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; border: 1px solid #E8E5E1; cursor: pointer; transition: transform 0.15s;"
+                        style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: transform 0.15s;"
                         onclick="openLightbox(this.src, 'UPS Specifications')"
                         onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
-                    <p style="font-size: 0.8rem; color: #6B6B6B; margin-top: 0.5rem;">UPS Specifications</p>
+                    <p class="pb-img-caption">UPS Specifications</p>
                 </div>
                 <div style="text-align: center;">
                     <img src="{{ url_for('static', filename='images/icu-guide/battery-exide.png') }}"
                         alt="Exide Battery"
-                        style="width: 100%; max-width: 200px; height: auto; border-radius: 8px; border: 1px solid #E8E5E1; cursor: pointer; transition: transform 0.15s;"
+                        style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: transform 0.15s;"
                         onclick="openLightbox(this.src, 'Exide 12V 42Ah Battery')"
                         onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
-                    <p style="font-size: 0.8rem; color: #6B6B6B; margin-top: 0.5rem;">Exide 12V 42Ah Battery</p>
+                    <p class="pb-img-caption">Exide 12V 42Ah Battery</p>
                 </div>
             </div>
         </div>
 
         <!-- Backup Time with Our Setup -->
-        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #E8E5E1;">
-            <h3
-                style="font-size: 1rem; font-weight: 600; color: #1A1A1A; margin: 0 0 0.75rem 0; font-family: 'Inter', system-ui, sans-serif;">
-                Expected Backup Time with Our Setup
-            </h3>
-            <p style="color: #6B6B6B; font-size: 0.875rem; margin-bottom: 1rem;">
+        <div style="margin-top: 1.75rem; padding-top: 1.75rem; border-top: 2px solid #e2e8f0;">
+            <h3>Expected Backup Time with Our Setup</h3>
+            <p style="margin-bottom: 1.15rem;">
                 Battery capacity per UPS: 6 × 42Ah × 12V = <strong>3,024 Wh</strong> | Usable (75%): <strong>2,268
                     Wh</strong>
             </p>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                <!-- Worst Case -->
-                <div
-                    style="background: #FDF6F0; padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid #E8DDD5;">
-                    <div
-                        style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-                        Worst Case
-                    </div>
-                    <div style="font-size: 0.75rem; color: #6B6B6B; margin-bottom: 0.5rem;">All devices at 100%</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #C4704F;">~2.8 hrs</div>
-                    <div style="font-size: 0.75rem; color: #8B5A3C; margin-top: 0.25rem;">805W load</div>
+            <div class="pb-stat-grid">
+                <div class="pb-stat-card" style="background: #e8f0f8;">
+                    <div class="pb-stat-label">Worst Case</div>
+                    <div class="pb-stat-desc">All devices at 100%</div>
+                    <div class="pb-stat-value" style="color: #1e3a5f;">~2.8 hrs</div>
+                    <div class="pb-stat-sub" style="color: #64748b;">120+610+75 = 805W</div>
                 </div>
-
-                <!-- Average Case -->
-                <div
-                    style="background: #F0F7F4; padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid #D5E8DD;">
-                    <div
-                        style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-                        Realistic Usage
-                    </div>
-                    <div style="font-size: 0.75rem; color: #6B6B6B; margin-bottom: 0.5rem;">~25% duty cycle</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #4A7B5A;">~7.8 hrs</div>
-                    <div style="font-size: 0.75rem; color: #3D6B4A; margin-top: 0.25rem;">292W effective</div>
+                <div class="pb-stat-card" style="background: #F0F7F4; border-color: #D5E8DD;">
+                    <div class="pb-stat-label">Realistic Usage</div>
+                    <div class="pb-stat-desc">~25% duty cycle</div>
+                    <div class="pb-stat-value" style="color: #7eb8d4;">~7.8 hrs</div>
+                    <div class="pb-stat-sub" style="color: #3D6B4A;">292W effective</div>
                 </div>
-
-                <!-- Ventilator Only -->
-                <div
-                    style="background: #F8F7F6; padding: 1rem; border-radius: 8px; text-align: center; border: 1px solid #E8E5E1;">
-                    <div
-                        style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-                        Ventilator Only
-                    </div>
-                    <div style="font-size: 0.75rem; color: #6B6B6B; margin-bottom: 0.5rem;">Emergency mode</div>
-                    <div style="font-size: 1.5rem; font-weight: 700; color: #1A1A1A;">~19 hrs</div>
-                    <div style="font-size: 0.75rem; color: #6B6B6B; margin-top: 0.25rem;">120W load</div>
+                <div class="pb-stat-card" style="background: #f8fafc;">
+                    <div class="pb-stat-label">Ventilator Only</div>
+                    <div class="pb-stat-desc">Emergency mode</div>
+                    <div class="pb-stat-value" style="color: #1e293b;">~19 hrs</div>
+                    <div class="pb-stat-sub" style="color: #64748b;">120W load</div>
                 </div>
             </div>
 
-            <!-- Two UPS Explanation -->
-            <div style="background: #F8F7F6; padding: 1.25rem; border-radius: 8px; margin-top: 1.5rem;">
-                <h4 style="font-size: 0.9rem; font-weight: 600; color: #1A1A1A; margin: 0 0 0.75rem 0;">Option A: Split
-                    Load Across Two UPS Units</h4>
-                <p style="font-size: 0.85rem; color: #4A4A4A; margin-bottom: 0.75rem; line-height: 1.6;">
+            <!-- Option A -->
+            <div class="pb-option-box">
+                <h4>Option A: Split Load Across Two UPS Units</h4>
+                <p style="margin-bottom: 1rem;">
                     By dedicating one UPS to the ventilator only, you ensure it runs longest:
                 </p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.75rem;">
-                    <div style="background: #FFFFFF; padding: 0.875rem; border-radius: 6px; border: 1px solid #E8E5E1;">
-                        <div
-                            style="font-size: 0.75rem; color: #9A9A9A; text-transform: uppercase; margin-bottom: 0.25rem;">
-                            UPS 1 — Ventilator Only</div>
-                        <div style="font-size: 0.85rem; color: #4A4A4A;">Load: <strong>120W</strong></div>
-                        <div style="font-size: 1.1rem; font-weight: 600; color: #C4704F; margin-top: 0.25rem;">Backup:
-                            ~19 hours</div>
-                        <div style="font-size: 0.75rem; color: #6B6B6B; margin-top: 0.25rem;">2,268 Wh ÷ 120W = 18.9 hrs
-                        </div>
+                <div class="pb-option-grid">
+                    <div class="pb-option-item">
+                        <div class="pb-option-label">UPS 1 — Ventilator Only</div>
+                        <div class="pb-option-detail">Load: <strong>120W</strong></div>
+                        <div class="pb-option-value">Backup: ~19 hours</div>
+                        <div class="pb-option-sub">2,268 Wh ÷ 120W = 18.9 hrs</div>
                     </div>
-                    <div style="background: #FFFFFF; padding: 0.875rem; border-radius: 6px; border: 1px solid #E8E5E1;">
-                        <div
-                            style="font-size: 0.75rem; color: #9A9A9A; text-transform: uppercase; margin-bottom: 0.25rem;">
-                            UPS 2 — Oxygen + Suction</div>
-                        <div style="font-size: 0.85rem; color: #4A4A4A;">Load: <strong>172W</strong> (25% of 685W)</div>
-                        <div style="font-size: 1.1rem; font-weight: 600; color: #C4704F; margin-top: 0.25rem;">Backup:
-                            ~13 hours</div>
-                        <div style="font-size: 0.75rem; color: #6B6B6B; margin-top: 0.25rem;">2,268 Wh ÷ 172W = 13.2 hrs
-                        </div>
+                    <div class="pb-option-item">
+                        <div class="pb-option-label">UPS 2 — Oxygen + Suction</div>
+                        <div class="pb-option-detail">Load: <strong>172W</strong> effective (685W at 25% duty cycle)</div>
+                        <div class="pb-option-value">Backup: ~13 hours</div>
+                        <div class="pb-option-sub">2,268 Wh ÷ 172W = 13.2 hrs</div>
                     </div>
                 </div>
-                <p style="font-size: 0.8rem; color: #6B6B6B; margin: 0;">
+                <p class="pb-note">
                     <strong>Advantage:</strong> Even if UPS 2 runs out after 13 hours, UPS 1 keeps the ventilator
                     running for 19+ hours.
                 </p>
             </div>
 
-            <!-- Sequential UPS Usage -->
-            <div
-                style="background: #F0F7F4; padding: 1.25rem; border-radius: 8px; margin-top: 1rem; border: 1px solid #D5E8DD;">
-                <h4 style="font-size: 0.9rem; font-weight: 600; color: #1A1A1A; margin: 0 0 0.75rem 0;">Option B: One
-                    UPS at a Time (Sequential Usage)</h4>
-                <p style="font-size: 0.85rem; color: #4A4A4A; margin-bottom: 0.75rem; line-height: 1.6;">
+            <!-- Option B -->
+            <div class="pb-option-box" style="background: #F0F7F4; border-color: #D5E8DD;">
+                <h4>Option B: One UPS at a Time (Sequential Usage)</h4>
+                <p style="margin-bottom: 1rem;">
                     Power all devices from one UPS, then switch to second UPS when first is empty:
                 </p>
 
-                <div
-                    style="background: #FFFFFF; padding: 1rem; border-radius: 6px; border: 1px solid #D5E8DD; margin-bottom: 0.75rem;">
-                    <div style="font-size: 0.8rem; color: #6B6B6B; margin-bottom: 0.5rem;">
-                        <strong>Combined Battery Capacity:</strong> 2 × 2,268 Wh = <strong style="color: #1A1A1A;">4,536
+                <div class="pb-option-item" style="margin-bottom: 1rem; border-color: #D5E8DD;">
+                    <div style="margin-bottom: 0.75rem;">
+                        <strong>Combined Battery Capacity:</strong> 2 × 2,268 Wh = <strong style="color: #1e293b;">4,536
                             Wh</strong>
                     </div>
 
-                    <div
-                        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 0.75rem;">
-                        <div style="text-align: center; padding: 0.75rem; background: #FDF6F0; border-radius: 6px;">
-                            <div style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase;">Worst Case</div>
-                            <div style="font-size: 1.25rem; font-weight: 700; color: #C4704F;">~5.6 hrs</div>
-                            <div style="font-size: 0.7rem; color: #8B5A3C;">4,536 ÷ 805W</div>
+                    <div class="pb-stat-grid">
+                        <div style="text-align: center; padding: 0.85rem; background: #e8f0f8; border-radius: 8px;">
+                            <div class="pb-stat-label">Worst Case</div>
+                            <div style="font-size: 1.35rem; font-weight: 800; color: #1e3a5f; font-family: 'Manrope', sans-serif;">~5.6 hrs</div>
+                            <div class="pb-stat-sub" style="color: #64748b;">4,536 ÷ 805W</div>
                         </div>
-                        <div style="text-align: center; padding: 0.75rem; background: #E8F5EC; border-radius: 6px;">
-                            <div style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase;">25% Duty Cycle
-                            </div>
-                            <div style="font-size: 1.25rem; font-weight: 700; color: #4A7B5A;">~15.5 hrs</div>
-                            <div style="font-size: 0.7rem; color: #3D6B4A;">4,536 ÷ 292W</div>
+                        <div style="text-align: center; padding: 0.85rem; background: #E8F5EC; border-radius: 8px;">
+                            <div class="pb-stat-label">25% Duty Cycle</div>
+                            <div style="font-size: 1.35rem; font-weight: 800; color: #7eb8d4; font-family: 'Manrope', sans-serif;">~15.5 hrs</div>
+                            <div class="pb-stat-sub" style="color: #3D6B4A;">4,536 ÷ 292W</div>
                         </div>
-                        <div style="text-align: center; padding: 0.75rem; background: #F8F7F6; border-radius: 6px;">
-                            <div style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase;">Ventilator Only
-                            </div>
-                            <div style="font-size: 1.25rem; font-weight: 700; color: #1A1A1A;">~38 hrs</div>
-                            <div style="font-size: 0.7rem; color: #6B6B6B;">4,536 ÷ 120W</div>
+                        <div style="text-align: center; padding: 0.85rem; background: #f8fafc; border-radius: 8px;">
+                            <div class="pb-stat-label">Ventilator Only</div>
+                            <div style="font-size: 1.35rem; font-weight: 800; color: #1e293b; font-family: 'Manrope', sans-serif;">~38 hrs</div>
+                            <div class="pb-stat-sub" style="color: #64748b;">4,536 ÷ 120W</div>
                         </div>
                     </div>
                 </div>
 
-                <p style="font-size: 0.8rem; color: #6B6B6B; margin: 0;">
+                <p class="pb-note">
                     <strong>How it works:</strong> Run all devices on UPS 1 → when UPS 1 battery low, switch all plugs
                     to UPS 2 → continues from where UPS 1 stopped.
                 </p>
@@ -350,21 +588,18 @@
     </div>
 
     <!-- Power Calculator -->
-    <div id="power-calculator"
-        style="background: #FFFFFF; border: 1px solid #E8E5E1; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem;">
-        <h2
-            style="font-size: 1.125rem; font-weight: 600; color: #1A1A1A; margin: 0 0 0.25rem 0; font-family: 'Inter', system-ui, sans-serif;">
-            Power Calculator
-        </h2>
-        <p style="color: #6B6B6B; font-size: 0.875rem; margin-bottom: 0.75rem;">
+    <div id="power-calculator" class="pb-card">
+        <h2>Power Calculator</h2>
+        <p style="margin-bottom: 0.75rem;">
             Add your devices and calculate backup time requirements
         </p>
-        <p
-            style="color: #9A9A9A; font-size: 0.8rem; margin-bottom: 1.5rem; background: #F8F7F6; padding: 0.75rem; border-radius: 6px;">
-            <strong style="color: #6B6B6B;">Usage %:</strong> How much of the backup time will the device actually run?
-            Example: If you need 10 hours backup and Oxygen concentrator runs for 2.5 hours = 2.5÷10 =
-            <strong>25%</strong>
-        </p>
+        <div class="pb-info-box" style="margin-top: 0; margin-bottom: 1.75rem;">
+            <p style="margin: 0;">
+                <strong>Usage %:</strong> How much of the backup time will the device actually run?
+                Example: If you need 10 hours backup and Oxygen concentrator runs for 2.5 hours = 2.5÷10 =
+                <strong>25%</strong>
+            </p>
+        </div>
 
         <!-- Device List -->
         <div id="deviceList" style="margin-bottom: 1.25rem;">
@@ -412,7 +647,7 @@
         <!-- Calculate Button -->
         <button onclick="calculateUPS()" style="
             padding: 0.75rem 1.75rem;
-            background: #c9a98c;
+            background: #1e3a5f;
             border: none;
             border-radius: 8px;
             color: #FFFFFF;
@@ -421,7 +656,7 @@
             cursor: pointer;
             transition: all 0.15s ease;
             font-family: 'Inter', system-ui, sans-serif;
-        " onmouseover="this.style.background='#b8987b';" onmouseout="this.style.background='#c9a98c';">
+        " onmouseover="this.style.background='#264d7a';" onmouseout="this.style.background='#1e3a5f';">
             Calculate Requirements
         </button>
 
@@ -449,12 +684,12 @@
                     <div
                         style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
                         Energy Required</div>
-                    <div id="resultEnergy" style="font-size: 1.25rem; font-weight: 600; color: #C4704F;">0 Wh</div>
+                    <div id="resultEnergy" style="font-size: 1.25rem; font-weight: 600; color: #1e3a5f;">0 Wh</div>
                 </div>
             </div>
 
             <div
-                style="background: #FDF6F0; padding: 1rem 1.25rem; border-radius: 8px; border-left: 3px solid #C4704F;">
+                style="background: #e8f0f8; padding: 1rem 1.25rem; border-radius: 8px; border-left: 3px solid #1e3a5f;">
                 <h4
                     style="font-size: 0.85rem; font-weight: 600; color: #8B5A3C; margin-bottom: 0.5rem; font-family: 'Inter', system-ui, sans-serif;">
                     Recommendation</h4>
@@ -473,121 +708,98 @@
     </div>
 
     <!-- Quick Reference Guide -->
-    <div
-        style="background: #FFFFFF; border: 1px solid #E8E5E1; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
-        <h2
-            style="font-size: 1.125rem; font-weight: 600; color: #1A1A1A; margin: 0 0 0.5rem 0; font-family: 'Inter', system-ui, sans-serif;">
-            Quick Reference Guide
-        </h2>
-        <p style="color: #6B6B6B; font-size: 0.875rem; margin-bottom: 1.25rem;">Common setups based on load and backup
-            requirements
+    <div class="pb-card" style="margin-bottom: 2rem;">
+        <h2>Quick Reference Guide</h2>
+        <p style="margin-bottom: 0.5rem;">Common setups based on load and backup requirements</p>
+        <p style="margin-bottom: 1.25rem; font-size: 0.95rem; color: #64748b;">
+            Backup times calculated using: (Ah × Bank Voltage × 0.75) ÷ Load. Actual times may be lower in hot conditions (see note below).
         </p>
 
         <div style="overflow-x: auto;">
-            <table
-                style="width: 100%; border-collapse: collapse; font-size: 0.875rem; font-family: 'Inter', system-ui, sans-serif;">
+            <table class="pb-table">
                 <thead>
-                    <tr style="border-bottom: 1px solid #E8E5E1;">
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: left; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Equipment</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: center; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Load</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: center; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Backup</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: left; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            Battery Bank</th>
-                        <th
-                            style="padding: 0.75rem 0.5rem; text-align: center; color: #9A9A9A; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">
-                            UPS</th>
+                    <tr>
+                        <th>Equipment</th>
+                        <th style="text-align: center;">Load</th>
+                        <th style="text-align: center;">Calculated Backup</th>
+                        <th>Battery Bank</th>
+                        <th style="text-align: center;">UPS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">Ventilator only</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">120W</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">12 hrs</td>
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">2× 100Ah (24V)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">1 kVA</td>
+                    <tr>
+                        <td>Ventilator only</td>
+                        <td style="text-align: center;">120W</td>
+                        <td style="text-align: center;">~15 hrs</td>
+                        <td>2× 100Ah (24V)</td>
+                        <td style="text-align: center;">1 kVA</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">Ventilator only</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">120W</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">24 hrs</td>
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">2× 200Ah (24V)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">1 kVA</td>
+                    <tr>
+                        <td>Ventilator only</td>
+                        <td style="text-align: center;">120W</td>
+                        <td style="text-align: center;">~30 hrs</td>
+                        <td>2× 200Ah (24V)</td>
+                        <td style="text-align: center;">1 kVA</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">Vent + Oxygen (25%)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">~270W</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">8 hrs</td>
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">4× 150Ah (48V)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">2 kVA</td>
+                    <tr>
+                        <td>Vent + Oxygen (25%)</td>
+                        <td style="text-align: center;">~270W</td>
+                        <td style="text-align: center;">~20 hrs</td>
+                        <td>4× 150Ah (48V)</td>
+                        <td style="text-align: center;">2 kVA</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #F0EFED;">
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">Full ICU (worst case)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">805W</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">4 hrs</td>
-                        <td style="padding: 0.75rem 0.5rem; color: #4A4A4A;">4× 150Ah (48V)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #4A4A4A;">2 kVA</td>
+                    <tr>
+                        <td>Full ICU (worst case)</td>
+                        <td style="text-align: center;">805W</td>
+                        <td style="text-align: center;">~6.7 hrs</td>
+                        <td>4× 150Ah (48V)</td>
+                        <td style="text-align: center;">2 kVA</td>
                     </tr>
-                    <tr style="background: #FDF6F0;">
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A; font-weight: 500;">Full ICU (25% usage)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #1A1A1A; font-weight: 500;">~292W
-                        </td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #1A1A1A; font-weight: 500;">8 hrs
-                        </td>
-                        <td style="padding: 0.75rem 0.5rem; color: #1A1A1A; font-weight: 500;">6× 150Ah (72V)</td>
-                        <td style="padding: 0.75rem 0.5rem; text-align: center; color: #1A1A1A; font-weight: 500;">3 kVA
-                        </td>
+                    <tr class="cell-highlight">
+                        <td class="cell-label">Full ICU (25% usage)</td>
+                        <td style="text-align: center;" class="cell-value">~292W</td>
+                        <td style="text-align: center;" class="cell-value">~27.7 hrs</td>
+                        <td class="cell-value">6× 150Ah (72V)</td>
+                        <td style="text-align: center;" class="cell-value">3 kVA</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <p style="font-size: 0.8rem; color: #9A9A9A; margin-top: 1rem; margin-bottom: 0;">
-            <strong style="color: #6B6B6B;">Tip:</strong> For critical care, always keep a second UPS as backup in case
+        <p class="pb-tip" style="margin-top: 1.25rem;">
+            <strong>Tip:</strong> For critical care, always keep a second UPS as backup in case
             of primary failure.
         </p>
     </div>
 
     <!-- Configuration Tips -->
-    <div
-        style="background: #FFFFFF; border: 1px solid #E8E5E1; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
-        <h2
-            style="font-size: 1.125rem; font-weight: 600; color: #1A1A1A; margin: 0 0 1rem 0; font-family: 'Inter', system-ui, sans-serif;">
-            Recommended Configuration
-        </h2>
-        <p style="color: #4A4A4A; line-height: 1.7; margin-bottom: 1.25rem; font-size: 0.925rem;">
+    <div class="pb-card" style="margin-bottom: 2rem;">
+        <h2>Recommended Configuration</h2>
+        <p style="margin-bottom: 1.25rem;">
             Separate the load across two UPS units to ensure the ventilator continues running even if one UPS battery is
             depleted.
         </p>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-            <div style="background: #F8F7F6; padding: 1.25rem; border-radius: 8px;">
-                <h4 style="font-size: 0.85rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.5rem;">UPS 1 —
-                    Critical</h4>
-                <p style="font-size: 0.85rem; color: #6B6B6B; margin: 0; line-height: 1.5;">
+        <div class="pb-option-grid" style="margin-bottom: 1.25rem;">
+            <div class="pb-option-item" style="background: #f8fafc;">
+                <h4>UPS 1 — Critical</h4>
+                <p style="margin: 0;">
                     Ventilator only (120W)<br>
-                    <span style="color: #C4704F;">Backup: 20+ hours</span>
+                    <strong style="color: #1e3a5f;">Backup: 20+ hours</strong>
                 </p>
             </div>
-            <div style="background: #F8F7F6; padding: 1.25rem; border-radius: 8px;">
-                <h4 style="font-size: 0.85rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.5rem;">UPS 2 — Support
-                </h4>
-                <p style="font-size: 0.85rem; color: #6B6B6B; margin: 0; line-height: 1.5;">
+            <div class="pb-option-item" style="background: #f8fafc;">
+                <h4>UPS 2 — Support</h4>
+                <p style="margin: 0;">
                     Oxygen + Suction (685W)<br>
-                    <span style="color: #C4704F;">Backup: 3–4 hours</span>
+                    <strong style="color: #1e3a5f;">Backup: ~3.3 hrs at 100% usage</strong><br>
+                    <span style="font-size: 0.925rem; color: #64748b;">~13 hrs at 25% duty cycle</span>
                 </p>
             </div>
         </div>
 
-        <p
-            style="font-size: 0.85rem; color: #6B6B6B; background: #F8F7F6; padding: 0.875rem 1rem; border-radius: 6px; margin: 0;">
-            <strong style="color: #1A1A1A;">Why?</strong> If support UPS runs out, ventilator on UPS 1 keeps running,
+        <p class="pb-tip">
+            <strong>Why?</strong> If support UPS runs out, ventilator on UPS 1 keeps running,
             buying you time.
         </p>
     </div>
@@ -668,7 +880,7 @@
             font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.15s;
-        " onmouseover="this.style.borderColor='#C4704F'; this.style.color='#C4704F';" onmouseout="this.style.borderColor='#E0E0E0'; this.style.color='#9A9A9A';">
+        " onmouseover="this.style.borderColor='#1e3a5f'; this.style.color='#1e3a5f';" onmouseout="this.style.borderColor='#E0E0E0'; this.style.color='#9A9A9A';">
             ×
         </button>
     `;
@@ -683,7 +895,7 @@
         }
     }
 
-    function calculateBackupTime(batteryAh, batteryCount, voltage, loadWatts) {
+    function calculateBackupTime(batteryAh, voltage, loadWatts) {
         const totalWh = batteryAh * voltage;
         const usableWh = totalWh * 0.75; // 75% efficiency
         return usableWh / loadWatts;
@@ -717,7 +929,8 @@
             breakdownLines.push(`${d.name}: ${d.power}W × ${d.usage}% = ${eff.toFixed(0)}W`);
         });
 
-        const energyNeeded = (worstCaseLoad * desiredBackup) / 0.75;
+        // Use effective load (accounts for duty cycle) for energy calculation
+        const energyNeeded = (effectiveLoad * desiredBackup) / 0.75;
         const energyWithMargin = energyNeeded * 1.2;
 
         // Find suitable UPS options
@@ -729,7 +942,7 @@
         suitableUPS.forEach(ups => {
             BATTERY_OPTIONS.forEach(battery => {
                 const totalWh = battery.ah * ups.voltage;
-                const backupTime = calculateBackupTime(battery.ah, ups.batteries, ups.voltage, worstCaseLoad);
+                const backupTime = calculateBackupTime(battery.ah, ups.voltage, effectiveLoad);
 
                 if (backupTime >= desiredBackup * 0.9) { // Allow 10% tolerance
                     combinations.push({
@@ -760,7 +973,7 @@
 
             combinations.forEach((combo, idx) => {
                 const highlight = idx === 0 ? 'background: #FAFAFA; border: 1px solid #E0E0E0;' : 'border: 1px solid #F0F0F0;';
-                const label = idx === 0 ? '<span style="font-size: 0.7rem; color: #C4704F; text-transform: uppercase; letter-spacing: 0.05em;">Recommended</span>' : '';
+                const label = idx === 0 ? '<span style="font-size: 0.7rem; color: #1e3a5f; text-transform: uppercase; letter-spacing: 0.05em;">Recommended</span>' : '';
 
                 recommendation += `
                 <div style="${highlight} padding: 0.875rem 1rem; border-radius: 6px;">
@@ -770,7 +983,7 @@
                             <strong>${combo.ups.label} UPS</strong> + 
                             <strong>${combo.batteryCount}× ${combo.battery.label}</strong> batteries (${combo.ups.voltage}V)
                         </div>
-                        <div style="font-size: 0.85rem; color: #C4704F; font-weight: 500;">
+                        <div style="font-size: 0.85rem; color: #1e3a5f; font-weight: 500;">
                             ~${combo.backupTime.toFixed(1)} hrs backup
                         </div>
                     </div>

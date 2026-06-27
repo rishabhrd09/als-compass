@@ -1,0 +1,348 @@
+{% extends "base.html" %}
+
+{% block title %}AI Assistant - ALS Caregiver's Compass{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/pages/ai-assistant.css">
+{% endblock %}
+
+{% block content %}
+<div class="ai-page-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-icon"><i class="fas fa-heart-pulse"></i></div>
+            <span class="sidebar-brand-text">ALS Care Assistant</span>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Suggested Questions</h3>
+            <button class="suggestion-btn"
+                onclick="setQuestion('What are the early symptoms of ALS and how does the disease typically progress?')">
+                Early symptoms & disease progression
+            </button>
+            <button class="suggestion-btn"
+                onclick="setQuestion('When does a PALS typically need BiPAP respiratory support and what are the signs?')">
+                When is BiPAP needed?
+            </button>
+            <button class="suggestion-btn"
+                onclick="setQuestion('When should we consider a feeding tube (PEG) for a PALS and what are the indicators?')">
+                When is a feeding tube needed?
+            </button>
+            <button class="suggestion-btn"
+                onclick="setQuestion('What home care equipment is needed at different stages of ALS progression?')">
+                Home care equipment by stage
+            </button>
+            <button class="suggestion-btn"
+                onclick="setQuestion('What respiratory symptoms in ALS require immediate medical attention?')">
+                Respiratory emergency signs
+            </button>
+            <button class="suggestion-btn"
+                onclick="setQuestion('How can I prevent caregiver burnout while caring for someone with ALS?')">
+                Preventing caregiver burnout
+            </button>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Model</h3>
+            <select id="modelSelect" onchange="updateModelBadge()">
+                <option value="openai" selected>GPT-4o-mini (Fast)</option>
+                <option value="openai-advanced">GPT-4o (Advanced)</option>
+                <option value="gemini">Gemini 2.0 Flash</option>
+                <option value="gemini-thinking">Gemini 2.0 Flash Thinking</option>
+                <option value="claude">Claude Sonnet 4</option>
+            </select>
+            <div id="modelDescription" class="model-description">Fast ChatGPT - cost-effective</div>
+        </div>
+    </aside>
+
+    <!-- Chat Interface -->
+    <main class="chat-container">
+        <header class="chat-header">
+            <div>
+                <h2>AI Care Assistant</h2>
+                <div class="chat-header-sub">Powered by Medical Knowledge Base</div>
+            </div>
+            <span class="model-badge" id="currentModelBadge">GPT-4o-mini</span>
+        </header>
+
+        <div id="chatMessages" class="chat-messages">
+            <div class="message ai">
+                <div class="avatar"><i class="fas fa-heart-pulse" style="font-size: 0.6875rem;"></i></div>
+                <div class="message-content">
+                    <p>Hello. I am your AI Caregiver Assistant. I can help answer questions about ALS symptoms, daily
+                        care strategies, equipment, and emotional support.</p>
+                    <p><strong>Note:</strong> While I use verified medical sources, I am an AI, not a doctor. Always
+                        consult with your healthcare team for medical decisions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <div class="input-wrapper">
+                <div class="input-group">
+                    <textarea id="userInput" rows="1" placeholder="Ask about ALS care, symptoms, equipment..."
+                        oninput="autoResize(this)"></textarea>
+                    <button id="sendBtn" class="send-btn" onclick="sendMessage()">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Image Lightbox Modal -->
+<div id="imageModal" class="image-modal" onclick="closeImageModal()">
+    <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+    <img id="modalImage" class="image-modal-content" onclick="event.stopPropagation()">
+    <div id="modalCaption" class="image-modal-caption"></div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    let isProcessing = false;
+    let loadingMsgElement = null;
+
+    const MODEL_CONFIG = {
+        'gemini': { name: 'Gemini 2.0 Flash', description: 'Fast Google AI - efficient responses' },
+        'gemini-thinking': { name: 'Gemini 2.0 Thinking', description: 'Advanced reasoning with extended thinking' },
+        'openai': { name: 'GPT-4o-mini', description: 'Fast ChatGPT - cost-effective' },
+        'openai-advanced': { name: 'GPT-4o', description: 'Advanced ChatGPT - more capable reasoning' },
+        'claude': { name: 'Claude Sonnet 4', description: 'Anthropic Claude - thoughtful and detailed' }
+    };
+
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.min(textarea.scrollHeight, 160) + 'px';
+    }
+
+    function setQuestion(text) {
+        userInput.value = text;
+        autoResize(userInput);
+        userInput.focus();
+    }
+
+    function updateModelBadge() {
+        const modelSelect = document.getElementById('modelSelect');
+        const badge = document.getElementById('currentModelBadge');
+        const description = document.getElementById('modelDescription');
+        const selectedModel = modelSelect.value;
+
+        if (MODEL_CONFIG[selectedModel]) {
+            badge.textContent = MODEL_CONFIG[selectedModel].name;
+            description.textContent = MODEL_CONFIG[selectedModel].description;
+        }
+    }
+
+    function showLoadingMessage() {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message ai';
+        msgDiv.id = 'loading-message';
+
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'avatar';
+        avatarDiv.innerHTML = '<i class="fas fa-heart-pulse" style="font-size: 0.6875rem;"></i>';
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content loading-message';
+        contentDiv.innerHTML = `
+            <div class="loading-spinner"></div>
+            <div class="thinking-text">Thinking</div>
+        `;
+
+        msgDiv.appendChild(avatarDiv);
+        msgDiv.appendChild(contentDiv);
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        loadingMsgElement = msgDiv;
+    }
+
+    function hideLoadingMessage() {
+        if (loadingMsgElement) {
+            loadingMsgElement.remove();
+            loadingMsgElement = null;
+        }
+    }
+
+    function appendMessage(role, text, images = []) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${role}`;
+
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'avatar';
+        if (role === 'ai') {
+            avatarDiv.innerHTML = '<i class="fas fa-heart-pulse" style="font-size: 0.6875rem;"></i>';
+        } else {
+            avatarDiv.innerHTML = '<i class="fas fa-user" style="font-size: 0.625rem;"></i>';
+        }
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content';
+
+        if (role === 'ai') {
+            try { contentDiv.innerHTML = marked.parse(text); }
+            catch (e) { contentDiv.textContent = text; }
+
+            // Add images if provided
+            if (images && images.length > 0) {
+                const imagesDiv = document.createElement('div');
+                imagesDiv.className = 'message-images';
+
+                images.forEach(img => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'message-image-wrapper';
+                    wrapper.onclick = () => openImageModal(img.path, img.description);
+
+                    const imgElem = document.createElement('img');
+                    imgElem.src = `/api/image/${img.path}`;
+                    imgElem.alt = img.alt_text || img.description;
+                    imgElem.className = 'message-image';
+                    imgElem.onerror = () => {
+                        wrapper.style.display = 'none';
+                        console.error('Failed to load image:', img.path);
+                    };
+
+                    const caption = document.createElement('div');
+                    caption.className = 'message-image-caption';
+                    caption.textContent = img.description;
+
+                    wrapper.appendChild(imgElem);
+                    wrapper.appendChild(caption);
+                    imagesDiv.appendChild(wrapper);
+                });
+
+                contentDiv.appendChild(imagesDiv);
+            }
+        } else {
+            contentDiv.textContent = text;
+        }
+
+        msgDiv.appendChild(avatarDiv);
+        msgDiv.appendChild(contentDiv);
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function sendMessage() {
+        const text = userInput.value.trim();
+        if (!text || isProcessing) return;
+
+        isProcessing = true;
+        userInput.disabled = true;
+        sendBtn.disabled = true;
+
+        appendMessage('user', text);
+        userInput.value = '';
+        userInput.style.height = 'auto';
+        showLoadingMessage();
+
+        try {
+            const model = document.getElementById('modelSelect').value;
+            const response = await fetch('/api/ai-assistant', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: text, model: model })
+            });
+
+            const data = await response.json();
+            hideLoadingMessage();
+
+            if (data.response) {
+                appendMessage('ai', data.response, data.images || []);
+            } else if (data.error) {
+                appendMessage('ai', `Error: ${data.error}`);
+            } else {
+                appendMessage('ai', "I apologize, but I couldn't process that request. Please try again.");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            hideLoadingMessage();
+            appendMessage('ai', "I'm having trouble connecting. Please check your connection and try again.");
+        } finally {
+            isProcessing = false;
+            userInput.disabled = false;
+            sendBtn.disabled = false;
+            userInput.focus();
+        }
+    }
+
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    // Image modal functions
+    function openImageModal(imagePath, caption) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+
+        modal.classList.add('active');
+        modalImg.src = `/api/image/${imagePath}`;
+        modalCaption.textContent = caption || '';
+    }
+
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+    }
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeImageModal();
+        }
+    });
+
+    updateModelBadge();
+
+    // Animate each new message bubble as it appears
+    function animateNewMessage(el) {
+        if (!el) return;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(12px)';
+        requestAnimationFrame(() => {
+            el.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+    }
+
+    // Show typing indicator before AI response
+    function showTypingIndicator(container) {
+        const el = document.createElement('div');
+        el.className = 'message typing-indicator-wrapper';
+        el.id = 'typing-indicator';
+        el.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+        container.appendChild(el);
+        container.scrollTop = container.scrollHeight;
+        return el;
+    }
+
+    function removeTypingIndicator() {
+        const el = document.getElementById('typing-indicator');
+        if (el) el.remove();
+    }
+
+    // Dynamically size the chat wrapper so footer stays visible without page scroll
+    function sizeChatWrapper() {
+        const wrapper = document.querySelector('.ai-page-wrapper');
+        if (!wrapper) return;
+        const navbar = document.querySelector('.navbar');
+        const footer = document.querySelector('.footer');
+        const navH = navbar ? navbar.offsetHeight : 0;
+        const footH = footer ? footer.offsetHeight : 0;
+        wrapper.style.height = (window.innerHeight - navH - footH) + 'px';
+    }
+    sizeChatWrapper();
+    window.addEventListener('resize', sizeChatWrapper);
+</script>
+{% endblock %}

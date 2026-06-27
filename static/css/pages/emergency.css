@@ -1,0 +1,83 @@
+/* emergency.css — Safety polish for Emergency Protocol */
+
+/* ── Larger base text for stress-reading ── */
+.protocol-container {
+    font-size: 1.125rem;
+    line-height: 1.78;
+}
+.protocol-container p,
+.protocol-container li {
+    font-size: 1.125rem;
+    line-height: 1.78;
+}
+
+/* ── Step numbers — very bold, easy to scan ── */
+.step-num {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    font-size: 1.75rem;
+    letter-spacing: -0.03em;
+    min-width: 2.5rem;
+    text-align: center;
+}
+
+/* ── Warning boxes — high visibility ── */
+.warning {
+    border-left-width: 5px;
+    border-radius: 0 12px 12px 0;
+    font-size: 1rem;
+    line-height: 1.72;
+}
+
+/* ── Headings ── */
+.protocol-container h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; }
+.protocol-container h2 { font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em; margin-top: 2rem; }
+.protocol-container h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.015em; }
+
+/* ── Lists — more breathing room ── */
+.protocol-container ol,
+.protocol-container ul { line-height: 1.85; }
+.protocol-container li { margin-bottom: 0.4rem; }
+
+/* ── NO hover animations on emergency page — stress context ── */
+
+/* ── Print optimization — critical for emergency use ── */
+@media print {
+    .navbar,
+    .site-nav,
+    footer,
+    .footer { display: none !important; }
+
+    body {
+        font-size: 11pt;
+        color: #000 !important;
+        background: #fff !important;
+    }
+
+    .protocol-container {
+        font-size: 11pt;
+        max-width: 100% !important;
+    }
+
+    h1 { font-size: 18pt !important; }
+    h2 { font-size: 14pt !important; }
+
+    .warning {
+        border: 2px solid #000 !important;
+        background: #f5f5f5 !important;
+        color: #000 !important;
+    }
+
+    .step-num {
+        border: 2px solid #000 !important;
+        color: #000 !important;
+    }
+
+    /* Keep each step together */
+    .step, .protocol-step { break-inside: avoid; }
+
+    @page {
+        margin: 1.5cm;
+        size: A4;
+    }
+}
