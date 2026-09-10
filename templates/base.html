@@ -33,11 +33,13 @@
     <link rel="stylesheet" href="/static/css/nav-active.css">
 
     {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="/static/css/clinical-design.css">
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %}">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
         <div class="container">
             <div class="navbar-container">
                 <a href="/" class="navbar-brand" aria-label="ALS Compass Homepage">
@@ -103,7 +105,7 @@
         </div>
     </nav>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         {% block content %}{% endblock %}
     </main>
 

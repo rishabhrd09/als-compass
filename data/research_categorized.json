@@ -1,1001 +1,2577 @@
 {
-    "last_updated": "2026-03-14",
-    "data_sources": [
-        "FDA Drug Approvals Database - March 2026",
-        "ClinicalTrials.gov - March 2026",
-        "ALS Association Research Updates",
-        "PubMed Central - Latest ALS Reviews",
-        "JAMA Neurology - VALOR Long-term Results (Dec 2025)",
-        "NIMHANS India - ALS Treatment Protocols",
-        "Target ALS Global Natural History Study",
-        "myTomorrows India Hub",
-        "NeurologyLive Clinical Updates 2025-2026"
-    ],
-    "stage_definitions": {
-        "early": "Newly diagnosed, within 2 years of symptom onset, FVC >80%, independent in daily activities",
-        "mid": "2-5 years from diagnosis, FVC 50-80%, some assistance needed, may use walking aids",
-        "advanced": "5+ years, FVC <50%, significant disability, may need NIV/BiPAP support",
-        "ventilator_dependent": "24/7 invasive or non-invasive ventilation, fully dependent for care"
+  "schema_version": 2,
+  "last_updated": "2026-09-10",
+  "reviewed_on": "2026-09-11",
+  "coverage": "A curated review of all previously included programs, with selected important additions. It is not an exhaustive registry of every ALS study worldwide.",
+  "methodology": [
+    "Evidence cutoff: 10 September 2026. Sources were retrieved on 11 September 2026; dated developments after the cutoff are excluded.",
+    "Regulators establish approved indications. Trial registries establish the recorded design, phase and recruitment status. Registry dates are shown because records can lag behind events.",
+    "Published controlled results take precedence over subgroup claims. Sponsor announcements are labeled and used for operational milestones or explicitly preliminary findings.",
+    "Undated manufacturer pages describe product capabilities only; they do not establish a dated approval or verified availability on the cutoff date.",
+    "A biomarker measures a biological process. A change in NfL, TDP-43 or another marker is not automatically a demonstrated clinical benefit.",
+    "No medical specialist sign-off is claimed. Treatment suitability, genetic findings, access and current recruitment should be confirmed with the relevant clinical team."
+  ],
+  "highlights": [
+    {
+      "date": "2026-09-09",
+      "entry_id": "trcn1023",
+      "label": "New study",
+      "title": "UNC13A restoration enters the trial landscape",
+      "text": "FUNCtion ALS is listed as recruiting in the latest registry record.",
+      "source_id": "NCT07674667"
     },
-    "benefit_type_legend": {
-        "slows_progression": "Reduces rate of functional decline - does NOT reverse damage",
-        "may_slow": "Shows promise but not definitively proven to slow progression",
-        "neuroprotection": "Protects remaining neurons from death - does NOT restore dead ones",
-        "symptom_management": "Treats symptoms only - no effect on disease course",
-        "functional_restoration": "May help restore some lost functions (rare, experimental)",
-        "neuron_regeneration": "Aims to replace dead motor neurons (highly experimental)"
+    {
+      "date": "2026-08-31",
+      "entry_id": "primec",
+      "label": "Development update",
+      "title": "PrimeC revises its pivotal study plan",
+      "text": "The proposed PARAGON redesign still requires FDA alignment.",
+      "source_id": "primec-update"
     },
-    "categories": {
-        "approved_treatments": [
-            {
-                "id": 1,
-                "drug_name": "Riluzole",
-                "brand_names": {
-                    "global": [
-                        "Rilutek (tablets)",
-                        "Tiglutik (oral suspension)",
-                        "Exservan/Emylif (dissolving films)"
-                    ],
-                    "india": [
-                        "Rilutor 50mg (Sun Pharma)",
-                        "Generic versions (Lupin, Cipla)"
-                    ]
-                },
-                "approval": {
-                    "fda_year": "1995 (December 12)",
-                    "india_status": "Widely available (Generic)"
-                },
-                "mechanism": "Glutamate antagonist - reduces excitotoxic damage to motor neurons by blocking excess glutamate release",
-                "benefit_classification": {
-                    "primary_effect": "SLOWS PROGRESSION",
-                    "does_it_reverse_damage": "NO - Cannot restore dead neurons or reverse muscle atrophy",
-                    "does_it_restore_function": "NO - Does not improve existing symptoms",
-                    "what_it_actually_does": "Modestly extends survival by reducing rate of motor neuron death. Does NOT bring back lost functions."
-                },
-                "quantified_benefit": {
-                    "survival_extension": "2-3 months in clinical trials; 6-19 months in real-world studies",
-                    "functional_improvement": "NONE - Only slows decline, does not improve",
-                    "evidence_quality": "Strong (multiple Phase 3 trials, 25+ years of use)"
-                },
-                "stage_specific_benefit": {
-                    "newly_diagnosed": {
-                        "benefit_level": "HIGHEST",
-                        "expected_outcome": "Best chance to extend survival if started early",
-                        "recommendation": "STRONGLY RECOMMENDED - Start immediately upon diagnosis"
-                    },
-                    "mid_stage": {
-                        "benefit_level": "MODERATE",
-                        "expected_outcome": "Still provides some survival benefit",
-                        "recommendation": "RECOMMENDED - Continue if already on it, start if not"
-                    },
-                    "advanced_ventilator": {
-                        "benefit_level": "MINIMAL",
-                        "expected_outcome": "Limited additional benefit at this stage",
-                        "recommendation": "OPTIONAL - May continue for marginal benefit, discuss with neurologist"
-                    }
-                },
-                "realistic_expectations": "This is NOT a cure. It will NOT make you stronger or restore lost abilities. It MAY help you live somewhat longer by slowing the rate of decline. Most patients and families do not notice any visible difference while taking it.",
-                "india_info": {
-                    "available": true,
-                    "cost_range_inr": "5,000-7,000 per month",
-                    "accessibility": "Widely available. Most affordable approved ALS treatment in India."
-                },
-                "sources": [
-                    "https://pubmed.ncbi.nlm.nih.gov/9686699/",
-                    "https://www.accessdata.fda.gov/"
-                ]
-            },
-            {
-                "id": 2,
-                "drug_name": "Edaravone",
-                "brand_names": {
-                    "global": [
-                        "Radicava (IV)",
-                        "Radicava ORS (Oral - May 2022)"
-                    ],
-                    "india": [
-                        "Nuravon (Abbott)",
-                        "Aravon (Sun Pharma)",
-                        "Edvo (Torrent)",
-                        "Fraseda (UCB)"
-                    ]
-                },
-                "approval": {
-                    "fda_year_iv": "2017 (May 5)",
-                    "fda_year_oral": "2022 (May 12)",
-                    "india_status": "Available - Generic injectables"
-                },
-                "mechanism": "Free radical scavenger - reduces oxidative stress that damages motor neurons",
-                "benefit_classification": {
-                    "primary_effect": "SLOWS PROGRESSION (in specific patients)",
-                    "does_it_reverse_damage": "NO - Cannot restore dead neurons",
-                    "does_it_restore_function": "NO - Does not improve existing weakness",
-                    "what_it_actually_does": "Reduces rate of functional decline by ~33% in EARLY-STAGE patients only. No proven benefit in advanced disease."
-                },
-                "quantified_benefit": {
-                    "functional_decline_reduction": "33% slower ALSFRS-R decline vs placebo",
-                    "who_benefits": "ONLY early-stage: <2 years from onset, FVC >80%, living independently",
-                    "who_does_NOT_benefit": "Advanced patients, ventilator-dependent, >2 years disease duration",
-                    "evidence_quality": "Moderate (Japanese trial showed benefit in specific subgroup only)"
-                },
-                "stage_specific_benefit": {
-                    "newly_diagnosed": {
-                        "benefit_level": "HIGHEST (if criteria met)",
-                        "expected_outcome": "May slow decline by ~33% if started within 2 years of symptoms",
-                        "recommendation": "CONSIDER if: <2 years onset, FVC >80%, independent living"
-                    },
-                    "mid_stage": {
-                        "benefit_level": "LOW/UNCERTAIN",
-                        "expected_outcome": "Limited evidence of benefit beyond early stage",
-                        "recommendation": "NOT RECOMMENDED - Cost may not justify uncertain benefit"
-                    },
-                    "advanced_ventilator": {
-                        "benefit_level": "NOT RECOMMENDED",
-                        "expected_outcome": "No proven benefit, high cost, logistical burden",
-                        "recommendation": "NOT RECOMMENDED - Focus resources on comfort care"
-                    }
-                },
-                "realistic_expectations": "This drug only works in EARLY disease. If you are already using a wheelchair or ventilator, this drug is unlikely to help. It requires daily IV infusions for 14 days each month - significant time and cost burden.",
-                "india_info": {
-                    "available": true,
-                    "cost_range_inr": "400-1,600 per vial",
-                    "accessibility": "Available but requires hospital visits for IV infusion",
-                    "administration_challenge": "Daily IV for 14 days/month - major logistical burden"
-                },
-                "sources": [
-                    "https://pubmed.ncbi.nlm.nih.gov/28431142/"
-                ]
-            },
-            {
-                "id": 3,
-                "drug_name": "Tofersen (Qalsody)",
-                "brand_names": {
-                    "global": [
-                        "Qalsody (Biogen)"
-                    ],
-                    "india": []
-                },
-                "approval": {
-                    "fda_year": "2023 (April 25, Accelerated)",
-                    "japan_approval": "2024 (December)",
-                    "global_approvals": "Approved in 44 countries worldwide as of March 2026",
-                    "india_status": "Named Patient Import only"
-                },
-                "mechanism": "Antisense oligonucleotide - destroys the RNA that produces toxic SOD1 protein",
-                "benefit_classification": {
-                    "primary_effect": "DISEASE MODIFICATION (for SOD1 mutation ONLY)",
-                    "does_it_reverse_damage": "PARTIALLY - May stabilize and prevent further damage, some patients show stabilization",
-                    "does_it_restore_function": "POSSIBLY - Long-term data shows some patients maintain or regain function",
-                    "what_it_actually_does": "Directly targets the CAUSE of disease in SOD1 patients. Significantly reduces toxic protein levels. May halt or slow progression more effectively than other drugs."
-                },
-                "quantified_benefit": {
-                    "sod1_protein_reduction": "35% reduction in CSF",
-                    "neurofilament_reduction": "55% reduction (biomarker of nerve damage)",
-                    "functional_outcome": "JAMA Neurology (Dec 2025): 3.5-year follow-up shows early initiation associated with slower decline in function, breathing, and strength, plus reduced risk of death or permanent ventilation",
-                    "long_term_data": "~25% of participants showed stabilization and even functional improvement in grip strength and respiratory function over 3 years",
-                    "presymptomatic_trial": "ATLAS Phase 3 trial >50% enrolled across 14 countries - testing prevention in presymptomatic SOD1 carriers. Results expected 2027",
-                    "who_benefits": "ONLY patients with confirmed SOD1 genetic mutation (~2% of all ALS)",
-                    "evidence_quality": "Strong (Phase 3 VALOR + OLE long-term data published in JAMA Neurology Dec 2025)"
-                },
-                "stage_specific_benefit": {
-                    "newly_diagnosed_sod1": {
-                        "benefit_level": "HIGHEST",
-                        "expected_outcome": "Best chance to halt disease if started before significant damage",
-                        "recommendation": "STRONGLY RECOMMENDED if SOD1 positive - start immediately"
-                    },
-                    "mid_stage_sod1": {
-                        "benefit_level": "MODERATE-HIGH",
-                        "expected_outcome": "May stabilize disease, prevent further decline",
-                        "recommendation": "RECOMMENDED - Still beneficial even with some progression"
-                    },
-                    "advanced_sod1": {
-                        "benefit_level": "UNCERTAIN",
-                        "expected_outcome": "May prevent further decline but cannot reverse existing damage",
-                        "recommendation": "DISCUSS with specialist - case-by-case basis"
-                    },
-                    "non_sod1_patients": {
-                        "benefit_level": "NONE",
-                        "expected_outcome": "This drug does NOT work for non-SOD1 ALS",
-                        "recommendation": "NOT APPLICABLE - Requires SOD1 mutation"
-                    }
-                },
-                "realistic_expectations": "This is a TARGETED therapy - it ONLY works if you have SOD1 mutation (about 2% of ALS patients). Get genetic testing first. If positive, this is currently the most promising option. If negative, this drug will not help you.",
-                "genetic_testing_required": true,
-                "india_info": {
-                    "available": false,
-                    "future_access": "Named Patient Import via Form 12B. Genetic testing available at NIMHANS, DNA Labs India (Rs 20,000), MedGenome."
-                },
-                "sources": [
-                    "https://www.nejm.org/doi/full/10.1056/NEJMoa2204705"
-                ]
-            },
-            {
-                "id": 4,
-                "drug_name": "Rozebalamin (MT-1186)",
-                "brand_names": {
-                    "global": [
-                        "Rozebalamin (Eisai, Japan only)"
-                    ],
-                    "india": []
-                },
-                "approval": {
-                    "japan_approval": "2024 (September 24)",
-                    "india_status": "Not available - Japan only"
-                },
-                "mechanism": "Ultra-high dose Vitamin B12 (methylcobalamin) - exact neuroprotective mechanism under study",
-                "benefit_classification": {
-                    "primary_effect": "SLOWS PROGRESSION (early stage only)",
-                    "does_it_reverse_damage": "NO",
-                    "does_it_restore_function": "NO",
-                    "what_it_actually_does": "Slowed functional decline by 43% in EARLY-STAGE patients (<12 months from onset) in Japanese trial."
-                },
-                "quantified_benefit": {
-                    "functional_decline_reduction": "43% slower ALSFRS-R decline",
-                    "who_benefits": "ONLY very early stage: <12 months from symptom onset",
-                    "evidence_quality": "Moderate (Japanese Phase 3 JETALS trial)"
-                },
-                "stage_specific_benefit": {
-                    "newly_diagnosed_under_12_months": {
-                        "benefit_level": "MODERATE-HIGH",
-                        "expected_outcome": "May slow decline by ~43%",
-                        "recommendation": "Worth considering IF available - currently Japan only"
-                    },
-                    "beyond_12_months": {
-                        "benefit_level": "NOT STUDIED",
-                        "expected_outcome": "No evidence of benefit beyond very early stage",
-                        "recommendation": "NOT APPLICABLE - Trial only included <12 month patients"
-                    }
-                },
-                "realistic_expectations": "This is a Japanese-only drug as of December 2025. It only showed benefit in patients within their FIRST YEAR of symptoms. Not available in India or most other countries.",
-                "india_info": {
-                    "available": false,
-                    "status": "Japan only. No international expansion announced."
-                },
-                "sources": [
-                    "https://www.eisai.com/news/2024/news202452.html"
-                ]
-            },
-            {
-                "id": 5,
-                "drug_name": "Nuedexta",
-                "brand_names": {
-                    "global": [
-                        "Nuedexta (Avanir/Otsuka)"
-                    ],
-                    "india": []
-                },
-                "approval": {
-                    "fda_year": "2010",
-                    "india_status": "Import or compounding available"
-                },
-                "mechanism": "Dextromethorphan + Quinidine - treats involuntary emotional expression (PBA)",
-                "benefit_classification": {
-                    "primary_effect": "SYMPTOM MANAGEMENT ONLY",
-                    "does_it_reverse_damage": "NO",
-                    "does_it_restore_function": "NO",
-                    "does_it_slow_progression": "NO",
-                    "what_it_actually_does": "Controls involuntary laughing/crying episodes (Pseudobulbar Affect). Does NOT affect disease progression at all."
-                },
-                "stage_specific_benefit": {
-                    "any_stage_with_pba": {
-                        "benefit_level": "HIGH for symptom control",
-                        "expected_outcome": "Reduces embarrassing emotional outbursts",
-                        "recommendation": "RECOMMENDED if experiencing PBA symptoms"
-                    }
-                },
-                "realistic_expectations": "This drug ONLY treats a specific symptom (uncontrollable laughing or crying). It has ZERO effect on ALS progression, muscle strength, or survival. It improves quality of life for those with PBA.",
-                "india_info": {
-                    "available": true,
-                    "status": "Can be imported or compounded from individual components"
-                },
-                "sources": [
-                    "https://www.accessdata.fda.gov/"
-                ]
-            }
-        ],
-        "withdrawn_treatments": [
-            {
-                "id": 99,
-                "drug_name": "Relyvrio (AMX0035)",
-                "status": "WITHDRAWN - DO NOT USE",
-                "withdrawal_date": "FDA withdrawal August 29, 2025",
-                "reason": "PHOENIX Phase 3 trial completely FAILED (p=0.667). No benefit over placebo.",
-                "warning": "Do NOT pay for or attempt to obtain this drug. It does not work."
-            }
-        ],
-        "clinical_trials": [
-            {
-                "id": 1,
-                "trial_name": "Masitinib (AB Science)",
-                "phase": "Phase 3 Confirmatory (AB23005)",
-                "mechanism": "Tyrosine kinase inhibitor - reduces neuroinflammation",
-                "benefit_classification": {
-                    "primary_effect": "SLOWS PROGRESSION",
-                    "does_it_reverse_damage": "NO",
-                    "does_it_restore_function": "NO",
-                    "what_it_promises": "27% reduction in disease progression, 12-month survival benefit in 'normal progressors'"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "Early-to-mid stage, 'normal progressors' (not rapidly declining)",
-                    "not_for": "Rapidly progressive patients, advanced disease"
-                },
-                "timeline": "Results expected 2027-2028",
-                "india_potential": "HIGH - Oral pill, likely to have generics if approved",
-                "sources": [
-                    "https://www.globenewswire.com/"
-                ]
-            },
-            {
-                "id": 2,
-                "trial_name": "Pridopidine (PREVAiLS)",
-                "phase": "Phase 3 (cleared December 11, 2025)",
-                "mechanism": "Sigma-1 receptor agonist - targets speech and bulbar function",
-                "benefit_classification": {
-                    "primary_effect": "SLOWS SPECIFIC DECLINE (speech/bulbar)",
-                    "does_it_reverse_damage": "NO",
-                    "does_it_restore_function": "NO - but may preserve speech longer",
-                    "what_it_promises": "32% slower overall progression, 93% reduction in speech deterioration in early rapidly-progressive patients"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "Early stage with rapid progression, especially bulbar-onset",
-                    "not_for": "Advanced disease, those already on ventilator"
-                },
-                "timeline": "Recruiting early 2026, Phase 3 ongoing",
-                "india_potential": "HIGH - Oral pill",
-                "sources": [
-                    "https://www.neurologylive.com/"
-                ]
-            },
-            {
-                "id": 3,
-                "trial_name": "CNM-Au8 (RESTORE-ALS)",
-                "phase": "NDA submitted Q2 2026, Phase 3 RESTORE-ALS enrolling",
-                "mechanism": "Gold nanocrystals - restores cellular energy production",
-                "benefit_classification": {
-                    "primary_effect": "SURVIVAL EXTENSION + NEUROPROTECTION",
-                    "does_it_reverse_damage": "UNCLEAR - may protect against further damage",
-                    "does_it_restore_function": "UNCLEAR",
-                    "what_it_promises": "73% reduction in mortality risk, 6.5-month survival benefit"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "Early-to-mid stage",
-                    "not_for": "Very advanced disease"
-                },
-                "timeline": "NDA submitted Q2 2026 via accelerated pathway. PDUFA date expected H2 2026. Potential approval/launch 2027. RESTORE-ALS confirmatory trial: 690 patients, dosing H1 2026",
-                "india_potential": "MEDIUM - Novel nanomedicine, likely expensive initially",
-                "sources": [
-                    "https://www.neurologylive.com/",
-                    "https://www.globenewswire.com/news-release/2026/02/24/3243459/0/en/Clene-Issues-Stockholder-Letter-Highlighting-Upcoming-CNM-Au8-2026-Catalysts.html"
-                ]
-            },
-            {
-                "id": 4,
-                "trial_name": "NurOwn/Debamestrocel (ENDURANCE)",
-                "phase": "Phase 3b ENDURANCE (FDA cleared, Special Protocol Assessment agreed)",
-                "mechanism": "Stem cell therapy - delivers neurotrophic factors to support surviving neurons",
-                "benefit_classification": {
-                    "primary_effect": "NEUROPROTECTION + POSSIBLE STABILIZATION",
-                    "does_it_reverse_damage": "NO - cannot replace dead neurons",
-                    "does_it_restore_function": "POSSIBLY - some patients showed improvement in previous trials",
-                    "what_it_promises": "Aims to stabilize or slow decline by nourishing remaining neurons"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "Early-to-mild disease only",
-                    "not_for": "Advanced disease - previous Phase 3 failed due to including too many advanced patients"
-                },
-                "critical_warning": "AVOID unregulated stem cell clinics in India claiming similar treatments. They are NOT the same as NurOwn.",
-                "timeline": "ENDURANCE trial (NCT06973629): 200 patients, 24-week double-blind + 24-week OLE, intrathecal injection every 8 weeks. FDA Special Protocol Assessment agreed — trial design confirmed suitable for approval application. Recruiting at 12+ US sites",
-                "india_potential": "LOW - Requires travel to US trial sites",
-                "sources": [
-                    "https://www.brainstorm-cell.com/"
-                ]
-            },
-            {
-                "id": 5,
-                "trial_name": "ION363/Ulefnersen (FUSION)",
-                "phase": "Phase 1-3 (enrollment completed August 2025)",
-                "mechanism": "ASO targeting FUS mutation - stops production of toxic FUS protein",
-                "benefit_classification": {
-                    "primary_effect": "DISEASE MODIFICATION (FUS mutation only)",
-                    "does_it_reverse_damage": "POSSIBLY - exceptional improvement seen in some patients",
-                    "does_it_restore_function": "POSSIBLY - 2 of 12 patients showed remarkable improvement",
-                    "what_it_promises": "Halt or reverse progression in FUS-ALS (aggressive juvenile form)"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "FUS mutation carriers at any stage",
-                    "requirement": "MUST have confirmed FUS mutation"
-                },
-                "genetic_testing_required": true,
-                "timeline": "Results expected 2026-2027",
-                "india_potential": "LOW initially - requires intrathecal injection, genetic confirmation",
-                "sources": [
-                    "https://clinicaltrials.gov/study/NCT04768972"
-                ]
-            },
-            {
-                "id": 6,
-                "trial_name": "QRL-201 (STMN2 Restoration)",
-                "phase": "Phase 1/2 (ANQUR) — Interim data Feb 2026 shows effects on disease progression",
-                "mechanism": "ASO that restores Stathmin-2 protein - addresses TDP-43 pathology in 97% of ALS",
-                "benefit_classification": {
-                    "primary_effect": "TARGETS ROOT CAUSE IN MOST ALS PATIENTS",
-                    "does_it_reverse_damage": "UNCLEAR - may support axon repair",
-                    "does_it_restore_function": "UNCLEAR - early research",
-                    "what_it_promises": "Addresses the fundamental problem in 97% of ALS cases (TDP-43 pathology)"
-                },
-                "stage_specific_applicability": {
-                    "potential_for": "ALL ALS patients (not just genetic subtypes) — targets TDP-43 pathology in 97% of ALS",
-                    "current_status": "Feb 2026 interim data: 69 patients dosed, demonstrated effects on disease progression and target engagement"
-                },
-                "timeline": "ANQUR Phase 1/2 interim results Feb 2026 positive. Open-label extension approved in Canada. Pivotal Phase 3 planned for 2027",
-                "india_relevance": "EXTREMELY HIGH - Would apply to majority of ALS patients, not just genetic subtypes",
-                "sources": [
-                    "https://www.quralistherapeutics.com/"
-                ]
-            },
-            {
-                "id": 7,
-                "trial_name": "XS-228 (iPSC Motor Neurons)",
-                "phase": "Phase 1 (FDA IND January 2025)",
-                "mechanism": "Lab-grown motor neurons from stem cells to REPLACE dead neurons",
-                "benefit_classification": {
-                    "primary_effect": "NEURON REPLACEMENT (highly experimental)",
-                    "does_it_reverse_damage": "AIMS TO - by replacing dead motor neurons",
-                    "does_it_restore_function": "AIMS TO - if new neurons connect properly",
-                    "what_it_promises": "Only therapy attempting to REGENERATE lost motor neurons"
-                },
-                "stage_specific_applicability": {
-                    "potential_for": "Unknown - very early research",
-                    "realistic_timeline": "5-10+ years from widespread availability even if successful"
-                },
-                "timeline": "Trials starting 2025",
-                "india_potential": "MEDIUM - Allogeneic 'off-the-shelf' product, high future import potential unlike autologous therapies",
-                "sources": [
-                    "https://www.businesswire.com/"
-                ]
-            },
-            {
-                "id": 8,
-                "trial_name": "PrimeC (NeuroSense)",
-                "phase": "Phase 3 PARAGON (FDA cleared) + Health Canada NDS mid-2026",
-                "mechanism": "Ciprofloxacin (RNA processing/Iron chelation) + Celecoxib (COX-2 inhibition) - combination synergy",
-                "scientific_validity": "Moderate-Strong (Extension study: 36% slowing of progression, 43% survival improvement over 1 year)",
-                "benefit_classification": {
-                    "primary_effect": "SLOWS PROGRESSION via inflammation reduction",
-                    "does_it_reverse_damage": "NO",
-                    "does_it_restore_function": "NO",
-                    "what_it_promises": "36% slowing of disease progression and 43% improvement in survival rates in extension study"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "Early-to-mid stage",
-                    "not_for": "Very advanced disease"
-                },
-                "critical_warning": "DO NOT attempt DIY with generic Ciprofloxacin + Celecoxib. PrimeC uses proprietary extended-release formulation. Generic versions risk antibiotic resistance and GI toxicity WITHOUT neuroprotective benefit.",
-                "timeline": "FDA cleared pivotal Phase 3 PARAGON trial (300 patients, US+EU). Health Canada pre-NDS meeting April 2026, NDS submission mid-2026. PARAGON trial recruiting 2026",
-                "india_potential": "MEDIUM - Wait for regulatory approval. Do NOT self-compound.",
-                "sources": [
-                    "https://www.alsnewstoday.com/",
-                    "https://www.neurosense-tx.com/"
-                ]
-            },
-            {
-                "id": 9,
-                "trial_name": "COYA 302 (Treg Enhancement)",
-                "phase": "Phase 2 (ALSTARS trial active)",
-                "mechanism": "Low-dose IL-2 + CTLA-4 Ig - enhances Regulatory T Cells (Tregs) which are dysfunctional in ALS",
-                "scientific_validity": "Moderate (Novel dual-mechanism immunomodulation)",
-                "benefit_classification": {
-                    "primary_effect": "IMMUNOMODULATION - addresses neuroinflammation",
-                    "does_it_reverse_damage": "NO",
-                    "does_it_restore_function": "NO",
-                    "what_it_promises": "Boosts Treg function to control unchecked inflammation"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "Patients with inflammatory markers, early-to-mid stage",
-                    "not_for": "Very advanced disease"
-                },
-                "timeline": "Phase 2 ongoing 2025-2026",
-                "india_potential": "LOW - Early stage trial, no current access",
-                "sources": [
-                    "https://clinicaltrials.gov/"
-                ]
-            },
-            {
-                "id": 10,
-                "trial_name": "NUZ-001/Monepantel (HEALEY Platform)",
-                "phase": "HEALEY Platform Trial (FDA cleared Dec 2025, dosing early 2026)",
-                "mechanism": "mTOR inhibitor - induces autophagy to clear toxic protein aggregates (TDP-43)",
-                "scientific_validity": "Moderate (Phase 1 showed safety and biomarker engagement)",
-                "benefit_classification": {
-                    "primary_effect": "CLEARS TOXIC PROTEINS via autophagy",
-                    "does_it_reverse_damage": "POSSIBLY - may clear existing aggregates",
-                    "does_it_restore_function": "UNCLEAR",
-                    "what_it_promises": "Activates cell 'garbage disposal' to clear TDP-43 aggregates"
-                },
-                "stage_specific_applicability": {
-                    "potential_for": "All ALS patients with TDP-43 pathology (97%)",
-                    "current_status": "Early research"
-                },
-                "timeline": "FDA cleared Dec 2025, first patient dosed March 2026 in HEALEY Platform",
-                "india_potential": "HIGH - Originally veterinary drug, may be accessible if repurposed",
-                "sources": [
-                    "https://www.biospace.com/"
-                ]
-            },
-            {
-                "id": 11,
-                "trial_name": "SPG302 (Spinogenix) — Synaptic Regeneration",
-                "phase": "Phase 2a completed, FDA Expanded Access authorized (May 2025)",
-                "mechanism": "Small molecule that regenerates synapses - restores connections between neurons and muscles",
-                "benefit_classification": {
-                    "primary_effect": "SYNAPTIC REGENERATION — may reverse cognitive, respiratory, and motor decline",
-                    "does_it_reverse_damage": "POSSIBLY — aims to restore lost synaptic connections",
-                    "does_it_restore_function": "POSSIBLY — 82% of treated patients showed stable or improved disease progression",
-                    "what_it_promises": "First synaptic regenerative therapy for ALS. Phase 2a showed 82% of patients stable or improved"
-                },
-                "stage_specific_applicability": {
-                    "best_for": "Early-to-mid stage — more remaining synapses to regenerate",
-                    "not_for": "Very advanced disease"
-                },
-                "critical_warning": "FDA authorized Expanded Access Program for 200 ALS patients (May 2025). Orphan Drug Designation granted by FDA and EMA.",
-                "timeline": "FDA approved Phase 3b trial (May 2025). Expanded Access Program active for 200 patients. Registrational trial advancing",
-                "india_potential": "LOW currently — US-based EAP only. If approved, oral small molecule could become accessible",
-                "sources": [
-                    "https://www.spinogenix.com/",
-                    "https://www.neurologylive.com/view/fda-authorizes-expanded-access-program-als-treatment-spg302"
-                ]
-            },
-            {
-                "id": 13,
-                "trial_name": "ATLX-1282 (Alchemab / Eli Lilly)",
-                "phase": "Phase 1 (First-in-human initiated September 2025)",
-                "mechanism": "AI-discovered antibody — identified from 'resilience biology' studying people who resist neurodegeneration",
-                "benefit_classification": {
-                    "primary_effect": "NEUROPROTECTION — antibody derived from natural disease resistance",
-                    "does_it_reverse_damage": "UNCLEAR",
-                    "does_it_restore_function": "UNCLEAR",
-                    "what_it_promises": "Novel approach using AI to identify protective antibodies from naturally resilient individuals"
-                },
-                "stage_specific_applicability": {
-                    "potential_for": "Broad ALS population — not mutation-specific",
-                    "current_status": "Very early — Phase 1 safety testing"
-                },
-                "partnership": "Licensed to Eli Lilly for up to $415 million (May 2025) — strong pharmaceutical backing",
-                "timeline": "Phase 1 first-in-human started September 2025. If successful, Phase 2 expected 2027-2028",
-                "india_potential": "MEDIUM-HIGH — Lilly has strong India presence if therapy reaches market",
-                "sources": [
-                    "https://www.alchemab.com/",
-                    "https://www.prnewswire.com/news-releases/alchemab-therapeutics-signs-landmark-415m-licensing-agreement-for-atlx-1282-with-eli-lilly-and-company-302446216.html"
-                ]
-            },
-            {
-                "id": 14,
-                "trial_name": "NX210c (Axoltis Pharma) — Neuroprotective Peptide",
-                "phase": "Phase 2 (ongoing, readout expected H2 2026)",
-                "mechanism": "Small peptide derived from SCO-spondin — promotes neuroprotection, enhances synaptic transmission, repairs blood-brain barrier",
-                "benefit_classification": {
-                    "primary_effect": "NEUROPROTECTION + BBB REPAIR",
-                    "does_it_reverse_damage": "UNCLEAR",
-                    "does_it_restore_function": "UNCLEAR",
-                    "what_it_promises": "Multi-mechanism neuroprotection: protects neurons, enhances signaling, and repairs the blood-brain barrier"
-                },
-                "stage_specific_applicability": {
-                    "potential_for": "All ALS patients",
-                    "current_status": "Phase 2 ongoing"
-                },
-                "timeline": "Phase 1b safety completed. Phase 2 readout H2 2026. Closed €18M Series A (Dec 2025)",
-                "india_potential": "LOW — Early stage, France-based company",
-                "sources": [
-                    "https://www.labiotech.eu/best-biotech/als-companies/"
-                ]
-            }
-        ],
-        "failed_discontinued_trials": [
-            {
-                "id": 1,
-                "trial_name": "ABBV-CLS-7262 / Fosigotifator (Calico/AbbVie)",
-                "phase": "Phase 2/3 HEALEY Platform — FAILED",
-                "mechanism": "eIF2B activator — aimed to restore protein synthesis in stressed neurons",
-                "failure_date": "January 2025",
-                "reason": "Did not meet primary endpoint of delaying ALS progression. Failed key secondary endpoints (respiratory function, quality of life). AbbVie terminated collaboration with Calico (Nov 2025) and stopped OLE (July 2025)",
-                "lesson": "Despite strong preclinical rationale, eIF2B activation did not translate to clinical benefit in ALS"
-            },
-            {
-                "id": 2,
-                "trial_name": "SAR443820 / DNL788 (Sanofi/Denali) — RIPK1 Inhibitor",
-                "phase": "Phase 2 HIMALAYA — FAILED",
-                "mechanism": "RIPK1 inhibitor — aimed to block neuroinflammation by suppressing microglial over-activation",
-                "failure_date": "February 2024",
-                "reason": "Did not meet primary endpoint (ALSFRS-R change). Despite crossing blood-brain barrier and showing target engagement, no clinical benefit observed in ~260 ALS patients",
-                "lesson": "RIPK1 pathway inhibition alone insufficient to modify ALS disease course"
-            },
-            {
-                "id": 3,
-                "trial_name": "BIIB105 / ION541 (Biogen/Ionis) — ATXN2 ASO",
-                "phase": "Phase 1/2 ALSpire — TERMINATED",
-                "mechanism": "Antisense oligonucleotide targeting ATXN2 gene — aimed to reduce ataxin-2 protein to protect against TDP-43 toxicity",
-                "failure_date": "May 2024",
-                "reason": "Disappointing Phase 1/2 results. Note: This is separate from ulefnersen (FUS-targeting ASO) which continues in development",
-                "lesson": "ATXN2 reduction approach needs refinement; other TDP-43 strategies (QRL-201, Dewpoint) continue"
-            },
-            {
-                "id": 4,
-                "trial_name": "Zilucoplan (UCB) — Complement C5 Inhibitor",
-                "phase": "Phase 2/3 HEALEY Platform — STOPPED EARLY",
-                "mechanism": "Complement C5 inhibitor — aimed to block complement-mediated neuroinflammation",
-                "failure_date": "February 2022",
-                "reason": "Stopped early for lack of benefit in ALS. Complement inhibition did not show efficacy",
-                "lesson": "Complement pathway may not be a viable therapeutic target in ALS"
-            },
-            {
-                "id": 5,
-                "trial_name": "DNL343 (Denali Therapeutics) — eIF2B Agonist",
-                "phase": "Phase 2/3 HEALEY Platform — FAILED",
-                "mechanism": "eIF2B agonist — aimed to restore protein synthesis in stressed motor neurons",
-                "failure_date": "January 2025",
-                "reason": "Did not meet primary endpoint of slowing disease progression. Follow-up biomarker analyses (March 2025) also showed no treatment effect. Open-label extension discontinued.",
-                "lesson": "eIF2B activation via DNL343 did not translate to clinical benefit, similar to the related ABBV-CLS-7262 failure"
-            }
-        ],
-        "preclinical_research": [
-            {
-                "id": 1,
-                "research_area": "SARM1 Inhibitors (ASHA-624)",
-                "company": "Astrocyte Pharmaceuticals / Genentech",
-                "target": "Axon protection - prevents nerve self-destruction",
-                "concept": "SARM1 is a protein that triggers axon self-destruction when neurons are stressed. Blocking SARM1 may keep the connections between motor neurons and muscles intact much longer.",
-                "benefit_classification": {
-                    "primary_effect": "NEUROPROTECTION",
-                    "what_it_promises": "Prevents axons from self-destructing even when neuron body is stressed. May preserve muscle connections longer."
-                },
-                "stage_applicability": "Would benefit all stages by preserving remaining connections",
-                "timeline": "Phase 1 ongoing 2025-2026",
-                "india_relevance": "HIGH - Small molecule oral drug, ideal for generic manufacturing",
-                "who_benefits": "All ALS patients, but especially early-to-mid stage where more connections remain to protect",
-                "sources": [
-                    "https://targetals.org/",
-                    "https://pubmed.ncbi.nlm.nih.gov/36257284/"
-                ]
-            },
-            {
-                "id": 2,
-                "research_area": "CRISPR Gene Editing",
-                "company": "Multiple (Intellia, Editas, CRISPR Therapeutics)",
-                "target": "Correction of genetic mutations (C9orf72, SOD1)",
-                "concept": "Uses CRISPR-Cas9 molecular scissors to cut out or correct the faulty gene sequence causing ALS. Could potentially be a one-time permanent fix for genetic forms. Recent research (2025) has demonstrated CRISPR can delete the C9orf72 promoter in motor neurons from ALS/FTD patients, abolishing toxic dipeptide repeat protein (DPR) production and rescuing neurodegeneration.",
-                "benefit_classification": {
-                    "primary_effect": "CURE POTENTIAL for genetic ALS",
-                    "what_it_promises": "Permanent correction of disease-causing gene - potential one-time cure"
-                },
-                "stage_applicability": "Would need to be applied early before extensive neuron death",
-                "timeline": "3-7 years to clinical trials (accelerating — C9orf72 CRISPR approach advancing fastest)",
-                "patient_population": "Only 5-10% of ALS (genetic forms)",
-                "who_benefits": "Patients with confirmed genetic mutations (SOD1, C9orf72, FUS). Genetic testing required to identify candidates.",
-                "sources": [
-                    "https://crisprtx.com/gene-editing/crispr-cas9",
-                    "https://targetals.org/novel-modalities-consortia-grants/"
-                ]
-            },
-            {
-                "id": 3,
-                "research_area": "Target ALS Global GWAS (India Included)",
-                "full_title": "First Large-Scale Genome-Wide Association Study of ALS in South Asian Populations",
-                "concept": "A massive genetic study to identify risk factors, protective genes, and disease modifiers specific to South Asian populations. Indian ALS patients often show younger age of onset and slower disease progression, suggesting unique genetic factors.",
-                "what_it_is": "Large-scale genetic research including 2,000 Indian ALS patients via NIMHANS and AIIMS",
-                "research_collaboration": {
-                    "lead_organization": "Target ALS Foundation (USA)",
-                    "india_sites": [
-                        {
-                            "institution": "NIMHANS (National Institute of Mental Health and Neurosciences), Bengaluru",
-                            "lead_researcher": "Dr. Atchayaram Nalini - Professor of Neurology, Neuromuscular Specialist",
-                            "contact": "neurology@nimhans.ac.in",
-                            "previous_work": "700+ Indian ALS patients already underwent whole exome sequencing"
-                        },
-                        {
-                            "institution": "AIIMS (All India Institute of Medical Sciences), New Delhi",
-                            "lead_researcher": "Dr. Vishnu Venugopalan"
-                        }
-                    ],
-                    "international_partner": {
-                        "institution": "University College London (UCL), UK",
-                        "lead_researcher": "Dr. Henry Houlden"
-                    }
-                },
-                "study_details": {
-                    "enrollment": "2,000 ALS patients + 2,000 matched controls",
-                    "duration": "5 years",
-                    "methods": [
-                        "Comprehensive genetic sequencing",
-                        "Extensive clinical phenotyping",
-                        "Longitudinal biofluid collection"
-                    ],
-                    "unique_observations": "Indian ALS patients often have younger onset and slower progression - may have unique founder variants or protective genes"
-                },
-                "benefit_classification": {
-                    "primary_effect": "RESEARCH & DISCOVERY",
-                    "what_it_promises": "May discover India-specific genetic factors, protective genes, or new therapeutic targets applicable to Indian population"
-                },
-                "stage_applicability": "For future - discoveries may lead to new treatments for all stages",
-                "timeline": "Study ongoing 2024-2029",
-                "india_relevance": "VERY HIGH - First large-scale ALS GWAS in South Asia",
-                "participation": {
-                    "eligibility": "Indian ALS patients diagnosed at NIMHANS or AIIMS",
-                    "cost": "FREE genetic testing for eligible patients",
-                    "how_to_participate": "Contact NIMHANS Neurology Department or AIIMS Neurology"
-                },
-                "who_benefits": [
-                    "All current patients: Free genetic testing",
-                    "Future patients: New treatments targeting India-specific genes",
-                    "Families: Genetic counseling and risk assessment",
-                    "Global ALS community: Diverse genetic data improves understanding"
-                ],
-                "previous_indian_genetic_findings": {
-                    "most_common_mutations": "SOD1 (most frequent), TARDBP, OPTN, NEK1",
-                    "rare_variants": "SETX, ALS2, DISC1, CNTN4, MATR3 identified in Indian cohort"
-                },
-                "sources": [
-                    "https://targetals.org/global-natural-history-study/",
-                    "https://www.nimhans.ac.in/neurology/",
-                    "https://mglnimhans.org/",
-                    "https://pubmed.ncbi.nlm.nih.gov/33964419/"
-                ]
-            },
-            {
-                "id": 4,
-                "research_area": "Dewpoint TDP-43 Condensate Modulator",
-                "company": "Dewpoint Therapeutics / Mitsubishi Tanabe Pharma",
-                "target": "TDP-43 condensate correction — addresses root pathology in 97%+ of ALS",
-                "concept": "First-in-class small molecule that corrects disease-associated TDP-43 condensates. Development candidate selected January 2026. Collaboration with Mitsubishi Tanabe Pharma worth up to $480M (Dec 2024).",
-                "benefit_classification": {
-                    "primary_effect": "TARGETS ROOT CAUSE — corrects TDP-43 dysfunction in 97%+ of ALS",
-                    "what_it_promises": "First therapy to directly correct TDP-43 condensate pathology, applicable to virtually all ALS patients"
-                },
-                "stage_applicability": "Would need to be applied early before extensive neuron death",
-                "timeline": "Development candidate selected January 2026. IND-enabling studies underway. Clinical trials likely 2027+",
-                "india_relevance": "MEDIUM — Small molecule oral drug. Mitsubishi Tanabe partnership may facilitate global distribution",
-                "who_benefits": "ALL ALS patients with TDP-43 pathology (97%+)",
-                "sources": [
-                    "https://dewpointx.com/",
-                    "https://www.labiotech.eu/best-biotech/als-companies/"
-                ]
-            }
-        ],
-        "communication_technology": [
-            {
-                "id": 1,
-                "solution_name": "Tobii Dynavox PCEye 5 / I-Series",
-                "category": "Gold Standard (Screen-Mounted)",
-                "form_factor": "Screen-mounted bar (PCEye 5) or All-in-one device (I-Series)",
-                "status": "FDA-listed, Medical Device, Proven for ALS",
-                "what_it_is": "Industry-leading eye-tracking communication system specifically designed for ALS patients over 15+ years of development",
-                "how_it_works": "Infrared eye tracker mounts on computer screen, tracks eye gaze to control mouse cursor and on-screen keyboard. I-Series includes built-in computer, speakers, and communication software.",
-                "key_advantages": [
-                    "15+ years ALS-specific optimization - handles droopy eyelids (ptosis), dry eyes, progressive lenses",
-                    "Minimal calibration required - fastest re-tracking if user looks away",
-                    "Medical-grade reliability - designed for 24/7 use",
-                    "Outdoor capability - works in bright sunlight (critical for wheelchair users)",
-                    "24/7 support hotline - emergency assistance available",
-                    "Insurance coverage - typically covered by health insurance/charities in many countries"
-                ],
-                "limitations": [
-                    "High cost - PCEye 5: $1,249-1,800 (~₹1.35 lakhs), I-Series: $10,000-15,000 (~₹11-16 lakhs)",
-                    "Screen-mounted - requires screen in front of user",
-                    "Tracking box limitation - head must stay within specific range",
-                    "Not portable - designed for fixed setup"
-                ],
-                "india_availability": {
-                    "available": true,
-                    "how_to_get": "Contact Tobii Dynavox directly via tobiidynavox.com or medical equipment distributors",
-                    "cost_inr": "PCEye 5: ~₹1,35,000 | I-Series: ~₹11-16 lakhs",
-                    "funding_options": [
-                        "ALS Society of India (alssocietyindia.org)",
-                        "Team Gleason Foundation (international)",
-                        "Crowdfunding",
-                        "Personal import for medical use"
-                    ]
-                },
-                "who_should_use": "ALL advanced-stage ALS patients needing reliable computer control and communication. This is the proven standard.",
-                "comparison_to_tobii": "This IS the gold standard that all alternatives are compared against",
-                "evidence_quality": "HIGHEST - 90%+ of advanced ALS patients worldwide use Tobii Dynavox products",
-                "sources": [
-                    "https://www.tobiidynavox.com/",
-                    "https://every90minutes.org/als-technology-guide/"
-                ]
-            },
-            {
-                "id": 2,
-                "solution_name": "Pupil Labs Neon",
-                "category": "Wearable Eye Tracker (Research-Grade)",
-                "form_factor": "Wearable glasses (35-50g)",
-                "status": "Research device, NOT medical device, Unproven for ALS",
-                "what_it_is": "Research-grade wearable eye tracker that CAN control Windows mouse through AprilTag surface tracking, but requires significant technical setup",
-                "how_it_works": "Glasses with eye cameras track gaze direction. Scene camera sees AprilTag markers placed on monitor corners. Python software maps gaze to screen coordinates and moves mouse cursor. Requires OptiKey software for full keyboard control.",
-                "key_advantages": [
-                    "ZERO calibration required - uses AI/deep learning to track eyes",
-                    "No head positioning box - works even if head moves",
-                    "Portable - can use with any computer if AprilTags present",
-                    "Research-grade accuracy - 200 Hz sampling, 1.3° accuracy",
-                    "Open-source ecosystem - fully customizable"
-                ],
-                "critical_limitations": [
-                    "NOT plug-and-play - requires Python programming, command line, GitHub knowledge",
-                    "5x more expensive - €6,250 (~₹5.6 lakhs) vs Tobii PCEye 5 at ₹1.35 lakhs",
-                    "Battery life only 4 hours - requires mid-day battery changes",
-                    "Weight on head - 35-50g worn all day may cause fatigue",
-                    "NO ALS-specific support - no 24/7 hotline, community forums only",
-                    "Unproven for ptosis - no data on droopy eyelid performance",
-                    "ZERO reviews from ALS patients - no proven track record in ALS community"
-                ],
-                "setup_complexity": "HIGH - Requires tech-savvy person or programmer to set up Python environment, install real-time-screen-gaze package, configure AprilTag markers, integrate with OptiKey",
-                "india_availability": {
-                    "available": true,
-                    "how_to_get": "Order directly from pupil-labs.com, international shipping",
-                    "cost_inr": "~₹6.7-7.3 lakhs (including customs 20-30%)",
-                    "delivery_time": "2-4 weeks international shipping + customs",
-                    "setup_support": "Hire CS student or programmer for ₹5,000-15,000 initial setup"
-                },
-                "who_should_use": "ONLY if: (1) Tech-savvy family member available, (2) Early-stage ALS can help with setup, (3) Need multiple computer setups, (4) Budget available ~₹7 lakhs. NOT suitable as primary device without backup.",
-                "comparison_to_tobii": {
-                    "rating": "6/10 as substitute",
-                    "pros_vs_tobii": "Calibration-free (huge advantage), portable, no tracking box",
-                    "cons_vs_tobii": "5x cost, unproven for ALS, no medical support, battery life, setup complexity, no droopy eyelid testing"
-                },
-                "realistic_expectations": "Technically capable but practically challenging for 24/7 reliability. Use as supplement/backup to Tobii, not as primary communication device.",
-                "evidence_quality": "LOW for ALS - Zero published reviews from ALS patients. HIGH for research applications.",
-                "sources": [
-                    "https://pupil-labs.com/products/neon/",
-                    "https://github.com/pupil-labs/real-time-screen-gaze",
-                    "https://github.com/pupil-labs/gaze-controlled-cursor-demo"
-                ]
-            },
-            {
-                "id": 3,
-                "solution_name": "EyeControl",
-                "category": "Wearable Audio Communication (ALS-Specific)",
-                "form_factor": "Glasses frame with IR camera + pocket computer + bone conduction speaker",
-                "status": "FDA-listed, CE-marked, Medical Device, Purpose-built for ALS",
-                "what_it_is": "Israeli startup's wearable eye-tracking system specifically designed for ALS and locked-in syndrome. CRITICAL: Does NOT control Windows mouse - standalone audio communication only.",
-                "how_it_works": "Eye gestures (look up/down/left/right, blink patterns) navigate audio menus. Pre-recorded messages play via bone conduction speaker. External speaker lets caregiver hear selections. Works completely without screen.",
-                "key_advantages": [
-                    "20-minute training time - fastest learning curve of any system",
-                    "Works without screen - use in bathroom, bed, car, anywhere",
-                    "24/7 wearable - can sleep with device on, communicate immediately upon waking",
-                    "8-hour battery life - full day use",
-                    "Affordable - ~$300-500 (~₹45,000) vs $10,000+ for Tobii I-Series",
-                    "FDA/CE certified - medical device certification",
-                    "Clinical validation - tested in ICU settings, published in medical journals"
-                ],
-                "critical_limitations": [
-                    "NOT for computer control - cannot type emails, browse web, control Windows",
-                    "Pre-defined messages only - cannot create new phrases without helper",
-                    "Limited vocabulary - menu-based system, not infinite like keyboard",
-                    "Cannot replace Tobii - complements it, does not substitute"
-                ],
-                "india_availability": {
-                    "available": "Unknown - primarily Israel/UK/EU",
-                    "how_to_get": "Contact info@eyecontrol.co.il for India delivery quote",
-                    "cost_inr": "~₹45,000-55,000 (including customs)",
-                    "import_considerations": "Personal medical import allowed, budget extra ₹10,000-20,000 for customs"
-                },
-                "who_should_use": "As COMPANION to Tobii, not replacement. Perfect for: 24/7 emergency communication, bed-bound patients, bathroom use, night-time alerts. Use BOTH if budget allows.",
-                "comparison_to_tobii": {
-                    "rating": "3/10 as substitute, 9/10 as companion",
-                    "what_it_does_better": "24/7 wearable emergency communication, works lying down, no screen needed, affordable",
-                    "what_tobii_does_better": "Full computer control, typing, email, web browsing, complex communication"
-                },
-                "realistic_expectations": "Solves critical gap: 2 AM emergency when Tobii is across room. Cannot replace computer control. Budget recommendation: Use BOTH if possible, choose Tobii if only one.",
-                "evidence_quality": "MODERATE-HIGH - Clinical trials in ICU settings, published studies, but smaller user base than Tobii",
-                "sources": [
-                    "https://eyecontrol.co.il/",
-                    "https://pubmed.ncbi.nlm.nih.gov/ (search: EyeControl ALS)"
-                ]
-            },
-            {
-                "id": 4,
-                "solution_name": "OptiKey + Tobii Eye Tracker 5",
-                "category": "Budget Solution (Gaming Hardware + Free Software)",
-                "form_factor": "Screen-mounted gaming eye tracker + free open-source software",
-                "status": "Gaming device (NOT medical) + Open-source software",
-                "what_it_is": "Free, open-source on-screen keyboard (OptiKey) paired with budget gaming eye tracker (Tobii Tracker 5) to achieve 85% of Tobii Dynavox functionality at 16% of cost",
-                "how_it_works": "Tobii Eye Tracker 5 (gaming device) mounts on screen and tracks eyes. OptiKey software provides on-screen keyboard, mouse control, text-to-speech. User stares at keys to type.",
-                "key_advantages": [
-                    "FREE software - OptiKey is completely free forever, no license fees",
-                    "85% of functionality at 16% of cost - $299 vs $1,800",
-                    "Same sensor technology - Tobii Tracker 5 uses IS5 sensor (same as PCEye 5)",
-                    "Active community - 4,300+ GitHub stars, actively maintained",
-                    "Works with multiple trackers - not locked to one device"
-                ],
-                "critical_limitations": [
-                    "Gaming hardware NOT medical-grade - no IP rating, not tested for outdoor use",
-                    "Community support only - no 24/7 hotline, forum troubleshooting only",
-                    "Calibration required - must follow dot targets (difficult for advanced patients)",
-                    "No ALS-specific optimizations - not tested for ptosis, dry eyes, etc.",
-                    "India availability uncertain - gaming tracker primarily sold in gaming markets"
-                ],
-                "setup_complexity": "MODERATE - Download OptiKey (free), install Tobii Tracker 5 drivers, calibrate, configure dwell time. No programming required but some computer literacy needed.",
-                "india_availability": {
-                    "available": "Uncertain",
-                    "how_to_get": "Order Tobii Eye Tracker 5 from gaming.tobii.com (check India shipping) or gaming import services. Download OptiKey from optikey.org (free)",
-                    "cost_inr": "~₹26,000-30,000 total (tracker + shipping + customs)",
-                    "optikey_cost": "FREE"
-                },
-                "who_should_use": "Budget-constrained users, early-stage ALS (can perform calibration), tech-comfortable users, those wanting to try eye tracking before major investment. Keep Tobii PCEye 5 as upgrade path.",
-                "comparison_to_tobii": {
-                    "rating": "7/10 as substitute",
-                    "cost_savings": "₹1,34,000 savings vs Tobii PCEye 5 + TD Control",
-                    "what_you_sacrifice": "Medical certification, guaranteed outdoor use, 24/7 support, ALS-specific optimizations",
-                    "what_you_gain": "Massive cost savings, open-source flexibility, community development"
-                },
-                "realistic_expectations": "Excellent budget option for early-stage patients. May not be sufficient for advanced disease or outdoor wheelchair use. Consider as stepping stone to medical-grade system.",
-                "evidence_quality": "MODERATE - Proven in ALS community forums, positive reviews, but not medical-grade validation",
-                "sources": [
-                    "https://optikey.org/",
-                    "https://github.com/OptiKey/OptiKey",
-                    "https://gaming.tobii.com/product/eye-tracker-5/"
-                ]
-            }
-        ],
-        "experimental_communication_tech": [
-            {
-                "id": 1,
-                "technology": "Pupil Labs Neon + Custom Python Scripts",
-                "status": "EXPERIMENTAL - For tech-savvy users only",
-                "what_it_is": "Using Pupil Labs Neon with custom Python scripts for advanced mouse control and multi-screen setups",
-                "who_can_try": "Users with programming background or CS student helper, early-stage ALS patients who can assist with setup",
-                "cost": "~₹7 lakhs (Neon hardware) + ₹5,000-15,000 (setup assistance)",
-                "risk_level": "MEDIUM - Unproven for ALS, requires backup system",
-                "recommendation": "Only as supplement to proven system, not as primary device"
-            },
-            {
-                "id": 2,
-                "technology": "Webcam + Head Tracking (Enable Viacam / Camera Mouse)",
-                "status": "EXPERIMENTAL - Free but requires head movement",
-                "what_it_is": "Free software that tracks head movement via webcam to control mouse. NOT eye tracking.",
-                "who_can_try": "Early-stage patients with some head control remaining",
-                "cost": "FREE (uses existing webcam)",
-                "critical_limitation": "Requires head movement - NOT suitable for advanced ALS with zero head control",
-                "risk_level": "LOW - Free to try, but limited applicability",
-                "recommendation": "Try early in disease progression, have eye-tracking backup ready"
-            },
-            {
-                "id": 3,
-                "technology": "DIY AprilTag + Smartphone Eye Tracking",
-                "status": "EXPERIMENTAL - Research projects only",
-                "what_it_is": "Academic research projects using smartphone cameras and AprilTag markers for low-cost eye tracking",
-                "who_can_try": "University researchers, CS students, hobbyists",
-                "cost": "~₹5,000-15,000 (smartphone + markers + 3D printed mounts)",
-                "critical_limitation": "Unreliable, unproven, no support, requires extensive troubleshooting",
-                "risk_level": "HIGH - May waste time and money",
-                "recommendation": "NOT RECOMMENDED for patients needing reliable communication. Research interest only."
-            }
-        ]
-    },
-    "key_research_hubs_india": [
-        {
-            "institution": "NIMHANS Bangalore",
-            "lead_researcher": "Dr. Nalini Atchayaram",
-            "services": [
-                "Genetic testing",
-                "Clinical trials",
-                "700+ Indian patients sequenced"
-            ]
-        },
-        {
-            "institution": "DNA Labs India",
-            "services": [
-                "36-gene ALS panel - Rs 20,000",
-                "SOD1, C9orf72, FUS testing"
-            ]
-        },
-        {
-            "service": "myTomorrows India Hub",
-            "description": "Free trial navigation, launched Delhi December 2024"
-        }
-    ],
-    "important_notes": {
-        "relyvrio_warning": "Relyvrio (AMX0035) WITHDRAWN August 2025 - Do NOT purchase or pursue this drug.",
-        "realistic_expectations": "Currently, NO approved drug can restore lost neurons, reverse muscle atrophy, or cure ALS. All approved drugs only SLOW decline to varying degrees. Except for Nuedexta (symptom only), none improve existing symptoms.",
-        "genetic_testing_critical": "With new targeted therapies (Tofersen-SOD1, Ulefnersen-FUS), genetic testing is now CRUCIAL. Available in India at Rs 20,000 (DNA Labs India).",
-        "stem_cell_warning": "AVOID unregulated stem cell clinics in India. They are NOT the same as clinical trial protocols and may be dangerous."
+    {
+      "date": "2026-08-14",
+      "entry_id": "cnm-au8",
+      "label": "Regulatory plans",
+      "title": "CNM-Au8 application remains planned",
+      "text": "Clene targets early Q4 2026; a submission is not an approval.",
+      "source_id": "clene-update"
     }
+  ],
+  "homepage_entries": [
+    "tofersen",
+    "pridopidine",
+    "cnm-au8",
+    "nurown",
+    "masitinib"
+  ],
+  "sections": [
+    {
+      "id": "approved",
+      "label": "Approved medicines",
+      "icon": "circle-check",
+      "categories": [
+        "approved_treatments",
+        "symptom_management"
+      ],
+      "title": "Approved medicines",
+      "description": "Jurisdiction and indication matter. ALS-directed medicines and treatment for pseudobulbar affect are shown separately."
+    },
+    {
+      "id": "trials",
+      "label": "Clinical trials",
+      "icon": "flask",
+      "categories": [
+        "clinical_trials"
+      ],
+      "title": "Clinical trials & development",
+      "description": "Recruiting studies, follow-up cohorts and planned programs. A trial phase or regulatory designation does not establish efficacy."
+    },
+    {
+      "id": "preclinical",
+      "label": "Early science",
+      "icon": "microscope",
+      "categories": [
+        "preclinical_research"
+      ],
+      "title": "Early science & discovery",
+      "description": "Laboratory findings and development candidates. The path from a biological idea to a useful treatment remains uncertain."
+    },
+    {
+      "id": "stopped",
+      "label": "Negative & withdrawn",
+      "icon": "circle-minus",
+      "categories": [
+        "withdrawn_treatments",
+        "failed_discontinued_trials"
+      ],
+      "title": "Negative trials & withdrawn medicines",
+      "description": "Negative findings remain part of the evidence. A failed endpoint, a stopped program and a market withdrawal are different outcomes."
+    },
+    {
+      "id": "communication",
+      "label": "Communication tools",
+      "icon": "comment",
+      "categories": [
+        "communication_technology"
+      ],
+      "title": "Communication tools",
+      "description": "Assistive technology can support independence and expression. It does not slow ALS biology."
+    },
+    {
+      "id": "experimental",
+      "label": "Emerging technology",
+      "icon": "microchip",
+      "categories": [
+        "experimental_communication_tech"
+      ],
+      "title": "Emerging communication technology",
+      "description": "Separate experimental interfaces and custom prototypes from established, individually assessed AAC."
+    },
+    {
+      "id": "india",
+      "label": "India & access",
+      "icon": "globe",
+      "categories": [
+        "india_research"
+      ],
+      "title": "India research & access",
+      "description": "Local research participation and practical questions about genetics, trials and access to treatment."
+    }
+  ],
+  "categories": {
+    "approved_treatments": [
+      {
+        "id": "riluzole",
+        "name": "Riluzole",
+        "subtitle": "Rilutek · oral formulations",
+        "status": "Established ALS treatment",
+        "status_kind": "approved",
+        "summary": "An oral treatment with randomized evidence of a modest survival benefit in ALS.",
+        "evidence": "The pivotal trial studied 959 people. A Cochrane synthesis estimated roughly two to three months of median survival benefit in the trial populations; that average is not a prediction for an individual.",
+        "limitations": [
+          "It does not regenerate motor neurons. Treatment choice, formulation and monitoring belong in a discussion with the treating neurologist."
+        ],
+        "source_ids": [
+          "riluzole-trial",
+          "riluzole-review"
+        ],
+        "india_note": "Ask the prescribing team and a licensed pharmacy about the appropriate formulation, current supply and a written price quotation.",
+        "evidence_date": "2021-07-01",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/8676624/",
+          "https://www.cochrane.org/evidence/CD001447_riluzole-amyotrophic-lateral-sclerosis-alsmotor-neuron-disease-mnd"
+        ],
+        "drug_name": "Riluzole"
+      },
+      {
+        "id": "edaravone",
+        "name": "Edaravone",
+        "subtitle": "Radicava · Radicava ORS",
+        "status": "US approval: IV and oral",
+        "status_kind": "approved",
+        "summary": "Edaravone is approved in the US for ALS. The oral suspension provides an alternative to intravenous administration and can also be given through a feeding tube.",
+        "evidence": "FDA describes evidence of less decline in daily functioning in a six-month trial. Oral approval used comparable drug exposure to the IV product. This supports slowing decline in the studied population, not recovery of lost function.",
+        "limitations": [
+          "Limited evidence in a particular disease stage does not prove that every person outside the trial criteria cannot benefit. Avoid blanket exclusions based on wheelchair or ventilator use."
+        ],
+        "source_ids": [
+          "edaravone-fda"
+        ],
+        "india_note": "Verify the exact product and route locally. US approval of Radicava ORS does not establish its routine availability in India.",
+        "evidence_date": "2022-05-12",
+        "sources": [
+          "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-oral-form-treatment-adults-amyotrophic-lateral-sclerosis-als"
+        ],
+        "drug_name": "Edaravone"
+      },
+      {
+        "id": "tofersen",
+        "name": "Tofersen",
+        "subtitle": "Qalsody · SOD1-targeted antisense therapy",
+        "status": "US accelerated approval",
+        "status_kind": "approved",
+        "summary": "Approved for adults with ALS and a SOD1 mutation. The FDA decision was based on lowering blood neurofilament light (NfL), a marker of nerve injury.",
+        "evidence": "The 28-week VALOR trial did not establish a significant primary clinical benefit. Longer follow-up associated earlier treatment with less decline, but the open-label comparison has limitations. Clinical benefit remains under confirmatory study.",
+        "limitations": [
+          "A biomarker response is not proof of a cure or predictable recovery. Intrathecal treatment requires a specialist team. Investigation in non-SOD1 ALS does not expand the approved indication."
+        ],
+        "source_ids": [
+          "tofersen-fda",
+          "tofersen-longterm"
+        ],
+        "india_note": "Confirm the genetic result with a specialist. Local authorization, supply, import permission and funding must be checked for the individual patient.",
+        "evidence_date": "2025-12-22",
+        "sources": [
+          "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-treatment-amyotrophic-lateral-sclerosis-associated-mutation-sod1-gene",
+          "https://jamanetwork.com/journals/jamaneurology/fullarticle/2843130"
+        ],
+        "drug_name": "Tofersen"
+      },
+      {
+        "id": "mecobalamin",
+        "name": "High-dose mecobalamin",
+        "subtitle": "Rozebalamin · development code E0302",
+        "status": "Japan-specific approval",
+        "status_kind": "approved",
+        "summary": "Japan approved this injectable methylcobalamin formulation for slowing functional impairment in ALS. It is distinct from routine vitamin B12 supplementation.",
+        "evidence": "JETALS found less ALSFRS-R decline over 16 weeks in a selected early-stage Japanese population. The PMDA review supports the indication while documenting the studied population and safety requirements.",
+        "limitations": [
+          "Do not generalize the short trial to all stages or substitute ordinary supplements. Rozebalamin is mecobalamin (E0302), not MT-1186."
+        ],
+        "source_ids": [
+          "rozebalamin-pmda",
+          "rozebalamin-approval",
+          "jetals"
+        ],
+        "india_note": "Japanese authorization does not mean approval or reliable supply in India. Discuss product identity and any lawful access route with the clinical team.",
+        "evidence_date": "2024-10-16",
+        "sources": [
+          "https://www.pmda.go.jp/files/000277177.pdf",
+          "https://www.eisai.com/news/2024/pdf/enews202475pdf.pdf",
+          "https://jamanetwork.com/journals/jamaneurology/fullarticle/2792228"
+        ],
+        "drug_name": "High-dose mecobalamin"
+      }
+    ],
+    "symptom_management": [
+      {
+        "id": "nuedexta",
+        "name": "Dextromethorphan / quinidine",
+        "subtitle": "Nuedexta · pseudobulbar affect",
+        "status": "Symptom treatment",
+        "status_kind": "support",
+        "summary": "US-approved for pseudobulbar affect: episodes of involuntary laughing or crying that can occur in neurological conditions, including ALS.",
+        "evidence": "The FDA indication addresses pseudobulbar affect. It is not an approval for slowing ALS progression or extending survival.",
+        "limitations": [
+          "Suitability and interactions need a prescribing clinician. Symptom benefit should not be counted as disease modification."
+        ],
+        "source_ids": [
+          "nuedexta-fda"
+        ],
+        "india_note": "Local availability and alternatives should be discussed with the neurologist; no current Indian price or supply guarantee is established here.",
+        "evidence_date": "2010-10-29",
+        "sources": [
+          "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2010/021879s000ltr.pdf"
+        ],
+        "drug_name": "Dextromethorphan / quinidine"
+      }
+    ],
+    "clinical_trials": [
+      {
+        "id": "trcn1023",
+        "name": "TRCN-1023",
+        "subtitle": "FUNCtion ALS · UNC13A restoration",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A new Phase 1/2 study evaluates a medicine intended to restore UNC13A function in ALS.",
+        "evidence": "The registry was updated on 9 September 2026. It describes a randomized, blinded, placebo-controlled trial assessing safety, tolerability and early signals after intrathecal administration.",
+        "limitations": [
+          "No results are posted. A newly recruiting trial is an opportunity to test a hypothesis, not evidence of clinical benefit."
+        ],
+        "source_ids": [
+          "NCT07674667"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07674667",
+          "url": "https://clinicaltrials.gov/study/NCT07674667",
+          "status": "RECRUITING",
+          "updated_on": "2026-09-09",
+          "phase": [
+            "PHASE1",
+            "PHASE2"
+          ],
+          "countries": [
+            "Germany",
+            "Netherlands",
+            "United Kingdom"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-09-09",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT07674667"
+        ],
+        "trial_name": "TRCN-1023"
+      },
+      {
+        "id": "pridopidine",
+        "name": "Pridopidine",
+        "subtitle": "PREVAiLS · sigma-1 receptor agonist",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "The Phase 3 PREVAiLS study tests pridopidine in people with early, rapidly progressive ALS.",
+        "evidence": "First enrollment was announced on 30 March 2026; the registry still lists recruiting. The earlier HEALEY trial did not meet its primary endpoint. Subgroup observations motivated a more focused confirmatory trial.",
+        "limitations": [
+          "Subgroup findings are hypothesis-generating. PREVAiLS has not yet established efficacy or supported ALS marketing approval."
+        ],
+        "source_ids": [
+          "prevails",
+          "pridopidine-rct",
+          "NCT07322003"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07322003",
+          "url": "https://clinicaltrials.gov/study/NCT07322003",
+          "status": "RECRUITING",
+          "updated_on": "2026-08-25",
+          "phase": [
+            "PHASE3"
+          ],
+          "countries": [
+            "Belgium",
+            "Canada",
+            "France",
+            "Germany",
+            "Ireland",
+            "Israel",
+            "Italy",
+            "Netherlands",
+            "Poland",
+            "Spain",
+            "Sweden",
+            "United Kingdom",
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-08-25",
+        "sources": [
+          "https://news.prilenia.com/press-releases/press-release-details/2026/Prilenia-and-Ferrer-Announce-First-Participant-Enrolled-in-the-PREVAiLS-Phase-3-Study-of-Pridopidine-in-ALS/default.aspx",
+          "https://jamanetwork.com/journals/jama/fullarticle/2830509",
+          "https://clinicaltrials.gov/study/NCT07322003"
+        ],
+        "trial_name": "Pridopidine"
+      },
+      {
+        "id": "cnm-au8",
+        "name": "CNM-Au8",
+        "subtitle": "Clene · gold nanocrystal suspension",
+        "status": "Application planned",
+        "status_kind": "planned",
+        "summary": "An investigational therapy targeting cellular energy pathways; CNM-Au8 remains under development for ALS.",
+        "evidence": "Clene’s 14 August update targets an accelerated-approval application in early Q4 2026. Its HEALEY trial did not show significant benefit on the primary 24-week progression endpoint. Later biomarker and survival analyses underpin the planned submission.",
+        "limitations": [
+          "A planned application, FDA meeting or exploratory analysis is not approval. RESTORE-ALS should not be described as enrolling without a verified launch."
+        ],
+        "source_ids": [
+          "clene-update",
+          "cnm-rct"
+        ],
+        "india_note": "No routine Indian access or local trial site is established by these sources. Expanded access is distinct from marketing approval.",
+        "evidence_date": "2026-08-14",
+        "sources": [
+          "https://www.sec.gov/Archives/edgar/data/1822791/000143774926027837/ex_967804.htm",
+          "https://jamanetwork.com/journals/jama/fullarticle/2830508"
+        ],
+        "trial_name": "CNM-Au8"
+      },
+      {
+        "id": "nurown",
+        "name": "NurOwn / debamestrocel",
+        "subtitle": "ENDURANCE · autologous cell therapy",
+        "status": "Not yet recruiting",
+        "status_kind": "planned",
+        "summary": "ENDURANCE is the planned confirmatory study of cells prepared from a participant’s own bone marrow.",
+        "evidence": "The August 2026 sponsor update describes preparations to open the study; the registry lists not yet recruiting. An FDA-agreed Special Protocol Assessment concerns trial design and does not establish that the treatment works.",
+        "limitations": [
+          "The new trial has no posted results. Do not present NurOwn as an approved stem-cell treatment or imply that protocol agreement guarantees approval."
+        ],
+        "source_ids": [
+          "nurown-update",
+          "NCT06973629"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT06973629",
+          "url": "https://clinicaltrials.gov/study/NCT06973629",
+          "status": "NOT_YET_RECRUITING",
+          "updated_on": "2025-05-22",
+          "phase": [
+            "PHASE3"
+          ],
+          "countries": [
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-08-14",
+        "sources": [
+          "https://ir.brainstorm-cell.com/2026-08-14-BrainStorm-Cell-Therapeutics-Announces-Second-Quarter-2026-Financial-Results-and-Provides-Corporate-Update",
+          "https://clinicaltrials.gov/study/NCT06973629"
+        ],
+        "trial_name": "NurOwn / debamestrocel"
+      },
+      {
+        "id": "masitinib",
+        "name": "Masitinib",
+        "subtitle": "AB23005 · add-on to standard care",
+        "status": "Not yet recruiting",
+        "status_kind": "planned",
+        "summary": "A confirmatory Phase 3 study is registered for this investigational kinase inhibitor.",
+        "evidence": "The registry lists not yet recruiting. In April 2026 AB Science described the ALS study as not yet started and a temporary European trial halt. EMA’s earlier refusal cited unreliable study data and insufficiently demonstrated benefit.",
+        "limitations": [
+          "Post-hoc or preprint survival analyses do not overturn the regulatory refusal or establish an approved treatment."
+        ],
+        "source_ids": [
+          "masitinib-ema",
+          "masitinib-update",
+          "NCT07174492"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07174492",
+          "url": "https://clinicaltrials.gov/study/NCT07174492",
+          "status": "NOT_YET_RECRUITING",
+          "updated_on": "2025-10-03",
+          "phase": [
+            "PHASE3"
+          ],
+          "countries": [
+            "Greece"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-04-16",
+        "sources": [
+          "https://www.ema.europa.eu/en/medicines/human/EPAR/masitinib-ab-science",
+          "https://www.ab-science.com/wp-content/uploads/2026/04/Clinical-Program-Update-April-2026-VENG.pdf",
+          "https://clinicaltrials.gov/study/NCT07174492"
+        ],
+        "trial_name": "Masitinib"
+      },
+      {
+        "id": "ulefnersen",
+        "name": "Ulefnersen / ION363",
+        "subtitle": "FUSION · FUS-targeted antisense therapy",
+        "status": "Active, not recruiting",
+        "status_kind": "active",
+        "summary": "A Phase 3 trial in ALS associated with pathogenic FUS mutations.",
+        "evidence": "The July 2026 registry lists active follow-up with enrollment closed and no results posted. The study evaluates efficacy and safety of lowering FUS protein.",
+        "limitations": [
+          "This genetically defined program cannot be generalized to all ALS. An anticipated readout is not a completed positive result."
+        ],
+        "source_ids": [
+          "NCT04768972"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT04768972",
+          "url": "https://clinicaltrials.gov/study/NCT04768972",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "updated_on": "2026-07-21",
+          "phase": [
+            "PHASE3"
+          ],
+          "countries": [
+            "Belgium",
+            "Brazil",
+            "Canada",
+            "Germany",
+            "Ireland",
+            "Italy",
+            "Japan",
+            "Netherlands",
+            "Poland",
+            "South Korea",
+            "Spain",
+            "Sweden",
+            "Switzerland",
+            "Taiwan",
+            "United Kingdom",
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-07-21",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT04768972"
+        ],
+        "trial_name": "Ulefnersen / ION363"
+      },
+      {
+        "id": "qrl201",
+        "name": "QRL-201",
+        "subtitle": "ANQUR · STMN2 restoration",
+        "status": "Active, not recruiting",
+        "status_kind": "active",
+        "summary": "An antisense approach intended to restore stathmin-2 expression affected by TDP-43 dysfunction.",
+        "evidence": "QurAlis reported interim target-engagement and biomarker findings in February 2026, with an overall trend and subgroup signals in function. The sponsor calls ANQUR Phase 1/2; the registry classifies it Phase 1 and lists enrollment closed.",
+        "limitations": [
+          "Interim and subgroup results are not confirmatory efficacy. A proposed 2027 Phase 3 program remains a plan."
+        ],
+        "source_ids": [
+          "qrl201-update",
+          "NCT05633459"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT05633459",
+          "url": "https://clinicaltrials.gov/study/NCT05633459",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "updated_on": "2026-05-15",
+          "phase": [
+            "PHASE1"
+          ],
+          "countries": [
+            "Belgium",
+            "Canada",
+            "Germany",
+            "Ireland",
+            "Netherlands",
+            "United Kingdom"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-05-15",
+        "sources": [
+          "https://www.quralis.com/news/quralis-demonstrates-effects-on-disease-progression-and-target-engagement-in-anqur-clinical-trial-of-qrl-201-a-first-in-class-precision-medicine-in-development-for-sporadic-als/",
+          "https://clinicaltrials.gov/study/NCT05633459"
+        ],
+        "trial_name": "QRL-201"
+      },
+      {
+        "id": "primec",
+        "name": "PrimeC",
+        "subtitle": "NeuroSense · extended-release combination",
+        "status": "Pivotal study planned",
+        "status_kind": "planned",
+        "summary": "An investigational fixed-dose formulation of ciprofloxacin and celecoxib.",
+        "evidence": "On 31 August 2026 NeuroSense announced plans to optimize PARAGON into a smaller, shorter pivotal study, subject to FDA alignment. A Canadian submission is targeted for December 2026. Neither milestone should be described as completed.",
+        "limitations": [
+          "Earlier clinical and biomarker signals require confirmation. The formulation is not interchangeable with self-combining its component medicines."
+        ],
+        "source_ids": [
+          "primec-update"
+        ],
+        "india_note": "An Indian approval, launch date or price is not established by this development announcement.",
+        "evidence_date": "2026-08-31",
+        "sources": [
+          "https://neurosense.investorroom.com/2026-08-31-NeuroSense-Unveils-Accelerated,-Capital-Efficient-Strategy-to-Advance-PrimeC-Toward-Potential-Approval-in-ALS"
+        ],
+        "trial_name": "PrimeC"
+      },
+      {
+        "id": "coya302",
+        "name": "COYA 302",
+        "subtitle": "ALSTARS · immune regulation",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A combination biologic strategy intended to enhance regulatory T-cell activity.",
+        "evidence": "The August update reports continuing enrollment and targets topline data in Q1 2027. The sponsor describes ALSTARS as Phase 2; ClinicalTrials.gov lists Phase 2/3. Both descriptions refer to the same study.",
+        "limitations": [
+          "No randomized efficacy results are posted. Trial phase and Fast Track designation are not evidence of approval."
+        ],
+        "source_ids": [
+          "coya-update",
+          "NCT07161999"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07161999",
+          "url": "https://clinicaltrials.gov/study/NCT07161999",
+          "status": "RECRUITING",
+          "updated_on": "2026-08-06",
+          "phase": [
+            "PHASE2",
+            "PHASE3"
+          ],
+          "countries": [
+            "Canada",
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-08-11",
+        "sources": [
+          "https://ir.coyatherapeutics.com/news/news-details/2026/Coya-Therapeutics-Reports-Second-Quarter-2026-Financial-Results-and-Provides-a-Corporate-Update/default.aspx",
+          "https://clinicaltrials.gov/study/NCT07161999"
+        ],
+        "trial_name": "COYA 302"
+      },
+      {
+        "id": "nuz001",
+        "name": "NUZ-001",
+        "subtitle": "HEALEY Regimen I · S-monepantel",
+        "status": "Active, not recruiting",
+        "status_kind": "active",
+        "summary": "An investigational oral medicine designed to support clearance of harmful cellular proteins.",
+        "evidence": "The HEALEY trial center reports enrollment complete, consistent with the July 2026 registry status. The Phase 2/3 cohort is now in follow-up; no efficacy results are posted.",
+        "limitations": [
+          "Small earlier safety studies and open-label observations do not establish slowing of ALS progression."
+        ],
+        "source_ids": [
+          "healey",
+          "NCT07410806"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07410806",
+          "url": "https://clinicaltrials.gov/study/NCT07410806",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "updated_on": "2026-07-20",
+          "phase": [
+            "PHASE2",
+            "PHASE3"
+          ],
+          "countries": [
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-07-20",
+        "sources": [
+          "https://research.massgeneralbrigham.org/en/institutes-centers/neuroscience-institute/department-of-neurology/sean-healey-amg-center-for-als/healey-als-platform-trial",
+          "https://clinicaltrials.gov/study/NCT07410806"
+        ],
+        "trial_name": "NUZ-001"
+      },
+      {
+        "id": "spg302",
+        "name": "SPG302 / tazbentatol",
+        "subtitle": "Spinogenix · synaptic function",
+        "status": "Early study completed",
+        "status_kind": "active",
+        "summary": "A small molecule being studied for effects on synaptic function; clinical benefit in ALS remains unconfirmed.",
+        "evidence": "The early study is registered as completed. The sponsor reported Phase 2a findings in November 2025. A separate US expanded-access protocol is listed as available (NCT07088159).",
+        "limitations": [
+          "Early functional observations and access outside a trial do not prove synapse regeneration or reliable functional recovery in people with ALS."
+        ],
+        "source_ids": [
+          "spg302-update",
+          "NCT05882695",
+          "NCT07088159"
+        ],
+        "india_note": "The US expanded-access protocol is not an Indian approval or a guarantee that an overseas patient can join.",
+        "registry": {
+          "id": "NCT05882695",
+          "url": "https://clinicaltrials.gov/study/NCT05882695",
+          "status": "COMPLETED",
+          "updated_on": "2025-06-29",
+          "phase": [
+            "PHASE1"
+          ],
+          "countries": [
+            "Australia"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-07-17",
+        "sources": [
+          "https://spinogenix.com/press-release/spinogenix-presents-topline-phase-2a-clinical-trial-results-for-spg302-a-first-in-class-als-treatment/",
+          "https://clinicaltrials.gov/study/NCT05882695",
+          "https://clinicaltrials.gov/study/NCT07088159"
+        ],
+        "trial_name": "SPG302 / tazbentatol"
+      },
+      {
+        "id": "atlx1282",
+        "name": "ATLX-1282",
+        "subtitle": "Alchemab / Lilly · antibody program",
+        "status": "Early clinical development",
+        "status_kind": "active",
+        "summary": "A therapeutic antibody program derived from research into biological resilience.",
+        "evidence": "Alchemab announced a first-in-human Phase 1 trial on 9 September 2025. The program was licensed to Lilly. No later ALS efficacy result was established in this review.",
+        "limitations": [
+          "A licensing agreement does not validate efficacy. Current patient recruitment and a Phase 2 start date have not been verified."
+        ],
+        "source_ids": [
+          "atlx-update"
+        ],
+        "india_note": "No Indian trial site or commercial access is verified. Corporate presence in India does not establish future access.",
+        "evidence_date": "2025-09-09",
+        "sources": [
+          "https://www.prnewswire.com/news-releases/alchemab-therapeutics-initiates-phase-1-clinical-trial-of-atlx-1282-and-announces-series-a-financing-extension-302549523.html"
+        ],
+        "trial_name": "ATLX-1282"
+      },
+      {
+        "id": "nx210c",
+        "name": "NX210c",
+        "subtitle": "SEALS · neuroprotective peptide",
+        "status": "Active, not recruiting",
+        "status_kind": "active",
+        "summary": "A Phase 2 study of an intravenous peptide approach to neuroprotection and blood–brain barrier function.",
+        "evidence": "June 2026 preliminary results cover 82 randomized participants. Axoltis reported exploratory functional and biomarker trends; the cited early NfL comparison was not statistically significant.",
+        "limitations": [
+          "Preliminary conference findings need the full controlled analysis. Biomarker trends must not be presented as proven survival benefit."
+        ],
+        "source_ids": [
+          "nx210-update",
+          "NCT06365216"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT06365216",
+          "url": "https://clinicaltrials.gov/study/NCT06365216",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "updated_on": "2025-12-24",
+          "phase": [
+            "PHASE2"
+          ],
+          "countries": [
+            "France"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-06-24",
+        "sources": [
+          "https://www.axoltis.com/2026/06/24/encals-2026-european-network-to-cure-als/",
+          "https://clinicaltrials.gov/study/NCT06365216"
+        ],
+        "trial_name": "NX210c"
+      },
+      {
+        "id": "xs228",
+        "name": "XS-228 / XS228CN",
+        "subtitle": "XellSmart · iPSC-derived neural progenitor cells",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A Phase 1 ALS study in China evaluates induced-pluripotent-stem-cell-derived motor neuron progenitor cells.",
+        "evidence": "The ALS-specific record NCT07118319 lists recruiting and no posted results. Separate XS228 spinal-cord-injury trials must not be used as evidence of benefit in ALS.",
+        "limitations": [
+          "Safety, integration of transplanted cells and clinical benefit remain experimental. There is no established restoration of lost motor neurons or function."
+        ],
+        "source_ids": [
+          "NCT07118319"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07118319",
+          "url": "https://clinicaltrials.gov/study/NCT07118319",
+          "status": "RECRUITING",
+          "updated_on": "2025-11-21",
+          "phase": [
+            "PHASE1"
+          ],
+          "countries": [
+            "China"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2025-11-21",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT07118319"
+        ],
+        "trial_name": "XS-228 / XS228CN"
+      },
+      {
+        "id": "amx0114",
+        "name": "AMX0114",
+        "subtitle": "LUMINA · calpain-2 antisense therapy",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A Phase 1 study of an antisense medicine targeting calpain-2.",
+        "evidence": "Amylyx’s June 2026 update reported no drug-related serious adverse events in the lowest-dose cohort, while the measured biomarkers remained near baseline. Higher-dose cohorts are being evaluated.",
+        "limitations": [
+          "Tolerability at a low dose is not evidence of clinical efficacy. Dose-escalation findings are still early."
+        ],
+        "source_ids": [
+          "amx0114-update",
+          "NCT06665165"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT06665165",
+          "url": "https://clinicaltrials.gov/study/NCT06665165",
+          "status": "RECRUITING",
+          "updated_on": "2026-04-14",
+          "phase": [
+            "PHASE1"
+          ],
+          "countries": [
+            "Canada",
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-06-23",
+        "sources": [
+          "https://investors.amylyx.com/news-releases/news-release-details/amylyx-pharmaceuticals-present-data-first-human-dose-ranging",
+          "https://clinicaltrials.gov/study/NCT06665165"
+        ],
+        "trial_name": "AMX0114"
+      },
+      {
+        "id": "nb4746",
+        "name": "NB-4746",
+        "subtitle": "Nura Bio · SARM1 inhibitor",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "SARM1 inhibition has now entered ALS patient testing with this oral investigational drug.",
+        "evidence": "Nura Bio announced the first ALS participant dosed in June 2026. The Phase 1b/2a program measures safety, drug exposure and biomarkers; registry sites are in Australia and Canada.",
+        "limitations": [
+          "The biological rationale and healthy-volunteer findings do not yet demonstrate benefit in ALS. This program is distinct from preclinical ASHA-624."
+        ],
+        "source_ids": [
+          "nb4746-update",
+          "NCT07369076"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07369076",
+          "url": "https://clinicaltrials.gov/study/NCT07369076",
+          "status": "RECRUITING",
+          "updated_on": "2026-06-22",
+          "phase": [
+            "PHASE1",
+            "PHASE2"
+          ],
+          "countries": [
+            "Australia",
+            "Canada"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-06-22",
+        "sources": [
+          "https://www.globenewswire.com/news-release/2026/06/22/3315110/0/en/nura-bio-completes-73-8m-series-b-financing-and-advances-pipeline-of-sarm1-inhibitors.html",
+          "https://clinicaltrials.gov/study/NCT07369076"
+        ],
+        "trial_name": "NB-4746"
+      },
+      {
+        "id": "ctx1000",
+        "name": "CTx1000",
+        "subtitle": "KOANEWA · TDP-43-directed gene therapy",
+        "status": "Recruiting in cited record",
+        "status_kind": "recruiting",
+        "summary": "An early gene-therapy study intended to clear pathological TDP-43.",
+        "evidence": "Celosia announced first dosing in March 2026 at Macquarie University Hospital. The Phase 1b study is open-label and focuses on safety and tolerability. The recruiting registry record was last updated in February.",
+        "limitations": [
+          "The registry is older than the dosing announcement: confirm current enrollment directly. Reversal in animal models is not evidence of reversal in people."
+        ],
+        "source_ids": [
+          "ctx1000-update",
+          "NCT07401121"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07401121",
+          "url": "https://clinicaltrials.gov/study/NCT07401121",
+          "status": "RECRUITING",
+          "updated_on": "2026-02-10",
+          "phase": [
+            "PHASE1"
+          ],
+          "countries": [
+            "Australia"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-03-23",
+        "sources": [
+          "https://www.prnewswire.com/news-releases/celosia-therapeutics-announces-first-patient-dosed-in-phase-1b-clinical-trial-of-ctx1000-in-amyotrophic-lateral-sclerosis-302721815.html",
+          "https://clinicaltrials.gov/study/NCT07401121"
+        ],
+        "trial_name": "CTx1000"
+      },
+      {
+        "id": "rag17",
+        "name": "RAG-17",
+        "subtitle": "SOD1-targeted siRNA",
+        "status": "Phase 1 evidence",
+        "status_kind": "active",
+        "summary": "A July 2026 Nature Medicine paper reports early human testing of an RNA-silencing approach for SOD1 ALS.",
+        "evidence": "The published first study involved six participants and examined safety, exposure and preliminary biological or clinical observations. A separate Phase 1 trial is registered as recruiting.",
+        "limitations": [
+          "Six participants without a definitive controlled efficacy comparison cannot establish survival benefit or superiority to tofersen. Enrollment status needs confirmation because the cited registry update is older."
+        ],
+        "source_ids": [
+          "rag17-paper",
+          "NCT06556394"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT06556394",
+          "url": "https://clinicaltrials.gov/study/NCT06556394",
+          "status": "RECRUITING",
+          "updated_on": "2025-01-08",
+          "phase": [
+            "PHASE1"
+          ],
+          "countries": [
+            "China"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-07-15",
+        "sources": [
+          "https://www.nature.com/articles/s41591-026-04491-7",
+          "https://clinicaltrials.gov/study/NCT06556394"
+        ],
+        "trial_name": "RAG-17"
+      },
+      {
+        "id": "usnoflast",
+        "name": "Usnoflast",
+        "subtitle": "UNITE-ALS · Zydus",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A Phase 2b randomized study of an oral NLRP3 inflammasome inhibitor.",
+        "evidence": "The 1 September 2026 registry update lists recruiting, with multiple countries participating and no results posted. This is an investigational ALS program associated with an Indian-origin sponsor.",
+        "limitations": [
+          "Sponsor origin does not mean a trial is taking place in India or that the medicine is approved there."
+        ],
+        "source_ids": [
+          "NCT07023835"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07023835",
+          "url": "https://clinicaltrials.gov/study/NCT07023835",
+          "status": "RECRUITING",
+          "updated_on": "2026-09-01",
+          "phase": [
+            "PHASE2"
+          ],
+          "countries": [
+            "Australia",
+            "Belgium",
+            "Canada",
+            "France",
+            "Germany",
+            "Ireland",
+            "Italy",
+            "Netherlands",
+            "Poland",
+            "Spain",
+            "Sweden",
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-09-01",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT07023835"
+        ],
+        "trial_name": "Usnoflast"
+      },
+      {
+        "id": "aln-sod",
+        "name": "ALN-SOD",
+        "subtitle": "SOD1-targeted RNA interference",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A first-in-human Phase 1/2 study for adults with a SOD1 mutation.",
+        "evidence": "The July 2026 registry lists ongoing recruitment and evaluates safety and pharmacological effects of an RNA-interference approach.",
+        "limitations": [
+          "No results are posted. This is a separate investigational product from approved tofersen and from RAG-17."
+        ],
+        "source_ids": [
+          "NCT06351592"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT06351592",
+          "url": "https://clinicaltrials.gov/study/NCT06351592",
+          "status": "RECRUITING",
+          "updated_on": "2026-07-22",
+          "phase": [
+            "PHASE1",
+            "PHASE2"
+          ],
+          "countries": [
+            "Australia",
+            "Belgium",
+            "Canada",
+            "Germany",
+            "Japan",
+            "Poland",
+            "South Korea",
+            "Sweden",
+            "Taiwan"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-07-22",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT06351592"
+        ],
+        "trial_name": "ALN-SOD"
+      },
+      {
+        "id": "vtx002",
+        "name": "VTx-002",
+        "subtitle": "PIONEER-ALS · gene therapy",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A first-in-human Phase 1/2 program using a vectorized antibody approach directed at TDP-43 pathology.",
+        "evidence": "The registry updated on 10 September 2026 lists recruiting at sites in Europe and the US. It is an open-label ascending-dose study with clinical and biomarker assessments.",
+        "limitations": [
+          "No results are posted. Small uncontrolled gene-therapy studies establish early safety information, not a proven ALS treatment. The older sponsor mechanism page still says preclinical; use the dated registry for current trial status."
+        ],
+        "source_ids": [
+          "vectory-mechanism",
+          "NCT07287397"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07287397",
+          "url": "https://clinicaltrials.gov/study/NCT07287397",
+          "status": "RECRUITING",
+          "updated_on": "2026-09-10",
+          "phase": [
+            "PHASE1",
+            "PHASE2"
+          ],
+          "countries": [
+            "Belgium",
+            "Netherlands",
+            "United Kingdom",
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-09-10",
+        "sources": [
+          "https://vectorytx.squarespace.com/vtx002-for-als",
+          "https://clinicaltrials.gov/study/NCT07287397"
+        ],
+        "trial_name": "VTx-002"
+      },
+      {
+        "id": "ins1202",
+        "name": "INS1202",
+        "subtitle": "Insmed · investigational genetic therapy",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A single-dose Phase 1 study in adults with SOD1 ALS or ALS without a known ALS-related genetic mutation.",
+        "evidence": "The September 2026 registry lists recruiting in the US. The study evaluates safety, tolerability and pharmacodynamic effects after intrathecal administration.",
+        "limitations": [
+          "There are no posted efficacy results. Eligibility is protocol-specific and must be confirmed by the study team."
+        ],
+        "source_ids": [
+          "NCT07290062"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07290062",
+          "url": "https://clinicaltrials.gov/study/NCT07290062",
+          "status": "RECRUITING",
+          "updated_on": "2026-09-01",
+          "phase": [
+            "PHASE1"
+          ],
+          "countries": [
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-09-01",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT07290062"
+        ],
+        "trial_name": "INS1202"
+      },
+      {
+        "id": "tofersen-nonsod1",
+        "name": "Tofersen in non-SOD1 ALS",
+        "subtitle": "Investigator-led Phase 2 study",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "An exploratory trial tests whether tofersen has biological or clinical effects beyond genetically confirmed SOD1 ALS.",
+        "evidence": "The registry updated in June 2026 lists a US Phase 2 study and excludes SOD1- and FUS-associated disease. This is a research question with no posted results.",
+        "limitations": [
+          "The FDA-approved indication remains SOD1 ALS. This trial is not evidence to prescribe tofersen broadly for sporadic ALS."
+        ],
+        "source_ids": [
+          "NCT07294144"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07294144",
+          "url": "https://clinicaltrials.gov/study/NCT07294144",
+          "status": "RECRUITING",
+          "updated_on": "2026-06-25",
+          "phase": [
+            "PHASE2"
+          ],
+          "countries": [
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-06-25",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT07294144"
+        ],
+        "trial_name": "Tofersen in non-SOD1 ALS"
+      },
+      {
+        "id": "dazucorilant",
+        "name": "Dazucorilant",
+        "subtitle": "DAZALS · glucocorticoid receptor modulation",
+        "status": "Phase 3 planned",
+        "status_kind": "planned",
+        "summary": "DAZALS missed its primary functional endpoint. Corcept is pursuing further study after secondary and exploratory survival findings.",
+        "evidence": "The April 2026 sponsor report describes two-year survival analyses and a planned Phase 3 trial. The long-term comparisons include selected participants who did or did not enter the extension. The registry still says recruiting, which should not be read as enrollment in the planned pivotal study.",
+        "limitations": [
+          "Survival signals after a failed primary endpoint need confirmation, especially with selection into an extension. No results posted in a registry does not mean results have not been reported elsewhere. Confirm any enrollment directly."
+        ],
+        "source_ids": [
+          "dazucorilant-update",
+          "NCT05407324"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT05407324",
+          "url": "https://clinicaltrials.gov/study/NCT05407324",
+          "status": "RECRUITING",
+          "updated_on": "2026-06-16",
+          "phase": [
+            "PHASE2"
+          ],
+          "countries": [
+            "Belgium",
+            "Canada",
+            "France",
+            "Germany",
+            "Ireland",
+            "Netherlands",
+            "Poland",
+            "Spain",
+            "United Kingdom",
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-06-16",
+        "sources": [
+          "https://ir.corcept.com/news-releases/news-release-details/corcept-phase-2-study-dazucorilant-demonstrates-two-year-overall/",
+          "https://clinicaltrials.gov/study/NCT05407324"
+        ],
+        "trial_name": "Dazucorilant"
+      },
+      {
+        "id": "ltx002",
+        "name": "LTX-002",
+        "subtitle": "NeurALS · SPTLC1-targeted antisense therapy",
+        "status": "Recruiting",
+        "status_kind": "recruiting",
+        "summary": "A new Phase 1/2 study investigates an RNA-targeted approach to abnormal lipid metabolism in ALS.",
+        "evidence": "Leal announced first dosing in June 2026. The August registry lists a blinded, placebo-controlled dose-escalation study assessing safety, tolerability and pharmacological effects.",
+        "limitations": [
+          "The rationale extends to sporadic and genetic ALS, but clinical benefit has not been established. This is a first-in-human program with no posted results."
+        ],
+        "source_ids": [
+          "ltx002-update",
+          "NCT07660614"
+        ],
+        "india_note": "No Indian site is listed in the cited record. Recruitment elsewhere does not guarantee eligibility, travel support or access from India.",
+        "registry": {
+          "id": "NCT07660614",
+          "url": "https://clinicaltrials.gov/study/NCT07660614",
+          "status": "RECRUITING",
+          "updated_on": "2026-08-18",
+          "phase": [
+            "PHASE1",
+            "PHASE2"
+          ],
+          "countries": [
+            "Germany",
+            "Italy",
+            "Netherlands",
+            "Sweden"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-08-18",
+        "sources": [
+          "https://www.prnewswire.com/news-releases/leal-therapeutics-doses-first-patient-in-neurals-phase-12-trial-of-ltx-002-for-amyotrophic-lateral-sclerosis-als-302807297.html",
+          "https://clinicaltrials.gov/study/NCT07660614"
+        ],
+        "trial_name": "LTX-002"
+      }
+    ],
+    "preclinical_research": [
+      {
+        "id": "asha624",
+        "name": "ASHA-624 and axon protection",
+        "subtitle": "SARM1 biology",
+        "status": "Preclinical",
+        "status_kind": "preclinical",
+        "summary": "ASHA-624 is a molecular-glue strategy designed to hold SARM1 inactive and protect axons.",
+        "evidence": "The identified funder announcement supports preclinical studies in an inherited optic-nerve disease. It does not establish an ALS clinical trial or human ALS efficacy.",
+        "limitations": [
+          "Do not equate promising work in another disease model with an available ALS therapy. NB-4746 is the distinct SARM1 program now in ALS clinical testing."
+        ],
+        "source_ids": [
+          "asha624",
+          "nb4746-update"
+        ],
+        "india_note": "Research only; no verified clinical access for ASHA-624.",
+        "evidence_date": "2026-06-22",
+        "sources": [
+          "https://www.advanciumhealth.org/news-and-resources/advancium-health-network-catalyzes-research-on-an-innovative-sarm1-inhibitor-in-a-rare-eye-disease",
+          "https://www.globenewswire.com/news-release/2026/06/22/3315110/0/en/nura-bio-completes-73-8m-series-b-financing-and-advances-pipeline-of-sarm1-inhibitors.html"
+        ],
+        "research_area": "ASHA-624 and axon protection"
+      },
+      {
+        "id": "crispr",
+        "name": "RNA-targeting CRISPR",
+        "subtitle": "C9ORF72-linked ALS / FTD",
+        "status": "Preclinical",
+        "status_kind": "preclinical",
+        "summary": "Researchers are investigating precise removal of disease-associated repeat RNA while preserving normal gene activity.",
+        "evidence": "A 2025 Nature Communications study used a high-fidelity Cas13 system in experimental models of C9ORF72-linked disease and reduced molecular abnormalities.",
+        "limitations": [
+          "This is laboratory and animal-model evidence. Delivery, off-target effects and long-term safety need evaluation before claims of human benefit."
+        ],
+        "source_ids": [
+          "crispr"
+        ],
+        "india_note": "No approved CRISPR treatment for ALS is established by this study.",
+        "evidence_date": "2025-01-08",
+        "sources": [
+          "https://www.nature.com/articles/s41467-024-55548-5"
+        ],
+        "research_area": "RNA-targeting CRISPR"
+      },
+      {
+        "id": "ran-translation",
+        "name": "Blocking toxic repeat translation",
+        "subtitle": "C9ORF72-linked ALS / FTD",
+        "status": "Preclinical",
+        "status_kind": "preclinical",
+        "summary": "A 2026 study separates the toxicity of repeat-derived proteins from the effects of the repeat RNA itself.",
+        "evidence": "The Science paper reports rescue of disease-related phenotypes in models by blocking repeat-associated translation without removing the repeat RNA.",
+        "limitations": [
+          "Mechanistic advances can identify future targets, but do not demonstrate an effective medicine in patients."
+        ],
+        "source_ids": [
+          "ran-translation"
+        ],
+        "india_note": "A research finding, not a clinical treatment or enrollment offer.",
+        "evidence_date": "2026-02-05",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/41643021/"
+        ],
+        "research_area": "Blocking toxic repeat translation"
+      },
+      {
+        "id": "tdp43-condensates",
+        "name": "TDP-43 condensate modulation",
+        "subtitle": "Dewpoint Therapeutics",
+        "status": "Development candidate",
+        "status_kind": "preclinical",
+        "summary": "Small molecules are being developed to correct abnormal TDP-43 condensates and restore RNA-processing functions.",
+        "evidence": "Dewpoint selected a development candidate in January 2026 on the basis of cell and animal-model findings.",
+        "limitations": [
+          "A development candidate is not a tested or approved ALS treatment. No human efficacy result is established in the cited announcement."
+        ],
+        "source_ids": [
+          "dewpoint"
+        ],
+        "india_note": "No clinical access is established by the cited preclinical program.",
+        "evidence_date": "2026-01-08",
+        "sources": [
+          "https://dewpointx.com/dewpoint-therapeutics-announces-tdp-43-condensate-modulator-development-candidate-for-treatment-of-als-and-related-neurodegenerative-diseases/"
+        ],
+        "research_area": "TDP-43 condensate modulation"
+      }
+    ],
+    "withdrawn_treatments": [
+      {
+        "id": "relyvrio",
+        "name": "Relyvrio / Albrioza",
+        "subtitle": "AMX0035 · sodium phenylbutyrate / taurursodiol",
+        "status": "Withdrawn from market",
+        "status_kind": "stopped",
+        "summary": "The medicine was removed from the US and Canadian markets after its confirmatory trial failed.",
+        "evidence": "Amylyx announced withdrawal in April 2024 following PHOENIX, which did not meet its prespecified primary and secondary endpoints.",
+        "limitations": [
+          "Earlier approval and positive small-study results do not outweigh a failed confirmatory trial. Current care should be discussed with the treating clinician."
+        ],
+        "source_ids": [
+          "relyvrio-withdrawal"
+        ],
+        "india_note": "Do not present this as a currently marketed ALS treatment or recommend purchasing a substitute combination.",
+        "evidence_date": "2024-04-04",
+        "sources": [
+          "https://investors.amylyx.com/news-releases/news-release-details/amylyx-pharmaceuticals-announces-formal-intention-remove"
+        ],
+        "drug_name": "Relyvrio / Albrioza"
+      }
+    ],
+    "failed_discontinued_trials": [
+      {
+        "id": "fosigotifator",
+        "name": "Fosigotifator",
+        "subtitle": "ABBV-CLS-7262 · HEALEY Regimen F",
+        "status": "Primary endpoint not met",
+        "status_kind": "stopped",
+        "summary": "The tested eIF2B activator did not establish efficacy in the HEALEY study.",
+        "evidence": "Calico reported in January 2025 that neither the primary nor exploratory higher dose met the primary endpoint. Key secondary endpoints for the primary dose also were not significantly different from placebo.",
+        "limitations": [
+          "Exploratory findings cannot be presented as an approved benefit. A negative trial does not, by itself, prove every future study of the mechanism must fail."
+        ],
+        "source_ids": [
+          "fosigotifator-results"
+        ],
+        "india_note": "",
+        "evidence_date": "2025-01-06",
+        "sources": [
+          "https://www.calicolabs.com/press/calico-statement-on-fosigotifator-in-healey-als-platform-trial/"
+        ],
+        "trial_name": "Fosigotifator"
+      },
+      {
+        "id": "dnl343",
+        "name": "DNL343",
+        "subtitle": "HEALEY Regimen G · eIF2B activation",
+        "status": "Primary endpoint not met",
+        "status_kind": "stopped",
+        "summary": "DNL343 did not demonstrate slowing of ALS progression in the tested regimen.",
+        "evidence": "The January 2025 announcement reports that the primary combined function/survival endpoint and key strength and respiratory secondary endpoints were not met at 24 weeks.",
+        "limitations": [
+          "Safety or a biological rationale cannot substitute for a demonstrated clinical effect."
+        ],
+        "source_ids": [
+          "dnl343-results"
+        ],
+        "india_note": "",
+        "evidence_date": "2025-01-06",
+        "sources": [
+          "https://investors.denalitherapeutics.com/node/10826/pdf"
+        ],
+        "trial_name": "DNL343"
+      },
+      {
+        "id": "biib105",
+        "name": "BIIB105 / ION541",
+        "subtitle": "ALSpire · ataxin-2 antisense therapy",
+        "status": "Development discontinued",
+        "status_kind": "stopped",
+        "summary": "Biogen and Ionis ended development following the Phase 1/2 ALSpire study.",
+        "evidence": "The May 2024 announcement reports target lowering without evidence sufficient to support continued development for ALS.",
+        "limitations": [
+          "Lowering a target protein alone does not establish that patients function better or live longer."
+        ],
+        "source_ids": [
+          "biib105-results"
+        ],
+        "india_note": "",
+        "evidence_date": "2024-05-16",
+        "sources": [
+          "https://investors.biogen.com/news-releases/news-release-details/biogen-and-ionis-announce-topline-phase-12-study-results"
+        ],
+        "trial_name": "BIIB105 / ION541"
+      },
+      {
+        "id": "sar443820",
+        "name": "SAR443820 / DNL788",
+        "subtitle": "HIMALAYA · RIPK1 inhibitor",
+        "status": "Trial terminated",
+        "status_kind": "stopped",
+        "summary": "The HIMALAYA Phase 2 program did not meet its ALS efficacy objective.",
+        "evidence": "The study registry records termination for lack of efficacy. This entry concerns the ALS study, not results from the separate multiple-sclerosis program.",
+        "limitations": [
+          "Evidence from a different disease cannot be used to imply efficacy in ALS."
+        ],
+        "source_ids": [
+          "NCT05237284"
+        ],
+        "india_note": "",
+        "registry": {
+          "id": "NCT05237284",
+          "url": "https://clinicaltrials.gov/study/NCT05237284",
+          "status": "TERMINATED",
+          "updated_on": "2025-03-21",
+          "phase": [
+            "PHASE2"
+          ],
+          "countries": [
+            "Belgium",
+            "Canada",
+            "China",
+            "France",
+            "Germany",
+            "Italy",
+            "Japan",
+            "Netherlands",
+            "Poland",
+            "Spain",
+            "Sweden",
+            "United Kingdom",
+            "United States"
+          ],
+          "results_posted": true
+        },
+        "evidence_date": "2025-03-21",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT05237284"
+        ],
+        "trial_name": "SAR443820 / DNL788"
+      },
+      {
+        "id": "zilucoplan",
+        "name": "Zilucoplan",
+        "subtitle": "HEALEY Regimen A · complement C5",
+        "status": "Stopped for futility",
+        "status_kind": "stopped",
+        "summary": "The HEALEY trial stopped this regimen after a prespecified futility analysis.",
+        "evidence": "The published randomized study did not establish benefit on ALS progression.",
+        "limitations": [
+          "Approval or benefit in another condition does not imply an ALS indication."
+        ],
+        "source_ids": [
+          "zilucoplan-results"
+        ],
+        "india_note": "",
+        "evidence_date": "2025-02-17",
+        "sources": [
+          "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2830151"
+        ],
+        "trial_name": "Zilucoplan"
+      },
+      {
+        "id": "verdiperstat",
+        "name": "Verdiperstat",
+        "subtitle": "HEALEY Regimen B · myeloperoxidase",
+        "status": "Primary endpoint not met",
+        "status_kind": "stopped",
+        "summary": "The published randomized HEALEY study did not demonstrate slowing of ALS.",
+        "evidence": "Neither the prespecified primary endpoint nor the secondary endpoints differed significantly between active treatment and placebo.",
+        "limitations": [
+          "This negative result belongs alongside other unsuccessful programs, rather than in a list of proven options."
+        ],
+        "source_ids": [
+          "verdiperstat-results"
+        ],
+        "india_note": "",
+        "evidence_date": "2025-02-17",
+        "sources": [
+          "https://jamanetwork.com/journals/jamaneurology/fullarticle/2830248"
+        ],
+        "trial_name": "Verdiperstat"
+      },
+      {
+        "id": "trehalose",
+        "name": "Trehalose",
+        "subtitle": "HEALEY Regimen E · autophagy",
+        "status": "No demonstrated benefit",
+        "status_kind": "stopped",
+        "summary": "The intravenous trehalose regimen did not show evidence of slower ALS progression than placebo.",
+        "evidence": "The 2025 Lancet Neurology publication found no significant benefit in secondary clinical or biomarker measures either.",
+        "limitations": [
+          "Laboratory effects on protein clearance do not establish clinical benefit, and oral supplements are not equivalent to the trial intervention."
+        ],
+        "source_ids": [
+          "trehalose-results"
+        ],
+        "india_note": "",
+        "evidence_date": "2025-06",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/40409314/"
+        ],
+        "trial_name": "Trehalose"
+      },
+      {
+        "id": "biib078",
+        "name": "BIIB078",
+        "subtitle": "C9ORF72-targeted antisense therapy",
+        "status": "Development discontinued",
+        "status_kind": "stopped",
+        "summary": "Development ended after the Phase 1 randomized study in C9ORF72-associated ALS.",
+        "evidence": "The published trial found no reduction in neurofilament and no clinical benefit relative to placebo.",
+        "limitations": [
+          "This result applies to this product and study; other approaches to C9ORF72 biology remain under investigation."
+        ],
+        "source_ids": [
+          "biib078-results"
+        ],
+        "india_note": "",
+        "evidence_date": "2024-08",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/39059407/"
+        ],
+        "trial_name": "BIIB078"
+      }
+    ],
+    "communication_technology": [
+      {
+        "id": "tobii",
+        "name": "Tobii Dynavox AAC",
+        "subtitle": "PCEye · TD I-Series · TD Pilot",
+        "status": "Assistive communication",
+        "status_kind": "support",
+        "summary": "Dedicated eye-gaze and speech-generating products can provide communication and computer access as movement changes.",
+        "evidence": "Manufacturer documentation distinguishes a computer eye tracker from integrated Windows and iPad-based speech devices. Selection depends on positioning, vision, fatigue and the person’s preferred communication system.",
+        "limitations": [
+          "Product documentation describes capabilities, not a guarantee of individual performance. Assess with an AAC professional and trial the exact setup."
+        ],
+        "source_ids": [
+          "tobii-aac"
+        ],
+        "india_note": "Request a local assessment and written quotation covering hardware, mount, software, warranty, repairs and language support.",
+        "evidence_date": null,
+        "sources": [
+          "https://downloads.tobiidynavox.com/Conditions/ALS/CI_Sheet/ALS_CI-Sheet_A4_TD_en-INT.pdf"
+        ],
+        "solution_name": "Tobii Dynavox AAC",
+        "category": "PCEye · TD I-Series · TD Pilot",
+        "form_factor": "PCEye · TD I-Series · TD Pilot",
+        "what_it_is": "Dedicated eye-gaze and speech-generating products can provide communication and computer access as movement changes.",
+        "how_it_works": "Manufacturer documentation distinguishes a computer eye tracker from integrated Windows and iPad-based speech devices. Selection depends on positioning, vision, fatigue and the person’s preferred communication system.",
+        "india_availability": {
+          "available": "Confirm locally",
+          "how_to_get": "Request a local assessment and written quotation covering hardware, mount, software, warranty, repairs and language support."
+        },
+        "realistic_expectations": "Supports communication; it does not treat motor neuron degeneration."
+      },
+      {
+        "id": "eyecontrol",
+        "name": "EyeControl",
+        "subtitle": "Wearable eye-tracking communication",
+        "status": "Specialist assessment needed",
+        "status_kind": "support",
+        "summary": "A wearable, screen-free approach uses eye movements with audio feedback to communicate needs.",
+        "evidence": "An ALS feasibility study is registered, while current manufacturer documentation also describes a bedside hospital platform. Product configurations and clinical use cases must be distinguished.",
+        "limitations": [
+          "A completed feasibility study does not guarantee reliable use for every person with advanced ALS. Verify the specific product and evidence with the supplier."
+        ],
+        "source_ids": [
+          "eyecontrol",
+          "NCT02891629"
+        ],
+        "india_note": "Current Indian distribution, home-use suitability and support have not been verified; contact the clinical team and manufacturer before purchase.",
+        "evidence_date": "2019-08-28",
+        "sources": [
+          "https://www.eyecontrol.co.il/howitworks",
+          "https://clinicaltrials.gov/study/NCT02891629"
+        ],
+        "solution_name": "EyeControl",
+        "category": "Wearable eye-tracking communication",
+        "form_factor": "Wearable eye-tracking communication",
+        "what_it_is": "A wearable, screen-free approach uses eye movements with audio feedback to communicate needs.",
+        "how_it_works": "An ALS feasibility study is registered, while current manufacturer documentation also describes a bedside hospital platform. Product configurations and clinical use cases must be distinguished.",
+        "india_availability": {
+          "available": "Confirm locally",
+          "how_to_get": "Current Indian distribution, home-use suitability and support have not been verified; contact the clinical team and manufacturer before purchase."
+        },
+        "realistic_expectations": "Supports communication; it does not treat motor neuron degeneration."
+      },
+      {
+        "id": "optikey",
+        "name": "OptiKey with an eye tracker",
+        "subtitle": "Open-source Windows communication software",
+        "status": "Version compatibility matters",
+        "status_kind": "support",
+        "summary": "OptiKey supports typing, speech output and computer control using compatible input devices.",
+        "evidence": "The maintainers explicitly removed support for Tobii Eye Tracker 5, EyeX and 4C in OptiKey 4. Legacy OptiKey 3.2.x supports these older use cases.",
+        "limitations": [
+          "Do not assume the latest OptiKey works with the Tobii Eye Tracker 5 setup elsewhere in this project. Verify hardware, driver, Windows and application versions together."
+        ],
+        "source_ids": [
+          "optikey-versions"
+        ],
+        "india_note": "Assess the existing hardware first. Budget for setup and assistance even where the software is free.",
+        "evidence_date": "2025-05-14",
+        "sources": [
+          "https://github.com/OptiKey/OptiKey/wiki/Optikey-versions"
+        ],
+        "solution_name": "OptiKey with an eye tracker",
+        "category": "Open-source Windows communication software",
+        "form_factor": "Open-source Windows communication software",
+        "what_it_is": "OptiKey supports typing, speech output and computer control using compatible input devices.",
+        "how_it_works": "The maintainers explicitly removed support for Tobii Eye Tracker 5, EyeX and 4C in OptiKey 4. Legacy OptiKey 3.2.x supports these older use cases.",
+        "india_availability": {
+          "available": "Confirm locally",
+          "how_to_get": "Assess the existing hardware first. Budget for setup and assistance even where the software is free."
+        },
+        "realistic_expectations": "Supports communication; it does not treat motor neuron degeneration."
+      }
+    ],
+    "experimental_communication_tech": [
+      {
+        "id": "neon",
+        "name": "Pupil Labs Neon integrations",
+        "subtitle": "Wearable gaze data · custom software",
+        "status": "Research hardware",
+        "status_kind": "experimental",
+        "summary": "Neon provides gaze and other eye signals for researchers and developers; it is not a complete ALS communication system.",
+        "evidence": "The official real-time API can stream data to custom applications on the same network. That capability enables prototyping but does not establish clinical reliability for ALS.",
+        "limitations": [
+          "Building a usable communication interface requires software, calibration/positioning work and individual testing. Do not equate raw gaze streaming with ready-to-use AAC."
+        ],
+        "source_ids": [
+          "neon-api"
+        ],
+        "india_note": "Consider established AAC assessment first. A custom integration needs sustained technical support and a backup communication method.",
+        "evidence_date": null,
+        "sources": [
+          "https://docs.pupil-labs.com/neon/data-collection/ecosystem-overview/"
+        ],
+        "technology": "Pupil Labs Neon integrations",
+        "what_it_is": "Neon provides gaze and other eye signals for researchers and developers; it is not a complete ALS communication system.",
+        "critical_limitation": "Building a usable communication interface requires software, calibration/positioning work and individual testing. Do not equate raw gaze streaming with ready-to-use AAC.",
+        "recommendation": "Consider established AAC assessment first. A custom integration needs sustained technical support and a backup communication method.",
+        "who_can_try": "Subject to individual assessment or formal study eligibility.",
+        "cost": "No verified current quotation.",
+        "risk_level": "Research / individual assessment"
+      },
+      {
+        "id": "head-tracking",
+        "name": "Webcam head tracking",
+        "subtitle": "Enable Viacam · alternative computer access",
+        "status": "Individual assessment",
+        "status_kind": "experimental",
+        "summary": "Head-tracking software can move a cursor using movements observed by a webcam.",
+        "evidence": "Enable Viacam’s documentation describes camera and tracking-area configuration. This is an access method for someone who can comfortably produce the required movements.",
+        "limitations": [
+          "It is head tracking, not eye tracking. Weakness, fatigue and positioning can limit use; these tools are not established replacements for eye-gaze AAC."
+        ],
+        "source_ids": [
+          "eviacam"
+        ],
+        "india_note": "Trial comfort and accuracy with an assistive-technology professional. Maintain a simple communication backup.",
+        "evidence_date": null,
+        "sources": [
+          "https://eviacam.crea-si.com/help/en/wizard.htm"
+        ],
+        "technology": "Webcam head tracking",
+        "what_it_is": "Head-tracking software can move a cursor using movements observed by a webcam.",
+        "critical_limitation": "It is head tracking, not eye tracking. Weakness, fatigue and positioning can limit use; these tools are not established replacements for eye-gaze AAC.",
+        "recommendation": "Trial comfort and accuracy with an assistive-technology professional. Maintain a simple communication backup.",
+        "who_can_try": "Subject to individual assessment or formal study eligibility.",
+        "cost": "No verified current quotation.",
+        "risk_level": "Research / individual assessment"
+      },
+      {
+        "id": "diy-tracking",
+        "name": "DIY marker and smartphone tracking",
+        "subtitle": "Prototype concepts · including AprilTag setups",
+        "status": "ALS evidence not established",
+        "status_kind": "experimental",
+        "summary": "Marker-based and smartphone experiments should be treated as engineering prototypes.",
+        "evidence": "No ALS-specific clinical validation or supported complete communication product was established for the older page’s proposed DIY setup. The Pupil Labs API documentation supports only the general feasibility of custom data integrations.",
+        "limitations": [
+          "Do not present a prototype, price estimate or working demo as reliable daily communication for a person with ALS."
+        ],
+        "source_ids": [
+          "neon-api"
+        ],
+        "india_note": "Keep prototypes optional and supervised. They should not replace a dependable way to express urgent needs.",
+        "evidence_date": null,
+        "sources": [
+          "https://docs.pupil-labs.com/neon/data-collection/ecosystem-overview/"
+        ],
+        "technology": "DIY marker and smartphone tracking",
+        "what_it_is": "Marker-based and smartphone experiments should be treated as engineering prototypes.",
+        "critical_limitation": "Do not present a prototype, price estimate or working demo as reliable daily communication for a person with ALS.",
+        "recommendation": "Keep prototypes optional and supervised. They should not replace a dependable way to express urgent needs.",
+        "who_can_try": "Subject to individual assessment or formal study eligibility.",
+        "cost": "No verified current quotation.",
+        "risk_level": "Research / individual assessment"
+      },
+      {
+        "id": "speech-bci",
+        "name": "Brain-to-voice neuroprostheses",
+        "subtitle": "Implanted brain–computer interfaces",
+        "status": "Early human research",
+        "status_kind": "experimental",
+        "summary": "Research systems have enabled an individual with ALS to produce synthetic speech directly from recorded brain activity.",
+        "evidence": "UC Davis reported real-time voice synthesis in June 2025 in a participant with ALS. This is a communication milestone rather than restoration of natural speech muscles.",
+        "limitations": [
+          "Small participant numbers, implanted hardware and intensive specialist support limit generalization. These systems are not established routine home products."
+        ],
+        "source_ids": [
+          "speech-bci"
+        ],
+        "india_note": "Access is through formal research eligibility. Maintain practical AAC planning alongside interest in BCI research.",
+        "evidence_date": "2025-06-11",
+        "sources": [
+          "https://health.ucdavis.edu/chpr/news/headlines/first-of-its-kind-technology-helps-man-with-als-speak-in-real-time/2025/06"
+        ],
+        "technology": "Brain-to-voice neuroprostheses",
+        "what_it_is": "Research systems have enabled an individual with ALS to produce synthetic speech directly from recorded brain activity.",
+        "critical_limitation": "Small participant numbers, implanted hardware and intensive specialist support limit generalization. These systems are not established routine home products.",
+        "recommendation": "Access is through formal research eligibility. Maintain practical AAC planning alongside interest in BCI research.",
+        "who_can_try": "Subject to individual assessment or formal study eligibility.",
+        "cost": "No verified current quotation.",
+        "risk_level": "Research / individual assessment"
+      },
+      {
+        "id": "connexus",
+        "name": "Connexus / Connect-One",
+        "subtitle": "Paradromics · implanted BCI",
+        "status": "Recruiting feasibility study",
+        "status_kind": "experimental",
+        "summary": "A 2026 early-feasibility study evaluates an implanted interface for communication and computer control.",
+        "evidence": "The trial registry lists recruiting in the US and includes people with severe speech or movement impairment. Safety and device feasibility are central objectives.",
+        "limitations": [
+          "A research authorization is not commercial approval. Surgery, long follow-up and strict eligibility distinguish this from buying an eye tracker."
+        ],
+        "source_ids": [
+          "NCT07357428"
+        ],
+        "india_note": "No Indian study site is listed. Contact a formal research center about eligibility rather than relying on commercial availability claims.",
+        "registry": {
+          "id": "NCT07357428",
+          "url": "https://clinicaltrials.gov/study/NCT07357428",
+          "status": "RECRUITING",
+          "updated_on": "2026-04-14",
+          "phase": [
+            "NA"
+          ],
+          "countries": [
+            "United States"
+          ],
+          "results_posted": false
+        },
+        "evidence_date": "2026-04-14",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT07357428"
+        ],
+        "technology": "Connexus / Connect-One",
+        "what_it_is": "A 2026 early-feasibility study evaluates an implanted interface for communication and computer control.",
+        "critical_limitation": "A research authorization is not commercial approval. Surgery, long follow-up and strict eligibility distinguish this from buying an eye tracker.",
+        "recommendation": "No Indian study site is listed. Contact a formal research center about eligibility rather than relying on commercial availability claims.",
+        "who_can_try": "Subject to individual assessment or formal study eligibility.",
+        "cost": "No verified current quotation.",
+        "risk_level": "Research / individual assessment"
+      }
+    ],
+    "india_research": [
+      {
+        "id": "india-genetics",
+        "name": "ALS genetics in South Asia",
+        "subtitle": "NIMHANS · India–UK collaboration",
+        "status": "Observational research",
+        "status_kind": "support",
+        "summary": "India’s participation in a Target ALS-funded genome-wide association study broadens the ancestry represented in ALS genetics.",
+        "evidence": "The funder describes an India–UK collaboration involving NIMHANS, with genetic analysis and longitudinal samples. This is research into disease risk and biology, not a treatment trial.",
+        "limitations": [
+          "Research participation is not a guarantee of free clinical genetic testing, a diagnosis or access to a targeted medicine."
+        ],
+        "source_ids": [
+          "india-gwas"
+        ],
+        "india_note": "Ask the treating neurology center about genetic counseling, clinically appropriate testing and any currently open research protocol.",
+        "evidence_date": "2025-05-13",
+        "sources": [
+          "https://targetals.org/news/unlocking-als-risk-in-south-asian-populations/"
+        ]
+      },
+      {
+        "id": "india-biofluids",
+        "name": "Longitudinal samples and natural history",
+        "subtitle": "Target ALS · AIIMS New Delhi · NIMHANS",
+        "status": "Research infrastructure",
+        "status_kind": "support",
+        "summary": "Following participants over time can connect molecular changes with clinical progression.",
+        "evidence": "The 2025 Global Natural History / Longitudinal Biofluid Study poster identifies AIIMS New Delhi and NIMHANS among participating institutions. Target ALS’s January 2026 update also describes tissue and genomic research resources.",
+        "limitations": [
+          "Institutional involvement does not prove that a specific clinic is recruiting today or providing experimental treatment."
+        ],
+        "source_ids": [
+          "india-biofluids",
+          "research-cores"
+        ],
+        "india_note": "Confirm the exact protocol and recruitment status directly with the institution before arranging travel.",
+        "evidence_date": "2026-01-23",
+        "sources": [
+          "https://targetals.org/wp-content/uploads/2025/12/TALS_AM25_Biofluids_V4_Final.pdf",
+          "https://targetals.org/news/target-als-research-cores-empowering-global-als-discovery/"
+        ]
+      },
+      {
+        "id": "india-access",
+        "name": "Treatment and trial access from India",
+        "subtitle": "Approval · enrollment · personal import",
+        "status": "Check case by case",
+        "status_kind": "support",
+        "summary": "A treatment’s approval abroad, a company’s Indian presence and trial eligibility are separate questions.",
+        "evidence": "CDSCO provides a personal-use import process: Form 12A is the application and Form 12B is the permit. Permission, prescription, product supply and clinical suitability require separate confirmation.",
+        "limitations": [
+          "Import permission is not Indian marketing approval or evidence that a medicine works. This page does not certify current prices, reimbursement or supply."
+        ],
+        "source_ids": [
+          "cdsco-import"
+        ],
+        "india_note": "Work with the treating team and licensed supply channels. Obtain written confirmation before committing to treatment-related travel or expense.",
+        "evidence_date": "2015-05-21",
+        "sources": [
+          "https://www.cdsco.gov.in/opencms/opencms/en/consumer/Drugs-for-Personal-Use/"
+        ]
+      }
+    ]
+  },
+  "source_library": [
+    {
+      "id": "riluzole-trial",
+      "publisher": "Lacomblez et al. · The Lancet",
+      "title": "Dose-ranging study of riluzole in amyotrophic lateral sclerosis",
+      "published_on": "1996-05-25",
+      "accessed_on": "2026-09-11",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8676624/",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "riluzole-review",
+      "publisher": "Cochrane",
+      "title": "Riluzole for ALS / motor neuron disease",
+      "published_on": "2021-07-01",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.cochrane.org/evidence/CD001447_riluzole-amyotrophic-lateral-sclerosis-alsmotor-neuron-disease-mnd",
+      "kind": "Systematic review"
+    },
+    {
+      "id": "edaravone-fda",
+      "publisher": "FDA",
+      "title": "FDA approves oral edaravone for adults with ALS",
+      "published_on": "2022-05-12",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-oral-form-treatment-adults-amyotrophic-lateral-sclerosis-als",
+      "kind": "Regulator"
+    },
+    {
+      "id": "tofersen-fda",
+      "publisher": "FDA",
+      "title": "Approval of tofersen for ALS associated with a SOD1 mutation",
+      "published_on": "2023-04-25",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-treatment-amyotrophic-lateral-sclerosis-associated-mutation-sod1-gene",
+      "kind": "Regulator"
+    },
+    {
+      "id": "tofersen-longterm",
+      "publisher": "Miller et al. · JAMA Neurology",
+      "title": "Long-Term Tofersen in SOD1 Amyotrophic Lateral Sclerosis",
+      "published_on": "2025-12-22",
+      "accessed_on": "2026-09-11",
+      "url": "https://jamanetwork.com/journals/jamaneurology/fullarticle/2843130",
+      "kind": "Trial and open-label extension"
+    },
+    {
+      "id": "rozebalamin-pmda",
+      "publisher": "PMDA / MHLW",
+      "title": "Rozebalamin (mecobalamin): review and deliberation report",
+      "published_on": "2024-09-03",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.pmda.go.jp/files/000277177.pdf",
+      "kind": "Regulator"
+    },
+    {
+      "id": "jetals",
+      "publisher": "Oki et al. · JAMA Neurology",
+      "title": "Efficacy and Safety of Ultrahigh-Dose Methylcobalamin in Early-Stage ALS",
+      "published_on": "2022-05-09",
+      "accessed_on": "2026-09-11",
+      "url": "https://jamanetwork.com/journals/jamaneurology/fullarticle/2792228",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "nuedexta-fda",
+      "publisher": "FDA",
+      "title": "Nuedexta approval letter: pseudobulbar affect",
+      "published_on": "2010-10-29",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2010/021879s000ltr.pdf",
+      "kind": "Regulator"
+    },
+    {
+      "id": "masitinib-ema",
+      "publisher": "European Medicines Agency",
+      "title": "Masitinib AB Science: refusal of marketing authorisation",
+      "published_on": "2025-01-22",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/masitinib-ab-science",
+      "kind": "Regulator"
+    },
+    {
+      "id": "masitinib-update",
+      "publisher": "AB Science",
+      "title": "Clinical program update: planned AB23005 and temporary European trial halt",
+      "published_on": "2026-04-16",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.ab-science.com/wp-content/uploads/2026/04/Clinical-Program-Update-April-2026-VENG.pdf",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "prevails",
+      "publisher": "Prilenia and Ferrer",
+      "title": "First participant enrolled in the PREVAiLS Phase 3 study",
+      "published_on": "2026-03-30",
+      "accessed_on": "2026-09-11",
+      "url": "https://news.prilenia.com/press-releases/press-release-details/2026/Prilenia-and-Ferrer-Announce-First-Participant-Enrolled-in-the-PREVAiLS-Phase-3-Study-of-Pridopidine-in-ALS/default.aspx",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "pridopidine-rct",
+      "publisher": "HEALEY ALS Platform Trial · JAMA",
+      "title": "Pridopidine in Amyotrophic Lateral Sclerosis",
+      "published_on": "2025-02-17",
+      "accessed_on": "2026-09-11",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2830509",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "clene-update",
+      "publisher": "Clene · SEC exhibit",
+      "title": "Second quarter 2026 results and CNM-Au8 regulatory update",
+      "published_on": "2026-08-14",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.sec.gov/Archives/edgar/data/1822791/000143774926027837/ex_967804.htm",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "cnm-rct",
+      "publisher": "HEALEY ALS Platform Trial · JAMA",
+      "title": "CNM-Au8 in Amyotrophic Lateral Sclerosis",
+      "published_on": "2025-02-17",
+      "accessed_on": "2026-09-11",
+      "url": "https://jamanetwork.com/journals/jama/fullarticle/2830508",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "nurown-update",
+      "publisher": "BrainStorm Cell Therapeutics",
+      "title": "Second quarter 2026 results and ENDURANCE preparation",
+      "published_on": "2026-08-14",
+      "accessed_on": "2026-09-11",
+      "url": "https://ir.brainstorm-cell.com/2026-08-14-BrainStorm-Cell-Therapeutics-Announces-Second-Quarter-2026-Financial-Results-and-Provides-Corporate-Update",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "qrl201-update",
+      "publisher": "QurAlis",
+      "title": "Interim ANQUR data for QRL-201",
+      "published_on": "2026-02-23",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.quralis.com/news/quralis-demonstrates-effects-on-disease-progression-and-target-engagement-in-anqur-clinical-trial-of-qrl-201-a-first-in-class-precision-medicine-in-development-for-sporadic-als/",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "primec-update",
+      "publisher": "NeuroSense",
+      "title": "Revised strategy for PrimeC and planned PARAGON study",
+      "published_on": "2026-08-31",
+      "accessed_on": "2026-09-11",
+      "url": "https://neurosense.investorroom.com/2026-08-31-NeuroSense-Unveils-Accelerated,-Capital-Efficient-Strategy-to-Advance-PrimeC-Toward-Potential-Approval-in-ALS",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "coya-update",
+      "publisher": "Coya Therapeutics",
+      "title": "Second quarter 2026 results and ALSTARS update",
+      "published_on": "2026-08-11",
+      "accessed_on": "2026-09-11",
+      "url": "https://ir.coyatherapeutics.com/news/news-details/2026/Coya-Therapeutics-Reports-Second-Quarter-2026-Financial-Results-and-Provides-a-Corporate-Update/default.aspx",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "healey",
+      "publisher": "Mass General Brigham",
+      "title": "HEALEY ALS Platform Trial: study drugs and enrollment",
+      "published_on": null,
+      "accessed_on": "2026-09-11",
+      "url": "https://research.massgeneralbrigham.org/en/institutes-centers/neuroscience-institute/department-of-neurology/sean-healey-amg-center-for-als/healey-als-platform-trial",
+      "kind": "Trial center"
+    },
+    {
+      "id": "spg302-update",
+      "publisher": "Spinogenix",
+      "title": "Topline Phase 2a clinical trial results for SPG302",
+      "published_on": "2025-11-04",
+      "accessed_on": "2026-09-11",
+      "url": "https://spinogenix.com/press-release/spinogenix-presents-topline-phase-2a-clinical-trial-results-for-spg302-a-first-in-class-als-treatment/",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "atlx-update",
+      "publisher": "Alchemab Therapeutics · PR Newswire",
+      "title": "Initiation of Phase 1 clinical trial of ATLX-1282",
+      "published_on": "2025-09-09",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.prnewswire.com/news-releases/alchemab-therapeutics-initiates-phase-1-clinical-trial-of-atlx-1282-and-announces-series-a-financing-extension-302549523.html",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "nx210-update",
+      "publisher": "Axoltis Pharma",
+      "title": "SEALS preliminary results at ENCALS 2026",
+      "published_on": "2026-06-24",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.axoltis.com/2026/06/24/encals-2026-european-network-to-cure-als/",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "amx0114-update",
+      "publisher": "Amylyx Pharmaceuticals",
+      "title": "LUMINA cohort and biomarker update at ENCALS",
+      "published_on": "2026-06-23",
+      "accessed_on": "2026-09-11",
+      "url": "https://investors.amylyx.com/news-releases/news-release-details/amylyx-pharmaceuticals-present-data-first-human-dose-ranging",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "nb4746-update",
+      "publisher": "Nura Bio · GlobeNewswire",
+      "title": "First ALS participant dosed with NB-4746",
+      "published_on": "2026-06-22",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.globenewswire.com/news-release/2026/06/22/3315110/0/en/nura-bio-completes-73-8m-series-b-financing-and-advances-pipeline-of-sarm1-inhibitors.html",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "ctx1000-update",
+      "publisher": "Celosia Therapeutics · PR Newswire",
+      "title": "First patient dosed in the Phase 1b CTx1000 trial",
+      "published_on": "2026-03-23",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.prnewswire.com/news-releases/celosia-therapeutics-announces-first-patient-dosed-in-phase-1b-clinical-trial-of-ctx1000-in-amyotrophic-lateral-sclerosis-302721815.html",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "rag17-paper",
+      "publisher": "Chen et al. · Nature Medicine",
+      "title": "Oligonucleotide–siRNA conjugate for SOD1 ALS: a phase 1 trial",
+      "published_on": "2026-07-15",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.nature.com/articles/s41591-026-04491-7",
+      "kind": "Early clinical study"
+    },
+    {
+      "id": "relyvrio-withdrawal",
+      "publisher": "Amylyx Pharmaceuticals",
+      "title": "Formal intention to remove RELYVRIO / ALBRIOZA from the market",
+      "published_on": "2024-04-04",
+      "accessed_on": "2026-09-11",
+      "url": "https://investors.amylyx.com/news-releases/news-release-details/amylyx-pharmaceuticals-announces-formal-intention-remove",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "fosigotifator-results",
+      "publisher": "Calico",
+      "title": "Fosigotifator HEALEY trial results",
+      "published_on": "2025-01-06",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.calicolabs.com/press/calico-statement-on-fosigotifator-in-healey-als-platform-trial/",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "dnl343-results",
+      "publisher": "Denali Therapeutics",
+      "title": "Topline results for HEALEY Regimen G (DNL343)",
+      "published_on": "2025-01-06",
+      "accessed_on": "2026-09-11",
+      "url": "https://investors.denalitherapeutics.com/node/10826/pdf",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "biib105-results",
+      "publisher": "Biogen and Ionis",
+      "title": "BIIB105 development discontinued after ALSpire",
+      "published_on": "2024-05-16",
+      "accessed_on": "2026-09-11",
+      "url": "https://investors.biogen.com/news-releases/news-release-details/biogen-and-ionis-announce-topline-phase-12-study-results",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "zilucoplan-results",
+      "publisher": "Paganoni et al. · JAMA Network Open",
+      "title": "Efficacy and Safety of Zilucoplan in ALS",
+      "published_on": "2025-02-17",
+      "accessed_on": "2026-09-11",
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2830151",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "verdiperstat-results",
+      "publisher": "HEALEY ALS Platform Trial · JAMA Neurology",
+      "title": "Verdiperstat in ALS: results from the randomized HEALEY trial",
+      "published_on": "2025-02-17",
+      "accessed_on": "2026-09-11",
+      "url": "https://jamanetwork.com/journals/jamaneurology/fullarticle/2830248",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "trehalose-results",
+      "publisher": "HEALEY ALS Platform Trial · The Lancet Neurology",
+      "title": "Safety and efficacy of trehalose in ALS",
+      "published_on": "2025-06",
+      "accessed_on": "2026-09-11",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40409314/",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "biib078-results",
+      "publisher": "van den Berg et al. · The Lancet Neurology",
+      "title": "BIIB078 in C9orf72-associated ALS: phase 1 study",
+      "published_on": "2024-08",
+      "accessed_on": "2026-09-11",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39059407/",
+      "kind": "Randomized trial"
+    },
+    {
+      "id": "asha624",
+      "publisher": "Advancium Health Network",
+      "title": "Preclinical ASHA-624 research in autosomal dominant optic atrophy",
+      "published_on": null,
+      "accessed_on": "2026-09-11",
+      "url": "https://www.advanciumhealth.org/news-and-resources/advancium-health-network-catalyzes-research-on-an-innovative-sarm1-inhibitor-in-a-rare-eye-disease",
+      "kind": "Research funder"
+    },
+    {
+      "id": "crispr",
+      "publisher": "McCallister et al. · Nature Communications",
+      "title": "High-fidelity CRISPR-Cas13 for C9ORF72-linked ALS/FTD",
+      "published_on": "2025-01-08",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.nature.com/articles/s41467-024-55548-5",
+      "kind": "Preclinical paper"
+    },
+    {
+      "id": "ran-translation",
+      "publisher": "Science · PubMed",
+      "title": "Blocking RAN translation without altering repeat RNAs rescues C9ORF72-related ALS and FTD phenotypes",
+      "published_on": "2026-02-05",
+      "accessed_on": "2026-09-11",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41643021/",
+      "kind": "Preclinical paper"
+    },
+    {
+      "id": "dewpoint",
+      "publisher": "Dewpoint Therapeutics",
+      "title": "TDP-43 condensate modulator development candidate",
+      "published_on": "2026-01-08",
+      "accessed_on": "2026-09-11",
+      "url": "https://dewpointx.com/dewpoint-therapeutics-announces-tdp-43-condensate-modulator-development-candidate-for-treatment-of-als-and-related-neurodegenerative-diseases/",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "india-gwas",
+      "publisher": "Target ALS",
+      "title": "Unlocking ALS risk in South Asian populations",
+      "published_on": "2025-05-13",
+      "accessed_on": "2026-09-11",
+      "url": "https://targetals.org/news/unlocking-als-risk-in-south-asian-populations/",
+      "kind": "Research funder"
+    },
+    {
+      "id": "india-biofluids",
+      "publisher": "Target ALS",
+      "title": "Global Natural History / Longitudinal Biofluid Study poster",
+      "published_on": "2025-12",
+      "accessed_on": "2026-09-11",
+      "url": "https://targetals.org/wp-content/uploads/2025/12/TALS_AM25_Biofluids_V4_Final.pdf",
+      "kind": "Research poster"
+    },
+    {
+      "id": "research-cores",
+      "publisher": "Target ALS",
+      "title": "Research cores: global discovery and long-read sequencing",
+      "published_on": "2026-01-23",
+      "accessed_on": "2026-09-11",
+      "url": "https://targetals.org/news/target-als-research-cores-empowering-global-als-discovery/",
+      "kind": "Research funder"
+    },
+    {
+      "id": "cdsco-import",
+      "publisher": "CDSCO",
+      "title": "Drugs for personal use: Form 12A, Form 12B and import procedure",
+      "published_on": "2015-05-21",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.cdsco.gov.in/opencms/opencms/en/consumer/Drugs-for-Personal-Use/",
+      "kind": "Regulator"
+    },
+    {
+      "id": "tobii-aac",
+      "publisher": "Tobii Dynavox",
+      "title": "Assistive communication solutions for ALS",
+      "published_on": null,
+      "accessed_on": "2026-09-11",
+      "url": "https://downloads.tobiidynavox.com/Conditions/ALS/CI_Sheet/ALS_CI-Sheet_A4_TD_en-INT.pdf",
+      "kind": "Manufacturer documentation"
+    },
+    {
+      "id": "eyecontrol",
+      "publisher": "EyeControl",
+      "title": "How the eye-tracking communication platform works",
+      "published_on": null,
+      "accessed_on": "2026-09-11",
+      "url": "https://www.eyecontrol.co.il/howitworks",
+      "kind": "Manufacturer documentation"
+    },
+    {
+      "id": "optikey-versions",
+      "publisher": "OptiKey maintainers",
+      "title": "Optikey versions and eye-tracker compatibility",
+      "published_on": "2025-05-14",
+      "accessed_on": "2026-09-11",
+      "url": "https://github.com/OptiKey/OptiKey/wiki/Optikey-versions",
+      "kind": "Project documentation"
+    },
+    {
+      "id": "neon-api",
+      "publisher": "Pupil Labs",
+      "title": "Neon ecosystem and real-time API",
+      "published_on": null,
+      "accessed_on": "2026-09-11",
+      "url": "https://docs.pupil-labs.com/neon/data-collection/ecosystem-overview/",
+      "kind": "Manufacturer documentation"
+    },
+    {
+      "id": "eviacam",
+      "publisher": "Enable Viacam",
+      "title": "Configuration wizard and head tracking",
+      "published_on": null,
+      "accessed_on": "2026-09-11",
+      "url": "https://eviacam.crea-si.com/help/en/wizard.htm",
+      "kind": "Project documentation"
+    },
+    {
+      "id": "speech-bci",
+      "publisher": "UC Davis Health",
+      "title": "Real-time speech neuroprosthesis in a participant with ALS",
+      "published_on": "2025-06-11",
+      "accessed_on": "2026-09-11",
+      "url": "https://health.ucdavis.edu/chpr/news/headlines/first-of-its-kind-technology-helps-man-with-als-speak-in-real-time/2025/06",
+      "kind": "Research institution"
+    },
+    {
+      "id": "rozebalamin-approval",
+      "publisher": "Eisai",
+      "title": "Rozebalamin approved in Japan on 24 September 2024",
+      "published_on": "2024-10-16",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.eisai.com/news/2024/pdf/enews202475pdf.pdf",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "vectory-mechanism",
+      "publisher": "VectorY Therapeutics",
+      "title": "VTx-002 vectorized antibody mechanism",
+      "published_on": null,
+      "accessed_on": "2026-09-11",
+      "url": "https://vectorytx.squarespace.com/vtx002-for-als",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "dazucorilant-update",
+      "publisher": "Corcept Therapeutics",
+      "title": "Two-year DAZALS results and planned Phase 3 study",
+      "published_on": "2026-04-30",
+      "accessed_on": "2026-09-11",
+      "url": "https://ir.corcept.com/news-releases/news-release-details/corcept-phase-2-study-dazucorilant-demonstrates-two-year-overall/",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "ltx002-update",
+      "publisher": "Leal Therapeutics · PR Newswire",
+      "title": "First participant dosed in NeurALS Phase 1/2",
+      "published_on": "2026-06-23",
+      "accessed_on": "2026-09-11",
+      "url": "https://www.prnewswire.com/news-releases/leal-therapeutics-doses-first-patient-in-neurals-phase-12-trial-of-ltx-002-for-amyotrophic-lateral-sclerosis-als-302807297.html",
+      "kind": "Sponsor update"
+    },
+    {
+      "id": "NCT07674667",
+      "publisher": "Trace Neuroscience, Inc. · ClinicalTrials.gov",
+      "title": "FUNCtion ALS: Aiming to Restore UNC13A Function in People Living With ALS",
+      "published_on": "2026-09-09",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07674667",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07322003",
+      "publisher": "Prilenia · ClinicalTrials.gov",
+      "title": "Pridopidine Phase 3 Study to Evaluate Efficacy and Safety in ALS",
+      "published_on": "2026-08-25",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07322003",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT06973629",
+      "publisher": "Brainstorm-Cell Therapeutics · ClinicalTrials.gov",
+      "title": "Efficacy and Safety of MSC-NTF (NurOwn) in Participants With Early Symptomatic ALS and Moderate Disease Presentation in ALS (ENDURANCE STUDY)",
+      "published_on": "2025-05-22",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT06973629",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07174492",
+      "publisher": "AB Science · ClinicalTrials.gov",
+      "title": "Efficacy and Safety of Masitinib in Combination With SoC Versus Placebo in the Treatment of ALS Patients",
+      "published_on": "2025-10-03",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07174492",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT04768972",
+      "publisher": "Ionis Pharmaceuticals, Inc. · ClinicalTrials.gov",
+      "title": "FUSION: A Study to Evaluate the Efficacy, Safety, Pharmacokinetics and Pharmacodynamics of ION363 in Amyotrophic Lateral Sclerosis Participants With Fused in Sarcoma Mutations (FUS-ALS)",
+      "published_on": "2026-07-21",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT04768972",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT05633459",
+      "publisher": "QurAlis Corporation · ClinicalTrials.gov",
+      "title": "A Study Evaluating the Safety and Tolerability of QRL-201 in ALS",
+      "published_on": "2026-05-15",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT05633459",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07161999",
+      "publisher": "Coya Therapeutics · ClinicalTrials.gov",
+      "title": "Study of COYA 302 for the Treatment of ALS",
+      "published_on": "2026-08-06",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07161999",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07410806",
+      "publisher": "Merit E. Cudkowicz, MD · ClinicalTrials.gov",
+      "title": "HEALEY ALS Platform Trial - Regimen I NUZ-001",
+      "published_on": "2026-07-20",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07410806",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT05882695",
+      "publisher": "Spinogenix · ClinicalTrials.gov",
+      "title": "Study of SPG302 in Healthy Volunteers and ALS Participants",
+      "published_on": "2025-06-29",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT05882695",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07088159",
+      "publisher": "Spinogenix · ClinicalTrials.gov",
+      "title": "Intermediate-size Patient Population Expanded Access Protocol",
+      "published_on": "2026-07-17",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07088159",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT06365216",
+      "publisher": "Axoltis Pharma · ClinicalTrials.gov",
+      "title": "ALS Phase II Study of NX210c",
+      "published_on": "2025-12-24",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT06365216",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07118319",
+      "publisher": "XellSmart Bio-Pharmaceutical (Suzhou) Co., Ltd. · ClinicalTrials.gov",
+      "title": "The Safety, Tolerability and Preliminary Efficacy of Derived Motor Neuron Progenitor Cells (XS228CN) in Subjects With Amyotrophic Lateral Sclerosis",
+      "published_on": "2025-11-21",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07118319",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT06665165",
+      "publisher": "Amylyx Pharmaceuticals Inc. · ClinicalTrials.gov",
+      "title": "AMX0114 in Adult Participants With Amyotrophic Lateral Sclerosis",
+      "published_on": "2026-04-14",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT06665165",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07369076",
+      "publisher": "Nura Bio · ClinicalTrials.gov",
+      "title": "A Clinical Trial to Evaluate NB-4746 in Participants With Amyotrophic Lateral Sclerosis.",
+      "published_on": "2026-06-22",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07369076",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07401121",
+      "publisher": "Celosia Therapeutics Pty Ltd · ClinicalTrials.gov",
+      "title": "Safety and Tolerability Study of CTx1000 In Participants With Amyotrophic Lateral Sclerosis",
+      "published_on": "2026-02-10",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07401121",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT06556394",
+      "publisher": "Ractigen Therapeutics. · ClinicalTrials.gov",
+      "title": "A Study to Evaluate the Safety, Tolerability, Pharmacokinetics, and Pharmacodynamics of RAG-17 in Subjects With Amyotrophic Lateral Sclerosis (ALS) With Superoxide Dismutase Type 1 (SOD1) Gene Mutation",
+      "published_on": "2025-01-08",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT06556394",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07023835",
+      "publisher": "Zydus Therapeutics Inc. · ClinicalTrials.gov",
+      "title": "Usnoflast Neuromuscular Investigation for Treatment Efficacy in Amyotrophic Lateral Sclerosis",
+      "published_on": "2026-09-01",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07023835",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT06351592",
+      "publisher": "Regeneron Pharmaceuticals · ClinicalTrials.gov",
+      "title": "First in Human (FIH) Study of ALN-SOD in Adult Participants With Amyotrophic Lateral Sclerosis Associated With Mutation in the SOD1 Gene (SOD1-ALS)",
+      "published_on": "2026-07-22",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT06351592",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07287397",
+      "publisher": "Vector Y Therapeutics · ClinicalTrials.gov",
+      "title": "Study is to Assess the Safety and Tolerability of VTx-002 in Participants With ALS",
+      "published_on": "2026-09-10",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07287397",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07290062",
+      "publisher": "Insmed Gene Therapy LLC · ClinicalTrials.gov",
+      "title": "A Study to Investigate the Safety and Pharmacodynamics of a Single Intrathecal Injection (IT) of INS1202 in Participants With Amyotrophic Lateral Sclerosis (ALS)",
+      "published_on": "2026-09-01",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07290062",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07294144",
+      "publisher": "Washington University School of Medicine · ClinicalTrials.gov",
+      "title": "Tofersen in Non-SOD1 ALS",
+      "published_on": "2026-06-25",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07294144",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT05407324",
+      "publisher": "Corcept Therapeutics · ClinicalTrials.gov",
+      "title": "Dazucorilant in Patients With Amyotrophic Lateral Sclerosis",
+      "published_on": "2026-06-16",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT05407324",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07660614",
+      "publisher": "Leal Therapeutics, Inc · ClinicalTrials.gov",
+      "title": "A Study of LTX-002 in Adult Participants With Amyotrophic Lateral Sclerosis",
+      "published_on": "2026-08-18",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07660614",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT05237284",
+      "publisher": "Sanofi · ClinicalTrials.gov",
+      "title": "Phase 2 Study for SAR443820 in Participants With Amyotrophic Lateral Sclerosis (ALS)",
+      "published_on": "2025-03-21",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT05237284",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT02891629",
+      "publisher": "Eyefree Assisting Communication Ltd · ClinicalTrials.gov",
+      "title": "Safety and Feasibility of the EyeControl Device",
+      "published_on": "2019-08-28",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT02891629",
+      "kind": "Trial registry"
+    },
+    {
+      "id": "NCT07357428",
+      "publisher": "Paradromics · ClinicalTrials.gov",
+      "title": "Connect-One: Early Feasibility Study of Connexus® Brain-Computer Interface (BCI)",
+      "published_on": "2026-04-14",
+      "accessed_on": "2026-09-11",
+      "url": "https://clinicaltrials.gov/study/NCT07357428",
+      "kind": "Trial registry"
+    }
+  ],
+  "data_sources": [
+    "Lacomblez et al. · The Lancet: Dose-ranging study of riluzole in amyotrophic lateral sclerosis",
+    "Cochrane: Riluzole for ALS / motor neuron disease",
+    "FDA: FDA approves oral edaravone for adults with ALS",
+    "FDA: Approval of tofersen for ALS associated with a SOD1 mutation",
+    "Miller et al. · JAMA Neurology: Long-Term Tofersen in SOD1 Amyotrophic Lateral Sclerosis",
+    "PMDA / MHLW: Rozebalamin (mecobalamin): review and deliberation report",
+    "Oki et al. · JAMA Neurology: Efficacy and Safety of Ultrahigh-Dose Methylcobalamin in Early-Stage ALS",
+    "FDA: Nuedexta approval letter: pseudobulbar affect",
+    "European Medicines Agency: Masitinib AB Science: refusal of marketing authorisation",
+    "AB Science: Clinical program update: planned AB23005 and temporary European trial halt",
+    "Prilenia and Ferrer: First participant enrolled in the PREVAiLS Phase 3 study",
+    "HEALEY ALS Platform Trial · JAMA: Pridopidine in Amyotrophic Lateral Sclerosis",
+    "Clene · SEC exhibit: Second quarter 2026 results and CNM-Au8 regulatory update",
+    "HEALEY ALS Platform Trial · JAMA: CNM-Au8 in Amyotrophic Lateral Sclerosis",
+    "BrainStorm Cell Therapeutics: Second quarter 2026 results and ENDURANCE preparation",
+    "QurAlis: Interim ANQUR data for QRL-201",
+    "NeuroSense: Revised strategy for PrimeC and planned PARAGON study",
+    "Coya Therapeutics: Second quarter 2026 results and ALSTARS update",
+    "Mass General Brigham: HEALEY ALS Platform Trial: study drugs and enrollment",
+    "Spinogenix: Topline Phase 2a clinical trial results for SPG302",
+    "Alchemab Therapeutics · PR Newswire: Initiation of Phase 1 clinical trial of ATLX-1282",
+    "Axoltis Pharma: SEALS preliminary results at ENCALS 2026",
+    "Amylyx Pharmaceuticals: LUMINA cohort and biomarker update at ENCALS",
+    "Nura Bio · GlobeNewswire: First ALS participant dosed with NB-4746",
+    "Celosia Therapeutics · PR Newswire: First patient dosed in the Phase 1b CTx1000 trial",
+    "Chen et al. · Nature Medicine: Oligonucleotide–siRNA conjugate for SOD1 ALS: a phase 1 trial",
+    "Amylyx Pharmaceuticals: Formal intention to remove RELYVRIO / ALBRIOZA from the market",
+    "Calico: Fosigotifator HEALEY trial results",
+    "Denali Therapeutics: Topline results for HEALEY Regimen G (DNL343)",
+    "Biogen and Ionis: BIIB105 development discontinued after ALSpire",
+    "Paganoni et al. · JAMA Network Open: Efficacy and Safety of Zilucoplan in ALS",
+    "HEALEY ALS Platform Trial · JAMA Neurology: Verdiperstat in ALS: results from the randomized HEALEY trial",
+    "HEALEY ALS Platform Trial · The Lancet Neurology: Safety and efficacy of trehalose in ALS",
+    "van den Berg et al. · The Lancet Neurology: BIIB078 in C9orf72-associated ALS: phase 1 study",
+    "Advancium Health Network: Preclinical ASHA-624 research in autosomal dominant optic atrophy",
+    "McCallister et al. · Nature Communications: High-fidelity CRISPR-Cas13 for C9ORF72-linked ALS/FTD",
+    "Science · PubMed: Blocking RAN translation without altering repeat RNAs rescues C9ORF72-related ALS and FTD phenotypes",
+    "Dewpoint Therapeutics: TDP-43 condensate modulator development candidate",
+    "Target ALS: Unlocking ALS risk in South Asian populations",
+    "Target ALS: Global Natural History / Longitudinal Biofluid Study poster",
+    "Target ALS: Research cores: global discovery and long-read sequencing",
+    "CDSCO: Drugs for personal use: Form 12A, Form 12B and import procedure",
+    "Tobii Dynavox: Assistive communication solutions for ALS",
+    "EyeControl: How the eye-tracking communication platform works",
+    "OptiKey maintainers: Optikey versions and eye-tracker compatibility",
+    "Pupil Labs: Neon ecosystem and real-time API",
+    "Enable Viacam: Configuration wizard and head tracking",
+    "UC Davis Health: Real-time speech neuroprosthesis in a participant with ALS",
+    "Eisai: Rozebalamin approved in Japan on 24 September 2024",
+    "VectorY Therapeutics: VTx-002 vectorized antibody mechanism",
+    "Corcept Therapeutics: Two-year DAZALS results and planned Phase 3 study",
+    "Leal Therapeutics · PR Newswire: First participant dosed in NeurALS Phase 1/2",
+    "Trace Neuroscience, Inc. · ClinicalTrials.gov: FUNCtion ALS: Aiming to Restore UNC13A Function in People Living With ALS",
+    "Prilenia · ClinicalTrials.gov: Pridopidine Phase 3 Study to Evaluate Efficacy and Safety in ALS",
+    "Brainstorm-Cell Therapeutics · ClinicalTrials.gov: Efficacy and Safety of MSC-NTF (NurOwn) in Participants With Early Symptomatic ALS and Moderate Disease Presentation in ALS (ENDURANCE STUDY)",
+    "AB Science · ClinicalTrials.gov: Efficacy and Safety of Masitinib in Combination With SoC Versus Placebo in the Treatment of ALS Patients",
+    "Ionis Pharmaceuticals, Inc. · ClinicalTrials.gov: FUSION: A Study to Evaluate the Efficacy, Safety, Pharmacokinetics and Pharmacodynamics of ION363 in Amyotrophic Lateral Sclerosis Participants With Fused in Sarcoma Mutations (FUS-ALS)",
+    "QurAlis Corporation · ClinicalTrials.gov: A Study Evaluating the Safety and Tolerability of QRL-201 in ALS",
+    "Coya Therapeutics · ClinicalTrials.gov: Study of COYA 302 for the Treatment of ALS",
+    "Merit E. Cudkowicz, MD · ClinicalTrials.gov: HEALEY ALS Platform Trial - Regimen I NUZ-001",
+    "Spinogenix · ClinicalTrials.gov: Study of SPG302 in Healthy Volunteers and ALS Participants",
+    "Spinogenix · ClinicalTrials.gov: Intermediate-size Patient Population Expanded Access Protocol",
+    "Axoltis Pharma · ClinicalTrials.gov: ALS Phase II Study of NX210c",
+    "XellSmart Bio-Pharmaceutical (Suzhou) Co., Ltd. · ClinicalTrials.gov: The Safety, Tolerability and Preliminary Efficacy of Derived Motor Neuron Progenitor Cells (XS228CN) in Subjects With Amyotrophic Lateral Sclerosis",
+    "Amylyx Pharmaceuticals Inc. · ClinicalTrials.gov: AMX0114 in Adult Participants With Amyotrophic Lateral Sclerosis",
+    "Nura Bio · ClinicalTrials.gov: A Clinical Trial to Evaluate NB-4746 in Participants With Amyotrophic Lateral Sclerosis.",
+    "Celosia Therapeutics Pty Ltd · ClinicalTrials.gov: Safety and Tolerability Study of CTx1000 In Participants With Amyotrophic Lateral Sclerosis",
+    "Ractigen Therapeutics. · ClinicalTrials.gov: A Study to Evaluate the Safety, Tolerability, Pharmacokinetics, and Pharmacodynamics of RAG-17 in Subjects With Amyotrophic Lateral Sclerosis (ALS) With Superoxide Dismutase Type 1 (SOD1) Gene Mutation",
+    "Zydus Therapeutics Inc. · ClinicalTrials.gov: Usnoflast Neuromuscular Investigation for Treatment Efficacy in Amyotrophic Lateral Sclerosis",
+    "Regeneron Pharmaceuticals · ClinicalTrials.gov: First in Human (FIH) Study of ALN-SOD in Adult Participants With Amyotrophic Lateral Sclerosis Associated With Mutation in the SOD1 Gene (SOD1-ALS)",
+    "Vector Y Therapeutics · ClinicalTrials.gov: Study is to Assess the Safety and Tolerability of VTx-002 in Participants With ALS",
+    "Insmed Gene Therapy LLC · ClinicalTrials.gov: A Study to Investigate the Safety and Pharmacodynamics of a Single Intrathecal Injection (IT) of INS1202 in Participants With Amyotrophic Lateral Sclerosis (ALS)",
+    "Washington University School of Medicine · ClinicalTrials.gov: Tofersen in Non-SOD1 ALS",
+    "Corcept Therapeutics · ClinicalTrials.gov: Dazucorilant in Patients With Amyotrophic Lateral Sclerosis",
+    "Leal Therapeutics, Inc · ClinicalTrials.gov: A Study of LTX-002 in Adult Participants With Amyotrophic Lateral Sclerosis",
+    "Sanofi · ClinicalTrials.gov: Phase 2 Study for SAR443820 in Participants With Amyotrophic Lateral Sclerosis (ALS)",
+    "Eyefree Assisting Communication Ltd · ClinicalTrials.gov: Safety and Feasibility of the EyeControl Device",
+    "Paradromics · ClinicalTrials.gov: Connect-One: Early Feasibility Study of Connexus® Brain-Computer Interface (BCI)"
+  ],
+  "review_changes": [
+    "Replaced unsupported stage-by-duration rules and blanket treatment recommendations with study-population and evidence limitations.",
+    "Separated Nuedexta symptom treatment from the four ALS-directed medicines reviewed here; clarified jurisdiction-specific approvals.",
+    "Corrected Rozebalamin to mecobalamin / E0302; removed the incorrect MT-1186 identification.",
+    "Corrected CNM-Au8, NurOwn, masitinib, PrimeC and NUZ-001 milestones using dated sources and registry records.",
+    "Added newer UNC13A, SARM1, RNA, gene-therapy and communication studies; kept every original topic or a clearly explained successor entry.",
+    "Made the previously hidden withdrawal, communication and experimental-technology content visible.",
+    "Removed unsupported Indian price, import-access and future availability promises; corrected Form 12A versus Form 12B.",
+    "Corrected OptiKey 4 versus legacy Tobii compatibility and removed unsourced device approval and superiority claims."
+  ]
 }

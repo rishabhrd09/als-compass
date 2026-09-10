@@ -1,0 +1,91 @@
+/* Shared clinical design foundation. Page-specific layouts remain independent. */
+:root {
+    --clinical-ink: #183747;
+    --clinical-muted: #536972;
+    --clinical-teal: #356e76;
+    --clinical-paper: #f7f8f6;
+    --clinical-line: #dce3e3;
+    --color-background: var(--clinical-paper);
+    --color-bg-body: #f0f4f3;
+    --color-text-tertiary: #647780;
+    --shadow-sm: 0 2px 8px #18374706;
+    --shadow-lg: 0 14px 44px #1837470b;
+}
+body { background: var(--clinical-paper); }
+html { scroll-padding-top: 112px; }
+:focus-visible { outline: 3px solid #4d929e; outline-offset: 5px; }
+.skip-link { position: fixed; top: 8px; left: 16px; transform: translateY(-180%); padding: 12px 20px; color: white; background: #183747; z-index: 1000; }
+.skip-link:focus { transform: none; }
+.navbar { background: rgba(255,255,255,.9); border-color: #18374712; backdrop-filter: blur(22px) saturate(130%); -webkit-backdrop-filter: blur(22px) saturate(130%); }
+.navbar.scrolled { background: rgba(255,255,255,.94); border-color: #1837471c; box-shadow: 0 6px 24px #18374706; }
+.navbar .navbar-container { padding: 24px 0; min-height: 108px; gap: 40px; max-width: 1360px; }
+.navbar .navbar-brand { gap: 14px; }
+.navbar .navbar-logo { width: 48px; height: 48px; }
+.navbar .navbar-title { font-size: 28px; line-height: 1.2; letter-spacing: -.8px; font-weight: 750; }
+.navbar .navbar-nav { flex: 1; justify-content: center; gap: clamp(12px, 1.5vw, 24px); margin: 0; padding: 0; }
+.navbar .nav-link { padding: 14px; font-size: 18px; line-height: 1.5; font-weight: 650; letter-spacing: 0; border-radius: 6px; color: #354f60; }
+.navbar .nav-link-active { background: transparent !important; color: #183747 !important; }
+.navbar .nav-link-active::after { bottom: 4px; width: 19px; height: 2px; background: #4d7e85; }
+.navbar .mobile-menu-button { flex-shrink: 0; }
+.navbar .mobile-nav-link { font-size: 18px; line-height: 1.5; font-weight: 650; }
+.footer { background: #102a38; }
+.footer .footer-content { padding-top: 12px; }
+.footer .footer-section h3 { font-size: 20px; }
+.footer .footer-section .version { color: #b1c4cc; }
+.footer .footer-bottom { border-color: #ffffff1a; }
+/* Structural edges replace the ornamental colored rails on standard cards. */
+.card, .icu-card, .resource-card { border: 1px solid var(--clinical-line); box-shadow: 0 5px 24px #18374705; border-radius: 12px; }
+.card::before, .research-card::before { display: none; }
+.key-recommendations, .conditional-guidance { border: 1px solid var(--clinical-line); background: #eef3f1; border-radius: 8px; }
+.card:hover, .icu-card:hover, .resource-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px #1837470b; }
+.card .card-icon { background: #edf3f3; color: #35616d; box-shadow: none; }
+.home-page .hero { background: #142f40; }
+.home-page .hero-center { width: min(100%, 1440px); padding: 64px 36% 64px 48px; margin: auto; }
+.home-page .hero-title { font-weight: 400; font-size: clamp(42px, 5.2vw, 72px); }
+.home-page .hero-kicker { font: 600 11px 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: .17em; color: #bad5dc; margin-bottom: 20px; }
+.home-page .hero-intro { font-size: 17px; font-family: 'DM Sans', sans-serif; color: #c4d4db; line-height: 1.75; max-width: 490px; }
+.home-page .scroll-cue { display: none; }
+.home-page .home-neuron-image { position: absolute; right: 0; top: 0; width: 49%; height: 100%; object-fit: cover; opacity: .75; mask-image: linear-gradient(90deg, transparent, black 28%); -webkit-mask-image: linear-gradient(90deg, transparent, black 28%); }
+.home-page .dashboard-section { background: #f5f7f5; border-color: var(--clinical-line); }
+.home-page .dashboard-inner { gap: clamp(36px, 5vw, 80px); grid-template-columns: 260px minmax(0,1fr); max-width: 1400px; }
+.home-page .dashboard-inner::after { display: none; }
+.home-page .dashboard-nav { margin-left: 0; }
+.home-page .dashboard-nav-heading { font-size: 11px; letter-spacing: .15em; color: #62767d; }
+.home-page .dash-link { padding: 22px 8px; border-radius: 0; }
+.home-page .dash-link-icon { background: #e6eeee; color: #35616d; border-radius: 50%; box-shadow: none; }
+.home-page .dash-link-icon i { color: #35616d; }
+.home-page .dash-link-icon::after, .home-page .dash-link::after, .home-page .research-news-card::after, .home-page .treatment-item::before { display: none; }
+.home-page .dash-link:hover, .home-page .research-news-card:hover, .home-page .treatment-item:hover { transform: none; }
+.home-page .treatment-item, .home-page .research-news-card { border: 1px solid var(--clinical-line); border-radius: 8px; box-shadow: none; background: #ffffffc9; }
+.home-page .treatment-item:hover, .home-page .research-news-card:hover { border-color: #9aafb4; background: white; }
+.home-page .research-col-panel { box-shadow: none; border-color: var(--clinical-line); background: #ffffffa6; }
+.home-page .research-column-icon { box-shadow: none; background: #edf3f3; }
+.home-page .live-particles { display: none; }
+.home-page .cards-section, .home-page .resources-section { background: #fff; }
+.home-page .explore-card { background: #f8faf8; }
+.home-page .card-title, .home-page .explore-section-title { font-weight: 650; }
+@media(max-width: 1100px) {
+    .navbar .navbar-container { min-height: 96px; padding: 22px 0; gap: 24px; }
+    .navbar .navbar-nav { display: none; }
+    .navbar .mobile-menu-button { display: block; }
+}
+@media(max-width: 1050px) {
+    .home-page .dashboard-inner { grid-template-columns: 1fr; gap: 32px; }
+    .home-page .dashboard-nav { position: static; }
+    .home-page .dashboard-nav-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px; }
+}
+@media(max-width: 640px) {
+    .navbar .navbar-container { min-height: 84px; padding: 16px 0; gap: 16px; }
+    .navbar .navbar-brand { gap: 10px; }
+    .navbar .navbar-title { font-size: 24px; }
+    .navbar .navbar-logo { width: 40px; height: 40px; }
+    .navbar .container { padding-inline: 16px; }
+    .home-page .hero-center { padding: 44px 24px; }
+    .home-page .home-neuron-image { width: 100%; opacity: .15; }
+    .home-page .dashboard-inner { padding: 0 24px; }
+    .home-page .dashboard-nav-list { display: block; }
+}
+@media(prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

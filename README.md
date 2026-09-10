@@ -18,6 +18,23 @@ A comprehensive web application and AI assistant for ALS caregivers that brings 
 
 ## Quick Start
 
+### Refreshing research content
+
+For a source-checked update, ask the project assistant to follow
+[`prompts/update_als_research.md`](prompts/update_als_research.md) through today's date.
+The repeatable workflow collects public trial/paper leads, reviews every topic,
+validates a draft and applies the local update with a backup.
+
+To prepare a review packet yourself:
+
+```sh
+venv/bin/python scripts/research_update.py prepare
+```
+
+See the [research update workflow](docs/research-update-workflow.md) for the reusable
+instruction, dated runs, validation, backups and limitations. Preparation alone
+does not change the page or replace a medical evidence review.
+
 ### Prerequisites
 - Python 3.10, 3.11, or 3.12
   - Python 3.11 is recommended.

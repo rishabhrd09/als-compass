@@ -15,6 +15,12 @@ IMAGE_SYSTEM_QUICKSTART.txt
 # Documentation - keep only essential docs
 *.md
 !README.md
+!docs/research-review-2026-09-10.md
+!docs/research-update-workflow.md
+!prompts/update_als_research.md
+
+# Local review packets contain fetched records, drafts, audits and backups.
+.research-updates/
 
 
 read_docx.py
