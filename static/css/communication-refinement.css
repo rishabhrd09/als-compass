@@ -1,0 +1,86 @@
+/* Scoped to the communication overview; setup and alphabet panels keep their styles. */
+body[data-page="communication_technology_page"] .ct-hero {
+    text-align: left;
+    padding: 5.6rem 2rem 6.6rem;
+    min-height: 410px;
+}
+body[data-page="communication_technology_page"] .ct-hero-copy { max-width: 1240px; margin: auto; }
+body[data-page="communication_technology_page"] .ct-eyebrow {
+    display: block; margin-bottom: 1.4rem; color: #a5c9d2;
+    font: 550 .76rem/1.4 var(--font-reading); letter-spacing: .14em; text-transform: uppercase;
+}
+body[data-page="communication_technology_page"] .ct-hero h1 {
+    max-width: 760px; width: 66%; font-size: clamp(2.7rem, 4.8vw, 4.4rem) !important;
+    line-height: 1.02; margin: 0 0 1.5rem; text-wrap: initial;
+}
+body[data-page="communication_technology_page"] .ct-hero h1 span { display: block; color: #a3d3df; }
+body[data-page="communication_technology_page"] .ct-hero p { max-width: 590px; width: 56%; margin: 0; font-size: 1.04rem; }
+body[data-page="communication_technology_page"] .ct-hero > .guide-atmosphere {
+    left: 56%; right: 2%; top: 2%; bottom: 3%; opacity: 1;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 92%, transparent);
+}
+body[data-page="communication_technology_page"] .ct-nav {
+    max-width: 1240px; width: calc(100% - 4rem); gap: .35rem;
+    padding: .85rem 1rem; margin-top: -2.4rem; margin-bottom: 2.5rem;
+    border-radius: 16px; border-color: #dae6e9;
+    box-shadow: 0 12px 32px #153b5010, inset 0 1px #fff;
+}
+body[data-page="communication_technology_page"] .ct-nav-card { padding: .75rem 1rem; }
+body[data-page="communication_technology_page"] .ct-nav-card span { font-size: .95rem; }
+body[data-page="communication_technology_page"] .ct-nav-card:first-child { color: #254e60; background: #edf4f5; }
+body[data-page="communication_technology_page"] .ct-nav-card:focus-visible,
+body[data-page="communication_technology_page"] .guide-motion-control:focus-visible,
+.ct-reviewed-card a:focus-visible { outline: 3px solid #448596; outline-offset: 4px; }
+.ct-review-note { max-width: 1168px; margin: 0 auto 2.7rem; padding: 1.2rem 1.5rem; border-block: 1px solid #dce5e8; }
+.ct-review-date { color: #426b7a; font: 650 .78rem/1.5 var(--font-reading); letter-spacing: .03em; }
+.ct-review-note p { color: #5a707c; font-size: .91rem; line-height: 1.7; margin: .4rem 0 0; max-width: 92ch; }
+body[data-page="communication_technology_page"] .ct-reviewed-card {
+    border: 1px solid #dce6e9; border-radius: 16px; overflow: hidden;
+    background: #fff; box-shadow: 0 6px 20px #173b4c05; min-width: 0;
+    transition: box-shadow .25s ease, border-color .25s ease;
+}
+body[data-page="communication_technology_page"] .ct-reviewed-card:hover {
+    transform: none; border-color: #adc7ce; box-shadow: 0 12px 30px #173b4c0c;
+}
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-header {
+    padding: 1.6rem 1.6rem 1.2rem; background: linear-gradient(135deg, #f3f8f8, #fff);
+    border-bottom: 1px solid #e6edef;
+}
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-body { padding: 1.5rem 1.6rem; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-name,
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-software-name {
+    font: 650 1.17rem/1.45 var(--font-heading); color: #193d50; margin: .4rem 0 0; letter-spacing: -.035em;
+}
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-category,
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-software-platform { color: #627e8a; font-size: .8rem; line-height: 1.5; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-price-usd { font-size: 1.5rem; font-weight: 550; letter-spacing: -.04em; color: #224d60; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-price-inr { font-size: .81rem; line-height: 1.6; color: #627782; margin-top: .35rem; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-verdict { background: none; padding: 0; border: 0; color: #314f5e; font-size: .96rem; line-height: 1.65; margin: 1rem 0; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-notes { margin-bottom: 1.4rem; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-notes li { font-size: .91rem; line-height: 1.7; color: #536b78; margin-bottom: .8rem; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-device-notes li::before { content: '•'; color: #82a7b3; }
+body[data-page="communication_technology_page"] .ct-reviewed-card .ct-india-badge { background: #f4f7f8; padding: .8rem .95rem; border-radius: 8px; font-size: .79rem; line-height: 1.65; color: #537180; }
+.ct-availability { display: inline-block; padding: .3rem .65rem; background: #eef4f5; border: 1px solid #dce8eb; border-radius: 6px; color: #476b79; font: 500 .76rem/1.5 var(--font-reading); }
+.ct-app-price { color: #426b7a; font: 550 .85rem/1.6 var(--font-reading); margin: .55rem 0 .85rem; }
+.ct-sources { display: flex; flex-wrap: wrap; gap: .2rem 1rem; padding-top: 1rem; margin-top: 1rem; border-top: 1px solid #e2eaed; }
+.ct-sources a { display: inline-block; color: #316b80; font: 550 .8rem/1.6 var(--font-reading); text-decoration: underline; text-decoration-color: #b9d0d8; text-underline-offset: .2em; padding: .45rem 0; }
+.ct-sources a:hover { color: #123c50; text-decoration-color: currentColor; }
+body[data-page="communication_technology_page"] .ct-bci-note { border: 1px solid #dbe6e8; background: #eef4f5; border-radius: 12px; text-align: left; }
+@media (min-width: 900px) {
+    body[data-page="communication_technology_page"] #headTrackingDevices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+    body[data-page="communication_technology_page"] .ct-hero { padding: 3.5rem 1.25rem 4.7rem; min-height: 0; }
+    body[data-page="communication_technology_page"] .ct-hero h1 { width: 100%; max-width: 560px; font-size: clamp(2.5rem, 8vw, 3.6rem) !important; }
+    body[data-page="communication_technology_page"] .ct-hero p { width: 100%; max-width: 470px; }
+    body[data-page="communication_technology_page"] .ct-hero > .guide-atmosphere { left: 40%; right: -25%; opacity: .15; }
+    body[data-page="communication_technology_page"] .ct-nav { width: calc(100% - 2rem); padding: .7rem; gap: .2rem; }
+    body[data-page="communication_technology_page"] .ct-nav-card { padding: .65rem .7rem; }
+    body[data-page="communication_technology_page"] .ct-nav-card span { font-size: .84rem; }
+    body[data-page="communication_technology_page"] .ct-eyebrow { max-width: 60%; font-size: .67rem; }
+    .ct-review-note { margin-inline: 1rem; padding: 1.2rem .25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    body[data-page="communication_technology_page"] .ct-reviewed-card { transition: none; }
+}

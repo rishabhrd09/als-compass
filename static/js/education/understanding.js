@@ -11,35 +11,52 @@
     const cameras = [...document.querySelectorAll('[data-camera]')];
     const stateButtons = [...document.querySelectorAll('[data-neuron-state]')];
     const labels = [...document.querySelectorAll('[data-anatomy]')];
+    const signalSteps = [...document.querySelectorAll('[data-signal-step]')];
+    const anatomyViews = [['soma','axon','junction','muscle'], ['dendrites','soma'], ['axon'], ['junction','muscle','loss']];
+    let lastStage = -1;
     const viewData = [
-        {x:0,y:1.4,z:19,tx:.1,ty:0,kicker:'THE COMPLETE PATHWAY',caption:'A motor neuron connects to muscle fibers through its long axon.'},
-        {x:-3.4,y:.65,z:8,tx:-3.5,ty:0,kicker:'01 / THE CELL BODY',caption:'Dendrites receive input. The cell body supports the neuron.'},
-        {x:.15,y:1.1,z:9.5,tx:.15,ty:0,kicker:'02 / ALONG THE AXON',caption:'An electrical signal travels along the axon toward the muscle.'},
-        {x:5.1,y:1,z:7.8,tx:5,ty:0,kicker:'03 / THE NERVE–MUSCLE JUNCTION',caption:'Chemical messengers help the nerve activate a muscle fiber.'}
+        {x:.5,y:1.4,z:19,tx:.5,ty:0,kicker:'THE NERVE–MUSCLE CONNECTION',caption:'One lower motor neuron can supply several muscle fibers. Follow the three steps below.'},
+        {x:-3.4,y:.65,z:8,tx:-3.5,ty:0,kicker:'01 / THE CELL BODY',caption:'Dendrites are branches that receive input. The cell body keeps the nerve cell functioning.'},
+        {x:.15,y:1.1,z:9.5,tx:.15,ty:0,kicker:'02 / ALONG THE AXON',caption:'The axon carries an electrical signal. Myelin is its insulating covering, helping signals travel efficiently.'},
+        {x:6.3,y:1,z:11.5,tx:6.3,ty:0,kicker:'03 / THE NERVE–MUSCLE JUNCTION',caption:'At each working connection, acetylcholine crosses a tiny gap and triggers a response in the muscle fiber.'}
     ];
-    let view=null, time=1, last=0, raf=0, inView=false, paused=reduced.matches;
+    let view=null, time=.64, last=0, raf=0, inView=false, paused=reduced.matches;
     let currentCamera=0, chosenState=0, tour=false, tourTime=0, cameraTween=null, lossTween=null;
     let motionContext=null, disposed=false;
     const state={loss:0};
-    const pose={x:0,y:1.4,z:19,tx:.1,ty:0};
+    const pose={x:.5,y:1.4,z:19,tx:.5,ty:0};
     function updateMotionLabel() {
         motion.innerHTML=paused?'<span aria-hidden="true">▷</span> Play':'<span aria-hidden="true">Ⅱ</span> Pause';
         motion.setAttribute('aria-label',paused?'Play signal animation':'Pause signal animation');
     }
     function render() {
         if(!view||disposed)return;
-        view.render(time,state.loss,pose);
+        const frame=view.render(time,state.loss,pose);
+        if(frame && frame.stage!==lastStage) {
+            signalSteps.forEach((step,index)=>{
+                if(index===frame.stage)step.setAttribute('aria-current','step');
+                else step.removeAttribute('aria-current');
+            });
+            lastStage=frame.stage;
+        }
         labels.forEach(label=>{
             const name=label.dataset.anatomy;
             const point=view.project(name);
-            label.style.left=point.x+'px';label.style.top=point.y+'px';
-            label.hidden=!point.visible || (currentCamera===1&&name!=='soma') || (currentCamera===2&&name!=='axon') || (currentCamera===3&&name!=='junction');
+            const smallOverview=currentCamera===0&&viewport.clientWidth<600;
+            const relevant=anatomyViews[currentCamera].includes(name)||(name==='loss'&&currentCamera===0&&!smallOverview);
+            label.hidden=!point.visible || !relevant || (smallOverview&&name==='junction') || (name==='loss'&&state.loss<.95);
+            if(!label.hidden) {
+                const inset=(label.offsetWidth||0)/2+8;
+                label.style.left=Math.max(inset,Math.min(viewport.clientWidth-inset,point.x))+'px';
+                label.style.top=Math.max((label.offsetHeight||0)+8,point.y)+'px';
+            }
         });
     }
     function updateTourLabel() { tourButton.setAttribute('aria-pressed',String(tour));tourButton.innerHTML=tour?'<span aria-hidden="true">□</span> Stop tour':'<span aria-hidden="true">▷</span> Guided tour'; }
     function stopTour() { tour=false;tourTime=0;updateTourLabel(); }
     function selectCamera(index,animate=true) {
         currentCamera=index;
+        if(paused) { time=[6.96,.64,2.8,5.8][index];last=0; }
         const data=viewData[index];
         cameras.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.camera)===index)));
         document.getElementById('view-kicker').textContent=data.kicker;
@@ -50,11 +67,11 @@
         else {Object.assign(pose,destination);render();}
     }
     function selectState(index) {
-        chosenState=index;
+        chosenState=index;time=.64;last=0;
         stateButtons.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.neuronState)===index)));
         document.getElementById('model-description').innerHTML=index
-            ? '<span class="detail-dot" aria-hidden="true"></span><p><strong>Loss of nerve supply.</strong> As motor neurons degenerate, their connections with muscle can be lost. Fewer muscle fibers receive stimulation, contributing to weakness and wasting. This is a simplified comparison, not a disease stage.</p>'
-            : '<span class="detail-dot" aria-hidden="true"></span><p><strong>A working connection.</strong> An electrical signal travels along the axon. At its terminals, chemical messengers help activate the muscle.</p>';
+            ? '<span class="detail-dot" aria-hidden="true"></span><p><strong>Loss of nerve supply.</strong> Some connections are absent in this example. Only fibers with a working connection respond to the illustrated nerve signal. Fibers that have lost their nerve supply are shown smaller to illustrate wasting over time. This is a comparison, not a disease stage or a prediction.</p>'
+            : '<span class="detail-dot" aria-hidden="true"></span><p><strong>A working connection.</strong> The blue light represents an electrical signal in the nerve. At the nerve ending, gold dots represent acetylcholine, a chemical messenger. It crosses the tiny gap and triggers muscle activation; the connected fiber then shortens.</p>';
         if(lossTween)lossTween.kill();
         if(window.gsap&&!reduced.matches)lossTween=gsap.to(state,{loss:index,duration:1.5,ease:'power2.inOut',onUpdate:render});
         else {state.loss=index;render();}
@@ -83,6 +100,7 @@
         if(view){view.dispose();view=null;}
         cancelAnimationFrame(raf);raf=0;stopTour();
         explorer.dataset.state='fallback';status.textContent='Illustration view · Film available below';
+        signalSteps.forEach(step=>step.removeAttribute('aria-current'));lastStage=-1;
         explorer.querySelectorAll('button').forEach(b=>b.disabled=true);
         document.getElementById('view-caption').textContent='Explore the connection through the illustrated film and transcript below.';
     }

@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "care_base.html" %}
 
-{% block title %}Frequently Asked Questions | ALS Caregiver's Compass{% endblock %}
+{% block title %}Frequently Asked Questions | ALS CareKosh{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/pages/faq.css">
@@ -63,43 +63,40 @@
 </style>
 {% endblock %}
 
-{% block content %}
+{% block care_header %}
 <!-- Hero Section -->
-<section class="faq-hero">
+<section class="guide-hero faq-hero">
     <div class="container">
         <h1>Frequently Asked Questions</h1>
-        <p>Comprehensive Guide from 650+ Indian ALS Caregiving Families</p>
+        <p>Practical answers for people living with ALS and their caregivers.</p>
     </div>
 </section>
+{% endblock %}
+
+{% block care_content %}
+<p class="faq-reading-note"><strong>PALS</strong> means a person living with ALS. <strong>CALS</strong> means a caregiver of someone living with ALS.</p>
 
 
 <div class="faq-container">
-    <!-- <div class="faq-header">
-        <h1 class="faq-title">Frequently Asked Questions</h1>
-        <p class="faq-subtitle">Common questions about ALS caregiving from the community</p>
-    </div> -->
-
-    <!-- <div class="faq-disclaimer">
-        <strong>Medical Disclaimer:</strong> This FAQ is compiled from experiences shared by caregivers and patients in
-        the ALS Care & Support India community. It is for educational purposes only and does NOT constitute medical
-        advice. Always consult your treating physician before making any medical decisions.
-    </div> -->
-
-    <div class="faq-search">
-        <input type="text" id="faqSearch" placeholder="Search FAQs...">
+    <div class="faq-search" role="search">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input type="search" id="faqSearch" placeholder="Search FAQs..." aria-label="Search questions, answers and topics" autocomplete="off">
+        <button type="button" class="faq-clear" id="faqClear" hidden>Clear</button>
     </div>
-
-    <div class="faq-categories" id="categoryNav">
-        <!-- Categories loaded dynamically -->
+    <div class="faq-results-heading">
+        <h2 id="faqResultsTitle">All Topics</h2>
+        <p id="faqResultCount" role="status" aria-live="polite">Loading questions…</p>
     </div>
-
-    <div id="faqContent">
-        <!-- Dynamic FAQ content loaded here -->
+    <div id="faqContent" aria-busy="true"></div>
+    <div class="faq-empty" id="faqEmpty" hidden>
+        <p>No FAQs match your search. Try different keywords.</p>
+        <button type="button" class="faq-clear" id="faqReset">Show all topics</button>
     </div>
-
-    <div id="keyPrinciples">
-        <!-- Key principles loaded dynamically -->
+    <div class="faq-empty" id="faqError" hidden>
+        <p>Questions could not be loaded. Please try again.</p>
+        <button type="button" class="faq-clear" id="faqRetry">Try again</button>
     </div>
+    <div id="keyPrinciples"></div>
 </div>
 
 <style>
@@ -659,246 +656,15 @@
 </style>
 
 
-<script>
-    let faqData = null;
-    let currentCategory = 'all';
+<script src="/static/js/care-faq.js" defer></script>
 
-    // Function to strip emojis from content
-    function stripEmojis(text) {
-        // Remove common emojis used in FAQs
-        return text
-            .replace(/[\u{1F600}-\u{1F64F}]/gu, '') // Emoticons
-            .replace(/[\u{1F300}-\u{1F5FF}]/gu, '') // Misc symbols and pictographs
-            .replace(/[\u{1F680}-\u{1F6FF}]/gu, '') // Transport and map symbols
-            .replace(/[\u{1F700}-\u{1F77F}]/gu, '') // Alchemical symbols
-            .replace(/[\u{1F780}-\u{1F7FF}]/gu, '') // Geometric shapes extended
-            .replace(/[\u{1F800}-\u{1F8FF}]/gu, '') // Supplemental arrows
-            .replace(/[\u{1F900}-\u{1F9FF}]/gu, '') // Supplemental symbols and pictographs
-            .replace(/[\u{1FA00}-\u{1FA6F}]/gu, '') // Chess symbols
-            .replace(/[\u{1FA70}-\u{1FAFF}]/gu, '') // Symbols and pictographs extended-A
-            .replace(/[\u{2600}-\u{26FF}]/gu, '')   // Misc symbols
-            .replace(/[\u{2700}-\u{27BF}]/gu, '')   // Dingbats
-            .replace(/[\u{2300}-\u{23FF}]/gu, '')   // Misc technical
-            .replace(/✅|❌|⚠️|⚠|🚨|📋|📝|💡|🔬|📊|💬|🇮🇳|🔀|✓/g, '') // Specific emojis
-            .replace(/\s+/g, ' ')  // Clean up extra whitespace
-            .trim();
-    }
-
-    document.addEventListener('DOMContentLoaded', async function () {
-        await loadFAQData();
-        initSearch();
-    });
-
-    async function loadFAQData() {
-        try {
-            const response = await fetch('/api/community-faq');
-            faqData = await response.json();
-            renderCategories();
-            renderFAQ('all');
-            renderKeyPrinciples();
-        } catch (error) {
-            console.error('Error loading FAQ:', error);
-        }
-    }
-
-    function renderCategories() {
-        const nav = document.getElementById('categoryNav');
-        let html = `<button class="category-pill active" onclick="filterCategory('all', this)">All Topics</button>`;
-
-        faqData.categories.forEach(cat => {
-            html += `<button class="category-pill" onclick="filterCategory('${cat.id}', this)">${cat.name}</button>`;
-        });
-
-        nav.innerHTML = html;
-    }
-
-    function filterCategory(categoryId, btn) {
-        currentCategory = categoryId;
-
-        document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-
-        renderFAQ(categoryId);
-    }
-
-    function renderFAQ(categoryId) {
-        const content = document.getElementById('faqContent');
-        let html = '';
-
-        const categoriesToShow = categoryId === 'all'
-            ? faqData.categories
-            : faqData.categories.filter(c => c.id === categoryId);
-
-        categoriesToShow.forEach(category => {
-            const questions = category.questions;
-
-            if (questions.length === 0) return;
-
-            html += `<div class="faq-section" data-category="${category.id}">
-            <h3 class="faq-section-title">${category.name}</h3>`;
-
-            // Display section note if present
-            if (category.section_note) {
-                html += `<div class="warning-box" style="margin-bottom: 1.25rem;"><strong>Important:</strong> ${category.section_note}</div>`;
-            }
-
-            questions.forEach(q => {
-                html += renderQuestion(q);
-            });
-
-            html += `</div>`;
-        });
-
-        content.innerHTML = html;
-    }
-
-
-    function renderQuestion(q) {
-        let answerHtml = formatAnswer(q.answer);
-
-        // Conditional guidance
-        if (q.conditional) {
-            answerHtml += renderConditional(q.conditional);
-        }
-
-        // Warning - no emoji
-        if (q.warning) {
-            answerHtml += `<div class="warning-box"><strong>Important:</strong> ${q.warning}</div>`;
-        }
-
-        // Recommendation - no emoji
-        if (q.recommendation) {
-            answerHtml += `<div class="recommendation-box"><strong>Tip:</strong> ${q.recommendation}</div>`;
-        }
-
-        // Perspectives
-        if (q.perspectives && q.perspectives.length > 0) {
-            answerHtml += `<div class="perspectives-box">
-            <h4>Community Perspectives</h4>
-            ${q.perspectives.map(p => `<div class="perspective-quote">"${p}"</div>`).join('')}
-        </div>`;
-        }
-
-        // Evidence - no emoji
-        if (q.evidence && q.evidence.length > 0) {
-            answerHtml += `<div class="evidence-tags">
-            ${q.evidence.map(e => renderEvidenceTag(e)).join('')}
-        </div>`;
-        }
-
-        return `
-    <div class="faq-item" data-tags="${q.tags ? q.tags.join(' ') : ''}">
-        <h2 class="faq-question" onclick="toggleFaq(this)">
-            <span>${q.question}</span>
-            <span class="faq-toggle">▼</span>
-        </h2>
-        <div class="faq-answer">${answerHtml}</div>
-    </div>`;
-    }
-
-    function formatAnswer(answer) {
-        // Strip emojis for clean appearance
-        let html = stripEmojis(answer);
-
-        // Convert markdown-like formatting to HTML
-        html = html
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\n\n/g, '</p><p>')
-            .replace(/• (.*?)(?=\n|$)/g, '<li>$1</li>');
-
-        // Wrap bullet lists
-        html = html.replace(/(<li>.*?<\/li>)+/g, '<ul class="faq-list">$&</ul>');
-
-        return `<p>${html}</p>`.replace(/<p><\/p>/g, '').replace(/<p><ul/g, '<ul').replace(/<\/ul><\/p>/g, '</ul>');
-    }
-
-    function renderConditional(conditional) {
-        let html = '<div class="conditional-guidance"><h4>Conditional Guidance</h4>';
-
-        if (conditional.if_then && Array.isArray(conditional.if_then)) {
-            conditional.if_then.forEach(item => {
-                html += `<div class="conditional-item">
-                <span class="if-label">IF</span> ${item.if}
-                <span class="then-label">→ THEN</span> ${item.then}
-            </div>`;
-            });
-        } else if (conditional.if && conditional.then) {
-            html += `<div class="conditional-item">
-            <span class="if-label">IF</span> ${conditional.if}
-            <span class="then-label">→ THEN</span> ${conditional.then}
-        </div>`;
-        }
-
-        html += '</div>';
-        return html;
-    }
-
-    function renderEvidenceTag(type) {
-        const tags = {
-            'clinically_proven': { label: 'Clinically Proven' },
-            'community_observed': { label: 'Community Observed' },
-            'individual_experience': { label: 'Individual Experience' },
-            'caution_advised': { label: 'Caution Advised' }
-        };
-
-        const tag = tags[type] || { label: type };
-        return `<span class="evidence-tag">${tag.label}</span>`;
-    }
-
-    function toggleFaq(element) {
-        const item = element.closest('.faq-item');
-        item.classList.toggle('open');
-    }
-
-    function renderKeyPrinciples() {
-        if (!faqData.key_principles) return;
-
-        const container = document.getElementById('keyPrinciples');
-        let html = `<div class="key-principles">
-        <h3>Key Principles from the Community</h3>
-        <ul>${faqData.key_principles.map(p => `<li>${p}</li>`).join('')}</ul>
-    </div>`;
-
-        container.innerHTML = html;
-    }
-
-    function initSearch() {
-        const searchInput = document.getElementById('faqSearch');
-        if (!searchInput) return;
-
-        // Create "no results" element
-        const noResults = document.createElement('p');
-        noResults.className = 'faq-no-results';
-        noResults.textContent = 'No FAQs match your search. Try different keywords.';
-        const faqContainer = document.querySelector('.faq-container') || document.querySelector('main');
-        if (faqContainer) faqContainer.appendChild(noResults);
-
-        searchInput.addEventListener('input', function () {
-            const query = this.value.toLowerCase();
-            let visibleCount = 0;
-
-            document.querySelectorAll('.faq-item').forEach(item => {
-                const question = item.querySelector('.faq-question').textContent.toLowerCase();
-                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
-                const tags = item.dataset.tags?.toLowerCase() || '';
-
-                if (question.includes(query) || answer.includes(query) || tags.includes(query)) {
-                    item.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            // Show/hide sections based on visible items
-            document.querySelectorAll('.faq-section').forEach(section => {
-                const visibleItems = section.querySelectorAll('.faq-item:not([style*="display: none"])').length;
-                section.style.display = visibleItems > 0 ? 'block' : 'none';
-            });
-
-            // Show/hide no-results message
-            noResults.classList.toggle('visible', query.length > 0 && visibleCount === 0);
-        });
-    }
-</script>
+{% endblock %}
+{% block care_sidebar %}
+<p class="care-nav-label">Browse by topic</p>
+<nav class="faq-categories" id="categoryNav" aria-label="FAQ topics"></nav>
+<div class="care-related">
+    <p class="care-nav-label">Related guides</p>
+    <a href="/home-icu-guide">Home ICU setup <span aria-hidden="true">↗</span></a>
+    <a href="/ups-faq">Power backup FAQ <span aria-hidden="true">↗</span></a>
+</div>
 {% endblock %}

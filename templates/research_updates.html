@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block body_class %}research-layout{% endblock %}
-{% block title %}ALS Research Updates{% if research %} · Evidence through {{ research.last_updated|research_date }}{% endif %} | ALS Compass{% endblock %}
+{% block title %}ALS Research Updates{% if research %} · Evidence through {{ research.last_updated|research_date }}{% endif %} | ALS CareKosh{% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/research.css') }}">
 {% endblock %}
@@ -11,7 +11,7 @@
     <header class="research-hero">
         <div class="research-shell research-hero-layout">
             <div>
-                <a class="research-breadcrumb" href="{{ url_for('home') }}">ALS Compass <span aria-hidden="true">/</span> Research library</a>
+                <a class="research-breadcrumb" href="{{ url_for('home') }}">ALS CareKosh <span aria-hidden="true">/</span> Research library</a>
                 <p class="research-eyebrow"><span class="research-spark" aria-hidden="true"></span> Evidence-based research</p>
                 <h1>ALS Research <span>Updates</span></h1>
                 <div class="research-hero-links">
@@ -118,7 +118,7 @@
         <div class="research-bottom-links"><a href="#research-top">Back to top ↑</a><button type="button" id="research-print" hidden>Print this review</button><a href="{{ url_for('get_research_categorized') }}" download="als-research-{{ research.last_updated }}.json">Download research data ↓</a></div>
     </div>
 {% else %}
-    <div class="research-shell research-unavailable"><p class="research-eyebrow">ALS Compass</p><h1>Research review temporarily unavailable</h1><p>The saved evidence could not be loaded. Please try again shortly.</p><a href="{{ url_for('home') }}">Return to the homepage</a></div>
+    <div class="research-shell research-unavailable"><p class="research-eyebrow">ALS CareKosh</p><h1>Research review temporarily unavailable</h1><p>The saved evidence could not be loaded. Please try again shortly.</p><a href="{{ url_for('home') }}">Return to the homepage</a></div>
 {% endif %}
 </div>
 {% endblock %}

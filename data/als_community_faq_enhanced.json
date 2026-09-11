@@ -257,43 +257,68 @@
                 {
                     "id": "trach_2",
                     "question": "How do I suction properly without hurting my PALS?",
-                    "answer": "**GATHER EVERYTHING BEFORE STARTING:**\n• Suction machine (pressure set to 100-120 mmHg)\n• Suction catheters (Fr 12 is common for size 7-7.5 tube)\n• Normal saline 2ml vials\n• Ambu bag connected and ready\n• Gloves, tissues/gauze\n\n**THE PROCEDURE:**\n1. Wash hands well, wear gloves\n2. Pour 1ml Normal Saline into the trach tube (directly into the hole). This loosens secretions. Patient may cough - that's normal!\n3. Connect Ambu bag and give 4-5 gentle squeezes. This pushes the saline around and brings up secretions.\n4. Turn on suction machine. Disconnect from ventilator/BiPAP.\n5. Insert suction catheter into trach tube - DON'T apply suction while going in.\n6. NOW apply suction (thumb on hole) and slowly withdraw while rotating. Takes about 8-10 seconds.\n7. Immediately reconnect to BiPAP/ventilator.\n8. Let patient rest 30-60 seconds. Repeat if needed.\n\n**WATCH OUT FOR:**\n• SpO₂ dropping below 85% - stop and connect to Ambu immediately\n• Catheter not going in - don't force, try smaller size\n• Lots of blood - stop, call doctor",
+                    "answer": "**Training comes first:** Suction technique, catheter size, depth, pressure and equipment differ by person and airway. Arrange practical instruction and a written plan with a respiratory therapist, trained ICU nurse or doctor; an online sequence is not enough.\n\n**Before and during suction:** Use the prescribed equipment and hygiene technique. Suction only when indicated and as taught. Routine saline instillation into the tracheostomy is generally avoided; do not use force or keep repeating ineffective attempts.\n\n**Stop and escalate:** If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain. If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles.\n\n**If suction causes bleeding or worsening distress:** Stop and seek clinical advice; severe distress, significant bleeding or ineffective ventilation needs immediate emergency help. Do not assume that blood is just minor suction trauma.\n\nTT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.\n\n[Emergency guidance and sources](/emergency-protocol).",
                     "evidence": [
                         "community_observed",
-                        "clinically_proven"
+                        "caution_advised"
                     ],
-                    "recommendation": "First 10 times will be scary. By 50th time, you'll do it without thinking. The whole procedure takes 90 seconds once you're comfortable!",
                     "tags": [
                         "tracheostomy",
                         "suction",
                         "procedure"
-                    ]
+                    ],
+                    "sources": [
+                        {
+                            "label": "NTSP: adult tracheostomy emergency care",
+                            "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
+                        },
+                        {
+                            "label": "NTSP: blocked/displaced tubes and ventilation precautions",
+                            "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
+                        },
+                        {
+                            "label": "AARC: artificial airway suctioning",
+                            "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
+                        },
+                        {
+                            "label": "India emergency response: 112",
+                            "url": "https://112.gov.in/"
+                        }
+                    ],
+                    "warning": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first."
                 },
                 {
                     "id": "trach_3",
                     "question": "How many times a day should I suction?",
-                    "answer": "**ROUTINE SUCTIONING (even if no obvious need):**\n• Morning after waking up\n• Before each major feed\n• Before sleep at night\n• Minimum 4-5 times per day\n\n**SUCTION IMMEDIATELY WHEN YOU SEE/HEAR:**\n• Gurgling or rattling sound when breathing\n• SpO₂ dropping for no clear reason\n• Patient looking uncomfortable, restless\n• Visible secretions at trach opening\n\n**During infections:** May need 8-12 times daily",
+                    "answer": "Follow the frequency and indications in the individualized suction plan. Do not use a fixed daily quota from a community guide. New or increasing secretions, recurring distress or bleeding need review by the respiratory team.\n\n**Training comes first:** Suction technique, catheter size, depth, pressure and equipment differ by person and airway. Arrange practical instruction and a written plan with a respiratory therapist, trained ICU nurse or doctor; an online sequence is not enough.\n\n**Before and during suction:** Use the prescribed equipment and hygiene technique. Suction only when indicated and as taught. Routine saline instillation into the tracheostomy is generally avoided; do not use force or keep repeating ineffective attempts.\n\n**Stop and escalate:** If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain. If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles.\n\n**If suction causes bleeding or worsening distress:** Stop and seek clinical advice; severe distress, significant bleeding or ineffective ventilation needs immediate emergency help. Do not assume that blood is just minor suction trauma.\n\nTT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.\n\n[Emergency guidance and sources](/emergency-protocol).",
                     "evidence": [
-                        "community_observed"
+                        "community_observed",
+                        "caution_advised"
                     ],
-                    "conditional": {
-                        "if_then": [
-                            {
-                                "if": "Frequent blood-tinged secretions or patient very irritated",
-                                "then": "Over-suctioning - reduce frequency, use gentler technique"
-                            },
-                            {
-                                "if": "Constant gurgling, frequent SpO₂ drops, secretions bubbling out",
-                                "then": "Under-suctioning - increase frequency"
-                            }
-                        ]
-                    },
-                    "recommendation": "Better to suction more frequently with less aggressive technique than to wait until there's a huge mucus plug.",
                     "tags": [
                         "tracheostomy",
                         "suction",
                         "frequency"
-                    ]
+                    ],
+                    "sources": [
+                        {
+                            "label": "NTSP: adult tracheostomy emergency care",
+                            "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
+                        },
+                        {
+                            "label": "NTSP: blocked/displaced tubes and ventilation precautions",
+                            "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
+                        },
+                        {
+                            "label": "AARC: artificial airway suctioning",
+                            "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
+                        },
+                        {
+                            "label": "India emergency response: 112",
+                            "url": "https://112.gov.in/"
+                        }
+                    ],
+                    "warning": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first."
                 }
             ]
         },
@@ -413,67 +438,126 @@
             "id": "emergency",
             "name": "Emergency Protocols",
             "icon": "fa-exclamation-triangle",
-            "description": "What to do in emergency situations - SpO2 drops, power failure, equipment failure",
+            "description": "These notes draw on personal caregiving experience and shared family learning. They are not a clinician-validated emergency protocol or a substitute for the person’s written, individualized emergency plan and hands-on training with the treating team. Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.",
             "questions": [
                 {
                     "id": "emerg_1",
                     "question": "SpO2 is dropping! What do I do?",
-                    "answer": "**IMMEDIATE Steps:**\n\n1. **Give Ambu bag immediately** - provides instant relief\n\n2. **Ask PALS** (if able) where they feel blockage - chest, throat, or balloon area\n\n3. **Check ventilator** for disconnections or kinks\n\n4. **If wet secretions:** NS 1-2ml + Ambu 5-6 pumps + Suction\n\n5. **If dry cough:** Start nebulization with Levolin, continue Ambu support\n\n6. **Tracheostomy patients:** Always do subglottic port suction\n\n7. **Repeat cycle:** Ambu → Suction → Check SpO₂ until >94%",
+                    "answer": "**Experience-based guidance:** These notes draw on personal caregiving experience and shared family learning. They are not a clinician-validated emergency protocol or a substitute for the person’s written, individualized emergency plan and hands-on training with the treating team.\n\n**Call for help early:** Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.\n\n**Call and care in parallel:** One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.\n\n**Immediate checks within your training:** Check external power, visible connections and tubing for disconnection or kinks. Ask about symptoms and report alarms and breathing changes. Suction only when indicated and as prescribed and taught for this person; do not routinely instil saline into the tracheostomy.\n\n**Know when to stop:** If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles.\n\n**Suction catheter will not pass:** If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain.\n\n**Who should manage the airway:** TT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.\n\n**While help is coming:** Follow the written emergency plan and dispatcher instructions. Bring the airway plan, tube details, prescribed spare equipment and medication list. Report actions already taken. If unresponsive and not breathing normally, tell the dispatcher immediately and follow resuscitation instructions and the agreed care plan.\n\n[Read the emergency guidance and sources](/emergency-protocol).",
                     "evidence": [
                         "community_observed",
-                        "clinically_proven"
+                        "caution_advised"
                     ],
-                    "conditional": {
-                        "if_then": [
-                            {
-                                "if": "SpO₂ below 88%",
-                                "then": "Continue aggressive Ambu + Suction, consider calling emergency"
-                            },
-                            {
-                                "if": "Secretions very thick",
-                                "then": "Nebulize with Inhalex or Mucinac to thin them"
-                            },
-                            {
-                                "if": "Catheter not passing (possible mucus plug)",
-                                "then": "2ml NS + 8-10 firm Ambu squeezes, may need tube change"
-                            }
-                        ]
-                    },
-                    "warning": "SpO₂ below 85% for more than 2-3 minutes despite intervention - call for medical help immediately!",
+                    "warning": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.",
                     "tags": [
                         "emergency",
                         "spo2",
                         "protocol"
-                    ]
+                    ],
+                    "sources": [
+                        {
+                            "label": "NTSP: adult tracheostomy emergency care",
+                            "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
+                        },
+                        {
+                            "label": "NTSP: blocked/displaced tubes and ventilation precautions",
+                            "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
+                        },
+                        {
+                            "label": "AARC: artificial airway suctioning",
+                            "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
+                        },
+                        {
+                            "label": "India emergency response: 112",
+                            "url": "https://112.gov.in/"
+                        }
+                    ],
+                    "conditional": {
+                        "if_then": [
+                            {
+                                "if": "Severe/worsening distress or ineffective ventilation",
+                                "then": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first."
+                            },
+                            {
+                                "if": "Immediate trained actions do not promptly restore effective breathing",
+                                "then": "If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles."
+                            },
+                            {
+                                "if": "Suction catheter will not pass",
+                                "then": "If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain. TT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan."
+                            },
+                            {
+                                "if": "Thick secretions without emergency warning signs",
+                                "then": "Contact the treating team and follow the prescribed secretion plan. Do not choose new medicines, saline instillation or cuff changes yourself."
+                            }
+                        ]
+                    }
                 },
                 {
                     "id": "emerg_2",
                     "question": "Power cut at night! BiPAP stopped. What's the emergency plan?",
-                    "answer": "**Immediate Actions:**\n\n1. **Start manual Ambu bagging** if PALS on 24/7 ventilation\n2. Check inverter - is it working? Battery may have died\n3. Keep PALS sitting up (not lying flat)\n4. Monitor SpO₂\n\n**Proper Setup You MUST Have:**\n• Home Inverter (2KVA minimum) - 4-6 hours backup\n• Generator contact for extended outages\n• Portable Battery Pack for travel\n• Ambu Bag - no power needed\n• Oxygen Cylinder - concentrator needs power, cylinder doesn't",
+                    "answer": "**Experience-based guidance:** These notes draw on personal caregiving experience and shared family learning. They are not a clinician-validated emergency protocol or a substitute for the person’s written, individualized emergency plan and hands-on training with the treating team.\n\n**During a power interruption:** Check that the prescribed ventilator has switched to its approved backup supply and is working. Respond to alarms and use only the backup method you have been trained to provide.\n\n**If ventilation fails or the person is distressed:** Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first. One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.\n\n**Manual ventilation:** Use it only according to the individual plan and your training. If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain.\n\n**Prepare before an outage:** Have the equipment provider and electrician verify compatibility, actual load, transfer behaviour, battery condition and tested runtime. No single inverter size or battery duration suits every setup. Arrange transfer early if the backup will not cover the outage.\n\n[Power planning guide](/power-backup-guide) · [Emergency guidance](/emergency-protocol).",
                     "evidence": [
-                        "community_observed"
+                        "community_observed",
+                        "caution_advised"
                     ],
-                    "warning": "Everyone in household should know how to use Ambu bag!",
+                    "warning": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.",
                     "tags": [
                         "emergency",
                         "power",
                         "backup"
+                    ],
+                    "sources": [
+                        {
+                            "label": "NTSP: adult tracheostomy emergency care",
+                            "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
+                        },
+                        {
+                            "label": "NTSP: blocked/displaced tubes and ventilation precautions",
+                            "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
+                        },
+                        {
+                            "label": "AARC: artificial airway suctioning",
+                            "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
+                        },
+                        {
+                            "label": "India emergency response: 112",
+                            "url": "https://112.gov.in/"
+                        }
                     ]
                 },
                 {
                     "id": "emerg_3",
                     "question": "What is the Ambu bag and how do we use it?",
-                    "answer": "**What It Is:** Manual resuscitator - your most important emergency tool. Provides breaths when ventilator is insufficient.\n\n**How to Use:**\n1. Connect to ventilator circuit (ventilator keeps running)\n2. Squeeze slowly and steadily - mimics natural breath\n3. Release to allow exhalation\n4. Rhythm: 12-15 squeezes per minute\n\n**When to Use Ambu:**\n• SpO₂ dropping\n• Before and after suction\n• PALS feeling breathless\n• High pulse/BP from respiratory discomfort\n• Ventilator seems insufficient\n• During nebulization if struggling\n\n**Must Have:** At least 2 Ambu bags as backup. Cost: ~₹2,000",
+                    "answer": "**What it is:** An Ambu bag is a manual resuscitator that a trained person may use for backup ventilation under a patient-specific plan. It is not a general treatment for discomfort, a low SpO2 reading or a high pulse/BP.\n\n**Learn before an emergency:** Ask the respiratory team to teach the correct interface, connections, technique, assessment of effective ventilation and when to stop. Do not improvise connections to a running ventilator or follow a universal squeeze count from a website.\n\n**Call and care together:** Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first. One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.\n\n**Suspected blocked or displaced TT:** If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain. TT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.\n\n[Emergency guidance and sources](/emergency-protocol).",
                     "evidence": [
                         "community_observed",
-                        "clinically_proven"
+                        "caution_advised"
                     ],
-                    "recommendation": "When parameters are unstable and you're unsure what's wrong, give Ambu for 1 minute. It often provides quick relief and gives you time to assess.",
                     "tags": [
                         "equipment",
                         "ambu",
                         "emergency"
-                    ]
+                    ],
+                    "sources": [
+                        {
+                            "label": "NTSP: adult tracheostomy emergency care",
+                            "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
+                        },
+                        {
+                            "label": "NTSP: blocked/displaced tubes and ventilation precautions",
+                            "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
+                        },
+                        {
+                            "label": "AARC: artificial airway suctioning",
+                            "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
+                        },
+                        {
+                            "label": "India emergency response: 112",
+                            "url": "https://112.gov.in/"
+                        }
+                    ],
+                    "warning": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first."
                 }
             ]
         },
@@ -629,15 +713,35 @@
                 {
                     "id": "cg_3",
                     "question": "What is the two-person approach for emergencies?",
-                    "answer": "**Person 1 (Primary):**\n• Start Ambu immediately\n• Talk to PALS and get feedback\n• Perform suction and nebulization\n• Stay calm and focused on PALS\n\n**Person 2 (Support):**\n• Check all equipment connections\n• Prepare supplies (catheters, NS)\n• Monitor pulse oximeter\n• Call for help if needed\n\n**Why This Matters:** One person focuses on PALS while another ensures everything is ready. Reduces panic and mistakes.\n\n**Even If Alone:** Start Ambu first (most important), then assess and act.\n\n**Practice:** Train both caregivers on both roles BEFORE an emergency happens.",
+                    "answer": "These notes draw on personal caregiving experience and shared family learning. They are not a clinician-validated emergency protocol or a substitute for the person’s written, individualized emergency plan and hands-on training with the treating team.\n\n**Call and care together:** One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.\n\nCall 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.\n\n**Know when to stop:** If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles.\n\nTT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.",
                     "evidence": [
-                        "community_observed"
+                        "community_observed",
+                        "caution_advised"
                     ],
                     "tags": [
                         "emergency",
                         "caregiver",
                         "protocol"
-                    ]
+                    ],
+                    "sources": [
+                        {
+                            "label": "NTSP: adult tracheostomy emergency care",
+                            "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
+                        },
+                        {
+                            "label": "NTSP: blocked/displaced tubes and ventilation precautions",
+                            "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
+                        },
+                        {
+                            "label": "AARC: artificial airway suctioning",
+                            "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
+                        },
+                        {
+                            "label": "India emergency response: 112",
+                            "url": "https://112.gov.in/"
+                        }
+                    ],
+                    "warning": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first."
                 }
             ]
         }
@@ -645,30 +749,26 @@
     "quick_reference": {
         "emergency_protocols": [
             {
-                "situation": "SpO₂ Dropping (<90%)",
-                "action": "1. Ambu immediately → 2. Ask PALS about blockage → 3. NS + Ambu + Suction cycle → 4. Subglottic suction → 5. Repeat until >94%"
+                "situation": "Falling SpO2 or breathing distress",
+                "action": "Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first. One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS. If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles."
             },
             {
-                "situation": "High Pulse, Normal SpO₂",
-                "action": "1. Check temperature → 2. Give Ambu 1-2 min → 3. Clearance cycle → 4. If persistent, check CBC for infection"
+                "situation": "High pulse/BP with normal SpO2",
+                "action": "These readings alone cannot identify the cause. Check symptoms and contact the treating team. Normal SpO2 does not exclude inadequate ventilation. Do not use Ambu solely to lower pulse or BP. Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first."
             },
             {
-                "situation": "Mucus Plug (catheter blocked)",
-                "action": "1. 2ml NS into trach → 2. 8-10 FIRM Ambu squeezes → 3. Try suction → 4. If still blocked, may need tube change"
+                "situation": "Suction catheter will not pass",
+                "action": "If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain. TT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan."
             },
             {
-                "situation": "Ventilator Failure",
-                "action": "1. Ambu bag immediately → 2. Check power/connections → 3. Switch to backup → 4. Continue Ambu until restored"
-            },
-            {
-                "situation": "Power Failure",
-                "action": "1. Inverter should auto-switch → 2. If no inverter, Ambu bag → 3. Check battery status → 4. Contact power company"
+                "situation": "Ventilator or power failure",
+                "action": "Follow the prescribed backup plan using only support you are trained to provide. Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first. One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS."
             }
         ],
         "key_numbers": {
             "spo2_normal": ">95% awake, >94% sleeping",
-            "spo2_alert": "<93% - start intervention",
-            "spo2_emergency": "<88% - immediate action",
+            "spo2_alert": "Use individualized targets and symptoms; seek prompt clinical advice for an unexpected fall.",
+            "spo2_emergency": "Severe distress or ineffective ventilation is an emergency regardless of SpO2; call 112 immediately.",
             "bipap_hours_trach_consider": "16-20 hours/day",
             "fvc_bipap_start": "<80%",
             "fvc_peg_alert": "<50%"
@@ -677,7 +777,7 @@
     "key_principles": [
         "Involve PALS in all decisions - they understand their body best",
         "Prevention beats cure - regular nebulization, hydration, position changes prevent emergencies",
-        "Ambu is your best friend - when in doubt, give Ambu",
+        "Use manual ventilation only under the individual emergency plan and your training; never force ventilation through a suspected blocked or displaced tube.",
         "Have backups for EVERYTHING critical - BiPAP, suction, power",
         "Document and learn - every PALS is different",
         "Take care of yourself - caregiver health matters",

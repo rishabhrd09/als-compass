@@ -1,0 +1,103 @@
+{
+  "tool": "built-in imagegen",
+  "generated_images": [
+    {
+      "name": "cotton",
+      "prompt": "Use case: product-mockup. Generate ONE photorealistic catalog product photograph, landscape 3:2 aspect ratio, ideally 1536 × 1024 pixels. Matching seamless pale cool-gray studio background (#f4f7f8), soft upper-left daylight, realistic gentle contact shadow, fine real material detail. Product occupies 75–85% of the available frame height or width without cropping: entire product visible and comfortably framed. Neutral accurate colors, clear recognizable physical construction, real commercial product photography, restrained shallow depth of field keeping the product crisp. No collage, no text, no added branding, no captions, prices, medical-use claims, people, hands, or watermarks. Subject: one white absorbent cotton wool roll, lying on its side, partially unrolled with a short loose fibrous tail. Clearly fluffy soft irregular cotton fibers, NOT gauze, not woven fabric, not bandages, not toilet paper. No packaging. Show the rolled circular end and rich cotton material texture. Fine fibers catch soft daylight.",
+      "path": "/Users/rishabh/.codex/generated_images/01a0911a-5865-7370-b609-7cdc9fe02453/exec-4a0958e3-3db8-47e5-904b-3e25c55625d6.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "tool": "built-in image_gen",
+      "qc": "Visually passes product identity and plain studio composition; no text, unwanted branding, people, or watermarks."
+    },
+    {
+      "name": "enema",
+      "prompt": "Use case: product-mockup. Generate ONE photorealistic catalog product photograph, landscape 3:2 aspect ratio, ideally 1536 × 1024 pixels. Matching seamless pale cool-gray studio background (#f4f7f8), soft upper-left daylight, realistic gentle contact shadow, fine real material detail. Product occupies 75–85% of the available frame height or width without cropping: entire product visible and comfortably framed. Neutral accurate colors, clear recognizable physical construction, real commercial product photography, restrained shallow depth of field keeping the product crisp. No collage, no text, no added branding, no captions, prices, medical-use claims, people, hands, or watermarks. Subject: one generic translucent squeezable enema bottle, upright and viewed at a slight three-quarter angle. Opaque off-white ribbed screw collar and a long narrow applicator covered entirely with a clean opaque mint-green protective cap. Pale translucent bottle material with realistic plastic detail, no volume marks, no drug label, no packaging. The capped applicator and bottle must be coherent, realistic physical forms. Object illustration only, no use demonstration.",
+      "path": "/Users/rishabh/.codex/generated_images/01a0911a-5865-7370-b609-7cdc9fe02453/exec-d271c84f-70ab-4545-8791-ec97fd4b732b.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "tool": "built-in image_gen",
+      "qc": "Visually passes product identity and plain studio composition; no text, unwanted branding, people, or watermarks."
+    },
+    {
+      "name": "alexa",
+      "prompt": "Use case: product-mockup. Generate ONE photorealistic catalog product photograph, landscape 3:2 aspect ratio, ideally 1536 × 1024 pixels. Matching seamless pale cool-gray studio background (#f4f7f8), soft upper-left daylight, realistic gentle contact shadow, fine real material detail. Product occupies 75–85% of the available frame height or width without cropping: entire product visible and comfortably framed. Neutral accurate colors, clear recognizable physical construction, real commercial product photography, restrained shallow depth of field keeping the product crisp. No collage, no text, no added branding, no captions, prices, medical-use claims, people, hands, or watermarks. Input image is a visual reference ONLY for the product shape. Subject: realistic black Echo Pop form as shown in the reference: front-facing near-circular black woven speaker grille on a compact hemispherical body, subtly slanted face, narrow cyan light bar along the TOP edge, matte charcoal shell, natural short power cable visible behind. Gentle front three-quarter camera angle showing the face and right side shell. Replicate the recognizable physical product form and realistic textile details. Completely eliminate ALL reference advertising text, icons, logo lettering, wall background and marketing graphics. Use only the plain seamless cool-gray studio backdrop specified above.",
+      "path": "/Users/rishabh/.codex/generated_images/01a0911a-5865-7370-b609-7cdc9fe02453/exec-55ea5d0b-3b4f-491a-943d-331ae4ba72fd.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "tool": "built-in image_gen",
+      "qc": "Visually passes product identity and plain studio composition; no text, unwanted branding, people, or watermarks."
+    },
+    {
+      "name": "sheet",
+      "prompt": "Use case: product-mockup. Generate ONE photorealistic catalog product photograph, landscape 3:2 aspect ratio, ideally 1536 × 1024 pixels. Matching seamless pale cool-gray studio background (#f4f7f8), soft upper-left daylight, realistic gentle contact shadow, fine real material detail. Product occupies 75–85% of the available frame height or width without cropping: entire product visible and comfortably framed. Neutral accurate colors, clear recognizable physical construction, real commercial product photography, restrained shallow depth of field keeping the product crisp. No collage, no text, no added branding, no captions, prices, medical-use claims, people, hands, or watermarks. Subject: two folded pristine white cotton hospital bedsheets, neatly stacked with visible fine woven cloth texture, thin stitched hems, soft natural folds, and one corner slightly unfolded and draping naturally onto the surface. Real cotton bed linen, thin sheet material, not terry cloth, not towels; NO pillows, NO other objects. Show enough large folded fabric structure and the unfolding corner for immediate recognition as bedsheets.",
+      "path": "/Users/rishabh/.codex/generated_images/01a0911a-5865-7370-b609-7cdc9fe02453/exec-0f9000a9-b5b2-42a7-9f8a-a0a0f3dc22bd.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "tool": "built-in image_gen",
+      "qc": "Visually passes product identity and plain studio composition; no text, unwanted branding, people, or watermarks."
+    },
+    {
+      "name": "underpads",
+      "prompt": "Use case: product-mockup. Generate ONE photorealistic catalog product photograph, landscape 3:2 aspect ratio, ideally 1536 × 1024 pixels. Matching seamless pale cool-gray studio background (#f4f7f8), soft upper-left daylight, realistic gentle contact shadow, fine real material detail. Product occupies 75–85% of the available frame height or width without cropping: entire product visible and comfortably framed. Neutral accurate colors, clear recognizable physical construction, real commercial product photography, restrained shallow depth of field keeping the product crisp. No collage, no text, no added branding, no captions, prices, medical-use claims, people, hands, or watermarks. Subject: one unfolded rectangular white disposable absorbent bed underpad with a diamond-quilted center and pale blue waterproof border/backing. Set it flat at a slight diagonal in a raised three-quarter tabletop view so its full rectangular form is visible. One corner gently lifted to reveal the blue underside. A single folded spare underpad lies beside it. Thin soft absorbent nonwoven material, subtly padded quilted surface and realistic plastic waterproof backing. No packaging, no brands, no bed or other props.",
+      "path": "/Users/rishabh/.codex/generated_images/01a0911a-5865-7370-b609-7cdc9fe02453/exec-dc88e36e-7db6-4c80-8bd3-89ee0ef2e2aa.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "tool": "built-in image_gen",
+      "qc": "Recognizable diamond-quilt underpad, blue waterproof rim/backing, lifted corner, one folded spare. Entire product visible but close to image edges."
+    },
+    {
+      "name": "sanitizer",
+      "prompt": "Use case: product-mockup. Generate ONE photorealistic catalog product photograph, landscape 3:2 aspect ratio, ideally 1536 × 1024 pixels. Matching seamless pale cool-gray studio background (#f4f7f8), soft upper-left daylight, realistic gentle contact shadow, fine real material detail. Product occupies 75–85% of the available frame height or width without cropping: entire product visible and comfortably framed. Neutral accurate colors, clear recognizable physical construction, real commercial product photography, restrained shallow depth of field keeping the product crisp. No collage, no text, no added branding, no captions, prices, medical-use claims, people, hands, or watermarks. Subject: one clear hand-sanitizer pump bottle containing colorless clear gel, with a matte white pump and a subtle pale-green collar, clean unprinted bottle. Upright, slightly three-quarter view. Soft refraction through clear bottle walls and a few small real gel bubbles in the gel. Realistic transparent PET plastic and coherent functional pump geometry, no label, no packaging. No antiseptic brown liquid, no colored liquid, no text.",
+      "path": "/Users/rishabh/.codex/generated_images/01a0911a-5865-7370-b609-7cdc9fe02453/exec-420ed80f-3d83-4f4a-ad0a-2f83ac533e85.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "tool": "built-in image_gen",
+      "qc": "Clear unprinted gel bottle, white pump and pale-green collar; many small bubbles, more than prompt's few."
+    }
+  ],
+  "installed_assets": [
+    {
+      "product": "Alexa",
+      "full_size": "/static/images/icu-guide/generated/alexa.webp",
+      "preview": "/static/images/icu-guide/generated/alexa-preview.webp"
+    },
+    {
+      "product": "Sanitizer",
+      "full_size": "/static/images/icu-guide/generated/sanitizer.webp",
+      "preview": "/static/images/icu-guide/generated/sanitizer-preview.webp"
+    },
+    {
+      "product": "Enema (Emergency)",
+      "full_size": "/static/images/icu-guide/generated/enema.webp",
+      "preview": "/static/images/icu-guide/generated/enema-preview.webp"
+    },
+    {
+      "product": "Cotton",
+      "full_size": "/static/images/icu-guide/generated/cotton.webp",
+      "preview": "/static/images/icu-guide/generated/cotton-preview.webp"
+    },
+    {
+      "product": "UnderPads",
+      "full_size": "/static/images/icu-guide/generated/underpads.webp",
+      "preview": "/static/images/icu-guide/generated/underpads-preview.webp"
+    },
+    {
+      "product": "Sheet",
+      "full_size": "/static/images/icu-guide/generated/sheet.webp",
+      "preview": "/static/images/icu-guide/generated/sheet-preview.webp"
+    }
+  ]
+}

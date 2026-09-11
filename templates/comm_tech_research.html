@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Communication Technology Research - Eye Tracking & BCI Research{% endblock %}
+{% block title %}Communication Technology Research - Eye Tracking & BCI Research | ALS CareKosh{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -526,12 +526,14 @@
             grid-template-columns: 1fr;
         }
     }
+    .bci-source-links { display: flex; flex-wrap: wrap; gap: .3rem 1rem; border-top: 1px solid #dce5e8; padding-top: 1rem; }
+    .bci-source-links a { color: #316b80; font-size: .82rem; line-height: 1.6; padding: .4rem 0; text-underline-offset: .2em; }
 </style>
 {% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="research-hero">
+<section class="guide-hero research-hero">
     <div class="container">
         <h1>Communication Technology Research</h1>
         <p>Emerging technologies, wearable eye trackers, and brain-computer interfaces for ALS communication.</p>
@@ -546,120 +548,33 @@
     </div>
 
     <div class="bci-note">
-        <h4>Note: BCIs are in clinical trials — not yet commercially available</h4>
-        <p>Currently only accessible via clinical trials in USA, Canada, UK, and Australia. Synchron is furthest along, working toward FDA pre-market approval (estimated ~2028). No BCI trials or commercial access in India. Wider availability expected in 3-5+ years.</p>
+        <h4>Research access and everyday availability</h4>
+        <p>{{ communication_data.categories.bci.warning }}</p>
+        <p style="margin-top: .75rem; font-size: .85rem;">BCI profiles reviewed 11 September 2026.</p>
     </div>
 
     <div class="bci-grid">
-        <div class="bci-card">
+        {% for device in communication_data.categories.bci.devices + communication_data.categories.bci.research_devices %}
+        <article class="bci-card">
             <div class="bci-card-header">
-                <h4>Synchron Stentrode</h4>
-                <div class="company">Synchron</div>
+                <h4>{{ device.name }}</h4>
+                <div class="company">{{ device.company }}</div>
             </div>
             <div class="bci-card-body">
-                <span class="status-badge status-trial">Clinical Trials (IDE)</span>
-                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Minimally
-                        Invasive</strong> (via blood vessels)</p>
+                <span class="status-badge status-research">{{ device.status }}</span>
+                <p style="margin: 1rem 0;">{{ device.invasiveness }}</p>
                 <ul class="device-notes">
-                    <li>No open brain surgery required</li>
-                    <li>Implanted via jugular vein</li>
-                    <li>Apple BCI HID integration announced (May 2025)</li>
-                    <li>Working toward FDA pre-market approval (estimated ~2028)</li>
+                    {% for note in device.key_notes %}<li>{{ note }}</li>{% endfor %}
                 </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">No trials in India. Estimated cost ~$40-50K (not yet covered by insurance).</p>
+                <p style="margin: 1rem 0; font-size: .9rem; color: #536b78;">{{ device.india_access }}</p>
+                <div class="bci-source-links">
+                    {% for source in device.sources %}
+                    <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ source.label }} <span aria-hidden="true">↗</span></a>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-
-        <div class="bci-card">
-            <div class="bci-card-header">
-                <h4>Neuralink Telepathy</h4>
-                <div class="company">Neuralink (Elon Musk)</div>
-            </div>
-            <div class="bci-card-body">
-                <span class="status-badge status-trial">Clinical Trials (PRIME Study)</span>
-                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Surgical</strong>
-                    (over 1,000 electrodes across 64 threads)</p>
-                <ul class="device-notes">
-                    <li>R1 surgical robot placement</li>
-                    <li>21+ participants implanted (as of Jan 2026)</li>
-                    <li>Trials active in USA, Canada, UK, UAE; Germany planned</li>
-                </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">No trials in India currently.</p>
-            </div>
-        </div>
-
-        <div class="bci-card">
-            <div class="bci-card-header">
-                <h4>BrainGate</h4>
-                <div class="company">BrainGate Consortium</div>
-            </div>
-            <div class="bci-card-body">
-                <span class="status-badge status-research">Research</span>
-                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Surgical</strong>
-                    (Utah Array, 100 electrodes)</p>
-                <ul class="device-notes">
-                    <li>UC Davis: 97.5% speech decoding accuracy for ALS patient (Aug 2024)</li>
-                    <li>Real-time voice synthesis advancement (June 2025)</li>
-                    <li>Academic research consortium (Brown, MGH, Stanford)</li>
-                    <li>20+ years of research experience</li>
-                </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">Academic only. No commercial access.</p>
-            </div>
-        </div>
-
-        <div class="bci-card">
-            <div class="bci-card-header">
-                <h4>Precision Neuroscience — Layer 7</h4>
-                <div class="company">Precision Neuroscience</div>
-            </div>
-            <div class="bci-card-body">
-                <span class="status-badge status-approved">FDA 510(k) Cleared (March 2025)</span>
-                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Minimally Invasive</strong> (thin film on brain surface)</p>
-                <ul class="device-notes">
-                    <li>1,024 electrodes on flexible film — no penetrating electrodes</li>
-                    <li>Inserted through sub-millimeter skull incision</li>
-                    <li>Up to 4 implants can be deployed simultaneously</li>
-                    <li>Chronic wireless version targeting first-in-human 2026</li>
-                </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">FDA-cleared for recording/monitoring/stimulation (up to 30 days). No trials in India.</p>
-            </div>
-        </div>
-
-        <div class="bci-card">
-            <div class="bci-card-header">
-                <h4>Paradromics — Connexus</h4>
-                <div class="company">Paradromics</div>
-            </div>
-            <div class="bci-card-body">
-                <span class="status-badge status-trial">FDA Approved for Trial (Nov 2025)</span>
-                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Fully Implantable</strong> (hundreds of micro-electrodes)</p>
-                <ul class="device-notes">
-                    <li>Specifically designed for speech restoration in paralysis</li>
-                    <li>200+ bits/second data transfer in pre-clinical trials</li>
-                    <li>First acute in-human recording at University of Michigan (June 2025), ahead of Connect-One trial launch</li>
-                    <li>Targets ALS, stroke, and spinal cord injury</li>
-                </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">Clinical trial stage. No trials in India.</p>
-            </div>
-        </div>
-
-        <div class="bci-card">
-            <div class="bci-card-header">
-                <h4>Cognixion — Axon-R Headset</h4>
-                <div class="company">Cognixion</div>
-            </div>
-            <div class="bci-card-body">
-                <span class="status-badge status-trial">FDA Breakthrough Device (2023) — Clinical Trial (Jan 2025)</span>
-                <p style="font-size: 1rem; color: var(--ct-text); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif;"><strong>Non-Invasive</strong> (EEG headset + AR + AI — no surgery required)</p>
-                <ul class="device-notes">
-                    <li>Only non-invasive BCI in clinical trials for late-stage ALS</li>
-                    <li>Combines EEG brain sensing, augmented reality, and adaptive AI</li>
-                    <li>Currently enrolling up to 10 late-stage ALS adults (NCT06810219)</li>
-                    <li>Funded in part by ALS Association's ALS Accel fund</li>
-                </ul>
-                <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--ct-muted); font-family: 'DM Sans', sans-serif;">No surgery — critical for patients who cannot undergo implant procedures. No trials in India.</p>
-            </div>
-        </div>
+        </article>
+        {% endfor %}
     </div>
 </section>
 

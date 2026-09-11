@@ -96,7 +96,9 @@ def ups_faq():
 @app.route('/home-icu-guide')
 def home_icu_guide():
     """Home ICU guide page"""
-    return render_template('home_icu_guide.html', page='icu_guide')
+    with (Path(__file__).resolve().parent / 'data' / 'icu_equipment_images.json').open(encoding='utf-8') as file:
+        equipment_gallery = json.load(file)
+    return render_template('home_icu_guide.html', page='icu_guide', equipment_gallery=equipment_gallery)
 
 @app.route('/daily-schedule')
 def daily_schedule():
@@ -279,7 +281,9 @@ def eye_tracker_setup_page():
 @app.route('/comm-tech-research')
 def comm_tech_research_page():
     """Communication Technology Research - Wearable eye-tracking and BCI research"""
-    return render_template('comm_tech_research.html')
+    with open(os.path.join(app.root_path, 'data', 'communication_technology.json'), encoding='utf-8') as f:
+        communication_data = json.load(f)
+    return render_template('comm_tech_research.html', communication_data=communication_data)
 
 @app.route('/api/communication-tech')
 def get_communication_tech():

@@ -1,316 +1,76 @@
 {% extends "base.html" %}
 
-{% block title %}AI Assistant - ALS Caregiver's Compass{% endblock %}
+{% block title %}AI Assistant | ALS CareKosh{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="/static/css/pages/ai-assistant.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/ai-assistant.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="ai-page-wrapper">
-
-    <!-- ── Sidebar ── -->
-    <aside class="sidebar">
+<div class="ai-page-wrapper" id="faqAssistant">
+    <aside class="assistant-sidebar" aria-label="Assistant options">
         <div class="sidebar-brand">
-            <div class="sidebar-brand-icon">
-                <i class="fas fa-compass"></i>
-            </div>
-            <span class="sidebar-brand-text">ALS Care Assistant</span>
+            <span class="sidebar-brand-icon" aria-hidden="true"><i class="fas fa-compass"></i></span>
+            <span>ALS Care Assistant</span>
         </div>
-
-        <div class="sidebar-section">
-            <h3>Suggested Questions</h3>
-            <button class="suggestion-btn"
-                onclick="setQuestion('What are the early symptoms of ALS and how does the disease typically progress?')">
-                Early symptoms &amp; disease progression
-            </button>
-            <button class="suggestion-btn"
-                onclick="setQuestion('When does a PALS typically need BiPAP respiratory support and what are the signs?')">
-                When is BiPAP needed?
-            </button>
-            <button class="suggestion-btn"
-                onclick="setQuestion('When should we consider a feeding tube (PEG) for a PALS and what are the indicators?')">
-                When is a feeding tube needed?
-            </button>
-            <button class="suggestion-btn"
-                onclick="setQuestion('What home care equipment is needed at different stages of ALS progression?')">
-                Home care equipment by stage
-            </button>
-            <button class="suggestion-btn"
-                onclick="setQuestion('What respiratory symptoms in ALS require immediate medical attention?')">
-                Respiratory emergency signs
-            </button>
-            <button class="suggestion-btn"
-                onclick="setQuestion('How can I prevent caregiver burnout while caring for someone with ALS?')">
-                Preventing caregiver burnout
-            </button>
-        </div>
-
-        <div class="sidebar-section">
-            <h3>Model</h3>
-            <select id="modelSelect" onchange="updateModelBadge()">
-                <option value="openai" selected>GPT-4o-mini (Fast)</option>
-                <option value="openai-advanced">GPT-4o (Advanced)</option>
-                <option value="gemini">Gemini 2.0 Flash</option>
-                <option value="gemini-thinking">Gemini 2.0 Flash Thinking</option>
-                <option value="claude">Claude Sonnet 4</option>
-            </select>
-            <div id="modelDescription" class="model-description">Fast ChatGPT &mdash; cost-effective</div>
+        <button type="button" id="assistantToolsToggle" class="assistant-tools-toggle" aria-expanded="false" aria-controls="assistantTools">
+            <span>Suggested questions &amp; models</span><i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div id="assistantTools" class="assistant-tools">
+            <section class="sidebar-section" aria-labelledby="suggestionsHeading">
+                <h2 id="suggestionsHeading">Suggested questions</h2>
+                <p class="sidebar-help">Choose a question to read its FAQ answer here.</p>
+                <div id="suggestedQuestions" aria-busy="true"></div>
+                <p id="suggestionsStatus" class="sidebar-help" role="status">Loading FAQ questions…</p>
+                <button type="button" id="retryQuestions" class="retry-questions" hidden>Try again</button>
+                <a class="browse-faq" href="{{ url_for('faq') }}">Browse all FAQs <span aria-hidden="true">↗</span></a>
+            </section>
+            <section class="sidebar-section model-section" aria-labelledby="modelHeading">
+                <h2 id="modelHeading"><label for="modelSelect">Models <span class="coming-soon-label">Coming soon</span></label></h2>
+                {# Display placeholders only. Verified against official provider docs on 11 September 2026. #}
+                <select id="modelSelect" aria-describedby="modelDescription">
+                    <option value="openai">GPT-6 Astra</option>
+                    <option value="claude">Claude Fable 5.1</option>
+                    <option value="grok">Grok 4.6</option>
+                </select>
+                <p id="modelDescription" class="sidebar-help">Model selection is a preview. AI-generated answers are coming soon.</p>
+            </section>
         </div>
     </aside>
 
-    <!-- ── Chat Interface ── -->
-    <main class="chat-container">
-
+    <section class="chat-container" aria-labelledby="assistantHeading">
         <header class="chat-header">
             <div>
-                <h2>AI Care Assistant</h2>
-                <div class="chat-header-sub">Powered by Medical Knowledge Base</div>
+                <h1 id="assistantHeading">AI Care Assistant</h1>
+                <p class="chat-header-sub">Answers from the ALS CareKosh FAQs</p>
             </div>
-            <span class="model-badge" id="currentModelBadge">GPT-4o-mini</span>
+            <span class="faq-mode-badge"><span aria-hidden="true"></span>FAQ mode</span>
         </header>
-
-        <div id="chatMessages" class="chat-messages">
-            <!-- Initial greeting -->
-            <div class="message ai">
-                <div class="avatar"><i class="fas fa-compass"></i></div>
-                <div class="message-content">
-                    <p>Hello. I am your AI Caregiver Assistant. I can help answer questions about ALS symptoms, daily care strategies, equipment, and emotional support.</p>
-                    <p><strong>Note:</strong> While I use verified medical sources, I am an AI, not a doctor. Always consult with your healthcare team for medical decisions.</p>
+        <div id="chatMessages" class="chat-messages" role="log" aria-label="Care assistant conversation" aria-live="polite" aria-relevant="additions" tabindex="0">
+            <div class="message assistant">
+                <div class="avatar" aria-hidden="true"><i class="fas fa-compass"></i></div>
+                <div class="message-content welcome-message">
+                    <p class="message-eyebrow">Here to help you find your way</p>
+                    <h2>Start with a question.</h2>
+                    <p>Choose a suggested question to see the answer from our FAQs, with practical guidance and links for further reading.</p>
+                    <p>AI answers to your own questions are coming soon. For now, you can also <a href="{{ url_for('faq') }}">explore all FAQs</a>.</p>
+                    <p class="care-reminder">This information supports general awareness. Discuss care and treatment decisions with your healthcare team.</p>
                 </div>
             </div>
         </div>
-
-        <div class="input-area">
+        <form id="questionForm" class="input-area">
+            <label for="userInput" class="visually-hidden">Your question</label>
             <div class="input-wrapper">
-                <div class="input-group">
-                    <textarea
-                        id="userInput"
-                        rows="1"
-                        placeholder="Ask about ALS care, symptoms, equipment…"
-                        oninput="autoResize(this)"
-                    ></textarea>
-                    <button id="sendBtn" class="send-btn" onclick="sendMessage()" title="Send message">
-                        <i class="fas fa-arrow-up"></i>
-                    </button>
-                </div>
+                <textarea id="userInput" rows="1" maxlength="4000" placeholder="Type a question…" aria-describedby="inputHint"></textarea>
+                <button type="submit" id="sendBtn" class="send-btn" aria-label="Send question" disabled><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
             </div>
-            <div class="input-hint">Press Enter to send &nbsp;&middot;&nbsp; Shift+Enter for new line</div>
-        </div>
-
-    </main>
-</div>
-
-<!-- Image Lightbox Modal -->
-<div id="imageModal" class="image-modal" onclick="closeImageModal()">
-    <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
-    <img id="modalImage" class="image-modal-content" onclick="event.stopPropagation()" alt="">
-    <div id="modalCaption" class="image-modal-caption"></div>
+            <p id="inputHint" class="input-hint">Personal questions: AI answers coming soon. <a href="{{ url_for('faq') }}">Browse FAQs</a><span class="keyboard-hint"> · Enter to send · Shift+Enter for a new line</span></p>
+        </form>
+        <noscript><p class="no-script-note">Enable JavaScript to use suggested questions, or <a href="{{ url_for('faq') }}">visit the FAQs</a>.</p></noscript>
+    </section>
 </div>
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-const chatMessages = document.getElementById('chatMessages');
-const userInput    = document.getElementById('userInput');
-const sendBtn      = document.getElementById('sendBtn');
-let isProcessing   = false;
-
-const MODEL_CONFIG = {
-    'openai':          { name: 'GPT-4o-mini',         description: 'Fast ChatGPT \u2014 cost-effective' },
-    'openai-advanced': { name: 'GPT-4o',              description: 'Advanced ChatGPT \u2014 more capable reasoning' },
-    'gemini':          { name: 'Gemini 2.0 Flash',    description: 'Fast Google AI \u2014 efficient responses' },
-    'gemini-thinking': { name: 'Gemini 2.0 Thinking', description: 'Advanced reasoning with extended thinking' },
-    'claude':          { name: 'Claude Sonnet 4',      description: 'Anthropic Claude \u2014 thoughtful and detailed' }
-};
-
-/* Auto-resize textarea as user types */
-function autoResize(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = Math.min(textarea.scrollHeight, 160) + 'px';
-}
-
-/* Fill input when a sidebar suggestion is clicked */
-function setQuestion(text) {
-    userInput.value = text;
-    autoResize(userInput);
-    userInput.focus();
-}
-
-/* Sync badge label and description when model changes */
-function updateModelBadge() {
-    const sel = document.getElementById('modelSelect').value;
-    const cfg = MODEL_CONFIG[sel];
-    if (!cfg) return;
-    document.getElementById('currentModelBadge').textContent = cfg.name;
-    document.getElementById('modelDescription').textContent  = cfg.description;
-}
-
-/* Slide-in animation for each new bubble */
-function animateIn(el) {
-    el.style.opacity   = '0';
-    el.style.transform = 'translateY(10px)';
-    requestAnimationFrame(() => {
-        el.style.transition = 'opacity 0.28s ease, transform 0.28s cubic-bezier(0.34,1.2,0.64,1)';
-        el.style.opacity    = '1';
-        el.style.transform  = 'translateY(0)';
-    });
-}
-
-/* Show three bouncing dots while AI is thinking */
-function showTypingIndicator() {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'message ai typing-indicator-wrapper';
-    wrapper.id        = 'typing-indicator';
-
-    const avatar = document.createElement('div');
-    avatar.className = 'avatar';
-    avatar.innerHTML = '<i class="fas fa-compass"></i>';
-
-    const dots = document.createElement('div');
-    dots.className = 'typing-indicator';
-    dots.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-
-    wrapper.appendChild(avatar);
-    wrapper.appendChild(dots);
-    chatMessages.appendChild(wrapper);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    animateIn(wrapper);
-}
-
-function removeTypingIndicator() {
-    const el = document.getElementById('typing-indicator');
-    if (el) el.remove();
-}
-
-/* Create and append a message bubble */
-function appendMessage(role, text, images) {
-    images = images || [];
-    const msgDiv = document.createElement('div');
-    msgDiv.className = 'message ' + role;
-
-    const avatar = document.createElement('div');
-    avatar.className = 'avatar';
-    avatar.innerHTML = role === 'ai'
-        ? '<i class="fas fa-compass"></i>'
-        : '<i class="fas fa-user"></i>';
-
-    const content = document.createElement('div');
-    content.className = 'message-content';
-
-    if (role === 'ai') {
-        try   { content.innerHTML = marked.parse(text); }
-        catch (e) { content.textContent = text; }
-
-        if (images && images.length > 0) {
-            const imagesDiv = document.createElement('div');
-            imagesDiv.className = 'message-images';
-            images.forEach(function(img) {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'message-image-wrapper';
-                wrapper.onclick   = function() { openImageModal(img.path, img.description); };
-
-                const imgEl = document.createElement('img');
-                imgEl.src       = '/api/image/' + img.path;
-                imgEl.alt       = img.alt_text || img.description;
-                imgEl.className = 'message-image';
-                imgEl.onerror   = function() { wrapper.style.display = 'none'; };
-
-                const cap = document.createElement('div');
-                cap.className   = 'message-image-caption';
-                cap.textContent = img.description;
-
-                wrapper.appendChild(imgEl);
-                wrapper.appendChild(cap);
-                imagesDiv.appendChild(wrapper);
-            });
-            content.appendChild(imagesDiv);
-        }
-    } else {
-        content.textContent = text;
-    }
-
-    msgDiv.appendChild(avatar);
-    msgDiv.appendChild(content);
-    chatMessages.appendChild(msgDiv);
-    animateIn(msgDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-/* Send the message to the Flask API */
-async function sendMessage() {
-    const text = userInput.value.trim();
-    if (!text || isProcessing) return;
-
-    isProcessing       = true;
-    userInput.disabled = true;
-    sendBtn.disabled   = true;
-
-    appendMessage('user', text);
-    userInput.value        = '';
-    userInput.style.height = 'auto';
-    showTypingIndicator();
-
-    try {
-        const model    = document.getElementById('modelSelect').value;
-        const response = await fetch('/api/ai-assistant', {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ message: text, model: model })
-        });
-        const data = await response.json();
-        removeTypingIndicator();
-
-        if (data.response) {
-            appendMessage('ai', data.response, data.images || []);
-        } else if (data.error) {
-            appendMessage('ai', 'Sorry, an error occurred: ' + data.error);
-        } else {
-            appendMessage('ai', "I couldn't process that request. Please try again.");
-        }
-    } catch (err) {
-        console.error(err);
-        removeTypingIndicator();
-        appendMessage('ai', "I'm having trouble connecting. Please check your connection and try again.");
-    } finally {
-        isProcessing       = false;
-        userInput.disabled = false;
-        sendBtn.disabled   = false;
-        userInput.focus();
-    }
-}
-
-/* Enter = send, Shift+Enter = new line */
-userInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-});
-
-/* Image lightbox */
-function openImageModal(path, caption) {
-    document.getElementById('imageModal').classList.add('active');
-    document.getElementById('modalImage').src           = '/api/image/' + path;
-    document.getElementById('modalCaption').textContent = caption || '';
-}
-
-function closeImageModal() {
-    document.getElementById('imageModal').classList.remove('active');
-}
-
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeImageModal(); });
-
-/* Size the chat wrapper to fill exactly the viewport minus the navbar */
-function sizeChatWrapper() {
-    const wrapper = document.querySelector('.ai-page-wrapper');
-    if (!wrapper) return;
-    const navbar = document.querySelector('.navbar');
-    const navH   = navbar ? navbar.offsetHeight : 130;
-    wrapper.style.height = (window.innerHeight - navH) + 'px';
-}
-sizeChatWrapper();
-window.addEventListener('resize', sizeChatWrapper);
-
-/* Init */
-updateModelBadge();
-</script>
+<script src="{{ url_for('static', filename='js/faq-assistant.js') }}" defer></script>
 {% endblock %}

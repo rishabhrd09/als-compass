@@ -1,0 +1,161 @@
+/* Presentation only. Existing page order, grids, tables and content stay in place. */
+:root {
+    --font-reading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-editorial: 'Crimson Pro', Georgia, serif;
+    --guide-ink: #19394b;
+    --guide-muted: #536b78;
+    --guide-accent: #4b7d89;
+    --guide-line: #dce5e8;
+    --guide-tint: #f1f6f7;
+    --guide-ease: cubic-bezier(.22, .61, .36, 1);
+}
+body { font-optical-sizing: auto; text-rendering: optimizeLegibility; }
+.polished-guide { background: #f6f8f9; font-family: var(--font-reading); }
+.polished-guide :is(h2, h3, h4, h5, h6) { font-family: var(--font-heading); font-weight: 650; letter-spacing: -.025em; }
+.polished-guide :is(button, select, textarea, input) { font-family: var(--font-reading); }
+.polished-guide strong { font-weight: 650; }
+/* Display type echoes Understanding ALS without moving the existing hero copy. */
+.polished-guide .guide-hero {
+    background: radial-gradient(ellipse at 83% 12%, #426b7f38, transparent 48%), linear-gradient(115deg, #1b3b50, #132d3e 72%, #173b4c) !important;
+    isolation: isolate;
+}
+.polished-guide .guide-hero h1 {
+    font-family: var(--font-editorial) !important;
+    font-weight: 400 !important;
+    font-size: clamp(2.4rem, 4.1vw, 3.45rem) !important;
+    line-height: 1.12;
+    letter-spacing: -.035em !important;
+    color: #f6f9f9;
+    text-wrap: balance;
+}
+.polished-guide .guide-hero h1 i { font-size: .62em; vertical-align: .1em; color: #a8c6d2; }
+.polished-guide .guide-hero p { color: #c5d8e1 !important; font-family: var(--font-reading); line-height: 1.75; }
+.polished-guide .guide-hero::before { background: radial-gradient(ellipse at 10% 100%, #82bfce14, transparent 58%); }
+.polished-guide :is(.ct-hero, .icu-hero) > .container { z-index: 2; }
+/* Ambient graphics sit behind the content and never occupy layout space. */
+.polished-guide .guide-hero > .guide-atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: .52;
+    mask-image: linear-gradient(90deg, #000, #0009 16%, #0000 33%, #0000 67%, #0009 84%, #000);
+    -webkit-mask-image: linear-gradient(90deg, #000, #0009 16%, #0000 33%, #0000 67%, #0009 84%, #000);
+}
+.guide-atmosphere canvas { display: block; width: 100%; height: 100%; }
+.polished-guide .guide-hero > .guide-motion-control {
+    position: absolute;
+    right: 1.25rem;
+    top: 1rem;
+    z-index: 3;
+    padding: .45rem .7rem;
+    min-height: 2.75rem;
+    color: #c1d6de;
+    background: #10293966;
+    border: 1px solid #b2d0de33;
+    border-radius: 2rem;
+    font: 500 .875rem/1.3 var(--font-reading);
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease;
+}
+.guide-hero .guide-motion-control:hover { background: #284b5b; border-color: #a9cbd17a; }
+/* Navigation surfaces retain their positions, wrapping and current selection. */
+.polished-guide :is(.ct-nav, .et-tabs) {
+    background: #fffffff0;
+    backdrop-filter: blur(20px) saturate(125%);
+    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    border: 1px solid #dbe5e8;
+    box-shadow: 0 5px 20px #142e4010, inset 0 1px #fff;
+    border-radius: 12px;
+}
+.polished-guide :is(.ct-nav-card, .ct-nav-card span, .et-tab, .category-pill) { font-family: var(--font-reading); font-weight: 550; letter-spacing: -.01em; }
+.polished-guide :is(.ct-nav-card, .et-tab, .category-pill) { transition: color .2s, background .2s, border-color .2s; }
+.polished-guide :is(.ct-nav-card.active, .et-tab.active, .category-pill.active) { background: #234b60; color: #fff; box-shadow: 0 2px 6px #17354b10; }
+.polished-guide :is(.icu-hero-nav, .pb-hero-nav, .et-hero-nav, .research-hero-nav, .ep-hero-nav) { background: #adcbd80b; border-color: #bad6e225; box-shadow: inset 0 1px #ffffff08; }
+.polished-guide :is(.icu-hero-nav a, .pb-hero-nav, .et-hero-nav, .research-hero-nav, .ep-hero-nav a) { color: #d9e8ed; font-weight: 550; border-radius: 8px; }
+.polished-guide :is(.icu-hero-nav a, .pb-hero-nav, .et-hero-nav, .research-hero-nav):hover { background: #bddce018; color: #fff; border-color: #bad7df55; }
+/* Fine complete borders and soft elevation replace decoration on content panels. */
+.polished-guide :is(.ct-device-card, .ct-software-card, .ct-budget-section, .ct-bci-card, .icu-card, .equipment-section, .pb-card, .et-path-card, .et-setup-guide, .et-checklist, .research-card, .device-card, .bci-card, .academic-card, .tool-card, .backup-card, .research-item) {
+    border-color: var(--guide-line);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px #19394b03, 0 10px 30px #19394b04;
+    transition: border-color .24s ease, box-shadow .3s var(--guide-ease), background .24s ease;
+}
+.polished-guide :is(.ct-device-card, .ct-software-card, .icu-card, .et-path-card, .research-card, .device-card, .academic-card, .tool-card, .research-item):hover {
+    transform: none;
+    border-color: #b4cbd3;
+    box-shadow: 0 6px 24px #19394b0c;
+}
+.polished-guide :is(.ct-device-header, .research-card-header, .et-setup-guide-header) { background: #f1f6f8; border-color: var(--guide-line); }
+.polished-guide :is(.ct-device-card.recommended, .ct-software-card.recommended, .et-path-card.recommended) { border-color: #779fad; box-shadow: 0 0 0 1px #779fad2e, 0 8px 28px #1e3a5f06; }
+.polished-guide .ct-device-card.recommended .ct-device-header { background: #eaf3f5; }
+.polished-guide :is(.ct-device-name, .ct-software-name, .icu-card h3, .et-step-title) { font-weight: 650; line-height: 1.4; letter-spacing: -.02em; }
+.polished-guide :is(.ct-section-header, .et-section-header, .equipment-category-heading, .icu-section-title, .section-header) { border-bottom: 1px solid #d5e1e5; }
+.polished-guide :is(.ct-section-header, .et-section-header)::after { background: #678f9c; height: 1px; bottom: -1px; }
+.polished-guide :is(.ct-section-header h2, .et-section-header h2, .equipment-section h2, .equipment-category-heading, .icu-section-title, .pb-card h2, .section-header h2) { font-weight: 650; color: var(--guide-ink); line-height: 1.3; }
+.polished-guide :is(.ct-section-desc, .ct-alert p, .ct-device-notes li, .ct-device-verdict, .ct-budget-desc, .ct-budget-note, .et-section-desc, .et-step-content, .pb-card p, .section-desc, .research-card-body p, .device-notes, .tool-card p) { font-family: var(--font-reading); color: var(--guide-muted); line-height: 1.8; }
+.polished-guide :is(.ct-device-notes li, .device-notes, .et-step-content p) { font-size: 1rem; }
+.polished-guide :is(.ct-device-category, .ct-price-inr, .ct-software-platform, .et-step-image figcaption, .pb-img-caption, .spec-note, .tool-meta) { color: #586f7a; }
+.polished-guide :is(.ct-alert-inner, .ct-device-verdict, .category-intro, .pb-info-box, .key-recommendations, .conditional-guidance) { background: #eef5f7; border: 1px solid #d8e6eb; border-radius: 10px; box-shadow: none; }
+/* Existing warning/success colors, badges and urgent instructions remain semantic. */
+.polished-guide :is(.equipment-table, .pb-table, .et-requirements-table, .et-comparison-table, .faq-table) { font-family: var(--font-reading); font-variant-numeric: tabular-nums; }
+.polished-guide :is(.equipment-table, .pb-table, .et-requirements-table, .et-comparison-table, .faq-table) th { font-family: var(--font-heading); font-weight: 650; color: #294b5e; letter-spacing: .025em; }
+.polished-guide :is(.equipment-table, .pb-table, .et-requirements-table, .et-comparison-table, .faq-table) thead tr { background: #edf3f6; }
+.polished-guide :is(.equipment-table, .pb-table, .et-requirements-table, .et-comparison-table, .faq-table) td { border-bottom-color: #e7edf0; }
+.polished-guide .equipment-table .cat-cell { font-weight: 650; }
+.polished-guide .equipment-table .items-cell { color: #435e6c; font-weight: 450; }
+.polished-guide :is(.ct-price-usd, .ct-price-inr, .pb-stat-value, .pb-option-value, .spec-value) { font-variant-numeric: tabular-nums; }
+.polished-guide :is(.pb-stat-card, .pb-option-item, .spec-item) { background: #f3f7f9; border-color: #dce6eb; border-radius: 10px; }
+/* Preserve every equipment photo and screenshot; improve only the surrounding frame. */
+.polished-guide .icu-image-placeholder { background: #f3f6f7; border: 1px solid #e4ebee; border-radius: 8px; }
+.polished-guide .icu-image-placeholder img { transition: transform .5s var(--guide-ease); }
+.polished-guide .icu-image-placeholder:hover img { transform: scale(1.025); }
+.polished-guide :is(.et-step-image, .equipment-image) { border-color: #dae4e9; box-shadow: 0 4px 18px #203c4d08; }
+.polished-guide :is(.ct-setup-btn, .et-path-btn, .et-export-btn, .download-btn, .link-btn) { font-family: var(--font-reading); font-weight: 600; border-radius: 7px; transition: background .2s, border-color .2s, box-shadow .25s; }
+.polished-guide :is(.ct-modal, .image-lightbox .lightbox-content) { border: 1px solid #ffffff38; box-shadow: 0 24px 80px #0c263545; }
+.polished-guide :is(.ct-modal-overlay, .image-lightbox) { backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+/* FAQ answers stay in their original accordion; search and category controls stay put. */
+.polished-guide :is(.faq-question, .faq-section-title) { font-family: var(--font-heading); font-weight: 600; letter-spacing: -.02em; }
+.polished-guide .faq-answer { font-family: var(--font-reading); line-height: 1.8; }
+.polished-guide :is(.faq-search input, .faq-search) { border-color: #cadbe2; box-shadow: none; }
+.polished-guide .faq-item { border-color: #dce6e9; box-shadow: 0 2px 10px #203c4d03; }
+.polished-guide :is(.evidence-tag, .faq-note) { font-size: .875rem; }
+/* Chat retains its exact sidebar/composer geometry. */
+.polished-guide .ai-page-wrapper { background: #f5f8fa; }
+.polished-guide .sidebar { background: #f1f5f7; border-color: #dce6eb; }
+.polished-guide :is(.sidebar-brand, .sidebar-section + .sidebar-section, .chat-header, .input-area) { border-color: #dce6eb; }
+.polished-guide :is(.sidebar-brand-icon, .avatar) { box-shadow: none; }
+.polished-guide .sidebar-section h3 { font-size: .875rem; color: #627884; font-weight: 650; }
+.polished-guide .suggestion-btn { font-family: var(--font-reading); color: #425e6c; border-color: #dde7ec; }
+.polished-guide .suggestion-btn:hover { background: #e5eef2; color: #214a5c; transform: none; }
+.polished-guide .chat-container { background: #fbfcfd; }
+.polished-guide .chat-header { background: #ffffffd9; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.polished-guide .chat-header h2 { font-weight: 650; }
+.polished-guide .message-content { font-family: var(--font-reading); line-height: 1.8; }
+.polished-guide .message.ai .message-content { background: #f0f5f7; border-color: #dde8ed; }
+.polished-guide .input-area { background: #fbfcfd; }
+.polished-guide .input-group { background: #fff; border-color: #c7d9e1; box-shadow: 0 3px 16px #19394b07; }
+.polished-guide :is(.model-description, .chat-header-sub, .input-hint) { color: #607783; }
+/* Minimal typography-only refinement for the existing homepage. No geometry rules. */
+.home-page :is(.dash-link-label, .research-column-title, .card-title, .resource-card-title) { font-family: var(--font-heading); letter-spacing: -.022em; font-weight: 650; }
+.home-page :is(.dash-link-desc, .treatment-item-desc, .research-news-desc, .card-description) { font-family: var(--font-reading); line-height: 1.7; }
+.home-page .dashboard-nav-heading { font-size: .875rem; letter-spacing: .09em; }
+/* Touch never depends on hover animation to expose core information. */
+@media (hover: none) {
+    .polished-guide .icu-image-placeholder:hover img { transform: none; }
+}
+@media (max-width: 640px) {
+    .polished-guide .guide-hero h1 { font-size: clamp(2.1rem, 7vw, 2.65rem) !important; }
+    .polished-guide .guide-hero > .guide-atmosphere { opacity: .25; }
+    .polished-guide .guide-hero > .guide-motion-control { top: .65rem; right: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .polished-guide .icu-image-placeholder:hover img { transform: none; }
+}
+@media print {
+    .guide-atmosphere, .guide-motion-control { display: none !important; }
+    .polished-guide .guide-hero { background: white !important; }
+    .polished-guide .guide-hero :is(h1, p) { color: #19394b !important; }
+}

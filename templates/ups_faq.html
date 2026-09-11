@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "care_base.html" %}
 
-{% block title %}Power Backup FAQ | ALS Caregiver's Compass{% endblock %}
+{% block title %}Power Backup FAQ | ALS CareKosh{% endblock %}
 
-{% block content %}
+{% block care_header %}
 <style>
     /* PDF-Optimized Styling */
     .ups-faq-container {
@@ -382,7 +382,7 @@
 </style>
 
 <!-- Dark Hero -->
-<section style="text-align: center; padding: 5rem 2rem 4rem; background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%); position: relative; overflow: hidden;">
+<section class="guide-hero" style="text-align: center; padding: 5rem 2rem 4rem; background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%); position: relative; overflow: hidden;">
     <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(126,184,212,0.12) 0%, transparent 70%); pointer-events: none;"></div>
     <div class="container" style="position: relative; z-index: 1;">
         <h1 style="font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 800; color: #ffffff; margin: 0 0 0.75rem; letter-spacing: -0.03em; font-family: 'Manrope', sans-serif;">Power Backup FAQ</h1>
@@ -392,330 +392,70 @@
         </button>
     </div>
 </section>
+{% endblock %}
 
+{% block care_content %}
 <div class="ups-faq-container">
-
-    <!-- FAQ 1: Why is this life-critical? -->
-    <div class="faq-section">
+    <aside class="power-safety-note" aria-labelledby="powerFaqSafety">
+        <h2 id="powerFaqSafety">Experience, calculations and verified specifications</h2>
+        <p>This FAQ combines the author’s household experience with explanatory calculations. <strong>Experiences are not guarantees of performance in another home.</strong> Use the <a href="/power-backup-guide#power-calculator">updated Power Calculator</a> for explicit planning assumptions, and have the actual installation and clinical backup plan assessed by qualified professionals.</p>
+    </aside>
+    <section class="faq-section" id="care-section-1" data-care-section>
         <h2 class="faq-question">How to Plan Power Backup for Home ICU?</h2>
-
-        <div class="alert-box">
-            <p><strong>Why is This Important?</strong></p>
-            <p style="margin-top: 0.5rem;">This may seem like an overly cautious plan, but we are planning for the
-                worst-case scenario. You might not face any problems throughout the year, but that one rainy day when
-                your area experiences severe power outages - the panic it creates is overwhelming. Having more backup
-                gives you more time and peace of mind.</p>
-        </div>
-
-        <h3>Real Experience: Be Prepared</h3>
-        <p>Last July, we faced a power outage of around <strong>10 hours</strong> in our area. Unexpected long outages
-            during monsoon season are common. Good power backup planning can help you stay calm during such emergencies.
-        </p>
-
-        <h4>Key Preparations</h4>
+        <p><strong>Reported household experience:</strong> the original account describes a roughly 10-hour outage during monsoon conditions. That is a reason to prepare for prolonged disruption, not evidence that 10 hours is sufficient for every household or a verified national outage range.</p>
         <ul>
-            <li><strong>Plan for at least 10 hours of backup</strong> - This gives you enough buffer for extended
-                outages</li>
-            <li><strong>Save contact numbers of people who can arrange generators immediately</strong> - Know who to
-                call when
-                UPS backup runs low</li>
-            <li><strong>Keep electricity board contact numbers handy</strong> - For outage updates and priority
-                restoration</li>
-            <li><strong>Pre-inform the electricity department about your medical condition</strong> - Many electricity
-                boards have provisions for priority power restoration for homes with life-support equipment</li>
+            <li>Choose a planning duration using local outage history, required equipment and the time needed to reach an alternate safe source of care.</li>
+            <li>Keep the electricity utility, care team, equipment provider, electrician, generator provider and transport contacts accessible without internet.</li>
+            <li>Tell the electricity utility that someone depends on medical equipment and ask about available local arrangements. Priority restoration cannot be assumed or guaranteed.</li>
+            <li>Check the fully charged backup arrangement under provider-supervised conditions; do not test by taking away the patient’s only functioning supply.</li>
         </ul>
-
-
-        <h3>Understanding Power Backup</h3>
-        <p>Your power backup system consists of three key components: <strong>batteries</strong> that store energy
-            (measured in Amp-hours), <strong>devices</strong> that consume energy (measured in Watts), and the
-            <strong>UPS</strong> (Uninterruptible Power Supply) that converts and delivers stored energy to your
-            equipment.
-        </p>
-
-        <div class="info-box">
-            <p><strong>Backup Time Formula:</strong><br>
-                Backup Time = (Battery Capacity in Wh × 0.75) ÷ Total Load in Watts</p>
-            <p style="margin-top: 0.5rem; font-size: 9.5pt; color: #666;">The 75% efficiency accounts for battery and
-                UPS energy losses.</p>
-        </div>
-    </div>
-
-    <!-- FAQ 2: Reference Setup -->
-    <div class="faq-section">
+    </section>
+    <section class="faq-section" id="care-section-2" data-care-section>
         <h2 class="faq-question">What Equipment Do We Use? (Reference Setup)</h2>
-
-        <h3>Our UPS and Battery Configuration</h3>
-        <p>The following equipment is used in our home ICU setup. You can use this as a reference when planning your own
-            backup system.</p>
-
-        <!-- Equipment Images -->
-        <div class="equipment-images">
-            <figure class="equipment-image">
-                <img src="{{ url_for('static', filename='images/ups-faq/ups_label_3kva.png') }}"
-                    alt="Uniline 3KVA UPS Label">
-                <figcaption>Uniline 3KVA UPS - Front Label</figcaption>
-            </figure>
-            <figure class="equipment-image">
-                <img src="{{ url_for('static', filename='images/ups-faq/ups_specifications.png') }}"
-                    alt="UPS Specifications">
-                <figcaption>UPS Technical Specifications</figcaption>
-            </figure>
-            <figure class="equipment-image">
-                <img src="{{ url_for('static', filename='images/ups-faq/exide_battery.png') }}"
-                    alt="Exide PowerSafe Plus Battery">
-                <figcaption>Exide PowerSafe Plus 12V 42Ah</figcaption>
-            </figure>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Equipment</th>
-                    <th>Model</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>UPS</td>
-                    <td>Uniline 3kVA (72V DC input, 230V AC output)</td>
-                    <td style="text-align: center;">2</td>
-                </tr>
-                <tr>
-                    <td>Batteries</td>
-                    <td>Exide PowerSafe Plus 12V 42Ah (6 per UPS)</td>
-                    <td style="text-align: center;">12</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Power Consumption of Devices</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Device</th>
-                    <th>Power (Watts)</th>
-                    <th>Runs All The Time?</th>
-                    <th>Effective Load</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Ventilator</td>
-                    <td style="text-align: center;">120W</td>
-                    <td style="text-align: center;">Yes (100%)</td>
-                    <td style="text-align: center;">120W</td>
-                </tr>
-                <tr>
-                    <td>Oxygen Concentrator</td>
-                    <td style="text-align: center;">610W</td>
-                    <td style="text-align: center;">Sometimes (~25%)</td>
-                    <td style="text-align: center;">~153W</td>
-                </tr>
-                <tr>
-                    <td>Suction Machine</td>
-                    <td style="text-align: center;">75W</td>
-                    <td style="text-align: center;">Sometimes (~25%)</td>
-                    <td style="text-align: center;">~19W</td>
-                </tr>
-                <tr style="background: #f8f8f8; font-weight: 600;">
-                    <td>Total Average Load</td>
-                    <td style="text-align: center;">-</td>
-                    <td style="text-align: center;">-</td>
-                    <td style="text-align: center; color: #1e3a5f;">~292W</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- FAQ 3: Understanding Usage % -->
-    <div class="faq-section">
-        <h2 class="faq-question">What Does "25% Usage" Mean?</h2>
-
-        <p>This is an important concept for planning backup time accurately. Consider this example: You need 10 hours of
-            backup during a power cut.</p>
-
-        <p>The oxygen concentrator doesn't run continuously - perhaps it runs for 2.5 hours out of those 10 hours.
-            That's 2.5 ÷ 10 = 25% duty cycle.</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Device</th>
-                    <th>Why Not 100%?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Ventilator</strong></td>
-                    <td>Always on → PALS needs continuous breathing support</td>
-                </tr>
-                <tr>
-                    <td><strong>Oxygen Concentrator</strong></td>
-                    <td>Used only when extra oxygen is needed</td>
-                </tr>
-                <tr>
-                    <td><strong>Suction Machine</strong></td>
-                    <td>Used only during suctioning (a few minutes at a time)</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Why This Matters</h3>
-        <p>Calculating with realistic usage dramatically affects backup time:</p>
-
-        <div class="backup-cards">
-            <div class="backup-card worst">
-                <div class="label">Worst Case</div>
-                <div class="desc">All devices at 100%</div>
-                <div class="value">~2.8 hrs</div>
-                <div class="sub">805W load</div>
-            </div>
-            <div class="backup-card realistic">
-                <div class="label">Realistic Usage</div>
-                <div class="desc">25% duty cycle</div>
-                <div class="value">~7.8 hrs</div>
-                <div class="sub">292W effective</div>
-            </div>
-            <div class="backup-card">
-                <div class="label">Ventilator Only</div>
-                <div class="desc">Emergency mode</div>
-                <div class="value">~19 hrs</div>
-                <div class="sub">120W load</div>
-            </div>
-        </div>
-
-        <div class="alert-box">
-            <p><strong>Real-World Observation:</strong> While calculations show ~7.8 hours of backup, during an actual
-                severe outage, we observed around <strong>6.5 hours</strong> of backup time. Always expect 15-20% less
-                than calculated values due to battery aging and real-world conditions.</p>
-        </div>
-
-        <h4>Planning Your Backup</h4>
-        <p>Based on your power requirements, you have two options:</p>
-        <ul>
-            <li><strong>Option A:</strong> Have a backup UPS + battery set (Recommended)</li>
-            <li><strong>Option B:</strong> Have an additional battery set with higher Ah capacity</li>
-        </ul>
-
+        {% include 'partials/power_reference.html' %}
+    </section>
+    <section class="faq-section" id="care-section-3" data-care-section>
+        <h2 class="faq-question">What Does “25% Usage” Mean?</h2>
+        <p>Run time % = time operating ÷ total planning interval × 100. A device used for 2.5 hours during a 10-hour interval has an average run time of 25%. This does not describe its electrical power factor or its rated motor duty cycle.</p>
+        <p><strong>Do not assume 25% oxygen use.</strong> The prescribed treatment and actual needs determine operation. For continuously needed equipment, use 100%. Average energy calculations also do not remove the need for the UPS to handle all simultaneous running loads and start-up surges.</p>
         <div class="info-box">
-            <p><strong>Why Two Complete UPS + Battery Sets?</strong></p>
-            <p style="margin-top: 0.5rem;">UPS devices are generally reliable, but during severe power outages with
-                frequent fluctuations, they can sometimes develop problems. A sudden voltage spike or prolonged stress
-                can cause internal faults. Having a <strong>second complete UPS + battery set</strong> ensures you have
-                a fully functional backup if your primary UPS fails - not just extra battery capacity, but a complete
-                working system ready to take over.</p>
+            <p><strong>Reported observation:</strong> the author’s original account reports around <strong>6.5 hours</strong> of backup during a severe outage. The household’s usual device use is described above, but the exact run times during that outage, charge state, battery age, temperature and measurement log have not been supplied for independent verification. The former instruction to “always expect 15–20% less” has been removed: a single household experience cannot establish a universal derating factor.</p>
         </div>
-
-        <div class="info-box">
-            <p><strong>Why emergency mode matters:</strong> If one UPS runs out, the ventilator on backup UPS keeps
-                running → buying you critical time to arrange a generator, contact an electrician, or get help.</p>
-        </div>
-    </div>
-
-
-
-    <!-- FAQ 5: Key Tips -->
-    <div class="faq-section">
+        <p>An additional approved battery bank may extend energy capacity; a separate approved power source may address some equipment-failure risks. Neither is automatically compatible or sufficient. A larger battery can require a different charger and longer recharge time. A second UPS does not automatically provide safe failover.</p>
+    </section>
+    <section class="faq-section" id="care-section-4" data-care-section>
         <h2 class="faq-question">What Are the Key Tips for Power Backup?</h2>
-
-        <ul>
-            <li><strong>Keep a second UPS as backup, or use an Inverter for secondary backup</strong> → In case the
-                primary UPS fails</li>
-            <li><strong>Test your backup monthly</strong> → Batteries degrade over time</li>
-            <li><strong>Know your electrician's number</strong> → For quick repairs</li>
-            <li><strong>Label all plugs clearly</strong> → Know which device is on which UPS</li>
-            <li><strong>Keep generator fuel stocked</strong> → You can't buy fuel during a power cut</li>
-            <li><strong>Charge batteries fully</strong> → Partial charge = reduced backup time</li>
-        </ul>
-    </div>
-
-    <!-- FAQ 6: Warning Signs -->
-    <div class="faq-section">
+        {% include 'partials/power_practical.html' %}
+    </section>
+    <section class="faq-section" id="care-section-5" data-care-section>
         <h2 class="faq-question">What Are the Warning Signs to Watch?</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Warning Sign</th>
-                    <th>What It Means</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>UPS beeping continuously</strong></td>
-                    <td>Battery low or overloaded</td>
-                </tr>
-                <tr>
-                    <td><strong>Backup time decreasing</strong></td>
-                    <td>Batteries aging, may need replacement</td>
-                </tr>
-                <tr>
-                    <td><strong>Devices shutting off</strong></td>
-                    <td>UPS overloaded or battery dead</td>
-                </tr>
-                <tr>
-                    <td><strong>UPS not switching on</strong></td>
-                    <td>Internal fault, use backup UPS immediately</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="alert-box">
-            <p><strong>Important:</strong> If your UPS shows any warning signs, have it checked immediately. Don't wait
-                for a power outage to discover problems.</p>
-        </div>
-    </div>
-
-
-
-    <!-- FAQ 8: How to Split Load -->
-    <div class="faq-section">
+        <p>Read the exact alarm code and manual, protect the person’s power supply using the agreed plan, and contact the equipment provider. A beep pattern alone does not identify the fault.</p>
+        <table class="pb-table"><thead><tr><th>Observation</th><th>What to check with the provider</th></tr></thead><tbody>
+            <tr><td>Repeated or continuous beeping</td><td>Look at the status/alarm code. Possible states include battery operation, low battery, overload or other faults; interpretation is model-specific.</td></tr>
+            <tr><td>Shorter backup duration</td><td>Check charge state, changed loads, settings, battery age/condition, temperature and any fault history. A shorter duration alone does not establish the cause.</td></tr>
+            <tr><td>Connected device stops or UPS fails to start</td><td>Activate the patient-specific backup/escalation plan. Possible power-source, connection, overload, battery or device faults require qualified assessment.</td></tr>
+            <tr><td>Swelling, leakage, unusual heat, burning smell or smoke</td><td>Treat this as a potential electrical/fire hazard. Keep people clear and seek qualified or emergency assistance; do not open or repair the battery bank.</td></tr>
+        </tbody></table>
+    </section>
+    <section class="faq-section" id="care-section-6" data-care-section>
         <h2 class="faq-question">How Should I Split the Load Across Two UPS Units?</h2>
-
-        <h3>Recommended Configuration</h3>
-        <p></p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>UPS Unit</th>
-                    <th>Connected Devices</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>UPS 1 (Primary)</strong></td>
-                    <td>Ventilator + Suction</td>
-                </tr>
-                <tr>
-                    <td><strong>UPS 2 (Secondary)</strong></td>
-                    <td>Oxygen Concentrator</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- FAQ 9: Battery Capacity Calculation -->
-    <div class="faq-section">
+        <p>The older FAQ grouped “ventilator + suction” on one UPS, while the guide suggested “ventilator alone.” Neither is universally correct. The clinical team must identify every essential device and acceptable interruption; the equipment provider must verify capacity and continuity for each.</p>
+        <p>Separating loads can isolate some failures, but each device still depends on its assigned source unless a validated backup path exists. An oxygen concentrator or suction machine is not optional simply because it is on a second UPS.</p>
+        <p>Do not improvise by unplugging life-support devices when a battery empties, joining UPS outputs or connecting one UPS into another. Arrange and verify the approved transfer procedure in advance. <a href="https://www.se.com/sg/en/faqs/FA157424/">Manufacturer guidance on daisy-chaining</a>.</p>
+    </section>
+    <section class="faq-section" id="care-section-7" data-care-section>
         <h2 class="faq-question">How Do I Calculate Battery Capacity Needed?</h2>
-
-        <h4>Step 1: Calculate Total Energy Needed</h4>
-        <p>Energy (Wh) = Load (Watts) × Backup Time (Hours) ÷ 0.75</p>
-        <p><em>Example:</em> For 292W load for 8 hours: 292 × 8 ÷ 0.75 = 3,115 Wh</p>
-
-        <h4>Step 2: Choose Battery Configuration</h4>
-        <p>For a 72V UPS system with 12V batteries (6 batteries in series):</p>
-        <p>Battery Ah needed = Energy (Wh) ÷ 72V = 3,115 ÷ 72 = 43.3 Ah</p>
-        <p>So you would need 6 batteries of at least 45Ah each.</p>
-
-        <h4>Our Actual Setup</h4>
-        <p>Each UPS has: 6 × 42Ah × 12V = 3,024 Wh storage.<br>
-            After 75% efficiency: 2,268 Wh usable energy.<br>
-            At 292W average load: 2,268 ÷ 292 = ~7.8 hours backup.</p>
-    </div>
-
-
+        <p>First calculate <strong>AC energy = average watts × required hours</strong>. Apply the chosen extra energy allowance. Only then, if a suitable nominal-to-AC usable fraction is known or explicitly assumed, divide by that fraction to model the nominal battery Wh needed. Divide nominal Wh by the actual bank voltage for Ah.</p>
+        <div class="info-box">
+            <p><strong>Worked arithmetic, not a battery recommendation:</strong> using the example load 291.25 W for 8 hours gives 2,330 Wh at the AC loads. Adding 20% gives 2,796 Wh. If the usable fraction were 0.75, required nominal energy would be 3,728 Wh; at 72 V this is <strong>51.78 Ah</strong>. A 72 V / 42 Ah bank does not reach that target even in this simplified model.</p>
+        </div>
+        <p>Without the extra 20%, the same assumptions give 3,106.67 nominal Wh, or 43.15 Ah at 72 V. Neither number approves a particular commercial battery or proves real runtime. The old recommendation to simply buy six batteries of at least 45 Ah ignored those limitations and the added planning allowance.</p>
+        <p>In a series string, Ah does not add: six 12 V / 42 Ah batteries make 72 V / 42 Ah, with 3,024 nominal Wh. Available capacity depends on discharge conditions; the manufacturer’s 20-hour Ah rating must not be treated as a constant at every load.</p>
+        <p><strong>Temperature:</strong> high temperature accelerates lead-acid aging; cold reduces available capacity. There is no universal “Indian summer = 60–65% usable” conversion. Use model-specific data and charging/temperature instructions. <a href="https://www.yuasa.com/media/akeneo_connector/asset_files/I/n/Instructions_NP_REW_2b57.pdf">Yuasa instructions</a>.</p>
+    </section>
+    <section class="faq-section" id="power-faq-sources" data-care-section>
+        <h2 class="faq-question">Sources and verification limits</h2>
+        {% include 'partials/power_sources.html' %}
+    </section>
 </div>
 {% endblock %}

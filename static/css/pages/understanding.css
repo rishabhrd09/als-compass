@@ -57,26 +57,28 @@
 .quiet-note p { font-size: 14px; line-height: 1.75; color: #43626c; }
 .section-heading-row { display: flex; gap: 24px; align-items: flex-end; justify-content: space-between; }
 .figure-index { font-size: 9px; color: #5c7880; letter-spacing: .08em; white-space: nowrap; padding-bottom: 29px; }
-.neuron-explorer { background: #0b202c; border-radius: 12px; overflow: hidden; border: 1px solid #213e4b; box-shadow: 0 24px 65px #0b202c12; color: #d5e3e8; }
+.model-scope { font-size: 15px; line-height: 1.75; color: var(--als-muted); margin: -12px 0 28px; max-width: 760px; }
+.neuron-explorer { background: #0b202c; border-radius: 12px; overflow: hidden; border: 1px solid #213e4b; box-shadow: 0 24px 65px #0b202c12; color: #d5e3e8; container-type: inline-size; }
 .explorer-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 17px 22px; background: #ffffff03; border-bottom: 1px solid #ffffff12; }
 .state-switch { display: flex; border: 1px solid #ffffff20; padding: 3px; border-radius: 30px; }
-.neuron-explorer button { color: #b7cdd5; background: transparent; cursor: pointer; font: 500 11px/1.3 'DM Sans', sans-serif; }
-.neuron-explorer button { min-height: 40px; }
+.neuron-explorer button { color: #c7dbe2; background: transparent; cursor: pointer; font: 500 14px/1.4 'DM Sans', sans-serif; min-height: 44px; }
+.neuron-explorer button:focus-visible { outline: 2px solid #c5edf3; outline-offset: 3px; }
 .state-switch button { border: 0; border-radius: 25px; padding: 10px 13px; }
 .state-switch button[aria-pressed=true] { background: #d2e5e6; color: #133948; }
-.model-status { font-size: 9px; letter-spacing: .05em; color: #9bbac4; }
-.neuron-viewport { height: clamp(340px, 34vw, 480px); position: relative; overflow: hidden; background: radial-gradient(ellipse at 32% 45%, #1b3b4c 0%, #0b202c 75%); }
+.model-status { font-size: 12px; color: #adc6cf; }
+.neuron-viewport { height: clamp(360px, 34vw, 480px); position: relative; overflow: hidden; background: radial-gradient(ellipse at 32% 45%, #1b3b4c 0%, #0b202c 75%); }
 .neuron-viewport canvas { width: 100%; height: 100%; display: block; position: relative; opacity: 0; }
 .model-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .72; }
 .neuron-explorer[data-state=ready] canvas { opacity: 1; }
 .neuron-explorer[data-state=ready] .model-poster { display: none; }
 .anatomy-labels { position: absolute; inset: 0; pointer-events: none; display: none; }
 .neuron-explorer[data-state=ready] .anatomy-labels { display: block; }
-.anatomy-labels span { position: absolute; color: #d2e4e9; background: #0b202cbf; border: 1px solid #ffffff20; border-radius: 4px; padding: 5px 9px; white-space: nowrap; font-size: 9px; transform: translate(-50%,-100%); }
-.viewport-caption { position: absolute; bottom: 25px; left: 25px; max-width: 65%; pointer-events: none; }
-.viewport-caption-kicker { font-size: 8px; letter-spacing: .15em; color: #a1c4cf; display: block; margin-bottom: 6px; }
-.viewport-caption p { color: #d9e7ec; font-size: 12px; line-height: 1.6; text-shadow: 0 1px 5px #0b202c; }
-.neuron-explorer .motion-toggle { position: absolute; bottom: 25px; right: 20px; display: flex; gap: 7px; align-items: center; background: #132e3ae6; border: 1px solid #ffffff25; border-radius: 25px; padding: 10px 15px; }
+.anatomy-labels span { position: absolute; color: #e0eef1; background: #0b202ce8; border: 1px solid #ffffff30; border-radius: 5px; padding: 6px 9px; white-space: nowrap; font-size: 12px; transform: translate(-50%,-100%); }
+.explorer-caption-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 25px; border-top: 1px solid #ffffff12; }
+.viewport-caption { min-width: 0; }
+.viewport-caption-kicker { font-size: 10px; letter-spacing: .11em; color: #accbd4; display: block; margin-bottom: 7px; }
+.viewport-caption p { color: #d9e7ec; font-size: 15px; line-height: 1.65; margin: 0; }
+.neuron-explorer .motion-toggle { display: flex; flex-shrink: 0; gap: 7px; align-items: center; background: #132e3ae6; border: 1px solid #ffffff25; border-radius: 25px; padding: 10px 15px; }
 .explorer-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 17px 22px; border-block: 1px solid #ffffff12; background: #ffffff04; }
 .camera-views { display: flex; gap: 8px; flex-wrap: wrap; }
 .camera-views button { padding: 9px 11px; border: 1px solid transparent; border-radius: 5px; }
@@ -84,11 +86,23 @@
 .neuron-explorer button:hover:not(:disabled) { color: white; background: #49778866; }
 .neuron-explorer button:disabled { opacity: .45; cursor: default; }
 .neuron-explorer .tour-button { border: 1px solid #7c9eab66; padding: 9px 14px; border-radius: 25px; display: flex; align-items: center; gap: 7px; }
+.signal-sequence { list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; padding: 22px 25px 16px; margin: 0; }
+.signal-sequence li { display: flex; gap: 10px; padding: 14px 12px; border: 1px solid #ffffff16; border-radius: 8px; align-items: flex-start; }
+.signal-sequence li[aria-current=step] { background: #284b56; border-color: #83b8c1; }
+.signal-number { display: grid; place-items: center; width: 24px; height: 24px; flex: 0 0 24px; border-radius: 50%; border: 1px solid #76949e; color: #d5e8ee; font-size: 12px; }
+.signal-sequence li[aria-current=step] .signal-number { color: #102f3b; background: #c8e5e6; border-color: #c8e5e6; }
+.signal-sequence strong { color: #e3edf1; font-size: 14px; line-height: 1.5; }
+.signal-sequence p { font-size: 13px; line-height: 1.65; color: #b8ced6; margin: 7px 0 0; }
+.model-key { display: flex; flex-wrap: wrap; gap: 12px 22px; padding: 8px 25px 22px; border-bottom: 1px solid #ffffff12; font-size: 13px; color: #c2d6dd; }
+.model-key > span { display: inline-flex; align-items: center; gap: 8px; }
+.key-swatch { display: inline-block; flex: 0 0 13px; width: 13px; height: 13px; border-radius: 4px; border: 1px solid #ffffff40; }
+.key-nerve { background: #4bb0ba; }.key-myelin { background: #cfc6a7; }.key-muscle { background: #c86f66; }
+.key-lost { background: #64747c; border: 1px dashed #d1dce0; }
 .explorer-detail { display: flex; gap: 12px; padding: 22px 25px; align-items: baseline; }
-.explorer-detail p { font-size: 12px; color: #abc5ce; line-height: 1.8; }
+.explorer-detail p { font-size: 15px; color: #bdd2d9; line-height: 1.8; margin: 0; }
 .explorer-detail strong { color: #e0eef0; }
 .detail-dot { width: 6px; height: 6px; border-radius: 50%; background: #a0d2cf; flex: 0 0 6px; }
-.figure-caption { font-size: 11px; line-height: 1.8; color: #61777d; margin-top: 15px; }
+.figure-caption { font-size: 13px; line-height: 1.8; color: #536e76; margin-top: 15px; }
 .film-section { display: grid; grid-template-columns: .7fr 1fr; gap: 32px; align-items: center; margin-top: 45px; }
 .film-copy .eyebrow { color: #5c7b80; margin-bottom: 15px; }
 .film-copy h3 { font-size: 25px; margin-bottom: 14px; }
@@ -129,6 +143,9 @@
 .closing-thought span { display: block; margin-top: 22px; font-size: 10px; text-transform: uppercase; letter-spacing: .13em; color: #617c82; }
 .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 2px; z-index: 150; pointer-events: none; }
 .reading-progress span { display: block; height: 100%; width: 100%; background: #80aeb7; transform: scaleX(0); transform-origin: left; }
+@container (max-width: 600px) {
+    .signal-sequence { grid-template-columns: 1fr; }
+}
 @media(min-width:1600px) { .als-container { width: min(1450px,calc(100% - 140px)); } .als-layout { grid-template-columns: 210px minmax(0,1fr); gap: 100px; } }
 @media(max-width:1100px) {
     .als-container { width: calc(100% - 64px); }
@@ -178,15 +195,15 @@
     .neuron-viewport { height: 310px; }
     .explorer-toolbar { padding: 14px 12px; gap: 10px; }
     .state-switch { width: 100%; }
-    .state-switch button { flex: 1; font-size: 10px; padding: 10px 8px; }
-    .model-status { font-size: 8px; }
-    .anatomy-labels span { font-size: 8px; padding: 4px 6px; }
-    .viewport-caption { bottom: 62px; left: 15px; max-width: calc(100% - 30px); }
-    .viewport-caption p { font-size: 11px; }
-    .neuron-explorer .motion-toggle { bottom: 12px; right: 14px; padding: 9px 13px; }
+    .state-switch button { flex: 1; font-size: 13px; padding: 10px 8px; }
+    .anatomy-labels span { font-size: 11px; padding: 5px 7px; }
+    .explorer-caption-row { flex-wrap: wrap; padding: 18px 15px; gap: 14px; }
     .explorer-controls { padding: 14px 12px; gap: 13px; }
-    .camera-views { gap: 1px; justify-content: space-between; width: 100%; }
-    .camera-views button { font-size: 9px; padding: 9px 7px; }
+    .camera-views { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
+    .camera-views button { padding: 9px 7px; }
+    .signal-sequence { grid-template-columns: 1fr; padding: 18px 15px 12px; }
+    .signal-sequence p { font-size: 14px; }
+    .model-key { padding: 8px 15px 18px; }
     .explorer-detail { padding: 18px 15px; }
     .symptom-list { grid-template-columns: 1fr; }
     .sources-section > a { flex-direction: column; gap: 3px; }

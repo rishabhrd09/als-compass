@@ -12,15 +12,20 @@
     --shadow-lg: 0 14px 44px #1837470b;
 }
 body { background: var(--clinical-paper); }
-html { scroll-padding-top: 112px; }
+html { scroll-padding-top: 132px; }
 :focus-visible { outline: 3px solid #4d929e; outline-offset: 5px; }
 .skip-link { position: fixed; top: 8px; left: 16px; transform: translateY(-180%); padding: 12px 20px; color: white; background: #183747; z-index: 1000; }
 .skip-link:focus { transform: none; }
 .navbar { background: rgba(255,255,255,.9); border-color: #18374712; backdrop-filter: blur(22px) saturate(130%); -webkit-backdrop-filter: blur(22px) saturate(130%); }
 .navbar.scrolled { background: rgba(255,255,255,.94); border-color: #1837471c; box-shadow: 0 6px 24px #18374706; }
-.navbar .navbar-container { padding: 24px 0; min-height: 108px; gap: 40px; max-width: 1360px; }
+.navbar .navbar-container { padding: 8px 0; min-height: 120px; gap: 32px; max-width: 1360px; }
 .navbar .navbar-brand { gap: 14px; }
-.navbar .navbar-logo { width: 48px; height: 48px; }
+/* Frame the supplied artwork without changing the original image file. */
+.navbar .navbar-logo-artwork { display: block; position: relative; width: clamp(300px, 25vw, 360px); aspect-ratio: 1700 / 496; overflow: hidden; mix-blend-mode: multiply; }
+.navbar-logo-artwork img { position: absolute; width: 113.6471%; max-width: none; height: auto; left: -7.0588%; top: -29.2339%; }
+.navbar .navbar-logo-compact { display: none; align-items: center; gap: 10px; }
+.navbar .navbar-logo-symbol { display: block; position: relative; width: 44px; height: 44px; flex-shrink: 0; overflow: hidden; mix-blend-mode: multiply; }
+.navbar-logo-symbol img { position: absolute; width: 386.4%; max-width: none; height: auto; left: -24%; top: -28.8%; }
 .navbar .navbar-title { font-size: 28px; line-height: 1.2; letter-spacing: -.8px; font-weight: 750; }
 .navbar .navbar-nav { flex: 1; justify-content: center; gap: clamp(12px, 1.5vw, 24px); margin: 0; padding: 0; }
 .navbar .nav-link { padding: 14px; font-size: 18px; line-height: 1.5; font-weight: 650; letter-spacing: 0; border-radius: 6px; color: #354f60; }
@@ -64,8 +69,8 @@ html { scroll-padding-top: 112px; }
 .home-page .cards-section, .home-page .resources-section { background: #fff; }
 .home-page .explore-card { background: #f8faf8; }
 .home-page .card-title, .home-page .explore-section-title { font-weight: 650; }
-@media(max-width: 1100px) {
-    .navbar .navbar-container { min-height: 96px; padding: 22px 0; gap: 24px; }
+@media(max-width: 1150px) {
+    .navbar .navbar-container { min-height: 104px; padding: 8px 0; gap: 24px; }
     .navbar .navbar-nav { display: none; }
     .navbar .mobile-menu-button { display: block; }
 }
@@ -77,8 +82,9 @@ html { scroll-padding-top: 112px; }
 @media(max-width: 640px) {
     .navbar .navbar-container { min-height: 84px; padding: 16px 0; gap: 16px; }
     .navbar .navbar-brand { gap: 10px; }
+    .navbar .navbar-logo-artwork { display: none; }
+    .navbar .navbar-logo-compact { display: flex; }
     .navbar .navbar-title { font-size: 24px; }
-    .navbar .navbar-logo { width: 40px; height: 40px; }
     .navbar .container { padding-inline: 16px; }
     .home-page .hero-center { padding: 44px 24px; }
     .home-page .home-neuron-image { width: 100%; opacity: .15; }

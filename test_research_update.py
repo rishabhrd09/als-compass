@@ -162,7 +162,7 @@ class UpdateWorkflowTests(unittest.TestCase):
         draft['last_updated'] = '2030-01-02'
         with patch('app.load_research_data', return_value=draft):
             html = app.test_client().get('/research-updates').get_data(as_text=True)
-        self.assertIn('Evidence through 2 January 2030 | ALS Compass</title>', html)
+        self.assertIn('Evidence through 2 January 2030 | ALS CareKosh</title>', html)
         self.assertIn('download="als-research-2030-01-02.json"', html)
 
 

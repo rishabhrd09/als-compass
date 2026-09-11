@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Understanding ALS — ALS Compass{% endblock %}
+{% block title %}Understanding ALS | ALS CareKosh{% endblock %}
 {% block body_class %}understanding-page{% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/pages/understanding.css">
@@ -70,6 +70,7 @@
         <section id="neuron-explorer" class="als-section explorer-section">
             <div class="section-heading-row"><div><p class="eyebrow section-number">03 / A closer look</p><h2>A small connection.<br>A vital role.</h2></div><span class="figure-index">FIG. 01 — MOTOR NEURON</span></div>
             <p class="section-intro">Follow a signal from a nerve cell to a muscle. Choose a view, or take the guided tour.</p>
+            <p class="model-scope" id="model-scope">This close-up shows a <strong>lower motor neuron</strong> and its connections to muscle. ALS can also affect the upper motor neurons in the brain, described above.</p>
             <div class="neuron-explorer" id="explorer" data-state="loading">
                 <div class="explorer-toolbar">
                     <div class="state-switch" role="group" aria-label="Connection to illustrate">
@@ -80,11 +81,13 @@
                 </div>
                 <div class="neuron-viewport" id="neuron-viewport">
                     <img class="model-poster" src="/static/images/education/motor-neuron.webp" alt="A branching motor neuron; its axon carries a signal toward a muscle" width="1672" height="941">
-                    <canvas id="neuron-canvas" role="img" aria-label="Interactive conceptual 3D model of a lower motor neuron connecting to muscle fibers" aria-describedby="model-description"></canvas>
+                    <canvas id="neuron-canvas" role="img" aria-label="Interactive conceptual 3D model of a lower motor neuron connecting to muscle fibers" aria-describedby="model-scope model-description model-key"></canvas>
                     <div class="anatomy-labels" aria-hidden="true">
-                        <span data-anatomy="soma">Cell body</span><span data-anatomy="axon">Axon &amp; myelin</span><span data-anatomy="junction">Nerve–muscle junction</span>
+                        <span data-anatomy="dendrites">Dendrites · input branches</span><span data-anatomy="soma">Cell body</span><span data-anatomy="axon">Axon &amp; myelin</span><span data-anatomy="junction">Nerve–muscle junction</span><span data-anatomy="muscle">Muscle fibers · segments</span><span data-anatomy="loss" hidden>Connection lost · example</span>
                     </div>
-                    <div class="viewport-caption"><span class="viewport-caption-kicker" id="view-kicker">THE COMPLETE PATHWAY</span><p id="view-caption">A motor neuron connects to muscle fibers through its long axon.</p></div>
+                </div>
+                <div class="explorer-caption-row">
+                    <div class="viewport-caption"><span class="viewport-caption-kicker" id="view-kicker">THE NERVE–MUSCLE CONNECTION</span><p id="view-caption">One lower motor neuron can supply several muscle fibers. Follow the three steps below.</p></div>
                     <button type="button" class="motion-toggle" id="model-motion" aria-label="Pause signal animation" disabled><span aria-hidden="true">Ⅱ</span> Pause</button>
                 </div>
                 <div class="explorer-controls">
@@ -96,12 +99,23 @@
                     </div>
                     <button type="button" id="guided-tour" class="tour-button" aria-pressed="false" disabled><span aria-hidden="true">▷</span> Guided tour</button>
                 </div>
+                <ol class="signal-sequence" aria-label="How a nerve signal activates muscle">
+                    <li data-signal-step="0"><span class="signal-number">1</span><div><strong>Electrical signal</strong><p>The blue light travels along the nerve to its ending.</p></div></li>
+                    <li data-signal-step="1"><span class="signal-number">2</span><div><strong>Chemical messenger</strong><p>Gold dots represent acetylcholine crossing the tiny gap.</p></div></li>
+                    <li data-signal-step="2"><span class="signal-number">3</span><div><strong>Muscle response</strong><p>A connected fiber is activated and briefly shortens.</p></div></li>
+                </ol>
+                <div class="model-key" id="model-key">
+                    <span><i class="key-swatch key-nerve" aria-hidden="true"></i>Nerve cell &amp; axon</span>
+                    <span><i class="key-swatch key-myelin" aria-hidden="true"></i>Myelin · insulating covering</span>
+                    <span><i class="key-swatch key-muscle" aria-hidden="true"></i>Muscle fiber</span>
+                    <span><i class="key-swatch key-lost" aria-hidden="true"></i>Lost connection · gap shown</span>
+                </div>
                 <div class="explorer-detail" id="model-description" aria-live="polite">
-                    <span class="detail-dot" aria-hidden="true"></span><p><strong>A working connection.</strong> An electrical signal travels along the axon. At its terminals, chemical messengers help activate the muscle.</p>
+                    <span class="detail-dot" aria-hidden="true"></span><p><strong>A working connection.</strong> The blue light represents an electrical signal in the nerve. At the nerve ending, gold dots represent acetylcholine, a chemical messenger. It crosses the tiny gap and triggers muscle activation; the connected fiber then shortens.</p>
                 </div>
                 <noscript><p class="figure-caption">The illustrated film and transcript below are available without JavaScript.</p></noscript>
             </div>
-            <p class="figure-caption">Conceptual model of a lower motor neuron. Shapes, colors, signal speed, and changes are simplified for learning; they do not represent clinical stages or an individual’s disease course.</p>
+            <p class="figure-caption">This simplified model shows one aspect of ALS. Colors, fiber counts and movement are illustrative; the junction gap is enlarged and signals are slowed down. Wasting happens over time. Switching views does not represent recovery or predict anyone’s disease course. Other changes, including muscle twitching, are not shown.</p>
 
             <div class="film-section">
                 <div class="film-copy"><p class="eyebrow">The connection, in motion</p><h3>Watch the illustrated guide.</h3><p>A quiet, close-up journey from the nerve cell to its connection with muscle.</p><span class="film-duration">30 seconds · Silent film with captions</span></div>
@@ -167,6 +181,7 @@
 <script src="/static/vendor/three-r128.min.js" defer></script>
 <script src="/static/vendor/gsap-3.12.5.min.js" defer></script>
 <script src="/static/vendor/ScrollTrigger-3.12.5.min.js" defer></script>
+<script src="/static/js/education/neuron-lesson.js" defer></script>
 <script src="/static/js/education/neuron-model.js" defer></script>
 <script src="/static/js/education/neural-globe.js" defer></script>
 <script src="/static/js/education/understanding.js" defer></script>

@@ -18,6 +18,16 @@ A comprehensive web application and AI assistant for ALS caregivers that brings 
 
 ## Quick Start
 
+### Publish the current website
+
+The current assistant displays FAQ answers; personal AI responses are coming soon.
+Follow the [deployment guide](docs/deployment-guide.md) for GitHub → a static build
+→ Cloudflare Pages, using your existing Cloudflare domain. The
+[reusable deployment prompt](prompts/deploy_als_carekosh.md) prepares and tests the
+static export before launch. The export is not implemented yet; the guide labels
+its proposed build commands. These documents do not deploy the website by
+themselves.
+
 ### Refreshing research content
 
 For a source-checked update, ask the project assistant to follow

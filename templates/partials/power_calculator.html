@@ -1,0 +1,66 @@
+<section id="power-calculator" class="pb-card" data-care-section>
+    <h2>Power Calculator</h2>
+    <p>Estimate the electrical energy your devices need. This tool does not approve a UPS, battery bank or life-support installation.</p>
+    <p><strong>Use measured or manufacturer-specified AC input watts.</strong> Include required humidifiers, accessories and charging loads. Running watts do not capture motor start-up surges. VA is optional, but required to screen a UPS’s apparent-power rating.</p>
+    <p class="pb-info-box"><strong>Run time % is a planning input, not a treatment instruction.</strong> Keep continuously required equipment at 100%. Use a lower percentage only when it reflects the prescribed care plan and documented operation <strong>during the entered backup duration</strong>. Two operating hours within an 8-hour outage means 25%, even if the daily average is lower. Do not reduce oxygen, ventilation or suction availability to extend backup.</p>
+    <p id="powerCalculatorUnavailable">The interactive calculator needs JavaScript and its calculation files to load. The formulas and worked examples below remain available.</p>
+    <form id="powerPlanningForm" novalidate>
+        <fieldset id="powerCalculatorControls" disabled>
+            <legend class="power-visually-hidden">Power planning inputs</legend>
+            <div id="powerDeviceList"></div>
+            <div class="power-actions">
+                <button type="button" id="addPowerDevice" class="power-secondary">+ Add device</button>
+                <button type="button" id="loadPowerExample" class="power-secondary">Load illustrative devices</button>
+            </div>
+            <p id="powerExampleNotice" class="pb-info-box" hidden><strong>Example inputs loaded:</strong> 120 W, 610 W and 75 W are the site’s illustrative device values, not verified ratings for your equipment. All start at 100% run time. Replace these values before planning your own setup.</p>
+            <div class="power-settings">
+                <label for="desiredBackupHours">Backup duration (hours)<input id="desiredBackupHours" type="number" min="0" max="168" step="any" value="8" required><small>Enter a positive duration, up to 168 hours.</small></label>
+                <label for="energyAllowance">Extra energy allowance (%)<input id="energyAllowance" type="number" min="0" max="100" step="any" value="20" required><small>20% is an illustrative allowance, not a medical safety standard.</small></label>
+                <label for="powerHeadroom">Continuous power headroom (%)<input id="powerHeadroom" type="number" min="0" max="100" step="any" value="25" required><small>Does not establish start-up, transfer or overload compatibility.</small></label>
+            </div>
+            <div class="power-battery-option">
+                <label class="power-checkbox"><input type="checkbox" id="includeBatteryModel"> Also model a battery bank using an explicit assumption</label>
+                <fieldset id="batteryModelFields" hidden disabled>
+                    <legend>Optional battery model — illustrative only</legend>
+                    <p>Enter the bank’s nominal DC voltage and Ah, not the UPS’s 230 V AC output. The usable fraction is <strong>AC energy delivered to these loads ÷ nominal battery Wh</strong>. It must account for discharge rate, cutoff, charge, age, temperature and all UPS losses, including its own consumption. A manufacturer’s inverter-efficiency figure alone is insufficient. If unknown, leave this model off.</p>
+                    <div class="power-settings">
+                        <label for="bankVoltage">Bank voltage (V DC)<input id="bankVoltage" type="number" min="0" max="1000" step="any" placeholder="e.g. 72" required></label>
+                        <label for="bankAh">Bank capacity (Ah)<input id="bankAh" type="number" min="0" max="100000" step="any" placeholder="e.g. 42" required><small>Six identical 12 V / 42 Ah batteries in series make 72 V / 42 Ah.</small></label>
+                        <label for="usableFraction">Assumed nominal-to-AC usable fraction (%)<input id="usableFraction" type="number" min="0" max="100" step="any" placeholder="No universal default" required><small>Use evidence for this bank and load; do not transfer it to a different setup.</small></label>
+                    </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="power-primary">Calculate planning estimates</button>
+        </fieldset>
+    </form>
+    <p id="calculatorError" class="power-error" role="alert" tabindex="-1" hidden></p>
+    <section id="calcResults" class="power-results" tabindex="-1" aria-label="Power planning results" hidden>
+        <h3>Planning estimates</h3>
+        <p><strong>Assumption-based calculations, not measured runtime or equipment recommendations.</strong> Editing any input clears these results until you calculate again.</p>
+        <div class="power-stat-grid">
+            <div><span>All devices running together</span><strong id="resultWorstCase"></strong><small>Running load; excludes unentered start-up surge</small></div>
+            <div><span>Average for your entered pattern</span><strong id="resultEffective"></strong></div>
+            <div><span>Continuous AC energy target</span><strong id="resultEnergy"></strong><small>Includes your extra energy allowance</small></div>
+        </div>
+        <p id="resultCapacity" class="pb-info-box"></p>
+        <p>Both the UPS’s <strong>W and VA</strong> ratings must be sufficient. Also verify start-up/inrush, overload duration, waveform, transfer behavior, earthing and the medical device manufacturer’s power requirements. Passing the arithmetic does not establish compatibility. <a href="https://www.eaton.com/us/en-us/products/backup-power-ups-surge-it-power-distribution/backup-power-ups/va-versus-watts--eaton.html">W and VA explained by Eaton</a>.</p>
+        <p id="intermittentWarning" class="power-error" hidden>The entered pattern uses less than 100% run time for at least one device. Longer operation increases energy demand. Average load must not be used to size the UPS’s instantaneous output capacity or to ration prescribed treatment.</p>
+        <div class="care-table-scroll" tabindex="0" role="region" aria-label="Energy estimates">
+            <table class="pb-table"><thead><tr><th>Scenario</th><th>Average load</th><th>AC energy before allowance</th><th>AC energy with allowance</th></tr></thead><tbody id="scenarioResults"></tbody></table>
+        </div>
+        <div id="batteryModelResults" hidden><h3>Optional battery model</h3><p id="bankSummary"></p><div id="bankResults"></div></div>
+        <details class="power-breakdown"><summary>View calculation breakdown</summary><pre id="resultBreakdown"></pre></details>
+        <p class="pb-info-box">Before relying on backup power, obtain device-specific approval and a documented commissioning check from your equipment provider and qualified electrical professional. Agree a backup, alarm and evacuation plan with the clinical team. Do not test by disconnecting a dependent patient’s only working power source.</p>
+    </section>
+</section>
+<template id="powerDeviceTemplate">
+    <div class="power-device">
+        <div class="power-device-heading"><strong class="power-device-number"></strong><button type="button" class="power-remove">Remove</button></div>
+        <div class="power-device-fields">
+            <label>Device name<input data-field="name" type="text" maxlength="160" placeholder="Enter your device" required></label>
+            <label>AC input watts (W)<input data-field="watts" type="number" min="0" max="100000" step="any" required></label>
+            <label>Run time (%)<input data-field="usagePct" type="number" min="0" max="100" step="any" value="100" required></label>
+            <label>AC input VA, if known<input data-field="va" type="number" min="0" max="100000" step="any" placeholder="Optional"></label>
+        </div>
+    </div>
+</template>

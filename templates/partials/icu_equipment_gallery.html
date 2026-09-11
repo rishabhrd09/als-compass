@@ -1,0 +1,41 @@
+{% macro equipment_card(item) %}
+<article class="icu-card">
+    {% if item.images %}
+    {% set photo = item.images[0] %}
+    <a class="icu-image-placeholder{% if photo.kind == 'generated' %} equipment-generated-image{% endif %}" href="{{ photo.src }}" data-care-image data-caption="{{ photo.caption }}" data-credit="{{ photo.credit }}" aria-label="Expand image: {{ item.name }}">
+        <img src="{{ photo.preview }}" alt="{{ photo.caption }}" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy" decoding="async">
+        <span class="equipment-expand"><span aria-hidden="true">⤢</span> Expand image</span>
+    </a>
+    {% else %}
+    <div class="equipment-photo-pending">Photo unavailable</div>
+    {% endif %}
+    <div class="equipment-card-copy">
+        <h3>{{ item.name }}</h3>
+        {% if item.images %}
+        <p class="equipment-photo-caption">{{ photo.caption }}</p>
+        <div class="equipment-image-meta">
+            {% if photo.kind == 'generated' %}<span>AI-generated product illustration</span>
+            {% elif photo.source %}<a href="{{ photo.source }}" target="_blank" rel="noopener">Image source <span aria-hidden="true">↗</span></a>
+            {% else %}<span>Caregiver photograph</span>{% endif %}
+            {% for extra in item.images[1:] %}<a href="{{ extra.src }}" data-care-image data-caption="{{ extra.caption }}" data-credit="{{ extra.credit }}">View packaging <span aria-hidden="true">⤢</span></a>{% endfor %}
+        </div>
+        {% endif %}
+        {% if item.note %}<p class="equipment-card-note">{{ item.note }}</p>{% endif %}
+    </div>
+</article>
+{% endmacro %}
+
+<div class="equipment-gallery-intro">
+    <p class="care-nav-label">Equipment in detail</p>
+    <p>Select any image to view it large, zoom in, or open the original. Product examples show what an item looks like; confirm the correct model and compatibility with your care team.</p>
+</div>
+{% for group in equipment_gallery.groups %}
+<section class="equipment-group" id="{{ group.id }}" data-care-section>
+    <h2 class="equipment-category-heading"><span class="care-section-number" aria-hidden="true">{{ '%02d' | format(loop.index) }}</span>{{ group.name }}</h2>
+    <div class="icu-equipment-grid">{% for item in group['items'] %}{{ equipment_card(item) }}{% endfor %}</div>
+</section>
+{% endfor %}
+<section class="equipment-group" id="caregiver-photos" data-care-section>
+    <h2 class="equipment-category-heading">Caregiver photo references</h2>
+    <div class="icu-equipment-grid">{% for item in equipment_gallery.caregiver_gallery %}{{ equipment_card(item) }}{% endfor %}</div>
+</section>

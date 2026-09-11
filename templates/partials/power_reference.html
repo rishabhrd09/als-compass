@@ -1,0 +1,34 @@
+<p>The author reports using two Uniline UPS units with six Exide batteries per UPS. These are <strong>one household’s reference setup, not a purchase recommendation</strong>. The photographs identify ratings; they do not establish current battery health, measured runtime or medical suitability.</p>
+<div class="care-table-scroll"><table class="pb-table"><thead><tr><th>Component</th><th>Evidence and limits</th></tr></thead><tbody>
+<tr><td>Uniline MF1103L6 UPS</td><td>The supplied label shows <strong>3 kVA / 2.4 kW, 230 V AC, 50 Hz, 72 V DC battery input</strong>. It lists IS 16242 (Part 1):2014 / IEC 62040-1:2008. Current certification status and suitability for life support have not been independently confirmed.</td></tr>
+<tr><td>Exide PowerSafe Plus EP 42-12</td><td>The supplied battery photo shows <strong>12 V / 42 Ah</strong>. Exide specifies 42 Ah at the 20-hour discharge rate, 38.5 Ah at 10 hours and 31.5 Ah at 3 hours, at 27°C with specified cutoff voltages. The capacity is not constant across loads. <a href="https://docs.exideindustries.com/pdf/industrial-export-batteries/products/ups-batteries/12v-agm-vrla-ep-series.pdf#page=5">Exide datasheet, specification table</a>.</td></tr>
+<tr><td>Six identical batteries in series</td><td>6 × 12 V = <strong>72 V</strong>; the string remains <strong>42 Ah</strong>. Nominal energy = 72 × 42 = <strong>3,024 Wh</strong> per bank. This is not measured usable AC energy. Verify the actual wiring and approved battery configuration with the installer.</td></tr>
+</tbody></table></div>
+<div class="power-reference-images">
+    <a href="/static/images/icu-guide/ups-unit.png" data-care-image data-caption="Uniline UPS unit" data-credit="Caregiver reference photo"><img src="/static/images/icu-guide/previews/ups-unit.webp" alt="User-supplied Uniline UPS photograph" loading="lazy"><span>UPS unit · enlarge</span></a>
+    <a href="/static/images/icu-guide/ups-label.png" data-care-image data-caption="UPS nameplate" data-credit="Caregiver reference photo"><img src="/static/images/icu-guide/previews/ups-label.webp" alt="User-supplied UPS nameplate showing 3 kVA, 2.4 kW and 72 V DC" loading="lazy"><span>UPS nameplate · enlarge</span></a>
+    <a href="/static/images/icu-guide/battery-exide.png" data-care-image data-caption="Exide battery label" data-credit="Caregiver reference photo"><img src="/static/images/icu-guide/previews/battery-exide.webp" alt="User-supplied Exide EP 42-12 battery marked 12 V and 42 Ah" loading="lazy"><span>Battery label · enlarge</span></a>
+</div>
+<h3>Reported household use</h3>
+<p>The author reports a <strong>Trilogy ventilator running continuously</strong>, a <strong>10 L/min Oxymed oxygen concentrator used at 5 L/min for about two hours per day</strong>, and a <strong>Yuwell suction machine</strong>. These describe this household’s experience, not a treatment schedule for another person. The exact Trilogy and Yuwell model identifiers, suction run time, battery age and outage-specific operating log still need confirmation.</p>
+<p>Oxymed publishes <strong>610 W</strong> for its <a href="https://oxymedindia.com/oxymed-10">10 LPM Dual Flow concentrator</a>. This is a published product specification, not a measurement of this particular unit at 5 L/min. <strong>Do not halve the wattage because the flow is half the maximum.</strong> Confirm the model/nameplate and obtain electrical load and start-up data for the actual operating conditions.</p>
+<p><strong>Use the outage interval when entering run time.</strong> Two hours per 24-hour day is about 8.33% of that day, but if both hours occur during an 8-hour outage, it is 25% of that outage. Do not use the daily average to assume when oxygen will be needed; plan around the prescribed care and possible increased needs.</p>
+<h3>Check the example loads without rounding intermediate values</h3>
+<p>The original page used the values below. The 120 W ventilator and 75 W suction values remain unverified; the 610 W concentrator value matches the published Oxymed specification above. This table’s run times are <strong>illustrative inputs, not the household’s measured outage profile</strong>.</p>
+<div class="care-table-scroll"><table class="pb-table"><thead><tr><th>Device example</th><th>Running input</th><th>Illustrative run time</th><th>Average input</th></tr></thead><tbody>
+<tr><td>Ventilator</td><td>120 W</td><td>100%</td><td>120 W</td></tr>
+<tr><td>Oxygen concentrator</td><td>610 W</td><td>25%</td><td>152.5 W</td></tr>
+<tr><td>Suction machine</td><td>75 W</td><td>25%</td><td>18.75 W</td></tr>
+<tr><th scope="row">Total</th><td>805 W together</td><td>Pattern above only</td><td><strong>291.25 W</strong></td></tr>
+</tbody></table></div>
+<p><strong>25% means 2.5 hours of operation during a 10-hour interval.</strong> It is not a default oxygen prescription, a motor duty rating or assurance that needs will stay unchanged during an outage. Plan for every clinically required device; oxygen and suction may also be essential.</p>
+<h3>Illustrative arithmetic for the 72 V / 42 Ah bank</h3>
+<p>For comparison with the old page only, <strong>if</strong> 75% of the nominal 3,024 Wh reached the AC loads, that would be 2,268 Wh. The following divisions are mathematically correct under that unverified assumption. <strong>They are not tested backup durations, lower bounds or a timer for clinical decisions.</strong></p>
+<div class="care-table-scroll"><table class="pb-table"><thead><tr><th>Scenario</th><th>Load</th><th>Illustrative hours: 2,268 Wh ÷ load</th></tr></thead><tbody>
+<tr><td>All three devices continuous</td><td>805 W</td><td>2.82 h</td></tr>
+<tr><td>Entered 100% / 25% / 25% pattern</td><td>291.25 W</td><td>7.79 h</td></tr>
+<tr><td>Ventilator alone, only if the care plan permits</td><td>120 W</td><td>18.90 h</td></tr>
+<tr><td>Oxygen + suction, both continuous</td><td>685 W</td><td>3.31 h</td></tr>
+<tr><td>Oxygen + suction, both at 25%</td><td>171.25 W</td><td>13.24 h</td></tr>
+</tbody></table></div>
+<p>The earlier “20+ hours” statement did not follow even the page’s simplified formula: 2,268 ÷ 120 = 18.9. Manufacturer discharge data, UPS conversion/idle consumption, cutoff, battery condition, temperature and a supervised commissioning assessment are needed to establish a practical planning duration.</p>
