@@ -1,6 +1,6 @@
 # Reusable prompt: static ALS CareKosh deployment
 
-This replaces the earlier Render/Flask-server prompt. Copy the prompt below into a coding assistant with the repository open. Fill in the exact domain when known; local preparation can proceed without it.
+This replaces the earlier Render/Flask-server prompt. Copy the prompt below into a coding assistant with the repository open. The static build is now implemented. Inspect and validate the existing implementation before changing it; do not recreate files that already work.
 
 ---
 
@@ -12,15 +12,15 @@ Project:
 Expected existing remote:
 `https://github.com/rishabhrd09/als-compass.git`
 
-Full registered Cloudflare domain: [FILL IN INCLUDING THE SUFFIX]
-Preferred hostname: [ROOT DOMAIN OR als.YOUR_DOMAIN]
+Full registered Cloudflare domain: carekosh.com
+Preferred hostname: als.carekosh.com (configured in config/static-site.json)
 Hosting plan: Cloudflare Pages Free; no paid services or AI integration.
 
 Read `docs/deployment-guide.md` and verify current official Cloudflare documentation. Preserve the design, branding, page URLs, medical content, references, review dates and existing browser interactions. Keep Flask/Jinja available for building or local development if useful; the deployed website must require no running Python backend, Pages Functions, Worker, database or AI keys.
 
 First complete the local preparation:
 
-1. Inspect repository instructions, current branch, actual remote/default branch and uncommitted work. Preserve changes and new assets. If needed, use `codex/prepare-static-deployment` from the current working state. Do not discard work, force-push, rewrite history, create a duplicate repository or change repository visibility.
+1. Inspect repository instructions, current branch, actual remote/default branch and uncommitted work. Preserve changes and new assets. If needed, use `prepare-static-deployment` from the current working state. Do not discard work, force-push, rewrite history, create a duplicate repository or change repository visibility.
 
 2. Audit public page routes and browser network requests. Build an explicit export manifest instead of crawling arbitrary routes. Implement `scripts/build_static.py` to render the real public pages and copy only required assets into generated `dist/`. Export `/` as `index.html`, other pages as `<slug>/index.html`, and a top-level `404.html`. Preserve request-dependent navigation/disclaimer context while rendering. Exclude legacy AI, image-server and animation-job endpoints from the export. Never invoke them during the build.
 
@@ -43,6 +43,6 @@ After I explicitly approve publishing the reviewed release:
 - Verify authentication, remote, intended repository visibility and the full staged file list. Commit and push a feature branch to the existing GitHub repository, open a pull request and complete the approved merge after checks pass. Do not overwrite other branches.
 - In the Cloudflare account containing the domain zone, create or reuse the correct Pages project with Git integration. Select only the approved repository, verified production branch, build command, output directory and build variables. Deploy generated `dist` only. Stay on the Free plan; do not enable a backend or add provider secrets.
 - Test the actual assigned `pages.dev` URL before moving the domain. Treat preview URLs as public unless actual access protection has been configured.
-- Obtain the exact domain if missing. Associate the chosen hostname through Pages Custom domains first and follow its DNS confirmation. Keep Cloudflare nameservers, preserve email records/unrelated subdomains and record existing affected DNS. Do not reuse Render DNS instructions. For the root-domain choice, configure and verify www-to-root redirection while preserving paths and queries. Wait for valid HTTPS.
+- Use als.carekosh.com. Associate that hostname through Pages Custom domains first and follow its DNS confirmation. Keep Cloudflare nameservers, preserve email records/unrelated subdomains and record existing affected DNS. Do not reuse Render DNS instructions. Keep the root domain and www unchanged; this launch uses only the als subdomain. Wait for valid HTTPS.
 - Verify the production site, static-only behaviour, real 404s, canonical domain and deployment commit. Provide the final URL, GitHub commit/PR, build settings, update workflow and rollback instructions. Never claim an action succeeded without confirming its actual result.
 - If account access is unavailable, finish all independent work and provide precise remaining dashboard steps. Do not ask me to paste tokens, passwords or private source conversations into chat.

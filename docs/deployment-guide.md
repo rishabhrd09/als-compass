@@ -4,32 +4,32 @@ Updated 11 September 2026. This replaces the earlier recommendation to run the w
 
 **Use GitHub for the source code, Cloudflare Pages for the generated static website, and your existing CareKosh domain on Cloudflare.** The published site needs no running Flask server, Gunicorn, database, AI provider key or Pages Function for its current features.
 
-**Current status:** the project still uses Flask templates and JSON endpoints. Static export has not been implemented, and nothing has been pushed or deployed by this guide. Complete Step 1 before using the proposed build commands below.
+**Current status:** the static exporter is implemented on `prepare-static-deployment`, created from your merged `main`. The generated site runs without Flask. The production address is configured as **https://als.carekosh.com**. Commit, push, merge and the actual Cloudflare deployment are still separate launch steps.
 
-## 1. Prepare the website for static hosting
+## 1. What the static build does
 
 The appearance and interactions can stay the same. Use Flask/Jinja during a build to generate finished HTML once; visitors then receive those HTML files directly. FAQ search, suggested answers, research filters, calculators and animations continue to run in the browser.
 
-Ask the coding assistant to follow `prompts/deploy_als_carekosh.md`. It should create and test these files:
+The following files now implement the build. The reusable `prompts/deploy_als_carekosh.md` describes how to maintain and validate this setup:
 
-| Planned file | Purpose |
+| File | Purpose |
 | --- | --- |
-| `requirements-static.txt` | Minimal, pinned build dependencies. Inspect imports; Flask and python-dotenv are the current starting point. No unused AI or animation-rendering packages. |
-| `.python-version` | A full, tested Python version supported by the Cloudflare build image. |
+| `requirements-static.txt` | Eight pinned packages for HTML/JSON builds, with no AI or animation-rendering dependencies. |
+| `.python-version` | Python 3.11.15, tested in the isolated build environment. |
 | `scripts/build_static.py` | Render an explicit list of public pages, export published JSON, copy required assets and validate the generated website. |
 | `scripts/build_pages.sh` | Install only the static-build dependencies and run the exporter, stopping on any failure. |
 | `dist/` | Generated deployment output. Only this folder is published; regenerate it from GitHub instead of maintaining it manually. |
 
-The build must:
+The implemented build:
 
-- Produce the home page and every public guide, including FAQ, research, communication, assistant and equipment pages. Preserve source references, review dates and branding.
-- Replace the browser's `/api/community-faq`, `/api/communication-tech` and `/api/research-categorized` requests with generated JSON files, for example under `/content/`. Audit for any additional API requests before release.
-- Keep all seven suggested answers tied to the same FAQ source data. Typed questions must still show the coming-soon message, without sending or storing their text.
-- Include required images, fonts, PDFs, videos and scripts. Copy published assets through an explicit allowlist; do not copy the entire repository or all source data into the output.
-- Generate a top-level `404.html`. Exclude legacy AI/image/rendering endpoints, `.env`, Python source, raw private material, local environments, caches and backups from the public output.
-- Fail on missing content, broken internal links, unresolved template syntax or assets larger than the hosting limit.
+- Produces the home page and every public guide, including FAQ, research, communication, assistant and equipment pages. Preserve source references, review dates and branding.
+- Uses `/content/faq.json`, `/content/communication-tech.json` and `/content/research-categorized.json` in every frontend consumer. Flask serves the same URLs during local development. Legacy APIs are not exported.
+- Keeps all seven suggested answers tied to the same FAQ source data. Typed questions must still show the coming-soon message, without sending or storing their text.
+- Copies 176 required assets from `config/static-assets.json`, including fonts, license notices, photos, scripts and pre-rendered media. New assets require an explicit manifest entry. Current PDF links point to external sources; print-to-PDF remains a browser feature.
+- Generates a top-level `404.html`. Excludes legacy AI/image/rendering endpoints, `.env`, Python source, raw private material, local environments, caches and backups from the public output.
+- Fails on missing content, broken internal links, unresolved template syntax or assets larger than the hosting limit.
 
-A suitable generated structure is:
+The generated structure is:
 
 ```text
 dist/
@@ -59,13 +59,13 @@ Directory pages support direct visits and refreshes. Preserve existing links wit
 
 ## 2. Build and check it on your Mac
 
-After the files in Step 1 have been implemented, use:
+Run these commands in your existing Mac checkout:
 
 ```sh
 cd "/Users/rishabh/coding_claude_projects/als_knowledgebase_compass/als_mnd_info_compass/als-compass"
 ./venv/bin/python -m venv .venv-static
 source .venv-static/bin/activate
-bash scripts/build_pages.sh
+bash scripts/build_pages.sh --preview
 python -m http.server 8080 --bind 127.0.0.1 --directory dist
 ```
 
@@ -79,11 +79,29 @@ Test the complete static site, including:
 - Mobile layout, keyboard controls, PDF downloads and external source links.
 - No browser requests to a Flask API or to `localhost:5001`.
 
-Use a Pages-compatible preview as well to test platform-specific redirects, headers and 404 status; Python's file server does not emulate those Cloudflare features. Test the build again from a clean checkout so untracked local files cannot conceal a missing release asset.
+For a Cloudflare-compatible preview (Node.js/npm required), stop the Python file server with Control+C and run:
+
+```sh
+bash scripts/preview_pages.sh
+```
+
+Open http://127.0.0.1:8788/. This uses pinned Wrangler 4.131.1 locally, without publishing or loading your `.env` AI configuration. It tests the same directory routing, custom 404 and `_headers` behaviour used by Pages. The preview script does not rebuild: rerun the build and refresh after source edits.
+
+Run the release checks in the activated `.venv-static` environment:
+
+```sh
+python -m unittest discover -s tests -p 'test_*.py'
+python -m unittest test_research test_research_update
+node --test tests/*.test.cjs
+```
+
+The 110 automated tests pass locally, including export validation, deterministic rebuilds, missing-file failures, seven FAQ suggestions and the existing research checks. `.github/workflows/static-site.yml` runs this build and test sequence on pull requests and pushes to `main`; its first GitHub run occurs after you push it.
+
+The route/data manifest is `public_site.py`. The exporter checks that all 17 public page routes are accounted for and exports only three reviewed JSON datasets. It validates staging output before replacing a recognized generated `dist/`. Changes to medical text or review dates belong in the source-review workflow, not the build.
 
 ## 3. Push the reviewed release to the existing GitHub repository
 
-The configured remote is [rishabhrd09/als-compass](https://github.com/rishabhrd09/als-compass). Reuse it. At the time of review the local branch is `feature/static-faq-assistant-placeholder`, and the local default-branch reference is `origin/main`; verify these before publishing.
+The configured remote is [rishabhrd09/als-compass](https://github.com/rishabhrd09/als-compass). Reuse it. The deployment work is on `prepare-static-deployment`, based on the already-merged `main`. Verify the current branch before publishing.
 
 Start with:
 
@@ -103,7 +121,7 @@ After staging the reviewed files:
 git diff --cached --stat
 git diff --cached --check
 git diff --cached
-git commit -m "Prepare ALS CareKosh for static Cloudflare Pages deployment"
+git commit -m "Prepare static deployment"
 git push -u origin HEAD
 ```
 
@@ -120,7 +138,7 @@ In the Cloudflare account that holds your domain:
 3. Connect GitHub and grant access to the existing `als-compass` repository.
 4. Select that repository and enter the settings below.
 
-| Setting | Value for the planned static build |
+| Setting | Value |
 | --- | --- |
 | Project name | `als-carekosh`, if available |
 | Production branch | `main`, after the reviewed release is merged |
@@ -132,7 +150,7 @@ In the Cloudflare account that holds your domain:
 | Python version | Commit the tested version in `.python-version` |
 | API keys / server start command | None |
 
-**These settings assume Step 1 is complete.** No `build_pages.sh` or `dist/` exists yet as part of this documentation change.
+The production address defaults to `https://als.carekosh.com` in `config/static-site.json`. No `SITE_URL` override is required. An optional HTTPS `SITE_URL` build variable can override it later. Feature-branch Pages builds automatically receive noindex metadata and headers; `main` builds enable indexing. Preview indexing controls do not make a URL private.
 
 The skip-install setting matters because the existing root `requirements.txt` contains unused AI dependencies. It prevents automatic installation; the build script installs only `requirements-static.txt`. Configure the same build settings for production and preview environments. Cloudflare supports Python during the build, version pinning and skipping automatic dependency installation. [Build image settings](https://developers.cloudflare.com/pages/configuration/build-image/).
 
@@ -142,20 +160,17 @@ Cloudflare supports custom static-build commands and an explicit output director
 
 ## 5. Connect the CareKosh domain you already own
 
-Use the full domain shown in your Cloudflare account. `YOUR_DOMAIN` below is a placeholder; it does not assume you bought `.com` rather than `.in` or another suffix.
+Use **als.carekosh.com** as the primary address. This keeps the main `carekosh.com` domain available for a wider CareKosh website and requires no additional domain purchase.
 
-Choose one primary address:
+1. Open the deployed **Pages project → Custom domains → Set up a custom domain**.
+2. Enter **als.carekosh.com**.
+3. Follow Cloudflare’s DNS confirmation. In the `carekosh.com` DNS zone, the relevant record is a **CNAME named `als`** pointing to the **actual assigned Pages hostname**, for example `als-carekosh.pages.dev` only if that is the hostname Cloudflare assigned. Let the Pages wizard create it when offered. Do not guess the target or add a duplicate record.
+4. Wait until the custom domain and HTTPS certificate are active.
+5. Test **https://als.carekosh.com**, including deep links, JSON and the assistant.
 
-- **`YOUR_DOMAIN`** if this is the main CareKosh website.
-- **`als.YOUR_DOMAIN`** if the root domain serves another purpose or you want a separate ALS section.
+Associate the hostname through Pages first; adding a CNAME alone is insufficient. Keep Cloudflare nameservers, the root domain’s existing website, email MX/TXT records and unrelated subdomains. If an `als` record already exists, record its current value and replace only that record when ready. [Pages custom-domain setup](https://developers.cloudflare.com/pages/configuration/custom-domains/).
 
-Keep the name on the website as **ALS CareKosh — Caregiver’s Compass**.
-
-In your **Pages project → Custom domains → Set up a custom domain**, enter the exact chosen hostname. Use the same Cloudflare account as the domain's DNS zone for a root-domain setup. Follow the offered DNS confirmation; Cloudflare can create the Pages CNAME automatically for a zone it manages. Wait for the domain and certificate to become active, then test HTTPS. [Pages custom-domain setup](https://developers.cloudflare.com/pages/configuration/custom-domains/).
-
-Keep Cloudflare nameservers. Preserve email MX/TXT records and unrelated subdomains. If an existing website occupies the hostname, record its current DNS before replacing the relevant record. Do not apply the old Render CNAME or DNS-only instructions to this Pages deployment. Associate the hostname with the Pages project first instead of adding a guessed DNS record.
-
-If you choose the root domain, configure `www.YOUR_DOMAIN` to redirect to it, preserving paths and query strings. Follow Cloudflare's [www-to-apex redirect instructions](https://developers.cloudflare.com/pages/how-to/www-redirect/), including its DNS setup. Check for an existing `www` record before adding or replacing one, and test both addresses.
+The website name remains **ALS CareKosh — Caregiver’s Compass**. A `www` hostname or root-domain redirect is not needed for this subdomain setup. The generated sitemap and canonical links already use `https://als.carekosh.com`; verify them on the deployed site.
 
 No domain transfer or additional domain purchase is needed. Your existing domain renewal remains separate from hosting.
 

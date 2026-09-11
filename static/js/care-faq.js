@@ -31,7 +31,7 @@ let faqData = null;
         try {
             document.getElementById('faqError').hidden = true;
             document.getElementById('faqContent').setAttribute('aria-busy', 'true');
-            const response = await fetch('/api/community-faq');
+            const response = await fetch('/content/faq.json');
             if (!response.ok) throw new Error('FAQ request failed');
             faqData = await response.json();
             if (!Array.isArray(faqData.categories)) throw new Error('FAQ data unavailable');

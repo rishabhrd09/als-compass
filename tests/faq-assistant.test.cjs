@@ -26,7 +26,7 @@ test('all seven suggestions resolve to their exact FAQ answer and sources', asyn
         assert.ok(selected.faq.sources.length > 0);
     }
     assert.equal(requests.length, 1);
-    assert.deepEqual(requests[0], ['/api/community-faq', { method: 'GET', cache: 'no-store' }]);
+    assert.deepEqual(requests[0], ['/content/faq.json', { method: 'GET', cache: 'no-store' }]);
 });
 
 test('reordering FAQs cannot pair a suggested question with the wrong answer', () => {
