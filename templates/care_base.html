@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block body_class %}care-page{% if request.endpoint == 'faq' %} care-faq{% endif %}{% endblock %}
+{% block page_shell_css %}<link rel="stylesheet" href="/static/css/care-handbook.css">{% endblock %}
+{% block page_shell_js %}<script src="/static/js/care-guide.js" defer></script><script src="/static/js/care-images.js" defer></script>{% endblock %}
+
+{% block content %}
+<div class="care-root">
+    <nav class="care-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span>
+        {% if request.endpoint == 'faq' %}<span aria-current="page">Frequently asked questions</span>
+        {% elif request.endpoint == 'home_icu_guide' %}<span aria-current="page">Home ICU guide</span>
+        {% else %}<a href="/home-icu-guide">Home ICU guide</a><span aria-hidden="true">/</span>
+        <span aria-current="page">{{ {'power_backup_guide': 'Power backup', 'emergency_protocol': 'Emergency protocols', 'inventory_management': 'Inventory', 'ups_faq': 'Power backup FAQ'}.get(request.endpoint, 'Care resources') }}</span>{% endif %}
+    </nav>
+    {% block care_header %}{% endblock %}
+    {% if request.endpoint in ['home_icu_guide', 'faq'] %}
+    {% include 'partials/caregiver_disclaimer.html' %}
+    {% elif request.endpoint == 'inventory_management' %}
+    <p class="care-experience-note">This guide shares personal experience and learning from caregivers and family members. Use it as a starting point, review reliable sources, and consult your treating team before making care or equipment decisions.</p>
+    {% endif %}
+    <div class="care-layout">
+        <aside class="care-sidebar">
+            <details class="care-directory" open>
+                <summary>{% if request.endpoint == 'faq' %}Browse topics{% else %}Explore this guide{% endif %}<span aria-hidden="true">⌄</span></summary>
+                <div class="care-directory-body">
+                {% block care_sidebar %}
+                    <p class="care-nav-label">Home ICU</p>
+                    <nav class="care-route-nav" aria-label="Home ICU resources">
+                        {% for endpoint, url, label, icon in [
+                            ('home_icu_guide', '/home-icu-guide', 'Equipment & setup', 'list-check'),
+                            ('power_backup_guide', '/power-backup-guide', 'Power backup', 'bolt'),
+                            ('emergency_protocol', '/emergency-protocol', 'Emergency protocols', 'shield-alt'),
+                            ('inventory_management', '/inventory-management', 'Inventory', 'boxes')
+                        ] %}
+                        <a href="{{ url }}"{% if request.endpoint == endpoint %} aria-current="page"{% endif %}><i class="fas fa-{{ icon }}" aria-hidden="true"></i>{{ label }}</a>
+                        {% endfor %}
+                    </nav>
+                    <div class="care-contents" hidden>
+                        <p class="care-nav-label">On this page</p>
+                        <nav class="care-section-nav" aria-label="On this page"></nav>
+                    </div>
+                    <div class="care-related">
+                        <p class="care-nav-label">Questions & answers</p>
+                        <a href="/ups-faq"{% if request.endpoint == 'ups_faq' %} aria-current="page"{% endif %}>Power backup FAQ <span aria-hidden="true">↗</span></a>
+                        <a href="/faq">Community FAQ <span aria-hidden="true">↗</span></a>
+                    </div>
+                {% endblock %}
+                </div>
+            </details>
+        </aside>
+        <div class="care-main">{% block care_content %}{% endblock %}</div>
+    </div>
+</div>
+{% include 'partials/care_image_viewer.html' %}
+{% endblock %}

@@ -1,0 +1,849 @@
+{
+  "groups": [
+    {
+      "id": "equipment-group-1",
+      "name": "Ventilator & Accessories",
+      "items": [
+        {
+          "name": "Ventilator/BiPAP Machine",
+          "images": [
+            {
+              "key": "ventilator",
+              "url": "https://images.philips.com/is/image/philipsconsumer/b6db48c8000e4d9cbfb5ab3c01477c6b?wid=1600&hei=1600&fit=fit",
+              "source": "https://www.philips.co.in/healthcare/product/HCIN2200X15B/trilogy-ev300-hospital-ventilator",
+              "caption": "Philips Trilogy EV300 — a product example, not confirmation of the household model",
+              "src": "/static/images/icu-guide/products/ventilator.jpg",
+              "preview": "/static/images/icu-guide/products/ventilator-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · philips.co.in",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Catheter Mount",
+          "images": [
+            {
+              "key": "catheter-mount",
+              "url": "https://www.intersurgical.com/content/images/dynamic/63253/170505554/3504000_Catherter_Mount_Superset_web.jpg",
+              "source": "https://www.intersurgical.com/products/airway-management/superset-catheter-mounts",
+              "caption": "Superset straight catheter mount, 22F-22M/15F, ≥70mm-150mm",
+              "src": "/static/images/icu-guide/products/catheter-mount.jpg",
+              "preview": "/static/images/icu-guide/products/catheter-mount-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · intersurgical.com",
+              "width": 600,
+              "height": 346
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Back Filter / Inlet Filter",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/inlet-filter.jpg",
+              "caption": "Back Filter / Inlet Filter",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/inlet-filter.webp",
+              "width": 355,
+              "height": 294
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "HME Filter",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/hme-filter.jpg",
+              "caption": "HME Filter",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/hme-filter.webp",
+              "width": 910,
+              "height": 507
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Bacteria Filter",
+          "images": [
+            {
+              "key": "bacteria-filter",
+              "url": "https://www.intersurgical.com/content/images/dynamic/134423/84309487/1344007S-Inter-Guard-breathing-filter-_Sterile-new-label-web.jpg",
+              "source": "https://www.intersurgical.com/products/airway-management/interguard-range-sterile",
+              "caption": "Inter-Guard™ breathing filter - Sterile",
+              "src": "/static/images/icu-guide/products/bacteria-filter.jpg",
+              "preview": "/static/images/icu-guide/products/bacteria-filter-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · intersurgical.com",
+              "width": 900,
+              "height": 600
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Ventilator Circuit / Pipes",
+          "images": [
+            {
+              "key": "ventilator-circuit",
+              "caption": "WorthCare breathing circuit — product example",
+              "source": "https://www.worthcaremedical.com/product/product-79-444.html",
+              "url": "https://www.worthcaremedical.com/Uploads/64b0a91a193438708.png",
+              "src": "/static/images/icu-guide/products/ventilator-circuit.png",
+              "preview": "/static/images/icu-guide/products/ventilator-circuit-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · worthcaremedical.com",
+              "width": 500,
+              "height": 500
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Whisper Swivel",
+          "images": [
+            {
+              "key": "whisper-swivel",
+              "url": "https://pjvitalaire.vtexassets.com/arquivos/ids/157517/valvula-whisper-swivelll-philips-respironics-1.jpg?v=638403438740930000",
+              "source": "https://pj.vitalaire.com.br/valvula-whisper-swivelll-philips-respironics/p",
+              "caption": "Philips Respironics Whisper Swivel II — exhalation port product example",
+              "src": "/static/images/icu-guide/products/whisper-swivel.png",
+              "preview": "/static/images/icu-guide/products/whisper-swivel-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · pj.vitalaire.com.br",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Ambu Bag",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/ambu-bag.jpg",
+              "caption": "Ambu Bag",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/ambu-bag.webp",
+              "width": 1000,
+              "height": 660
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Oxygen Concentrator",
+          "images": [
+            {
+              "key": "oxygen-concentrator",
+              "caption": "Oxymed 10 LPM Dual Flow",
+              "source": "https://medequip.co.in/products/oxygen-concentrator-mini-10-ltr",
+              "url": "https://medequip.co.in/cdn/shop/files/64.jpg?v=1755589794&width=1024",
+              "src": "/static/images/icu-guide/products/oxygen-concentrator.jpg",
+              "preview": "/static/images/icu-guide/products/oxygen-concentrator-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · medequip.co.in",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-2",
+      "name": "Suction",
+      "items": [
+        {
+          "name": "Yuwell Suction Machine",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/caregiver/suction-machine.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-suction-machine.webp",
+              "caption": "Yuwell suction machine — caregiver photo",
+              "credit": "Caregiver-provided photograph",
+              "width": 897,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Vacuum Set",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/caregiver/suction-tubing.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-suction-tubing.webp",
+              "caption": "Romsons Vaccu Suck suction tubing — caregiver photo",
+              "credit": "Caregiver-provided photograph",
+              "width": 1000,
+              "height": 367
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Suction Catheter",
+          "images": [
+            {
+              "key": "suction-catheter",
+              "url": "https://html.romsons.net.in/international/products/images_product/suction_catheters.png",
+              "source": "https://html.romsons.net.in/international/products/SUCTION_CATHETERS.html",
+              "caption": "Suction Catheters® / Endo Bronchial Suction Catheter",
+              "src": "/static/images/icu-guide/products/suction-catheter.png",
+              "preview": "/static/images/icu-guide/products/suction-catheter-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · html.romsons.net.in",
+              "width": 500,
+              "height": 500
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Suction Machine Filter",
+          "images": [
+            {
+              "key": "suction-filter",
+              "url": "https://www.intersurgical.com/content/images/dynamic/126322/1995259195/1635003_DeVilbiss__Vacu-Ade__suction_filter_WEB.jpg",
+              "source": "https://www.intersurgical.com/products/airway-management/suction-unit-filters",
+              "caption": "Intersurgical filter for DeVilbiss Vacu-Aide — example only; not a confirmed Yuwell replacement",
+              "src": "/static/images/icu-guide/products/suction-filter.jpg",
+              "preview": "/static/images/icu-guide/products/suction-filter-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · intersurgical.com",
+              "width": 600,
+              "height": 600
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Single use syringe ( 10 ml and 5 ml )",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/caregiver/syringes-10ml.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-syringes-10ml.webp",
+              "caption": "10 ml syringes shown; 5 ml syringes are not pictured",
+              "credit": "Caregiver-provided photograph",
+              "width": 1000,
+              "height": 599
+            },
+            {
+              "src": "/static/images/icu-guide/caregiver/syringe-pack-10ml.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-syringe-pack-10ml.webp",
+              "caption": "Romsons Romo Jet 10 ml syringe packaging — caregiver photo",
+              "credit": "Caregiver-provided photograph",
+              "width": 1000,
+              "height": 750
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Normal Saline (NS)",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/caregiver/normal-saline.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-normal-saline.webp",
+              "caption": "0.9% sodium chloride, 500 ml — caregiver photo",
+              "credit": "Caregiver-provided photograph",
+              "width": 570,
+              "height": 760
+            }
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-3",
+      "name": "Tracheostomy Dressing / TT Tube Change",
+      "items": [
+        {
+          "name": "Gauze Swabs/Piece",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/gauze.jpg",
+              "caption": "Gauze Swabs/Piece",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/gauze.webp",
+              "width": 570,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Betadine Solution",
+          "images": [
+            {
+              "key": "betadine",
+              "caption": "Betadine solution — packaging example",
+              "source": "https://pharmeasy.in/online-medicine-order/betadine-10-solution-100ml-29198",
+              "url": "https://cdn01.pharmeasy.in/dam/productsnowatermark/254960/betadine-10-solution-100ml-front-2-1756893837-non-watermarked.jpg",
+              "src": "/static/images/icu-guide/products/betadine.jpg",
+              "preview": "/static/images/icu-guide/products/betadine-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · pharmeasy.in",
+              "width": 280,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Sterilized Gloves",
+          "images": [
+            {
+              "key": "sterile-gloves",
+              "url": "https://html.romsons.net.in/domestic/products/images_product/gloves.png",
+              "source": "https://html.romsons.net.in/domestic/products/GLOVES.html",
+              "caption": "Romsons surgical gloves — product example; verify sterile packaging",
+              "src": "/static/images/icu-guide/products/sterile-gloves.png",
+              "preview": "/static/images/icu-guide/products/sterile-gloves-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · html.romsons.net.in",
+              "width": 500,
+              "height": 500
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Scissor",
+          "images": [
+            {
+              "key": "scissors",
+              "caption": "Dressing scissors",
+              "source": "https://www.ebay.com/itm/374948057752",
+              "url": "https://i.ebayimg.com/images/g/qXQAAOSwdT5ihS0V/s-l400.jpg",
+              "src": "/static/images/icu-guide/products/scissors.jpg",
+              "preview": "/static/images/icu-guide/products/scissors-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · ebay.com",
+              "width": 400,
+              "height": 400
+            }
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-4",
+      "name": "Nebulization",
+      "items": [
+        {
+          "name": "Nebulizer",
+          "images": [
+            {
+              "key": "nebulizer",
+              "caption": "OMRON C28P nebulizer",
+              "source": "https://ozlosleep.com/blogs/news/home-health-care-devices",
+              "url": "https://cdn.shopify.com/s/files/1/0754/6162/4090/files/Omron_C28P_Nebulizer_480x480.png?v=1739459368",
+              "src": "/static/images/icu-guide/products/nebulizer.png",
+              "preview": "/static/images/icu-guide/products/nebulizer-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · ozlosleep.com",
+              "width": 415,
+              "height": 400
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Nebulizer Tube",
+          "images": [
+            {
+              "key": "nebulizer-tube",
+              "url": "https://html.romsons.net.in/international/products/images_product/nebulizer_masks.png",
+              "source": "https://html.romsons.net.in/international/products/NEBULIZER_MASKS.html",
+              "caption": "Romsons aerosol kit showing the connecting tube, chamber and mask",
+              "src": "/static/images/icu-guide/products/nebulizer-tube.png",
+              "preview": "/static/images/icu-guide/products/nebulizer-tube-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · html.romsons.net.in",
+              "width": 500,
+              "height": 500
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "T-Section Neb",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/caregiver/nebulizer-t-piece.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-nebulizer-t-piece.webp",
+              "caption": "Nebulizer chamber with T-piece and tubing — caregiver photo",
+              "credit": "Caregiver-provided photograph",
+              "width": 542,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Normal Saline (NS)",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/caregiver/normal-saline.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-normal-saline.webp",
+              "caption": "0.9% sodium chloride, 500 ml — caregiver photo",
+              "credit": "Caregiver-provided photograph",
+              "width": 570,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Nebulizer Medicines",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/neb-medicines.jpg",
+              "caption": "Nebulizer Medicines",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/neb-medicines.webp",
+              "width": 572,
+              "height": 760
+            }
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-5",
+      "name": "Vitals Monitoring",
+      "items": [
+        {
+          "name": "Multiparamonitor",
+          "images": [
+            {
+              "key": "multiparamonitor",
+              "caption": "BPL Ultima Prime patient monitor",
+              "source": "https://www.medicalexpo.com/prod/bpl-medical-technologies/product-115172-838304.html",
+              "url": "https://img.medicalexpo.com/images_me/photo-g/115172-12190842.jpg",
+              "src": "/static/images/icu-guide/products/multiparamonitor.jpg",
+              "preview": "/static/images/icu-guide/products/multiparamonitor-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · medicalexpo.com",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Oximeter",
+          "images": [
+            {
+              "key": "oximeter",
+              "caption": "Romsons Oxee Check pulse oximeter — product example",
+              "source": "https://www.emedicalwala.com/product/romsons-pulse-oximeter-digital-fingertip/",
+              "url": "https://emedicalwala.com/wp-content/uploads/2022/06/1597907434_1343-600x589.jpeg",
+              "src": "/static/images/icu-guide/products/oximeter.jpg",
+              "preview": "/static/images/icu-guide/products/oximeter-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · emedicalwala.com",
+              "width": 600,
+              "height": 589
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "BP Cuff",
+          "images": [
+            {
+              "key": "bp-cuff",
+              "caption": "OMRON HEM-RML31 blood pressure cuff",
+              "source": "https://shopee.com.my/OMRON-CUFF-HEM-RML31%28-Arm-size-22cm-42cm%29-i.40377106.1505739436",
+              "url": "https://cf.shopee.com.my/file/24adf9768f9bc27d7a4a29c817a3158a",
+              "src": "/static/images/icu-guide/products/bp-cuff.jpg",
+              "preview": "/static/images/icu-guide/products/bp-cuff-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · shopee.com.my",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Thermometer",
+          "images": [
+            {
+              "key": "thermometer",
+              "caption": "OMRON MC-246 digital thermometer",
+              "source": "https://www.gosupps.com/omron-mc-246-mc246-60-second-digital-rigid-thermometer.html",
+              "url": "https://www.gosupps.com/media/catalog/product/cache/25/image/1500x/040ec09b1e35df139433887a97daa66f/5/1/51F9ohDxo_L._AC_SL1500_.jpg",
+              "src": "/static/images/icu-guide/products/thermometer.jpg",
+              "preview": "/static/images/icu-guide/products/thermometer-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · gosupps.com",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-6",
+      "name": "UPS Backup System",
+      "items": [
+        {
+          "name": "Uniline 3kVA UPS",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/ups-unit.png",
+              "caption": "Uniline 3kVA UPS",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/ups-unit.webp",
+              "width": 570,
+              "height": 760
+            }
+          ],
+          "note": "72VDC Input • 230VAC Output"
+        },
+        {
+          "name": "Exide 12V 42Ah Battery",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/battery-exide.png",
+              "caption": "Exide 12V 42Ah Battery",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/battery-exide.webp",
+              "width": 1000,
+              "height": 750
+            }
+          ],
+          "note": "Sealed Lead-Acid • 6 per UPS"
+        },
+        {
+          "name": "UPS Specifications",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/ups-label.png",
+              "caption": "UPS Specifications",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/ups-label.webp",
+              "width": 570,
+              "height": 760
+            }
+          ],
+          "note": "Model: MF1103L6 • 3kVA/2.4kW"
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-7",
+      "name": "Recliner Beds & Tables",
+      "items": [
+        {
+          "name": "Recliner Bed",
+          "images": [
+            {
+              "key": "recliner-bed",
+              "caption": "Adjustable patient recliner bed",
+              "source": "https://www.healthyjeenasikho.com/product-page/recliner-bed-for-patients",
+              "url": "https://static.wixstatic.com/media/7498f4_18eb210a04704208809d682d1ca375ae~mv2.jpeg/v1/fill/w_538%2Ch_598%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/7498f4_18eb210a04704208809d682d1ca375ae~mv2.jpeg",
+              "src": "/static/images/icu-guide/products/recliner-bed.jpg",
+              "preview": "/static/images/icu-guide/products/recliner-bed-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · healthyjeenasikho.com",
+              "width": 538,
+              "height": 598
+            }
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-8",
+      "name": "Other Important Items",
+      "items": [
+        {
+          "name": "Alexa",
+          "images": [
+            {
+              "key": "alexa",
+              "kind": "generated",
+              "caption": "Illustrative view of an Echo Pop-style Alexa speaker",
+              "credit": "AI-generated product illustration; appearance may differ from the item supplied.",
+              "src": "/static/images/icu-guide/generated/alexa.webp",
+              "preview": "/static/images/icu-guide/generated/alexa-preview.webp",
+              "created": "2026-09-11",
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Smart TV",
+          "images": [
+            {
+              "key": "smart-tv",
+              "caption": "Samsung smart television — product example",
+              "source": "https://www.fliptwirls.com/shop/led-tv/samsung-led-tv/samsung-108-cm-43-inch-full-hd-led-smart-tizen-tv-with-300-free-channels-ua43t5450akxxl",
+              "url": "https://www.fliptwirls.com/uploads/90009900598991_1_22-147.png",
+              "src": "/static/images/icu-guide/products/smart-tv.png",
+              "preview": "/static/images/icu-guide/products/smart-tv-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · fliptwirls.com",
+              "width": 576,
+              "height": 454
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Tobii Eye Tracker",
+          "images": [
+            {
+              "key": "eye-tracker",
+              "url": "https://i.shgcdn.com/d1402793-5fc9-4d34-9c35-484aa9b9de9e/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
+              "source": "https://us.tobiidynavox.com/pages/pceye",
+              "caption": "Tobii Dynavox PCEye — product example",
+              "src": "/static/images/icu-guide/products/eye-tracker.png",
+              "preview": "/static/images/icu-guide/products/eye-tracker-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · us.tobiidynavox.com",
+              "width": 600,
+              "height": 347
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Air Conditioner",
+          "images": [
+            {
+              "key": "air-conditioner",
+              "caption": "Wall-mounted split air conditioner — product example",
+              "source": "https://www.superairsolutions.in/split-ac.html",
+              "url": "https://5.imimg.com/data5/MN/KJ/GA/SELLER-27096578/split-air-conditioners-500x500.jpg",
+              "src": "/static/images/icu-guide/products/air-conditioner.jpg",
+              "preview": "/static/images/icu-guide/products/air-conditioner-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · superairsolutions.in",
+              "width": 500,
+              "height": 500
+            }
+          ],
+          "note": ""
+        }
+      ]
+    },
+    {
+      "id": "equipment-group-9",
+      "name": "Daily Care / Hygiene ",
+      "items": [
+        {
+          "name": "Cremaffin Plus",
+          "images": [
+            {
+              "key": "cremaffin",
+              "caption": "Cremaffin Plus — packaging example",
+              "source": "https://pharmeasy.in/health-care/products/cremaffin-plus-refreshing-constipation-syrup-sugar-free-bottle-of-100-ml-212068",
+              "url": "https://cdn01.pharmeasy.in/dam/products_otc/I37811/cremaffin-plus-refreshing-constipation-syrup-sugar-free-bottle-of-100-ml-6.1-1632775990.jpg",
+              "src": "/static/images/icu-guide/products/cremaffin.jpg",
+              "preview": "/static/images/icu-guide/products/cremaffin-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · pharmeasy.in",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Jelly",
+          "images": [
+            {
+              "src": "/static/images/icu-guide/jelly.jpg",
+              "caption": "Jelly",
+              "credit": "Caregiver reference photo",
+              "preview": "/static/images/icu-guide/previews/jelly.webp",
+              "width": 572,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Wipes",
+          "images": [
+            {
+              "key": "wipes",
+              "caption": "Water wipes — packaging example",
+              "source": "https://www.tradeindia.com/products/99-percent-water-wipes-c9901243.html",
+              "url": "https://cpimg.tistatic.com/09901243/b/4/99-Percent-Water-Wipes..jpg",
+              "src": "/static/images/icu-guide/products/wipes.jpg",
+              "preview": "/static/images/icu-guide/products/wipes-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · tradeindia.com",
+              "width": 500,
+              "height": 500
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Dettol",
+          "images": [
+            {
+              "key": "dettol",
+              "caption": "Dettol antiseptic liquid — packaging example",
+              "source": "https://pharmeasy.in/health-care/products/dettol-antiseptic-liquid-bottle-of-125-ml-220683",
+              "url": "https://cdn01.pharmeasy.in/dam/products_otc/V09720/dettol-antiseptic-disinfectant-liquid-250ml-6.01-1746772475.jpg?dim=1440x1440&q=75",
+              "src": "/static/images/icu-guide/products/dettol.jpg",
+              "preview": "/static/images/icu-guide/products/dettol-preview.webp",
+              "retrieved": "2026-09-11",
+              "credit": "Product example · pharmeasy.in",
+              "width": 760,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Sanitizer",
+          "images": [
+            {
+              "key": "sanitizer",
+              "kind": "generated",
+              "caption": "Pump bottle of hand sanitizer",
+              "credit": "AI-generated product illustration; appearance may differ from the item supplied.",
+              "src": "/static/images/icu-guide/generated/sanitizer.webp",
+              "preview": "/static/images/icu-guide/generated/sanitizer-preview.webp",
+              "created": "2026-09-11",
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Enema (Emergency)",
+          "images": [
+            {
+              "key": "enema",
+              "kind": "generated",
+              "caption": "Enema bottle with protective cap; prescribed preparation may differ",
+              "credit": "AI-generated product illustration; appearance may differ from the item supplied.",
+              "src": "/static/images/icu-guide/generated/enema.webp",
+              "preview": "/static/images/icu-guide/generated/enema-preview.webp",
+              "created": "2026-09-11",
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Cotton",
+          "images": [
+            {
+              "key": "cotton",
+              "kind": "generated",
+              "caption": "Absorbent cotton wool roll",
+              "credit": "AI-generated product illustration; appearance may differ from the item supplied.",
+              "src": "/static/images/icu-guide/generated/cotton.webp",
+              "preview": "/static/images/icu-guide/generated/cotton-preview.webp",
+              "created": "2026-09-11",
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "UnderPads",
+          "images": [
+            {
+              "key": "underpads",
+              "kind": "generated",
+              "caption": "Disposable absorbent underpad with waterproof backing",
+              "credit": "AI-generated product illustration; appearance may differ from the item supplied.",
+              "src": "/static/images/icu-guide/generated/underpads.webp",
+              "preview": "/static/images/icu-guide/generated/underpads-preview.webp",
+              "created": "2026-09-11",
+              "width": 1536,
+              "height": 1024
+            },
+            {
+              "src": "/static/images/icu-guide/caregiver/underpads.png",
+              "preview": "/static/images/icu-guide/previews/caregiver-underpads.webp",
+              "caption": "Romsons Drytex underpads, 60 × 90 cm — caregiver photo",
+              "credit": "Caregiver-provided photograph",
+              "width": 525,
+              "height": 760
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Sheet",
+          "images": [
+            {
+              "key": "sheet",
+              "kind": "generated",
+              "caption": "Cotton bedsheets with stitched hems",
+              "credit": "AI-generated product illustration; appearance may differ from the item supplied.",
+              "src": "/static/images/icu-guide/generated/sheet.webp",
+              "preview": "/static/images/icu-guide/generated/sheet-preview.webp",
+              "created": "2026-09-11",
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "note": ""
+        }
+      ]
+    }
+  ],
+  "caregiver_gallery": [
+    {
+      "name": "Care supplies at home",
+      "images": [
+        {
+          "src": "/static/images/icu-guide/caregiver/supply-cupboard.png",
+          "preview": "/static/images/icu-guide/previews/caregiver-supply-cupboard.webp",
+          "caption": "Caregiver’s supply cupboard: gloves, gauze, syringes, tubing and underpads",
+          "credit": "Caregiver-provided photograph",
+          "width": 695,
+          "height": 760
+        }
+      ],
+      "note": ""
+    },
+    {
+      "name": "50 ml syringe examples",
+      "images": [
+        {
+          "src": "/static/images/icu-guide/caregiver/syringes-50ml.png",
+          "preview": "/static/images/icu-guide/previews/caregiver-syringes-50ml.webp",
+          "caption": "Two different 50 ml syringes: irrigation syringe (left) and hypodermic syringe without needle (right)",
+          "credit": "Caregiver-provided photograph",
+          "width": 570,
+          "height": 760
+        }
+      ],
+      "note": "Packaging reference; these are separate from the 5 ml / 10 ml syringe entry."
+    }
+  ],
+  "checked_on": "2026-09-11"
+}

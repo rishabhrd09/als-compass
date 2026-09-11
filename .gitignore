@@ -15,9 +15,24 @@ IMAGE_SYSTEM_QUICKSTART.txt
 # Documentation - keep only essential docs
 *.md
 !README.md
+!docs/research-review-2026-09-10.md
+!docs/research-update-workflow.md
+!docs/power-guide-audit-2026-09-11.md
+!prompts/update_als_research.md
+
+# Local review packets contain fetched records, drafts, audits and backups.
+.research-updates/
 
 
 read_docx.py
 test_relevance.py
 update_faq_content.py
 data/10_Common_Questions_ALSCAS_WhatsApp.md.pdf
+
+!docs/communication-review-2026-09-11.md
+
+!docs/emergency-guidance-review-2026-09-11.md
+
+# Production launch guide and reusable preparation prompt
+!docs/deployment-guide.md
+!prompts/deploy_als_carekosh.md

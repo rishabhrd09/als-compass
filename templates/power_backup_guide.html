@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "care_base.html" %}
 
-{% block title %}Power Backup Guide | ALS Caregiver's Compass{% endblock %}
+{% block title %}Power Backup Guide | ALS CareKosh{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -329,9 +329,9 @@
 </style>
 {% endblock %}
 
-{% block content %}
+{% block care_header %}
 <!-- Hero Section -->
-<section class="pb-hero">
+<section class="guide-hero pb-hero">
     <div class="container">
         <h1>Power Backup Guide</h1>
         <p>Calculate and plan backup power for your medical equipment</p>
@@ -345,733 +345,77 @@
         </div>
     </div>
 </section>
+{% endblock %}
 
+{% block care_content %}
 <div class="pb-container">
-
-    <!-- India Context Note -->
-    <div class="pb-info-box" style="border-left: 4px solid #7eb8d4; margin-bottom: 1.75rem;">
-        <p style="margin: 0;">
-            <strong><i class="fas fa-info-circle" style="color: #7eb8d4; margin-right: 0.3rem;"></i>India-Specific Guide:</strong>
-            This guide is based on the <strong>Indian power grid (230V AC / 50Hz)</strong>. All UPS ratings, battery brands
-            (Exide, Amaron), and kVA specifications follow Indian market standards (BIS). Power outages in India can last
-            4–12+ hours depending on region, making adequate backup critical for home ICU setups.
-        </p>
+    <div class="pb-info-box power-intro-note">
+        <p><strong>India-Specific Guide:</strong> This page assumes a nominal <strong>230 V AC / 50 Hz single-phase supply</strong>. Actual supply quality, outages and restoration times vary. Select a planning duration using your local outage history and care team’s contingency plan; the former “4–12+ hours” range was not a verified national rule.</p>
+        <p>Exide and Amaron are brand names, not proof that every battery or UPS meets an applicable BIS standard or suits life support. Verify the exact model, registration, installation and device requirements. <a href="https://www.crsbis.in/BIS/registration-page.do">BIS product-registration guidance</a>.</p>
     </div>
+    <aside class="power-safety-note" aria-labelledby="powerSafetyTitle">
+        <h2 id="powerSafetyTitle">Before using this guide</h2>
+        <p>This is an educational planning aid. <strong>No generic calculation can guarantee uninterrupted power for a person dependent on medical equipment.</strong> Have the equipment provider, clinical team and qualified electrical professional approve the actual arrangement and backup plan. Manufacturer ratings, battery condition and a supervised commissioning check matter more than a calculated number.</p>
+    </aside>
 
-    <!-- Understanding Power Backup -->
-    <div class="pb-card">
+    {% include 'partials/power_calculator.html' %}
+
+    <section class="pb-card" id="understanding-power-backup" data-care-section>
         <h2>Understanding Power Backup</h2>
-        <p style="margin-bottom: 1.25rem;">
-            Your Power backup system : <strong>Batteries</strong> store energy (Amp-hours),
-            <strong>devices</strong> consume energy (Watts), and the <strong>UPS</strong> converts and delivers stored
-            energy.
-        </p>
+        <p><strong>Watts (W)</strong> describe real power. <strong>Watt-hours (Wh)</strong> describe energy. <strong>Amp-hours (Ah)</strong> describe electric charge; they must be paired with battery voltage and discharge conditions. <strong>VA</strong> describes apparent AC power. A UPS has separate W and VA output limits; its kVA rating does not tell you battery-bank voltage, battery count or runtime.</p>
         <div class="pb-formula-box">
-            <p>Backup Time = (Battery Capacity in Wh × 0.75) ÷ Total Load in Watts</p>
-            <p>75% efficiency accounts for battery and UPS inverter conversion losses</p>
+            <p>Average load (W) = Σ [device watts × run time % ÷ 100]</p>
+            <p>AC energy needed (Wh) = average load (W) × duration (h)</p>
+            <p>Planning AC energy (Wh) = AC energy needed × (1 + extra allowance % ÷ 100)</p>
         </div>
-
-        <!-- Heat Warning -->
-        <div class="pb-info-box" style="margin-top: 1.25rem; border-left: 4px solid #f59e0b;">
-            <p style="margin: 0;">
-                <strong><i class="fas fa-temperature-high" style="color: #f59e0b; margin-right: 0.3rem;"></i>Heat Impact (Indian Summers):</strong>
-                The 75% efficiency factor assumes moderate temperatures (~25°C). In Indian summers (35–45°C), lead-acid battery
-                capacity can drop an additional 10–20%. If batteries are in a non-AC room during peak summer, expect
-                <strong>60–65% usable capacity</strong> instead of 75%. Keep batteries in a cool, ventilated space for
-                optimal performance.
-            </p>
+        <p>For output-capacity screening, add the running W and VA of all devices that can operate together, then apply the entered headroom. <strong>Do not reduce output-capacity requirements by duty cycle.</strong> Start-up/inrush and overload duration require separate manufacturer checks; 25% continuous headroom is not a universal solution. If VA is unknown, the calculator does not invent a power factor. <a href="https://www.eaton.com/us/en-us/products/backup-power-ups-surge-it-power-distribution/backup-power-ups/va-versus-watts--eaton.html">Eaton: W and VA</a>.</p>
+        <h3>Optional battery model</h3>
+        <p>Nominal bank energy ≈ bank voltage × bank Ah. In a string of identical batteries in series, voltages add and Ah stays the same. Approved parallel strings add Ah at the same voltage. Do not assemble or modify a bank from these formulas; the UPS charger, protection and wiring must support the exact configuration.</p>
+        <div class="pb-formula-box">
+            <p>Modeled AC energy = nominal bank Wh × assumed usable fraction</p>
+            <p>Modeled runtime = modeled AC energy ÷ average load</p>
+            <p>Nominal Wh needed = planning AC energy ÷ assumed usable fraction</p>
         </div>
-    </div>
-
-    <!-- Our Current Setup -->
-    <div class="pb-card">
-        <h2>Reference Setup</h2>
-        <p style="margin-bottom: 1.25rem;">Current equipment used in our home ICU:</p>
-
-        <div style="overflow-x: auto; margin-bottom: 1.5rem;">
-            <table class="pb-table">
-                <thead>
-                    <tr>
-                        <th>Equipment</th>
-                        <th>Model</th>
-                        <th style="text-align: center;">Qty</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="cell-label">UPS</td>
-                        <td>Uniline 3kVA (72V DC)</td>
-                        <td style="text-align: center;">2</td>
-                    </tr>
-                    <tr>
-                        <td class="cell-label">Batteries</td>
-                        <td>Exide 12V 42Ah (6 per UPS)</td>
-                        <td style="text-align: center;">12</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <p style="margin-bottom: 1rem;">Power consumption of devices:</p>
-        <div style="overflow-x: auto;">
-            <table class="pb-table">
-                <thead>
-                    <tr>
-                        <th>Device</th>
-                        <th style="text-align: center;">Power</th>
-                        <th style="text-align: center;">Usage</th>
-                        <th style="text-align: center;">Effective</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ventilator</td>
-                        <td style="text-align: center;">120W</td>
-                        <td style="text-align: center;">100%</td>
-                        <td style="text-align: center;" class="cell-value">120W</td>
-                    </tr>
-                    <tr>
-                        <td>Oxygen Concentrator</td>
-                        <td style="text-align: center;">610W</td>
-                        <td style="text-align: center;">~25%</td>
-                        <td style="text-align: center;" class="cell-value">~153W</td>
-                    </tr>
-                    <tr>
-                        <td>Suction Machine</td>
-                        <td style="text-align: center;">75W</td>
-                        <td style="text-align: center;">~25%</td>
-                        <td style="text-align: center;" class="cell-value">~19W</td>
-                    </tr>
-                    <tr class="cell-highlight">
-                        <td class="cell-label">Effective Load (25% duty)</td>
-                        <td style="text-align: center; color: #64748b;">—</td>
-                        <td style="text-align: center; color: #64748b;">—</td>
-                        <td style="text-align: center; color: #1e3a5f; font-weight: 700;">~292W</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Usage % Explanation -->
+        <p>The fraction is not just inverter efficiency. It must encompass the battery’s discharge-rate behavior, cutoff, charge state, aging, temperature and UPS conversion/idle losses at the relevant load. <strong>There is no universal 75% factor.</strong> Use the battery’s discharge curves and UPS runtime data, then validate the installation without risking the patient’s power supply. A fraction inferred from one load or one outage cannot establish runtime at a different load.</p>
         <div class="pb-info-box">
-            <p style="margin: 0;">
-                <strong>What does 25% usage mean?</strong><br>
-                If you need 10 hours of backup, 25% usage means the device runs for about 2.5 hours out of those 10
-                hours.
-                For example, Oxygen concentrator running 2.5 hours during a 10-hour power outage = 2.5/10 = 25% duty
-                cycle.
-            </p>
+            <p><strong>Temperature correction:</strong> The old claim that Indian summer temperatures always reduce immediate battery capacity by 10–20%, leaving 60–65% usable energy, was unsupported. High temperature accelerates lead-acid aging and affects charging; low temperature reduces available capacity. Follow the actual battery and UPS temperature limits and ventilation instructions. Do not apply a universal seasonal percentage. <a href="https://www.yuasa.com/media/akeneo_connector/asset_files/I/n/Instructions_NP_REW_2b57.pdf">Yuasa VRLA instructions</a>.</p>
         </div>
+    </section>
 
-        <!-- Equipment Images -->
-        <div style="margin-top: 1.75rem; margin-bottom: 1.75rem;">
-            <p style="margin-bottom: 1rem;">Our equipment: <span style="font-size: 0.875rem; color: #64748b;">(click to enlarge)</span></p>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                <div style="text-align: center;">
-                    <img src="{{ url_for('static', filename='images/icu-guide/ups-unit.png') }}" alt="UPS Unit"
-                        style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: transform 0.15s;"
-                        onclick="openLightbox(this.src, 'Uniline 3kVA UPS')"
-                        onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
-                    <p class="pb-img-caption">Uniline 3kVA UPS</p>
-                </div>
-                <div style="text-align: center;">
-                    <img src="{{ url_for('static', filename='images/icu-guide/ups-label.png') }}" alt="UPS Label"
-                        style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: transform 0.15s;"
-                        onclick="openLightbox(this.src, 'UPS Specifications')"
-                        onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
-                    <p class="pb-img-caption">UPS Specifications</p>
-                </div>
-                <div style="text-align: center;">
-                    <img src="{{ url_for('static', filename='images/icu-guide/battery-exide.png') }}"
-                        alt="Exide Battery"
-                        style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 1px solid #e2e8f0; cursor: pointer; transition: transform 0.15s;"
-                        onclick="openLightbox(this.src, 'Exide 12V 42Ah Battery')"
-                        onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
-                    <p class="pb-img-caption">Exide 12V 42Ah Battery</p>
-                </div>
-            </div>
-        </div>
+    <section class="pb-card" id="reference-setup" data-care-section>
+        <h2>Reference Setup</h2>
+        {% include 'partials/power_reference.html' %}
+    </section>
 
-        <!-- Backup Time with Our Setup -->
-        <div style="margin-top: 1.75rem; padding-top: 1.75rem; border-top: 2px solid #e2e8f0;">
-            <h3>Expected Backup Time with Our Setup</h3>
-            <p style="margin-bottom: 1.15rem;">
-                Battery capacity per UPS: 6 × 42Ah × 12V = <strong>3,024 Wh</strong> | Usable (75%): <strong>2,268
-                    Wh</strong>
-            </p>
-
-            <div class="pb-stat-grid">
-                <div class="pb-stat-card" style="background: #e8f0f8;">
-                    <div class="pb-stat-label">Worst Case</div>
-                    <div class="pb-stat-desc">All devices at 100%</div>
-                    <div class="pb-stat-value" style="color: #1e3a5f;">~2.8 hrs</div>
-                    <div class="pb-stat-sub" style="color: #64748b;">120+610+75 = 805W</div>
-                </div>
-                <div class="pb-stat-card" style="background: #F0F7F4; border-color: #D5E8DD;">
-                    <div class="pb-stat-label">Realistic Usage</div>
-                    <div class="pb-stat-desc">~25% duty cycle</div>
-                    <div class="pb-stat-value" style="color: #7eb8d4;">~7.8 hrs</div>
-                    <div class="pb-stat-sub" style="color: #3D6B4A;">292W effective</div>
-                </div>
-                <div class="pb-stat-card" style="background: #f8fafc;">
-                    <div class="pb-stat-label">Ventilator Only</div>
-                    <div class="pb-stat-desc">Emergency mode</div>
-                    <div class="pb-stat-value" style="color: #1e293b;">~19 hrs</div>
-                    <div class="pb-stat-sub" style="color: #64748b;">120W load</div>
-                </div>
-            </div>
-
-            <!-- Option A -->
-            <div class="pb-option-box">
-                <h4>Option A: Split Load Across Two UPS Units</h4>
-                <p style="margin-bottom: 1rem;">
-                    By dedicating one UPS to the ventilator only, you ensure it runs longest:
-                </p>
-                <div class="pb-option-grid">
-                    <div class="pb-option-item">
-                        <div class="pb-option-label">UPS 1 — Ventilator Only</div>
-                        <div class="pb-option-detail">Load: <strong>120W</strong></div>
-                        <div class="pb-option-value">Backup: ~19 hours</div>
-                        <div class="pb-option-sub">2,268 Wh ÷ 120W = 18.9 hrs</div>
-                    </div>
-                    <div class="pb-option-item">
-                        <div class="pb-option-label">UPS 2 — Oxygen + Suction</div>
-                        <div class="pb-option-detail">Load: <strong>172W</strong> effective (685W at 25% duty cycle)</div>
-                        <div class="pb-option-value">Backup: ~13 hours</div>
-                        <div class="pb-option-sub">2,268 Wh ÷ 172W = 13.2 hrs</div>
-                    </div>
-                </div>
-                <p class="pb-note">
-                    <strong>Advantage:</strong> Even if UPS 2 runs out after 13 hours, UPS 1 keeps the ventilator
-                    running for 19+ hours.
-                </p>
-            </div>
-
-            <!-- Option B -->
-            <div class="pb-option-box" style="background: #F0F7F4; border-color: #D5E8DD;">
-                <h4>Option B: One UPS at a Time (Sequential Usage)</h4>
-                <p style="margin-bottom: 1rem;">
-                    Power all devices from one UPS, then switch to second UPS when first is empty:
-                </p>
-
-                <div class="pb-option-item" style="margin-bottom: 1rem; border-color: #D5E8DD;">
-                    <div style="margin-bottom: 0.75rem;">
-                        <strong>Combined Battery Capacity:</strong> 2 × 2,268 Wh = <strong style="color: #1e293b;">4,536
-                            Wh</strong>
-                    </div>
-
-                    <div class="pb-stat-grid">
-                        <div style="text-align: center; padding: 0.85rem; background: #e8f0f8; border-radius: 8px;">
-                            <div class="pb-stat-label">Worst Case</div>
-                            <div style="font-size: 1.35rem; font-weight: 800; color: #1e3a5f; font-family: 'Manrope', sans-serif;">~5.6 hrs</div>
-                            <div class="pb-stat-sub" style="color: #64748b;">4,536 ÷ 805W</div>
-                        </div>
-                        <div style="text-align: center; padding: 0.85rem; background: #E8F5EC; border-radius: 8px;">
-                            <div class="pb-stat-label">25% Duty Cycle</div>
-                            <div style="font-size: 1.35rem; font-weight: 800; color: #7eb8d4; font-family: 'Manrope', sans-serif;">~15.5 hrs</div>
-                            <div class="pb-stat-sub" style="color: #3D6B4A;">4,536 ÷ 292W</div>
-                        </div>
-                        <div style="text-align: center; padding: 0.85rem; background: #f8fafc; border-radius: 8px;">
-                            <div class="pb-stat-label">Ventilator Only</div>
-                            <div style="font-size: 1.35rem; font-weight: 800; color: #1e293b; font-family: 'Manrope', sans-serif;">~38 hrs</div>
-                            <div class="pb-stat-sub" style="color: #64748b;">4,536 ÷ 120W</div>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="pb-note">
-                    <strong>How it works:</strong> Run all devices on UPS 1 → when UPS 1 battery low, switch all plugs
-                    to UPS 2 → continues from where UPS 1 stopped.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Power Calculator -->
-    <div id="power-calculator" class="pb-card">
-        <h2>Power Calculator</h2>
-        <p style="margin-bottom: 0.75rem;">
-            Add your devices and calculate backup time requirements
-        </p>
-        <div class="pb-info-box" style="margin-top: 0; margin-bottom: 1.75rem;">
-            <p style="margin: 0;">
-                <strong>Usage %:</strong> How much of the backup time will the device actually run?
-                Example: If you need 10 hours backup and Oxygen concentrator runs for 2.5 hours = 2.5÷10 =
-                <strong>25%</strong>
-            </p>
-        </div>
-
-        <!-- Device List -->
-        <div id="deviceList" style="margin-bottom: 1.25rem;">
-            <!-- Device rows will be added here dynamically -->
-        </div>
-
-        <!-- Add Device Button -->
-        <button onclick="addDevice()" style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            background: #FFFFFF;
-            border: 1px dashed #D0D0D0;
-            border-radius: 6px;
-            color: #6B6B6B;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            font-family: 'Inter', system-ui, sans-serif;
-            margin-bottom: 1.5rem;
-        " onmouseover="this.style.borderColor='#9A9A9A'; this.style.color='#1A1A1A';"
-            onmouseout="this.style.borderColor='#D0D0D0'; this.style.color='#6B6B6B';">
-            + Add Device
-        </button>
-
-        <!-- Backup Time Input -->
-        <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap;">
-            <label
-                style="font-size: 0.9rem; color: #1A1A1A; font-weight: 500; font-family: 'Inter', system-ui, sans-serif;">Desired
-                backup:</label>
-            <input type="number" id="desiredBackupHours" value="8" min="1" max="48" style="
-                padding: 0.5rem 0.75rem;
-                border: 1px solid #E0E0E0;
-                border-radius: 6px;
-                font-size: 0.9rem;
-                width: 70px;
-                text-align: center;
-                font-family: 'Inter', system-ui, sans-serif;
-                color: #1A1A1A;
-            ">
-            <span style="font-size: 0.9rem; color: #6B6B6B;">hours</span>
-        </div>
-
-        <!-- Calculate Button -->
-        <button onclick="calculateUPS()" style="
-            padding: 0.75rem 1.75rem;
-            background: #1e3a5f;
-            border: none;
-            border-radius: 8px;
-            color: #FFFFFF;
-            font-size: 0.925rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            font-family: 'Inter', system-ui, sans-serif;
-        " onmouseover="this.style.background='#264d7a';" onmouseout="this.style.background='#1e3a5f';">
-            Calculate Requirements
-        </button>
-
-        <!-- Results Area -->
-        <div id="calcResults"
-            style="display: none; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #E8E5E1;">
-            <h3
-                style="font-size: 0.95rem; font-weight: 600; color: #1A1A1A; margin-bottom: 1rem; font-family: 'Inter', system-ui, sans-serif;">
-                Results</h3>
-
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
-                <div style="background: #F8F7F6; padding: 1rem; border-radius: 8px; text-align: center;">
-                    <div
-                        style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-                        Peak Load</div>
-                    <div id="resultWorstCase" style="font-size: 1.25rem; font-weight: 600; color: #1A1A1A;">0W</div>
-                </div>
-                <div style="background: #F8F7F6; padding: 1rem; border-radius: 8px; text-align: center;">
-                    <div
-                        style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-                        Effective Load</div>
-                    <div id="resultEffective" style="font-size: 1.25rem; font-weight: 600; color: #1A1A1A;">0W</div>
-                </div>
-                <div style="background: #F8F7F6; padding: 1rem; border-radius: 8px; text-align: center;">
-                    <div
-                        style="font-size: 0.7rem; color: #9A9A9A; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-                        Energy Required</div>
-                    <div id="resultEnergy" style="font-size: 1.25rem; font-weight: 600; color: #1e3a5f;">0 Wh</div>
-                </div>
-            </div>
-
-            <div
-                style="background: #e8f0f8; padding: 1rem 1.25rem; border-radius: 8px; border-left: 3px solid #1e3a5f;">
-                <h4
-                    style="font-size: 0.85rem; font-weight: 600; color: #8B5A3C; margin-bottom: 0.5rem; font-family: 'Inter', system-ui, sans-serif;">
-                    Recommendation</h4>
-                <div id="resultRecommendation" style="font-size: 0.9rem; color: #6B5243; line-height: 1.6;"></div>
-            </div>
-
-            <details style="margin-top: 1rem;">
-                <summary
-                    style="font-size: 0.8rem; color: #9A9A9A; cursor: pointer; font-family: 'Inter', system-ui, sans-serif;">
-                    View calculation breakdown</summary>
-                <div id="resultBreakdown"
-                    style="margin-top: 0.75rem; font-size: 0.8rem; color: #6B6B6B; background: #F8F7F6; padding: 1rem; border-radius: 6px; font-family: 'SF Mono', Monaco, monospace; line-height: 1.6;">
-                </div>
-            </details>
-        </div>
-    </div>
-
-    <!-- Quick Reference Guide -->
-    <div class="pb-card" style="margin-bottom: 2rem;">
+    <section class="pb-card" id="quick-reference-guide" data-care-section>
         <h2>Quick Reference Guide</h2>
-        <p style="margin-bottom: 0.5rem;">Common setups based on load and backup requirements</p>
-        <p style="margin-bottom: 1.25rem; font-size: 0.95rem; color: #64748b;">
-            Backup times calculated using: (Ah × Bank Voltage × 0.75) ÷ Load. Actual times may be lower in hot conditions (see note below).
-        </p>
+        <p><strong>Arithmetic examples, not hardware recommendations.</strong> These retain the old page’s battery-size examples to explain its calculations. Every row assumes an unverified 75% nominal-to-AC usable fraction, constant average load and no additional energy allowance. Actual performance may differ substantially.</p>
+        <div class="care-table-scroll"><table class="pb-table"><thead><tr><th>Illustrative bank</th><th>Nominal energy</th><th>Assumed load</th><th>Illustrative hours at 75%</th></tr></thead><tbody>
+            <tr><td>2 × 12 V / 100 Ah in series</td><td>2,400 Wh</td><td>120 W</td><td>15.00 h</td></tr>
+            <tr><td>2 × 12 V / 200 Ah in series</td><td>4,800 Wh</td><td>120 W</td><td>30.00 h</td></tr>
+            <tr><td>4 × 12 V / 150 Ah in series</td><td>7,200 Wh</td><td>272.5 W: 120 + 610 × 25%</td><td>19.82 h</td></tr>
+            <tr><td>4 × 12 V / 150 Ah in series</td><td>7,200 Wh</td><td>805 W: all devices continuous</td><td>6.71 h</td></tr>
+            <tr><td>6 × 12 V / 150 Ah in series</td><td>10,800 Wh</td><td>291.25 W: 120 + 610 × 25% + 75 × 25%</td><td>27.81 h</td></tr>
+        </tbody></table></div>
+        <p>The former table’s UPS kVA suggestions have been removed: neither these energy divisions nor a battery Ah size establishes compatible UPS hardware, charging capacity or medical suitability.</p>
+    </section>
 
-        <div style="overflow-x: auto;">
-            <table class="pb-table">
-                <thead>
-                    <tr>
-                        <th>Equipment</th>
-                        <th style="text-align: center;">Load</th>
-                        <th style="text-align: center;">Calculated Backup</th>
-                        <th>Battery Bank</th>
-                        <th style="text-align: center;">UPS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ventilator only</td>
-                        <td style="text-align: center;">120W</td>
-                        <td style="text-align: center;">~15 hrs</td>
-                        <td>2× 100Ah (24V)</td>
-                        <td style="text-align: center;">1 kVA</td>
-                    </tr>
-                    <tr>
-                        <td>Ventilator only</td>
-                        <td style="text-align: center;">120W</td>
-                        <td style="text-align: center;">~30 hrs</td>
-                        <td>2× 200Ah (24V)</td>
-                        <td style="text-align: center;">1 kVA</td>
-                    </tr>
-                    <tr>
-                        <td>Vent + Oxygen (25%)</td>
-                        <td style="text-align: center;">~270W</td>
-                        <td style="text-align: center;">~20 hrs</td>
-                        <td>4× 150Ah (48V)</td>
-                        <td style="text-align: center;">2 kVA</td>
-                    </tr>
-                    <tr>
-                        <td>Full ICU (worst case)</td>
-                        <td style="text-align: center;">805W</td>
-                        <td style="text-align: center;">~6.7 hrs</td>
-                        <td>4× 150Ah (48V)</td>
-                        <td style="text-align: center;">2 kVA</td>
-                    </tr>
-                    <tr class="cell-highlight">
-                        <td class="cell-label">Full ICU (25% usage)</td>
-                        <td style="text-align: center;" class="cell-value">~292W</td>
-                        <td style="text-align: center;" class="cell-value">~27.7 hrs</td>
-                        <td class="cell-value">6× 150Ah (72V)</td>
-                        <td style="text-align: center;" class="cell-value">3 kVA</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <section class="pb-card" id="recommended-configuration" data-care-section>
+        <h2>Planning a safe configuration</h2>
+        <h3>Separate loads or use a second source?</h3>
+        <p>A separate UPS for ventilation and another for other devices is one arrangement to discuss with the clinical and equipment teams, not a universal recommendation. Oxygen and suction cannot be treated as expendable “support” loads when the person depends on them. Splitting loads does not itself provide failover for each device.</p>
+        <p>For two identical banks, nominal energies add arithmetically. Under the reference example’s 75% assumption, 2 × 2,268 = 4,536 Wh, giving 5.63 hours at 805 W or 15.57 hours at 291.25 W. <strong>These are only hypothetical totals.</strong> They do not establish a safe method for sequential switching or validate uninterrupted operation.</p>
+        {% include 'partials/power_practical.html' %}
+    </section>
 
-        <p class="pb-tip" style="margin-top: 1.25rem;">
-            <strong>Tip:</strong> For critical care, always keep a second UPS as backup in case
-            of primary failure.
-        </p>
-    </div>
-
-    <!-- Configuration Tips -->
-    <div class="pb-card" style="margin-bottom: 2rem;">
-        <h2>Recommended Configuration</h2>
-        <p style="margin-bottom: 1.25rem;">
-            Separate the load across two UPS units to ensure the ventilator continues running even if one UPS battery is
-            depleted.
-        </p>
-
-        <div class="pb-option-grid" style="margin-bottom: 1.25rem;">
-            <div class="pb-option-item" style="background: #f8fafc;">
-                <h4>UPS 1 — Critical</h4>
-                <p style="margin: 0;">
-                    Ventilator only (120W)<br>
-                    <strong style="color: #1e3a5f;">Backup: 20+ hours</strong>
-                </p>
-            </div>
-            <div class="pb-option-item" style="background: #f8fafc;">
-                <h4>UPS 2 — Support</h4>
-                <p style="margin: 0;">
-                    Oxygen + Suction (685W)<br>
-                    <strong style="color: #1e3a5f;">Backup: ~3.3 hrs at 100% usage</strong><br>
-                    <span style="font-size: 0.925rem; color: #64748b;">~13 hrs at 25% duty cycle</span>
-                </p>
-            </div>
-        </div>
-
-        <p class="pb-tip">
-            <strong>Why?</strong> If support UPS runs out, ventilator on UPS 1 keeps running,
-            buying you time.
-        </p>
-    </div>
+    <section class="pb-card" id="power-sources" data-care-section>
+        <h2>Sources and verification limits</h2>
+        {% include 'partials/power_sources.html' %}
+        <p>Remaining unknowns for the reference household include verified device operating/start-up loads, current battery condition and charge, UPS runtime/efficiency data at those loads, approved transfer arrangements and a documented commissioning result. The guide must not be described as providing “100% confidence” under every condition.</p>
+    </section>
 </div>
-
-<script>
-    let deviceCount = 0;
-
-    // Market-available specifications (widely used batteries only)
-    const BATTERY_OPTIONS = [
-        { ah: 100, label: '100Ah', common: true },
-        { ah: 150, label: '150Ah', common: true },
-        { ah: 200, label: '200Ah', common: true }
-    ];
-
-    const UPS_OPTIONS = [
-        { kva: 1, watts: 800, voltage: 24, batteries: 2, label: '1 kVA' },
-        { kva: 1.5, watts: 1200, voltage: 24, batteries: 2, label: '1.5 kVA' },
-        { kva: 2, watts: 1600, voltage: 48, batteries: 4, label: '2 kVA' },
-        { kva: 3, watts: 2400, voltage: 48, batteries: 4, label: '3 kVA' },
-        { kva: 3, watts: 2400, voltage: 72, batteries: 6, label: '3 kVA (72V)' },
-        { kva: 5, watts: 4000, voltage: 96, batteries: 8, label: '5 kVA' }
-    ];
-
-    // Initialize with default devices
-    document.addEventListener('DOMContentLoaded', function () {
-        addDevice('Ventilator', 120, 100);
-        addDevice('Oxygen Concentrator', 610, 25);
-        addDevice('Suction Machine', 75, 25);
-    });
-
-    function addDevice(name = '', power = '', usage = '') {
-        deviceCount++;
-        const deviceId = deviceCount;
-
-        const deviceList = document.getElementById('deviceList');
-        const row = document.createElement('div');
-        row.id = `device-row-${deviceId}`;
-        row.style.cssText = 'display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;';
-
-        row.innerHTML = `
-        <input type="text" id="device${deviceId}_name" value="${name}" placeholder="Device name" style="
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #E0E0E0;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-family: 'Inter', system-ui, sans-serif;
-            color: #1A1A1A;
-        ">
-        <input type="number" id="device${deviceId}_power" value="${power}" placeholder="Watts" style="
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #E0E0E0;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            text-align: center;
-            font-family: 'Inter', system-ui, sans-serif;
-            color: #1A1A1A;
-        ">
-        <div style="display: flex; align-items: center; gap: 0.25rem;">
-            <input type="number" id="device${deviceId}_usage" value="${usage}" min="0" max="100" placeholder="%" style="
-                padding: 0.5rem 0.5rem;
-                border: 1px solid #E0E0E0;
-                border-radius: 6px;
-                font-size: 0.875rem;
-                text-align: center;
-                width: 60px;
-                font-family: 'Inter', system-ui, sans-serif;
-                color: #1A1A1A;
-            ">
-            <span style="font-size: 0.75rem; color: #9A9A9A;">%</span>
-        </div>
-        <button onclick="removeDevice(${deviceId})" style="
-            padding: 0.375rem 0.5rem;
-            background: transparent;
-            border: 1px solid #E0E0E0;
-            border-radius: 4px;
-            color: #9A9A9A;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.15s;
-        " onmouseover="this.style.borderColor='#1e3a5f'; this.style.color='#1e3a5f';" onmouseout="this.style.borderColor='#E0E0E0'; this.style.color='#9A9A9A';">
-            ×
-        </button>
-    `;
-
-        deviceList.appendChild(row);
-    }
-
-    function removeDevice(id) {
-        const row = document.getElementById(`device-row-${id}`);
-        if (row) {
-            row.remove();
-        }
-    }
-
-    function calculateBackupTime(batteryAh, voltage, loadWatts) {
-        const totalWh = batteryAh * voltage;
-        const usableWh = totalWh * 0.75; // 75% efficiency
-        return usableWh / loadWatts;
-    }
-
-    function calculateUPS() {
-        const devices = [];
-        const rows = document.getElementById('deviceList').children;
-
-        for (let row of rows) {
-            const inputs = row.querySelectorAll('input');
-            const name = inputs[0].value;
-            const power = parseFloat(inputs[1].value) || 0;
-            const usage = parseFloat(inputs[2].value) || 0;
-
-            if (name && power > 0) {
-                devices.push({ name, power, usage: Math.min(100, Math.max(0, usage)) });
-            }
-        }
-
-        const desiredBackup = parseFloat(document.getElementById('desiredBackupHours').value) || 8;
-
-        let worstCaseLoad = 0;
-        let effectiveLoad = 0;
-        let breakdownLines = [];
-
-        devices.forEach(d => {
-            worstCaseLoad += d.power;
-            const eff = d.power * (d.usage / 100);
-            effectiveLoad += eff;
-            breakdownLines.push(`${d.name}: ${d.power}W × ${d.usage}% = ${eff.toFixed(0)}W`);
-        });
-
-        // Use effective load (accounts for duty cycle) for energy calculation
-        const energyNeeded = (effectiveLoad * desiredBackup) / 0.75;
-        const energyWithMargin = energyNeeded * 1.2;
-
-        // Find suitable UPS options
-        const suitableUPS = UPS_OPTIONS.filter(ups => ups.watts >= worstCaseLoad * 1.25);
-
-        // Generate all valid combinations
-        let combinations = [];
-
-        suitableUPS.forEach(ups => {
-            BATTERY_OPTIONS.forEach(battery => {
-                const totalWh = battery.ah * ups.voltage;
-                const backupTime = calculateBackupTime(battery.ah, ups.voltage, effectiveLoad);
-
-                if (backupTime >= desiredBackup * 0.9) { // Allow 10% tolerance
-                    combinations.push({
-                        ups: ups,
-                        battery: battery,
-                        backupTime: backupTime,
-                        totalWh: totalWh,
-                        batteryCount: ups.batteries,
-                        cost: estimateCost(ups, battery)
-                    });
-                }
-            });
-        });
-
-        // Sort by backup time (ascending) to get most economical options first
-        combinations.sort((a, b) => a.backupTime - b.backupTime);
-
-        // Take top 5 options
-        combinations = combinations.slice(0, 5);
-
-        // Generate recommendation HTML
-        let recommendation = '';
-        if (combinations.length === 0) {
-            recommendation = `<p>For <strong>${worstCaseLoad}W</strong> load with <strong>${desiredBackup} hours</strong> backup, consider using <strong>2 separate UPS units</strong> to split the load.</p>`;
-        } else {
-            recommendation = `<p style="margin-bottom: 1rem;">For <strong>${worstCaseLoad}W</strong> peak load with <strong>${desiredBackup} hours</strong> backup:</p>`;
-            recommendation += '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
-
-            combinations.forEach((combo, idx) => {
-                const highlight = idx === 0 ? 'background: #FAFAFA; border: 1px solid #E0E0E0;' : 'border: 1px solid #F0F0F0;';
-                const label = idx === 0 ? '<span style="font-size: 0.7rem; color: #1e3a5f; text-transform: uppercase; letter-spacing: 0.05em;">Recommended</span>' : '';
-
-                recommendation += `
-                <div style="${highlight} padding: 0.875rem 1rem; border-radius: 6px;">
-                    ${label}
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                        <div>
-                            <strong>${combo.ups.label} UPS</strong> + 
-                            <strong>${combo.batteryCount}× ${combo.battery.label}</strong> batteries (${combo.ups.voltage}V)
-                        </div>
-                        <div style="font-size: 0.85rem; color: #1e3a5f; font-weight: 500;">
-                            ~${combo.backupTime.toFixed(1)} hrs backup
-                        </div>
-                    </div>
-                </div>`;
-            });
-            recommendation += '</div>';
-
-            // Add explanatory text after the recommendations
-            const topCombo = combinations[0];
-            recommendation += `<p style="font-size: 0.85rem; color: #6B6B6B; margin-top: 1rem; line-height: 1.6;">
-                <strong>Summary:</strong> You need <strong>1× ${topCombo.ups.label} UPS</strong> with 
-                <strong>${topCombo.batteryCount}× ${topCombo.battery.label} batteries</strong> to get ~${topCombo.backupTime.toFixed(1)} hours of backup.
-            </p>`;
-
-            recommendation += `<p style="font-size: 0.8rem; color: #9A9A9A; margin-top: 0.5rem; padding: 0.75rem; background: #F8F7F6; border-radius: 6px;">
-                <strong style="color: #6B6B6B;">💡 Safety Tip:</strong> For critical medical equipment, consider keeping a second UPS unit as backup in case of primary UPS failure or for extended outages.
-            </p>`;
-        }
-
-        document.getElementById('calcResults').style.display = 'block';
-        document.getElementById('resultWorstCase').textContent = `${worstCaseLoad}W`;
-        document.getElementById('resultEffective').textContent = `${effectiveLoad.toFixed(0)}W`;
-        document.getElementById('resultEnergy').textContent = `${energyWithMargin.toFixed(0)} Wh`;
-        document.getElementById('resultRecommendation').innerHTML = recommendation;
-        document.getElementById('resultBreakdown').innerHTML = breakdownLines.join('<br>') +
-            `<br><br>Peak: ${worstCaseLoad}W | Effective: ${effectiveLoad.toFixed(0)}W<br>` +
-            `Energy for ${desiredBackup}hrs @ 75% eff: ${energyNeeded.toFixed(0)} Wh<br>` +
-            `With 20% margin: ${energyWithMargin.toFixed(0)} Wh`;
-
-        document.getElementById('calcResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function estimateCost(ups, battery) {
-        // Rough cost estimates in INR for sorting (not displayed)
-        const upsCost = ups.kva * 15000;
-        const batteryCost = battery.ah * 100 * ups.batteries;
-        return upsCost + batteryCost;
-    }
-
-    // Lightbox functions for image enlargement
-    function openLightbox(imageSrc, caption) {
-        // Create lightbox if it doesn't exist
-        let lightbox = document.getElementById('imageLightbox');
-        if (!lightbox) {
-            lightbox = document.createElement('div');
-            lightbox.id = 'imageLightbox';
-            lightbox.style.cssText = `
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                z-index: 9999;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                cursor: pointer;
-            `;
-            lightbox.onclick = closeLightbox;
-            lightbox.innerHTML = `
-                <span style="position: absolute; top: 20px; right: 30px; color: white; font-size: 2rem; cursor: pointer;">&times;</span>
-                <img id="lightboxImage" style="max-width: 90%; max-height: 80%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-                <p id="lightboxCaption" style="color: white; margin-top: 1rem; font-size: 1rem; font-family: 'Inter', system-ui, sans-serif;"></p>
-            `;
-            document.body.appendChild(lightbox);
-        }
-
-        document.getElementById('lightboxImage').src = imageSrc;
-        document.getElementById('lightboxCaption').textContent = caption || '';
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-        const lightbox = document.getElementById('imageLightbox');
-        if (lightbox) {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    }
-
-    // Close lightbox on Escape key
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
-</script>
+{% endblock %}
+{% block extra_js %}
+<script src="/static/js/power/calculations.js" defer></script>
+<script src="/static/js/power/calculator-ui.js" defer></script>
 {% endblock %}

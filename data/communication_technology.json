@@ -1,5 +1,5 @@
 {
-    "last_updated": "2025-12-24",
+    "last_updated": "2026-09-11",
     "categories": {
         "eye_tracking": {
             "title": "Eye Tracking Devices",
@@ -53,117 +53,123 @@
                 {
                     "id": 3,
                     "name": "Tobii Dynavox PCEye 5",
-                    "category": "Medical Grade",
-                    "price_usd": 2500,
-                    "price_inr": "₹2.5+ Lakh",
-                    "community_rating": 3,
-                    "status": "Available",
-                    "india_access": "Import via authorized dealers",
-                    "works_with_windows_eye_control": true,
-                    "community_verdict": "Good if budget allows.",
+                    "category": "Assistive eye tracker",
+                    "price_display": "Request a quote",
+                    "price_note": "Pricing depends on region and software bundle.",
+                    "status": "Current PCEye range",
+                    "community_verdict": "Purpose-built eye access for a separate Windows computer.",
                     "key_notes": [
-                        "Purpose-built for accessibility",
-                        "Outdoor tracking capability",
-                        "Professional TD Control software",
-                        "Full warranty and support"
-                    ]
+                        "TD Control is included for computer access; check which communication apps are included in your quote.",
+                        "Supports indoor and outdoor use, with compatible displays up to 27 inches.",
+                        "The computer, mounting and local training may be separate costs."
+                    ],
+                    "sources": [
+                        {
+                            "label": "Product & included software",
+                            "url": "https://us.tobiidynavox.com/pages/pceye"
+                        }
+                    ],
+                    "india_access": "Ask Tobii Dynavox or its regional partner about assessment, supply and support.",
+                    "checked_on": "2026-09-11"
                 },
                 {
                     "id": 4,
-                    "name": "Tobii Dynavox I-16",
-                    "category": "Medical Grade (All-in-One)",
-                    "price_usd": 15000,
-                    "price_inr": "₹15+ Lakh",
-                    "community_rating": 4,
-                    "status": "Available",
-                    "india_access": "Import via authorized dealers",
-                    "works_with_windows_eye_control": true,
-                    "community_verdict": "Industry leader but extremely expensive. Consider renting or used.",
+                    "name": "Tobii Dynavox TD I-16",
+                    "category": "All-in-one communication device",
+                    "price_display": "Request a quote",
+                    "price_note": "A configured communication system; no fixed India price verified.",
+                    "status": "Current TD I-Series",
+                    "community_verdict": "Integrated eye tracking, speech output and Windows access.",
                     "key_notes": [
-                        "15.6-inch touchscreen with eye tracker built-in",
-                        "Partner Window for face-to-face conversations",
-                        "Wake On Gaze for 24/7 autonomy",
-                        "Outdoor tracking works in sunlight",
-                        "6.5-8 hour battery life"
+                        "15.6-inch screen, built-in speakers and a rear-facing Partner Window for conversations.",
+                        "Includes TD Talk, TD Control and other communication software; confirm the regional bundle.",
+                        "Manufacturer specifies approximately 6.5 hours average battery runtime, up to 8 hours. Actual use varies."
                     ],
-                    "warning": "Reddit user called it 'outrageously overpriced' - consider used or rental options."
+                    "sources": [
+                        {
+                            "label": "TD I-Series specifications",
+                            "url": "https://us.tobiidynavox.com/products/td-i-series"
+                        }
+                    ],
+                    "india_access": "Request a regional quote with mounting, training, warranty and repair arrangements.",
+                    "checked_on": "2026-09-11"
                 },
                 {
                     "id": 5,
                     "name": "Eyegaze Edge",
-                    "category": "Medical Grade (Specialized)",
-                    "price_usd": 15000,
-                    "price_inr": "₹15+ Lakh",
-                    "community_rating": 4,
-                    "status": "Available",
-                    "india_access": "Import only (LC Technologies)",
-                    "community_verdict": "Best for droopy eyelids and dry eyes - common ALS complications",
+                    "category": "Specialist communication system",
+                    "price_display": "Request a quote",
+                    "price_note": "Assessment and configuration determine the package price.",
+                    "status": "Available through Eyegaze",
+                    "community_verdict": "Worth an individual assessment when eye tracking is difficult.",
                     "key_notes": [
-                        "Works with only 10% pupil visible",
-                        "Handles ptosis (droopy eyelids)",
-                        "Designed for older patients",
-                        "Low fatigue tracking"
-                    ]
+                        "Manufacturer describes adaptations for drooping eyelids and limited eye movement.",
+                        "Dry eyes can still affect tracking. Successful use needs individual positioning and calibration.",
+                        "Ask for a demonstration with the intended user; these features do not guarantee success for every person."
+                    ],
+                    "sources": [
+                        {
+                            "label": "Product information",
+                            "url": "https://eyegaze.com/products/eyegaze-edge/"
+                        },
+                        {
+                            "label": "Manufacturer guidance",
+                            "url": "https://eyegaze.com/wp-content/uploads/How-Does-the-Eyegaze-Edge-work2020.pdf"
+                        }
+                    ],
+                    "india_access": "Confirm international supply, local support and a full written quote with Eyegaze.",
+                    "checked_on": "2026-09-11"
                 }
             ]
         },
         "head_tracking": {
             "title": "Head Tracking Devices",
             "icon": "fa-head-side-virus",
-            "description": "For patients with bulbar-sparing ALS who retain head movement",
+            "description": "For people who retain comfortable, repeatable head movement.",
             "devices": [
                 {
                     "id": 1,
                     "name": "GlassOuse V1.4",
-                    "category": "Wearable Head Mouse",
-                    "price_usd": 400,
-                    "price_inr": "₹90,000-95,000 (Import)",
-                    "community_rating": 4,
+                    "category": "Wearable Bluetooth head mouse",
+                    "price_display": "US$599",
+                    "price_note": "Manufacturer price for the device; switches and import costs may be extra.",
                     "status": "Available",
-                    "stage": "Early-Mid",
-                    "india_access": "Amazon, GlassOuse.com",
+                    "community_verdict": "A glasses-style head mouse for compatible computers, phones and tablets.",
                     "key_notes": [
-                        "Worn like glasses - 9-axis gyroscope",
-                        "150+ hour battery life",
-                        "Bite switch, puff switch, or dwell clicking",
-                        "Connects via Bluetooth to any device"
+                        "Uses a 9-axis sensor to translate head movement into pointer movement.",
+                        "Click with a compatible 3.5 mm adaptive switch or dwell software.",
+                        "Manufacturer advertises 150+ hours per charge. Check comfort, calibration and device compatibility during a trial."
                     ],
-                    "community_verdict": "Highly praised for responsiveness",
-                    "recommended": true
-                },
-                {
-                    "id": 2,
-                    "name": "GlassOuse PRO",
-                    "category": "Advanced Wearable",
-                    "price_usd": 700,
-                    "price_inr": "₹1,50,000-1,70,000 (Import)",
-                    "community_rating": 4,
-                    "status": "Available",
-                    "stage": "Limited Movement",
-                    "india_access": "Import from GlassOuse.com",
-                    "key_notes": [
-                        "3-in-1: Head mouse + Switch hub + Joystick",
-                        "Connect to 3 devices simultaneously",
-                        "8 customizable switches",
-                        "Minimal head movement required"
+                    "sources": [
+                        {
+                            "label": "Product & price",
+                            "url": "https://glassouse.com/product/glassouse-v1-4-assistive-device/"
+                        }
                     ],
-                    "community_verdict": "Advanced features for users with limited movement"
+                    "india_access": "Confirm shipping and after-sales support with GlassOuse before ordering.",
+                    "checked_on": "2026-09-11"
                 },
                 {
                     "id": 3,
                     "name": "HeadMouse Nano",
-                    "category": "Optical Head Tracker",
-                    "price_usd": 1200,
-                    "price_inr": "₹1.8+ Lakh (Import)",
-                    "community_rating": 4,
+                    "category": "Optical USB head tracker",
+                    "price_display": "Request a quote",
+                    "price_note": "Check device, switch and software bundle pricing with Origin Instruments.",
                     "status": "Available",
-                    "stage": "Early-Mid",
-                    "india_access": "Import from Origin Instruments (USA)",
+                    "community_verdict": "A screen-mounted alternative to wearing a head mouse.",
                     "key_notes": [
-                        "Tracks reflective dot placed on forehead",
-                        "High precision without wearing anything on head",
-                        "Works with any computer"
-                    ]
+                        "Tracks a small reflective target worn on the forehead, glasses or a hat.",
+                        "USB powered; works on systems that support a standard USB mouse. Mobile devices may need an adapter.",
+                        "Selection needs an adaptive switch or dwell software. An onscreen keyboard provides typing."
+                    ],
+                    "sources": [
+                        {
+                            "label": "Product & compatibility",
+                            "url": "https://www.orin.com/access/headmouse/"
+                        }
+                    ],
+                    "india_access": "Confirm an India supply route, accessories and warranty with Origin Instruments.",
+                    "checked_on": "2026-09-11"
                 }
             ]
         },
@@ -196,58 +202,151 @@
             "title": "Brain-Computer Interfaces (BCIs)",
             "icon": "fa-brain",
             "description": "For late-stage when eye tracking becomes difficult. Currently in clinical trials only.",
-            "warning": "BCIs are NOT commercially available. Only accessible via clinical trials in USA, Australia, and soon UK/Germany/UAE.",
+            "warning": "These systems are investigational for restoring everyday communication. Trial participation depends on eligibility and study location. Research sales or clearance of an electrode component do not mean approval of a complete home communication system. There is no confirmed general-release date.",
             "devices": [
                 {
-                    "id": 1,
                     "name": "Synchron Stentrode",
                     "company": "Synchron",
-                    "status": "Clinical Trials (COMMAND Complete)",
-                    "invasiveness": "Minimally Invasive (via blood vessels)",
-                    "als_relevance": "HIGH - Designed specifically for ALS",
+                    "status": "Investigational BCI",
+                    "invasiveness": "Implanted through a blood vessel via the jugular vein.",
                     "key_notes": [
-                        "No open brain surgery required",
-                        "Implanted via jugular vein",
-                        "Apple integration announced (May 2025)",
-                        "Successful control of iPad and Apple Vision Pro (2025)",
-                        "Preparing for larger pivotal trials"
+                        "The US COMMAND feasibility study completed 12-month safety follow-up in six participants, according to Synchron.",
+                        "Current studies explore digital-device control in people with severe paralysis. The sponsor describes trials in the US and Australia.",
+                        "Synchron states that the system is not approved for commercial use in any geography."
                     ],
-                    "trial_info": "COMMAND study successfully met safety endpoints",
-                    "india_access": "No trials in India. Commercial access estimated ~2027."
+                    "india_access": "The cited sponsor pages do not list an India study site.",
+                    "sources": [
+                        {
+                            "label": "Current studies",
+                            "url": "https://synchronbci.com/"
+                        },
+                        {
+                            "label": "Sponsor & regulatory status",
+                            "url": "https://synchron.com/"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 2,
-                    "name": "Neuralink Telepathy",
-                    "company": "Neuralink (Elon Musk)",
-                    "status": "Clinical Trials (PRIME Study)",
-                    "invasiveness": "Surgical (1000+ electrodes)",
-                    "als_relevance": "HIGH - Primary focus on ALS/quadriplegia",
+                    "name": "Neuralink Telepathy & VOICE",
+                    "company": "Neuralink",
+                    "status": "Investigational clinical trials",
+                    "invasiveness": "A surgically implanted N1 device records brain signals.",
                     "key_notes": [
-                        "Surgical robot placement",
-                        "12+ patients implanted by late 2025",
-                        "Expanding to Canada, UK (Paul in UK implant successful Oct 2025)",
-                        "Target: 20-30 patients by end of 2025"
+                        "Neuralink reported 21 participants on 28 January 2026. This is a dated sponsor report, not a live total.",
+                        "Its trial programme covers computer control and speech restoration. The VOICE study (NCT07224256) investigates output of intended speech as text or audio.",
+                        "VOICE lists UT Southwestern in the US. A worldwide registry does not guarantee trial enrolment or local access."
                     ],
-                    "trial_info": "Apply at neuralink.com/patient-registry",
-                    "contacts": [
-                        "monika@neuralink.com",
-                        "sehej@neuralink.com"
+                    "india_access": "Check the sponsor’s study-site list; registry access is not an India treatment service.",
+                    "sources": [
+                        {
+                            "label": "January 2026 update",
+                            "url": "https://neuralink.com/updates/two-years-of-telepathy/"
+                        },
+                        {
+                            "label": "VOICE study",
+                            "url": "https://neuralink.com/trials/speech-restoration/"
+                        },
+                        {
+                            "label": "Current trial programme",
+                            "url": "https://neuralink.com/trials/"
+                        }
                     ],
-                    "india_access": "No trials in India currently."
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 3,
                     "name": "BrainGate",
                     "company": "BrainGate Consortium",
-                    "status": "Research",
-                    "invasiveness": "Surgical (Utah Array)",
-                    "als_relevance": "HIGH - Pioneer system with long-term ALS data",
+                    "status": "Academic clinical research",
+                    "invasiveness": "Surgically implanted microelectrode arrays.",
                     "key_notes": [
-                        "UC Davis: 97% speech decoding for ALS patient (June 2025)",
-                        "Academic research consortium",
-                        "20+ years of experience"
+                        "Research includes computer access and decoding intended speech in people with paralysis.",
+                        "The consortium’s 2026 publications include intended-speech decoding in a participant with longstanding anarthria and locked-in syndrome.",
+                        "Results in individual research participants do not predict everyone’s outcome. Participation requires specialist assessment and repeated research sessions."
                     ],
-                    "india_access": "Academic only. No commercial access."
+                    "india_access": "BrainGate’s participation page lists US sites and a nearby-residence requirement.",
+                    "sources": [
+                        {
+                            "label": "2026 speech research",
+                            "url": "https://www.braingate.org/research-areas/speech-restoration/"
+                        },
+                        {
+                            "label": "Trial eligibility",
+                            "url": "https://www.braingate.org/clinical-trials/"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
+                },
+                {
+                    "name": "Paradromics Connexus",
+                    "company": "Paradromics",
+                    "status": "Connect-One feasibility study",
+                    "invasiveness": "Surgically implanted brain interface and chest implant.",
+                    "key_notes": [
+                        "The sponsor announced the first Connect-One implantation on 17 June 2026 and an expanded personal-computing study pathway on 26 August 2026.",
+                        "The study evaluates intended-speech decoding and computer access in people with severe motor impairment.",
+                        "US study participation requires eligibility screening, residence near a study centre and a substantial long-term commitment."
+                    ],
+                    "india_access": "Connect-One is currently listed as a US-only study.",
+                    "sources": [
+                        {
+                            "label": "2026 study updates",
+                            "url": "https://paradromics.com/news/"
+                        },
+                        {
+                            "label": "Study & eligibility",
+                            "url": "https://paradromics.com/clinical-study/"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
+                }
+            ],
+            "research_devices": [
+                {
+                    "name": "Precision Layer 7",
+                    "company": "Precision Neuroscience",
+                    "status": "Component clearance; BCI investigational",
+                    "invasiveness": "A thin electrode array placed on the brain surface.",
+                    "key_notes": [
+                        "The April 2025 announcement describes FDA clearance for recording, monitoring and stimulation for implantation of up to 30 days.",
+                        "This clearance concerns the cortical electrode array. Precision identifies its complete BCI as investigational and unavailable for US sale.",
+                        "A cleared component does not establish approval or effectiveness for long-term home ALS communication."
+                    ],
+                    "india_access": "No home communication product or India access was verified.",
+                    "sources": [
+                        {
+                            "label": "Scope of FDA clearance",
+                            "url": "https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array"
+                        },
+                        {
+                            "label": "Current BCI status",
+                            "url": "https://www.precisionneuro.io/"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
+                },
+                {
+                    "name": "Cognixion ONE Axon-R",
+                    "company": "Cognixion",
+                    "status": "Research-use platform",
+                    "invasiveness": "A non-invasive EEG and augmented-reality headset.",
+                    "key_notes": [
+                        "Combines brain-signal sensing with a visual interface for communication research.",
+                        "Cognixion states that Axon-R is for research use only and is not approved or cleared by the FDA or Health Canada.",
+                        "Research or educational purchase is different from an approved communication aid for home care."
+                    ],
+                    "india_access": "Confirm study eligibility with the research team; an India home-care service was not verified.",
+                    "sources": [
+                        {
+                            "label": "Current product & status",
+                            "url": "https://www.cognixion.com/"
+                        },
+                        {
+                            "label": "Research distribution",
+                            "url": "https://www.cognixion.com/blog/2025/5/12/cxnnews"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 }
             ]
         },
@@ -257,98 +356,88 @@
             "description": "These FREE tools can dramatically reduce costs for ALS communication",
             "software": [
                 {
-                    "id": 1,
                     "name": "Windows Eye Control",
-                    "platform": "Windows 10/11",
-                    "price": "FREE (Built-in)",
-                    "community_rating": 5,
-                    "community_verdict": "Most recommended for beginners with compatible eye trackers",
-                    "works_with": [
-                        "Tobii 4C",
-                        "Tobii PCEye 5",
-                        "Tobii Dynavox devices"
-                    ],
-                    "does_not_work_with": [
-                        "Tobii Eye Tracker 5"
-                    ],
+                    "platform": "Windows 11 / Windows 10",
+                    "price": "Included with Windows",
+                    "status": "Built-in accessibility feature",
+                    "community_verdict": "Mouse control, an onscreen keyboard and text-to-speech with a compatible eye tracker.",
                     "features": [
-                        "Built into Windows - no installation needed",
-                        "On-screen keyboard with dwell clicking",
-                        "Mouse control",
-                        "Text-to-speech"
+                        "Requires supported eye-tracking hardware; a regular webcam is not enough.",
+                        "Microsoft lists the Tobii 4C among supported devices. Eye Tracker 5 is not supported.",
+                        "The Eye Control keyboard uses the US English layout. Confirm drivers for your Windows version."
                     ],
-                    "how_to_enable": "Settings > Accessibility > Eye Control > Turn on",
-                    "recommended": true
+                    "sources": [
+                        {
+                            "label": "Microsoft requirements & setup",
+                            "url": "https://support.microsoft.com/en-us/accessibility/windows/eye-control/get-started-with-eye-control-in-windows"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 2,
                     "name": "OptiKey",
                     "platform": "Windows",
-                    "price": "FREE (Open Source)",
-                    "community_rating": 4,
-                    "community_verdict": "Good alternative when Windows Eye Control isn't available",
-                    "works_with": [
-                        "Tobii 4C (native)",
-                        "Tobii 5 (via mouse emulation)",
-                        "Webcam"
-                    ],
+                    "price": "Free · Open source",
+                    "status": "v4 and Classic v3 available",
+                    "community_verdict": "Eye-controlled typing, speech output and computer access.",
                     "features": [
-                        "Full keyboard and mouse control",
-                        "Text-to-speech in multiple languages",
-                        "Word prediction",
-                        "Works with webcam (no hardware needed)"
+                        "Choose Pro, Chat, Mouse or Symbol according to the functions needed.",
+                        "Tobii 4C and Eye Tracker 5 require OptiKey Classic v3; they are not supported in v4.",
+                        "Needs a compatible input device. OptiKey itself does not turn an ordinary webcam into an eye tracker."
                     ],
-                    "download": "https://github.com/OptiKey/OptiKey",
-                    "docs": "https://github.com/OptiKey/OptiKey/wiki"
+                    "sources": [
+                        {
+                            "label": "Official downloads & compatibility",
+                            "url": "https://optikey.org/help/versions"
+                        },
+                        {
+                            "label": "Project source",
+                            "url": "https://github.com/OptiKey/OptiKey"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 3,
-                    "name": "Camera Mouse",
-                    "platform": "Windows",
-                    "price": "FREE",
-                    "community_rating": 3,
-                    "community_verdict": "Requires head movement",
-                    "works_with": [
-                        "Any webcam"
-                    ],
+                    "name": "Enable Viacam (eViacam)",
+                    "platform": "Windows / Linux",
+                    "price": "Free · Open source",
+                    "status": "Legacy Windows release; Linux packages available",
+                    "community_verdict": "Moves the pointer by tracking head movement with a webcam.",
                     "features": [
-                        "Tracks any body part via webcam",
-                        "No special hardware needed",
-                        "Boston College research project"
+                        "Includes dwell clicking and adjustable pointer movement; requires usable head movement.",
+                        "Official Windows download is v2.1.0 and lists Windows through version 10. Windows 11 compatibility is not established by that page.",
+                        "Linux builds remain packaged by Debian. This is head tracking, not eye tracking."
                     ],
-                    "download": "https://cameramouse.org"
+                    "sources": [
+                        {
+                            "label": "Official project & downloads",
+                            "url": "https://eviacam.crea-si.com/"
+                        },
+                        {
+                            "label": "Debian package",
+                            "url": "https://packages.debian.org/en/sid/eviacam"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 4,
-                    "name": "eViacam",
-                    "platform": "Windows/Linux",
-                    "price": "FREE",
-                    "community_rating": 3,
-                    "works_with": [
-                        "Any webcam"
-                    ],
-                    "features": [
-                        "Webcam-based head tracking",
-                        "Mouse cursor control",
-                        "Works on Linux too"
-                    ],
-                    "download": "https://eviacam.crea-si.com"
-                },
-                {
-                    "id": 5,
                     "name": "GazePointer",
                     "platform": "Windows",
-                    "price": "FREE",
-                    "community_rating": 3,
-                    "works_with": [
-                        "Any webcam",
-                        "Webcam + Dasher for typing"
-                    ],
+                    "price": "Free for non-commercial use",
+                    "status": "Legacy release, October 2019",
+                    "community_verdict": "A webcam-based gaze pointer for experimentation.",
                     "features": [
-                        "Webcam-based gaze tracking (no hardware)",
-                        "Zero-cost testing before buying eye tracker"
+                        "Estimates gaze direction and moves the mouse pointer; separate software is needed for typing or speech.",
+                        "Project distribution is dated 2019. Current Windows compatibility and individual accuracy need testing.",
+                        "The listed non-commercial licence is not an unrestricted open-source licence."
                     ],
-                    "download": "https://gazepointer.com"
+                    "sources": [
+                        {
+                            "label": "Developer-linked project & download",
+                            "url": "https://sourceforge.net/projects/gazepointer/"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 }
             ]
         },
@@ -358,59 +447,115 @@
             "description": "Smartphone and tablet apps for communication",
             "apps": [
                 {
-                    "id": 1,
                     "name": "Look to Speak",
                     "platform": "Android",
-                    "price": "FREE",
-                    "community_rating": 4,
+                    "price": "Free",
+                    "status": "Google Play listing available",
+                    "community_verdict": "Select saved phrases or pictures with eye gestures and have them spoken aloud.",
                     "features": [
-                        "Look left/right/up to select phrases",
-                        "Works with phone camera",
-                        "Quick phrases for immediate needs"
+                        "Uses the phone’s camera; this is phrase selection rather than full eye-controlled typing.",
+                        "Phrasebooks can be personalised. Google Play lists its last update as 29 May 2024.",
+                        "Position the phone steadily and test speech volume. A Bluetooth speaker is optional and is not a monitored emergency alarm."
                     ],
-                    "tip": "Pair with Bluetooth speaker so patient can call for attention",
-                    "download": "Google Play Store"
+                    "sources": [
+                        {
+                            "label": "Google Play",
+                            "url": "https://play.google.com/store/apps/details?id=com.androidexperiments.looktospeak"
+                        },
+                        {
+                            "label": "Google project & guide",
+                            "url": "https://experiments.withgoogle.com/looktospeak"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 2,
-                    "name": "iOS Eye Tracking",
-                    "platform": "iPhone/iPad",
-                    "price": "FREE (Built-in)",
-                    "community_rating": 3,
-                    "community_verdict": "Found inaccurate on iPhone. Works better on iPad Pro.",
+                    "name": "Apple Eye Tracking",
+                    "platform": "Supported iPhone / iPad models",
+                    "price": "Included with the device",
+                    "status": "Built-in accessibility feature",
+                    "community_verdict": "Use gaze and dwell selection to operate a supported iPhone or iPad.",
                     "features": [
-                        "Built into iOS accessibility",
-                        "Works with front camera"
+                        "Uses the front camera, with calibration and a stable, well-lit view of the face.",
+                        "Requires iOS 18 / iPadOS 18 or later and a supported model. Check Apple’s compatibility list for your exact device.",
+                        "Combine an accessible keyboard with speech software when needed; Eye Tracking itself is an input method."
                     ],
-                    "how_to_enable": "Settings > Accessibility > Eye Tracking"
+                    "sources": [
+                        {
+                            "label": "Apple Eye Tracking guide",
+                            "url": "https://support.apple.com/guide/iphone/control-iphone-with-the-movement-of-your-eyes-iph66057d0f6/ios"
+                        },
+                        {
+                            "label": "Supported devices",
+                            "url": "https://support.apple.com/en-ca/121825"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 3,
                     "name": "Avaz AAC",
-                    "platform": "Android/iOS",
-                    "price": "₹5,000-15,000",
-                    "origin": "Made in India (Chennai)",
-                    "community_rating": 4,
-                    "community_verdict": "Supports Indian languages.",
+                    "platform": "Android / iOS / iPadOS",
+                    "price": "₹299/month · ₹2,999/year · ₹11,999 lifetime",
+                    "status": "Paid app with a 14-day trial",
+                    "community_verdict": "Picture and text-based communication with speech output and Indian vocabulary.",
                     "features": [
-                        "Picture-based AAC",
-                        "Hindi, Tamil, Kannada, Marathi, Malayalam, Telugu support"
-                    ]
+                        "Includes a keyboard and predictive text alongside symbol-based vocabulary.",
+                        "India version supports English and six regional languages. On iOS, choose India within the combined Avaz AAC app.",
+                        "Prices are Avaz’s published India plans; confirm the applicable store price and trial terms."
+                    ],
+                    "sources": [
+                        {
+                            "label": "Official app & store links",
+                            "url": "https://avazapp.com/products/avaz-aac-app/"
+                        },
+                        {
+                            "label": "India pricing",
+                            "url": "https://avazapp.freshdesk.com/support/solutions/articles/1000213047-what-is-the-price-of-avaz-india-"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 },
                 {
-                    "id": 4,
                     "name": "Google Project Relate",
                     "platform": "Android",
-                    "price": "FREE",
-                    "community_rating": 5,
-                    "community_verdict": "Game changer for mid-stage patients with slurred speech.",
+                    "price": "Free for existing users",
+                    "status": "Not accepting new users",
+                    "community_verdict": "Personalised recognition for people who still have speech that others find difficult to understand.",
                     "features": [
-                        "AI learns YOUR slurred speech patterns",
-                        "Listen: Real-time transcription",
-                        "Repeat: Re-speaks in clear synthetic voice",
-                        "Assistant: Controls Google Home devices"
+                        "Google says existing users can continue using their speech models; new sign-ups are currently closed.",
+                        "Current features include transcription, spoken repetition and a Relate keyboard for voice typing.",
+                        "This requires speech input and does not provide eye-controlled communication for someone who cannot speak."
                     ],
-                    "setup": "Record ~500 phrases to train personal AI model"
+                    "sources": [
+                        {
+                            "label": "Current availability",
+                            "url": "https://sites.research.google/relate/"
+                        },
+                        {
+                            "label": "Eligibility & support",
+                            "url": "https://sites.research.google/relate/help/"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
+                },
+                {
+                    "name": "Apple Live Speech",
+                    "platform": "Supported iPhone / iPad / Mac / Apple Watch",
+                    "price": "Included with the device",
+                    "status": "Built-in text-to-speech",
+                    "community_verdict": "Type a message and speak it aloud in conversation or supported calls.",
+                    "features": [
+                        "Save favourite phrases and use the device speaker, Phone or FaceTime.",
+                        "Requires a supported device and iOS 17, iPadOS 17, macOS Sonoma or watchOS 10 or later.",
+                        "An additional input method may be needed if typing by touch is difficult."
+                    ],
+                    "sources": [
+                        {
+                            "label": "Apple requirements & guide",
+                            "url": "https://support.apple.com/en-ie/105018"
+                        }
+                    ],
+                    "checked_on": "2026-09-11"
                 }
             ]
         },
@@ -481,9 +626,9 @@
         },
         {
             "priority": 2,
-            "title": "Start with Tobii 5 + Windows Eye Control/OptiKey",
-            "description": "Budget-friendly combination that works.",
-            "cost": "~₹25,000-40,000"
+            "title": "Trial the complete eye-tracking setup",
+            "description": "Match the tracker, software version and positioning to the person. Tobii 4C and Eye Tracker 5 require OptiKey Classic v3.",
+            "cost": "Confirm a current local quote."
         },
         {
             "priority": 3,
@@ -493,9 +638,10 @@
         },
         {
             "priority": 4,
-            "title": "Use Look to Speak + Bluetooth Speaker",
-            "description": "For calling attention when family is in another room.",
-            "cost": "FREE app + ₹1,000-2,000 speaker"
+            "title": "Try Look to Speak for saved phrases",
+            "description": "Test positioning and audibility; it is not a monitored caregiver alarm.",
+            "cost": "Free app; optional speaker cost varies."
         }
-    ]
+    ],
+    "review_note": "Product details and official links checked 11 September 2026. Prices are published reference prices, not India purchase quotes. Confirm availability, tax, shipping, accessories and support with the supplier."
 }

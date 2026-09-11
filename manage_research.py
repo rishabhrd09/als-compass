@@ -551,6 +551,16 @@ For comprehensive research updates, please use the LLM Workflow tab.
         if not self.current_research_results:
             messagebox.showwarning("Warning", "No results to publish")
             return
+
+        # Legacy model-generated drafts must not erase the reviewed source schema.
+        from research_schema import validate_research
+        try:
+            validate_research(self.current_research_results)
+        except ValueError as error:
+            messagebox.showerror('Research draft needs review',
+                                 f'{error}\n\nEdit the draft to match schema version 2 before saving. '
+                                 'See docs/research-review-2026-09-10.md. The current review was not changed.')
+            return
         
         # Show summary and confirm
         summary = f"""

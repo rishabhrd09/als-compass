@@ -83,7 +83,7 @@
         },
         {
             "question": "What respiratory symptoms require immediate medical attention?",
-            "answer": "**Based on Repeated Emergency Discussions:**\n\nSeek urgent help if ANY occur:\n\n**The Danger Zone:**\n• Sudden drop in SpO2 below usual baseline\n• Rapid breathing with visible distress\n• Inability to clear secretions\n• Sudden agitation or confusion\n• Blue lips or nail beds\n• Persistent tachycardia (fast heart rate) with breathlessness\n• Unusual silence or exhaustion\n• Mucus plug (rattling sound in chest/throat)\n\n**Emergency Protocol (from Community Experience):**\n\n**IF Saturation drops suddenly (below 90%):**\n1. Check: Is there a mucus plug? (Rattling sound)\n2. THEN (Protocol):\n   - Suction: Clear the mouth/throat\n   - Cough Assist: If available, use the machine to pull phlegm up\n   - Ambu Bag: If on Trach or BiPAP and struggling, manual pumping can dislodge plugs\n   - Call emergency: 102/108 (India)\n\n**IF there is 'Trauma' from suctioning (blood in mucus):**\n• You are likely suctioning too deep or too frequently\n• Correction: Use saline nebulizer to thin mucus BEFORE suctioning\n• Do not suction deep into windpipe unless trained\n• Focus on clearing accumulation at the top\n\n**Community Warning:**\nMany emergencies escalated because warning signs were mistaken for 'temporary weakness.'",
+            "answer": "**Experience-based guidance:** These notes draw on personal caregiving experience and shared family learning. They are not a clinician-validated emergency protocol or a substitute for the person’s written, individualized emergency plan and hands-on training with the treating team.\n\n**Call for help early:** Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.\n\n**Call and care in parallel:** One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.\n\n**Immediate checks within your training:** Check external power, visible connections and tubing for disconnection or kinks. Ask about symptoms and report alarms and breathing changes. Suction only when indicated and as prescribed and taught for this person; do not routinely instil saline into the tracheostomy.\n\n**Know when to stop:** If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles.\n\n**Suction catheter will not pass:** If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain.\n\n**Who should manage the airway:** TT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.\n\n**While help is coming:** Follow the written emergency plan and dispatcher instructions. Bring the airway plan, tube details, prescribed spare equipment and medication list. Report actions already taken. If unresponsive and not breathing normally, tell the dispatcher immediately and follow resuscitation instructions and the agreed care plan.\n\n[Read the emergency guidance and sources](/emergency-protocol).",
             "metadata": {
                 "type": "emergency_protocol",
                 "urgency": "critical",
@@ -94,6 +94,24 @@
                 "respiratory-distress",
                 "protocol",
                 "red-flags"
+            ],
+            "sources": [
+                {
+                    "label": "NTSP: adult tracheostomy emergency care",
+                    "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
+                },
+                {
+                    "label": "NTSP: blocked/displaced tubes and ventilation precautions",
+                    "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
+                },
+                {
+                    "label": "AARC: artificial airway suctioning",
+                    "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
+                },
+                {
+                    "label": "India emergency response: 112",
+                    "url": "https://112.gov.in/"
+                }
             ]
         },
         {

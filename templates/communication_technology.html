@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}ALS Communication Technology - Eye Trackers, Head Tracking & AAC Devices{% endblock %}
+{% block title %}ALS Communication Technology - Eye Trackers, Head Tracking & AAC Devices | ALS CareKosh{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -775,20 +775,22 @@
         }
     }
 </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/communication-refinement.css') }}">
 {% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="ct-hero">
-    <div class="container">
-        <h1>ALS Communication Technology</h1>
+<section class="guide-hero ct-hero">
+    <div class="container ct-hero-copy">
+        <span class="ct-eyebrow">Connection, in every form</span>
+        <h1>ALS Communication <span>Technology</span></h1>
         <p>Comprehensive guide to eye trackers, head tracking, BCIs, and assistive software.
             Based on real feedback from PALS and caregivers.</p>
     </div>
 </section>
 
 <!-- Category Navigation -->
-<nav class="ct-nav">
+<nav class="ct-nav" aria-label="Communication technology topics">
     <a href="/eye-tracker-setup" class="ct-nav-card"><span>Verified Solutions & Setup Guides</span></a>
     <a href="#eye-tracking" class="ct-nav-card"><span>Eye Tracking</span></a>
     <a href="#low-tech" class="ct-nav-card"><span>Low-Tech</span></a>
@@ -805,9 +807,9 @@
         <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem; font-weight: 600; color: var(--ct-primary);">Voice Banking
         </h3>
         <p style="margin: 0 0 1rem; font-size: 0.95rem; color: var(--ct-secondary); line-height: 1.5;">
-            Create a synthetic voice clone before speech declines. Free for ALS/MND patients through ElevenLabs.
+            Create a synthetic voice clone before speech declines. Eligible people with ALS/MND can apply for free access through the ElevenLabs Impact Program.
         </p>
-        <a href="https://elevenlabs.io/blog/impact-program-announcement" target="_blank"
+        <a href="https://elevenlabs.io/impact" target="_blank"
             style="display: inline-block; background: var(--ct-primary); color: white; padding: 0.6rem 1.25rem; border-radius: 20px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: background 0.2s;">
             Apply for Free Access
         </a>
@@ -825,8 +827,7 @@
             style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f3ef; border-radius: 10px;">
             <span
                 style="width: 28px; height: 28px; background: var(--ct-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;">1</span>
-            <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Start with Tobii Eye Tracker 5 or
-                Tobii Eye Tracker 4C</span>
+            <span style="font-size: 0.95rem; color: var(--ct-text); font-weight: 500;">Trial the tracker with its compatible software; Tobii 4C and Eye Tracker 5 need OptiKey Classic v3</span>
         </div>
         <div
             style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f5f3ef; border-radius: 10px;">
@@ -846,6 +847,8 @@
 </section>
 
 
+
+<aside class="ct-review-note"><span class="ct-review-date">Reviewed 11 September 2026</span><p>The Tobii 4C and Eye Tracker 5 cards retain the original caregiver notes and reference prices. Other listings link to reviewed sources. Confirm current prices, shipping, taxes, accessories and compatibility before buying.</p></aside>
 
 <!-- Eye Tracking Section -->
 <section id="eye-tracking" class="ct-section">
@@ -966,7 +969,7 @@
     <div class="ct-section-header">
         <h2>Free & Open Source Software</h2>
     </div>
-    <p class="ct-section-desc">Free tools to reduce costs for ALS communication.</p>
+    <p class="ct-section-desc">Free and open-source options, with licence and compatibility details for each tool.</p>
 
     <div class="ct-software-grid" id="freeSoftware"></div>
 </section>
@@ -983,16 +986,17 @@
 
 
 
-<!-- BCI Section --><!-- BCI Section -->
+<!-- BCI Section -->
 <section id="bci" class="ct-section">
     <div class="ct-section-header">
         <h2>Brain-Computer Interfaces (BCIs)</h2>
     </div>
 
     <div class="ct-bci-note">
-        <h4>Note: BCIs are not commercially available</h4>
-        <p>Currently only accessible via clinical trials in USA, Australia. No trials in India.
-            Commercial availability is 2-5+ years away.</p>
+        <h4>Research access and everyday availability</h4>
+        <p>These communication systems remain investigational. Eligibility and study location determine access.
+            Research hardware sales or clearance of an electrode component do not mean approval of a complete home
+            communication system. There is no confirmed general-release date.</p>
     </div>
 
     <div class="ct-device-grid" id="bciDevices"></div>
@@ -1612,11 +1616,8 @@
         try {
             // Load static communication tech data
             const response = await fetch('/api/communication-tech');
+            if (!response.ok) throw new Error('Communication data unavailable');
             techData = await response.json();
-
-            // Load research-verified communication technology data
-            const researchResponse = await fetch('/api/research-categorized');
-            researchData = await researchResponse.json();
 
             // Render static sections
             renderEyeTracking();
@@ -1629,6 +1630,9 @@
         } catch (error) {
 
             console.error('Error loading tech data:', error);
+            document.querySelectorAll('.ct-device-grid, .ct-software-grid').forEach(container => {
+                container.innerHTML = '<p role="status">The comparison could not be loaded. Please refresh the page to try again.</p>';
+            });
         }
     }
 
@@ -1664,140 +1668,73 @@
         });
     });
 
-    function renderEyeTracking() {
-        const container = document.getElementById('eyeTrackingDevices');
-        const devices = techData.categories.eye_tracking.devices;
+    function escapeTech(value) {
+        return String(value ?? '').replace(/[&<>"']/g, character => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[character]));
+    }
 
-        container.innerHTML = devices.map(device => `
-            <div class="ct-device-card ${device.recommended ? 'recommended' : ''}">
-                <div class="ct-device-header">
-                    <div class="ct-device-name">${device.name}</div>
-                    <div class="ct-device-category">${device.category}</div>
-                </div>
-                <div class="ct-device-body">
-                    <div class="ct-device-price">
-                        <div>
-                            <div class="ct-price-usd">$${device.price_usd.toLocaleString()}</div>
-                            <div class="ct-price-inr">${device.price_inr}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="ct-rating">
-                        ${renderRatingDots(device.community_rating)}
-                    </div>
-                    
-                    <div class="ct-device-verdict">
-                        ${device.community_verdict}
-                    </div>
-                    
-                    <ul class="ct-device-notes">
-                        ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
-                    </ul>
-                    
-                    ${device.name.includes('4C') ? '<a href="/eye-tracker-setup?tab=tobii4c" class="ct-setup-btn">Setup Guide</a>' : ''}
-                    ${device.name.includes('Tracker 5') ? '<a href="/eye-tracker-setup?tab=tobii5-optikey" class="ct-setup-btn">Setup Guide</a>' : ''}
-                    
-                    <div class="ct-india-badge">
-                        India: ${device.india_access}
-                    </div>
-                </div>
+    function renderSources(item) {
+        return `<div class="ct-sources" aria-label="Official sources">${(item.sources || []).map(source => {
+            // Only externally navigable HTTPS sources may become links.
+            try { if (new URL(source.url).protocol !== 'https:') return ''; } catch (_) { return ''; }
+            return `<a href="${escapeTech(source.url)}" target="_blank" rel="noopener noreferrer">${escapeTech(source.label)} <span aria-hidden="true">↗</span></a>`;
+        }).join('')}</div>`;
+    }
+
+    function renderDevice(device, isEye) {
+        return `<article class="ct-device-card ct-reviewed-card">
+            <div class="ct-device-header">
+                <div class="ct-device-category">${escapeTech(device.category)}</div>
+                <h3 class="ct-device-name">${escapeTech(device.name)}</h3>
             </div>
-        `).join('');
+            <div class="ct-device-body">
+                <div class="ct-device-price"><div>
+                    <div class="ct-price-usd">${escapeTech(device.price_display ?? (device.price_usd != null ? 'US$' + device.price_usd : 'Request a quote'))}</div>
+                    <div class="ct-price-inr">${escapeTech(device.price_note ?? device.price_inr)}</div>
+                </div></div>
+                <span class="ct-availability">${escapeTech(device.status)}</span>
+                <div class="ct-device-verdict">${escapeTech(device.community_verdict)}</div>
+                <ul class="ct-device-notes">${device.key_notes.map(note => `<li>${escapeTech(note)}</li>`).join('')}</ul>
+                ${isEye && device.name.includes('4C') ? '<a href="/eye-tracker-setup?tab=tobii4c" class="ct-setup-btn">Setup Guide</a>' : ''}
+                ${isEye && device.name.includes('Tracker 5') ? '<a href="/eye-tracker-setup?tab=tobii5-optikey" class="ct-setup-btn">Setup Guide</a>' : ''}
+                <div class="ct-india-badge">India: ${escapeTech(device.india_access)}</div>
+                ${device.warning ? `<p class="ct-price-inr"><strong>Compatibility note:</strong> ${escapeTech(device.warning)}</p>` : ''}
+                ${renderSources(device)}
+            </div>
+        </article>`;
+    }
+
+    function renderEyeTracking() {
+        document.getElementById('eyeTrackingDevices').innerHTML =
+            techData.categories.eye_tracking.devices.map(device => renderDevice(device, true)).join('');
     }
 
     function renderHeadTracking() {
-        const container = document.getElementById('headTrackingDevices');
-        const devices = techData.categories.head_tracking.devices;
+        document.getElementById('headTrackingDevices').innerHTML =
+            techData.categories.head_tracking.devices.map(device => renderDevice(device, false)).join('');
+    }
 
-        container.innerHTML = devices.map(device => `
-            <div class="ct-device-card ${device.recommended ? 'recommended' : ''}">
-                <div class="ct-device-header">
-                    <div class="ct-device-name">${device.name}</div>
-                    <div class="ct-device-category">${device.category || ''}</div>
-                </div>
-                <div class="ct-device-body">
-                    ${device.price_usd ? `<div class="ct-device-price">
-                        <div>
-                            <div class="ct-price-usd">$${device.price_usd.toLocaleString()}</div>
-                            <div class="ct-price-inr">${device.price_inr || ''}</div>
-                        </div>
-                        ${device.stage ? renderStageBadge(device.stage) : ''}
-                    </div>` : ''}
-                    
-                    ${device.community_rating ? `<div class="ct-rating">
-                        ${renderRatingDots(device.community_rating)}
-                    </div>` : ''}
-                    
-                    ${device.community_verdict ? `<div class="ct-device-verdict">
-                        ${device.community_verdict}
-                    </div>` : ''}
-                    
-                    ${device.key_notes && device.key_notes.length ? `<ul class="ct-device-notes">
-                        ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
-                    </ul>` : ''}
-                    
-                    ${device.india_access ? `<div class="ct-india-badge">
-                        India: ${device.india_access}
-                    </div>` : ''}
-                </div>
-            </div>
-        `).join('');
+    function renderSoftwareCard(app) {
+        return `<article class="ct-software-card ct-reviewed-card">
+            <div class="ct-software-platform">${escapeTech(app.platform)}</div>
+            <h3 class="ct-software-name">${escapeTech(app.name)}</h3>
+            <div class="ct-app-price">${escapeTech(app.price)}</div>
+            <span class="ct-availability">${escapeTech(app.status)}</span>
+            <div class="ct-device-verdict">${escapeTech(app.community_verdict)}</div>
+            <ul class="ct-device-notes">${app.features.map(feature => `<li>${escapeTech(feature)}</li>`).join('')}</ul>
+            ${renderSources(app)}
+        </article>`;
     }
 
     function renderFreeSoftware() {
-        const container = document.getElementById('freeSoftware');
-        const software = techData.categories.free_software.software;
-
-        container.innerHTML = software.map(sw => `
-            <div class="ct-software-card ${sw.recommended ? 'recommended' : ''}">
-                <div class="ct-software-name">
-                    ${sw.name}
-                    <span class="ct-free-badge">Free</span>
-                </div>
-                <div class="ct-software-platform">${sw.platform || ''}</div>
-                
-                ${sw.community_rating ? `<div class="ct-rating">
-                    ${renderRatingDots(sw.community_rating)}
-                </div>` : ''}
-                
-                ${sw.community_verdict ? `<div class="ct-device-verdict">
-                    ${sw.community_verdict}
-                </div>` : ''}
-                
-                ${sw.features && sw.features.length ? `<ul class="ct-device-notes">
-                    ${sw.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
-                </ul>` : ''}
-                
-                ${sw.download ? `<a href="${sw.download}" target="_blank" class="ct-setup-btn" style="margin-top: 0.75rem;">Download</a>` : ''}
-            </div>
-        `).join('');
+        document.getElementById('freeSoftware').innerHTML =
+            techData.categories.free_software.software.map(renderSoftwareCard).join('');
     }
 
     function renderMobileApps() {
-        const container = document.getElementById('mobileApps');
-        const apps = techData.categories.mobile_apps.apps;
-
-        container.innerHTML = apps.map(app => `
-            <div class="ct-software-card">
-                <div class="ct-software-name">
-                    ${app.name}
-                    ${app.price === 'FREE' || (app.price && app.price.includes('FREE')) ? '<span class="ct-free-badge">Free</span>' : ''}
-                </div>
-                <div class="ct-software-platform">${app.platform || ''}</div>
-                
-                ${app.community_rating ? `<div class="ct-rating">
-                    ${renderRatingDots(app.community_rating)}
-                </div>` : ''}
-                
-                ${app.community_verdict ? `<div class="ct-device-verdict">
-                    ${app.community_verdict}
-                </div>` : ''}
-                
-                ${app.features && app.features.length ? `<ul class="ct-device-notes">
-                    ${app.features.slice(0, 3).map(f => `<li>${f}</li>`).join('')}
-                </ul>` : ''}
-            </div>
-        `).join('');
+        document.getElementById('mobileApps').innerHTML =
+            techData.categories.mobile_apps.apps.map(renderSoftwareCard).join('');
     }
 
     function renderLowTech() {
@@ -1824,33 +1761,21 @@
     }
 
     function renderBCI() {
-        const container = document.getElementById('bciDevices');
-        const devices = techData.categories.bci.devices;
-
-        container.innerHTML = devices.map(device => `
-            <div class="ct-device-card">
+        document.getElementById('bciDevices').innerHTML = techData.categories.bci.devices.map(device => `
+            <article class="ct-device-card ct-reviewed-card">
                 <div class="ct-device-header">
-                    <div class="ct-device-name">${device.name}</div>
-                    <div class="ct-device-category">${device.company}</div>
+                    <div class="ct-device-category">${escapeTech(device.company)}</div>
+                    <h3 class="ct-device-name">${escapeTech(device.name)}</h3>
                 </div>
                 <div class="ct-device-body">
-                    <div style="margin-bottom: 1rem;">
-                        <span class="ct-stage-badge">${device.status}</span>
-                    </div>
-                    
-                    <div class="ct-device-verdict">
-                        ${device.invasiveness}
-                    </div>
-                    
-                    <ul class="ct-device-notes">
-                        ${device.key_notes.slice(0, 3).map(note => `<li>${note}</li>`).join('')}
-                    </ul>
-                    
-                    <div class="ct-india-badge" style="color: #991b1b;">
-                        ${device.india_access}
-                    </div>
+                <span class="ct-availability">${escapeTech(device.status)}</span>
+                    <div class="ct-device-verdict">${escapeTech(device.invasiveness)}</div>
+                    <ul class="ct-device-notes">${device.key_notes.map(note => `<li>${escapeTech(note)}</li>`).join('')}</ul>
+                    <div class="ct-india-badge">${escapeTech(device.india_access)}</div>
+                    ${device.warning ? `<p class="ct-price-inr"><strong>Compatibility note:</strong> ${escapeTech(device.warning)}</p>` : ''}
+                ${renderSources(device)}
                 </div>
-            </div>
+            </article>
         `).join('');
     }
 

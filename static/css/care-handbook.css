@@ -1,0 +1,380 @@
+/* Home care handbook: a compact header, persistent directory and readable work surface. */
+.care-page { background: #f6f8f9; color: #294858; }
+.care-page .care-root { max-width: 1504px; padding: 0 40px; margin: 0 auto; }
+.care-breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 24px 0 20px; font-size: .875rem; color: #607684; }
+.care-breadcrumb a { color: #526e7c; text-decoration: none; }
+.care-breadcrumb a:hover { color: #183b4e; text-decoration: underline; text-underline-offset: 4px; }
+.care-breadcrumb [aria-current] { color: #1e4457; }
+.care-page .care-root .guide-hero { text-align: left !important; padding: 36px 40px !important; border-radius: 14px; margin: 0; }
+.care-page .care-root .guide-hero > .container { padding: 0; max-width: none; width: 100%; }
+.care-page .care-root .guide-hero h1 { font-size: clamp(2.25rem, 3.5vw, 3.1rem) !important; line-height: 1.12; letter-spacing: -.025em !important; margin: 0 0 14px !important; text-wrap: pretty; max-width: 1000px; }
+.care-page .care-root .guide-hero p { max-width: 840px; margin: 0 !important; font-size: 1rem !important; line-height: 1.7 !important; }
+.care-page .care-root .guide-hero .icu-hero-nav { justify-content: flex-start; max-width: none; padding: 20px 0 0; margin: 20px 0 0; gap: 12px 24px; background: none; border: 0; border-top: 1px solid #c9e1e427; border-radius: 0; box-shadow: none; }
+.care-page .care-root .guide-hero :is(.icu-hero-nav a, .pb-hero-nav, .ep-hero-nav) { margin: 0; padding: 7px 0; border: 0; border-radius: 0; background: none; box-shadow: none; font-size: .9375rem; color: #d9e8ed; }
+.care-page .care-root .guide-hero :is(.pb-hero-nav, .ep-hero-nav) { margin: 18px 24px 0 0; }
+.care-page .care-root .guide-hero :is(.icu-hero-nav a, .pb-hero-nav, .ep-hero-nav):hover { color: #fff; background: none; transform: none; text-decoration: underline; text-underline-offset: 5px; }
+.care-page .care-root .guide-hero .icu-hero-nav a i { font-size: .875rem; }
+.care-page .care-root .guide-hero > .guide-atmosphere { mask-image: linear-gradient(90deg, transparent 45%, black); -webkit-mask-image: linear-gradient(90deg, transparent 45%, black); opacity: .4; }
+.care-page .care-root .guide-motion-control { top: 14px; right: 16px; min-height: 36px; padding: 6px 10px; background: #142d3e80; font-size: .875rem; }
+.care-layout { display: grid; grid-template-columns: 224px minmax(0, 1fr); gap: clamp(24px, 3vw, 48px); align-items: start; margin: 36px 0 72px; }
+.care-sidebar { position: sticky; top: 132px; min-width: 0; max-height: calc(100dvh - 156px); overflow-y: auto; scrollbar-width: thin; overscroll-behavior: contain; padding: 0 8px 12px 0; }
+.care-directory { border: 0; padding: 0; background: none; }
+.care-directory > summary { display: none; }
+.care-directory-body { min-width: 0; }
+.care-page .care-nav-label { color: #71828b; font: 600 .75rem/1.5 var(--font-heading); text-transform: uppercase; letter-spacing: .12em; margin: 0 0 12px; }
+.care-route-nav { display: grid; gap: 4px; }
+.care-route-nav a { display: flex; align-items: center; gap: 12px; padding: 11px 12px; font-size: .9375rem; line-height: 1.5; border-radius: 7px; color: #4c6572; text-decoration: none; }
+.care-route-nav a i { width: 16px; text-align: center; font-size: .875rem; color: #7494a2; }
+.care-route-nav a:hover { background: #eaf0f3; color: #183c4d; }
+.care-route-nav a[aria-current] { background: #e4eef2; color: #173f53; font-weight: 650; }
+.care-route-nav a[aria-current] i { color: #305e71; }
+.care-contents { border-top: 1px solid #dce5e9; margin-top: 22px; padding-top: 22px; }
+.care-section-nav { display: grid; gap: 2px; }
+.care-section-nav a { display: block; padding: 7px 0 7px 12px; border-radius: 4px; text-decoration: none; color: #647b87; font-size: .875rem; line-height: 1.5; }
+.care-section-nav a:hover, .care-section-nav a[aria-current] { background: #edf2f4; color: #244d60; }
+.care-related { margin-top: 24px; padding-top: 22px; border-top: 1px solid #dce5e9; }
+.care-related a { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #426675; text-decoration: none; padding: 8px 0; font-size: .875rem; }
+.care-related a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.care-related a[aria-current] { font-weight: 700; color: #173f53; }
+.care-main { min-width: 0; }
+.care-main [data-care-section] { scroll-margin-top: 132px; }
+.care-page .care-main > :is(.pb-container, .protocol-container, .ups-faq-container, .faq-container) { max-width: none; width: 100%; margin: 0; padding: 0; min-height: 0; background: none; }
+.care-page .care-main :is(h2, h3) { text-wrap: pretty; }
+.care-page .care-main :is(.pb-card, .section-box, .equipment-group) { padding: 30px; margin: 0 0 24px; border: 1px solid #dce5e9; background: #fff; border-radius: 12px; box-shadow: 0 3px 18px #183b4b03; }
+.care-page .care-main :is(.pb-card, .section-box) > h2 { margin: 0 0 20px; padding: 0 0 18px; border-bottom: 1px solid #e1e9ec; font-size: 1.5rem; line-height: 1.4; letter-spacing: -.03em; color: #1c4153; }
+.care-page .care-main :is(p, li, td) { overflow-wrap: break-word; }
+.care-page .care-main :is(.pb-card, .section-box, .ups-faq-container) :is(p, ul, ol) { font-size: 1rem; line-height: 1.8; text-align: left; }
+.care-page .care-main :is(.pb-card, .section-box) h3 { font-size: 1.125rem; line-height: 1.5; }
+.care-page .care-main :is(.pb-info-box, .info-box, .tip-box, .key-recommendations) { border: 1px solid #dbe7ec; border-radius: 9px; background: #f1f6f8; padding: 18px 20px; box-shadow: none; }
+.care-page .care-main :is(.pb-info-box, .info-box, .tip-box, .key-recommendations) :is(p, li) { font-size: 1rem; }
+/* Warning colors and the full emergency instructions remain intact and visible. */
+.care-page .care-main :is(.warning-box, .alert-box) { border-radius: 9px; padding: 20px; }
+.care-page .care-main :is(.grid-2, .pb-option-grid, .backup-cards) { gap: 24px; }
+.care-page .care-main .pb-formula-box { border-radius: 9px; padding: 24px; background: #183c4d; color: #f6f9fa; }
+.care-page .care-main .pb-formula-box p { color: #f6f9fa; }
+.care-page .care-main .pb-formula-box p + p { color: #c6d9e0; font-size: .875rem; }
+.care-page #power-calculator { border-color: #aec9d5; box-shadow: 0 0 0 3px #e5eef2; }
+.care-page #power-calculator :is(input, select) { border: 1px solid #c5d6de !important; border-radius: 7px !important; min-height: 44px; color: #294b5a !important; background: #fbfdfe !important; font: 400 1rem var(--font-reading) !important; max-width: 100%; }
+.care-page #power-calculator label { font: 500 .875rem/1.5 var(--font-reading) !important; color: #425f6d !important; }
+.care-page #power-calculator button { min-height: 44px; font-size: .9375rem !important; }
+.care-page #deviceList > div { grid-template-columns: minmax(0, 2fr) minmax(76px, 1fr) minmax(76px, 1fr) 44px !important; gap: 8px !important; }
+.care-page #deviceList input { min-width: 0; width: 100%; }
+.care-page #deviceList > div > div { min-width: 0; }
+.care-page #calcResults { border-radius: 10px !important; }
+.care-page .care-main :is(.flowchart, .flow-section) { border: 1px solid #dce6eb; border-radius: 12px; background: #fff; padding: 26px; }
+.care-page .care-main .flow-node { min-width: 0; max-width: 100%; font-size: 1rem; line-height: 1.6; }
+.care-page .care-main .flow-row > .flow-node { width: min(100%, 340px); }
+.care-page .care-main .flow-branch-label { font-size: .875rem; }
+.care-page .care-main :is(.flow-three-branches, .scenarios-grid) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.care-page .care-main .paths-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.care-table-scroll { overflow-x: auto; max-width: 100%; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.care-page .care-main table { width: 100%; border-collapse: collapse; font: 400 .9375rem/1.7 var(--font-reading); background: white; }
+.care-page .care-main table :is(th, td) { border: 0; border-bottom: 1px solid #e2eaee; padding: 14px 16px; text-align: left; vertical-align: top; }
+.care-page .care-main table th { background: #eef4f7; color: #345565; font: 600 .875rem/1.5 var(--font-heading); letter-spacing: .03em; }
+.care-page .care-main table tbody tr:nth-child(even) { background: #f9fbfc; }
+.care-page .care-main table tbody tr:last-child td { border-bottom: 0; }
+/* Equipment becomes a catalogue of compact rows, with genuine photos when available. */
+.care-page .care-equipment .equipment-section { padding: 0; margin: 0 0 32px; border: 0; background: none; box-shadow: none; }
+.care-equipment-reference { background: #fff; border: 1px solid #d8e4ea; border-radius: 10px; overflow: hidden; }
+.care-equipment-reference > summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; list-style: none; padding: 24px; }
+.care-equipment-reference > summary::-webkit-details-marker { display: none; }
+.care-page .care-equipment-reference > summary h2 { width: 100%; margin: 0; padding: 0; border: 0; font-size: 1.375rem; display: flex; align-items: center; gap: 12px; }
+.care-equipment-reference h2 i { color: #64899a; font-size: 1rem; }
+.care-reference-hint { margin-left: auto; color: #597788; font: 500 .875rem var(--font-reading); display: flex; align-items: center; gap: 16px; }
+.care-reference-hint > span { font-size: 1.5rem; line-height: 1; transition: transform .2s; }
+.care-equipment-reference[open] .care-reference-hint > span { transform: rotate(45deg); }
+.care-page .care-equipment .key-recommendations { margin: 20px 0 0; }
+.care-page .care-equipment .key-recommendations h3 { font-size: 1rem; margin: 0 0 12px; color: #294e60; }
+.care-page .care-equipment .key-recommendations ul { margin: 0; padding-left: 20px; columns: 2; column-gap: 40px; }
+.care-page .care-equipment .key-recommendations li { break-inside: avoid; margin: 0 0 8px; line-height: 1.7; }
+.care-page .care-main .equipment-group { padding: 28px 28px 16px; }
+.care-page .equipment-group .equipment-category-heading { display: flex; align-items: baseline; gap: 16px; margin: 0 0 16px; padding: 0 0 20px; border-bottom: 1px solid #dce6eb; font-size: 1.375rem; line-height: 1.4; }
+.care-section-number { color: #6a8999; font: 500 .8125rem/1.5 var(--font-reading); letter-spacing: .04em; flex-shrink: 0; }
+.care-page .equipment-group .icu-equipment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+.care-page .equipment-group .icu-card { display: flex; align-items: center; gap: 16px; border: 0; border-radius: 0; border-bottom: 1px solid #e5ecef; padding: 16px 0; min-height: 84px; text-align: left; box-shadow: none; background: transparent; }
+.care-page .equipment-group .icu-card:hover { transform: none; box-shadow: none; background: none; }
+.care-page .equipment-group .icu-card h3 { font: 550 1rem/1.6 var(--font-reading); letter-spacing: -.012em; color: #2a4c5c; }
+.care-page .equipment-group .icu-image-placeholder { flex: 0 0 60px; width: 60px; height: 60px; margin: 0; padding: 3px; border: 1px solid #dce6eb; border-radius: 8px; background: #f7fafb; cursor: zoom-in; }
+.care-page .equipment-group .icu-image-placeholder img { object-fit: contain; border-radius: 5px; }
+.care-page .equipment-group .icu-image-placeholder::after { display: none; }
+.equipment-no-photo { width: 32px; flex: 0 0 32px; color: #9cb3bf; text-align: center; font-size: .7rem; }
+.care-infographic { margin: 32px 0 0; padding: 20px; border: 1px solid #dde6eb; border-radius: 12px; background: #fff; }
+.care-infographic img { display: block; width: 100%; height: auto; box-shadow: none !important; }
+.care-page dialog.image-lightbox { max-width: none; max-height: none; margin: 0; padding: 64px 24px; border: 0; color: white; }
+.care-page .image-lightbox::backdrop { background: #102936d9; }
+.care-page .lightbox-close { display: grid; place-content: center; background: #ffffff18; border: 1px solid #ffffff50; border-radius: 50%; width: 48px; height: 48px; font: 300 2rem/1 var(--font-reading); top: 18px; right: 22px; }
+.care-page .lightbox-content { max-height: calc(100dvh - 150px); box-shadow: none; }
+/* The power FAQ is a reading surface, with each question clearly separated. */
+.care-page .ups-faq-container > .faq-section { padding: 30px; margin: 0 0 24px; border: 1px solid #dce5e9; border-radius: 12px; background: white; }
+.care-page .ups-faq-container .faq-question { font-size: 1.5rem; line-height: 1.4; padding: 0 0 20px; margin: 0 0 22px; color: #1e4455; border-bottom: 1px solid #dce6eb; }
+.care-page .ups-faq-container h3 { font-size: 1.125rem; }
+.care-page .ups-faq-container h4 { font-size: 1rem; font-style: normal; }
+.care-page .ups-faq-container .equipment-images { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.care-page .ups-faq-container .equipment-image { min-width: 0; max-width: none; margin: 0; padding: 12px; border-radius: 8px; background: #f5f8fa; box-shadow: none; }
+.care-page .ups-faq-container .equipment-image img { height: 180px; object-fit: contain; border: 0; }
+.care-page .ups-faq-container .equipment-image figcaption { font-size: .875rem; color: #617c89; }
+/* Community questions use the same directory and a focused search/answer column. */
+.care-page .faq-categories { display: grid; gap: 4px; padding: 0; margin: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
+.care-page .faq-categories .category-pill { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 12px; margin: 0; width: 100%; text-align: left; font: 500 .9375rem/1.5 var(--font-reading); color: #516d7b; border: 0; border-radius: 7px; background: none; transform: none; }
+.care-page .faq-categories .category-pill:hover { background: #edf2f5; }
+.care-page .faq-categories .category-pill.active { background: #e3edf2; color: #1c465a; font-weight: 650; }
+.faq-topic-count { font-size: .8125rem; font-variant-numeric: tabular-nums; opacity: .7; }
+.care-page .faq-search { display: flex; align-items: center; gap: 14px; margin: 0 0 20px; padding: 8px 18px; border: 1px solid #b9cfda; border-radius: 10px; background: #fff; box-shadow: 0 4px 16px #19394b04; }
+.care-page .faq-search:focus-within { outline: 3px solid #6193a438; border-color: #5d8da1; }
+.care-page .faq-search > i { color: #7292a3; }
+.care-page .faq-search #faqSearch { padding: 10px 0; min-width: 0; min-height: 44px; border: 0; box-shadow: none; outline: none; background: none; border-radius: 0; font-size: 1rem; letter-spacing: 0; }
+.care-page .faq-search #faqSearch::placeholder { color: #708995; }
+.faq-clear { flex-shrink: 0; min-width: 44px; min-height: 44px; border: 0; border-radius: 6px; color: #4d7182; background: #f0f5f7; cursor: pointer; font: 500 .875rem var(--font-reading); padding: 0 12px; }
+.faq-results-heading { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding: 4px 0 22px; }
+.care-page .faq-results-heading h2 { font-size: 1.25rem; margin: 0; }
+#faqResultCount { color: #657f8d; font-size: .875rem; margin: 0; }
+.care-page #faqContent .faq-section { margin: 0 0 32px; }
+.care-page #faqContent .faq-section-title { margin: 0 0 14px; padding: 0; font-size: 1rem; color: #647f8e; font-weight: 600; border: 0; }
+.care-page #faqContent .faq-item { margin: 0; border: 1px solid #dce6eb; border-top: 0; border-radius: 0; box-shadow: none; background: white; }
+.care-page #faqContent .faq-item:first-of-type { border-top: 1px solid #dce6eb; border-radius: 10px 10px 0 0; }
+.care-page #faqContent .faq-item:last-child { border-radius: 0 0 10px 10px; }
+.care-page #faqContent .faq-item:only-of-type { border-radius: 10px; }
+.care-page .faq-question-heading { margin: 0; padding: 0; }
+.care-page #faqContent .faq-question { display: flex; justify-content: space-between; align-items: center; gap: 24px; width: 100%; border: 0; border-radius: 0; background: none; padding: 22px 24px; margin: 0; text-align: left; color: #244a5b; font: 600 1.0625rem/1.6 var(--font-heading); letter-spacing: -.02em; cursor: pointer; }
+.care-page #faqContent .faq-question:hover { background: #f6f9fa; }
+.care-page #faqContent .faq-question[aria-expanded=true] { color: #204d60; }
+.care-page #faqContent .faq-toggle { width: 26px; height: 26px; border: 1px solid #ccdde5; border-radius: 50%; display: grid; place-items: center; color: #5a8092; font: 400 1.25rem/1 var(--font-reading); transform: none; }
+.care-page #faqContent .faq-item.open .faq-toggle { transform: rotate(45deg); background: #edf4f7; }
+.care-page #faqContent .faq-answer { padding: 0 24px 24px; max-height: none; opacity: 1; overflow: visible; border: 0; background: none; transition: none; color: #476473; }
+.care-page #faqContent .faq-answer:not([hidden]) { display: block; }
+.care-page #faqContent .faq-answer :is(p, li) { font: 400 1rem/1.85 var(--font-reading); }
+.care-page #faqContent .faq-answer p { margin: 0 0 12px; }
+.care-page #faqContent .faq-answer ul { margin: 12px 0; padding-left: 22px; }
+.care-page #faqContent .faq-answer :is(.warning-box, .recommendation-box, .conditional-guidance, .perspectives-box) { padding: 18px; border-radius: 8px; font-size: 1rem; }
+.care-page #faqContent .evidence-tag { font-size: .8125rem; padding: 4px 9px; border-radius: 4px; background: #eff4f6; border: 1px solid #dbe5ea; }
+.care-page .key-principles { padding: 26px; margin: 32px 0 0; border: 1px solid #dbe6eb; border-radius: 10px; background: #edf4f7; }
+.care-page .key-principles h3 { font-size: 1.125rem; margin-top: 0; }
+.care-page .key-principles li { font-size: 1rem; }
+.care-page [hidden] { display: none !important; }
+.care-page .faq-empty { padding: 36px; background: white; border: 1px solid #dae5eb; border-radius: 10px; text-align: center; }
+.care-page .faq-empty p { margin: 0 0 18px; }
+/* The inventory feature remains explicitly marked as coming soon. */
+.care-page .care-inventory { min-height: 0 !important; background: none !important; display: block !important; }
+.care-page .care-inventory > .container { padding: 0 !important; max-width: none; }
+.care-page .care-inventory-panel { max-width: none !important; padding: 32px !important; border-color: #dce6eb !important; border-radius: 12px !important; text-align: left; }
+.care-page .care-inventory-panel p { font: 400 1rem/1.8 var(--font-reading) !important; color: #4d6b7b !important; }
+.care-page .care-inventory-panel li { font-size: 1rem; }
+.care-page .care-inventory-panel > span { font-size: .875rem !important; background: #edf3f7 !important; }
+@media (max-width: 1100px) {
+    .care-page .care-root { padding: 0 28px; }
+    .care-layout { grid-template-columns: 204px minmax(0, 1fr); gap: 24px; }
+    .care-sidebar { top: 116px; max-height: calc(100dvh - 138px); }
+    .care-page .care-main :is(.pb-card, .section-box, .equipment-group), .care-page .ups-faq-container > .faq-section { padding: 24px; }
+    .care-page .equipment-group .icu-equipment-grid { grid-template-columns: 1fr; }
+    .care-page .care-main :is(.flow-three-branches, .scenarios-grid, .paths-grid) { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+    .care-layout { grid-template-columns: 1fr; gap: 24px; margin-top: 24px; }
+    .care-sidebar { position: static; max-height: none; overflow: visible; padding: 0; }
+    .care-directory { background: #fff; border: 1px solid #d7e3e9; border-radius: 9px; }
+    .care-directory > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; cursor: pointer; list-style: none; font: 600 .9375rem var(--font-reading); }
+    .care-directory > summary::-webkit-details-marker { display: none; }
+    .care-directory-body { padding: 6px 20px 22px; }
+    .care-route-nav { grid-template-columns: 1fr 1fr; }
+    .care-section-nav { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .care-page .equipment-group .icu-equipment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .care-page .care-root .guide-hero { padding: 32px !important; }
+    .care-page .care-root .guide-hero h1 { padding-right: 0; }
+    .care-page .care-root .guide-motion-control { position: relative; top: auto; right: auto; margin-top: 18px; }
+}
+@media (max-width: 600px) {
+    .care-page .care-root { padding: 0 16px; }
+    .care-breadcrumb { font-size: .8125rem; gap: 8px; padding: 20px 0 16px; }
+    .care-page .care-root .guide-hero { padding: 26px 22px !important; border-radius: 10px; }
+    .care-page .care-root .guide-hero h1 { font-size: 2.125rem !important; }
+    .care-page .care-root .guide-hero .icu-hero-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+    .care-page .care-root .guide-hero .icu-hero-nav a { font-size: .875rem; line-height: 1.5; }
+    .care-page .care-main :is(.pb-card, .section-box, .equipment-group), .care-page .ups-faq-container > .faq-section { padding: 20px; }
+    .care-page .care-main :is(.pb-card, .section-box) > h2, .care-page .ups-faq-container .faq-question { font-size: 1.25rem; }
+    .care-page .equipment-group .icu-equipment-grid, .care-page .care-main :is(.grid-2, .pb-option-grid, .backup-cards) { grid-template-columns: 1fr; }
+    .care-page .care-main .grid-2 > div { border-right: 0 !important; padding-right: 0 !important; }
+    .care-page #deviceList > div { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px !important; padding: 14px 0; border-bottom: 1px solid #e0e9ed; }
+    .care-page #deviceList > div > input:first-child { grid-column: 1 / 3; grid-row: 1; }
+    .care-page #deviceList > div > button { grid-column: 3; grid-row: 1; }
+    .care-page #calcResults > div[style*="grid-template-columns"], .care-page .pb-card > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    .care-page .care-main :is(.flowchart, .flow-section) { padding: 18px; }
+    .care-page .care-equipment .key-recommendations ul { columns: 1; }
+    .care-equipment-reference > summary { padding: 20px; align-items: flex-start; }
+    .care-reference-hint { font-size: 0; }
+    .care-page .equipment-group .equipment-category-heading { font-size: 1.25rem; gap: 12px; }
+    .care-page .care-main table { min-width: 510px; }
+    .care-page .care-main .equipment-table { min-width: 0; }
+    .care-page .equipment-table .cat-cell { min-width: 120px; }
+    .care-page .care-main table :is(th, td) { padding: 12px; }
+    .care-page .ups-faq-container .equipment-images { grid-template-columns: 1fr; }
+    .care-page .ups-faq-container .equipment-image img { max-width: 100%; height: 220px; }
+    .care-page .care-inventory-panel { padding: 24px !important; }
+    .care-page .care-inventory-panel > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+    .care-page #faqContent .faq-question { padding: 18px; font-size: 1rem; gap: 14px; }
+    .care-page #faqContent .faq-answer { padding: 0 18px 20px; }
+    .care-infographic { padding: 8px; }
+}
+@media print {
+    .care-page .care-root { padding: 0; max-width: none; }
+    .care-sidebar, .care-breadcrumb, .care-page .guide-hero :is(nav, .pb-hero-nav, .ep-hero-nav), .faq-search, .faq-results-heading, .faq-empty { display: none !important; }
+    .care-layout { display: block; margin: 20px 0; }
+    .care-page .care-root .guide-hero { padding: 0 0 20px !important; border-radius: 0; }
+    .care-page .care-root .guide-hero h1 { font-size: 24pt !important; }
+    .care-page .care-main :is(.pb-card, .section-box, .equipment-group), .care-page .ups-faq-container > .faq-section { border: 0; padding: 0; box-shadow: none; }
+    .care-page #faqContent .faq-answer { display: block !important; padding-bottom: 18px; }
+    .care-page #faqContent .faq-toggle { display: none; }
+    .care-page .care-main table { min-width: 0; font-size: 10pt; }
+    .care-table-scroll { overflow: visible; }
+    .care-page .ups-faq-container .equipment-images { grid-template-columns: repeat(3, 1fr); }
+    .care-page .care-main :is(p, li) { font-size: 10pt; }
+}
+
+/* Audited power planner: explicit assumptions and accessible form/result states. */
+.power-safety-note { border: 1px solid #e5cfae; background: #fffbf3; border-radius: 10px; padding: 22px; margin-bottom: 26px; }
+.care-page .power-safety-note h2 { font-size: 1.125rem; margin: 0 0 10px; }
+.care-page .power-safety-note p { font-size: 1rem; line-height: 1.8; margin: 0 0 10px; }
+.care-page .power-intro-note { margin-bottom: 20px; }
+.care-page .power-intro-note p + p { margin-top: 12px; }
+.power-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+#powerPlanningForm fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.power-device { padding: 20px; border: 1px solid #dce6eb; border-radius: 9px; margin: 16px 0; background: #f8fbfc; }
+.power-device-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.power-device-fields { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 14px; }
+.power-device-fields label, .power-settings label { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.power-device-fields input, .power-settings input { width: 100%; min-width: 0; padding: 10px 12px; }
+.power-device-fields input[aria-invalid=true], .power-settings input[aria-invalid=true] { border-color: #b75342; }
+.power-settings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 22px 0; }
+.power-settings small { color: #617d8d; font: 400 .875rem/1.6 var(--font-reading); }
+.power-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+.power-primary, .power-secondary, .power-remove { padding: 10px 16px; border-radius: 7px; cursor: pointer; font: 600 .9375rem var(--font-reading); }
+.power-primary { color: white; background: #234e63; border: 1px solid #234e63; }
+.power-secondary { color: #335c6e; border: 1px solid #c4d6df; background: white; }
+.power-remove { border: 0; background: transparent; color: #5c7582; }
+.power-primary:hover { background: #163b4f; }
+.power-secondary:hover, .power-remove:hover { background: #eaf2f6; }
+.power-battery-option { border-top: 1px solid #dce6eb; border-bottom: 1px solid #dce6eb; margin: 20px 0; padding: 18px 0; }
+.care-page #power-calculator .power-checkbox { display: flex; align-items: center; gap: 12px; font-size: 1rem !important; }
+.care-page #power-calculator .power-checkbox input { width: 20px; height: 20px; min-height: 20px; flex: 0 0 20px; }
+#batteryModelFields legend { padding: 20px 0 10px; font-weight: 650; }
+.power-error { color: #7f3428; border: 1px solid #e8c3b9; background: #fff5ef; padding: 18px; margin-top: 20px; border-radius: 8px; }
+.power-results { border-top: 1px solid #dce6eb; padding-top: 26px; margin-top: 30px; }
+.power-stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+.power-stat-grid > div { background: #eef5f8; padding: 18px; border-radius: 8px; }
+.power-stat-grid span, .power-stat-grid small { display: block; color: #496d80; font-size: .875rem; line-height: 1.6; }
+.power-stat-grid strong { display: block; margin: 8px 0; font: 650 1.5rem/1.3 var(--font-heading); color: #204c62; }
+.power-results table { margin: 16px 0; }
+#bankResults > section { margin-top: 24px; }
+#bankResults table th { width: 55%; }
+.power-breakdown summary { cursor: pointer; font-size: .9375rem; padding: 16px 0; }
+.power-breakdown pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #f2f6f8; padding: 18px; border-radius: 8px; font-size: .875rem; line-height: 1.8; }
+.power-reference-images { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+.power-reference-images a { display: block; border: 1px solid #dce6eb; border-radius: 8px; background: #f7fafb; padding: 12px; font-size: .875rem; }
+.power-reference-images img { width: 100%; height: 180px; object-fit: contain; display: block; margin-bottom: 12px; }
+.care-page .power-sources { font-size: .9375rem; padding-left: 20px; }
+@media (max-width: 1200px) { .power-device-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+    .power-settings, .power-stat-grid, .power-reference-images { grid-template-columns: 1fr; }
+    .power-device { padding: 16px; }
+    .power-device-fields { gap: 12px; }
+    .power-device-fields label:first-child { grid-column: 1 / -1; }
+    .power-reference-images img { height: 220px; }
+}
+@media print { .power-actions, .power-remove, .power-primary { display: none; } .power-stat-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Photographs are reading material: large previews with full-size originals. */
+.care-page .care-experience-note { margin: 22px 0 0; padding: 16px 20px; border: 1px solid #dae6eb; border-radius: 9px; background: #edf4f6; color: #506d7c; font-size: .9375rem; line-height: 1.8; max-width: none; }
+.care-page .equipment-gallery-intro { margin: 28px 0 24px; }
+.care-page .care-infographic figcaption { margin: 14px 4px 2px; color: #587482; font-size: .9375rem; line-height: 1.7; }
+.care-page .equipment-gallery-intro p { max-width: 74ch; }
+.care-page .equipment-group .icu-equipment-grid { gap: 24px; }
+.care-page .equipment-group .icu-card { flex-direction: column; align-items: stretch; gap: 0; min-height: 354px; padding: 0 0 22px; border: 0; border-bottom: 1px solid #e0e8ec; }
+.care-page .equipment-group .icu-image-placeholder { display: block; position: relative; flex: none; width: 100%; height: 250px; padding: 16px 16px 38px; margin: 0 0 18px; overflow: hidden; background: #f7f9fa; border: 1px solid #e3eaed; border-radius: 10px; }
+.care-page .equipment-group .icu-image-placeholder img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 3px; transition: none; }
+.care-page .equipment-group .icu-image-placeholder:hover img { transform: none; }
+.care-page .equipment-group .equipment-generated-image { height: auto; padding: 0 0 38px; background: #f4f7f8; }
+.care-page .equipment-group .equipment-generated-image img { height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
+.equipment-expand { position: absolute; right: 10px; bottom: 7px; display: inline-flex; align-items: center; gap: 7px; padding: 5px 9px; border-radius: 5px; background: #fffefb; color: #325a6c; font: 550 .8125rem/1.5 var(--font-reading); }
+.equipment-expand > span { font-size: 1.25rem; line-height: 1; }
+.care-page .equipment-group .icu-image-placeholder:hover { border-color: #87abbc; background: #eff5f7; }
+.care-page .equipment-group .icu-card h3 { margin: 0 0 7px; font-size: 1.125rem; font-weight: 600; line-height: 1.5; }
+.care-page .equipment-photo-caption { font-size: .9375rem; line-height: 1.65; color: #587482; margin: 0 0 12px; }
+.equipment-card-copy { min-height: 100px; padding: 0 3px; }
+.equipment-image-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; font-size: .875rem; line-height: 1.6; color: #6a818c; }
+.equipment-image-meta a { display: inline-flex; align-items: center; gap: 5px; min-height: 32px; text-underline-offset: 4px; }
+.care-page .equipment-card-note { margin-top: 10px; font-size: .875rem; color: #587482; }
+.equipment-photo-pending { min-height: 250px; display: grid; place-items: center; color: #678392; background: #f3f7f9; margin-bottom: 18px; border-radius: 10px; }
+.care-infographic > a { position: relative; display: block; padding-bottom: 42px; }
+.care-page .power-reference-images { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.care-page .power-reference-images img { height: 260px; }
+.care-image-viewer { width: calc(100vw - 32px); height: calc(100dvh - 32px); max-width: 1440px; max-height: none; padding: 0; border: 1px solid #d1dfe6; border-radius: 14px; margin: auto; color: #23495b; background: #fff; box-shadow: 0 24px 100px #071c3450; }
+.care-image-viewer::backdrop { background: #0b2338d9; backdrop-filter: blur(5px); }
+.care-viewer-shell { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.care-viewer-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 22px; border-bottom: 1px solid #dce6eb; }
+.care-viewer-header h2 { font: 600 1.125rem/1.45 var(--font-heading); margin: 0; }
+.care-viewer-position { margin: 0 0 4px; color: #6a818d; font: 500 .75rem/1.5 var(--font-reading); text-transform: uppercase; letter-spacing: .08em; }
+.care-viewer-close { flex: 0 0 44px; width: 44px; height: 44px; border: 1px solid #d6e1e7; border-radius: 50%; color: #23495b; background: #f5f8fa; font: 400 1.75rem/1 var(--font-reading); cursor: pointer; }
+.care-viewer-stage { flex: 1; min-height: 0; overflow: auto; display: flex; align-items: center; justify-content: center; padding: 16px; background: #f0f4f6; overscroll-behavior: contain; }
+.care-viewer-stage img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.care-viewer-stage.is-zoomed { display: block; }
+.care-viewer-stage.is-zoomed img { width: auto; height: auto; max-width: none; max-height: none; min-width: 100%; }
+.care-viewer-stage [hidden] { display: none; }
+.care-viewer-footer { padding: 12px 22px 18px; border-top: 1px solid #dce6eb; }
+#careImageCredit { font: 400 .8125rem/1.6 var(--font-reading); color: #607988; margin: 0 0 10px; }
+.care-viewer-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.care-viewer-actions :is(button, a) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 15px; border: 1px solid #ccdde5; border-radius: 7px; background: white; color: #31566b; font: 550 .9375rem/1.4 var(--font-reading); cursor: pointer; text-decoration: none; }
+.care-viewer-actions :is(button, a):hover { background: #edf4f7; }
+.care-viewer-actions button:disabled { cursor: default; opacity: .4; }
+@media (max-width: 600px) {
+    .care-page .equipment-group .icu-image-placeholder { height: 260px; }
+    .care-page .equipment-group .equipment-generated-image { height: auto; }
+    .care-page .equipment-group .icu-card { min-height: 0; }
+    .care-page .equipment-group .icu-card h3 { font-size: 1.0625rem; }
+    .care-page .power-reference-images { grid-template-columns: 1fr; }
+    .care-image-viewer { width: calc(100vw - 12px); height: calc(100dvh - 12px); border-radius: 10px; }
+    .care-viewer-header { padding: 12px; gap: 12px; }
+    .care-viewer-header h2 { font-size: .9375rem; }
+    .care-viewer-footer { padding: 10px 12px; }
+    .care-viewer-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .care-viewer-actions :is(button, a) { font-size: .875rem; padding: 7px; }
+    .care-viewer-stage { padding: 8px; }
+}
+@media print {
+    .care-image-viewer, .equipment-expand, .equipment-image-meta { display: none !important; }
+    .care-page .equipment-group .icu-card { break-inside: avoid; min-height: 0; }
+    .care-page .equipment-group .icu-image-placeholder { height: 150px; border: 0; padding: 0; }
+    .care-page .equipment-group .equipment-generated-image img { height: 100%; }
+}
+
+/* Knowledge-card content stays readable as real text inside the existing FAQ. */
+.care-page .faq-reading-note { margin: 0 0 20px; color: #587482; font-size: .9375rem; line-height: 1.75; }
+.care-page #faqContent .faq-answer { padding-top: 4px; }
+.care-page #faqContent .faq-answer > h4 { margin: 28px 0 12px; color: #244a5b; font: 650 1.0625rem/1.5 var(--font-heading); letter-spacing: -.015em; text-transform: none; }
+.care-page #faqContent .faq-answer > p:first-child { color: #365768; }
+.care-page #faqContent .faq-answer ol { margin: 12px 0 20px; padding-left: 26px; }
+.care-page #faqContent .faq-answer li { margin-bottom: 9px; padding-left: 3px; }
+.care-page #faqContent .faq-answer li::marker { color: #467d91; }
+.care-page #faqContent .faq-answer strong { color: #294d60; font-weight: 650; }
+.care-page #faqContent .faq-care-note,
+.care-page #faqContent .faq-care-alert { margin: 22px 0 8px; padding: 18px 20px; border: 1px solid #d4e4eb; border-radius: 9px; background: #f0f6f8; color: #365969; font: 400 1rem/1.8 var(--font-reading); }
+.care-page #faqContent .faq-care-alert { border-color: #ecd6bd; background: #fff8ee; color: #6a4a2d; }
+.care-page #faqContent .faq-care-alert strong { color: #805225; }
+.care-page #faqContent .faq-table-scroll { width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid #dce6eb; border-radius: 9px; overscroll-behavior-x: contain; }
+.care-page #faqContent .faq-table { width: 100%; min-width: 430px; margin: 0; table-layout: fixed; border-collapse: collapse; font: 400 .9375rem/1.7 var(--font-reading); }
+.care-page #faqContent .faq-table caption { padding: 14px 18px; text-align: left; color: #244a5b; background: #f7fafb; font-weight: 600; }
+.care-page #faqContent .faq-table :is(th, td) { padding: 14px 18px; vertical-align: top; text-align: left; border: 0; border-top: 1px solid #dce6eb; color: #476473; overflow-wrap: anywhere; }
+.care-page #faqContent .faq-table th { background: #f1f6f8; color: #31576a; font-weight: 600; }
+.care-page #faqContent .faq-table th:first-child { width: 32%; }
+.care-page #faqContent .faq-table tbody th { background: #fafcfd; }
+.care-page #faqContent .faq-sources { margin: 26px 0 0; padding-top: 16px; border-top: 1px solid #e0e9ed; }
+.care-page #faqContent .faq-sources h4 { margin: 0 0 7px; font: 600 .875rem/1.5 var(--font-reading); color: #587482; text-transform: none; letter-spacing: 0; }
+.care-page #faqContent .faq-sources ul { margin: 0; padding-left: 18px; }
+.care-page #faqContent .faq-sources li { font-size: .875rem; line-height: 1.65; margin: 6px 0; }
+.care-page #faqContent .faq-sources a { color: #35677c; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+    .care-page #faqContent .faq-care-note, .care-page #faqContent .faq-care-alert { padding: 14px; }
+    .care-page #faqContent .faq-table :is(th, td) { padding: 12px; }
+}
+@media print {
+    .care-page #faqContent .faq-table-scroll { overflow: visible; }
+    .care-page #faqContent .faq-table { min-width: 0; }
+}

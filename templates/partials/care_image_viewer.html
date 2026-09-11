@@ -1,0 +1,21 @@
+<dialog id="careImageViewer" class="care-image-viewer" aria-labelledby="careImageTitle">
+    <div class="care-viewer-shell">
+        <header class="care-viewer-header">
+            <div><p id="careImagePosition" class="care-viewer-position"></p><h2 id="careImageTitle">Equipment photograph</h2></div>
+            <button type="button" id="careImageClose" class="care-viewer-close" aria-label="Close image viewer" autofocus>×</button>
+        </header>
+        <div id="careImageStage" class="care-viewer-stage" tabindex="0" aria-label="Image; scroll to explore when zoomed">
+            <img id="careImageFull" alt="">
+            <p id="careImageError" hidden>This image could not be loaded. Try opening the original image below.</p>
+        </div>
+        <footer class="care-viewer-footer">
+            <p id="careImageCredit"></p>
+            <div class="care-viewer-actions">
+                <button type="button" id="careImagePrevious" aria-label="Previous image">← Previous</button>
+                <button type="button" id="careImageZoom" aria-pressed="false">Zoom in</button>
+                <a id="careImageOriginal" target="_blank" rel="noopener">Open original ↗</a>
+                <button type="button" id="careImageNext" aria-label="Next image">Next →</button>
+            </div>
+        </footer>
+    </div>
+</dialog>

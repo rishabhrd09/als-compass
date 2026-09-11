@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "care_base.html" %}
 
-{% block title %}Home ICU Setup Guide | ALS Caregiver's Compass{% endblock %}
+{% block title %}Home ICU Setup Guide | ALS CareKosh{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/pages/home-icu.css">
@@ -234,9 +234,9 @@
 </style>
 {% endblock %}
 
-{% block content %}
+{% block care_header %}
 <!-- Hero Section -->
-<section class="icu-hero">
+<section class="guide-hero icu-hero">
     <div class="container">
         <h1>Home ICU Setup Guide</h1>
         <p>Visit <a
@@ -252,15 +252,16 @@
         </nav>
     </div>
 </section>
+{% endblock %}
 
-<div class="container" style="max-width: 1400px; padding-top: 2rem;">
+{% block care_content %}
+
+<div class="care-equipment">
 
     <!-- Equipment List Table Section -->
-    <div id="equipment-sections" class="equipment-section">
-        <h2>
-            <i class="fas fa-list-check"></i>
-            Equipment List
-        </h2>
+    <div id="equipment-sections" class="equipment-section" data-care-section>
+        <details class="care-equipment-reference">
+        <summary><h2><i class="fas fa-list-check" aria-hidden="true"></i> Equipment List<span class="care-reference-hint" aria-hidden="true">View complete list <span>＋</span></span></h2></summary>
 
         <div style="overflow-x: auto;">
             <table class="equipment-table">
@@ -331,6 +332,8 @@
             </table>
         </div>
 
+        </details>
+
         <!-- Key Recommendations -->
         <div class="key-recommendations">
             <h3><i class="fas fa-lightbulb" style="margin-right: 0.4rem; color: var(--icu-accent);"></i>Key Recommendations</h3>
@@ -343,571 +346,16 @@
         </div>
     </div>
 
-    <!-- Equipment Images Section -->
-
-    <!-- Ventilator & Accessories -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Ventilator & Accessories</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card" data-buy-link="">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/ventilator.jpg', 'Ventilator/BiPAP Machine')">
-                    <img src="/static/images/icu-guide/ventilator.jpg" alt="Ventilator/BiPAP Machine"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Ventilator/BiPAP Machine</h3>
-            </div>
-            <div class="icu-card" data-buy-link="">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/catheter-mount.jpg', 'Catheter Mount')">
-                    <img src="/static/images/icu-guide/catheter-mount.jpg" alt="Catheter Mount"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Catheter Mount</h3>
-            </div>
-            <div class="icu-card" data-buy-link="">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/inlet-filter.jpg', 'Back Filter / Inlet Filter')">
-                    <img src="/static/images/icu-guide/inlet-filter.jpg" alt="Back Filter / Inlet Filter"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Back Filter / Inlet Filter</h3>
-            </div>
-            <div class="icu-card" data-buy-link="">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/hme-filter.jpg', 'HME Filter')">
-                    <img src="/static/images/icu-guide/hme-filter.jpg" alt="HME Filter"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>HME Filter</h3>
-            </div>
-            <div class="icu-card" data-buy-link="">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/bacteria-filter.jpg', 'Bacteria Filter')">
-                    <img src="/static/images/icu-guide/bacteria-filter.jpg" alt="Bacteria Filter"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Bacteria Filter</h3>
-            </div>
-            <div class="icu-card" data-buy-link="">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/ventilator-circuit.jpg', 'Ventilator Circuit/Pipes')">
-                    <img src="/static/images/icu-guide/ventilator-circuit.jpg" alt="Ventilator Circuit/Pipes"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Ventilator Circuit / Pipes</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/whisper-swivel.jpg" alt="Whisper Swivel"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Whisper Swivel</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/ambu-bag.jpg" alt="Ambu Bag" onerror="this.style.display='none'">
-                </div>
-                <h3>Ambu Bag</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/oxygen-concentrator.jpg" alt="Oxygen Concentrator"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Oxygen Concentrator</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- Suction -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Suction</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/suction-machine.jpg" alt="Yuwell Suction Machine"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Yuwell Suction Machine</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/vacuum-set.jpg" alt="Vacuum Set"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Vacuum Set</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/suction-catheter.jpg" alt="Suction Catheter"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Suction Catheter</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/suction-filter.jpg" alt="Suction Machine Filter"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Suction Machine Filter</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/syringe.jpg" alt="Single use syringe"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Single use syringe ( 10 ml and 5 ml )</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/normal-saline.jpg" alt="Normal Saline (NS)"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Normal Saline (NS)</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tracheostomy Dressing / TT Tube Change -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Tracheostomy Dressing / TT Tube Change</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/gauze.jpg" alt="Gauze Swabs/Piece"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Gauze Swabs/Piece</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/betadine.jpg" alt="Betadine Solution"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Betadine Solution</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/gloves.jpg" alt="Sterilized Gloves"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Sterilized Gloves</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/scissor.jpg" alt="Scissor" onerror="this.style.display='none'">
-                </div>
-                <h3>Scissor</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- Nebulization -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Nebulization</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/nebulizer.jpg" alt="Nebulizer"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Nebulizer</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/nebulizer-tube.jpg" alt="Nebulizer Tube"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Nebulizer Tube</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/t-section-neb.jpg" alt="T-Section Neb"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>T-Section Neb</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/normal-saline-neb.jpg" alt="Normal Saline (NS)"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Normal Saline (NS)</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/neb-medicines.jpg" alt="Nebulizer Medicines"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Nebulizer Medicines</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vitals Monitoring -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Vitals Monitoring</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/multiparamonitor.jpg" alt="Multiparamonitor"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Multiparamonitor</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/oximeter.jpg" alt="Oximeter" onerror="this.style.display='none'">
-                </div>
-                <h3>Oximeter</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/bp-cuff.jpg" alt="BP Cuff" onerror="this.style.display='none'">
-                </div>
-                <h3>BP Cuff</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/thermometer.jpg" alt="Thermometer"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Thermometer</h3>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- UPS Backup System -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            UPS Backup System</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/ups-unit.png', 'Uniline 3kVA UPS Unit')">
-                    <img src="/static/images/icu-guide/ups-unit.png" alt="Uniline 3kVA UPS Unit"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Uniline 3kVA UPS</h3>
-                <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">72VDC Input • 230VAC Output</p>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/battery-exide.png', 'Exide PowerSafe Plus 42Ah Battery')">
-                    <img src="/static/images/icu-guide/battery-exide.png" alt="Exide PowerSafe Plus 42Ah Battery"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Exide 12V 42Ah Battery</h3>
-                <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Sealed Lead-Acid • 6 per UPS</p>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder"
-                    onclick="openLightbox('/static/images/icu-guide/ups-label.png', 'UPS Specifications Label')">
-                    <img src="/static/images/icu-guide/ups-label.png" alt="UPS Specifications Label"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>UPS Specifications</h3>
-                <p style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">Model: MF1103L6 • 3kVA/2.4kW</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Recliner Beds & Tables -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Recliner Beds & Tables</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/recliner-bed.jpg" alt="Recliner Bed"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Recliner Bed</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- Other Important Items -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Other Important Items</h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/alexa.jpg" alt="Alexa" onerror="this.style.display='none'">
-                </div>
-                <h3>Alexa</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/smart-tv.jpg" alt="Smart TV" onerror="this.style.display='none'">
-                </div>
-                <h3>Smart TV</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/tobii-eyetracker.jpg" alt="Tobii Eye Tracker"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Tobii Eye Tracker</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/ac.jpg" alt="Air Conditioner"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Air Conditioner</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- daily needs / Hygiene -->
-    <div style="margin-bottom: 3rem;">
-        <h2
-            class="equipment-category-heading">
-            Daily Care / Hygiene </h2>
-        <div class="icu-equipment-grid">
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/cremaffin.jpg" alt="Cremaffin Plus"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Cremaffin Plus</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/jelly.jpg" alt="Jelly" onerror="this.style.display='none'">
-                </div>
-                <h3>Jelly</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/wipes.jpg" alt="Wipes" onerror="this.style.display='none'">
-                </div>
-                <h3>Wipes</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/dettol.jpg" alt="Dettol" onerror="this.style.display='none'">
-                </div>
-                <h3>Dettol</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/sanitizer.jpg" alt="Sanitizer"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Sanitizer</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/enema.jpg" alt="Enema (Emergency)"
-                        onerror="this.style.display='none'">
-                </div>
-                <h3>Enema (Emergency)</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/cotton.jpg" alt="Cotton" onerror="this.style.display='none'">
-                </div>
-                <h3>Cotton</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/pads.jpg" alt="Pads" onerror="this.style.display='none'">
-                </div>
-                <h3>UnderPads</h3>
-            </div>
-            <div class="icu-card">
-                <div class="icu-image-placeholder">
-                    <img src="/static/images/icu-guide/sheet.jpg" alt="Sheet" onerror="this.style.display='none'">
-                </div>
-                <h3>Sheet</h3>
-            </div>
-        </div>
-    </div>
-
+    {% include 'partials/icu_equipment_gallery.html' %}
 </div>
 
-<!-- Home ICU Equipment Infographic -->
-<div class="container" style="max-width: 1400px; padding: 2rem 0 3rem; text-align: center;">
-    <img src="/static/images/home_icu_equipment.png" alt="Home ICU Setup: Essential Equipment & Room Preparation"
-        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);">
-</div>
-
-<!-- Lightbox Modal -->
-<div id="imageLightbox" class="image-lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightboxImage" class="lightbox-content" src="" alt="">
-    <div id="lightboxCaption" class="lightbox-caption"></div>
-</div>
-
-<script>
-    function openLightbox(imageSrc, caption) {
-        const lightbox = document.getElementById('imageLightbox');
-        const img = document.getElementById('lightboxImage');
-        const captionEl = document.getElementById('lightboxCaption');
-
-        img.src = imageSrc;
-        captionEl.textContent = caption || '';
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-
-    function closeLightbox() {
-        const lightbox = document.getElementById('imageLightbox');
-        lightbox.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-
-    // Close on Escape key
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
-
-    // Auto-attach click handlers to all images in .icu-image-placeholder
-    document.addEventListener('DOMContentLoaded', function () {
-        const placeholders = document.querySelectorAll('.icu-image-placeholder');
-        placeholders.forEach(function (placeholder) {
-            // Skip if already has onclick
-            if (placeholder.getAttribute('onclick')) return;
-
-            const img = placeholder.querySelector('img');
-            if (img && img.src) {
-                // Get the caption from the sibling h3 element
-                const card = placeholder.closest('.icu-card');
-                const h3 = card ? card.querySelector('h3') : null;
-                const caption = h3 ? h3.textContent : (img.alt || '');
-
-                placeholder.style.cursor = 'pointer';
-                placeholder.addEventListener('click', function () {
-                    openLightbox(img.src, caption);
-                });
-            }
-        });
-    });
-
-    // UPS Power Calculator Function
-    function calculateUPS() {
-        // Collect device data
-        const devices = [];
-        for (let i = 1; i <= 3; i++) {
-            const name = document.getElementById(`device${i}_name`).value;
-            const power = parseFloat(document.getElementById(`device${i}_power`).value) || 0;
-            const usage = parseFloat(document.getElementById(`device${i}_usage`).value) || 0;
-
-            if (name && power > 0) {
-                devices.push({ name, power, usage: Math.min(100, Math.max(0, usage)) });
-            }
-        }
-
-        const desiredBackup = parseFloat(document.getElementById('desiredBackupHours').value) || 8;
-
-        // Calculate totals
-        let worstCaseLoad = 0;
-        let effectiveLoad = 0;
-        let breakdownLines = [];
-
-        devices.forEach(d => {
-            worstCaseLoad += d.power;
-            const effective = d.power * (d.usage / 100);
-            effectiveLoad += effective;
-            breakdownLines.push(`${d.name}: ${d.power}W × ${d.usage}% = ${effective.toFixed(0)}W effective`);
-        });
-
-        // Round effective load
-        effectiveLoad = Math.round(effectiveLoad);
-
-        // Calculate energy needed (using worst case for safety margin)
-        const energyNeeded = worstCaseLoad * desiredBackup;
-
-        // Account for 75% efficiency (battery + UPS losses)
-        const actualEnergyNeeded = energyNeeded / 0.75;
-
-        // Determine UPS rating (UPS should handle 1.5x worst case load for surge)
-        let upsRating;
-        const loadWithMargin = worstCaseLoad * 1.5;
-        if (loadWithMargin <= 800) upsRating = "1 kVA";
-        else if (loadWithMargin <= 1500) upsRating = "1.5 kVA";
-        else if (loadWithMargin <= 2000) upsRating = "2 kVA";
-        else if (loadWithMargin <= 3000) upsRating = "3 kVA";
-        else upsRating = "5 kVA";
-
-        // Calculate battery requirements (assuming 12V batteries)
-        // Energy = Volts × Amp-hours, so Ah = Energy / Volts
-        // For a 48V system: Ah = actualEnergyNeeded / 48
-        let batteryConfig = "";
-        let batteryDetails = "";
-
-        if (actualEnergyNeeded <= 1500) {
-            // 24V system with 2 batteries
-            const ahNeeded = actualEnergyNeeded / 24;
-            const recommendedAh = ahNeeded <= 100 ? 100 : (ahNeeded <= 150 ? 150 : 200);
-            batteryConfig = `2× ${recommendedAh}Ah batteries (24V system)`;
-            batteryDetails = `24V × ${recommendedAh}Ah = ${24 * recommendedAh} Wh capacity`;
-        } else if (actualEnergyNeeded <= 4000) {
-            // 48V system with 4 batteries
-            const ahNeeded = actualEnergyNeeded / 48;
-            const recommendedAh = ahNeeded <= 100 ? 100 : (ahNeeded <= 150 ? 150 : 200);
-            batteryConfig = `4× ${recommendedAh}Ah batteries (48V system)`;
-            batteryDetails = `48V × ${recommendedAh}Ah = ${48 * recommendedAh} Wh capacity`;
-        } else {
-            // 72V system with 6 batteries
-            const ahNeeded = actualEnergyNeeded / 72;
-            const recommendedAh = ahNeeded <= 100 ? 100 : (ahNeeded <= 150 ? 150 : 200);
-            batteryConfig = `6× ${recommendedAh}Ah batteries (72V system)`;
-            batteryDetails = `72V × ${recommendedAh}Ah = ${72 * recommendedAh} Wh capacity`;
-        }
-
-        // Update results display
-        document.getElementById('resultWorstCase').textContent = worstCaseLoad + 'W';
-        document.getElementById('resultEffective').textContent = effectiveLoad + 'W';
-        document.getElementById('resultEnergy').textContent = Math.round(actualEnergyNeeded).toLocaleString() + ' Wh';
-
-        // Generate recommendation text
-        const recoHTML = `
-            <p style="margin-bottom: 0.5rem;"><strong>UPS Rating:</strong> ${upsRating} or higher</p>
-            <p style="margin-bottom: 0.5rem;"><strong>Battery Bank:</strong> ${batteryConfig}</p>
-            <p style="margin-bottom: 0;"><em>${batteryDetails}</em></p>
-        `;
-        document.getElementById('resultRecommendation').innerHTML = recoHTML;
-
-        // Generate breakdown
-        breakdownLines.push('');
-        breakdownLines.push(`Worst Case Total: ${worstCaseLoad}W`);
-        breakdownLines.push(`Effective Load: ${effectiveLoad}W`);
-        breakdownLines.push('');
-        breakdownLines.push(`Energy for ${desiredBackup}hrs: ${worstCaseLoad}W × ${desiredBackup}h = ${energyNeeded} Wh`);
-        breakdownLines.push(`With 75% efficiency: ${energyNeeded} ÷ 0.75 = ${Math.round(actualEnergyNeeded)} Wh`);
-        breakdownLines.push('');
-        breakdownLines.push(`UPS should handle: ${worstCaseLoad}W × 1.5 = ${loadWithMargin}W → ${upsRating}`);
-
-        document.getElementById('resultBreakdown').innerHTML = breakdownLines.join('<br>');
-
-        // Show results
-        document.getElementById('calcResults').style.display = 'block';
-
-        // Scroll to results
-        document.getElementById('calcResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-</script>
+<!-- Full-size overview remains available independently of the gallery script. -->
+<figure class="care-infographic" id="home-icu-poster">
+    <a href="/static/images/icu-guide/alscas-home-icu-setup.png" data-care-image data-caption="Home ICU Setup: Essential Equipment & Room Preparation — ALSCAS knowledge card" data-credit="ALSCAS knowledge card" aria-label="Expand Home ICU equipment overview">
+        <img src="/static/images/icu-guide/previews/alscas-home-icu-setup.webp" alt="ALSCAS Home ICU setup checklist: ventilation, suction, tracheostomy care, nebulization, monitoring, room preparation and critical backups" width="1122" height="1402" loading="lazy" decoding="async">
+        <span class="equipment-expand"><span aria-hidden="true">⤢</span> Expand overview</span>
+    </a>
+</figure>
 
 <style>
     /* ICU Navigation Links - Hover Effects */
@@ -1113,18 +561,19 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="/static/vendor/gsap-3.12.5.min.js" defer></script>
+<script src="/static/vendor/ScrollTrigger-3.12.5.min.js" defer></script>
 <script>
 window.addEventListener('load', function() {
-    if (typeof gsap === 'undefined') return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
-
-    /* Subtle card reveals on scroll */
-    gsap.utils.toArray('.icu-card').forEach(function(el) {
-        gsap.from(el, {
-            scrollTrigger: { trigger: el, start: 'top 90%' },
-            y: 24, opacity: 0, duration: 0.5, ease: 'power2.out'
+    /* Keep guidance readable throughout; revert motion when preferences change. */
+    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', function() {
+        gsap.utils.toArray('.icu-card').forEach(function(el) {
+            gsap.from(el, {
+                scrollTrigger: { trigger: el, start: 'top 94%', once: true },
+                y: 8, duration: 0.65, ease: 'power2.out', clearProps: 'transform'
+            });
         });
     });
 });

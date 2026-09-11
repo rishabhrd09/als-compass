@@ -1,0 +1,430 @@
+{
+  "evidence_cutoff": "2026-09-10",
+  "retrieved_on": "2026-09-11",
+  "records": [
+    {
+      "id": "NCT07674667",
+      "url": "https://clinicaltrials.gov/study/NCT07674667",
+      "status": "RECRUITING",
+      "updated_on": "2026-09-09",
+      "phase": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "countries": [
+        "Germany",
+        "Netherlands",
+        "United Kingdom"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07322003",
+      "url": "https://clinicaltrials.gov/study/NCT07322003",
+      "status": "RECRUITING",
+      "updated_on": "2026-08-25",
+      "phase": [
+        "PHASE3"
+      ],
+      "countries": [
+        "Belgium",
+        "Canada",
+        "France",
+        "Germany",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Netherlands",
+        "Poland",
+        "Spain",
+        "Sweden",
+        "United Kingdom",
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT06973629",
+      "url": "https://clinicaltrials.gov/study/NCT06973629",
+      "status": "NOT_YET_RECRUITING",
+      "updated_on": "2025-05-22",
+      "phase": [
+        "PHASE3"
+      ],
+      "countries": [
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07174492",
+      "url": "https://clinicaltrials.gov/study/NCT07174492",
+      "status": "NOT_YET_RECRUITING",
+      "updated_on": "2025-10-03",
+      "phase": [
+        "PHASE3"
+      ],
+      "countries": [
+        "Greece"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT04768972",
+      "url": "https://clinicaltrials.gov/study/NCT04768972",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "updated_on": "2026-07-21",
+      "phase": [
+        "PHASE3"
+      ],
+      "countries": [
+        "Belgium",
+        "Brazil",
+        "Canada",
+        "Germany",
+        "Ireland",
+        "Italy",
+        "Japan",
+        "Netherlands",
+        "Poland",
+        "South Korea",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Taiwan",
+        "United Kingdom",
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT05633459",
+      "url": "https://clinicaltrials.gov/study/NCT05633459",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "updated_on": "2026-05-15",
+      "phase": [
+        "PHASE1"
+      ],
+      "countries": [
+        "Belgium",
+        "Canada",
+        "Germany",
+        "Ireland",
+        "Netherlands",
+        "United Kingdom"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07161999",
+      "url": "https://clinicaltrials.gov/study/NCT07161999",
+      "status": "RECRUITING",
+      "updated_on": "2026-08-06",
+      "phase": [
+        "PHASE2",
+        "PHASE3"
+      ],
+      "countries": [
+        "Canada",
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07410806",
+      "url": "https://clinicaltrials.gov/study/NCT07410806",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "updated_on": "2026-07-20",
+      "phase": [
+        "PHASE2",
+        "PHASE3"
+      ],
+      "countries": [
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT05882695",
+      "url": "https://clinicaltrials.gov/study/NCT05882695",
+      "status": "COMPLETED",
+      "updated_on": "2025-06-29",
+      "phase": [
+        "PHASE1"
+      ],
+      "countries": [
+        "Australia"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07088159",
+      "url": "https://clinicaltrials.gov/study/NCT07088159",
+      "status": "AVAILABLE",
+      "updated_on": "2026-07-17",
+      "phase": [],
+      "countries": [
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT06365216",
+      "url": "https://clinicaltrials.gov/study/NCT06365216",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "updated_on": "2025-12-24",
+      "phase": [
+        "PHASE2"
+      ],
+      "countries": [
+        "France"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07118319",
+      "url": "https://clinicaltrials.gov/study/NCT07118319",
+      "status": "RECRUITING",
+      "updated_on": "2025-11-21",
+      "phase": [
+        "PHASE1"
+      ],
+      "countries": [
+        "China"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT06665165",
+      "url": "https://clinicaltrials.gov/study/NCT06665165",
+      "status": "RECRUITING",
+      "updated_on": "2026-04-14",
+      "phase": [
+        "PHASE1"
+      ],
+      "countries": [
+        "Canada",
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07369076",
+      "url": "https://clinicaltrials.gov/study/NCT07369076",
+      "status": "RECRUITING",
+      "updated_on": "2026-06-22",
+      "phase": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "countries": [
+        "Australia",
+        "Canada"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07401121",
+      "url": "https://clinicaltrials.gov/study/NCT07401121",
+      "status": "RECRUITING",
+      "updated_on": "2026-02-10",
+      "phase": [
+        "PHASE1"
+      ],
+      "countries": [
+        "Australia"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT06556394",
+      "url": "https://clinicaltrials.gov/study/NCT06556394",
+      "status": "RECRUITING",
+      "updated_on": "2025-01-08",
+      "phase": [
+        "PHASE1"
+      ],
+      "countries": [
+        "China"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07023835",
+      "url": "https://clinicaltrials.gov/study/NCT07023835",
+      "status": "RECRUITING",
+      "updated_on": "2026-09-01",
+      "phase": [
+        "PHASE2"
+      ],
+      "countries": [
+        "Australia",
+        "Belgium",
+        "Canada",
+        "France",
+        "Germany",
+        "Ireland",
+        "Italy",
+        "Netherlands",
+        "Poland",
+        "Spain",
+        "Sweden",
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT06351592",
+      "url": "https://clinicaltrials.gov/study/NCT06351592",
+      "status": "RECRUITING",
+      "updated_on": "2026-07-22",
+      "phase": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "countries": [
+        "Australia",
+        "Belgium",
+        "Canada",
+        "Germany",
+        "Japan",
+        "Poland",
+        "South Korea",
+        "Sweden",
+        "Taiwan"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07287397",
+      "url": "https://clinicaltrials.gov/study/NCT07287397",
+      "status": "RECRUITING",
+      "updated_on": "2026-09-10",
+      "phase": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "countries": [
+        "Belgium",
+        "Netherlands",
+        "United Kingdom",
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07290062",
+      "url": "https://clinicaltrials.gov/study/NCT07290062",
+      "status": "RECRUITING",
+      "updated_on": "2026-09-01",
+      "phase": [
+        "PHASE1"
+      ],
+      "countries": [
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07294144",
+      "url": "https://clinicaltrials.gov/study/NCT07294144",
+      "status": "RECRUITING",
+      "updated_on": "2026-06-25",
+      "phase": [
+        "PHASE2"
+      ],
+      "countries": [
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT05407324",
+      "url": "https://clinicaltrials.gov/study/NCT05407324",
+      "status": "RECRUITING",
+      "updated_on": "2026-06-16",
+      "phase": [
+        "PHASE2"
+      ],
+      "countries": [
+        "Belgium",
+        "Canada",
+        "France",
+        "Germany",
+        "Ireland",
+        "Netherlands",
+        "Poland",
+        "Spain",
+        "United Kingdom",
+        "United States"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT07660614",
+      "url": "https://clinicaltrials.gov/study/NCT07660614",
+      "status": "RECRUITING",
+      "updated_on": "2026-08-18",
+      "phase": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "countries": [
+        "Germany",
+        "Italy",
+        "Netherlands",
+        "Sweden"
+      ],
+      "results_posted": false
+    },
+    {
+      "id": "NCT05237284",
+      "url": "https://clinicaltrials.gov/study/NCT05237284",
+      "status": "TERMINATED",
+      "updated_on": "2025-03-21",
+      "phase": [
+        "PHASE2"
+      ],
+      "countries": [
+        "Belgium",
+        "Canada",
+        "China",
+        "France",
+        "Germany",
+        "Italy",
+        "Japan",
+        "Netherlands",
+        "Poland",
+        "Spain",
+        "Sweden",
+        "United Kingdom",
+        "United States"
+      ],
+      "results_posted": true
+    },
+    {
+      "id": "NCT02891629",
+      "url": "https://clinicaltrials.gov/study/NCT02891629",
+      "status": "COMPLETED",
+      "updated_on": "2019-08-28",
+      "phase": [
+        "NA"
+      ],
+      "countries": [],
+      "results_posted": true
+    },
+    {
+      "id": "NCT07357428",
+      "url": "https://clinicaltrials.gov/study/NCT07357428",
+      "status": "RECRUITING",
+      "updated_on": "2026-04-14",
+      "phase": [
+        "NA"
+      ],
+      "countries": [
+        "United States"
+      ],
+      "results_posted": false
+    }
+  ]
+}

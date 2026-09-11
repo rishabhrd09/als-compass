@@ -9,6 +9,9 @@ from flask import Flask, render_template, request, jsonify, session
 from dotenv import load_dotenv
 import logging
 import json
+from datetime import date
+from pathlib import Path
+from research_schema import validate_research
 
 # Load environment variables
 load_dotenv()
@@ -26,12 +29,39 @@ app.config['SESSION_TYPE'] = 'filesystem'
 logger.info("✅ Flask app initialized")
 logger.info(f"   Default model: {os.getenv('DEFAULT_MODEL_PROVIDER', 'openai')}")
 
+RESEARCH_DATA_PATH = Path(__file__).resolve().parent / 'data' / 'research_categorized.json'
+
+
+def load_research_data():
+    """Read the reviewed snapshot shared by the page, homepage and JSON API."""
+    with RESEARCH_DATA_PATH.open(encoding='utf-8') as research_file:
+        research = json.load(research_file)
+    validate_research(research)
+    return research
+
+
+@app.template_filter('research_date')
+def research_date(value):
+    """Display partial dates without inventing a publication day."""
+    if not value:
+        return 'Publication date not stated'
+    if len(value) == 7:
+        return date.fromisoformat(value + '-01').strftime('%B %Y')
+    return date.fromisoformat(value).strftime('%d %B %Y').lstrip('0')
+
 # ==================== ROUTES ====================
 
 @app.route('/')
 def home():
     """Home page"""
-    return render_template('index.html')
+    try:
+        research = load_research_data()
+        entries = {item['id']: item for group in research['categories'].values() for item in group}
+        research_preview = [entries[item_id] for item_id in research['homepage_entries']]
+    except (OSError, ValueError, KeyError, TypeError):
+        logger.exception('Research preview unavailable')
+        research, research_preview = {}, []
+    return render_template('index.html', research=research, research_preview=research_preview)
 
 @app.route('/understanding-als')
 def understanding_als():
@@ -66,7 +96,9 @@ def ups_faq():
 @app.route('/home-icu-guide')
 def home_icu_guide():
     """Home ICU guide page"""
-    return render_template('home_icu_guide.html', page='icu_guide')
+    with (Path(__file__).resolve().parent / 'data' / 'icu_equipment_images.json').open(encoding='utf-8') as file:
+        equipment_gallery = json.load(file)
+    return render_template('home_icu_guide.html', page='icu_guide', equipment_gallery=equipment_gallery)
 
 @app.route('/daily-schedule')
 def daily_schedule():
@@ -208,21 +240,28 @@ def get_research_updates():
 def get_research_categorized():
     """Get categorized research data for research page"""
     try:
-        with open('data/research_categorized.json', 'r', encoding='utf-8') as f:
-            return jsonify(json.load(f))
-    except FileNotFoundError:
-        return jsonify({
-            "last_updated": "2025-12-14",
-            "categories": {}
-        })
-    except Exception as e:
-        logger.error(f"Error loading categorized research: {e}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify(load_research_data())
+    except (OSError, ValueError):
+        logger.exception('Research data unavailable')
+        return jsonify({'error': 'Research data is temporarily unavailable.'}), 503
 
 @app.route('/research-updates')
 def research_updates_page():
-    """Research updates page"""
-    return render_template('research_updates.html')
+    """Render the full evidence review; JavaScript enhances filtering only."""
+    try:
+        research = load_research_data()
+        sections = []
+        for section in research['sections']:
+            items = [item for category in section['categories'] for item in research['categories'][category]]
+            sections.append(dict(section, entries=items))
+        sources = {source['id']: dict(source, number=index + 1)
+                   for index, source in enumerate(research['source_library'])}
+        return render_template('research_updates.html', research=research,
+                               sections=sections, sources=sources,
+                               total_entries=sum(len(section['entries']) for section in sections))
+    except (OSError, ValueError, KeyError, TypeError):
+        logger.exception('Research review unavailable')
+        return render_template('research_updates.html', research=None), 503
 
 @app.route('/communication-technology')
 def communication_technology_page():
@@ -242,7 +281,9 @@ def eye_tracker_setup_page():
 @app.route('/comm-tech-research')
 def comm_tech_research_page():
     """Communication Technology Research - Wearable eye-tracking and BCI research"""
-    return render_template('comm_tech_research.html')
+    with open(os.path.join(app.root_path, 'data', 'communication_technology.json'), encoding='utf-8') as f:
+        communication_data = json.load(f)
+    return render_template('comm_tech_research.html', communication_data=communication_data)
 
 @app.route('/api/communication-tech')
 def get_communication_tech():

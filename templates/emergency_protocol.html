@@ -1,14 +1,6 @@
-{% extends "base.html" %}
+{% extends "care_base.html" %}
 
-{% block title %}Respiratory Emergency Protocol - ALS Caregiver's Compass{% endblock %}
-
-{% block extra_head %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;800;900&family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-{% endblock %}
+{% block title %}Respiratory Emergency Protocol | ALS CareKosh{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="/static/css/pages/emergency.css">
@@ -504,9 +496,9 @@
 </style>
 {% endblock %}
 
-{% block content %}
+{% block care_header %}
 <!-- Hero Section - Dark Theme -->
-<section class="ep-hero" style="
+<section class="guide-hero ep-hero" style="
     text-align: center;
     padding: 5rem 2rem 4rem;
     background: linear-gradient(135deg, #1a2f4a 0%, #223d5c 40%, #162840 100%);
@@ -543,14 +535,25 @@
         </a>
     </div>
 </section>
+{% endblock %}
+
+{% block care_content %}
 
 <div class="protocol-container">
 
+    <aside class="power-safety-note" aria-labelledby="experienceNoticeTitle">
+        <h2 id="experienceNoticeTitle">Experience-based guidance: know when to call for help</h2>
+        <p>These notes draw on personal caregiving experience and learning shared by families. They support preparation and discussion; <strong>they are not a clinician-validated emergency protocol or a substitute for the person’s written, individualized emergency plan.</strong> Review that plan and practise the agreed skills with the treating respiratory team before an emergency.</p>
+        <p><strong>Call <a href="tel:112">112</a> immediately in India for severe or worsening breathing difficulty, ineffective ventilation, a suspected blocked or displaced tracheostomy tube, blue/grey colour, collapse or reduced responsiveness.</strong> Do not wait for a particular SpO2 number or finish every step on this page. If unresponsive and not breathing normally, tell the dispatcher immediately and follow their resuscitation instructions and the agreed care plan.</p>
+        <p><strong>Call and care at the same time:</strong> one person stays with PALS and performs only the immediate actions they have been trained to provide; another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.</p>
+        <p><strong>Know the limit of home troubleshooting:</strong> check external power, visible tubing and connections, and carry out suction only as trained and prescribed. If these actions do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. Tracheostomy (TT) replacement, cuff interventions and ventilation changes require a doctor, respiratory therapist or ICU nurse trained and authorized for that procedure. A ventilator technician can troubleshoot equipment; airway procedures require specific clinical training and authorization.</p>
+        <p><strong>While help is coming:</strong> continue only the support in the person’s emergency plan that you are trained to give. Do not force a suction catheter or squeeze an Ambu bag harder against resistance. Do not attempt ventilation through a tracheostomy tube whose patency and position are in doubt.</p>
+    </aside>
+
     <!-- Core Principle -->
-    <div class="section-box">
+    <div class="section-box" id="care-section-1" data-care-section>
         <h2 style="margin-top: 0;">Core Principle: Involve PALS in Every Decision</h2>
-        <p class="mb-4">With time and experience, PALS understands their body better than anyone. They will learn to
-            recognize patterns and guide you on what works for them.</p>
+        <p class="mb-4">PALS can describe familiar patterns and what feels different. Listen to their communication and non-verbal cues while assessing breathing and arranging help.</p>
 
         <div class="grid-2">
             <!-- <div>
@@ -578,11 +581,9 @@
 
         <div class="tip-box mt-4">
             <p><strong>Key Insight:</strong> The more you involve PALS in daily decisions, the more they understand what
-                helps them. Eventually, PALS becomes your best guide in emergencies.</p>
-            <p style="margin-top: 10px;">The most important purpose of this protocol is to <strong>avoid emergencies
-                    entirely</strong> by
-                staying deeply connected with PALS. Caregivers and family members must learn to quickly interpret
-                non-verbal cues—<strong>face reading, eye expressions, and subtle lip reading</strong>—to guess
+                helps them. Their feedback is valuable, but apparent comfort or a reassuring monitor reading must not delay emergency help when warning signs are present.</p>
+            <p style="margin-top: 10px;">Knowing PALS well can help you <strong>recognize problems early</strong>. It cannot prevent every emergency. Caregivers and family members must learn to quickly interpret
+                non-verbal cues, including <strong>facial expression, eye movements and lip reading</strong>, to identify
                 important words or understand what is being pointed at. By immediately recognizing these subtle signs of
                 discomfort, you can take action <em>before</em> the situation worsens or vital parameters start showing
                 concern.</p>
@@ -590,7 +591,7 @@
     </div>
 
     <!-- What We Monitor -->
-    <div class="section-box">
+    <div class="section-box" id="care-section-2" data-care-section>
         <h2>What We Monitor</h2>
         <p class="mb-3">When PALS shows discomfort, check these parameters:</p>
 
@@ -610,38 +611,38 @@
     </div>
 
     <!-- Two Person Protocol -->
-    <div class="section-box">
+    <div class="section-box" id="care-section-3" data-care-section>
         <h2>Two-Person Approach</h2>
         <div class="grid-2">
             <div style="border-right: 1px solid #e8e4de; padding-right: 20px;">
                 <p class="font-semibold mb-2">Person 1: Immediate Care</p>
                 <ul style="font-size: 1.0625rem;">
-                    <li>Start Ambu if needed</li>
+                    <li>Stay with PALS and follow the individualized emergency plan</li>
                     <li>Talk to PALS, get feedback</li>
-                    <li>Perform suction/neb</li>
+                    <li>Check external connections; suction or provide prescribed backup support only if trained</li>
                 </ul>
             </div>
             <div>
-                <p class="font-semibold mb-2">Person 2: Support</p>
+                <p class="font-semibold mb-2">Person 2: Call and Coordinate</p>
                 <ul style="font-size: 1.0625rem;">
-                    <li>Check equipment & connections</li>
+                    <li>Call 112 for emergency warning signs and contact the respiratory/ICU team immediately</li>
                     <li>Prepare supplies</li>
                     <li>Monitor parameters</li>
-                    <li>talk to other experienced cals</li>
+                    <li>Give the address, tracheostomy/ventilator details, symptoms and actions already taken</li>
                 </ul>
             </div>
         </div>
     </div>
     <!-- Main Decision Flowchart - Pure CSS Version -->
-    <h2>Decision Flowchart</h2>
-    <p style="color: #8a847c; margin-bottom: 16px;">Follow the path based on what you observe and what PALS tells you</p>
+    <h2 id="decision-flowchart" data-care-section>Decision Flowchart</h2>
+    <p style="color: #8a847c; margin-bottom: 16px;">Use observations to explain the problem to the treating team. Emergency warning signs take priority over every branch below.</p>
 
     <div class="flowchart">
         <!-- Start -->
         <div class="flow-row">
             <div class="flow-node start">
                 <strong>PALS showing discomfort</strong>
-                or parameters changing
+                or parameters changing<br><strong>Severe distress, ineffective ventilation or suspected tube blockage/displacement? Call 112 and skilled airway help now.</strong>
             </div>
         </div>
 
@@ -651,7 +652,7 @@
         <div class="flow-row">
             <div class="flow-node pals">
                 <strong>How is PALS feeling?</strong>
-                Identify the problem and root cause
+                Gather observations while help is arranged
             </div>
         </div>
 
@@ -717,8 +718,8 @@
 
             <div class="flow-row">
                 <div class="flow-node action">
-                    <strong>Give Ambu with oxygen connected</strong>
-                    Provides immediate relief and maintains oxygen level<br>Buys time to find cause
+                    <strong>Assess breathing and call for help early</strong>
+                    Severe distress or ineffective ventilation: call 112 now.<br>Follow prescribed backup support only if trained; do not bag through a tube of uncertain patency.
                 </div>
             </div>
 
@@ -726,10 +727,10 @@
 
             <div class="flow-row">
                 <div class="flow-node pals">
-                    <strong>identify the root cause:</strong>
+                    <strong>Report what you notice:</strong>
                     • Cough stuck? Where?<br>
                     • Wet or dry cough?<br>
-                    • check ventilator settings<br>
+                    • Visible disconnection, kink or alarm?<br>
                     • Any other discomfort?
                 </div>
             </div>
@@ -745,13 +746,11 @@
                         sound</div>
                     <div class="flow-node action"
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
-                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">SECRETION PATH - TT
-                            Suction</strong>
+                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">PRESCRIBED SUCTION</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
-                            <li>NS 2ml instillation</li>
-                            <li>Ambu 5-6 squeezes</li>
-                            <li>TT Suction</li>
-                            <li>Subglottic port suction</li>
+                            <li>Suction only if indicated, prescribed and you have been trained.</li>
+                            <li>Use the taught technique; do not force the catheter or routinely instil saline.</li>
+                            <li>Unable to pass it, worsening distress or no prompt improvement: stop and escalate immediately.</li>
                         </ol>
                     </div>
                 </div>
@@ -763,9 +762,9 @@
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
                         <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">NEBULIZATION PATH</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
-                            <li>give Levolin or mucomix Neb as per situation</li>
-                            <li>Give Ambu</li>
-                            <li>TT Suction</li>
+                            <li>Follow the prescribed secretion/humidification plan.</li>
+                            <li>Do not select a new nebulized medicine yourself.</li>
+                            <li>Breathing distress needs urgent assessment; do not wait for nebulization to work.</li>
                         </ol>
                     </div>
                 </div>
@@ -775,26 +774,23 @@
                         area</div>
                     <div class="flow-node warning"
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
-                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">⚠️ BALLOON PATH</strong>
+                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">CUFF CONCERN</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
-                            <li>Subglottic suction first</li>
-                            <li>Cautiously deflate cuff (only if experienced)</li>
-                            <li>Quick suction</li>
-                            <li>Reinflate cuff immediately</li>
+                            <li>Contact a respiratory therapist, trained ICU nurse or doctor.</li>
+                            <li>Do not deflate, inflate or adjust the cuff based on sensation alone.</li>
+                            <li>Subglottic suction requires a suitable tube, specific training and a prescribed plan.</li>
                         </ol>
                     </div>
                 </div>
                 <div style="text-align: left;">
-                    <div class="flow-branch-label" style="text-align: center; margin-bottom: 8px;">Catheter blocked /
-                        Mucus
-                        plug</div>
+                    <div class="flow-branch-label" style="text-align: center; margin-bottom: 8px;">Suction catheter will not pass</div>
                     <div class="flow-node warning"
                         style="max-width: none; font-size: 0.9rem; padding: 16px; text-align: left;">
-                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">⚠️ MUCUS PLUG</strong>
+                        <strong style="display: block; margin-bottom: 8px; color: #1e3a5f;">URGENT AIRWAY HELP</strong>
                         <ol style="margin: 0; padding-left: 18px; line-height: 1.6;">
-                            <li>2ml NS + 8-10 Ambu</li>
-                            <li>Clearance cycle: Ambu → Suction → Neb → Ambu → Suction</li>
-                            <li>If unable to clear: Call technician for TT change</li>
+                            <li>Possible blocked or displaced TT tube. Call 112 and the respiratory/ICU team now.</li>
+                            <li>Do not force the catheter or attempt ventilation through a tube of uncertain patency.</li>
+                            <li>TT removal/replacement is a skilled airway intervention, not a trial-and-error next step for an untrained caregiver.</li>
                         </ol>
                     </div>
                 </div>
@@ -805,7 +801,7 @@
             <div class="flow-row">
                 <div class="flow-node decision">
                     <strong>Check with PALS</strong>
-                    Feeling better? SpO2 > 94%?
+                    Has effective breathing returned after the immediate trained actions?
                 </div>
             </div>
 
@@ -814,15 +810,15 @@
                     <div class="flow-branch-label">No</div>
                     <div class="branch-connector">↓</div>
                     <div class="flow-node action">
-                        Repeat: Ambu + Suction<br>Try different path
+                        <strong>Stop repeated troubleshooting</strong>Urgent skilled airway help is needed.<br>Call 112 if not already called; follow dispatcher and individual plan instructions.
                     </div>
                 </div>
                 <div style="text-align: center;">
                     <div class="flow-branch-label">Yes</div>
                     <div class="branch-connector">↓</div>
                     <div class="flow-node success">
-                        <strong>Stabilized</strong>
-                        Continue monitoring<br>Stay alert for 30 min
+                        <strong>Continue close observation</strong>
+                        Report the event to the treating team.<br>Do not cancel emergency assessment after a serious episode without speaking to them.
                     </div>
                 </div>
             </div>
@@ -846,15 +842,15 @@
                 <div class="flow-branch-label">Yes, BP patient</div>
                 <div class="branch-connector">↓</div>
                 <div class="flow-node action">
-                    Check if BP medicine<br>was given on time
+                    Report readings and medication timing to the clinician.<br>Do not take an extra dose without advice.
                 </div>
             </div>
             <div style="text-align: center;">
                 <div class="flow-branch-label">No, not a BP patient</div>
                 <div class="branch-connector">↓</div>
                 <div class="flow-node action">
-                    <strong>High BP/Pulse = Breathing Discomfort</strong>
-                    Body is struggling
+                    <strong>Several causes are possible</strong>
+                    Breathing difficulty, pain, infection and other problems need assessment.
                 </div>
                 <div class="branch-connector">↓</div>
                 <div class="flow-node decision">
@@ -865,15 +861,15 @@
                         <div class="flow-branch-label">Yes, fever</div>
                         <div class="branch-connector">↓</div>
                         <div class="flow-node action" style="font-size: 0.85rem;">
-                            Likely infection<br>Get CBC, consult doctor
+                            Contact the treating doctor promptly.<br>They will decide which assessment or tests are needed.
                         </div>
                     </div>
                     <div style="text-align: center; flex: 1;">
                         <div class="flow-branch-label">No fever</div>
                         <div class="branch-connector">↓</div>
                         <div class="flow-node action" style="font-size: 0.85rem;">
-                            <strong>Clearance Cycle:</strong><br>
-                            Ambu → Suction → Neb<br>→ Ambu → Suction
+                            <strong>Persistent change needs review</strong><br>
+                            Normal SpO2 does not rule out a ventilation problem. Do not use Ambu solely to lower pulse/BP.
                         </div>
                     </div>
                 </div>
@@ -905,22 +901,10 @@
                 <div class="flow-branch-label">Yes, high leak</div>
                 <div class="branch-connector">↓</div>
                 <div class="flow-node action">
-                    Check: Cuff inflation,<br>inflate cuff cautiously, <br>adjust bipap pressure, <br>circuit
-                    connections,<br>exhalation valve
+                    Check visible external connections and kinks as trained.<br>Do not guess cuff inflation or change ventilator settings.<br>Contact the respiratory/ICU team; call 112 if ventilation is ineffective.
                 </div>
             </div>
-            <!-- <div style="text-align: center;">
-                        <div class="flow-branch-label">No, all OK</div>
-                        <div class="branch-connector">↓</div>
-                        <div class="flow-node action">
-                            <strong>Give Ambu temporarily</strong>
-                            If better with Ambu →<br>ventilator issue
-                        </div>
-                        <div class="branch-connector">↓</div>
-                        <div class="flow-node action">
-                            Continue Ambu support<br>Call technician
-                        </div>
-                    </div> -->
+
         </div>
     </div>
 </div><!-- End Situation Details Stack -->
@@ -929,11 +913,10 @@
 <h2 style="text-align: center; margin-top: 3rem;">Understanding Each Situation</h2>
 
 <!-- Situation A -->
-<div class="section-box">
+<div class="section-box" id="care-section-4" data-care-section>
     <h3 style="text-align: center; color: var(--ep-accent); margin-top: 0; margin-bottom: 0.5rem;">Situation A: SpO2
         Dropping / Low Tidal Volume</h3>
-    <p style="text-align: center; color: var(--ep-muted); margin-bottom: 1.5rem;">This indicates airway or secretion
-        issue. PALS may feel breathless or struggling.</p>
+    <p style="text-align: center; color: var(--ep-muted); margin-bottom: 1.5rem;">Possible causes include secretions, a blocked or displaced tube, equipment problems or another illness. Breathlessness and ineffective ventilation need urgent assessment.</p>
 
     <div class="grid-2" style="gap: 2rem;">
         <div style="background: var(--ep-bg-alt); padding: 1.25rem; border-radius: 10px;">
@@ -942,17 +925,17 @@
                 Sequence</p>
             <div style="font-size: 1.0625rem;">
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
-                        class="step-num">1</span><span>Give Ambu immediately - provides relief</span></p>
+                        class="step-num">1</span><span>Call 112 now for severe distress, ineffective ventilation or suspected tube blockage/displacement.</span></p>
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
-                        class="step-num">2</span><span>Identify the root cause - how is PALS feeling?</span></p>
+                        class="step-num">2</span><span>Stay with PALS; ask about symptoms while another person contacts the respiratory/ICU team.</span></p>
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
-                        class="step-num">3</span><span>Based on feedback, choose path</span></p>
+                        class="step-num">3</span><span>Check external power, visible connections and kinks as trained.</span></p>
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
-                        class="step-num">4</span><span>NS + Ambu + Suction (skip NS if uncomfortable)</span></p>
+                        class="step-num">4</span><span>Suction only as prescribed and trained. Do not force the catheter or routinely instil saline.</span></p>
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
-                        class="step-num">5</span><span>Subglottic port suction</span></p>
+                        class="step-num">5</span><span>If breathing does not promptly improve, stop repeated attempts and get urgent skilled help.</span></p>
                 <p style="margin: 10px 0; display: flex; align-items: flex-start;"><span
-                        class="step-num">6</span><span>Repeat until PALS says they feel better</span></p>
+                        class="step-num">6</span><span>Continue only trained emergency support while help arrives; report changes and actions already taken.</span></p>
             </div>
         </div>
         <div style="background: var(--ep-bg-alt); padding: 1.25rem; border-radius: 10px;">
@@ -960,11 +943,10 @@
                 style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
                 Path Selection</p>
             <ul style="font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
-                <li style="margin-bottom: 0.75rem;"><strong>Wet/gurgling →</strong> NS + Ambu + Suction</li>
-                <li style="margin-bottom: 0.75rem;"><strong>Dry cough →</strong> Nebulization first, then suction</li>
-                <li style="margin-bottom: 0.75rem;"><strong>Stuck at balloon →</strong> Subglottic suction first (see
-                    warning)</li>
-                <li style="margin-bottom: 0;"><strong>Catheter blocked →</strong> Aggressive Ambu, consider TT change
+                <li style="margin-bottom: 0.75rem;"><strong>Wet/gurgling:</strong> prescribed suction by a trained person; escalate if ineffective.</li>
+                <li style="margin-bottom: 0.75rem;"><strong>Dry cough:</strong> follow the prescribed secretion plan; do not delay emergency help for nebulization.</li>
+                <li style="margin-bottom: 0.75rem;"><strong>Cuff-area concern:</strong> trained respiratory/ICU review; no improvised cuff manipulation.</li>
+                <li style="margin-bottom: 0;"><strong>Suction catheter will not pass:</strong> possible blocked or displaced TT tube. Call 112 and a respiratory therapist, trained ICU nurse or doctor immediately. Do not force the catheter or bag through a tube of uncertain patency. Tube replacement requires specific airway training and authorization.
                 </li>
             </ul>
         </div>
@@ -972,14 +954,13 @@
 </div>
 
 <!-- Situation B -->
-<div class="section-box">
+<div class="section-box" id="care-section-5" data-care-section>
     <h3 style="text-align: center; color: var(--ep-accent); margin-top: 0; margin-bottom: 0.5rem;">Situation B: High
         Pulse / High BP with Normal SpO2</h3>
 
     <div class="tip-box" style="margin-bottom: 1.5rem; border-left: 3px solid var(--ep-highlight);">
-        <p style="margin: 0;"><strong>Important:</strong> If PALS is <u>not</u> a BP patient (no history of
-            hypertension), then high BP/pulse usually means <span class="highlight">breathing discomfort</span>. The
-            body is working hard or PALS is uncomfortable.</p>
+        <p style="margin: 0;"><strong>Important:</strong> A high pulse or BP is not a diagnosis of retained secretions. Normal SpO2 does not rule out inadequate ventilation. Severe breathlessness, chest pain, collapse or reduced responsiveness require emergency help immediately.</p>
+
     </div>
 
     <div class="grid-2" style="gap: 2rem;">
@@ -988,10 +969,9 @@
                 style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
                 Common Causes</p>
             <ul style="font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
-                <li style="margin-bottom: 0.75rem;"><strong>Fever/Infection</strong> → Check temperature, get CBC</li>
-                <li style="margin-bottom: 0.75rem;"><strong>Stuck secretions</strong> → Clearance cycle will help</li>
-                <li style="margin-bottom: 0;"><strong>Discomfort</strong> → PALS needs repositioning or pressure
-                    adjustment</li>
+                <li style="margin-bottom: 0.75rem;"><strong>Fever or illness:</strong> report symptoms and temperature to the doctor.</li>
+                <li style="margin-bottom: 0.75rem;"><strong>Possible secretions:</strong> use only the trained, prescribed plan; do not assume this is the cause.</li>
+                <li style="margin-bottom: 0;"><strong>Discomfort:</strong> check positioning and ask about pain. Pressure changes need clinical advice.</li>
             </ul>
         </div>
         <div style="background: var(--ep-bg-alt); padding: 1.25rem; border-radius: 10px;">
@@ -999,19 +979,17 @@
                 style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
                 What To Do</p>
             <ol style="font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
-                <li style="margin-bottom: 0.5rem;">Check temperature</li>
-                <li style="margin-bottom: 0.5rem;">Ask PALS about discomfort</li>
-                <li style="margin-bottom: 0.5rem;">Give Ambu for 1 minute (quick relief)</li>
-                <li style="margin-bottom: 0.5rem;">Do clearance cycle: Ambu → Suction → Neb → Ambu → Suction</li>
-                <li style="margin-bottom: 0.5rem;">If pulse/BP settles → secretions were the cause</li>
-                <li style="margin-bottom: 0;">If still high → get CBC, consult doctor</li>
+                <li>Check temperature and repeat readings if practical, without delaying care.</li>
+                <li>Ask about pain, breathlessness and other new symptoms.</li>
+                <li>Contact the treating doctor for persistent changes. Do not increase BP medicine or ventilator pressure yourself.</li>
+                <li>Call 112 for emergency warning signs; do not wait for tests or a lower SpO2.</li>
             </ol>
         </div>
     </div>
 </div>
 
 <!-- Situation C -->
-<div class="section-box">
+<div class="section-box" id="care-section-6" data-care-section>
     <h3 style="text-align: center; color: var(--ep-accent); margin-top: 0; margin-bottom: 0.5rem;">Situation C: PALS
         Says "Pressure Feels Insufficient"</h3>
     <p style="text-align: center; color: var(--ep-muted); margin-bottom: 1.5rem;">When PALS reports ventilator pressure
@@ -1026,7 +1004,7 @@
                 <li style="margin-bottom: 0.75rem;">Settings unchanged?</li>
                 <li style="margin-bottom: 0.75rem;">Circuit properly connected?</li>
                 <li style="margin-bottom: 0.75rem;">Leak values normal?</li>
-                <li style="margin-bottom: 0;">Cuff inflated properly?</li>
+                <li style="margin-bottom: 0;">New leak or cuff concern? Report it to the respiratory team.</li>
             </ul>
         </div>
         <div style="background: var(--ep-bg-alt); padding: 1.25rem; border-radius: 10px;">
@@ -1034,77 +1012,40 @@
                 style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
                 Actions</p>
             <ul style="font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
-                <li style="margin-bottom: 0.75rem;">Give Ambu temporarily</li>
+                <li style="margin-bottom: 0.75rem;">Call 112 if ventilation is ineffective or there is severe distress</li>
                 <li style="margin-bottom: 0.75rem;">Check for high leak</li>
-                <li style="margin-bottom: 0.75rem;">Adjust BiPAP pressure if needed</li>
-                <li style="margin-bottom: 0;">Call technician if issue persists</li>
+                <li style="margin-bottom: 0.75rem;">Use only the backup support prescribed and taught for this person; do not change settings yourself</li>
+                <li style="margin-bottom: 0;">Contact the respiratory therapist, trained ICU nurse or doctor for airway/ventilation decisions, and the technician for equipment faults</li>
             </ul>
         </div>
     </div>
 </div>
 
 <!-- Critical Warnings -->
-<h2 style="text-align: center; margin-top: 3rem;">Critical Warnings</h2>
+<h2 style="text-align: center; margin-top: 3rem;">When Home Troubleshooting Must Stop</h2>
 
-<div class="section-box" style="border-left: 4px solid #dc3545;">
-    <h3 style="text-align: center; color: #dc3545; margin-top: 0; margin-bottom: 0.5rem;">⚠️ Balloon Cuff Area
-        Secretions</h3>
-    <p style="text-align: center; color: var(--ep-muted); margin-bottom: 1.5rem;"><strong>This is the most delicate
-            procedure.</strong> Only attempt if you have been trained.</p>
-
-    <div style="background: var(--ep-bg-alt); padding: 1.25rem; border-radius: 10px; margin-bottom: 1rem;">
-        <p
-            style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
-            Steps</p>
-        <ol style="font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
-            <li style="margin-bottom: 0.75rem;"><strong>FIRST:</strong> Do subglottic port suction (clear above-cuff
-                secretions)</li>
-            <li style="margin-bottom: 0.75rem;">If confident and trained:
-                <ul style="margin-top: 8px; padding-left: 1.25rem;">
-                    <li style="margin-bottom: 0.5rem;">Deflate cuff slowly</li>
-                    <li style="margin-bottom: 0.5rem;">Quick suction</li>
-                    <li style="margin-bottom: 0;">Reinflate immediately</li>
-                </ul>
-            </li>
-            <li style="margin-bottom: 0;">If not confident: Do subglottic suction only, call trained person</li>
-        </ol>
-    </div>
-
-    <div class="tip-box" style="border-left: 3px solid var(--ep-highlight);">
-        <p style="margin: 0;"><strong>Why risky:</strong> Deflating the balloon can allow secretions to enter the lungs.
-            That's why subglottic suction comes first, and the procedure must be quick.</p>
-    </div>
+<div class="section-box" id="airway-escalation" data-care-section>
+    <h3>Suction catheter will not pass: call for skilled airway help now</h3>
+    <p><strong>A tracheostomy tube may be blocked or displaced.</strong> Do not force the catheter or squeeze an Ambu bag harder to push through an obstruction. Do not wait to complete a suction/nebulization cycle before calling for help.</p>
+    <ol>
+        <li><strong>Call <a href="tel:112">112</a> and the treating respiratory/ICU team immediately.</strong> Explain that the person has a tracheostomy and the suction catheter will not pass. Do not wait for the equipment technician to arrive before calling emergency services.</li>
+        <li><strong>Stop repeated attempts.</strong> Do not attempt ventilation through a tube whose patency and position are uncertain. Stay with PALS and follow the dispatcher’s instructions and the person’s written airway emergency plan.</li>
+        <li><strong>Get the right trained responder.</strong> A doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care must assess whether the tube needs removal/replacement or another airway intervention. A caregiver should perform such an action only if specifically trained and authorized in that person’s written emergency plan; general experience or an online guide is insufficient.</li>
+        <li><strong>Prepare for handover while help is coming.</strong> Bring the airway plan, tube details, prescribed spare tubes and equipment. Report alarms, breathing changes, SpO2 trend, catheter resistance and what has already been tried. Continue only the emergency support you are trained and instructed to provide.</li>
+    </ol>
 </div>
 
-<div class="section-box" style="border-left: 4px solid #dc3545;">
-    <h3 style="text-align: center; color: #dc3545; margin-top: 0; margin-bottom: 0.5rem;">⚠️ Mucus Plug (Catheter
-        Completely Blocked)</h3>
-    <p style="text-align: center; color: var(--ep-muted); margin-bottom: 1.5rem;">If suction catheter won't pass at all:
-    </p>
-
-    <div style="background: var(--ep-bg-alt); padding: 1.25rem; border-radius: 10px;">
-        <p
-            style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
-            Emergency Steps</p>
-        <ol style="font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
-            <li style="margin-bottom: 0.75rem;">Give 2ml NS</li>
-            <li style="margin-bottom: 0.75rem;">8-10 firm Ambu squeezes</li>
-            <li style="margin-bottom: 0.75rem;">Try catheter again</li>
-            <li style="margin-bottom: 0;">If still blocked → <strong>Consider TT tube change</strong>
-                <ul style="margin-top: 8px; padding-left: 1.25rem;">
-                    <li style="margin-bottom: 0.5rem;">Use backup tube</li>
-                    <li style="margin-bottom: 0.5rem;">Call trained person if needed</li>
-                    <li style="margin-bottom: 0;">Don't delay - airway is compromised</li>
-                </ul>
-            </li>
-        </ol>
-    </div>
+<div class="section-box">
+    <h3>Cuff concerns and subglottic suction need specific training</h3>
+    <p>Do not deflate or inflate the cuff to investigate a sensation of trapped secretions. Cuff changes can affect ventilation and airway protection. Contact the respiratory therapist, trained ICU nurse or doctor for assessment.</p>
+    <p>Subglottic suction is only possible with a suitable tube and must follow the prescribed technique taught for that device. It is not a substitute for managing a blocked airway. A ventilator technician’s equipment skills alone do not qualify them to change a TT tube or manipulate its cuff.</p>
+    <p><strong>If the prescribed immediate actions fail to promptly restore effective breathing, or the person worsens at any point, escalate immediately.</strong> Do not keep trying different methods or wait for the person to say they feel better.</p>
 </div>
 
 <!-- Quick Reference -->
 <h2 style="text-align: center; margin-top: 3rem;">Quick Reference</h2>
 
-<div class="section-box">
+<div class="section-box" id="care-section-7" data-care-section>
     <h3 style="text-align: center; color: var(--ep-accent); margin-top: 0; margin-bottom: 1.5rem;">Equipment Checklist
     </h3>
     <div class="grid-2" style="gap: 2rem;">
@@ -1116,7 +1057,7 @@
                 <li style="margin-bottom: 0.5rem;">Ambu bag</li>
                 <li style="margin-bottom: 0.5rem;">Suction machine</li>
                 <li style="margin-bottom: 0.5rem;">Suction catheters</li>
-                <li style="margin-bottom: 0.5rem;">Normal saline (NS)</li>
+                <li style="margin-bottom: 0.5rem;">Normal saline only for prescribed uses; not routine instillation into the tracheostomy</li>
                 <li style="margin-bottom: 0;">Syringes (5ml, 10ml)</li>
             </ul>
         </div>
@@ -1125,7 +1066,7 @@
                 style="margin: 0 0 1rem 0; font-weight: 600; color: var(--ep-primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.03em;">
                 Backup</p>
             <ul style="font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
-                <li style="margin-bottom: 0.5rem;">Spare TT tube (same size)</li>
+                <li style="margin-bottom: 0.5rem;">Spare TT tubes in the sizes prescribed by the airway team</li>
                 <li style="margin-bottom: 0.5rem;">Nebulizer + medicines</li>
                 <li style="margin-bottom: 0.5rem;">Oxygen concentrator</li>
                 <li style="margin-bottom: 0;">Backup ventilator (if available)</li>
@@ -1136,7 +1077,7 @@
 
 <div class="section-box" style="text-align: left;">
     <h3 style="text-align: center;">Emergency Contacts</h3>
-    <p class="mb-3" style="text-align: center; font-size: 0.95rem;">Keep these numbers readily accessible:</p>
+    <p class="mb-3" style="text-align: center; font-size: 0.95rem;">Keep these numbers beside the written emergency plan. Call emergency services immediately for airway compromise; contact the treating team in parallel:</p>
 
     <div class="contact-grid">
         <div class="contact-item">
@@ -1144,50 +1085,35 @@
             <div class="contact-value">_________________</div>
         </div>
         <div class="contact-item">
-            <div class="contact-label">Ventilator Technician</div>
+            <div class="contact-label">Ventilator Technician (equipment faults)</div>
             <div class="contact-value">_________________</div>
         </div>
         <div class="contact-item">
-            <div class="contact-label">Ambulance</div>
-            <div class="contact-value">_________________</div>
+            <div class="contact-label">Emergency Services (India)</div>
+            <div class="contact-value"><a href="tel:112">112</a></div>
         </div>
         <div class="contact-item">
             <div class="contact-label">Nearest Hospital</div>
             <div class="contact-value">_________________</div>
         </div>
+        <div class="contact-item"><div class="contact-label">Respiratory Therapist / Trained ICU Nurse</div><div class="contact-value">_________________</div></div>
     </div>
 </div>
 
 <!-- Final Note -->
 <div class="tip-box" style="margin-top: 3rem;">
-    <p style="text-align: center; font-size: 1.05rem;"><strong>Remember:</strong> PALS knows their body best. Trust
-        their feedback, stay calm, and follow the protocol step by step.</p>
+    <p><strong>Remember:</strong> Listen to PALS, call early, and use the individualized plan. Low-risk checks and trained support can happen while skilled help is on the way. This page does not teach emergency airway procedures.</p>
 </div>
 
-<!-- Emergency Protocol Infographic -->
-<div style="margin-top: 3rem; text-align: center;">
-    <img src="/static/images/emergency_protocol_infographic.png" alt="Home ICU Decision Protocol & Emergency Response"
-        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);">
-</div>
+<aside class="section-box" aria-labelledby="emergencySourcesTitle">
+    <h3 id="emergencySourcesTitle">References for these safety boundaries</h3>
+    <p>Reviewed 11 September 2026. These professional resources inform the cautions above; they do not replace practical training or a patient-specific home-care plan.</p>
+    <ul>
+        <li><a href="https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy">National Tracheostomy Safety Project: adult emergency care</a></li>
+        <li><a href="https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf">NTSP: blocked/displaced tubes and ventilation precautions</a></li>
+        <li><a href="https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf">AARC: artificial airway suctioning, including avoiding routine saline instillation</a></li>
+        <li><a href="https://112.gov.in/">Government of India: emergency response number 112</a></li>
+    </ul>
+</aside>
 
-</div>
-{% endblock %}
-
-{% block extra_js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script>
-window.addEventListener('load', function() {
-    if (typeof gsap === 'undefined') return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* Subtle step reveals — no bouncy animations for emergency context */
-    gsap.utils.toArray('.warning-box, .protocol-section').forEach(function(el) {
-        gsap.from(el, {
-            scrollTrigger: { trigger: el, start: 'top 92%' },
-            y: 16, opacity: 0, duration: 0.4, ease: 'power1.out'
-        });
-    });
-});
-</script>
 {% endblock %}
