@@ -1615,7 +1615,7 @@
     async function loadTechData() {
         try {
             // Load static communication tech data
-            const response = await fetch('/api/communication-tech');
+            const response = await fetch('/content/communication-tech.json');
             if (!response.ok) throw new Error('Communication data unavailable');
             techData = await response.json();
 

@@ -1,0 +1,37 @@
+name: Static site checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CAREKOSH_STATIC_BUILD: '1'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version-file: .python-version
+          cache: pip
+          cache-dependency-path: requirements-static.txt
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Build public output
+        run: bash scripts/build_pages.sh --preview
+      - name: Check pages and static export
+        run: python -m unittest discover -s tests -p 'test_*.py'
+      - name: Check research data and update workflow
+        run: python -m unittest test_research test_research_update
+      - name: Check browser interactions
+        run: node --test tests/*.test.cjs

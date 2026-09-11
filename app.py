@@ -12,9 +12,11 @@ import json
 from datetime import date
 from pathlib import Path
 from research_schema import validate_research
+from public_site import ROOT, PAGE_ROUTES, PUBLIC_DATA_FILES, canonical_path
 
 # Load environment variables
-load_dotenv()
+if not os.getenv('CAREKOSH_STATIC_BUILD'):
+    load_dotenv()
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -29,7 +31,14 @@ app.config['SESSION_TYPE'] = 'filesystem'
 logger.info("✅ Flask app initialized")
 logger.info(f"   Default model: {os.getenv('DEFAULT_MODEL_PROVIDER', 'openai')}")
 
-RESEARCH_DATA_PATH = Path(__file__).resolve().parent / 'data' / 'research_categorized.json'
+RESEARCH_DATA_PATH = ROOT / PUBLIC_DATA_FILES['/content/research-categorized.json']
+
+
+@app.context_processor
+def public_metadata():
+    site_url = app.config.get('PUBLIC_SITE_URL')
+    canonical_url = site_url + canonical_path(request.path) if site_url and request.path in PAGE_ROUTES else None
+    return {'canonical_url': canonical_url, 'public_noindex': app.config.get('PUBLIC_NOINDEX', False)}
 
 
 def load_research_data():
@@ -237,6 +246,7 @@ def get_research_updates():
         return jsonify([])
 
 @app.route('/api/research-categorized')
+@app.route('/content/research-categorized.json')
 def get_research_categorized():
     """Get categorized research data for research page"""
     try:
@@ -286,10 +296,11 @@ def comm_tech_research_page():
     return render_template('comm_tech_research.html', communication_data=communication_data)
 
 @app.route('/api/communication-tech')
+@app.route('/content/communication-tech.json')
 def get_communication_tech():
     """Get communication technology data for the page"""
     try:
-        with open('data/communication_technology.json', 'r', encoding='utf-8') as f:
+        with (ROOT / PUBLIC_DATA_FILES['/content/communication-tech.json']).open(encoding='utf-8') as f:
             return jsonify(json.load(f))
     except FileNotFoundError:
         return jsonify({
@@ -316,10 +327,11 @@ def get_research_initiatives():
         return jsonify({"error": str(e)}), 500
 
 @app.route('/api/community-faq')
+@app.route('/content/faq.json')
 def get_community_faq():
     """Get comprehensive FAQ data with practical wisdom from caregivers"""
     try:
-        with open('data/als_comprehensive_faq.json', 'r', encoding='utf-8') as f:
+        with (ROOT / PUBLIC_DATA_FILES['/content/faq.json']).open(encoding='utf-8') as f:
             return jsonify(json.load(f))
     except FileNotFoundError:
         # Fallback to old file if new one not found

@@ -8,15 +8,22 @@
 
     <!-- Meta Tags -->
     <meta name="description"
-        content="AI-powered support platform for ALS caregivers worldwide. Evidence-based guidance and compassionate resources.">
+        content="Practical ALS caregiving guides, community FAQs and evidence-based research updates for people living with ALS and their caregivers.">
     <meta name="keywords"
         content="ALS, MND, caregiver, support, AI assistant, amyotrophic lateral sclerosis, motor neuron disease">
 
     <!-- Open Graph -->
     <meta property="og:title" content="ALS CareKosh — Caregiver’s Compass">
     <meta property="og:site_name" content="ALS CareKosh">
-    <meta property="og:description" content="AI-powered support platform for ALS caregivers worldwide.">
+    <meta property="og:description" content="Practical ALS caregiving guides, community FAQs and evidence-based research updates.">
     <meta property="og:type" content="website">
+    {% if canonical_url %}
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    {% endif %}
+    {% if public_noindex or request.endpoint is none %}
+    <meta name="robots" content="noindex, nofollow">
+    {% endif %}
 
     <!-- Fonts -->
     <link rel="preload" href="/static/fonts/dm-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>

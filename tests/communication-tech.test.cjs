@@ -24,7 +24,7 @@ function fixture(failed = false) {
 test('overview renders complete compatibility notes, prices and source links without a research API dependency', async () => {
     const f = fixture();
     await vm.runInContext('loadTechData()', f.context);
-    assert.deepEqual(f.requests, ['/api/communication-tech']);
+    assert.deepEqual(f.requests, ['/content/communication-tech.json']);
     for (const [section, key, field] of [
         ['eyeTrackingDevices', 'eye_tracking', 'devices'], ['headTrackingDevices', 'head_tracking', 'devices'],
         ['freeSoftware', 'free_software', 'software'], ['mobileApps', 'mobile_apps', 'apps'], ['bciDevices', 'bci', 'devices'],

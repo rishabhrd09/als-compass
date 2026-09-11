@@ -33,7 +33,7 @@
         return {
             async load() {
                 questions = [];
-                const response = await fetchFAQ('/api/community-faq', { method: 'GET', cache: 'no-store' });
+                const response = await fetchFAQ('/content/faq.json', { method: 'GET', cache: 'no-store' });
                 if (!response.ok) throw new Error('FAQ request failed');
                 questions = resolveSuggestions(await response.json());
                 return questions;

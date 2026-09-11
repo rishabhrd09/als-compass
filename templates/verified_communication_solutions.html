@@ -167,7 +167,7 @@
 
     async function loadVerifiedSolutions() {
         try {
-            const response = await fetch('/api/research-categorized');
+            const response = await fetch('/content/research-categorized.json');
             researchData = await response.json();
 
             renderVerifiedCommunicationTech();

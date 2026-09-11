@@ -36,3 +36,9 @@ data/10_Common_Questions_ALSCAS_WhatsApp.md.pdf
 # Production launch guide and reusable preparation prompt
 !docs/deployment-guide.md
 !prompts/deploy_als_carekosh.md
+
+# Rebuild public output and isolated build environments locally or in Pages.
+/dist/
+/.dist-build-*/
+/.venv-static/
+/.wrangler/
