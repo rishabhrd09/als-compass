@@ -99,7 +99,7 @@
         const send = byId('sendBtn');
         const tools = byId('assistantTools');
         const toggle = byId('assistantToolsToggle');
-        const mobile = win.matchMedia('(max-width: 768px)');
+        const mobile = win.matchMedia('(max-width: 768px), (max-width: 960px) and (hover: none) and (pointer: coarse)');
         function element(tag, className, text) {
             const el = doc.createElement(tag);
             if (className) el.className = className;
@@ -213,7 +213,9 @@
         function sizeWrapper() {
             const height = win.visualViewport?.height || win.innerHeight;
             const navHeight = doc.querySelector('.navbar')?.getBoundingClientRect().height || 120;
-            wrapper.style.height = `${Math.max(420, height - navHeight)}px`;
+            // Let the conversation shrink when a phone's on-screen keyboard opens.
+            // Retain the existing minimum height on desktop.
+            wrapper.style.height = `${Math.max(mobile.matches ? 240 : 420, height - navHeight)}px`;
         }
         sizeWrapper(); resizeInput();
         win.addEventListener('resize', sizeWrapper);

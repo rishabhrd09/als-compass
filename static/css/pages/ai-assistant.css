@@ -94,7 +94,7 @@
     .message { max-width: 100%; }
     .keyboard-hint { display: none; }
 }
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-width: 960px) and (hover: none) and (pointer: coarse) {
     .ai-page-wrapper { flex-direction: column; }
     .assistant-sidebar { width: 100%; flex-shrink: 0; overflow: visible; border-right: 0; border-bottom: 1px solid var(--assistant-line); }
     .sidebar-brand { display: none; }

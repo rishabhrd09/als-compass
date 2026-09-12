@@ -1,0 +1,154 @@
+/* Phone layouts only. Keep this media condition in sync with base.html,
+   pages/ai-assistant.css and faq-assistant.js.
+   The touch clause includes phones in landscape without affecting laptops.
+   Fix overflowing reading content at its source, without clipping the page. */
+@media screen and (max-width: 768px), screen and (max-width: 960px) and (hover: none) and (pointer: coarse) {
+    html { scroll-padding-top: 100px; }
+    main, .footer { overflow-wrap: anywhere; }
+    .container { padding-inline: 16px; }
+    main :is(input, select, textarea) { font-size: 16px; }
+    main :is(img, video) { max-width: 100%; }
+    main :not(pre) > code { overflow-wrap: anywhere; white-space: normal; }
+    main pre { max-width: 100%; overflow-x: auto; }
+
+    /* Consistent header and footer alignment, with comfortable touch targets. */
+    .navbar .navbar-container { min-height: 84px; padding-block: 14px; gap: 12px; }
+    .navbar .navbar-logo-artwork { display: none; }
+    .navbar .navbar-logo-compact { display: flex; }
+    .navbar .navbar-title { font-size: 24px; }
+    .navbar .mobile-menu-button { width: 44px; height: 44px; padding: 10px; }
+    .navbar .mobile-menu { max-height: calc(100dvh - 84px); overflow-y: auto; overscroll-behavior-y: contain; }
+    .navbar .mobile-nav-link { min-height: 48px; padding: 12px 16px; }
+    .footer .footer-content { flex-direction: column; align-items: stretch !important; gap: 28px; }
+    .footer .footer-section { min-width: 0; width: 100%; text-align: left !important; }
+    .footer .footer-section h3 { font-size: 20px; line-height: 1.5; }
+    .footer .footer-section a { display: flex; align-items: center; min-height: 44px; }
+    .footer .footer-bottom { text-align: left; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+
+    /* The desktop research offset was pushing the homepage off the screen. */
+    .home-page .hero-center { padding: 40px 20px; }
+    .home-page .hero-title { font-size: clamp(36px, 10vw, 48px); line-height: 1.12; }
+    .home-page .hero-intro { font-size: 16px; }
+    .home-page .dashboard-inner { padding-inline: 16px; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .home-page .dashboard-research { margin-left: 0; min-width: 0; }
+    .home-page .research-card-content { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .home-page .research-card-content::before { display: none; }
+    .home-page :is(.research-column, .research-column-header, .research-header-link) { min-width: 0; }
+    .home-page .research-column-icon { flex-shrink: 0; }
+    .home-page .research-col-panel { padding: 16px; }
+    .home-page .research-column-title { font-size: 18px; line-height: 1.45; }
+    .home-page :is(.research-news-card, .treatment-item) { min-width: 0; margin-inline: 0; }
+    /* Phone readers should never wait for off-screen entrance animations. */
+    .home-page :is(.anim-hero-title, .dashboard-nav-heading, .dash-link, .dash-link-icon,
+        .anim-research-left, .anim-research-right, .research-column-header, .research-news-card,
+        .treatment-item, .explore-section-header, .explore-card, .resource-card) {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+    .home-page :is(.cards-section, .resources-section) { padding-block: 40px; }
+    .home-page :is(.card, .resource-card) { min-width: 0; }
+
+    /* Avoid double gutters inside full-width heroes. */
+    .polished-guide main > .guide-hero { padding: 44px 20px 52px !important; }
+    .polished-guide main > .guide-hero > .container { padding-inline: 0; }
+    .polished-guide main > .guide-hero > .guide-motion-control { position: relative; inset: auto; display: block; margin: 20px 0 0 auto; }
+    .polished-guide .guide-hero h1 { font-size: clamp(32px, 8vw, 40px) !important; }
+    .polished-guide .guide-hero :is(.et-hero-nav, .research-hero-nav) { max-width: 100%; padding: 12px 16px; font-size: 16px; }
+    .coming-soon-container { min-height: 0; padding: 48px 16px; }
+    .coming-soon-content { padding: 24px 8px; }
+    .coming-soon-icon { font-size: 64px; }
+
+    /* Reading columns, directories and equipment remain within equal gutters. */
+    .care-page .care-root { padding-inline: 16px; }
+    .care-page .care-root .guide-hero h1 { text-align: left; }
+    .care-layout { grid-template-columns: minmax(0, 1fr); }
+    .care-sidebar { position: static; max-height: none; }
+    .care-page .care-main :is(.pb-card, .section-box, .equipment-group),
+    .care-page .ups-faq-container > .faq-section { padding: 20px; }
+    .care-page .care-main :is(.flow-three-branches, .scenarios-grid, .paths-grid, .grid-2, .pb-option-grid, .backup-cards),
+    .care-page .equipment-group .icu-equipment-grid { grid-template-columns: minmax(0, 1fr); }
+    .care-page :is(.care-route-nav, .care-section-nav) { grid-template-columns: minmax(0, 1fr); }
+    .care-page .care-section-nav a { min-height: 44px; display: flex; align-items: center; }
+    .care-page .equipment-group .icu-card > h3 { min-width: 0; }
+    .care-page .care-main :is(.flowchart, .flow-section) { padding: 16px; }
+    .flow-choices { display: grid !important; grid-template-columns: minmax(0, 1fr); gap: 24px !important; }
+    .flow-choices > div { min-width: 0; padding-block: 8px; }
+    .flow-choices > div + div { border-top: 1px solid #dce6eb; padding-top: 20px; }
+    .care-page .flow-choices .flow-node { width: 100%; }
+    .flow-branch { min-width: 0; width: 100%; max-width: none; }
+    .care-table-scroll, .faq-table-scroll { min-width: 0; max-width: 100%; overflow-x: auto; }
+    .care-page .care-main .equipment-table { min-width: 480px; }
+    .care-page #faqContent .faq-section { padding: 0; border: 0; background: none; box-shadow: none; }
+    .care-page #faqContent .warning-box { padding: 16px; font-size: 16px; line-height: 1.75; }
+
+    /* Research remains searchable; small labels and filters stay readable. */
+    .research-page .research-shell { width: calc(100% - 32px); }
+    .research-page .research-topic { font-size: 13px; min-height: 48px; }
+    .research-page .research-hero-links { font-size: 14px; }
+    .research-page .research-hero-links a { min-height: 44px; }
+    .research-page .research-highlight p { font-size: 16px; }
+    .research-page .research-entry-header { flex-wrap: wrap; }
+    .research-page :is(.research-results-meta, .research-highlight-meta) { flex-wrap: wrap; gap: 8px; }
+    .research-page .research-controls :is(input, select) { font-size: 16px; }
+
+    /* Comfortable targets for the ALS explainer's horizontal section navigation. */
+    .als-layout { grid-template-columns: minmax(0, 1fr); }
+    .als-sidebar { position: static; }
+    .als-sidebar .als-nav-link { min-height: 44px; display: flex; align-items: center; font-size: 13px; }
+    .als-types { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .als-types .eyebrow { font-size: 11px; }
+    .camera-views button, .state-switch button, .motion-toggle { min-height: 44px; }
+
+    /* Device grids must be able to shrink below their desktop minimums. */
+    .ct-device-grid, .ct-software-grid, .device-grid, .bci-grid, .tool-grid,
+    .et-checklist-grid, .et-image-row { grid-template-columns: minmax(0, 1fr); }
+    .ct-section { padding-inline: 16px; }
+    .ct-reviewed-card, .ct-budget-section, .device-card, .bci-card, .tool-card, .spec-item { min-width: 0; }
+    body[data-page="communication_technology_page"] .ct-hero h1 { width: 100%; font-size: clamp(32px, 8vw, 40px) !important; }
+    body[data-page="communication_technology_page"] .ct-hero p { width: 100%; }
+    body[data-page="communication_technology_page"] .ct-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 12px; }
+    body[data-page="communication_technology_page"] .ct-nav-card { min-height: 48px; display: flex; align-items: center; justify-content: center; padding: 10px 8px; }
+    body[data-page="communication_technology_page"] .ct-nav-card:first-child { grid-column: 1 / -1; }
+    body[data-page="communication_technology_page"] .ct-nav-card span { font-size: 14px; line-height: 1.5; }
+    body[data-page="communication_technology_page"] .ct-reviewed-card :is(.ct-device-header, .ct-device-body) { padding: 20px; }
+    .research-item > div:first-child { flex-wrap: wrap; gap: 12px; }
+    .research-item > div[style*="grid-template-columns"] { grid-template-columns: minmax(0, 1fr) !important; }
+    .spec-grid { grid-template-columns: minmax(0, 1fr); }
+    .research-card-body, .device-card, .bci-card, .tool-card { padding: 20px; }
+
+    /* Every setup path is visible, instead of long tabs spilling off-screen. */
+    .et-navigation { flex-direction: column; align-items: stretch !important; gap: 12px; }
+    .et-tabs { display: grid; grid-template-columns: minmax(0, 1fr); padding: 6px; width: 100%; min-width: 0; }
+    .et-tab { text-align: left; white-space: normal; min-height: 48px; font-size: 15px; line-height: 1.5; padding: 12px; }
+    .et-export-btn { align-self: flex-end; min-height: 44px; }
+    .et-setup-guide-body, .et-checklist, .et-path-card { padding: 20px; }
+    .et-step-content { min-width: 0; }
+    .et-step-content code { word-break: break-word; }
+
+    /* Chat has its own scrolling conversation and drawer. Prevent the keyboard
+       from scrolling the outer page down into the footer and hiding messages. */
+    body[data-page="ai_assistant"] { position: fixed; inset: 0; width: 100%; overflow: hidden; }
+    body[data-page="ai_assistant"] > .footer { display: none; }
+    /* Use the visual viewport height supplied by the assistant on keyboard resize. */
+    .ai-page-wrapper { position: relative; min-height: 0; }
+    .ai-page-wrapper .assistant-sidebar { position: static; }
+    .ai-page-wrapper .assistant-tools.open {
+        position: absolute; top: 49px; inset-inline: 0; z-index: 30;
+        max-height: min(350px, calc(100% - 65px)); overflow-y: auto;
+        background: #f2f6f7; border-bottom: 1px solid #c7d8e0;
+        box-shadow: 0 12px 24px #19394b1a;
+    }
+    .ai-page-wrapper .chat-header { flex-wrap: wrap; padding: 12px 16px; }
+    .ai-page-wrapper .chat-header > div { min-width: 0; }
+    .ai-page-wrapper .message-content { padding: 16px; }
+    .ai-page-wrapper #modelSelect { font-size: 16px; }
+    .ai-page-wrapper .send-btn { width: 44px; height: 44px; }
+    .ai-page-wrapper .input-area { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+
+    @media (max-height: 500px) {
+        body[data-page="ai_assistant"] .navbar .navbar-container { min-height: 64px; padding-block: 8px; }
+        .ai-page-wrapper .chat-header { padding-block: 10px; }
+        .ai-page-wrapper .chat-header-sub { display: none; }
+        .ai-page-wrapper .chat-messages { padding: 12px; }
+    }
+}
