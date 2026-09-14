@@ -1,61 +1,58 @@
 {
     "metadata": {
         "title": "ALS Caregiver's Compass - Comprehensive FAQ",
-        "description": "Practical ALS care questions informed by ALSCAS caregiver knowledge cards and linked medical guidance.",
-        "last_updated": "2026-09-11",
-        "version": "4.0",
-        "source": "ALSCAS caregiver knowledge cards and conversations; linked clinical guidance",
+        "description": "Practical questions and everyday caregiving experience from the ALSCAS WhatsApp community, with medical references where needed.",
+        "last_updated": "2026-09-14",
+        "version": "4.1",
+        "source": "Previously published ALSCAS caregiver FAQ (version 3.1), with targeted factual corrections and linked clinical guidance",
         "clinical_review_status": "Educational editorial update; not an individual medical assessment or clinician sign-off",
-        "knowledge_card_topics": [
-            "Saliva care",
-            "Feeding and gastrostomy",
-            "BiPAP and breathing",
-            "Electrolytes",
-            "Bowel care",
-            "Home ICU setup"
-        ]
+        "editorial_history": {
+            "restored_from_version": "3.1",
+            "restored_from_commit": "b0647b94dd4369404719f99f53aff9fe1a28a36d",
+            "scope": "Caregiver wording restored with documented factual and emergency-care exceptions; no clinician sign-off"
+        }
     },
     "core_principles": [
         {
-            "title": "Hope and practical preparation",
-            "description": "Hope can sit alongside planning. Invite the person with ALS into decisions, discuss likely needs early and respect their preferences."
+            "title": "A Note on Positivity and Practicality",
+            "description": "Being positive is good for both PALS and CALS. It helps us stay strong and hopeful. But at the same time, at least one family member should stay practical when it comes to making important decisions. We can hope that supportive devices will never be needed and still learn about them, discuss them with PALS and plan ahead."
         },
         {
-            "title": "Support should fit the person",
-            "description": "Equipment can improve comfort and reduce effort. Increasing support needs reflect changing health; using an aid does not mean giving up."
+            "title": "Using Support Is Not Giving Up",
+            "description": "Equipment can reduce effort and help PALS save energy for the things that matter to them. Needing support does not mean the family has failed."
         },
         {
-            "title": "Work with the treating team",
-            "description": "Caregiver observations are valuable. Report changes, ask questions and request specialist input instead of relying on a single number or another family’s treatment settings."
+            "title": "You Know the Daily Routine",
+            "description": "You know your PALS best — trust your observations and share them with the doctor. Small changes in sleep, eating or comfort are worth mentioning."
         },
         {
-            "title": "Oxygen readings do not measure CO₂",
-            "description": "Normal SpO₂ does not rule out under-ventilation. Sleep changes, morning headaches or new breathlessness deserve respiratory assessment."
+            "title": "Look Beyond the Oxygen Reading",
+            "description": "Normal SpO₂ readings can hide CO₂ buildup. Describe symptoms as well as the number on the oximeter."
         },
         {
-            "title": "Learn from experience without assuming the same outcome",
-            "description": "Community accounts can help with preparation and routines. They cannot guarantee a treatment response, prevent every emergency or predict another person’s progression."
+            "title": "Learn from Other Caregivers",
+            "description": "Experienced CALS can help with daily routines, practical preparation and questions to ask. Every PALS journey is different — take guidance but make decisions right for your situation."
         }
     ],
     "key_principles": [
-        "Discuss breathing, swallowing and equipment needs early with the treating team.",
-        "Respect the person with ALS’s goals, preferences and right to informed decisions.",
-        "Normal oxygen saturation does not rule out CO₂ retention or breathing weakness.",
-        "A feeding tube can support nutrition but does not eliminate aspiration risk.",
-        "Use medicines, oxygen and ventilator settings only according to the individual care plan.",
-        "Report sudden changes promptly; do not assume every new symptom is caused by ALS.",
-        "Combine practical caregiver experience with clinical assessment and reliable guidance.",
-        "Keep trained help, essential supplies, emergency contacts and tested backups ready."
+        "Plan ahead rather than react to emergencies.",
+        "You know your PALS best — trust your observations and share changes with the treating team.",
+        "Using support is not giving up. Make daily life easier and save energy for what matters.",
+        "Normal SpO₂ readings do not rule out breathing weakness or CO₂ buildup.",
+        "Discuss feeding support before meals become exhausting; a PEG does not remove all aspiration risk.",
+        "Keep trained help, emergency contacts and tested equipment backups ready.",
+        "Learn daily routines from experienced CALS; medicines and machine settings need an individual prescription.",
+        "Every PALS journey is different — take guidance but make decisions right for your situation."
     ],
     "categories": [
         {
             "id": "respiratory",
             "name": "Respiratory Care & BiPAP",
-            "section_note": "Plan breathing support and emergency equipment with the ALS respiratory team before a crisis. The right equipment depends on the person’s assessment; oxygen and manual ventilation need an individual prescription or emergency plan and appropriate training.",
+            "section_note": "Plan breathing support before an emergency. Once equipment is advised, arrange it and learn how to use it. Oxygen and an Ambu bag are not automatic requirements for every PALS; they need an individual plan and training.",
             "questions": [
                 {
                     "question": "What is BiPAP?",
-                    "answer": "<p><strong>BiPAP means bilevel positive airway pressure.</strong> It is a form of non-invasive ventilation (NIV), usually delivered through a mask, that supports breathing when respiratory muscles are weak.</p><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"Understanding the two pressures\" tabindex=\"0\"><table class=\"faq-table\"><caption>Understanding the two pressures</caption><thead><tr><th scope=\"col\">Setting</th><th scope=\"col\">What it does</th></tr></thead><tbody><tr><th scope=\"row\">IPAP — inspiratory pressure</th><td>The higher pressure during breathing in helps air enter the lungs and reduces the effort needed to take a breath.</td></tr><tr><th scope=\"row\">EPAP — expiratory pressure</th><td>The lower pressure during breathing out helps keep the airway open. It does not actively push carbon dioxide out.</td></tr><tr><th scope=\"row\">Pressure support</th><td>The difference between IPAP and EPAP assists ventilation. Moving enough air in and out helps clear carbon dioxide (CO₂).</td></tr></tbody></table></div><div class=\"faq-care-note\"><strong>Settings are individual.</strong> The respiratory team selects the machine, mask, mode and settings. A CPAP machine provides a single pressure and should not be substituted for prescribed bilevel ventilatory support.</div>",
+                    "answer": "<p>BiPAP (Bilevel Positive Airway Pressure) is a non-invasive ventilator that helps breathing by providing two pressure levels:</p><ul><li>Provides higher pressure when breathing IN (IPAP), helps inflate lungs</li><li>Provides lower pressure when breathing OUT (EPAP), helping keep the airway open</li><li>Reduces the effort needed from weak breathing muscles. The difference between the two pressures helps move air in and out and clear CO₂</li></ul><div class=\"faq-care-note\"><strong>Important:</strong> The respiratory team sets the pressures for your PALS. A CPAP machine should not replace prescribed BiPAP support.</div>",
                     "tags": [
                         "bipap",
                         "respiratory",
@@ -63,17 +60,18 @@
                     ],
                     "sources": [
                         {
+                            "label": "ALSCAS caregiver perspective: understanding BiPAP and ventilation",
+                            "url": "https://alslifemanagement.weebly.com/ventilator.html"
+                        },
+                        {
                             "label": "NHS: how bilevel ventilation and pressure support work",
                             "url": "https://www.rightdecisions.scot.nhs.uk/nhsl-guidelines/respiratory/non-invasive-ventilation-in-adults-with-acute-hypercapnic-respiratory-failure/"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "bipap"
                     ]
                 },
                 {
                     "question": "When Does a PALS Need BiPAP, How to Decide?",
-                    "answer": "<p>Discuss breathing support with the ALS respiratory team when symptoms or breathing tests suggest respiratory muscle weakness. <strong>Do not wait for several warning signs or a low oxygen reading before asking for assessment.</strong></p><h4>Why normal SpO₂ can be misleading</h4><p>Weaker breathing muscles can reduce the amount of air moved through the lungs. CO₂ may build up, sometimes first during sleep. A pulse oximeter measures oxygen saturation (SpO₂), not CO₂; an apparently normal reading does not rule out under-ventilation.</p><h4>Changes to report</h4><ul><li>Broken sleep, waking frequently, gasping or unusual restlessness at night.</li><li>Difficulty lying flat, needing more pillows or sleeping in a recliner.</li><li>Morning headaches, daytime sleepiness or unusual fatigue.</li><li>Breathlessness while talking, eating or with usual activities.</li><li>Faster breathing, a weaker cough, or falling overnight oxygen readings. A fast resting pulse is also worth reporting, but has many possible causes.</li></ul><h4>What the assessment may include</h4><p>The team considers symptoms together with respiratory muscle tests, such as FVC/VC, SNIP or MIP, and may arrange overnight monitoring and CO₂ or blood-gas testing.</p><div class=\"faq-care-note\"><strong>Use an agreed monitoring plan.</strong> There is no universal home oxygen-reading rule for starting BiPAP or supplemental oxygen. Ask the respiratory team what changes should trigger a call for this person.</div><div class=\"faq-care-alert\"><strong>Seek urgent help:</strong> Severe or sudden breathing difficulty, blue or grey lips, new confusion or difficulty waking need immediate medical assessment. Follow the emergency plan and call 112 in India when emergency help is needed.</div>",
+                    "answer": "<h4>Understanding the Core Problem</h4><p>In ALS, weak breathing muscles may not move enough air in and out. CO₂ (carbon dioxide) can build up, especially during sleep. A pulse oximeter shows oxygen saturation (SpO₂), not CO₂. A normal reading does not mean breathing is necessarily fine.</p><h4>Signs to discuss with the respiratory team</h4><h4>The Hidden Warning Signs (Even with Normal SpO₂)</h4><ul><li>Cannot sleep at night / frequent position changes - waking up, turning sides many times</li><li>SpO₂ dropping during deep sleep - check at night, not just daytime</li><li>Difficulty sleeping flat, needs 2-3 pillows/recliner</li><li>Morning headaches</li><li>A persistently faster resting pulse than usual — this can have several causes</li><li>Daytime drowsiness, fatigue, gasping</li><li>Breathlessness while eating or talking</li><li>Faster breathing than usual or a weaker cough</li></ul><div class=\"warning-box\"><strong>Important:</strong> If you notice these changes, contact your doctor or respiratory team and ask about breathing tests and BiPAP. Do not wait for 2–3 signs or a low SpO₂ reading. Severe breathlessness, confusion or difficulty waking needs urgent help.</div>",
                     "tags": [
                         "bipap",
                         "respiratory",
@@ -83,67 +81,36 @@
                     ],
                     "sources": [
                         {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        },
-                        {
                             "label": "MND Association: support for breathing problems",
                             "url": "https://www.mndassociation.org/sites/default/files/public/2026-01/8A-Support-for-breathing-problems.pdf"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "bipap"
                     ]
                 },
                 {
                     "question": "How BiPAP Usage Progresses Over Time? How many hours should PALS use BiPAP daily?",
-                    "answer": "<p>There is <strong>no single daily number of BiPAP hours</strong> for everyone with ALS. The respiratory team agrees a schedule and reviews it as symptoms and needs change.</p><h4>How use may change</h4><ul><li>Initial practice may involve short sessions while awake to get used to the mask and pressure.</li><li>Many people then use support during sleep; some also need it during naps or daytime activities.</li><li>Some eventually need prolonged or continuous support. Increasing use should prompt review of ventilation, comfort, skin, secretions and backup arrangements.</li></ul><h4>When more support is requested</h4><p>Take the person’s breathlessness seriously and contact the team. New needs can reflect progression, but also mask leaks, discomfort, secretions or illness. Do not ration prescribed support or change pressure settings without guidance.</p><div class=\"faq-care-note\"><strong>Using support does not mean failure.</strong> Increasing dependence usually reflects changing illness and breathing needs. Continuous NIV alone does not automatically mean that a tracheostomy is required; discuss all options and the person’s wishes.</div>",
+                    "answer": "<h4>The Natural Progression</h4><p>BiPAP usage is not fixed; it may increase as the disease progresses. The key is following the body's needs, not any fixed timeline, with the respiratory team reviewing the plan.</p><p>Many PALS start with support during sleep and later need it during naps or in the daytime too. Short daytime practice sessions may help with getting used to the mask. There is no fixed number of hours that suits everyone.</p><p><strong>Common Misunderstanding:</strong> \"Using BiPAP more will make PALS dependent on it faster.\"</p><p><strong>Reality:</strong> Needing more support usually reflects changing breathing needs, not a failure caused by using the machine. Do not ration prescribed BiPAP out of fear of dependency.</p><p>When PALS asks for more BiPAP time, take that seriously. Tell the respiratory team what has changed; leaks, secretions or an infection may also make breathing harder. If support is needed throughout the day, discuss comfort, backup arrangements and future options. Continuous BiPAP does not automatically mean tracheostomy is needed.</p><div class=\"warning-box\"><strong>Important:</strong> Plan ahead for equipment and training. Once BiPAP is advised, arrange it before you need it urgently, and have a tested power backup.</div>",
                     "tags": [
                         "bipap",
                         "hours",
                         "progression",
                         "usage"
                     ],
-                    "sources": [
-                        {
-                            "label": "MND Association: support for breathing problems",
-                            "url": "https://www.mndassociation.org/sites/default/files/public/2026-01/8A-Support-for-breathing-problems.pdf"
-                        },
-                        {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "bipap"
-                    ]
+                    "sources": []
                 },
                 {
                     "question": "Can early BiPAP help delay tracheostomy?",
-                    "answer": "<p>Effective NIV can support breathing and quality of life, and some people use it for a long time without tracheostomy. <strong>There is no reliable promise that starting BiPAP will delay tracheostomy by a fixed number of months or years.</strong></p><h4>What helps NIV work well</h4><ul><li>Arrange timely assessment when breathing changes appear.</li><li>Review mask fit, leaks, comfort and effectiveness with the respiratory team.</li><li>Use the agreed cough and secretion-management plan.</li><li>Discuss backup equipment, power, after-hours help and future treatment preferences.</li></ul><div class=\"faq-care-note\"><strong>Community experiences vary.</strong> Families’ stories can help with practical preparation, but cannot predict another person’s course. NIV supports breathing; it does not stop the underlying disease.</div>",
+                    "answer": "<p>Some PALS use BiPAP for a long time without needing tracheostomy. Families understandably want to know how much time it can give them, but there is no fixed number of months or years we can promise.</p><h4>How Early BiPAP Helps</h4><ul><li>BiPAP gives the diaphragm muscles 'rest' by helping with breathing</li><li>Less breathing effort can make daily life more comfortable</li><li>Reduces the work asked of weak breathing muscles</li><li>Helps clear CO₂ by supporting ventilation</li><li>Gives families a chance to prepare and review breathing support before a crisis</li><li>PALS can maintain a better quality of life</li></ul><h4>To Maximize BiPAP Effectiveness:</h4><ul><li>Ask for a respiratory assessment when breathing symptoms appear</li><li>Follow the prescribed nighttime plan</li><li>Get settings and mask fit reviewed by the respiratory team; ask experienced CALS about everyday routines</li><li>Use suction / cough assist as prescribed and taught for secretion management</li></ul><div class=\"recommendation-box\"><strong>Remember:</strong> Using BiPAP is not 'giving up'. It is support for breathing and comfort. It does not stop ALS, and different families will have different experiences.</div>",
                     "tags": [
                         "bipap",
                         "tracheostomy",
                         "prevention",
                         "timeline"
                     ],
-                    "sources": [
-                        {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        },
-                        {
-                            "label": "MND Association: support for breathing problems",
-                            "url": "https://www.mndassociation.org/sites/default/files/public/2026-01/8A-Support-for-breathing-problems.pdf"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "bipap"
-                    ]
+                    "sources": []
                 },
                 {
                     "question": "When Should we use oxygen concentrator along with BiPAP?",
-                    "answer": "<p><strong>Supplemental oxygen should be used only under an individual medical prescription.</strong> A concentrator supplies oxygen; it does not provide the ventilatory support needed to correct weak breathing.</p><h4>When a doctor may consider oxygen</h4><p>Oxygen may be needed for low blood oxygen associated with a chest infection or another lung problem, or for specific goals of care. Clinicians need to assess the cause and monitor CO₂ as appropriate.</p><h4>What to confirm before home use</h4><ul><li>The prescribed oxygen target, flow, hours and circumstances for use.</li><li>The compatible connection and equipment setup demonstrated by the respiratory provider.</li><li>What to do if readings fall, symptoms worsen, power fails or the supply runs out.</li></ul><div class=\"faq-care-alert\"><strong>Seek urgent help:</strong> Do not try to treat new drowsiness or breathing distress by increasing oxygen on your own. Oxygen can worsen CO₂ retention in people with neuromuscular respiratory weakness. Seek help promptly; do not withhold emergency treatment directed by clinicians.</div>",
+                    "answer": "<p><strong>An oxygen concentrator and BiPAP do different jobs.</strong> The concentrator adds oxygen; BiPAP helps move air in and out. Adding oxygen is not a substitute for breathing support.</p><h4>When oxygen may be needed</h4><p>A doctor may prescribe it for low oxygen during a chest infection or another lung problem, or for particular comfort needs. Do not start it from a single SpO₂ reading or copy another family’s flow rate.</p><h4>Before using it at home</h4><ul><li>Write down the prescribed flow, target readings and when to use it.</li><li>Have the provider show you the correct connection for your machine.</li><li>Keep the backup supply and emergency contact details ready if oxygen is prescribed.</li></ul><div class=\"faq-care-note\"><strong>Important:</strong> If breathing worsens or PALS becomes unusually drowsy, seek urgent help rather than turning up oxygen yourself. Oxygen can worsen CO₂ retention in ALS-related breathing weakness. Follow emergency treatment directed by clinicians.</div>",
                     "tags": [
                         "bipap",
                         "oxygen",
@@ -154,19 +121,12 @@
                         {
                             "label": "MND Association: information for acute and emergency care staff",
                             "url": "https://www.mndassociation.org/professionals/management-of-mnd/management-by-specific-professions/acute-urgent-and-emergency-care-staff"
-                        },
-                        {
-                            "label": "MND Association: support for breathing problems",
-                            "url": "https://www.mndassociation.org/sites/default/files/public/2026-01/8A-Support-for-breathing-problems.pdf"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "bipap"
                     ]
                 },
                 {
                     "question": "When Is Tracheostomy Needed? What are the decision criteria?",
-                    "answer": "<p>Tracheostomy ventilation provides breathing support through a tube in the windpipe. It is a major, personal decision requiring discussion with the specialist team and the person with ALS.</p><h4>Reasons to review the options</h4><ul><li>Breathing remains inadequate despite an assessment and optimization of NIV.</li><li>NIV cannot be tolerated or used effectively.</li><li>Airway protection or secretion clearance becomes very difficult.</li><li>An acute illness leads to intubation and decisions about ongoing ventilation.</li></ul><h4>Questions for a planned discussion</h4><ul><li>What benefits, limitations and alternatives apply to this person?</li><li>What care, training, communication support, staffing and costs would be needed at home?</li><li>What are the person’s preferences about invasive ventilation, hospital treatment and comfort-focused care?</li><li>What should happen during an emergency if the person cannot communicate?</li></ul><div class=\"faq-care-note\"><strong>There is no automatic threshold.</strong> Using NIV all day, one SpO₂ value, or being intubated does not by itself establish that tracheostomy is necessary or the safest option. Decisions depend on clinical assessment and informed preferences.</div>",
+                    "answer": "<h4>Understanding the Decision</h4><p>Tracheostomy is one of the biggest decisions in ALS care. It involves surgically creating an opening in the windpipe (trachea) for direct ventilation, bypassing the nose and mouth entirely.</p><h4>Planned discussion</h4><p>This is when you have time to prepare and plan properly. Ask about the options if BiPAP is no longer supporting breathing well, cannot be used comfortably, or secretions are becoming very difficult to clear.</p><ul><li>What would tracheostomy change for our PALS?</li><li>What daily suction, ventilation and communication support would be needed?</li><li>Who will provide care at night, and what training and costs should we plan for?</li><li>What does PALS want, including if they do not want invasive ventilation?</li></ul><h4>During an emergency admission</h4><p>An acute illness may lead to intubation and a discussion about longer-term ventilation. Ask the ICU and ALS teams to explain the choices. Being intubated or using BiPAP 24x7 does not by itself make tracheostomy necessary.</p><div class=\"recommendation-box\"><strong>Tip:</strong> For tracheostomy, talk to experienced members of the ALSCAS group, talk to as many caregivers as you want. Decision should be yours, your family's, and PALS's together.</div>",
                     "tags": [
                         "tracheostomy",
                         "decision-criteria",
@@ -176,19 +136,14 @@
                     ],
                     "sources": [
                         {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        },
-                        {
                             "label": "MND Association: support for breathing problems",
                             "url": "https://www.mndassociation.org/sites/default/files/public/2026-01/8A-Support-for-breathing-problems.pdf"
                         }
-                    ],
-                    "knowledge_cards": []
+                    ]
                 },
                 {
                     "question": "How to delay or avoid emergency tracheostomy?",
-                    "answer": "<p>Planning ahead can reduce avoidable crises, although it cannot guarantee that an emergency or tracheostomy will be avoided.</p><h4>Build a practical prevention plan</h4><ol><li>Arrange regular respiratory reviews and report new breathing or sleep symptoms promptly.</li><li>Follow the prescribed NIV and secretion-clearance plan; ask for suction or cough-assist training when indicated.</li><li>Review swallowing, nutrition and feeding-tube options before eating becomes a crisis. A tube does not eliminate aspiration risk.</li><li>Ask how to recognize infection and whom to contact promptly.</li><li>Keep the agreed emergency equipment, power backup, contact numbers and written care preferences accessible. Practise the plan with trained caregivers.</li></ol><div class=\"faq-care-note\"><strong>Prepare for the person’s needs.</strong> Do not start oxygen, nebulized medicines or manual ventilation just because equipment is available. These require a prescribed plan and appropriate training.</div>",
+                    "answer": "<p>The goal is to prepare early, so that decisions about breathing support can be made with PALS rather than rushed during an emergency.</p><h4>Practical ways to prepare</h4><ul><li><strong>Arrange BiPAP when advised and use it consistently</strong> - Follow the agreed plan and ask for help with mask leaks or discomfort</li><li><strong>Learn the prescribed suction and cough-assist routine</strong> - Oral suction and cough assist have different roles; get hands-on training for the equipment prescribed</li><li><strong>Discuss PEG early</strong> - Do not wait until meals are exhausting or weight loss becomes severe. PEG does not remove all aspiration risk</li><li><strong>Report signs of a chest infection promptly</strong> - Tell the doctor about fever, changed secretions or worsening breathing</li><li><strong>Good secretion management</strong> - Keep the medicines, equipment and routine agreed with the respiratory team ready</li></ul><h4>Have the essentials ready</h4><ul><li>Arrange prescribed BiPAP before you need it urgently</li><li>Arrange oxygen or an Ambu bag only if included in the individual plan, with the necessary training</li><li>Ask whether cough assist would help your PALS</li><li>Act quickly at first signs of infection - don't wait</li><li>Have a plan with your doctor and experienced cals for what to do in emergencies</li><li>Consider home ICU setup for managing care at home</li></ul><div class=\"recommendation-box\"><strong>Planning gives you time</strong> to prepare mentally, financially, and set up proper home care.</div><div class=\"faq-care-note\"><strong>Important:</strong> Preparation cannot prevent every emergency. Severe or suddenly worsening breathing difficulty needs urgent help.</div>",
                     "tags": [
                         "tracheostomy",
                         "prevention",
@@ -196,29 +151,11 @@
                         "cough-assist",
                         "emergency-prevention"
                     ],
-                    "sources": [
-                        {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        },
-                        {
-                            "label": "MND Association: information for acute and emergency care staff",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/management-by-specific-professions/acute-urgent-and-emergency-care-staff"
-                        },
-                        {
-                            "label": "Hull University Teaching Hospitals: PEG benefits and limitations",
-                            "url": "https://www.hey.nhs.uk/patient-leaflet/percutaneous-endoscopic-gastrostomy-peg/"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "bipap",
-                        "feeding",
-                        "home-icu"
-                    ]
+                    "sources": []
                 },
                 {
                     "question": "Why Do Families Delay BiPAP Even After Knowing the Signs?",
-                    "answer": "<p>Fear, unfamiliar equipment, costs and uncertainty can make starting BiPAP difficult. Families may also worry that accepting support means giving up. These concerns deserve a patient, practical discussion.</p><h4>Make the decision easier</h4><ul><li>Ask the respiratory team to explain what the symptoms and test results show.</li><li>Request a mask demonstration and help with a gradual introduction when appropriate.</li><li>Discuss discomfort, leaks, anxiety, costs and access to support openly.</li><li>Ask experienced caregivers about daily routines while keeping medical decisions with the treating team.</li></ul><div class=\"faq-care-note\"><strong>Hope and preparation can coexist.</strong> Normal oxygen readings do not exclude breathing weakness. Report changes and request specialist review rather than waiting for a crisis or trying to decide from the posters alone.</div>",
+                    "answer": "<h4>Staying positive while being practical</h4><p>Being positive is essential — it gives strength to both PALS and CALS.</p><p>When we are in the caregiver role, we are often overwhelmed with anxiety and fear. We may hope our PALS will never need devices like BiPAP. Even after reading messages and knowing the signs, actually making the decision feels very different — these are new, unfamiliar things that can feel scary.</p><p>What seems obvious to those already using BiPAP is not obvious to those facing the decision for the first time. Getting a demonstration and talking to someone who has already managed the mask at home can make it feel less unfamiliar.</p><p>This is completely natural. But positivity can sometimes become a barrier to timely action. At least one family member should stay practical when it comes to making important decisions.</p><h4>Common thoughts that delay the decision:</h4><ul><li><strong>\"Our PALS will never need these devices\"</strong> - but we can hope for the best and still find out how to arrange support if it is needed.</li><li><strong>\"SpO₂ is stable, everything is fine\"</strong> - but normal SpO₂ can hide dangerous CO₂ buildup and breathing difficulty.</li><li><strong>\"BiPAP might make the muscles weaker or create dependency\"</strong> - but prescribed support reduces breathing effort; needing more help does not mean the machine caused the illness to progress.</li></ul><p><strong>The Reality:</strong> Support is there to make breathing easier. Accepting it is not giving up.</p><h4>Waiting for Doctors to Decide</h4><p>Do not keep new symptoms to yourself while waiting for the next appointment. Tell the doctor about the broken sleep, extra pillows or morning headaches you are seeing at home. Ask whether breathing muscle tests or overnight checks are needed, even if SpO₂ looks normal.</p>",
                     "tags": [
                         "bipap",
                         "delay",
@@ -226,23 +163,11 @@
                         "decisions",
                         "positivity"
                     ],
-                    "sources": [
-                        {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        },
-                        {
-                            "label": "MND Association: support for breathing problems",
-                            "url": "https://www.mndassociation.org/sites/default/files/public/2026-01/8A-Support-for-breathing-problems.pdf"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "bipap"
-                    ]
+                    "sources": []
                 },
                 {
                     "question": "What are HME filters and why are they important?",
-                    "answer": "<p>An <strong>HME (heat and moisture exchanger)</strong> retains some warmth and moisture from exhaled air and returns it during inhalation. It can help replace the humidifying function of the nose and upper airway when someone has a tracheostomy.</p><h4>Use the prescribed humidification system</h4><ul><li>The care team chooses an HME or another humidification method according to the circuit, ventilation and secretions.</li><li>An HME and a bacterial/viral filter do different jobs; some products combine them. Check the exact device.</li><li>Follow the product and care-team instructions for replacement. Wet, dirty or blocked devices need attention under the care plan.</li><li>Report thick secretions, difficult suctioning or breathing difficulty; the humidification plan may need review.</li></ul><div class=\"faq-care-note\"><strong>Check circuit compatibility.</strong> Do not add filters, HMEs or humidifiers to a ventilator circuit without the provider’s guidance.</div>",
+                    "answer": "<p>HME (Heat and Moisture Exchanger) filters are important for tracheostomy patients:</p><ul><li>Warm and moisturize the air entering the lungs</li><li>Help replace some of the warming and humidifying work normally done by the nose and throat</li><li>Need checking and replacement as instructed; get help promptly if secretions block them or breathing becomes harder</li></ul><p>When breathing through a tracheostomy, the air bypasses the nose and throat which normally warm and humidify the air. HME filters help replicate this function, keeping the airways moist and protected.</p><div class=\"faq-care-note\"><strong>Important:</strong> Use the HME recommended for the exact setup. Not every HME is a bacterial filter, and an HME should not be added to active heated humidification unless the team specifically directs it.</div>",
                     "tags": [
                         "tracheostomy",
                         "hme-filter",
@@ -253,9 +178,6 @@
                             "label": "St George’s Hospital: tracheostomy humidification",
                             "url": "https://www.stgeorges.nhs.uk/gps-and-clinicians/clinical-resources/tracheostomy-guidelines/humidification/"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "home-icu"
                     ]
                 }
             ]
@@ -266,7 +188,7 @@
             "questions": [
                 {
                     "question": "When should we consider a feeding tube (PEG)?",
-                    "answer": "<p>A gastrostomy tube delivers nutrition, fluid and medicines into the stomach. <strong>PEG</strong> describes one method of placing it. Discuss the option early so that the person can consider the benefits, risks and alternatives without pressure.</p><h4>Signs it is time to discuss feeding support</h4><ul><li>Meals take much longer or leave the person exhausted.</li><li>Swallowing food, drinks or medicines becomes difficult.</li><li>Coughing or choking during meals, or fear of eating after choking episodes.</li><li>Ongoing weight loss, reduced intake or difficulty staying hydrated.</li><li>Repeated chest infections or concern about food or fluid entering the airway.</li></ul><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"What planning a feeding tube can help with\" tabindex=\"0\"><table class=\"faq-table\"><caption>What planning a feeding tube can help with</caption><thead><tr><th scope=\"col\">Concern</th><th scope=\"col\">Potential benefit and limitation</th></tr></thead><tbody><tr><th scope=\"row\">Nutrition and hydration</th><td>The tube can supplement intake or become the main route for feeding. A dietitian still needs to review the feed and fluid plan.</td></tr><tr><th scope=\"row\">Tiring or stressful meals</th><td>It may reduce the amount that must be eaten by mouth. Comfort and preferences still matter.</td></tr><tr><th scope=\"row\">Timing of the procedure</th><td>Early discussion allows assessment of nutrition, breathing and the safest suitable placement method before a crisis.</td></tr><tr><th scope=\"row\">Aspiration</th><td>Tube feeding may reduce risks linked to oral intake, but saliva and refluxed stomach contents can still enter the airway.</td></tr></tbody></table></div><div class=\"faq-care-note\"><strong>Timing is individual.</strong> The team assesses respiratory function, procedural risks and the person’s wishes. The specialist team plans the procedure and any breathing support needed during placement.</div>",
+                    "answer": "<p>PEG (Percutaneous Endoscopic Gastrostomy) is a feeding tube placed directly into the stomach. The <strong>same logic as BiPAP</strong> applies here: discussing feeding support early gives you time to prepare. <strong>Don't wait for emergencies.</strong></p><h4>Signs That It's Time to Discuss Feeding Tube</h4><ul><li><strong>Meal takes too long</strong> → If eating a normal meal takes more time</li><li><strong>Difficulty swallowing</strong> → Food feels stuck or hard to swallow</li><li><strong>Coughing or choking</strong> while eating or drinking</li><li><strong>Fear of eating</strong> → PALS avoids food because of choking episodes</li><li><strong>Weight loss</strong></li><li><strong>Exhaustion after meals</strong> → Eating is leaving PALS unusually tired</li><li><strong>Repeated aspiration</strong> → Food may be going into windpipe which can lead to lung infection and emergency</li></ul><h4>What planning ahead can help with</h4><ul><li>Maintaining nutrition and fluids when eating enough becomes difficult.</li><li>Taking pressure off long, stressful meals.</li><li>Giving PALS time to ask questions and decide what they want.</li><li>Assessing breathing and the safest suitable way to place the tube before a crisis.</li></ul><div class=\"faq-care-note\"><strong>Important:</strong> A feeding tube does not eliminate aspiration: saliva and reflux can still enter the airway. Plan the timing and method with the specialist team, taking nutrition, breathing and the person’s wishes into account.</div>",
                     "tags": [
                         "peg-tube",
                         "ryles-tube",
@@ -276,47 +198,28 @@
                     ],
                     "sources": [
                         {
-                            "label": "MND Association: swallowing, nutrition and enteral feeding",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/dysphagia"
+                            "label": "ALSCAS caregiver guide: swallowing difficulties and feeding tubes",
+                            "url": "https://alslifemanagement.weebly.com/als-swallowing-issues.html"
                         },
                         {
                             "label": "Hull University Teaching Hospitals: PEG benefits and limitations",
                             "url": "https://www.hey.nhs.uk/patient-leaflet/percutaneous-endoscopic-gastrostomy-peg/"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "feeding"
                     ]
                 },
                 {
                     "question": "Can PALS still eat by mouth after PEG?",
-                    "answer": "<p><strong>Sometimes, depending on the swallowing assessment and the person’s choices.</strong> Having a feeding tube does not automatically mean that all eating and drinking by mouth must stop.</p><h4>What the tube may provide</h4><ul><li>Extra nutrition, hydration or medicines alongside oral intake.</li><li>Most or all nutrition when oral intake is inadequate or unsafe.</li><li>Less pressure to finish exhausting meals.</li></ul><h4>Agree a plan for eating and drinking</h4><p>The swallowing specialist and dietitian can advise on textures, amounts, positioning and support. Some people choose small tastes for pleasure after discussing the risks; others may be advised to avoid oral intake. Review the plan if coughing, fatigue or swallowing changes.</p><div class=\"faq-care-note\"><strong>Aspiration risk remains.</strong> A feeding tube does not prevent saliva or reflux from entering the lungs. Mouth care and the prescribed positioning and feeding plan remain important.</div>",
+                    "answer": "<p>This is one of the most common concerns. For some PALS, <strong>yes</strong> — if the swallowing assessment says it is suitable. The tube can take away the pressure of having to meet every nutritional need by mouth.</p><h4>Having a feeding tube does not automatically mean no oral eating:</h4><ul><li>Some PALS can still have favorite foods by mouth for pleasure, in the texture and amount agreed with their swallowing team</li><li>The tube can provide nutrition without a tiring full meal, but it does not remove all aspiration risk</li><li>It may supplement meals or become the main feeding route, depending on swallowing and intake</li><li>Ask what foods or tastes can be enjoyed safely; the answer can change as swallowing changes</li></ul><div class=\"faq-care-note\"><strong>Important:</strong> If eating causes coughing, choking or distress, stop and get advice about the feeding plan. Do not assume oral eating is safe just because a PEG has been placed.</div>",
                     "tags": [
                         "peg-tube",
                         "oral-eating",
                         "feeding"
                     ],
-                    "sources": [
-                        {
-                            "label": "MND Association: swallowing, nutrition and enteral feeding",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/dysphagia"
-                        },
-                        {
-                            "label": "MND Association: eating and drinking with acknowledged risk",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/dysphagia/eating-and-drinking-acknowledged-risk"
-                        },
-                        {
-                            "label": "Hull University Teaching Hospitals: PEG benefits and limitations",
-                            "url": "https://www.hey.nhs.uk/patient-leaflet/percutaneous-endoscopic-gastrostomy-peg/"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "feeding"
-                    ]
+                    "sources": []
                 },
                 {
                     "question": "How to thicken water for PALS with swallowing difficulty (dysphagia)?",
-                    "answer": "<p>Ask a speech and language/swallowing therapist to assess drinking before starting a thickener. Thickened fluids help some people control a drink, but are not suitable for everyone and do not guarantee prevention of pneumonia.</p><h4>If a thickener is recommended</h4><ol><li>Get the exact consistency level and preparation instructions in writing.</li><li>Use the recommended medical thickener and product-specific measurements; scoops are not interchangeable between products.</li><li>Follow mixing and standing times, and check the texture as taught.</li><li>Review hydration, enjoyment, coughing, residue and whether enough fluid is being taken.</li></ol><div class=\"faq-care-note\"><strong>Avoid improvised recipes.</strong> Do not substitute kitchen xanthan gum or another product without the therapist’s advice. Discuss medicine administration separately with a pharmacist. Worsening intake or swallowing should trigger a review of the overall feeding plan.</div>",
+                    "answer": "<h4>Why thicken liquids?</h4><p>Water and thin liquids can be difficult to control because they move quickly. A thickener can help some PALS, but the right consistency needs to be worked out with a swallowing therapist.</p><h4>When to ask for help</h4><ul><li>Coughing or choking when drinking water.</li><li>Drinks taking longer, being avoided, or leaving PALS tired.</li></ul><h4>Choosing and using a product</h4><p>Products mentioned in the caregiver notes include Resource ThickenUp Clear and Thick-It. These are examples to discuss with the therapist, not a recommendation to choose a brand or recipe on your own.</p><ul><li>Get the required consistency and mixing instructions written down.</li><li>Follow the instructions for that exact product; a scoop from one brand is not the same as another.</li><li>Give it the stated time to thicken and check it the way you have been shown.</li><li>Watch how much PALS actually drinks. A drink that is disliked or hard to swallow can reduce fluid intake.</li></ul><div class=\"faq-care-note\"><strong>Important:</strong> Do not substitute kitchen xanthan gum without advice. Thickening does not suit everyone or guarantee protection from pneumonia. If swallowing or intake worsens, review the whole feeding plan.</div>",
                     "tags": [
                         "thickening",
                         "dysphagia",
@@ -328,15 +231,9 @@
                         {
                             "label": "RCSLT: thickened fluids and swallowing assessment",
                             "url": "https://www.rcslt.org/members/clinical-guidance/eating-drinking-and-swallowing/thickened-fluids/"
-                        },
-                        {
-                            "label": "MND Association: swallowing, nutrition and enteral feeding",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/dysphagia"
                         }
                     ],
-                    "knowledge_cards": [
-                        "feeding"
-                    ]
+                    "recommendation": "Consult a speech therapist to determine the right consistency level for your PALS."
                 }
             ]
         },
@@ -346,7 +243,7 @@
             "questions": [
                 {
                     "question": "How can families work with hospital staff during an ALS emergency?",
-                    "answer": "<h4>At home: call and care together</h4><p>Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.</p><p>One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.</p><p>If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles.</p><h4>If a suction catheter will not pass</h4><p>If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain.</p><p>TT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.</p><p><a href=\"/emergency-protocol#airway-escalation\">Read the emergency escalation guidance</a>.</p><p>Bring a concise care summary and explain the person’s usual breathing, communication and feeding needs. Families’ observations can help staff recognize changes quickly.</p><h4>Information to share</h4><ul><li>The ALS diagnosis, specialist contacts and current medicines.</li><li>Usual ventilator use and prescribed settings, oxygen prescription if any, and secretion-management needs.</li><li>How the person communicates, whether they can lie flat, and their swallowing or feeding-tube plan.</li><li>Their documented care preferences and emergency plan.</li></ul><h4>If you are concerned</h4><p>Ask the responsible clinician to explain the plan and, where needed, contact the ALS or respiratory specialist. Mention that oxygen saturation alone may miss CO₂ retention. Seek clarification calmly and promptly; do not independently disconnect or alter treatment.</p><div class=\"faq-care-note\"><strong>Plan discharge together.</strong> Home care should begin when the clinical team and family have agreed that the required care, equipment, training and support are in place.</div>",
+                    "answer": "<p>As CALS, you know the daily routine and the small changes in your PALS. During an ICU admission, that knowledge matters. Explain it to the staff, especially if PALS cannot speak for themselves.</p><h4>Be prepared to explain the usual care</h4><ul><li>Keep the diagnosis, medicine list and specialist contact numbers together.</li><li>Write down the usual BiPAP/ventilator settings and hours of use, feeding routine and any prescribed oxygen.</li><li>Show how PALS says yes or no, calls for help, or uses a communication board.</li><li>Tell staff if lying flat is difficult, and what has changed from normal at home.</li><li>Share the person’s care preferences and written emergency plan.</li></ul><h4>Speak up calmly and firmly</h4><p>If something does not match the usual care, ask why. You can say, “This is what we normally do at home; could you explain the change?” Ask the ICU team to speak with the treating ALS or respiratory specialist if needed. Do not disconnect equipment or change treatment yourself.</p><p>Learn from experienced ALSCAS caregivers, and use that knowledge to ask clear questions. You do not have to stay silent because you are a family member.</p><h4>Before coming home</h4><p>Agree on the medicines, equipment, training and help needed for discharge. Keep things simple and written down so that every caregiver can follow the same routine. Home is not automatically safer; come home when the required support is ready.</p><h4>At home: call and care together</h4><p>Call 112 immediately in India for severe or worsening breathing difficulty, ineffective ventilation, suspected blocked or displaced tracheostomy, blue/grey colour, collapse or reduced responsiveness. Do not wait for a particular SpO2 reading or try every step first.</p><p>One person stays with PALS and provides only trained, prescribed support while another calls emergency services and the treating respiratory/ICU team. If alone, call on speakerphone while staying with PALS.</p><p>If external checks and any prescribed, trained suction do not promptly restore effective breathing, stop repeated attempts and obtain urgent skilled help. If the person worsens, escalate immediately. Do not delay help for nebulization or repeated suction cycles.</p><h4>If a suction catheter will not pass</h4><p>If the suction catheter will not pass, the TT tube may be blocked or displaced. Call 112 and the respiratory/ICU team now. Do not force the catheter, squeeze an Ambu bag harder, or attempt ventilation through a tube whose patency and position are uncertain.</p><p>TT removal/replacement and cuff interventions require a doctor, respiratory therapist or ICU nurse competent and authorized in emergency tracheostomy care. A ventilator technician can help with equipment, but must have specific clinical training and authorization to perform airway procedures. A caregiver should perform an airway intervention only if specifically trained and authorized in that person’s written emergency plan.</p><p><a href=\"/emergency-protocol#airway-escalation\">Read the emergency escalation guidance</a>.</p>",
                     "tags": [
                         "advocacy",
                         "hospital",
@@ -360,23 +257,7 @@
                         {
                             "label": "NTSP: adult tracheostomy emergency care",
                             "url": "https://tracheostomy.org.uk/healthcare-staff/emergency-care/emergency-algorithm-tracheostomy"
-                        },
-                        {
-                            "label": "NTSP: blocked/displaced tubes and ventilation precautions",
-                            "url": "https://tracheostomy.org.uk/storage/files/Emergency%20tracheostomy%20management.pdf"
-                        },
-                        {
-                            "label": "AARC: artificial airway suctioning",
-                            "url": "https://www.aarc.org/wp-content/uploads/2022/10/cpg-artificial-airway-suctioning.pdf"
-                        },
-                        {
-                            "label": "India emergency response: 112",
-                            "url": "https://112.gov.in/"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "bipap",
-                        "home-icu"
                     ]
                 }
             ]
@@ -387,30 +268,18 @@
             "questions": [
                 {
                     "question": "How Do I Manage Excessive Saliva/Drooling?",
-                    "answer": "<p>Drooling in ALS usually reflects <strong>difficulty swallowing and clearing saliva</strong>, rather than increased production. Saliva can pool, irritate skin or enter the airway. Watery saliva, thick secretions and a dry mouth may need different approaches.</p><h4>Practical care</h4><ul><li><strong>Wiping and skin comfort:</strong> keep soft cloths, tissues or absorbent bibs nearby; clean and dry the skin gently.</li><li><strong>Positioning:</strong> ask the care team about supported head elevation or side-lying that is comfortable and compatible with breathing and feeding needs.</li><li><strong>Oral suction:</strong> use a Yankauer or other prescribed oral tip only as trained. Oral suction is different from deep airway or tracheostomy suction.</li><li><strong>Mouth care:</strong> maintain oral hygiene and use the advised mouth-moistening products. Give drinks only if they are safe within the swallowing plan.</li><li><strong>Hydration:</strong> review fluid intake and the feeding plan if saliva becomes sticky.</li></ul><h4>Food and saliva</h4><p>Some caregivers notice a thicker or coated mouth feeling after dairy. This does not establish that dairy increases saliva production. Discuss changes with the dietitian so that reducing foods does not reduce needed calories or protein.</p><h4>When practical care is not enough</h4><p>Ask about clinician-prescribed medicines such as glycopyrrolate/glycopyrronium or specialist salivary-gland botulinum toxin injections. Benefit and side effects vary.</p><div class=\"faq-care-note\"><strong>Watch for thickening.</strong> Medicines that reduce drooling may make secretions harder to clear. Report worsening coughing, dry mouth or sticky chest secretions and review the plan.</div>",
+                    "answer": "<h4>Understanding the Problem</h4><p><strong>Common Misunderstanding:</strong> The body is producing too much saliva.</p><p><strong>Reality:</strong> Saliva production is often normal. The swallowing muscles have weakened, making it difficult to clear saliva. This causes pooling, drooling, skin irritation, and aspiration risk.</p><h4>Management Strategies</h4><p><strong>Active Wiping</strong><br>Keep a soft cloth handy at all times. Wipe saliva from mouth and face frequently.</p><p><strong>Positioning</strong><br>Find a comfortable supported position. Head elevation or side-lying may help; ask the team to show a position that also works with breathing and feeding.</p><p><strong>Oral Suctioning</strong><br>If oral suction is prescribed, keep the portable machine and Yankauer tip nearby. Use gentle suction as you have been taught. Oral suction is different from deep airway or tracheostomy suction.</p><p><strong>Oral Care</strong><br>Maintain excellent dental hygiene and keep the mouth moist with frequent sips of water (if safe to swallow) or mouth spray to prevent thick, sticky secretions.</p><p><strong>Medications (Consult Doctor)</strong><br>Glycopyrrolate → Reduces secretions (use cautiously, can thicken chest secretions).</p><p><strong>Absorbent Products</strong><br>Keep absorbent bibs or pads handy, and change them when wet.</p><p><strong>Dietary Changes</strong><br>Some families notice a coated or thicker mouth feeling after dairy. Do not cut out useful calories or protein without discussing alternatives with the dietitian.</p>",
                     "tags": [
                         "drooling",
                         "saliva",
                         "sialorrhea",
                         "daily-care"
                     ],
-                    "sources": [
-                        {
-                            "label": "MND Association: saliva problems and practical care",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/saliva"
-                        },
-                        {
-                            "label": "NHS: medicines for drooling and thickened secretions",
-                            "url": "https://www.rightdecisions.scot.nhs.uk/shared-content/palliative-care-mouth-care-old/sialorrhoea-excessive-drooling/"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "saliva"
-                    ]
+                    "sources": []
                 },
                 {
                     "question": "Is glycopyrrolate safe for reducing saliva?",
-                    "answer": "<p>Glycopyrrolate, also called glycopyrronium, can reduce drooling in some people. <strong>It is not suitable or equally helpful for everyone.</strong> The prescriber needs to balance saliva reduction against the ability to clear secretions.</p><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"Benefits and monitoring\" tabindex=\"0\"><table class=\"faq-table\"><caption>Benefits and monitoring</caption><thead><tr><th scope=\"col\">What to look for</th><th scope=\"col\">Why it matters</th></tr></thead><tbody><tr><th scope=\"row\">Less drooling and improved comfort</th><td>These are possible benefits; response varies.</td></tr><tr><th scope=\"row\">Thicker, stickier secretions or harder airway clearance</th><td>Reducing watery secretions can make mucus more difficult to clear.</td></tr><tr><th scope=\"row\">Dry mouth or throat discomfort</th><td>Mouth care and the treatment plan may need adjustment.</td></tr><tr><th scope=\"row\">Constipation, difficulty passing urine or other new symptoms</th><td>Anticholinergic side effects need discussion with the prescriber.</td></tr></tbody></table></div><h4>Use it with a review plan</h4><ul><li>Confirm the exact product, formulation and prescribed dose with the doctor or pharmacist. Brand names and concentrations can vary.</li><li>Do not start, stop or change the dose based on another family’s experience.</li><li>Keep a short record of comfort, drooling, bowel/urine changes and secretion clearance.</li><li>Discuss alternatives, including specialist botulinum toxin treatment, if benefit is limited or side effects are troublesome.</li></ul><div class=\"faq-care-alert\"><strong>Seek urgent help:</strong> New breathing difficulty or inability to clear secretions needs immediate assessment; do not simply take more saliva-reducing medicine.</div>",
+                    "answer": "<h4>Understanding the Medication</h4><p>Glycopyrrolate (also called glycopyrronium) is an anticholinergic that reduces saliva production. It's commonly prescribed for ALS-related saliva management.</p><p><strong>Benefits:</strong></p><ul><li>Reduces saliva production</li><li>Can significantly decrease drooling</li></ul><p><strong>Risks/Side Effects:</strong></p><ul><li>Thickens chest secretions (major concern in ALS)</li><li>Dry mouth or throat discomfort</li><li>Constipation or difficulty passing urine</li></ul><div class=\"warning-box\"><strong>Important:</strong> Use the prescribed product and dose. Keep a short note of whether drooling improves and whether secretions become harder to clear. Report side effects to the doctor; do not copy another family’s dose. New breathing difficulty or inability to clear secretions needs urgent help.</div>",
                     "tags": [
                         "glycopyrrolate",
                         "saliva",
@@ -419,60 +288,35 @@
                     ],
                     "sources": [
                         {
-                            "label": "NHS: medicines for drooling and thickened secretions",
-                            "url": "https://www.rightdecisions.scot.nhs.uk/shared-content/palliative-care-mouth-care-old/sialorrhoea-excessive-drooling/"
-                        },
-                        {
                             "label": "NHS: glycopyrronium prescribing and adverse effects",
                             "url": "https://remedy.bnssg.icb.nhs.uk/media/3614/glycopyrronium-scp.pdf"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "saliva"
                     ]
                 },
                 {
                     "question": "How to manage constipation and bowel movements in a bedridden PALS?",
-                    "answer": "<p>Reduced movement, low fluid intake, changes in food or feeds, and some medicines can contribute to constipation. Look for a change from the person’s usual pattern, hard stools, straining or discomfort. <strong>Days without stool alone do not determine severity or which medicine to use.</strong></p><h4>Build a daily bowel routine</h4><ul><li>Keep a simple record of stool pattern, consistency, discomfort and medicines used.</li><li>Agree fluid intake with the team, including tube-feed flushes and any kidney or heart-related limits.</li><li>Include fibre-containing foods or feeds as tolerated and advised; keep regular meal and toileting times.</li><li>Support gentle movement, repositioning and comfortable toileting where possible.</li><li>Review medicines with the prescriber when constipation recurs.</li></ul><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"When to step up help\" tabindex=\"0\"><table class=\"faq-table\"><caption>When to step up help</caption><thead><tr><th scope=\"col\">Situation</th><th scope=\"col\">Practical next step</th></tr></thead><tbody><tr><th scope=\"row\">A change from usual bowel habits, without alarm symptoms</th><td>Follow the agreed bowel plan; review fluid intake, diet, routine and comfort.</td></tr><tr><th scope=\"row\">Persistent constipation, repeated need for rescue treatment or no response to the plan</th><td>Contact the clinician or pharmacist. Assessment may identify stool impaction or a medicine-related cause.</td></tr><tr><th scope=\"row\">Severe pain, repeated vomiting, a swollen abdomen, or inability to pass gas</th><td>Seek urgent medical assessment. Do not keep adding laxatives or enemas while waiting for advice.</td></tr></tbody></table></div><h4>Medicines and fibre supplements</h4><p>A clinician may recommend macrogol/polyethylene glycol, lactulose or another laxative. Polyethylene glycol is also abbreviated PEG, but is different from a PEG feeding tube. Laxatives can cause cramps, diarrhoea, dehydration or electrolyte changes; no product is guaranteed to be side-effect free.</p><p>Products such as Cremaffin have different formulations. Ask about ingredients and suitability, especially with swallowing difficulty or kidney disease. Psyllium/isabgol needs adequate fluid and may be unsuitable with swallowing problems; do not give it dry or put it through a feeding tube without advice. Foods such as prunes or papaya may be included if suitable, but are not a substitute for assessment.</p><h4>Enemas and suppositories</h4><p>Use only the product and method advised for this person. Do not assume a homemade plain-water enema is safer, or select treatment from a day-count chart. Rectal treatments can cause harm if used inappropriately.</p>",
+                    "answer": "<p>Constipation is very common in ALS due to reduced mobility, medications, reduced fiber/fluid intake, and weak supporting muscles for stool passing.</p><h4>Start with the daily routine</h4><ul><li><strong>Keep track:</strong> note when stool was passed, whether it was hard, and whether PALS was uncomfortable. Share this when caregivers change shifts.</li><li><strong>Food and feeds:</strong> include suitable fruit, vegetables or fibre-containing feeds. Foods discussed in the caregiver notes include papaya, prunes and soaked figs; use textures that fit the swallowing or tube-feeding plan.</li><li><strong>Fluids:</strong> keep up the agreed drinks and feed flushes. The right amount depends on the feeding plan and any heart or kidney restrictions.</li><li><strong>Regular timing:</strong> keep regular meal and toileting times, with a comfortable position and gentle movement where possible.</li><li><strong>Medicine review:</strong> tell the doctor if constipation started after a medicine changed.</li></ul><h4>When routine measures are not enough</h4><p>Ask the doctor or pharmacist about a bowel plan before constipation becomes a repeated struggle. Macrogol/polyethylene glycol and lactulose are examples of medicines that may be used. “PEG” here means a laxative, not a feeding tube.</p><p>Write down the prescribed dose and when to call if it is not working. Do not choose the medicine or increase the dose just by counting days without stool. Products with similar names can have different ingredients.</p><h4>Isabgol, suppositories and enemas</h4><p>Isabgol needs enough fluid and may be unsuitable with swallowing difficulty; do not give it dry or put it through a feeding tube without advice. Use suppositories or enemas only as advised. A plain-water enema is not automatically safer.</p><div class=\"faq-care-note\"><strong>Important:</strong> Severe abdominal pain, vomiting, a swollen abdomen or inability to pass gas needs urgent assessment. Do not keep adding laxatives or enemas. Medicines can cause cramps, diarrhoea or dehydration; no laxative is guaranteed to be free of side effects.</div>",
                     "tags": [
                         "constipation",
                         "daily-care",
                         "medications"
                     ],
-                    "sources": [
-                        {
-                            "label": "NHS: constipation, self-care and when to seek help",
-                            "url": "https://www.nhs.uk/conditions/constipation/"
-                        },
-                        {
-                            "label": "NHS: laxatives, precautions and side effects",
-                            "url": "https://www.nhs.uk/medicines/laxatives/"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "bowel-care"
-                    ]
+                    "sources": []
                 },
                 {
                     "question": "How to prevent bedsores?",
-                    "answer": "<p>Pressure sores develop when skin and underlying tissue are damaged by sustained pressure. Limited movement, moisture and poor nutrition can increase risk. A mattress helps, but does not replace a care plan.</p><h4>Daily prevention</h4><ul><li>Ask a nurse to assess pressure risk and agree a repositioning schedule; the timing should fit the person’s skin, comfort, support surface and medical needs.</li><li>Use the recommended mattress and cushions, and check powered equipment is working.</li><li>Inspect pressure areas and skin under masks or other devices regularly. Report persistent colour changes, heat, firmness or pain.</li><li>Keep skin clean and manage moisture with the advised barrier products. Avoid rubbing or massaging pressure areas.</li><li>Use trained transfer techniques and suitable equipment to reduce friction. Review nutrition and hydration.</li></ul><div class=\"faq-care-note\"><strong>Get help early.</strong> Report an open wound or new pressure damage promptly. Do not rely on powder, oil or a water cushion to treat or prevent an injury without professional advice.</div>",
+                    "answer": "<p><strong>Prevention is Better Than Cure:</strong> Bedsores are much easier to prevent than to treat. Once they develop, they can be very difficult to heal.</p><h4>Prevention steps</h4><ul><li><strong>Use the right mattress:</strong> ask which pressure-relieving mattress suits PALS. If it uses a pump, make sure the pump is on and working.</li><li><strong>Change position regularly:</strong> agree a turning schedule with the nurse and write it down. An air mattress does not replace turning; the interval needs to suit the person.</li><li><strong>Check the skin every day:</strong> look at the lower back, buttocks, heels, elbows and under the BiPAP mask. Watch for a patch that stays a different colour, feels hot or firm, or hurts.</li><li><strong>Keep skin clean and dry:</strong> change wet clothing and bedding promptly; use barrier products recommended for the skin.</li><li><strong>Move gently:</strong> use the transfer technique you have been taught instead of dragging PALS across the bed.</li></ul><div class=\"faq-care-note\"><strong>Important:</strong> If a bedsore develops, consult the nurse or doctor promptly. Do not massage pressure areas or rely on oil, powder or a water cushion to prevent or treat sores. Keep the agreed food and fluid routine going too.</div>",
                     "tags": [
                         "bedsores",
                         "skin-care",
                         "prevention",
                         "daily-care"
                     ],
-                    "sources": [
-                        {
-                            "label": "NICE: pressure ulcer prevention and management",
-                            "url": "https://www.nice.org.uk/guidance/cg179/chapter/Recommendations"
-                        }
-                    ],
-                    "knowledge_cards": []
+                    "sources": []
                 },
                 {
                     "question": "Electrolyte Imbalance in PALS - What to Know and How to Manage",
-                    "answer": "<p>Electrolytes, including sodium, potassium, calcium and magnesium, support muscle, heart and brain function. Levels can become too low or too high during illness, dehydration, reduced intake, kidney problems or use of certain medicines. <strong>Symptoms alone cannot identify which electrolyte is abnormal.</strong></p><h4>Changes to report</h4><ul><li>Unusual tiredness or weakness, reduced appetite, nausea or feeling generally unwell.</li><li>Muscle cramps, spasms, tingling, dizziness or headache.</li><li>Reduced urine output, significant vomiting or diarrhoea, or difficulty taking usual food and fluids.</li></ul><div class=\"faq-care-alert\"><strong>Seek urgent help:</strong> Confusion, difficulty waking, fainting, seizures, reduced consciousness, palpitations with illness, severe weakness or cold clammy skin need immediate medical assessment. These may also reflect breathing failure, infection or another emergency; do not assume low sodium is the cause.</div><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"When blood tests may be needed\" tabindex=\"0\"><table class=\"faq-table\"><caption>When blood tests may be needed</caption><thead><tr><th scope=\"col\">Situation</th><th scope=\"col\">What to discuss with the treating doctor</th></tr></thead><tbody><tr><th scope=\"row\">Routine follow-up</th><td>The interval depends on medicines, kidney function, previous results and current health. There is no universal monthly testing schedule for ALS.</td></tr><tr><th scope=\"row\">A medicine is started or changed</th><td>Ask whether and when to recheck electrolytes and kidney function. For example, furosemide monitoring is often arranged after 1–2 weeks, or earlier in higher-risk patients; this is not a rule for every medicine.</td></tr><tr><th scope=\"row\">Vomiting, diarrhoea, reduced intake or new symptoms</th><td>Contact the team promptly about assessment and tests rather than waiting for the next routine appointment.</td></tr><tr><th scope=\"row\">Higher risk</th><td>Diuretics, kidney disease, heart failure or previous abnormalities may require closer monitoring.</td></tr></tbody></table></div><h4>What to do safely at home</h4><ul><li>Keep the prescribed feed, fluid and medicine record and share it with the team.</li><li>Do not add extra salt, potassium, coconut water or supplements to correct a suspected imbalance without medical advice. Too much can also be harmful.</li><li>ORS may be appropriate for some fluid losses if advised, prepared exactly as directed and compatible with swallowing and fluid restrictions. It is not a treatment for unexplained drowsiness or every electrolyte disorder.</li><li>Do not give anything by mouth to someone who is difficult to wake or cannot swallow safely.</li></ul><div class=\"faq-care-note\"><strong>Results need clinical interpretation.</strong> Blood tests guide treatment. Muscle loss is not a reason to accept an abnormal sodium result as a new personal normal, and a sudden change needs assessment.</div>",
+                    "answer": "<h4>Why this matters at home</h4><p>If PALS suddenly seems unusually sleepy, weak or unlike themselves, take the change seriously. Electrolytes such as sodium and potassium may need checking, but breathing problems, infection and other illnesses can look similar. Do not assume it is low sodium.</p><h4>What to keep track of</h4><ul><li>Food, tube feeds and fluids actually taken, including missed feeds or flushes.</li><li>Vomiting, diarrhoea or changes in urine output.</li><li>Recent medicine changes, especially diuretics (water tablets).</li><li>Previous blood-test reports, so the doctor can compare results.</li></ul><h4>When to ask about blood tests</h4><p>Agree a follow-up schedule with the doctor. Ask whether a new medicine or an illness means tests are needed sooner. Do not wait for a routine monthly date when PALS is unwell, or treat an abnormal result as their new “normal”.</p><h4>During diarrhoea or vomiting</h4><p>Contact the doctor promptly about fluids, feeds and tests. ORS may be advised for some fluid losses; prepare it exactly as directed and check that it fits the swallowing and fluid plan. ORS or coconut water is not a treatment for unexplained drowsiness. Do not add extra salt or potassium to feeds to correct a suspected imbalance yourself.</p><h4>During a hospital stay</h4><ul><li>Ask about the feeding and fluid schedule; tell staff what PALS normally receives at home.</li><li>Ask whether electrolyte monitoring is needed, especially if feeds or medicines have changed.</li><li>Keep copies of results and ask what needs checking after discharge.</li></ul><div class=\"faq-care-note\"><strong>Important:</strong> Confusion, difficulty waking, seizures, fainting or reduced responsiveness needs immediate medical help. Do not give anything by mouth to someone who cannot swallow safely. Both low and high electrolyte levels can be harmful; treatment depends on blood tests and the cause.</div>",
                     "tags": [
                         "electrolyte",
                         "sodium",
@@ -485,18 +329,7 @@
                         {
                             "label": "MedlinePlus: fluid and electrolyte balance",
                             "url": "https://medlineplus.gov/fluidandelectrolytebalance.html"
-                        },
-                        {
-                            "label": "MedlinePlus: low blood sodium",
-                            "url": "https://www.medlineplus.gov/ency/article/000394.htm"
-                        },
-                        {
-                            "label": "NHS Specialist Pharmacy Service: furosemide monitoring",
-                            "url": "https://sps.nhs.uk/monitorings/furosemide-monitoring/"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "electrolytes"
                     ]
                 }
             ]
@@ -507,30 +340,19 @@
             "questions": [
                 {
                     "question": "What Equipment Do We Need as ALS Progresses?",
-                    "answer": "<p>Plan equipment around <strong>current needs and likely next needs</strong>, rather than a rigid early/middle/late-stage list. Breathing, swallowing, mobility and communication can change in different sequences.</p><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"Equipment to discuss with the care team\" tabindex=\"0\"><table class=\"faq-table\"><caption>Equipment to discuss with the care team</caption><thead><tr><th scope=\"col\">Need</th><th scope=\"col\">Examples</th></tr></thead><tbody><tr><th scope=\"row\">Movement and personal care</th><td>Walking aids, wheelchair, hoist, shower chair, grab bars and an accessible toilet setup.</td></tr><tr><th scope=\"row\">Comfort and skin protection</th><td>Adjustable bed, pressure-relieving mattress, suitable seating and bedside table.</td></tr><tr><th scope=\"row\">Communication</th><td>Alphabet or communication board, accessible call system, communication software or an eye tracker.</td></tr><tr><th scope=\"row\">Breathing and secretions</th><td>Prescribed NIV/ventilator, suction or cough-assist equipment, compatible consumables and training.</td></tr><tr><th scope=\"row\">Monitoring and continuity</th><td>The monitoring devices, power backup and backup equipment specified in the care plan.</td></tr></tbody></table></div><div class=\"faq-care-note\"><strong>Availability and training go together.</strong> Confirm the exact model, compatibility, servicing and who will teach caregivers before renting or buying. Oxygen and manual resuscitation equipment require an individual plan; they are not automatic requirements for every person with ALS.</div><p><a href=\"/home-icu-guide\">Browse the Home ICU equipment guide and photographs</a>.</p>",
+                    "answer": "<p>ALS needs different equipment at different stages. Get equipment BEFORE you need it urgently. This gives you time to learn how to use it.</p><p>These are planning groups, not fixed stages: breathing, mobility and swallowing may change in a different order for your PALS.</p><h4>For movement and personal care</h4><ul><li>Walker, wheelchair</li><li>Shower chair, grab bars, raised toilet seat</li><li>Non-slip mats</li></ul><h4>For comfort and communication</h4><ul><li>Hospital bed (adjustable height)</li><li>Pressure-relieving mattress, alongside regular position changes</li><li>Communication aids (alphabet board, eye tracker)</li></ul><h4>For breathing support, when advised</h4><ul><li>Prescribed BiPAP machine → arrange it before an emergency</li><li>Pulse oximeter → know the agreed plan for checking readings and symptoms</li><li>Suction / cough assist → use the prescribed equipment and get hands-on training</li><li>UPS/Inverter → power backup is critical</li><li>Ambu bag → only if part of the emergency plan, with specific training</li></ul><p><strong>If PALS has tracheostomy:</strong> Confirm ventilation backup, suction and tracheostomy supplies with the provider. An oxygen concentrator and backup cylinder are needed only if prescribed.</p>",
                     "tags": [
                         "equipment",
                         "home-icu",
                         "power-backup",
                         "planning"
                     ],
-                    "sources": [
-                        {
-                            "label": "MND Association: muscle weakness, fatigue and equipment",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/management-by-symptoms/muscle-weakness"
-                        },
-                        {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "home-icu"
-                    ]
+                    "sources": [],
+                    "recommendation": "Don't wait to buy equipment until an emergency. Plan ahead based on changing needs. Rent first, then decide if purchase makes sense."
                 },
                 {
                     "question": "How to Set Up a Home ICU Room for BiPAP + Tracheostomy?",
-                    "answer": "<p>Begin with a written discharge or home-care plan. NIV through a mask and ventilation through a tracheostomy have different equipment and training needs. <strong>The poster is a planning checklist, not a circuit assembly or treatment protocol.</strong></p><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"Organize the room by care task\" tabindex=\"0\"><table class=\"faq-table\"><caption>Organize the room by care task</caption><thead><tr><th scope=\"col\">Area</th><th scope=\"col\">Supplies to confirm with the team</th></tr></thead><tbody><tr><th scope=\"row\">Ventilation and prescribed oxygen</th><td>The correct ventilator/BiPAP, circuits, catheter mount, inlet and bacterial filters, and prescribed humidification. HME and Whisper Swivel use depend on the exact circuit. Oxygen concentrator/cylinder and manual resuscitation bag only as specified in the plan.</td></tr><tr><th scope=\"row\">Suction</th><td>Suction machine, suitable oral tip/Yankauer, suction catheters, tubing and machine filter. Saline and 5 ml/10 ml syringes only for the uses demonstrated by the team.</td></tr><tr><th scope=\"row\">Tracheostomy care</th><td>The instructed dressing/cleaning supplies, gauze, gloves, scissors and spare tracheostomy tubes in the specified sizes. Confirm whether antiseptic such as Betadine is appropriate.</td></tr><tr><th scope=\"row\">Nebulization</th><td>Compatible nebulizer, T-piece and tubing if prescribed, plus the prescribed medicine or sterile solution. Do not improvise circuit connections.</td></tr><tr><th scope=\"row\">Monitoring</th><td>Pulse oximeter, blood-pressure monitor and thermometer, or a multiparameter monitor where indicated; agree how to respond to readings and alarms.</td></tr><tr><th scope=\"row\">Comfort and communication</th><td>Adjustable/recliner bed, pressure-relieving mattress, bedside table and accessible communication/call system. TV, Alexa, AC or an air purifier are optional comfort choices.</td></tr></tbody></table></div><h4>Room organization</h4><ul><li>Keep supplies labelled, clean, accessible and checked for expiry. Separate clean stock from used items.</li><li>Keep emergency contacts, care instructions and backup supplies where every trained caregiver can find them.</li><li>If using CCTV, obtain consent and protect privacy. Remote viewing does not replace a trained caregiver or an alarm-response plan.</li><li>Arrange professional electrical installation and a tested power plan. Generators must operate outdoors, away from doors, windows and air intakes.</li></ul><h4>Backups and checks</h4><p>Confirm spare circuits/filters and tracheostomy supplies, backup ventilation and suction, prescribed oxygen reserve, and feeding supplies with the provider. Check equipment and alarms as instructed. A spare tube does not mean an untrained caregiver should replace it.</p><p><a href=\"/home-icu-guide#home-icu-poster\">View the updated ALSCAS Home ICU setup poster</a> or <a href=\"/power-backup-guide\">review power-backup planning</a>.</p>",
+                    "answer": "<p>Setting up a home ICU room needs planning. Keep things simple and organized.</p><p>Confirm the exact list with the discharge team: mask BiPAP and tracheostomy ventilation need different setups. Ask them to demonstrate each care task before coming home.</p><h4>Equipment to organize</h4><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"Home care equipment checklist\" tabindex=\"0\"><table class=\"faq-table\"><thead><tr><th scope=\"col\">Category</th><th scope=\"col\">Items</th></tr></thead><tbody><tr><td>Ventilation</td><td>Prescribed ventilator/BiPAP, compatible circuits and filters, catheter mount and humidification. HME, Whisper Swivel and Ambu bag only if specified for that setup</td></tr><tr><td>Oxygen</td><td>Oxygen concentrator and backup cylinder, if prescribed</td></tr><tr><td>Suction</td><td>Suction machine, Vacuum set (Yankauer), Suction catheters, Saline and syringes only for the uses demonstrated by the team</td></tr><tr><td>Nebulization</td><td>Compatible nebulizer and T-piece if prescribed, with the prescribed medicine or sterile solution</td></tr><tr><td>Monitoring</td><td>Pulse oximeter, BP cuff, thermometer; multiparameter monitor if advised</td></tr><tr><td>Trach Care</td><td>Gauze, gloves, scissors, instructed cleaning supplies and spare TT tubes in the specified sizes</td></tr><tr><td>Comfort</td><td>Recliner bed, Air mattress, Bedside table</td></tr></tbody></table></div><h4>Room Setup Tips</h4><ul><li>CCTV camera: use only with consent and controlled access; it does not replace a caregiver</li><li>PALS comfort: TV, Alexa or AC if wanted; keep the call or communication aid within reach</li><li>Test equipment: Check all equipment works regularly</li><li>Keep organized: Have backup supplies ready and easy to find</li></ul><h4>Backup Items (Always Ready)</h4><div class=\"faq-table-scroll\" role=\"region\" aria-label=\"Home care equipment checklist\" tabindex=\"0\"><table class=\"faq-table\"><thead><tr><th scope=\"col\">Category</th><th scope=\"col\">Backups Needed</th></tr></thead><tbody><tr><td>Ventilation</td><td>Spare TT tubes in the sizes specified by the team, Backup BiPAP/ventilator, Extra circuits & filters</td></tr><tr><td>Suction</td><td>Second suction machine, Extra catheters</td></tr><tr><td>Power</td><td>Tested UPS/inverter arrangement; generator only outdoors, away from windows and air intakes</td></tr><tr><td>Feeding</td><td>Backup PEG feeding tube, Syringes</td></tr></tbody></table></div><div class=\"faq-care-note\"><strong>Important:</strong> A spare tube is a backup supply, not permission to replace it without training. Keep emergency contacts and written care instructions where every caregiver can find them.</div><p><a href=\"/home-icu-guide#home-icu-poster\">View the Home ICU setup poster and equipment photographs</a>.</p>",
                     "tags": [
                         "home-icu",
                         "advanced-care",
@@ -539,36 +361,21 @@
                     ],
                     "sources": [
                         {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        },
-                        {
-                            "label": "St George’s Hospital: tracheostomy humidification",
-                            "url": "https://www.stgeorges.nhs.uk/gps-and-clinicians/clinical-resources/tracheostomy-guidelines/humidification/"
+                            "label": "ALSCAS caregiver checklist: home ICU equipment and room supplies",
+                            "url": "https://alslifemanagement.weebly.com/home-vent-care-management-procedures-equipments-and-required-supplies.html"
                         }
-                    ],
-                    "knowledge_cards": [
-                        "home-icu"
                     ]
                 },
                 {
                     "question": "How do I manage if there is a power cut while PALS is on BiPAP or ventilator?",
-                    "answer": "<p><strong>Follow the person’s written power-failure and emergency plan immediately.</strong> A calculator estimate is not a guarantee of safe backup time.</p><h4>During an outage</h4><ol><li>Check that the prescribed device has switched to its approved backup supply and is functioning. Respond to alarms as trained.</li><li>Contact the caregiver/provider support listed in the plan and arrange transfer early if the available backup will not cover the outage.</li><li>If ventilation is interrupted or the person is distressed, call emergency services and use only the backup method you have been trained to provide. Do not delay help while troubleshooting.</li></ol><h4>Before the next outage</h4><p>Have the equipment provider and electrician verify the backup arrangement, charging, actual load and tested runtime. Keep emergency contact numbers and the power plan beside the equipment.</p><p><a href=\"/power-backup-guide\">Power Backup Calculator &amp; Planning Guide</a><br><a href=\"/ups-faq\">UPS &amp; Power Backup FAQ</a></p>",
+                    "answer": "<p>Power backup is critical for ventilator-dependent PALS. Plan the backup with the equipment provider and electrician, and test the actual runtime before relying on it.</p><h4>If the power goes out</h4><ul><li>Check that the ventilator has switched to its approved backup and is working. Respond to alarms as trained.</li><li>If breathing support stops or PALS is distressed, call emergency services and use only the backup method you have been trained to provide.</li><li>Arrange help or transfer early if the backup will not cover the outage. Do not wait until the battery is nearly empty.</li></ul><div class=\"recommendation-box\"><strong>Read our complete guides:</strong><br><a href=\"/ups-faq\">UPS & Power Backup FAQ for Medical Equipment →</a><br><a href=\"/power-backup-guide\">Power Backup Calculator & Planning Guide →</a></div>",
                     "tags": [
                         "power-backup",
                         "emergency",
                         "ventilator",
                         "ups"
                     ],
-                    "sources": [
-                        {
-                            "label": "NICE: assessment and management of motor neurone disease",
-                            "url": "https://www.nice.org.uk/guidance/NG42/chapter/recommendations"
-                        }
-                    ],
-                    "knowledge_cards": [
-                        "home-icu"
-                    ]
+                    "sources": []
                 }
             ]
         },
@@ -578,19 +385,13 @@
             "questions": [
                 {
                     "question": "Will using a power wheelchair or lift make the PALS weaker faster?",
-                    "answer": "<p>Using a wheelchair, lift or other appropriate aid is not evidence that the person is giving up. Equipment can reduce fatigue, improve transfers and leave more energy for daily activities.</p><h4>Balance support with suitable movement</h4><ul><li>Ask an occupational therapist or physiotherapist to assess seating, transfers and home access.</li><li>Use a lift or hoist only with the correct sling and training.</li><li>Continue individualized movement or range-of-motion exercises where advised; activity should be adapted if it causes pain or excessive fatigue.</li><li>Review equipment as needs change, including communication access and skin pressure.</li></ul><div class=\"faq-care-note\"><strong>Keep expectations realistic.</strong> Exercise does not reverse ALS-related nerve damage, and equipment is not proven to slow the underlying disease. The aim is comfort, safety, participation and maintaining useful function where possible.</div>",
+                    "answer": "<p><strong>No.</strong> This is a common misconception.</p><p>ALS affects the nerves that control muscles. Equipment and suitable movement each have a place in care. Conserving energy by using assistive devices—such as a power wheelchair, mechanical lift, or supportive braces—actually helps the PALS <strong>maintain energy for essential activities</strong> like breathing, swallowing, and communicating.</p><div class=\"recommendation-box\"><strong>Key Point:</strong> Using support is not giving up. Choose equipment that makes daily life easier, and keep up the movement or exercises advised by the physiotherapist without overdoing it.</div><p>Get help with seating, transfers and the right sling for a lift. A wheelchair or lift is for comfort, safety and participation; it is not a treatment that slows ALS itself.</p>",
                     "tags": [
                         "mobility",
                         "wheelchair",
                         "assistive-devices"
                     ],
-                    "sources": [
-                        {
-                            "label": "MND Association: muscle weakness, fatigue and equipment",
-                            "url": "https://www.mndassociation.org/professionals/management-of-mnd/management-by-symptoms/muscle-weakness"
-                        }
-                    ],
-                    "knowledge_cards": []
+                    "sources": []
                 }
             ]
         }

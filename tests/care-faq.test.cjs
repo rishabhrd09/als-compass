@@ -110,6 +110,11 @@ test('further-reading links escape labels and attributes and omit non-HTTPS dest
     assert.ok(rendered.includes('Advice &lt;script&gt; &amp; notes'));
     assert.ok(rendered.includes('query=&quot;value&quot;'));
     assert.ok(!rendered.includes('javascript:'));
+    for (const sources of [undefined, []]) {
+        const withoutReading = f.context.renderQuestion({ question: 'Question?', answer: '<p>Answer.</p>', sources }, 'no-sources');
+        assert.ok(!withoutReading.includes('faq-sources'));
+        assert.ok(withoutReading.includes('<p>Answer.</p>'));
+    }
 });
 
 test('Important labels appear once while the note and warning wording is preserved', () => {
