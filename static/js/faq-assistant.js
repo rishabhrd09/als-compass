@@ -99,6 +99,8 @@
         const send = byId('sendBtn');
         const tools = byId('assistantTools');
         const toggle = byId('assistantToolsToggle');
+        const welcome = byId('assistantWelcome');
+        const newChat = byId('newChat');
         const mobile = win.matchMedia('(max-width: 768px), (max-width: 960px) and (hover: none) and (pointer: coarse)');
         function element(tag, className, text) {
             const el = doc.createElement(tag);
@@ -122,6 +124,8 @@
             return { row, content };
         }
         function addUser(text) {
+            welcome.hidden = true;
+            newChat.disabled = false;
             const item = message('user');
             item.content.textContent = text;
             messages.append(item.row);
@@ -165,8 +169,12 @@
         async function loadQuestions() {
             const list = byId('suggestedQuestions');
             const status = byId('suggestionsStatus');
+            const starters = byId('starterQuestions');
+            const starterStatus = byId('starterStatus');
             list.replaceChildren(); list.setAttribute('aria-busy', 'true');
+            starters.replaceChildren(); starters.setAttribute('aria-busy', 'true');
             status.textContent = 'Loading FAQ questions…'; status.hidden = false;
+            starterStatus.textContent = 'Loading suggested questions…'; starterStatus.hidden = false;
             byId('retryQuestions').hidden = true;
             try {
                 const questions = await session.load();
@@ -175,13 +183,25 @@
                     button.type = 'button'; button.dataset.faqKey = question.key;
                     button.addEventListener('click', () => chooseQuestion(question.key));
                     list.append(button);
+                    const topic = { bipap: ['Breathing support', 'fa-lungs'], feeding: ['Feeding & nutrition', 'fa-utensils'], equipment: ['Care at home', 'fa-house'], power: ['Power backup', 'fa-bolt'] }[question.key];
+                    if (topic) {
+                        const starter = element('button', 'starter-question');
+                        starter.type = 'button'; starter.dataset.faqKey = question.key;
+                        const icon = element('i', `fas ${topic[1]}`);
+                        icon.setAttribute('aria-hidden', 'true');
+                        starter.append(icon, element('span', 'starter-topic', topic[0]), element('span', 'starter-label', question.label));
+                        starter.addEventListener('click', () => chooseQuestion(question.key));
+                        starters.append(starter);
+                    }
                 });
                 status.textContent = 'Seven FAQ questions ready.';
                 status.hidden = true;
+                starterStatus.hidden = true;
             } catch (_) {
                 status.textContent = 'We couldn’t load the suggested questions. Please try again or browse the FAQs.';
+                starterStatus.textContent = 'Suggested questions are unavailable. You can still explore all FAQs below.';
                 byId('retryQuestions').hidden = false;
-            } finally { list.setAttribute('aria-busy', 'false'); }
+            } finally { list.setAttribute('aria-busy', 'false'); starters.setAttribute('aria-busy', 'false'); }
         }
         function resizeInput() {
             input.style.height = 'auto';
@@ -206,6 +226,18 @@
             if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) submit(event);
         });
         byId('retryQuestions').addEventListener('click', loadQuestions);
+        newChat.addEventListener('click', () => {
+            [...messages.children].forEach(child => { if (child !== welcome) child.remove(); });
+            welcome.hidden = false;
+            input.value = ''; resizeInput(); newChat.disabled = true;
+            tools.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+            messages.scrollTop = 0;
+            byId('chatStatus').textContent = 'New chat started. Choose a suggested question.';
+            byId('welcomeHeading').focus({ preventScroll: true });
+        });
+        byId('modelSelect').addEventListener('change', event => {
+            byId('modelDescription').textContent = event.target.selectedOptions[0].dataset.description;
+        });
         toggle.addEventListener('click', () => {
             const open = toggle.getAttribute('aria-expanded') !== 'true';
             toggle.setAttribute('aria-expanded', String(open)); tools.classList.toggle('open', open);
@@ -216,8 +248,9 @@
             // Let the conversation shrink when a phone's on-screen keyboard opens.
             // Retain the existing minimum height on desktop.
             wrapper.style.height = `${Math.max(mobile.matches ? 240 : 420, height - navHeight)}px`;
+            resizeInput();
         }
-        sizeWrapper(); resizeInput();
+        sizeWrapper();
         win.addEventListener('resize', sizeWrapper);
         win.visualViewport?.addEventListener('resize', sizeWrapper);
         if (win.ResizeObserver) new win.ResizeObserver(sizeWrapper).observe(doc.querySelector('.navbar'));
