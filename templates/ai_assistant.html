@@ -26,14 +26,15 @@
                 <a class="browse-faq" href="{{ url_for('faq') }}">Browse all FAQs <span aria-hidden="true">↗</span></a>
             </section>
             <section class="sidebar-section model-section" aria-labelledby="modelHeading">
-                <h2 id="modelHeading"><label for="modelSelect">Models <span class="coming-soon-label">Coming soon</span></label></h2>
-                {# Display placeholders only. Verified against official provider docs on 11 September 2026. #}
-                <select id="modelSelect" aria-describedby="modelDescription">
-                    <option value="openai">GPT-6 Astra</option>
-                    <option value="claude">Claude Fable 5.1</option>
-                    <option value="grok">Grok 4.6</option>
+                <h2 id="modelHeading"><label for="modelSelect">AI model <span class="coming-soon-label">Preview</span></label></h2>
+                {# Public API models, display only. Sources and API IDs: docs/faq-assistant.md. #}
+                <select id="modelSelect" aria-describedby="modelDescription modelPreviewNote">
+                    <option value="gpt-5.4-mini" data-description="OpenAI · A compact model for responsive conversations.">GPT-5.4 mini</option>
+                    <option value="claude-sonnet-4-6" data-description="Anthropic · A general-purpose model for detailed conversations.">Claude Sonnet 4.6</option>
+                    <option value="grok-4.6" data-description="xAI · A general-purpose model with configurable reasoning.">Grok 4.6</option>
                 </select>
-                <p id="modelDescription" class="sidebar-help">Model selection is a preview. AI-generated answers are coming soon.</p>
+                <p id="modelDescription" class="sidebar-help" aria-live="polite">OpenAI · A compact model for responsive conversations.</p>
+                <p id="modelPreviewNote" class="model-preview-note">AI integration is coming soon. Your choice does not change the FAQ answers.</p>
             </section>
         </div>
     </aside>
@@ -42,18 +43,24 @@
         <header class="chat-header">
             <div>
                 <h1 id="assistantHeading">AI Care Assistant</h1>
-                <p class="chat-header-sub">Answers from the ALS CareKosh FAQs</p>
+                <p class="chat-header-sub">FAQ answers today. Personal AI answers coming soon.</p>
             </div>
-            <span class="faq-mode-badge"><span aria-hidden="true"></span>FAQ mode</span>
+            <div class="chat-header-actions">
+                <span class="faq-mode-badge"><span aria-hidden="true"></span>FAQ mode</span>
+                <button id="newChat" type="button" class="new-chat" aria-label="Start a new chat" disabled><i class="fas fa-pen-to-square" aria-hidden="true"></i><span class="new-chat-label">New chat</span></button>
+            </div>
         </header>
+        <p id="chatStatus" class="visually-hidden" role="status"></p>
         <div id="chatMessages" class="chat-messages" role="log" aria-label="Care assistant conversation" aria-live="polite" aria-relevant="additions" tabindex="0">
-            <div class="message assistant">
-                <div class="avatar" aria-hidden="true"><i class="fas fa-compass"></i></div>
+            <div id="assistantWelcome" class="message assistant assistant-welcome">
                 <div class="message-content welcome-message">
-                    <p class="message-eyebrow">Here to help you find your way</p>
-                    <h2>Start with a question.</h2>
-                    <p>Choose a suggested question to see the answer from our FAQs, with practical guidance and links for further reading.</p>
-                    <p>AI answers to your own questions are coming soon. For now, you can also <a href="{{ url_for('faq') }}">explore all FAQs</a>.</p>
+                    <div class="welcome-symbol" aria-hidden="true"><i class="fas fa-compass"></i></div>
+                    <p class="message-eyebrow">Your caregiver’s compass</p>
+                    <h2 id="welcomeHeading" tabindex="-1">What would you like help with?</h2>
+                    <p class="welcome-intro">Start with a question below for practical guidance from the ALS CareKosh FAQs.</p>
+                    <div id="starterQuestions" class="starter-questions" aria-label="Questions to get started" aria-busy="true"></div>
+                    <p id="starterStatus" class="starter-status" role="status">Loading suggested questions…</p>
+                    <p class="welcome-more"><a href="{{ url_for('faq') }}">Explore all FAQs <span aria-hidden="true">↗</span></a></p>
                     <p class="care-reminder">This information supports general awareness. Discuss care and treatment decisions with your healthcare team.</p>
                 </div>
             </div>
@@ -61,10 +68,10 @@
         <form id="questionForm" class="input-area">
             <label for="userInput" class="visually-hidden">Your question</label>
             <div class="input-wrapper">
-                <textarea id="userInput" rows="1" maxlength="4000" placeholder="Type a question…" aria-describedby="inputHint"></textarea>
+                <textarea id="userInput" rows="1" maxlength="4000" placeholder="Type your question…" aria-describedby="inputHint"></textarea>
                 <button type="submit" id="sendBtn" class="send-btn" aria-label="Send question" disabled><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
             </div>
-            <p id="inputHint" class="input-hint">Personal questions: AI answers coming soon. <a href="{{ url_for('faq') }}">Browse FAQs</a><span class="keyboard-hint"> · Enter to send · Shift+Enter for a new line</span></p>
+            <p id="inputHint" class="input-hint">Suggested questions work now. Personal AI answers are coming soon.<span class="keyboard-hint"> · Enter to send</span></p>
         </form>
         <noscript><p class="no-script-note">Enable JavaScript to use suggested questions, or <a href="{{ url_for('faq') }}">visit the FAQs</a>.</p></noscript>
     </section>
